@@ -5,27 +5,11 @@ import { Container } from "./Container";
 import { Nav } from "./Nav";
 import { NAV_LINKS, CTA_LINKS, SITE } from "@/lib/constants";
 
-export interface HeaderLink {
-  href: string;
-  label: string;
-}
-
-export interface HeaderCta {
-  href: string;
-  label: string;
-}
-
 interface HeaderProps {
-  links?: HeaderLink[];
-  cta?: HeaderCta;
-  excludeHomeFromDesktop?: boolean;
+  cta?: { href: string; label: string };
 }
 
-export function Header({
-  links = [...NAV_LINKS],
-  cta = CTA_LINKS.requestCare,
-  excludeHomeFromDesktop = true,
-}: HeaderProps) {
+export function Header({ cta = CTA_LINKS.requestCare }: HeaderProps) {
   return (
     <header
       className="sticky top-0 z-50 w-full border-b border-border/60 bg-white/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/85"
@@ -39,11 +23,7 @@ export function Header({
           >
             {SITE.name}
           </Link>
-          <Nav
-            links={links}
-            cta={cta}
-            excludeHomeFromDesktop={excludeHomeFromDesktop}
-          />
+          <Nav links={NAV_LINKS} cta={cta} />
         </div>
       </Container>
     </header>

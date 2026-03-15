@@ -7,6 +7,12 @@ export interface NavLink {
   label: string;
 }
 
+export interface NavItem {
+  href: string;
+  label: string;
+  children?: readonly NavLink[];
+}
+
 export interface ServiceCard {
   title: string;
   description: string;

@@ -3,25 +3,37 @@
  * Update these to reflect final content and GoHighLevel integration.
  */
 
-export const SITE = {
+export const SITE: {
+  readonly name: string;
+  readonly tagline: string;
+  readonly phone: string;
+  readonly email: string;
+  readonly address: string;
+} = {
   name: "Gentle Care Nursing",
   tagline: "Personalised in-home nursing and care",
   phone: "",
   email: "",
   address: "",
-} as const;
+};
 
-export const NAV_LINKS = [
-  { href: "/", label: "Home" },
+import type { NavItem } from "@/types";
+
+export const NAV_LINKS: readonly NavItem[] = [
   { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/ndis", label: "NDIS" },
-  { href: "/dva", label: "DVA & Community" },
-  { href: "/aged-care", label: "Aged Care" },
-  { href: "/private-nursing", label: "Private Care" },
-  { href: "/referral", label: "Request Care" },
+  {
+    href: "/services",
+    label: "Services",
+    children: [
+      { href: "/services", label: "All Services" },
+      { href: "/ndis", label: "NDIS Services" },
+      { href: "/dva", label: "DVA & Community Nursing" },
+      { href: "/aged-care", label: "Aged Care" },
+      { href: "/private-nursing", label: "Private Nursing" },
+    ],
+  },
+  { href: "/referral", label: "Referrals" },
   { href: "/contact", label: "Contact" },
-  { href: "/faq", label: "FAQ" },
 ] as const;
 
 export const CTA_LINKS = {
