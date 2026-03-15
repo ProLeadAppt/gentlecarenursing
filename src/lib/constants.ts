@@ -3,19 +3,18 @@
  * Update these to reflect final content and GoHighLevel integration.
  */
 
-export const SITE: {
-  readonly name: string;
-  readonly tagline: string;
-  readonly phone: string;
-  readonly email: string;
-  readonly address: string;
-} = {
-  name: "Gentle Care Nursing",
+export const SITE = {
+  name: "Gentle Care Nursing Services",
   tagline: "Personalised in-home nursing and care",
-  phone: "",
-  email: "",
-  address: "",
-};
+  phone: "1300 004 267",
+  phoneHref: "tel:1300004267",
+  email: "info@gentlecarenursing.com.au",
+  address: "Level 1/5 George St, North Strathfield, NSW 2137",
+  social: {
+    facebook: "https://www.facebook.com/gentlecarenursing",
+    instagram: "https://www.instagram.com/gentlecarenursing",
+  },
+} as const;
 
 import type { NavItem } from "@/types";
 

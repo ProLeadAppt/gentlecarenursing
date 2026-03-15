@@ -18,33 +18,25 @@ export interface ServiceFeature {
 }
 
 export interface ServicePageData {
-  /** Page H1 */
   title: string;
-  /** Intro paragraph below H1 */
   intro: string;
-  /** URL path for schema (e.g. /ndis) */
   href?: string;
-  /** "Who it helps" section */
   whoItHelps: {
     title: string;
     description: string;
     audiences: string[];
   };
-  /** What support / services are available */
   supportAvailable: {
     title: string;
     description: string;
     features: ServiceFeature[];
   };
-  /** Why choose Gentle Care for this service */
   whyChoose: {
     title: string;
     description: string;
     reasons: ServiceFeature[];
   };
-  /** Service-specific FAQ items */
   faqs: { id: string; question: string; answer: string }[];
-  /** CTA section */
   cta: {
     title: string;
     description?: string;
@@ -79,25 +71,38 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
           __html: JSON.stringify(schemas),
         }}
       />
-      {/* Hero / Intro */}
-      <Section size="lg" variant="card">
-        <Container size="md">
-          <Heading level="h1" as="h1" className="text-center">
+
+      {/* Dark gradient hero — matches homepage hero treatment */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-[hsl(210,50%,18%)] via-primary to-primary-light py-16 sm:py-20 lg:py-24">
+        <div className="pointer-events-none absolute inset-0 opacity-[0.04]" aria-hidden>
+          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="service-dots" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1.5" fill="white" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#service-dots)" />
+          </svg>
+        </div>
+        <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[600px] rounded-full bg-white/[0.03] blur-3xl" aria-hidden />
+
+        <Container size="md" className="relative">
+          <Heading level="h1" as="h1" className="text-center text-white">
             {data.title}
           </Heading>
-          <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground sm:text-xl">
+          <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-white/80 sm:text-xl">
             {data.intro}
           </p>
           <div className="mt-8 flex justify-center gap-4">
-            <Button href={CTA_LINKS.requestCare.href} size="lg">
+            <Button href={CTA_LINKS.requestCare.href} size="lg" variant="inverted">
               {CTA_LINKS.requestCare.label}
             </Button>
-            <Button href={CTA_LINKS.contact.href} variant="outline" size="lg">
+            <Button href={CTA_LINKS.contact.href} variant="invertedOutline" size="lg">
               {CTA_LINKS.contact.label}
             </Button>
           </div>
         </Container>
-      </Section>
+      </section>
 
       <TrustBar variant="muted" />
 
@@ -112,7 +117,7 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
             {data.whoItHelps.audiences.map((audience) => (
               <div
                 key={audience}
-                className="flex items-start gap-3 rounded-lg border border-border bg-card p-4"
+                className="flex items-start gap-3 rounded-xl border border-border bg-card p-4 shadow-sm"
               >
                 <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
                   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

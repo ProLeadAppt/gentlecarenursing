@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "./Container";
 import { Nav } from "./Nav";
@@ -19,9 +20,16 @@ export function Header({ cta = CTA_LINKS.requestCare }: HeaderProps) {
         <div className="flex h-16 items-center justify-between lg:h-20">
           <Link
             href="/"
-            className="font-[family-name:var(--font-dm-sans)] text-xl font-bold text-primary transition-colors hover:text-primary/80 lg:text-2xl"
+            className="shrink-0 transition-opacity hover:opacity-80"
           >
-            {SITE.name}
+            <Image
+              src="/images/logo.png"
+              alt={SITE.name}
+              width={200}
+              height={48}
+              className="h-10 w-auto lg:h-12"
+              priority
+            />
           </Link>
           <Nav links={NAV_LINKS} cta={cta} />
         </div>

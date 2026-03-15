@@ -92,6 +92,61 @@ export const AI_ASSISTANT = {
   secondaryCtaLabel: "Request Care",
 } as const;
 
+export const HOMEPAGE_STATS = [
+  { value: "10+", label: "Years of Experience" },
+  { value: "1,300+", label: "Clients Supported" },
+  { value: "24–48hr", label: "Response Time" },
+  { value: "100%", label: "NDIS & DVA Registered" },
+] as const;
+
+export const HOMEPAGE_TESTIMONIALS = [
+  {
+    quote:
+      "Gentle Care Nursing made finding care for my mother so much easier. They responded quickly, matched us with an excellent nurse, and the quality of care has been outstanding. I finally feel confident she's in good hands.",
+    name: "Sarah M.",
+    role: "Family Member, Sydney",
+  },
+  {
+    quote:
+      "As a support coordinator, I need providers I can trust. Gentle Care is responsive, professional, and genuinely cares about participant outcomes. They've become my go-to for in-home nursing referrals.",
+    name: "James L.",
+    role: "NDIS Support Coordinator",
+  },
+  {
+    quote:
+      "The discharge planning team at our hospital has referred several patients to Gentle Care. Their turnaround time is impressive and the continuity of care from hospital to home is exactly what our patients need.",
+    name: "Dr. Priya K.",
+    role: "Hospital Discharge Planner",
+  },
+] as const;
+
+export const HOMEPAGE_AREAS = [
+  {
+    region: "Inner West",
+    suburbs: ["Strathfield", "Burwood", "Ashfield", "Concord", "Homebush", "Croydon"],
+  },
+  {
+    region: "Sydney CBD & East",
+    suburbs: ["Sydney CBD", "Surry Hills", "Bondi", "Randwick", "Paddington", "Woollahra"],
+  },
+  {
+    region: "North Shore",
+    suburbs: ["Chatswood", "North Sydney", "Lane Cove", "Willoughby", "Mosman", "Neutral Bay"],
+  },
+  {
+    region: "Western Sydney",
+    suburbs: ["Parramatta", "Blacktown", "Penrith", "Liverpool", "Bankstown", "Auburn"],
+  },
+  {
+    region: "South Sydney",
+    suburbs: ["Hurstville", "Kogarah", "Sutherland", "Cronulla", "Rockdale", "Mascot"],
+  },
+  {
+    region: "Northern Beaches",
+    suburbs: ["Manly", "Dee Why", "Brookvale", "Mona Vale", "Narrabeen", "Avalon"],
+  },
+] as const;
+
 export const HOMEPAGE_FAQ = [
   {
     id: "who-can-access",

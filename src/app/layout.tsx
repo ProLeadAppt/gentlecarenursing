@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { MobileCta } from "@/components/layout/MobileCta";
 import { getLocalBusinessSchema, getWebsiteSchema } from "@/lib/schema";
 
 const sourceSans = Source_Sans_3({
@@ -84,6 +85,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <MobileCta />
 
         {gaId && (
           <>

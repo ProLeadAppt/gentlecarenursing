@@ -1,12 +1,15 @@
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
+import { StatsBar } from "@/components/sections/StatsBar";
 import { WhoWeHelp } from "@/components/sections/WhoWeHelp";
 import { ServiceCards } from "@/components/sections/ServiceCards";
 import { WhyDifferent } from "@/components/sections/WhyDifferent";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { AiAssistantSection } from "@/components/sections/AiAssistantSection";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { FaqPreview } from "@/components/sections/FaqPreview";
+import { AreasWeServe } from "@/components/sections/AreasWeServe";
 import { CTA_LINKS } from "@/lib/constants";
 import {
   HOMEPAGE_HERO,
@@ -14,6 +17,9 @@ import {
   WHY_DIFFERENT,
   PROCESS_STEPS,
   AI_ASSISTANT,
+  HOMEPAGE_STATS,
+  HOMEPAGE_TESTIMONIALS,
+  HOMEPAGE_AREAS,
   HOMEPAGE_FAQ,
 } from "@/content/homepage";
 
@@ -29,6 +35,8 @@ export default function HomePage() {
 
       <TrustBar variant="muted" />
 
+      <StatsBar stats={HOMEPAGE_STATS} />
+
       <WhoWeHelp
         title={WHO_WE_HELP.title}
         subtitle={WHO_WE_HELP.subtitle}
@@ -42,6 +50,8 @@ export default function HomePage() {
         subtitle={WHY_DIFFERENT.subtitle}
         differentiators={WHY_DIFFERENT.differentiators}
       />
+
+      <Testimonials testimonials={HOMEPAGE_TESTIMONIALS} />
 
       <ProcessSteps
         title={PROCESS_STEPS.title}
@@ -66,6 +76,8 @@ export default function HomePage() {
       />
 
       <FaqPreview items={HOMEPAGE_FAQ} />
+
+      <AreasWeServe areas={HOMEPAGE_AREAS} />
 
       <CtaSection
         title="Need Care? We're Here to Help."

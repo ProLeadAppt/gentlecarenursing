@@ -1,0 +1,23 @@
+---
+description: Image handling rules — convert to WebP, optimise, use Next.js Image
+globs: public/images/**,src/**/*.tsx
+alwaysApply: false
+---
+
+# Image Handling
+
+When the user uploads or provides images for this project:
+
+1. **Convert to WebP** before placing in `public/images/`
+   - Use `sharp` (already installed): `sharp(input).webp({ quality: 85 }).toFile(output)`
+   - Exception: logos or images with transparency that compress better as PNG may stay PNG
+2. **Use descriptive filenames** in kebab-case (e.g. `hero-hands.webp`, `carer-elderly.webp`)
+3. **Reference with Next.js `<Image>`** — never use raw `<img>` tags
+4. **Set `sizes` prop** for responsive images (e.g. `sizes="(max-width: 1024px) 100vw, 50vw"`)
+5. **Set `priority`** on above-the-fold images (hero, header logo)
+6. **Provide meaningful `alt` text** — describe the image content for accessibility
+
+```bash
+# Quick conversion command
+node -e "require('sharp')('input.png').webp({ quality: 85 }).toFile('public/images/output.webp')"
+```

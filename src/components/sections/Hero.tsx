@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { Heading } from "@/components/ui/Heading";
@@ -13,6 +14,9 @@ interface HeroProps {
   subheadline?: string;
   primaryCta: HeroCta;
   secondaryCta?: HeroCta;
+  /** Optional hero image path */
+  imageSrc?: string;
+  imageAlt?: string;
 }
 
 export function Hero({
@@ -20,12 +24,27 @@ export function Hero({
   subheadline,
   primaryCta,
   secondaryCta,
+  imageSrc = "/images/hero-hands.webp",
+  imageAlt = "Caring hands — personalised in-home nursing support",
 }: HeroProps) {
   return (
     <section
       className="relative overflow-hidden bg-gradient-to-br from-[hsl(210,50%,18%)] via-primary to-primary-light py-20 sm:py-24 lg:py-32"
       aria-labelledby="hero-heading"
     >
+      {/* Background image overlay */}
+      <div className="absolute inset-0" aria-hidden>
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          fill
+          className="object-cover object-center opacity-10"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(210,50%,18%)]/90 via-primary/80 to-primary-light/80" />
+      </div>
+
       {/* Decorative pattern overlay */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.04]" aria-hidden>
         <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
