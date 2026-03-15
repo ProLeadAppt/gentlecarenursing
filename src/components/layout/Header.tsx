@@ -16,11 +16,8 @@ export interface HeaderCta {
 }
 
 interface HeaderProps {
-  /** Override nav links (default: NAV_LINKS) */
   links?: HeaderLink[];
-  /** Override CTA (default: Request Care) */
   cta?: HeaderCta;
-  /** Hide home from desktop nav */
   excludeHomeFromDesktop?: boolean;
 }
 
@@ -31,14 +28,14 @@ export function Header({
 }: HeaderProps) {
   return (
     <header
-      className="sticky top-0 z-50 w-full border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80"
+      className="sticky top-0 z-50 w-full border-b border-border/60 bg-white/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/85"
       role="banner"
     >
       <Container>
         <div className="flex h-16 items-center justify-between lg:h-20">
           <Link
             href="/"
-            className="text-xl font-semibold text-foreground transition-colors hover:text-primary"
+            className="font-[family-name:var(--font-dm-sans)] text-xl font-bold text-primary transition-colors hover:text-primary/80 lg:text-2xl"
           >
             {SITE.name}
           </Link>

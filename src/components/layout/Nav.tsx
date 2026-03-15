@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface NavLink {
@@ -13,7 +14,6 @@ export interface NavLink {
 interface NavProps {
   links: NavLink[];
   cta?: { href: string; label: string };
-  /** Hide home link from desktop nav (often in logo) */
   excludeHomeFromDesktop?: boolean;
   className?: string;
 }
@@ -34,20 +34,20 @@ export function Nav({
     <div className={cn("flex flex-1 flex-col lg:flex-row lg:items-center", className)}>
       {/* Desktop */}
       <nav
-        className="hidden items-center gap-8 lg:flex"
+        className="hidden items-center gap-7 lg:flex"
         aria-label="Main navigation"
       >
         {desktopLinks.map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-sm font-medium text-foreground/70 transition-colors hover:text-primary"
           >
             {link.label}
           </Link>
         ))}
         {cta && (
-          <Button href={cta.href} size="sm">
+          <Button href={cta.href} size="sm" variant="secondary">
             {cta.label}
           </Button>
         )}
@@ -56,35 +56,17 @@ export function Nav({
       {/* Mobile toggle */}
       <button
         type="button"
-        className="inline-flex h-10 w-10 items-center justify-center rounded-lg lg:hidden"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground/70 transition-colors hover:bg-muted lg:hidden"
         aria-expanded={mobileOpen}
         aria-controls="mobile-nav"
         onClick={() => setMobileOpen(!mobileOpen)}
       >
         <span className="sr-only">Toggle menu</span>
-        <svg
-          className="h-6 w-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          aria-hidden
-        >
-          {mobileOpen ? (
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          ) : (
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          )}
-        </svg>
+        {mobileOpen ? (
+          <X className="h-6 w-6" />
+        ) : (
+          <Menu className="h-6 w-6" />
+        )}
       </button>
 
       {/* Mobile panel */}
@@ -96,12 +78,12 @@ export function Nav({
         )}
         aria-hidden={!mobileOpen}
       >
-        <div className="flex flex-col gap-4 pt-4">
+        <div className="flex flex-col gap-1 pt-4">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-base font-medium text-foreground"
+              className="rounded-lg px-3 py-2.5 text-base font-medium text-foreground transition-colors hover:bg-muted"
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
@@ -111,7 +93,7 @@ export function Nav({
             <Button
               href={cta.href}
               size="md"
-              className="mt-2 w-full"
+              className="mt-3 w-full"
               onClick={() => setMobileOpen(false)}
             >
               {cta.label}

@@ -16,7 +16,6 @@ const defaultTrustItems: TrustItem[] = [
 
 interface TrustBarProps {
   items?: TrustItem[];
-  /** Section variant */
   variant?: "default" | "muted";
   className?: string;
 }
@@ -29,8 +28,10 @@ export function TrustBar({
   return (
     <section
       className={cn(
-        "border-y border-border py-6",
-        variant === "muted" ? "bg-muted/30" : "bg-card/50",
+        "border-y py-8",
+        variant === "muted"
+          ? "border-primary/10 bg-primary/[0.03]"
+          : "border-border bg-card/80",
         className
       )}
     >

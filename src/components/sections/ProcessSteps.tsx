@@ -3,7 +3,6 @@ import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "./SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { Heading } from "@/components/ui/Heading";
-import { cn } from "@/lib/utils";
 
 export interface ProcessStep {
   number: number;
@@ -28,27 +27,24 @@ export function ProcessSteps({
     <Section>
       <Container>
         <SectionHeader title={title} subtitle={subtitle} />
-        <div className="relative mt-12 grid gap-8 sm:grid-cols-3">
-          {/* Connector line — desktop only */}
+        <div className="relative mt-14 grid gap-10 sm:grid-cols-3 sm:gap-8">
+          {/* Connector line */}
           <div
-            className="absolute left-[15%] right-[15%] top-6 hidden border-t border-dashed border-border sm:block"
+            className="absolute left-[16%] right-[16%] top-8 hidden border-t-2 border-dashed border-primary/15 sm:block"
             aria-hidden
           />
           {steps.map((step) => (
             <div
               key={step.number}
-              className="relative flex flex-col items-center text-center sm:items-start sm:text-left"
+              className="relative flex flex-col items-center text-center"
             >
               <div
-                className={cn(
-                  "flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-lg font-bold text-primary",
-                  "ring-4 ring-background"
-                )}
+                className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary-light text-xl font-bold text-white shadow-md ring-4 ring-background"
                 aria-hidden
               >
                 {step.number}
               </div>
-              <Heading level="h3" as="h3" className="mt-4 text-lg">
+              <Heading level="h3" as="h3" className="mt-5 text-lg">
                 {step.headline}
               </Heading>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -58,7 +54,7 @@ export function ProcessSteps({
           ))}
         </div>
         {cta && (
-          <div className="mt-12 flex justify-center">
+          <div className="mt-14 flex justify-center">
             <Button href={cta.href} size="lg">
               {cta.label}
             </Button>

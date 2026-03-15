@@ -35,19 +35,19 @@ export function Footer({
 }: FooterProps) {
   return (
     <footer
-      className="border-t border-border bg-card"
+      className="bg-[hsl(210,50%,14%)] text-white/90"
       role="contentinfo"
     >
       <Container>
-        <Grid cols={4} gap="lg" className="py-12">
+        <Grid cols={4} gap="lg" className="py-14">
           <FooterColumn>
             <Link
               href="/"
-              className="text-lg font-semibold text-foreground transition-colors hover:text-primary"
+              className="font-[family-name:var(--font-dm-sans)] text-xl font-bold text-white transition-colors hover:text-white/80"
             >
               {SITE.name}
             </Link>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-3 text-sm leading-relaxed text-white/60">
               {SITE.tagline}
             </p>
           </FooterColumn>
@@ -56,16 +56,16 @@ export function Footer({
           <FooterColumn title="Information" links={infoLinks} />
 
           <FooterColumn title="Get in touch">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2.5">
               <Link
                 href={CTA_LINKS.requestCare.href}
-                className="text-sm font-medium text-primary transition-colors hover:underline"
+                className="text-sm font-medium text-accent-light transition-colors hover:text-white"
               >
                 {CTA_LINKS.requestCare.label}
               </Link>
               <Link
                 href={CTA_LINKS.contact.href}
-                className="text-sm font-medium text-primary transition-colors hover:underline"
+                className="text-sm font-medium text-accent-light transition-colors hover:text-white"
               >
                 {CTA_LINKS.contact.label}
               </Link>
@@ -73,7 +73,7 @@ export function Footer({
           </FooterColumn>
         </Grid>
 
-        <div className="border-t border-border py-6 text-center text-sm text-muted-foreground">
+        <div className="border-t border-white/10 py-6 text-center text-sm text-white/40">
           © {new Date().getFullYear()} {SITE.name}. All rights reserved.
         </div>
       </Container>

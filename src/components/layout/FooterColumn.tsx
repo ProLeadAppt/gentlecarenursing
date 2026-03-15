@@ -9,7 +9,6 @@ export interface FooterLink {
 interface FooterColumnProps {
   title?: string;
   links?: FooterLink[];
-  /** Custom content instead of links */
   children?: React.ReactNode;
   className?: string;
 }
@@ -23,17 +22,17 @@ export function FooterColumn({
   return (
     <div className={cn("", className)}>
       {title && (
-        <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground">
+        <h3 className="font-[family-name:var(--font-dm-sans)] text-sm font-semibold uppercase tracking-wider text-white/50">
           {title}
         </h3>
       )}
       {links ? (
-        <ul className={cn("space-y-2", title && "mt-4")}>
+        <ul className={cn("space-y-2.5", title && "mt-4")}>
           {links.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="text-sm text-white/60 transition-colors hover:text-white"
               >
                 {link.label}
               </Link>

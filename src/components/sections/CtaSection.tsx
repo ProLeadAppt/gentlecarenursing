@@ -14,16 +14,15 @@ interface CtaSectionProps {
   description?: string;
   primaryCta: CtaLink;
   secondaryCta?: CtaLink;
-  /** Visual variant */
   variant?: CtaSectionVariant;
   className?: string;
 }
 
 const variantStyles: Record<CtaSectionVariant, string> = {
-  primary: "bg-primary text-primary-foreground",
-  muted: "bg-muted/50 text-foreground",
+  primary: "bg-gradient-to-br from-[hsl(210,50%,18%)] via-primary to-primary-light text-white",
+  muted: "bg-[hsl(210,20%,95%)] text-foreground",
   outline: "border-y border-border bg-card text-foreground",
-  accent: "bg-accent/10 text-foreground",
+  accent: "bg-accent/8 text-foreground",
 };
 
 export function CtaSection({
@@ -39,21 +38,36 @@ export function CtaSection({
   return (
     <section
       className={cn(
-        "py-16 sm:py-20",
+        "relative overflow-hidden py-16 sm:py-20",
         variantStyles[variant],
         className
       )}
     >
-      <Container>
+      {isInverted && (
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.03]"
+          aria-hidden
+        >
+          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="cta-dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1" fill="white" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#cta-dots)" />
+          </svg>
+        </div>
+      )}
+      <Container className="relative">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="font-[family-name:var(--font-dm-sans)] text-3xl font-bold tracking-tight sm:text-4xl">
             {title}
           </h2>
           {description && (
             <p
               className={cn(
                 "mt-4 text-lg",
-                isInverted ? "opacity-90" : "text-muted-foreground"
+                isInverted ? "text-white/80" : "text-muted-foreground"
               )}
             >
               {description}

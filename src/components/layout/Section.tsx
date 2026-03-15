@@ -2,14 +2,11 @@ import { cn } from "@/lib/utils";
 import { SPACING_SECTION } from "@/design-system/tokens";
 
 type SectionSize = "sm" | "md" | "lg";
-type SectionVariant = "default" | "muted" | "card" | "primary" | "accent";
+type SectionVariant = "default" | "muted" | "card" | "primary" | "accent" | "gradient";
 
 interface SectionProps extends React.HTMLAttributes<HTMLElement> {
-  /** Vertical padding */
   size?: SectionSize;
-  /** Background variant */
   variant?: SectionVariant;
-  /** Semantic element */
   as?: "section" | "article" | "div";
 }
 
@@ -21,10 +18,11 @@ const sizeStyles: Record<SectionSize, string> = {
 
 const variantStyles: Record<SectionVariant, string> = {
   default: "bg-background",
-  muted: "bg-muted/30",
+  muted: "bg-[hsl(210,20%,95%)]",
   card: "bg-card",
-  primary: "bg-primary text-primary-foreground",
-  accent: "bg-accent/10",
+  primary: "bg-gradient-to-br from-primary via-primary to-primary-light text-primary-foreground",
+  accent: "bg-accent/8",
+  gradient: "bg-gradient-to-b from-primary/[0.04] to-background",
 };
 
 export function Section({

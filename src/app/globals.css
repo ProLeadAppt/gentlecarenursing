@@ -7,20 +7,23 @@
 
 :root {
   /* -------------------------------------------------------------------------
-     Colour system — soft, reassuring, professional
+     Colour system — richer, warmer, with actual visual presence
      HSL values for easy opacity variants (e.g. primary/10)
      ------------------------------------------------------------------------- */
-  --color-primary: 210 40% 25%;
+  --color-primary: 210 50% 22%;
   --color-primary-foreground: 0 0% 100%;
-  --color-accent: 180 35% 45%;
+  --color-primary-light: 210 45% 35%;
+
+  --color-accent: 168 45% 42%;
   --color-accent-foreground: 0 0% 100%;
+  --color-accent-light: 168 40% 55%;
 
   /* Neutrals — warm, readable, low eye strain */
-  --color-background: 40 20% 98%;
-  --color-foreground: 210 25% 15%;
-  --color-muted: 210 15% 45%;
-  --color-muted-foreground: 210 10% 55%;
-  --color-border: 210 15% 90%;
+  --color-background: 40 25% 97%;
+  --color-foreground: 210 30% 14%;
+  --color-muted: 210 20% 95%;
+  --color-muted-foreground: 210 12% 50%;
+  --color-border: 210 18% 88%;
   --color-card: 0 0% 100%;
 
   /* Semantic — trust, success, destructive */
@@ -30,9 +33,9 @@
   --color-destructive-foreground: 0 0% 100%;
 
   /* Input focus ring */
-  --color-ring: 210 40% 25%;
+  --color-ring: 210 50% 22%;
 
-  /* Spacing scale (rem) — for reference; use Tailwind scale */
+  /* Spacing scale (rem) */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -47,18 +50,19 @@
 
   /* Typography */
   --font-sans: var(--font-source-sans);
-  --font-display: var(--font-source-sans);
+  --font-display: var(--font-dm-sans);
 
-  /* Shadows — soft, premium, healthcare-appropriate */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.04);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.04);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.06), 0 4px 6px -4px rgb(0 0 0 / 0.04);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.06), 0 8px 10px -6px rgb(0 0 0 / 0.04);
+  /* Shadows — premium, slightly more presence */
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  --shadow-md: 0 4px 8px -2px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.04);
+  --shadow-lg: 0 12px 20px -4px rgb(0 0 0 / 0.08), 0 4px 8px -4px rgb(0 0 0 / 0.04);
+  --shadow-xl: 0 24px 32px -8px rgb(0 0 0 / 0.1), 0 8px 16px -6px rgb(0 0 0 / 0.06);
 
   /* Border radius */
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
 }
 
 @theme inline {
@@ -66,8 +70,10 @@
   --color-foreground: hsl(var(--color-foreground));
   --color-primary: hsl(var(--color-primary));
   --color-primary-foreground: hsl(var(--color-primary-foreground));
+  --color-primary-light: hsl(var(--color-primary-light));
   --color-accent: hsl(var(--color-accent));
   --color-accent-foreground: hsl(var(--color-accent-foreground));
+  --color-accent-light: hsl(var(--color-accent-light));
   --color-muted: hsl(var(--color-muted));
   --color-muted-foreground: hsl(var(--color-muted-foreground));
   --color-border: hsl(var(--color-border));
@@ -75,7 +81,7 @@
   --color-destructive: hsl(var(--color-destructive));
   --color-destructive-foreground: hsl(var(--color-destructive-foreground));
   --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
 
   /* Shadow utilities */
   --shadow-card: var(--shadow-sm);

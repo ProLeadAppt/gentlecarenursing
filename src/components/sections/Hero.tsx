@@ -1,8 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { Heading } from "@/components/ui/Heading";
-import { TYPOGRAPHY } from "@/design-system/tokens";
-import { cn } from "@/lib/utils";
+import { ShieldCheck } from "lucide-react";
 
 export interface HeroCta {
   href: string;
@@ -24,28 +23,55 @@ export function Hero({
 }: HeroProps) {
   return (
     <section
-      className="relative overflow-hidden bg-gradient-to-b from-card to-background py-16 sm:py-20 lg:py-28"
+      className="relative overflow-hidden bg-gradient-to-br from-[hsl(210,50%,18%)] via-primary to-primary-light py-20 sm:py-24 lg:py-32"
       aria-labelledby="hero-heading"
     >
-      <Container size="md">
+      {/* Decorative pattern overlay */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.04]" aria-hidden>
+        <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="hero-dots" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1.5" fill="white" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#hero-dots)" />
+        </svg>
+      </div>
+      {/* Radial glow */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[800px] rounded-full bg-white/[0.03] blur-3xl"
+        aria-hidden
+      />
+
+      <Container size="md" className="relative">
         <div className="mx-auto max-w-3xl text-center">
+          {/* Trust micro-line */}
+          <div className="mb-6 flex items-center justify-center gap-2">
+            <ShieldCheck className="h-5 w-5 text-accent-light" />
+            <span className="text-sm font-medium tracking-wide text-white/70 uppercase">
+              Registered NDIS & DVA Provider
+            </span>
+          </div>
+
           <Heading
             level="h1"
             as="h1"
             id="hero-heading"
-            className="text-4xl sm:text-5xl lg:text-6xl"
+            className="text-4xl text-white sm:text-5xl lg:text-6xl"
           >
             {headline}
           </Heading>
           {subheadline && (
-            <p className={cn("mt-6", TYPOGRAPHY.lead)}>{subheadline}</p>
+            <p className="mt-6 text-lg leading-relaxed text-white/80 sm:text-xl">
+              {subheadline}
+            </p>
           )}
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button href={primaryCta.href} size="lg">
+            <Button href={primaryCta.href} size="lg" variant="inverted">
               {primaryCta.label}
             </Button>
             {secondaryCta && (
-              <Button href={secondaryCta.href} variant="outline" size="lg">
+              <Button href={secondaryCta.href} variant="invertedOutline" size="lg">
                 {secondaryCta.label}
               </Button>
             )}
