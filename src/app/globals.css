@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Gentle Care Nursing — Design System
+   Premium, calm, healthcare-appropriate, conversion-focused
+   --------------------------------------------------------------------------- */
+
+:root {
+  /* -------------------------------------------------------------------------
+     Colour system — soft, reassuring, professional
+     HSL values for easy opacity variants (e.g. primary/10)
+     ------------------------------------------------------------------------- */
+  --color-primary: 210 40% 25%;
+  --color-primary-foreground: 0 0% 100%;
+  --color-accent: 180 35% 45%;
+  --color-accent-foreground: 0 0% 100%;
+
+  /* Neutrals — warm, readable, low eye strain */
+  --color-background: 40 20% 98%;
+  --color-foreground: 210 25% 15%;
+  --color-muted: 210 15% 45%;
+  --color-muted-foreground: 210 10% 55%;
+  --color-border: 210 15% 90%;
+  --color-card: 0 0% 100%;
+
+  /* Semantic — trust, success, destructive */
+  --color-trust: 150 40% 35%;
+  --color-success: 150 50% 40%;
+  --color-destructive: 0 65% 50%;
+  --color-destructive-foreground: 0 0% 100%;
+
+  /* Input focus ring */
+  --color-ring: 210 40% 25%;
+
+  /* Spacing scale (rem) — for reference; use Tailwind scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Container */
+  --container-max: 72rem;
+  --container-padding: 1rem;
+
+  /* Typography */
+  --font-sans: var(--font-source-sans);
+  --font-display: var(--font-source-sans);
+
+  /* Shadows — soft, premium, healthcare-appropriate */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.04);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.06), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.06), 0 8px 10px -6px rgb(0 0 0 / 0.04);
+
+  /* Border radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+}
+
+@theme inline {
+  --color-background: hsl(var(--color-background));
+  --color-foreground: hsl(var(--color-foreground));
+  --color-primary: hsl(var(--color-primary));
+  --color-primary-foreground: hsl(var(--color-primary-foreground));
+  --color-accent: hsl(var(--color-accent));
+  --color-accent-foreground: hsl(var(--color-accent-foreground));
+  --color-muted: hsl(var(--color-muted));
+  --color-muted-foreground: hsl(var(--color-muted-foreground));
+  --color-border: hsl(var(--color-border));
+  --color-card: hsl(var(--color-card));
+  --color-destructive: hsl(var(--color-destructive));
+  --color-destructive-foreground: hsl(var(--color-destructive-foreground));
+  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+
+  /* Shadow utilities */
+  --shadow-card: var(--shadow-sm);
+  --shadow-card-hover: var(--shadow-md);
+  --shadow-elevated: var(--shadow-md);
+  --shadow-elevated-hover: var(--shadow-lg);
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: hsl(var(--color-background));
+  color: hsl(var(--color-foreground));
+  font-family: var(--font-sans), system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus states — accessibility */
+:focus-visible {
+  outline: 2px solid hsl(var(--color-accent));
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: hsl(var(--color-accent) / 0.2);
+  color: hsl(var(--color-foreground));
+}

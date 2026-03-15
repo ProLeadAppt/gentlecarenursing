@@ -1,0 +1,43 @@
+import { Container } from "@/components/layout/Container";
+import { Section } from "@/components/layout/Section";
+import { SectionHeader } from "./SectionHeader";
+import { FaqAccordion, type FaqItem } from "./FaqAccordion";
+import { Button } from "@/components/ui/Button";
+
+interface FaqPreviewProps {
+  title?: string;
+  subtitle?: string;
+  items: readonly { id: string; question: string; answer: string }[];
+  viewAllHref?: string;
+  viewAllLabel?: string;
+}
+
+export function FaqPreview({
+  title = "Common Questions",
+  subtitle,
+  items,
+  viewAllHref = "/faq",
+  viewAllLabel = "View all FAQs",
+}: FaqPreviewProps) {
+  const faqItems: FaqItem[] = items.map((item) => ({
+    id: item.id,
+    question: item.question,
+    answer: item.answer,
+  }));
+
+  return (
+    <Section variant="muted">
+      <Container>
+        <SectionHeader title={title} subtitle={subtitle} />
+        <div className="mx-auto mt-12 max-w-2xl">
+          <FaqAccordion items={faqItems} allowMultiple={false} />
+          <div className="mt-8 flex justify-center">
+            <Button href={viewAllHref} variant="outline" size="md">
+              {viewAllLabel}
+            </Button>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  );
+}
