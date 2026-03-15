@@ -3,6 +3,7 @@ import { Section } from "@/components/layout/Section";
 import { Grid } from "@/components/layout/Grid";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Heading } from "@/components/ui/Heading";
 import { Card } from "@/components/ui/Card";
 import { CTA_LINKS, SITE } from "@/lib/constants";
@@ -19,6 +20,7 @@ export default function ContactPage() {
     <>
       <Section size="lg" variant="card">
         <Container size="md">
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact Us" }]} className="mb-6" />
           <Heading level="h1" as="h1" className="text-center">
             Contact Us
           </Heading>
@@ -81,9 +83,12 @@ export default function ContactPage() {
 
             {/* Form */}
             <Card variant="default" className="p-8">
-              <Heading level="h2" as="h2" className="mb-6 text-2xl">
+              <Heading level="h2" as="h2" className="mb-2 text-2xl">
                 Send Us a Message
               </Heading>
+              <p className="mb-6 text-muted-foreground">
+                We&apos;ll respond within 24–48 hours.
+              </p>
               <ContactForm />
             </Card>
           </Grid>
@@ -94,6 +99,7 @@ export default function ContactPage() {
         title="Ready to Request Care?"
         description="If you already know what you need, submit a referral and we'll get started."
         primaryCta={CTA_LINKS.requestCare}
+        secondaryCta={CTA_LINKS.callUs}
         variant="muted"
       />
     </>

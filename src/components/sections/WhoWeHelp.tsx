@@ -31,9 +31,9 @@ export function WhoWeHelp({
   audiences,
 }: WhoWeHelpProps) {
   return (
-    <Section>
+    <Section variant="default" size="lg">
       <Container>
-        <SectionHeader title={title} subtitle={subtitle} />
+        <SectionHeader title={title} subtitle={subtitle} size="lg" />
         <Grid cols={4} gap="lg" className="mt-12">
           {audiences.map((audience) => {
             const Icon = AUDIENCE_ICONS[audience.label];

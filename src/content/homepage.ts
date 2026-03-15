@@ -6,6 +6,15 @@ export const HOMEPAGE_HERO = {
   headline: "Personalised In-Home Nursing & Care",
   subheadline:
     "For families, NDIS participants, and referral partners. Registered provider. Dedicated support.",
+  /** Location + authority line (hero, below trust badge) */
+  locationLine: "Sydney's trusted in-home nursing provider — NDIS & DVA registered",
+} as const;
+
+/** One-line local proof (e.g. near first CTA or after TrustBar) */
+export const HOMEPAGE_LOCAL_PROOF = {
+  line: "Serving Sydney and surrounds — in-home nursing and care when you need it.",
+  linkLabel: "View areas we serve",
+  linkHref: "#areas-we-serve",
 } as const;
 
 export const WHO_WE_HELP = {
@@ -99,6 +108,7 @@ export const HOMEPAGE_STATS = [
   { value: "100%", label: "NDIS & DVA Registered" },
 ] as const;
 
+/** Testimonials for homepage. Replace with real, legally cleared quotes when available. */
 export const HOMEPAGE_TESTIMONIALS = [
   {
     quote:
@@ -148,6 +158,12 @@ export const HOMEPAGE_AREAS = [
 ] as const;
 
 export const HOMEPAGE_FAQ = [
+  {
+    id: "are-you-registered",
+    question: "Are you registered with NDIS and DVA?",
+    answer:
+      "Yes. Gentle Care Nursing is a registered NDIS provider and a registered DVA community nursing provider. We meet the quality and safety standards required by both schemes, so coordinators and referrers can refer with confidence.",
+  },
   {
     id: "who-can-access",
     question: "Who can access your services?",

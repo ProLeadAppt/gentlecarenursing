@@ -16,12 +16,15 @@ const defaultTrustItems: TrustItem[] = [
 
 interface TrustBarProps {
   items?: TrustItem[];
+  /** Optional line below badges (e.g. response time promise) */
+  responseTimeLine?: string;
   variant?: "default" | "muted";
   className?: string;
 }
 
 export function TrustBar({
   items = defaultTrustItems,
+  responseTimeLine,
   variant = "default",
   className,
 }: TrustBarProps) {
@@ -45,6 +48,11 @@ export function TrustBar({
             />
           ))}
         </div>
+        {responseTimeLine && (
+          <p className="mt-4 text-center text-sm text-muted-foreground">
+            {responseTimeLine}
+          </p>
+        )}
       </Container>
     </section>
   );

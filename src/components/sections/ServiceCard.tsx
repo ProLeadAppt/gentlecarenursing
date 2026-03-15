@@ -24,7 +24,7 @@ export function ServiceCard({
       href={href}
       variant={variant}
       className={cn(
-        "group flex flex-col border-t-4 border-t-primary/20 hover:border-t-primary/60",
+        "group flex flex-col border-t-4 border-t-primary/20 transition-all duration-200 hover:-translate-y-0.5 hover:border-t-primary/60 hover:shadow-lg",
         className
       )}
     >

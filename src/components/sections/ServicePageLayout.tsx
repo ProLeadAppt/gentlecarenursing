@@ -10,7 +10,10 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { CTA_LINKS } from "@/lib/constants";
 import { getServiceSchema, getFaqSchema } from "@/lib/schema";
+import { SERVICES } from "@/content/services";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import type { FaqItem } from "./FaqAccordion";
+import Link from "next/link";
 
 export interface ServiceFeature {
   title: string;
@@ -87,9 +90,20 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
         <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[600px] rounded-full bg-white/[0.03] blur-3xl" aria-hidden />
 
         <Container size="md" className="relative">
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Services", href: "/services" },
+              { label: data.title },
+            ]}
+            className="mb-6 justify-center [&_a]:text-white/80 [&_a:hover]:text-white [&_span]:text-white/90"
+          />
           <Heading level="h1" as="h1" className="text-center text-white">
             {data.title}
           </Heading>
+          <p className="mt-3 text-center text-base font-medium text-white/70 sm:text-lg">
+            In-home nursing and care across Sydney and surrounds
+          </p>
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-white/80 sm:text-xl">
             {data.intro}
           </p>
@@ -184,6 +198,30 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
           viewAllLabel="View all FAQs"
         />
       )}
+
+      {/* Related services — internal linking */}
+      <Section variant="muted">
+        <Container>
+          <SectionHeader
+            title="Related Services"
+            subtitle="Explore our other in-home nursing and care options."
+          />
+          <ul className="mt-8 flex flex-wrap justify-center gap-4">
+            {SERVICES.filter((s) => s.href !== data.href)
+              .slice(0, 3)
+              .map((service) => (
+                <li key={service.href}>
+                  <Link
+                    href={service.href}
+                    className="rounded-lg border border-border bg-card px-5 py-3 text-sm font-medium text-foreground shadow-sm transition hover:border-primary/30 hover:bg-primary/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    {service.title}
+                  </Link>
+                </li>
+              ))}
+          </ul>
+        </Container>
+      </Section>
 
       {/* CTA */}
       <CtaSection

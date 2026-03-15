@@ -12,6 +12,12 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
     title: "General",
     items: [
       {
+        id: "registered-provider",
+        question: "Are you a registered NDIS and DVA provider?",
+        answer:
+          "Yes. Gentle Care Nursing is fully registered with the NDIS and is a registered DVA community nursing provider. We meet all required quality and safety standards.",
+      },
+      {
         id: "what-services",
         question: "What services does Gentle Care Nursing provide?",
         answer:
@@ -21,7 +27,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "service-areas",
         question: "What areas do you service?",
         answer:
-          "We provide in-home care services across our local service area. Contact us to confirm whether we cover your location — we're happy to discuss your needs.",
+          "We provide in-home nursing and care across Sydney and surrounds, including Inner West, North Shore, Western Sydney, Northern Beaches, South Sydney, and Sydney CBD and East. Contact us to confirm coverage for your suburb.",
       },
       {
         id: "who-provides",

@@ -32,7 +32,7 @@ export function WhyDifferent({
   return (
     <Section variant="muted">
       <Container>
-        <SectionHeader title={title} subtitle={subtitle} />
+        <SectionHeader title={title} subtitle={subtitle} size="lg" />
         <div className="mt-12 grid items-center gap-12 lg:grid-cols-2">
           {/* Image */}
           <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-2xl lg:max-w-none">

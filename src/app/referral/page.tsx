@@ -5,6 +5,7 @@ import { SectionHeader } from "@/components/sections/SectionHeader";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { ReferralForm } from "@/components/forms/ReferralForm";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Heading } from "@/components/ui/Heading";
 import { Card } from "@/components/ui/Card";
 import { CTA_LINKS } from "@/lib/constants";
@@ -42,6 +43,7 @@ export default function ReferralPage() {
     <>
       <Section size="lg" variant="card">
         <Container size="md">
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Request Care" }]} className="mb-6" />
           <Heading level="h1" as="h1" className="text-center">
             Request Care
           </Heading>
@@ -114,6 +116,7 @@ export default function ReferralPage() {
         title="Prefer to Speak With Someone?"
         description="Contact us directly by phone or email — we're here to help."
         primaryCta={CTA_LINKS.contact}
+        secondaryCta={CTA_LINKS.callUs}
         variant="muted"
       />
     </>

@@ -104,11 +104,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Focus states — accessibility */
+/* Focus states — accessibility (ring for consistency with design system) */
+:focus {
+  outline: none;
+}
+
 :focus-visible {
-  outline: 2px solid hsl(var(--color-accent));
+  outline: 2px solid hsl(var(--color-ring));
   outline-offset: 2px;
 }
+
+/* Buttons/inputs that use ring in Tailwind get ring color from --color-ring */
 
 /* Selection */
 ::selection {

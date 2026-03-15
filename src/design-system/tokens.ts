@@ -75,7 +75,8 @@ export const BUTTON_VARIANTS = {
 export const BUTTON_SIZES = {
   sm: "h-9 px-4 text-sm rounded-lg",
   md: "h-11 px-6 text-base rounded-lg",
-  lg: "h-13 px-8 text-lg rounded-xl",
+  lg: "h-12 px-8 text-lg rounded-xl",
+  xl: "h-14 px-10 text-lg rounded-xl",
 } as const;
 
 export const CARD_VARIANTS = {

@@ -2,6 +2,7 @@ import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { FaqAccordion } from "@/components/sections/FaqAccordion";
 import { CtaSection } from "@/components/sections/CtaSection";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Heading } from "@/components/ui/Heading";
 import { CTA_LINKS } from "@/lib/constants";
 import { createMetadata } from "@/lib/metadata";
@@ -25,6 +26,7 @@ export default function FAQPage() {
       />
       <Section size="lg" variant="card">
         <Container size="md">
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "FAQs" }]} className="mb-6" />
           <Heading level="h1" as="h1" className="text-center">
             Frequently Asked Questions
           </Heading>

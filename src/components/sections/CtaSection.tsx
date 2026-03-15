@@ -14,6 +14,8 @@ interface CtaSectionProps {
   description?: string;
   primaryCta: CtaLink;
   secondaryCta?: CtaLink;
+  /** Short reassurance line (e.g. "We respond within 24–48 hours.") */
+  reassurance?: string;
   variant?: CtaSectionVariant;
   className?: string;
 }
@@ -30,6 +32,7 @@ export function CtaSection({
   description,
   primaryCta,
   secondaryCta,
+  reassurance,
   variant = "primary",
   className,
 }: CtaSectionProps) {
@@ -91,6 +94,11 @@ export function CtaSection({
               </Button>
             )}
           </div>
+          {reassurance && (
+            <p className={cn("mt-4 text-sm", isInverted ? "text-white/70" : "text-muted-foreground")}>
+              {reassurance}
+            </p>
+          )}
         </div>
       </Container>
     </section>

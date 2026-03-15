@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useRef, useEffect, type FormEvent } from "react";
 import { FormField } from "@/components/ui/FormField";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
@@ -11,6 +11,7 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const firstFieldRef = useRef<HTMLInputElement>(null);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -42,6 +43,12 @@ export function ContactForm() {
     }
   }
 
+  useEffect(() => {
+    if (status === "error") {
+      firstFieldRef.current?.focus();
+    }
+  }, [status]);
+
   if (status === "success") {
     return (
       <div className="rounded-lg border border-accent/30 bg-accent/5 p-6 text-center" role="alert">
@@ -63,7 +70,15 @@ export function ContactForm() {
   return (
     <form className="space-y-6" onSubmit={handleSubmit} noValidate>
       <FormField label="Name" htmlFor="contact-name" required>
-        <Input id="contact-name" name="name" type="text" placeholder="Your name" required />
+        <Input
+          ref={firstFieldRef}
+          id="contact-name"
+          name="name"
+          type="text"
+          placeholder="Your name"
+          required
+          aria-invalid={status === "error"}
+        />
       </FormField>
       <FormField label="Email" htmlFor="contact-email" required>
         <Input id="contact-email" name="email" type="email" placeholder="your@email.com" required />
@@ -81,7 +96,9 @@ export function ContactForm() {
         />
       </FormField>
       {status === "error" && (
-        <p className="text-sm text-red-600" role="alert">{errorMessage}</p>
+        <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive" role="alert">
+          {errorMessage}
+        </div>
       )}
       <Button type="submit" className="w-full" disabled={status === "submitting"}>
         {status === "submitting" ? "Sending..." : "Send Message"}

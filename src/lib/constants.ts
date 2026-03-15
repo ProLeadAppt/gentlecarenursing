@@ -10,6 +10,8 @@ export const SITE = {
   phoneHref: "tel:1300004267",
   email: "info@gentlecarenursing.com.au",
   address: "Level 1/5 George St, North Strathfield, NSW 2137",
+  /** Optional: Google Business Profile URL for entity linking and footer */
+  gbpUrl: "",
   social: {
     facebook: "https://www.facebook.com/gentlecarenursing",
     instagram: "https://www.instagram.com/gentlecarenursing",
@@ -40,4 +42,8 @@ export const CTA_LINKS = {
   makeReferral: { href: "/referral", label: "Make a Referral" },
   contact: { href: "/contact", label: "Contact Us" },
   bookConsultation: { href: "/referral", label: "Book a Consultation" },
+  callUs: { href: SITE.phoneHref, label: "Call us" },
 } as const;
+
+/** Reassurance line shown next to CTAs (e.g. response time). */
+export const CTA_REASSURANCE = "We respond within 24–48 hours. No obligation.";

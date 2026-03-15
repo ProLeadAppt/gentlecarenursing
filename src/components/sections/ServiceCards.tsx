@@ -30,9 +30,9 @@ export function ServiceCards({
   cardVariant = "elevated",
 }: ServiceCardsProps) {
   return (
-    <Section>
+    <Section variant="muted">
       <Container>
-        <SectionHeader title={title} subtitle={subtitle} />
+        <SectionHeader title={title} subtitle={subtitle} size="lg" />
         <Grid cols={cols} gap="lg" className="mt-12">
           {services.map((service) => (
             <ServiceCard

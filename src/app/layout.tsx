@@ -46,9 +46,11 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Gentle Care Nursing",
     locale: "en_AU",
+    images: [{ url: "/images/hero-hands.webp", width: 1200, height: 630, alt: "Gentle Care Nursing — In-home nursing and care" }],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/images/hero-hands.webp"],
   },
   robots: {
     index: true,
@@ -59,6 +61,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: "#1e3a5f",
 };
 
 const gaId = process.env.NEXT_PUBLIC_GA_ID;
@@ -71,6 +74,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sourceSans.variable} ${dmSans.variable}`}>
       <head>
+        <link rel="preload" href="/images/hero-hands.webp" as="image" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -82,8 +86,16 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col antialiased">
+        <a
+          href="#main-content"
+          className="fixed left-4 top-4 z-[100] -translate-y-16 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-lg transition focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+        >
+          Skip to main content
+        </a>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1" tabIndex={-1}>
+          {children}
+        </main>
         <Footer />
         <MobileCta />
 

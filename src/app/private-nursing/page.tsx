@@ -3,7 +3,7 @@ import { PRIVATE_NURSING_PAGE } from "@/content/services";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "Private Nursing & Personal Care",
+  title: "Private Nursing & Personal Care Sydney",
   description:
     "Private in-home nursing and personal care — no waitlists, no complex applications. Quality care when you need it.",
   keywords: [

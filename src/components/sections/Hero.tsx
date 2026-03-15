@@ -12,8 +12,12 @@ export interface HeroCta {
 interface HeroProps {
   headline: string;
   subheadline?: string;
+  /** Location + authority line (e.g. Sydney's trusted provider). Shown below trust badge. */
+  locationLine?: string;
   primaryCta: HeroCta;
   secondaryCta?: HeroCta;
+  /** Short reassurance (e.g. response time). Shown below CTAs. */
+  reassurance?: string;
   /** Optional hero image path */
   imageSrc?: string;
   imageAlt?: string;
@@ -22,8 +26,10 @@ interface HeroProps {
 export function Hero({
   headline,
   subheadline,
+  locationLine,
   primaryCta,
   secondaryCta,
+  reassurance,
   imageSrc = "/images/hero-hands.webp",
   imageAlt = "Caring hands — personalised in-home nursing support",
 }: HeroProps) {
@@ -40,7 +46,7 @@ export function Hero({
           fill
           className="object-cover object-center opacity-10"
           priority
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, 1200px"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[hsl(210,50%,18%)]/90 via-primary/80 to-primary-light/80" />
       </div>
@@ -65,11 +71,16 @@ export function Hero({
       <Container size="md" className="relative">
         <div className="mx-auto max-w-3xl text-center">
           {/* Trust micro-line */}
-          <div className="mb-6 flex items-center justify-center gap-2">
-            <ShieldCheck className="h-5 w-5 text-accent-light" />
-            <span className="text-sm font-medium tracking-wide text-white/70 uppercase">
-              Registered NDIS & DVA Provider
-            </span>
+          <div className="mb-6 flex flex-col items-center gap-1">
+            <div className="flex items-center justify-center gap-2">
+              <ShieldCheck className="h-5 w-5 text-accent-light" />
+              <span className="text-sm font-medium tracking-wide text-white/70 uppercase">
+                Registered NDIS & DVA Provider
+              </span>
+            </div>
+            {locationLine && (
+              <span className="text-sm text-white/60">{locationLine}</span>
+            )}
           </div>
 
           <Heading
@@ -86,15 +97,18 @@ export function Hero({
             </p>
           )}
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button href={primaryCta.href} size="lg" variant="inverted">
+            <Button href={primaryCta.href} size="xl" variant="inverted">
               {primaryCta.label}
             </Button>
             {secondaryCta && (
-              <Button href={secondaryCta.href} variant="invertedOutline" size="lg">
+              <Button href={secondaryCta.href} variant="invertedOutline" size="xl">
                 {secondaryCta.label}
               </Button>
             )}
           </div>
+          {reassurance && (
+            <p className="mt-4 text-sm text-white/70">{reassurance}</p>
+          )}
         </div>
       </Container>
     </section>

@@ -23,7 +23,7 @@ export function AreasWeServe({
   areas,
 }: AreasWeServeProps) {
   return (
-    <Section variant="muted">
+    <Section id="areas-we-serve" variant="muted">
       <Container>
         <Reveal>
           <SectionHeader title={title} subtitle={subtitle} />

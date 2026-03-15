@@ -11,14 +11,41 @@ export function MobileCta() {
 
   useEffect(() => {
     const hero = document.getElementById("hero-heading");
+    const footer = document.getElementById("site-footer");
     if (!hero) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => setVisible(!entry.isIntersecting),
+    let heroPast = false;
+    let footerInView = false;
+
+    const updateVisible = () => {
+      setVisible(heroPast && !footerInView);
+    };
+
+    const heroObserver = new IntersectionObserver(
+      ([entry]) => {
+        heroPast = !entry.isIntersecting;
+        updateVisible();
+      },
       { threshold: 0 }
     );
-    observer.observe(hero);
-    return () => observer.disconnect();
+    heroObserver.observe(hero);
+
+    let footerObserver: IntersectionObserver | null = null;
+    if (footer) {
+      footerObserver = new IntersectionObserver(
+        ([entry]) => {
+          footerInView = entry.isIntersecting;
+          updateVisible();
+        },
+        { threshold: 0 }
+      );
+      footerObserver.observe(footer);
+    }
+
+    return () => {
+      heroObserver.disconnect();
+      footerObserver?.disconnect();
+    };
   }, []);
 
   return (

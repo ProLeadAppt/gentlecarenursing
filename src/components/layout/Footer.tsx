@@ -25,6 +25,7 @@ const defaultServiceLinks: FooterLink[] = [
 const defaultInfoLinks: FooterLink[] = [
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
+  { href: "/#areas-we-serve", label: "Areas we serve" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
   { href: "/privacy", label: "Privacy Policy" },
@@ -52,6 +53,7 @@ export function Footer({
 }: FooterProps) {
   return (
     <footer
+      id="site-footer"
       className="bg-[hsl(210,50%,14%)] text-white/90"
       role="contentinfo"
     >
@@ -100,6 +102,8 @@ export function Footer({
 
           <FooterColumn title="Get in touch">
             <div className="flex flex-col gap-2.5">
+              <p className="font-semibold text-white">{SITE.name}</p>
+              <p className="text-sm text-white/70">{SITE.address}</p>
               <a
                 href={SITE.phoneHref}
                 className="text-sm font-medium text-white/80 transition-colors hover:text-white"
@@ -112,9 +116,6 @@ export function Footer({
               >
                 {SITE.email}
               </a>
-              <p className="text-sm text-white/60">
-                {SITE.address}
-              </p>
               <div className="mt-2 flex flex-col gap-2">
                 <Link
                   href={CTA_LINKS.requestCare.href}
@@ -128,6 +129,16 @@ export function Footer({
                 >
                   {CTA_LINKS.contact.label}
                 </Link>
+                {SITE.gbpUrl && (
+                  <a
+                    href={SITE.gbpUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-medium text-accent-light transition-colors hover:text-white"
+                  >
+                    Find us on Google
+                  </a>
+                )}
               </div>
             </div>
           </FooterColumn>

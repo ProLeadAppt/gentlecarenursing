@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useRef, useEffect, type FormEvent } from "react";
 import { FormField } from "@/components/ui/FormField";
 import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
@@ -12,6 +12,13 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 export function ReferralForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const firstFieldRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (status === "error") {
+      firstFieldRef.current?.focus();
+    }
+  }, [status]);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -67,7 +74,15 @@ export function ReferralForm() {
   return (
     <form className="space-y-6" onSubmit={handleSubmit} noValidate>
       <FormField label="Your name" htmlFor="referrer-name" required>
-        <Input id="referrer-name" name="referrerName" type="text" placeholder="Name" required />
+        <Input
+          ref={firstFieldRef}
+          id="referrer-name"
+          name="referrerName"
+          type="text"
+          placeholder="Name"
+          required
+          aria-invalid={status === "error"}
+        />
       </FormField>
       <FormField label="Your email" htmlFor="referrer-email" required>
         <Input id="referrer-email" name="referrerEmail" type="email" placeholder="your@email.com" required />
@@ -108,7 +123,9 @@ export function ReferralForm() {
         />
       </FormField>
       {status === "error" && (
-        <p className="text-sm text-red-600" role="alert">{errorMessage}</p>
+        <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive" role="alert">
+          {errorMessage}
+        </div>
       )}
       <Button type="submit" className="w-full" disabled={status === "submitting"}>
         {status === "submitting" ? "Submitting..." : "Submit Referral"}

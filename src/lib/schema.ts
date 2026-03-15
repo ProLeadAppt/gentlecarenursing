@@ -1,16 +1,31 @@
 import { SITE } from "./constants";
 import { INTEGRATIONS } from "@/config/integrations";
+import { ELEVATOR_PITCH } from "@/content/about";
 
 /**
  * JSON-LD schema generators for SEO.
  */
 
+const SYDNEY_REGIONS = [
+  "Inner West",
+  "Sydney CBD & East",
+  "North Shore",
+  "Western Sydney",
+  "South Sydney",
+  "Northern Beaches",
+] as const;
+
 export function getLocalBusinessSchema() {
+  const sameAs = [
+    ...Object.values(SITE.social).filter(Boolean),
+    ...(SITE.gbpUrl ? [SITE.gbpUrl] : []),
+  ] as string[];
+
   return {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
     name: SITE.name,
-    description: SITE.tagline,
+    description: ELEVATOR_PITCH,
     url: INTEGRATIONS.siteUrl,
     telephone: SITE.phone || undefined,
     email: SITE.email || undefined,
@@ -18,9 +33,25 @@ export function getLocalBusinessSchema() {
       ? {
           "@type": "PostalAddress",
           streetAddress: SITE.address,
+          addressLocality: "North Strathfield",
+          addressRegion: "NSW",
           addressCountry: "AU",
         }
       : undefined,
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: -33.864,
+      longitude: 151.093,
+      addressLocality: "North Strathfield",
+      addressRegion: "NSW",
+    },
+    areaServed: [
+      { "@type": "City", name: "Sydney", containedInPlace: { "@type": "State", name: "New South Wales" } },
+      ...SYDNEY_REGIONS.map((name) => ({ "@type": "Place" as const, name })),
+      { "@type": "State", name: "New South Wales" },
+      { "@type": "Country", name: "Australia" },
+    ],
+    ...(sameAs.length > 0 ? { sameAs } : {}),
     priceRange: "$$",
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
@@ -72,5 +103,35 @@ export function getWebsiteSchema() {
     "@type": "WebSite",
     name: SITE.name,
     url: INTEGRATIONS.siteUrl,
+  };
+}
+
+export interface HowToStep {
+  number: number;
+  headline: string;
+  description: string;
+}
+
+/**
+ * HowTo schema for "How to request care" — supports AEO / featured snippets.
+ */
+export function getHowToSchema(
+  name: string,
+  description: string,
+  steps: readonly HowToStep[],
+  url: string
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name,
+    description,
+    url: `${INTEGRATIONS.siteUrl}${url}`,
+    step: steps.map((s) => ({
+      "@type": "HowToStep",
+      position: s.number,
+      name: s.headline,
+      text: s.description,
+    })),
   };
 }

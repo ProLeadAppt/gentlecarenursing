@@ -2,9 +2,15 @@
  * About page content.
  */
 
+/** One-sentence entity definition for GEO / schema and on-page use */
+export const ELEVATOR_PITCH =
+  "Gentle Care Nursing is a Sydney-based, registered NDIS and DVA provider delivering in-home nursing and personal care to families, NDIS participants, and referral partners.";
+
 export const ABOUT_INTRO = {
   title: "About Gentle Care Nursing",
   lead: "We're a nursing and care provider that believes in doing things differently. Smaller client load. More dedicated support. Genuine care that families and referral partners can rely on.",
+  /** Stats in prose for GEO / authority */
+  statsLine: "With 10+ years of experience and 1,300+ clients supported, we respond to every enquiry within 24–48 hours.",
 } as const;
 
 export const MISSION = {
