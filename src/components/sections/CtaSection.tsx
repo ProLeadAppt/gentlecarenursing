@@ -102,7 +102,7 @@ export function CtaSection({
             )}
           </div>
           {reassurance && (
-            <p className={cn("mt-4 text-sm", isInverted ? "text-white/70" : "text-muted-foreground")}>
+            <p className={cn("mt-6 text-sm leading-relaxed", isInverted ? "text-white/70" : "text-muted-foreground")}>
               {reassurance}
             </p>
           )}

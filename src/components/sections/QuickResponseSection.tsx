@@ -1,5 +1,6 @@
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
+import { SectionHeader } from "@/components/sections/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { GHLWidgets } from "@/components/embeds/GHLWidgets";
 import { Phone, MessageCircle, HelpCircle } from "lucide-react";
@@ -45,15 +46,8 @@ export function QuickResponseSection({
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div>
-            <h2 className="font-[family-name:var(--font-dm-sans)] text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              {title}
-            </h2>
-            {subtitle && (
-              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-                {subtitle}
-              </p>
-            )}
-            <ul className="mt-6 space-y-3">
+            <SectionHeader title={title} subtitle={subtitle ?? undefined} align="left" size="md" />
+            <ul className="mt-8 space-y-3">
               {bullets.map(({ icon: Icon, text }) => (
                 <li key={text} className="flex items-center gap-3">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/15">

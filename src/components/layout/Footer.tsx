@@ -144,8 +144,22 @@ export function Footer({
           </FooterColumn>
         </Grid>
 
-        <div className="border-t border-white/10 py-6 text-center text-sm text-white/40">
-          © {new Date().getFullYear()} {SITE.name}. All rights reserved.
+        <div className="border-t border-white/10 py-6">
+          <div className="flex flex-col items-center justify-center gap-2 text-center text-sm text-white/40 sm:flex-row sm:gap-4">
+            <span>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</span>
+            <span className="hidden sm:inline" aria-hidden>·</span>
+            <span>
+              Site and digital infrastructure built by{" "}
+              <a
+                href="https://munyal.com.au"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 transition-colors hover:text-white"
+              >
+                Munyal
+              </a>
+            </span>
+          </div>
         </div>
       </Container>
     </footer>

@@ -20,7 +20,7 @@ interface HeroProps {
   secondaryCta?: HeroCta;
   /** Trust bullets shown below reassurance (with Check icons) */
   valuePills?: readonly string[];
-  /** Reassurance line under CTAs (default: HERO_REASSURANCE with Gemma) */
+  /** Reassurance line under CTAs (default: HERO_REASSURANCE, team notified) */
   reassurance?: string;
   imageSrc?: string;
   imageAlt?: string;

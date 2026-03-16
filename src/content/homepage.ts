@@ -103,27 +103,40 @@ export const HOMEPAGE_SERVICES_IMAGE = {
 export const PROCESS_STEPS = {
   title: "How It Works",
   subtitle:
-    "From your first enquiry to care at home: clear steps, quick response, and no one left waiting.",
+    "From your first enquiry to care at home: clear steps, quick response, and no one left waiting or wondering what happens next.",
   steps: [
     {
       number: 1,
-      headline: "Tell us what you need",
+      headline: "Submit an enquiry or referral",
       description:
-        "Share your situation through our simple form. You'll get an immediate confirmation that we've received it. No sending into a void.",
+        "Use our simple online form to tell us about your situation, or submit a referral if you're a coordinator or health professional. It only takes a few minutes.",
     },
     {
       number: 2,
-      headline: "We acknowledge and respond personally",
+      headline: "Immediate acknowledgement",
       description:
-        "Our team is notified straight away. A real person follows up within 24 hours with supportive guidance, clear next steps, and answers to your questions.",
+        "As soon as you submit the form, our team is notified straight away and you receive confirmation we've received it. You're not sending your request into a void.",
     },
     {
       number: 3,
-      headline: "Care that fits your life",
+      headline: "Understanding your needs",
       description:
-        "We match you or your loved one with the right support and arrange for care to begin when you're ready. You'll always know what happens next.",
+        "A real person follows up within 24 hours to listen, ask questions, and understand your goals, funding, and preferences. Together, we agree on what support will help most.",
+    },
+    {
+      number: 4,
+      headline: "Care begins",
+      description:
+        "We match you or your loved one with the right nurse or carer and confirm when visits will start. From day one, you'll know who is coming, what they will do, and how to reach us if anything changes.",
     },
   ],
+} as const;
+
+/** Section encouraging healthcare professionals and coordinators to make referrals */
+export const REFERRAL_PROFESSIONALS = {
+  headline: "Simple Referrals for Healthcare Professionals.",
+  subtitle:
+    "Gentle Care works closely with support coordinators, discharge planners, and healthcare providers. We make referrals straightforward and respond quickly so you and your clients know what happens next.",
 } as const;
 
 /** Get in touch / quick-response section: immediate acknowledgement, clear next steps, optional voice assistant */
@@ -155,18 +168,21 @@ export const HOMEPAGE_TESTIMONIALS = [
       "Gentle Care Nursing made finding care for my mother so much easier. They responded quickly, matched us with an excellent nurse, and the quality of care has been outstanding. I finally feel confident she's in good hands.",
     name: "Sarah M.",
     role: "Family Member, Sydney",
+    rating: 5,
   },
   {
     quote:
       "As a support coordinator, I need providers I can trust. Gentle Care is responsive, professional, and genuinely cares about participant outcomes. They've become my go-to for in-home nursing referrals.",
     name: "James L.",
     role: "NDIS Support Coordinator",
+    rating: 5,
   },
   {
     quote:
       "The discharge planning team at our hospital has referred several patients to Gentle Care. Their turnaround time is impressive and the continuity of care from hospital to home is exactly what our patients need.",
     name: "Dr. Priya K.",
     role: "Hospital Discharge Planner",
+    rating: 5,
   },
 ] as const;
 
@@ -179,11 +195,11 @@ export const HOMEPAGE_INLINE_CTAS = {
   afterWhyDifferent: "Ready to take the next step? Reach out and you'll hear from us within 24 hours.",
 } as const;
 
-/** Final CTA section: reassuring close, quick response */
+/** Final CTA section: two clear actions, reassurance below */
 export const HOMEPAGE_FINAL_CTA = {
-  title: "We're Here to Help",
-  description:
-    "Request care or ask a question. You'll get a personal response within 24 hours and clear next steps. No obligation, no runaround.",
+  title: "Need Care or Want to Make a Referral?",
+  reassurance:
+    "Once you submit your enquiry, our team is notified immediately so your request can be reviewed quickly.",
 } as const;
 
 export const HOMEPAGE_FAQ = [

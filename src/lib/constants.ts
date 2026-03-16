@@ -13,8 +13,8 @@ export const SITE = {
   /** Optional: Google Business Profile URL for entity linking and footer */
   gbpUrl: "",
   social: {
-    facebook: "https://www.facebook.com/gentlecarenursing",
-    instagram: "https://www.instagram.com/gentlecarenursing",
+    facebook: "https://www.facebook.com/profile.php?id=61571940991169",
+    instagram: "https://www.instagram.com/gentle_care",
   },
 } as const;
 
@@ -49,6 +49,6 @@ export const CTA_LINKS = {
 export const CTA_REASSURANCE =
   "No obligation. We'll acknowledge your message quickly and get back to you within 24 hours. We're here to listen and help.";
 
-/** Hero-specific reassurance under CTAs (Gemma notified). */
+/** Hero-specific reassurance under CTAs (team notified). */
 export const HERO_REASSURANCE =
-  "Submit an enquiry and Gemma will be notified immediately so your request can be reviewed quickly.";
+  "Submit an enquiry and our team is notified immediately so your request can be reviewed quickly.";

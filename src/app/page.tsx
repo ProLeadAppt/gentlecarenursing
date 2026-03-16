@@ -7,6 +7,7 @@ import { ServiceCards } from "@/components/sections/ServiceCards";
 import { WhyDifferent } from "@/components/sections/WhyDifferent";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
+import { ReferralProfessionalsSection } from "@/components/sections/ReferralProfessionalsSection";
 import { QuickResponseSection } from "@/components/sections/QuickResponseSection";
 import { FaqPreview } from "@/components/sections/FaqPreview";
 import { AreasWeServe } from "@/components/sections/AreasWeServe";
@@ -22,6 +23,7 @@ import {
   WHY_DIFFERENT,
   HOMEPAGE_SERVICES_IMAGE,
   PROCESS_STEPS,
+  REFERRAL_PROFESSIONALS,
   HOMEPAGE_STATS,
   HOMEPAGE_TESTIMONIALS,
   HOMEPAGE_FAQ,
@@ -79,12 +81,12 @@ export default function HomePage() {
           sectionImageAlt={WHO_WE_HELP.sectionImageAlt}
           sectionVariant="default"
         />
-        <div className="border-t border-border/30 bg-muted/50 py-6">
+        <div className="border-t border-border/30 bg-muted/50 py-8">
           <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
             <p className="text-sm text-muted-foreground">{HOMEPAGE_INLINE_CTAS.afterWhoWeHelp}</p>
             <Link
               href={CTA_LINKS.requestCare.href}
-              className="mt-2 inline-block font-medium text-primary hover:underline"
+              className="mt-3 inline-block min-h-[2.75rem] py-2 font-medium text-primary hover:underline"
             >
               Request care or contact us
             </Link>
@@ -110,12 +112,12 @@ export default function HomePage() {
           imageAlt={WHY_DIFFERENT.imageAlt}
           sectionVariant="default"
         />
-        <div className="border-t border-border/30 bg-muted/50 py-6">
+        <div className="border-t border-border/30 bg-muted/50 py-8">
           <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
             <p className="text-sm text-muted-foreground">{HOMEPAGE_INLINE_CTAS.afterWhyDifferent}</p>
             <Link
               href={CTA_LINKS.requestCare.href}
-              className="mt-2 inline-block font-medium text-primary hover:underline"
+              className="mt-3 inline-block min-h-[2.75rem] py-2 font-medium text-primary hover:underline"
             >
               Get in touch
             </Link>
@@ -140,6 +142,15 @@ export default function HomePage() {
           steps={PROCESS_STEPS.steps}
           cta={CTA_LINKS.requestCare}
           sectionVariant="default"
+        />
+      </div>
+
+      <div className="border-t border-border/30">
+        <ReferralProfessionalsSection
+          headline={REFERRAL_PROFESSIONALS.headline}
+          subtitle={REFERRAL_PROFESSIONALS.subtitle}
+          cta={CTA_LINKS.makeReferral}
+          sectionVariant="teal"
         />
       </div>
 
@@ -181,10 +192,10 @@ export default function HomePage() {
 
       <CtaSection
         title={HOMEPAGE_FINAL_CTA.title}
-        description={HOMEPAGE_FINAL_CTA.description}
         primaryCta={CTA_LINKS.requestCare}
-        secondaryCta={CTA_LINKS.contact}
-        variant="muted"
+        secondaryCta={CTA_LINKS.makeReferral}
+        reassurance={HOMEPAGE_FINAL_CTA.reassurance}
+        variant="primary"
       />
     </>
   );

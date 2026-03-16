@@ -10,6 +10,7 @@ export { FaqPreview } from "./FaqPreview";
 export { Hero } from "./Hero";
 export { ProcessSteps } from "./ProcessSteps";
 export { ReassuranceSection } from "./ReassuranceSection";
+export { ReferralProfessionalsSection } from "./ReferralProfessionalsSection";
 export { SectionHeader } from "./SectionHeader";
 export { ServiceCard } from "./ServiceCard";
 export { ServiceCards } from "./ServiceCards";
