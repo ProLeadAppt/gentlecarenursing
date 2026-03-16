@@ -56,7 +56,7 @@ export function Testimonials({
                       <Star
                         key={star}
                         className="h-4 w-4 text-accent/70"
-                        fill={star <= t.rating ? "currentColor" : "none"}
+                        fill={star <= (t.rating ?? 0) ? "currentColor" : "none"}
                         strokeWidth={1.5}
                         aria-hidden
                       />
