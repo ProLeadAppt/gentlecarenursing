@@ -25,7 +25,7 @@ const defaultServiceLinks: FooterLink[] = [
 const defaultInfoLinks: FooterLink[] = [
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
-  { href: "/#areas-we-serve", label: "Areas we serve" },
+  { href: "/areas", label: "Areas we serve" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
   { href: "/privacy", label: "Privacy Policy" },

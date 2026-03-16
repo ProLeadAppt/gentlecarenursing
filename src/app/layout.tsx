@@ -5,9 +5,10 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileCta } from "@/components/layout/MobileCta";
+import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { FormModalProvider } from "@/contexts/FormModalContext";
 import { FormModal } from "@/components/ui/FormModal";
-import { getLocalBusinessSchema, getWebsiteSchema } from "@/lib/schema";
+import { getLocalBusinessSchema, getWebsiteSchema, getOrganizationSchema } from "@/lib/schema";
 
 const sourceSans = Source_Sans_3({
   variable: "--font-source-sans",
@@ -84,6 +85,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify([
+              getOrganizationSchema(),
               getLocalBusinessSchema(),
               getWebsiteSchema(),
             ]),
@@ -104,6 +106,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <MobileCta />
+        <ScrollToTop />
         <FormModal />
 
         {gaId && (

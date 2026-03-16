@@ -4,6 +4,7 @@ import { Section } from "@/components/layout/Section";
 import { Grid } from "@/components/layout/Grid";
 import { SectionHeader } from "@/components/sections/SectionHeader";
 import { TrustBar } from "@/components/sections/TrustBar";
+import { CredentialsSection } from "@/components/sections/CredentialsSection";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Heading } from "@/components/ui/Heading";
@@ -48,6 +49,8 @@ export default function AboutPage() {
       </Section>
 
       <TrustBar variant="muted" />
+
+      <CredentialsSection variant="default" showLinks />
 
       {/* Care moment image */}
       <Section>

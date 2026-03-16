@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "@/components/sections/SectionHeader";
+import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 
 export interface ReferralProfessionalsSectionProps {
@@ -20,6 +21,7 @@ export function ReferralProfessionalsSection({
   return (
     <Section variant={sectionVariant} size="lg">
       <Container>
+        <Reveal>
         <div className="mx-auto max-w-2xl">
           <SectionHeader title={headline} subtitle={subtitle} align="center" size="md" />
           <div className="mt-10 flex justify-center">
@@ -28,6 +30,7 @@ export function ReferralProfessionalsSection({
             </Button>
           </div>
         </div>
+        </Reveal>
       </Container>
     </Section>
   );

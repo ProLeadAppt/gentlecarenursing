@@ -1,4 +1,5 @@
 import { Container } from "@/components/layout/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
@@ -67,6 +68,7 @@ export function CtaSection({
         </div>
       )}
       <Container className="relative">
+        <Reveal>
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-[family-name:var(--font-dm-sans)] text-3xl font-bold tracking-tight sm:text-4xl">
             {title}
@@ -107,6 +109,7 @@ export function CtaSection({
             </p>
           )}
         </div>
+        </Reveal>
       </Container>
     </section>
   );

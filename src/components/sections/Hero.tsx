@@ -47,7 +47,7 @@ export function Hero({
         {/* Left column: warm light background, copy + CTAs + reassurance + trust bullets */}
         <div className="order-1 flex flex-col justify-center bg-background py-16 sm:py-20 lg:py-24">
           <Container size="lg" className="relative">
-            <div className="max-w-xl">
+            <div className="max-w-xl animate-hero-in">
               {trustLine && (
                 <p className="mb-5 text-sm font-medium tracking-wide text-muted-foreground sm:text-base">
                   {trustLine}
@@ -84,8 +84,12 @@ export function Hero({
 
               {valuePills && valuePills.length > 0 && (
                 <ul className="mt-8 flex flex-col gap-3" role="list">
-                  {valuePills.map((item) => (
-                    <li key={item} className="flex items-center gap-3">
+                  {valuePills.map((item, index) => (
+                    <li
+                      key={item}
+                      className="animate-hero-pill flex items-center gap-3"
+                      style={{ animationDelay: `${index * 60}ms` }}
+                    >
                       <span
                         className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent"
                         aria-hidden
@@ -105,7 +109,7 @@ export function Hero({
 
         {/* Right column: large hero image */}
         <div className="order-2 relative h-[24rem] min-h-[24rem] w-full lg:min-h-[32rem] lg:h-[80vh] lg:max-h-[42rem]">
-          <div className="absolute inset-0 overflow-hidden rounded-xl shadow-xl lg:rounded-2xl">
+          <div className="animate-hero-image absolute inset-0 overflow-hidden rounded-xl shadow-xl lg:rounded-2xl">
             <Image
               src={imageSrc}
               alt={imageAlt}

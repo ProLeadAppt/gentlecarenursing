@@ -111,6 +111,54 @@ export function getWebsiteSchema() {
     "@type": "WebSite",
     name: SITE.name,
     url: INTEGRATIONS.siteUrl,
+    publisher: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
+  };
+}
+
+/** Organization schema for entity clarity (GEO/AEO). Use @id so WebSite can reference publisher. */
+export function getOrganizationSchema() {
+  const sameAs = [
+    ...Object.values(SITE.social).filter(Boolean),
+    ...(SITE.gbpUrl ? [SITE.gbpUrl] : []),
+  ] as string[];
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${INTEGRATIONS.siteUrl}/#organization`,
+    name: SITE.name,
+    url: INTEGRATIONS.siteUrl,
+    logo: `${INTEGRATIONS.siteUrl}/images/logo.png`,
+    ...(sameAs.length > 0 ? { sameAs } : {}),
+  };
+}
+
+/** BreadcrumbList schema for current page. Items: { name, item (url) } */
+export function getBreadcrumbListSchema(items: { name: string; item: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.item.startsWith("http") ? item.item : `${INTEGRATIONS.siteUrl}${item.item}`,
+    })),
+  };
+}
+
+/** WebPage + areaServed for area/region landing pages (local SEO + GEO). */
+export function getAreaPageSchema(region: string, path: string, description: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: `In-Home Nursing ${region} | ${SITE.name}`,
+    description,
+    url: `${INTEGRATIONS.siteUrl}${path}`,
+    about: {
+      "@type": "MedicalBusiness",
+      name: SITE.name,
+      areaServed: { "@type": "Place", name: region },
+    },
   };
 }
 

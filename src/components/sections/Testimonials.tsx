@@ -32,7 +32,7 @@ export function Testimonials({
   sectionVariant = "gradient",
 }: TestimonialsProps) {
   return (
-    <Section variant={sectionVariant} size="lg">
+    <Section id="testimonials" variant={sectionVariant} size="lg">
       <Container>
         <Reveal>
           <SectionHeader title={title} subtitle={subtitle} />

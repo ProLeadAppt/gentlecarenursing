@@ -20,10 +20,10 @@ export const SPACING = {
 
 /** Section vertical rhythm — generous and breathable */
 export const SPACING_SECTION = {
-  py: "py-20 sm:py-24",
+  py: "py-24 sm:py-28",
   pySm: "py-16 sm:py-20",
-  pyLg: "py-24 sm:py-32",
-  pyXl: "py-28 sm:py-36",
+  pyLg: "py-28 sm:py-36",
+  pyXl: "py-32 sm:py-40",
 } as const;
 
 export const TYPOGRAPHY = {
@@ -113,7 +113,7 @@ export const CTA_SECTION_CONTENT_MAX = "max-w-2xl" as const;
 
 export const TRUST_BADGE_VARIANTS = {
   default: "bg-muted/80 text-foreground border border-border/80",
-  trust: "bg-accent/10 text-accent border border-accent/20",
+  trust: "bg-card text-primary border border-primary/30",
   outline: "border border-border/80 text-muted-foreground bg-card/50",
   solid: "bg-accent text-accent-foreground shadow-sm",
 } as const;

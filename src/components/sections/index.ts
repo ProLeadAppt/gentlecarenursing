@@ -2,6 +2,7 @@
  * Section components.
  */
 export { QuickResponseSection } from "./QuickResponseSection";
+export { CredentialsSection } from "./CredentialsSection";
 export { CtaSection } from "./CtaSection";
 export type { CtaLink } from "./CtaSection";
 export { FaqAccordion } from "./FaqAccordion";
@@ -11,6 +12,8 @@ export { Hero } from "./Hero";
 export { ProcessSteps } from "./ProcessSteps";
 export { ReassuranceSection } from "./ReassuranceSection";
 export { ReferralProfessionalsSection } from "./ReferralProfessionalsSection";
+export { SectionDivider } from "./SectionDivider";
+export type { SectionDividerVariant } from "./SectionDivider";
 export { SectionHeader } from "./SectionHeader";
 export { ServiceCard } from "./ServiceCard";
 export { ServiceCards } from "./ServiceCards";

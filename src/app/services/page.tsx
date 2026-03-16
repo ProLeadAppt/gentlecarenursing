@@ -6,6 +6,7 @@ import { TrustBar } from "@/components/sections/TrustBar";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Heading } from "@/components/ui/Heading";
+import { Reveal } from "@/components/ui/Reveal";
 import { CTA_LINKS } from "@/lib/constants";
 import { createMetadata } from "@/lib/metadata";
 import { SERVICES } from "@/content/services";
@@ -31,15 +32,17 @@ export default function ServicesPage() {
       {/* Intro */}
       <Section size="lg" variant="card">
         <Container size="md">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Our Services" }]} className="mb-6" />
-          <Heading level="h1" as="h1" className="text-center">
-            Our Services
-          </Heading>
-          <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            Gentle Care Nursing provides personalised in-home nursing and care across multiple
-            funding streams. Whether you&apos;re an NDIS participant, a veteran, an older
-            Australian, or someone needing private care. We have you covered.
-          </p>
+          <Reveal>
+            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Our Services" }]} className="mb-6" />
+            <Heading level="h1" as="h1" className="text-center">
+              Our Services
+            </Heading>
+            <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground sm:text-xl">
+              Gentle Care Nursing provides personalised in-home nursing and care across multiple
+              funding streams. Whether you&apos;re an NDIS participant, a veteran, an older
+              Australian, or someone needing private care. We have you covered.
+            </p>
+          </Reveal>
         </Container>
       </Section>
 
@@ -48,66 +51,69 @@ export default function ServicesPage() {
       {/* Services at a glance — table for GEO / citation-friendly parsing */}
       <Section>
         <Container size="md">
-          <Heading level="h2" as="h2" className="mb-6 text-center">
-            Services at a glance
-          </Heading>
-          <div className="overflow-x-auto rounded-xl border border-border">
-            <table className="w-full min-w-[320px] text-left text-sm">
-              <thead>
-                <tr className="border-b border-border bg-muted/50">
-                  <th className="px-4 py-3 font-semibold text-foreground">Service</th>
-                  <th className="px-4 py-3 font-semibold text-foreground">Description</th>
-                  <th className="px-4 py-3 font-semibold text-foreground">Link</th>
-                </tr>
-              </thead>
-              <tbody>
-                {SERVICES.map((s) => (
-                  <tr key={s.href} className="border-b border-border last:border-0">
-                    <td className="px-4 py-3 font-medium text-foreground">{s.title}</td>
-                    <td className="px-4 py-3 text-muted-foreground">{s.shortDescription}</td>
-                    <td className="px-4 py-3">
-                      <Link href={s.href} className="font-medium text-primary hover:underline">
-                        Learn more
-                      </Link>
-                    </td>
+          <Reveal>
+            <Heading level="h2" as="h2" className="mb-6 text-center">
+              Services at a glance
+            </Heading>
+            <div className="overflow-x-auto rounded-xl border border-border">
+              <table className="w-full min-w-[320px] text-left text-sm">
+                <thead>
+                  <tr className="border-b border-border bg-muted/50">
+                    <th className="px-4 py-3 font-semibold text-foreground">Service</th>
+                    <th className="px-4 py-3 font-semibold text-foreground">Description</th>
+                    <th className="px-4 py-3 font-semibold text-foreground">Link</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {SERVICES.map((s) => (
+                    <tr key={s.href} className="border-b border-border last:border-0">
+                      <td className="px-4 py-3 font-medium text-foreground">{s.title}</td>
+                      <td className="px-4 py-3 text-muted-foreground">{s.shortDescription}</td>
+                      <td className="px-4 py-3">
+                        <Link href={s.href} className="font-medium text-primary hover:underline">
+                          Learn more
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </Reveal>
         </Container>
       </Section>
 
       {/* All services we offer — GMB-aligned list */}
       <Section variant="muted">
         <Container size="md">
-          <Heading level="h2" as="h2" className="mb-2 text-center">
-            All services we offer
-          </Heading>
-          <p className="mx-auto mb-8 max-w-2xl text-center text-muted-foreground">
-            We offer {GMB_SERVICES.length}+ in-home nursing and care services across Sydney. Names match our service profile for your reference.
-          </p>
+          <Reveal>
+            <Heading level="h2" as="h2" className="mb-2 text-center">
+              All services we offer
+            </Heading>
+            <p className="mx-auto mb-8 max-w-2xl text-center text-muted-foreground">
+              We offer {GMB_SERVICES.length}+ in-home nursing and care services across Sydney. Names match our service profile for your reference.
+            </p>
+          </Reveal>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {GMB_SERVICES.map((service) => (
-              <div
-                key={service.name}
-                className="flex items-start justify-between gap-2 rounded-xl border border-border bg-card px-4 py-3"
-              >
-                <div>
-                  <p className="font-medium text-foreground">{service.name}</p>
-                  {service.description && (
-                    <p className="mt-0.5 text-sm text-muted-foreground">{service.description}</p>
+            {GMB_SERVICES.map((service, index) => (
+              <Reveal key={service.name} delay={index * 60}>
+                <div className="flex items-start justify-between gap-2 rounded-xl border border-border bg-card px-4 py-3">
+                  <div>
+                    <p className="font-medium text-foreground">{service.name}</p>
+                    {service.description && (
+                      <p className="mt-0.5 text-sm text-muted-foreground">{service.description}</p>
+                    )}
+                  </div>
+                  {service.href && (
+                    <Link
+                      href={service.href}
+                      className="shrink-0 text-sm font-medium text-primary hover:underline"
+                    >
+                      Learn more
+                    </Link>
                   )}
                 </div>
-                {service.href && (
-                  <Link
-                    href={service.href}
-                    className="shrink-0 text-sm font-medium text-primary hover:underline"
-                  >
-                    Learn more
-                  </Link>
-                )}
-              </div>
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -123,14 +129,16 @@ export default function ServicesPage() {
       {/* Who We Work With */}
       <Section variant="muted">
         <Container size="md">
-          <Heading level="h2" as="h2" className="text-center">
-            Who We Work With
-          </Heading>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-muted-foreground">
-            We support families, NDIS participants and coordinators, DVA clients, hospital
-            discharge planners, GPs, and healthcare professionals. If you&apos;re looking for a
-            care provider you can trust. We&apos;re here.
-          </p>
+          <Reveal>
+            <Heading level="h2" as="h2" className="text-center">
+              Who We Work With
+            </Heading>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-muted-foreground">
+              We support families, NDIS participants and coordinators, DVA clients, hospital
+              discharge planners, GPs, and healthcare professionals. If you&apos;re looking for a
+              care provider you can trust. We&apos;re here.
+            </p>
+          </Reveal>
         </Container>
       </Section>
 

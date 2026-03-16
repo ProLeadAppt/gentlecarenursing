@@ -22,6 +22,8 @@ export interface ServiceFeature {
 
 export interface ServicePageData {
   title: string;
+  /** Optional: one-sentence direct answer for featured snippet / AEO (shown first in hero) */
+  snippetAnswer?: string;
   intro: string;
   href?: string;
   whoItHelps: {
@@ -104,6 +106,11 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
           <p className="mt-3 text-center text-base font-medium text-white/70 sm:text-lg">
             In-home nursing and care across Sydney and surrounds
           </p>
+          {data.snippetAnswer && (
+            <p className="mx-auto mt-5 max-w-2xl text-center text-lg font-medium leading-relaxed text-white sm:text-xl" role="doc-abstract">
+              {data.snippetAnswer}
+            </p>
+          )}
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-white/80 sm:text-xl">
             {data.intro}
           </p>

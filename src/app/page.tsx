@@ -13,6 +13,7 @@ import { FaqPreview } from "@/components/sections/FaqPreview";
 import { AreasWeServe } from "@/components/sections/AreasWeServe";
 import { HomepageCtaSections } from "@/components/sections/HomepageCtaSections";
 import { CtaSection } from "@/components/sections/CtaSection";
+import { SectionDivider } from "@/components/sections/SectionDivider";
 import Link from "next/link";
 import { CTA_LINKS, HERO_REASSURANCE } from "@/lib/constants";
 import { getHowToSchema } from "@/lib/schema";
@@ -63,7 +64,9 @@ export default function HomePage() {
 
       <StatsBar stats={HOMEPAGE_STATS} />
 
-      <div className="border-t border-border/30">
+      <div className="h-12 shrink-0 sm:h-14" aria-hidden />
+
+      <div>
         <ReassuranceSection
           headline={REASSURANCE_SECTION.headline}
           problems={REASSURANCE_SECTION.problems}
@@ -72,7 +75,9 @@ export default function HomePage() {
         />
       </div>
 
-      <div className="border-t border-border/30">
+      <SectionDivider variant="tealToWhite" />
+
+      <div>
         <WhoWeHelp
           title={WHO_WE_HELP.title}
           subtitle={WHO_WE_HELP.subtitle}
@@ -94,7 +99,9 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="border-t border-border/30">
+      <SectionDivider variant="whiteToTeal" />
+
+      <div>
         <ServiceCards
           subtitle="Personalised in-home nursing and care for NDIS, DVA, aged care, and private clients. We're here to support you or someone you love."
           sectionImage={HOMEPAGE_SERVICES_IMAGE.sectionImage}
@@ -103,7 +110,9 @@ export default function HomePage() {
         />
       </div>
 
-      <div className="border-t border-border/30">
+      <SectionDivider variant="tealToWhite" />
+
+      <div>
         <WhyDifferent
           title={WHY_DIFFERENT.title}
           subtitle={WHY_DIFFERENT.subtitle}
@@ -125,7 +134,9 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="border-t border-border/30">
+      <SectionDivider variant="whiteToTeal" />
+
+      <div>
         <Testimonials
           testimonials={HOMEPAGE_TESTIMONIALS}
           title="What Families & Partners Say"
@@ -135,7 +146,9 @@ export default function HomePage() {
         />
       </div>
 
-      <div className="border-t border-border/30">
+      <SectionDivider variant="tealToWhite" />
+
+      <div>
         <ProcessSteps
           title={PROCESS_STEPS.title}
           subtitle={PROCESS_STEPS.subtitle}
@@ -145,7 +158,9 @@ export default function HomePage() {
         />
       </div>
 
-      <div className="border-t border-border/30">
+      <SectionDivider variant="whiteToTeal" />
+
+      <div>
         <ReferralProfessionalsSection
           headline={REFERRAL_PROFESSIONALS.headline}
           subtitle={REFERRAL_PROFESSIONALS.subtitle}
@@ -154,7 +169,9 @@ export default function HomePage() {
         />
       </div>
 
-      <div className="border-t border-border/30">
+      <SectionDivider variant="tealToWhite" />
+
+      <div>
         <QuickResponseSection
           title={GET_IN_TOUCH.title}
           subtitle={GET_IN_TOUCH.subtitle}
@@ -164,15 +181,19 @@ export default function HomePage() {
           secondaryCtaHref={CTA_LINKS.contact.href}
           benefits={GET_IN_TOUCH.benefits}
           voiceAssistantLine={GET_IN_TOUCH.voiceAssistantLine}
-          sectionVariant="teal"
+          sectionVariant="default"
         />
       </div>
 
-      <div className="border-t border-border/50">
+      <div className="h-12 shrink-0 sm:h-14" aria-hidden />
+
+      <div>
         <HomepageCtaSections />
       </div>
 
-      <div className="border-t border-border/30">
+      <div className="h-12 shrink-0 sm:h-14" aria-hidden />
+
+      <div>
         <FaqPreview
           items={HOMEPAGE_FAQ}
           title="Common Questions"
@@ -181,7 +202,9 @@ export default function HomePage() {
         />
       </div>
 
-      <div className="border-t border-border/30">
+      <SectionDivider variant="whiteToTeal" />
+
+      <div>
         <AreasWeServe
           areas={HOMEPAGE_AREAS}
           title="Areas We Serve"
@@ -189,6 +212,8 @@ export default function HomePage() {
           sectionVariant="teal"
         />
       </div>
+
+      <SectionDivider variant="tealToWhite" />
 
       <CtaSection
         title={HOMEPAGE_FINAL_CTA.title}

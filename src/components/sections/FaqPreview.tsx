@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "./SectionHeader";
+import { Reveal } from "@/components/ui/Reveal";
 import { FaqAccordion, type FaqItem } from "./FaqAccordion";
 import { Button } from "@/components/ui/Button";
 
@@ -31,7 +32,9 @@ export function FaqPreview({
   return (
     <Section variant={sectionVariant} size="lg">
       <Container>
-        <SectionHeader title={title} subtitle={subtitle} />
+        <Reveal>
+          <SectionHeader title={title} subtitle={subtitle} />
+        </Reveal>
         <div className="mx-auto mt-12 max-w-2xl">
           <FaqAccordion items={faqItems} allowMultiple={false} />
           <div className="mt-8 flex justify-center">

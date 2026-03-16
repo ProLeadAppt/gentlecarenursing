@@ -38,9 +38,9 @@ export const GMB_SERVICES: readonly GmbService[] = [
   { name: "Home Care Package support", description: "Aged care Home Care Package services", href: "/aged-care" },
   { name: "CHSP support", description: "Commonwealth Home Support Programme services", href: "/aged-care" },
   { name: "Palliative care support", description: "Compassionate care and symptom management at home" },
-  { name: "Tracheostomy care", description: "Specialised tracheostomy care at home", href: "/ndis" },
-  { name: "PEG feeding support", description: "PEG feeding and nutrition support at home", href: "/ndis" },
-  { name: "Catheter management", description: "Catheter care and management at home", href: "/ndis" },
+  { name: "Tracheostomy care", description: "Specialised tracheostomy care at home", href: "/services/complex-care" },
+  { name: "PEG feeding support", description: "PEG feeding and nutrition support at home", href: "/services/complex-care" },
+  { name: "Catheter management", description: "Catheter care and management at home", href: "/services/complex-care" },
   { name: "Veteran care", description: "DVA-funded care for veterans and war widows", href: "/dva" },
   { name: "Plan management support", description: "Working with NDIS plan managers for quality delivery", href: "/ndis" },
 ] as const;

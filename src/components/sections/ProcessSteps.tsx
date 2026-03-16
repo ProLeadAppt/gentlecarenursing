@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "./SectionHeader";
+import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { Heading } from "@/components/ui/Heading";
 import { ClipboardList, MailCheck, Users, HouseHeart } from "lucide-react";
@@ -33,7 +34,9 @@ export function ProcessSteps({
   return (
     <Section size="xl" variant={sectionVariant}>
       <Container>
-        <SectionHeader title={title} subtitle={subtitle} />
+        <Reveal>
+          <SectionHeader title={title} subtitle={subtitle} />
+        </Reveal>
 
         {/* Connected four-step flow */}
         <div className="relative mt-14 space-y-8">
@@ -49,8 +52,8 @@ export function ProcessSteps({
               const isLast = index === steps.length - 1;
 
               return (
+                <Reveal key={step.number} delay={index * 80}>
                 <div
-                  key={step.number}
                   className="group relative flex h-full flex-col rounded-2xl border border-border/70 bg-card/80 p-6 shadow-sm transition-colors duration-200 hover:border-primary/40 hover:shadow-md"
                 >
                   {/* Desktop connector dot */}
@@ -81,6 +84,7 @@ export function ProcessSteps({
                     {step.description}
                   </p>
                 </div>
+                </Reveal>
               );
             })}
           </div>

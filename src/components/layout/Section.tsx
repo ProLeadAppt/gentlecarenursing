@@ -22,8 +22,8 @@ const variantStyles: Record<SectionVariant, string> = {
   muted: "bg-muted",
   card: "bg-card",
   primary: "bg-gradient-to-br from-primary via-primary to-primary-light text-primary-foreground",
-  accent: "bg-accent/[0.06]",
-  gradient: "bg-gradient-to-b from-accent/[0.05] to-background",
+  accent: "bg-accent/[0.10]",
+  gradient: "bg-gradient-to-b from-accent/[0.08] to-background",
   teal: "bg-[hsl(var(--color-section-teal))]",
 };
 

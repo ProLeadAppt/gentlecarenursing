@@ -46,6 +46,22 @@ export const SERVICES: ServiceDefinition[] = [
     shortDescription: "Private in-home nursing and personal care.",
     href: "/private-nursing",
   },
+  {
+    slug: "post-hospital-care",
+    title: "Post-Hospital Nursing & Care",
+    benefitLine: "Support recovery at home after a hospital stay, with skilled nursing and personal care.",
+    shortDescription:
+      "Short-term and ongoing in-home nursing and care after hospital discharge.",
+    href: "/services/post-hospital-care",
+  },
+  {
+    slug: "complex-care",
+    title: "Complex Clinical Care at Home",
+    benefitLine: "Specialised in-home nursing for people with complex health needs.",
+    shortDescription:
+      "Tracheostomy care, PEG feeding, catheter management, wound care, and other complex nursing at home.",
+    href: "/services/complex-care",
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -55,6 +71,8 @@ export const SERVICES: ServiceDefinition[] = [
 export const NDIS_PAGE: ServicePageData = {
   title: "NDIS Services",
   href: "/ndis",
+  snippetAnswer:
+    "NDIS in-home nursing is skilled nursing and personal care at home for NDIS participants, delivered by a registered NDIS provider like Gentle Care Nursing across Sydney.",
   intro:
     "As a registered NDIS provider, Gentle Care Nursing delivers personalised in-home nursing and support for NDIS participants. We work closely with participants, families, and support coordinators to provide high-quality care that helps people live more independently.",
 
@@ -164,6 +182,8 @@ export const NDIS_PAGE: ServicePageData = {
 export const DVA_PAGE: ServicePageData = {
   title: "DVA & Community Nursing",
   href: "/dva",
+  snippetAnswer:
+    "DVA community nursing is in-home nursing and care for veterans and war widows, funded by the Department of Veterans' Affairs and delivered by registered providers like Gentle Care Nursing in Sydney.",
   intro:
     "Gentle Care Nursing is a registered DVA community nursing provider. We deliver in-home nursing and personal care for veterans, war widows, and their families, helping them stay comfortable, independent, and well-supported at home.",
 
@@ -273,6 +293,8 @@ export const DVA_PAGE: ServicePageData = {
 export const AGED_CARE_PAGE: ServicePageData = {
   title: "Aged Care / Support at Home",
   href: "/aged-care",
+  snippetAnswer:
+    "Aged care at home includes in-home nursing and personal care for older Australians, including Home Care Package and CHSP support, so you or your loved one can age safely and comfortably at home.",
   intro:
     "Gentle Care Nursing helps older Australians stay safe, comfortable, and independent at home. We provide in-home nursing and personal care that supports ageing in place, so families can feel confident their loved ones are well looked after.",
 
@@ -382,6 +404,8 @@ export const AGED_CARE_PAGE: ServicePageData = {
 export const PRIVATE_NURSING_PAGE: ServicePageData = {
   title: "Private Nursing & Personal Care",
   href: "/private-nursing",
+  snippetAnswer:
+    "Private in-home nursing is nursing and personal care you pay for yourself (not NDIS, DVA, or aged care funded), with no waitlists and flexible scheduling across Sydney.",
   intro:
     "When you need nursing or personal care outside of funded programs, Gentle Care Nursing provides private in-home services tailored to your needs. No waitlists, no complex applications. Just quality care when you need it.",
 
@@ -487,3 +511,216 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
       "Contact us for a personalised quote and get care started quickly.",
   },
 };
+
+export const POST_HOSPITAL_PAGE: ServicePageData = {
+  title: "Post-Hospital Nursing & Care at Home",
+  href: "/services/post-hospital-care",
+  snippetAnswer:
+    "Post-hospital in-home nursing is support from qualified nurses and carers after someone leaves hospital, so recovery continues safely at home. Gentle Care Nursing coordinates with hospital discharge teams and families to start visits quickly across Sydney.",
+  intro:
+    "Leaving hospital can feel overwhelming. Our post-hospital nursing and care at home service helps you or your loved one recover safely and comfortably, with skilled support and clear communication from day one.",
+
+  whoItHelps: {
+    title: "Who This Is For",
+    description:
+      "Post-hospital support is designed for people who are well enough to go home, but need extra help to recover safely.",
+    audiences: [
+      "People coming home after surgery or a hospital stay",
+      "Older adults who have become weaker or less confident after time in hospital",
+      "NDIS participants needing support to stabilise at home after admission",
+      "Veterans and war widows returning home under DVA community nursing",
+      "Families who want extra help in the first few weeks after discharge",
+      "Anyone needing short-term nursing and personal care at home during recovery",
+    ],
+  },
+
+  supportAvailable: {
+    title: "What Post-Hospital Support Includes",
+    description:
+      "We tailor your post-hospital care to your discharge plan, health needs, and home situation.",
+    features: [
+      {
+        title: "Clinical Nursing at Home",
+        description:
+          "Registered nurses provide wound care, medication management, observations, and chronic disease monitoring so your recovery stays on track.",
+      },
+      {
+        title: "Personal Care and Daily Support",
+        description:
+          "Help with bathing, dressing, mobility, toileting, and meals to reduce falls risk and make day-to-day life easier while you regain strength.",
+      },
+      {
+        title: "Short-Term Intensive Support",
+        description:
+          "More frequent visits in the first 1–2 weeks after discharge, tapering as you become more confident and independent at home.",
+      },
+      {
+        title: "Coordination With Your Treating Team",
+        description:
+          "We review discharge information, liaise with your GP and specialists where appropriate, and keep everyone informed about progress and concerns.",
+      },
+      {
+        title: "Support for Families and Carers",
+        description:
+          "We show families what to watch for, how to support recovery safely, and when to contact us or the treating team for extra help.",
+      },
+    ],
+  },
+
+  whyChoose: {
+    title: "Why Choose Gentle Care After Hospital",
+    description:
+      "We combine clinical skill with calm, compassionate support so recovery at home feels safe, not stressful.",
+    reasons: [
+      {
+        title: "Experience With Hospital-to-Home Transitions",
+        description:
+          "We regularly support people returning home after surgery, acute illness, or complex admissions. Our team understands the pressures on families at this time.",
+      },
+      {
+        title: "Fast, Clear Communication",
+        description:
+          "We respond quickly to new referrals, confirm start dates, and explain what to expect so you are never left wondering what happens next.",
+      },
+      {
+        title: "Aligned With Your Funding",
+        description:
+          "We can deliver post-hospital care under NDIS, DVA, aged care packages, or private funding, and help you understand which option applies to you.",
+      },
+    ],
+  },
+
+  faqs: [
+    {
+      id: "post-hospital-start",
+      question: "How quickly can post-hospital care start?",
+      answer:
+        "In many cases we can begin visits within 24–48 hours of receiving your referral or enquiry, depending on your location and care needs. We confirm start dates and visit frequency with you before you leave hospital where possible.",
+    },
+    {
+      id: "post-hospital-referral",
+      question: "Do I need a referral from the hospital or my doctor?",
+      answer:
+        "A referral or discharge summary is very helpful, especially for DVA and complex nursing. However, families and participants can also contact us directly. We'll work with your hospital team or GP to ensure we have the right information.",
+    },
+    {
+      id: "post-hospital-funding",
+      question: "Is post-hospital care funded by NDIS, DVA, or aged care packages?",
+      answer:
+        "Yes, in many cases. Post-hospital support may be funded through NDIS, DVA community nursing, Home Care Packages, CHSP, or paid privately. We can talk through your situation and help you understand which funding streams may apply.",
+    },
+  ],
+
+  cta: {
+    title: "Arrange Post-Hospital Nursing & Care",
+    description:
+      "Tell us about your upcoming or recent hospital stay and we'll help you plan safe, supportive care at home.",
+  },
+};
+
+export const COMPLEX_CARE_PAGE: ServicePageData = {
+  title: "Complex Clinical Care at Home",
+  href: "/services/complex-care",
+  snippetAnswer:
+    "Complex clinical care at home means specialised nursing for people with higher health needs, such as tracheostomy care, PEG feeding, catheter management, and complex wound care, delivered safely in their own home.",
+  intro:
+    "Many people with higher health needs can live safely at home with the right support. Our complex clinical care service brings experienced nurses to you, so advanced care can continue in a familiar, comfortable environment.",
+
+  whoItHelps: {
+    title: "Who Complex Care Is For",
+    description:
+      "Complex care at home is suitable for people who need more than basic personal care or simple nursing tasks.",
+    audiences: [
+      "People living with tracheostomies, PEG tubes, or long-term catheters",
+      "NDIS participants with higher clinical support needs",
+      "Veterans and older adults managing multiple or complex conditions",
+      "Families caring for someone who needs regular skilled nursing at home",
+      "People transitioning from high-care facilities back to the community",
+      "Anyone who has been told they need complex nursing or clinical oversight at home",
+    ],
+  },
+
+  supportAvailable: {
+    title: "Types of Complex Care We Provide",
+    description:
+      "We tailor complex care plans to your specific health needs, working alongside your treating team.",
+    features: [
+      {
+        title: "Tracheostomy Care",
+        description:
+          "Airway care, tube changes as directed, monitoring, and support to keep tracheostomy sites clean, safe, and functioning well.",
+      },
+      {
+        title: "PEG Feeding and Nutrition Support",
+        description:
+          "PEG site care, feeding regimes, flushing, and monitoring tolerance, delivered in line with your dietitian and medical instructions.",
+      },
+      {
+        title: "Catheter Management",
+        description:
+          "Catheter care, monitoring, and troubleshooting to reduce discomfort and complications, with escalation to your treating team when needed.",
+      },
+      {
+        title: "Complex Wound Care",
+        description:
+          "Assessment and management of complex or chronic wounds, following specialist plans and keeping everyone informed about healing.",
+      },
+      {
+        title: "Monitoring and Early Escalation",
+        description:
+          "Regular observations, symptom monitoring, and early escalation to your GP or specialist if there are concerning changes.",
+      },
+    ],
+  },
+
+  whyChoose: {
+    title: "Why Choose Gentle Care for Complex Care",
+    description:
+      "Complex care requires clinical skill and calm, confident support. We bring both to every visit.",
+    reasons: [
+      {
+        title: "Experienced Clinical Team",
+        description:
+          "Our nurses have hands-on experience with complex care in both hospital and community settings, so you are not a \"first\" for us.",
+      },
+      {
+        title: "Home-Focused Approach",
+        description:
+          "We plan care around your home environment, routines, and support network, not just a checklist of tasks.",
+      },
+      {
+        title: "Aligned With Your Plans and Providers",
+        description:
+          "We work from specialist and GP plans, communicate with your treating team, and document progress so everyone is on the same page.",
+      },
+    ],
+  },
+
+  faqs: [
+    {
+      id: "complex-care-home-safe",
+      question: "Is complex care at home safe?",
+      answer:
+        "Yes, when it is planned properly and delivered by experienced nurses. We only provide complex care that is appropriate for the home setting and always follow your treating team's instructions.",
+    },
+    {
+      id: "complex-care-funding",
+      question: "Can complex care be funded by NDIS, DVA, or aged care packages?",
+      answer:
+        "Complex care can often be funded under NDIS, DVA community nursing, or Home Care Packages, depending on your situation and assessments. We can work with your coordinator or case manager to clarify funding options.",
+    },
+    {
+      id: "complex-care-start",
+      question: "How do I get started with complex care at home?",
+      answer:
+        "Start by submitting an enquiry or referral. We’ll talk through your current care plan, any specialist instructions, and what support you need at home, then propose a safe, practical plan.",
+    },
+  ],
+
+  cta: {
+    title: "Discuss Complex Care at Home",
+    description:
+      "Share your current situation and we’ll let you know how we can safely support complex care at home.",
+  },
+};
+

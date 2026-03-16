@@ -1,4 +1,5 @@
 import { Container } from "@/components/layout/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { TrustBadge } from "./TrustBadge";
 import { cn } from "@/lib/utils";
 
@@ -31,21 +32,22 @@ export function TrustBar({
   return (
     <section
       className={cn(
-        "border-y py-8",
+        "py-8",
         variant === "muted"
-          ? "border-border/80 bg-accent/[0.04]"
-          : "border-border bg-card/80",
+          ? "border-b border-border/60 bg-background"
+          : "border-b border-border bg-card/80",
         className
       )}
     >
       <Container>
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-          {items.map((item) => (
-            <TrustBadge
-              key={item.label}
-              label={item.label}
-              variant={item.variant ?? "default"}
-            />
+          {items.map((item, i) => (
+            <Reveal key={item.label} delay={i * 60}>
+              <TrustBadge
+                label={item.label}
+                variant={item.variant ?? "default"}
+              />
+            </Reveal>
           ))}
         </div>
         {responseTimeLine && (

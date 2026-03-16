@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "@/components/sections/SectionHeader";
+import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { GHLWidgets } from "@/components/embeds/GHLWidgets";
 import { Phone, MessageCircle, HelpCircle } from "lucide-react";
@@ -46,6 +47,7 @@ export function QuickResponseSection({
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div>
+            <Reveal>
             <SectionHeader title={title} subtitle={subtitle ?? undefined} align="left" size="md" />
             <ul className="mt-8 space-y-3">
               {bullets.map(({ icon: Icon, text }) => (
@@ -65,6 +67,7 @@ export function QuickResponseSection({
                 {secondaryCtaLabel}
               </Button>
             </div>
+            </Reveal>
           </div>
 
           <div className="relative flex justify-center lg:justify-end">

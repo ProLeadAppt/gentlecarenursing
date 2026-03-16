@@ -3,6 +3,7 @@ import { Container } from "@/components/layout/Container";
 import { Grid } from "@/components/layout/Grid";
 import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "./SectionHeader";
+import { Reveal } from "@/components/ui/Reveal";
 import { ServiceCard } from "./ServiceCard";
 import { SERVICES } from "@/content/services";
 import type { ServiceCard as ServiceCardType } from "@/types";
@@ -54,7 +55,9 @@ export function ServiceCards({
             />
           </div>
         )}
-        <SectionHeader title={title} subtitle={subtitle} size="lg" />
+        <Reveal>
+          <SectionHeader title={title} subtitle={subtitle} size="lg" />
+        </Reveal>
         <Grid cols={cols} gap="lg" className="mt-12">
           {services.map((service) => (
             <ServiceCard

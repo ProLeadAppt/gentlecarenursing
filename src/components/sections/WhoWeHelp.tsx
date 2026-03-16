@@ -3,6 +3,7 @@ import { Container } from "@/components/layout/Container";
 import { Grid } from "@/components/layout/Grid";
 import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "./SectionHeader";
+import { Reveal } from "@/components/ui/Reveal";
 import { Card } from "@/components/ui/Card";
 import { Heading } from "@/components/ui/Heading";
 import { Heart, Users, Building2, Handshake } from "lucide-react";
@@ -54,12 +55,15 @@ export function WhoWeHelp({
             />
           </div>
         )}
-        <SectionHeader title={title} subtitle={subtitle} size="lg" />
+        <Reveal>
+          <SectionHeader title={title} subtitle={subtitle} size="lg" />
+        </Reveal>
         <Grid cols={4} gap="lg" className="mt-12">
-          {audiences.map((audience) => {
+          {audiences.map((audience, i) => {
             const Icon = AUDIENCE_ICONS[audience.label];
             return (
-              <Card key={audience.label} variant="bordered" className="text-center">
+              <Reveal key={audience.label} delay={i * 80}>
+              <Card variant="bordered" className="text-center">
                 {Icon && (
                   <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/8">
                     <Icon className="h-7 w-7 text-primary" strokeWidth={1.5} />
@@ -72,6 +76,7 @@ export function WhoWeHelp({
                   {audience.description}
                 </p>
               </Card>
+              </Reveal>
             );
           })}
         </Grid>

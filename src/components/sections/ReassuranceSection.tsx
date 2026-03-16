@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "@/components/sections/SectionHeader";
+import { Reveal } from "@/components/ui/Reveal";
 import { HelpCircle } from "lucide-react";
 
 export interface ReassuranceSectionProps {
@@ -20,7 +21,9 @@ export function ReassuranceSection({
   return (
     <Section variant={sectionVariant} size="lg">
       <Container>
-        <SectionHeader title={headline} align="center" size="md" />
+        <Reveal>
+          <SectionHeader title={headline} align="center" size="md" />
+        </Reveal>
         <div className="mt-12 grid gap-8 sm:grid-cols-3">
           {problems.map((text) => (
             <div

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "./SectionHeader";
+import { Reveal } from "@/components/ui/Reveal";
 import { Heading } from "@/components/ui/Heading";
 import { UserCheck, Sparkles, Zap, ShieldCheck, MessageCircle } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -35,7 +36,9 @@ export function WhyDifferent({
   return (
     <Section variant={sectionVariant} size="lg">
       <Container>
-        <SectionHeader title={title} subtitle={subtitle} size="lg" />
+        <Reveal>
+          <SectionHeader title={title} subtitle={subtitle} size="lg" />
+        </Reveal>
         <div className="mt-12 grid items-center gap-12 lg:grid-cols-2">
           {/* Image */}
           <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-2xl lg:max-w-none">
