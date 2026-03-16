@@ -12,7 +12,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Contact Us",
   description:
-    "Get in touch with Gentle Care Nursing. Phone, email, or submit an enquiry. We respond within 24–48 hours.",
+    "Get in touch with Gentle Care Nursing. Phone, email, or submit an enquiry. We acknowledge straight away and respond within 24 hours.",
 });
 
 export default function ContactPage() {
@@ -26,7 +26,7 @@ export default function ContactPage() {
           </Heading>
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground sm:text-xl">
             Have a question, need information, or want to discuss care options?
-            We&apos;re here to help — reach out and we&apos;ll respond quickly.
+            We&apos;re here to help — you&apos;ll get an immediate confirmation and a personal response within 24 hours.
           </p>
         </Container>
       </Section>
@@ -67,7 +67,7 @@ export default function ContactPage() {
                     Response Time
                   </Heading>
                   <p className="mt-1 text-muted-foreground">
-                    We respond to all enquiries within 24–48 hours.
+                    We acknowledge your message straight away and get back to you within 24 hours. Urgent enquiries are prioritised for same-day response.
                   </p>
                 </div>
                 <div>

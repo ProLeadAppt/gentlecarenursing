@@ -2,40 +2,47 @@
 
 /* ---------------------------------------------------------------------------
    Gentle Care Nursing — Design System
-   Premium, calm, healthcare-appropriate, conversion-focused
+   Warm, welcoming, compassionate, feminine healthcare brand.
+   Soft sage/muted teal, warm off-whites, gentle neutrals.
+   Not corporate, sterile, or tech — human and reassuring.
    --------------------------------------------------------------------------- */
 
 :root {
   /* -------------------------------------------------------------------------
-     Colour system — richer, warmer, with actual visual presence
+     Colour system — muted teal/sage, warm off-whites, gentle neutrals
      HSL values for easy opacity variants (e.g. primary/10)
      ------------------------------------------------------------------------- */
-  --color-primary: 210 50% 22%;
+  /* Primary: soft warm slate (not blue-grey) — professional but approachable */
+  --color-primary: 228 20% 24%;
   --color-primary-foreground: 0 0% 100%;
-  --color-primary-light: 210 45% 35%;
+  --color-primary-light: 228 18% 34%;
 
-  --color-accent: 168 45% 42%;
+  /* Accent: muted teal/sage — calming, trustworthy, feminine */
+  --color-accent: 162 18% 42%;
   --color-accent-foreground: 0 0% 100%;
-  --color-accent-light: 168 40% 55%;
+  --color-accent-light: 162 16% 52%;
 
-  /* Neutrals — warm, readable, low eye strain */
-  --color-background: 40 25% 97%;
-  --color-foreground: 210 30% 14%;
-  --color-muted: 210 20% 95%;
-  --color-muted-foreground: 210 12% 50%;
-  --color-border: 210 18% 88%;
-  --color-card: 0 0% 100%;
+  /* Neutrals — warm off-whites and soft charcoal (no blue-grey) */
+  --color-background: 40 30% 98%;
+  --color-foreground: 28 18% 20%;
+  --color-foreground-strong: 28 22% 14%;
+  --color-muted: 42 20% 95%;
+  --color-muted-foreground: 28 12% 44%;
+  --color-border: 38 14% 90%;
+  --color-card: 45 22% 99%;
 
-  /* Semantic — trust, success, destructive */
-  --color-trust: 150 40% 35%;
-  --color-success: 150 50% 40%;
-  --color-destructive: 0 65% 50%;
+  /* Warm cream for alternate sections (softer than muted) */
+  --color-warm-cream: 48 25% 96%;
+
+  /* Semantic — warm sage green for trust */
+  --color-trust: 152 20% 40%;
+  --color-success: 152 22% 44%;
+  --color-destructive: 0 50% 46%;
   --color-destructive-foreground: 0 0% 100%;
 
-  /* Input focus ring */
-  --color-ring: 210 50% 22%;
+  --color-ring: 228 20% 24%;
 
-  /* Spacing scale (rem) */
+  /* Spacing scale — breathable rhythm */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -44,25 +51,23 @@
   --space-2xl: 3rem;
   --space-3xl: 4rem;
 
-  /* Container */
   --container-max: 72rem;
-  --container-padding: 1rem;
+  --container-padding: 1.25rem;
 
-  /* Typography */
   --font-sans: var(--font-source-sans);
   --font-display: var(--font-dm-sans);
 
-  /* Shadows — premium, slightly more presence */
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
-  --shadow-md: 0 4px 8px -2px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.04);
-  --shadow-lg: 0 12px 20px -4px rgb(0 0 0 / 0.08), 0 4px 8px -4px rgb(0 0 0 / 0.04);
-  --shadow-xl: 0 24px 32px -8px rgb(0 0 0 / 0.1), 0 8px 16px -6px rgb(0 0 0 / 0.06);
+  /* Shadows — very soft, diffuse, warm grey (no harsh edges) */
+  --shadow-sm: 0 1px 2px 0 rgb(45 42 38 / 0.04), 0 1px 3px -1px rgb(45 42 38 / 0.03);
+  --shadow-md: 0 4px 12px -2px rgb(45 42 38 / 0.05), 0 2px 6px -2px rgb(45 42 38 / 0.03);
+  --shadow-lg: 0 16px 28px -4px rgb(45 42 38 / 0.06), 0 6px 12px -4px rgb(45 42 38 / 0.04);
+  --shadow-xl: 0 32px 48px -8px rgb(45 42 38 / 0.07), 0 12px 20px -6px rgb(45 42 38 / 0.04);
 
-  /* Border radius */
+  /* Border radius — soft, friendly, premium */
   --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.25rem;
+  --radius-md: 0.9375rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.625rem;
 }
 
 @theme inline {
@@ -78,6 +83,7 @@
   --color-muted-foreground: hsl(var(--color-muted-foreground));
   --color-border: hsl(var(--color-border));
   --color-card: hsl(var(--color-card));
+  --color-warm-cream: hsl(var(--color-warm-cream));
   --color-destructive: hsl(var(--color-destructive));
   --color-destructive-foreground: hsl(var(--color-destructive-foreground));
   --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
@@ -99,7 +105,7 @@ body {
   background: hsl(var(--color-background));
   color: hsl(var(--color-foreground));
   font-family: var(--font-sans), system-ui, sans-serif;
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -155,4 +161,10 @@ body {
     transform: none;
     transition: none;
   }
+}
+
+/* Key phrase emphasis — use for Registered NDIS & DVA, Sydney, etc. */
+.text-strong {
+  color: hsl(var(--color-foreground-strong));
+  font-weight: 600;
 }

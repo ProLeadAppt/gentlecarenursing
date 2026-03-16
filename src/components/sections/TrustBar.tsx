@@ -33,7 +33,7 @@ export function TrustBar({
       className={cn(
         "border-y py-8",
         variant === "muted"
-          ? "border-primary/10 bg-primary/[0.03]"
+          ? "border-border/80 bg-accent/[0.04]"
           : "border-border bg-card/80",
         className
       )}

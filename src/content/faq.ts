@@ -44,19 +44,25 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "how-start",
         question: "How do I get started?",
         answer:
-          "Submit an enquiry through our Request Care form, or contact us directly by phone or email. We'll discuss your needs, explain your options, and arrange care as quickly as possible.",
+          "Submit an enquiry through our Request Care form, or contact us by phone or email. You'll get immediate confirmation and a personal response within 24 hours with clear next steps. We'll discuss your needs, explain your options, and arrange care as quickly as possible.",
       },
       {
         id: "response-time",
         question: "How quickly do you respond to enquiries?",
         answer:
-          "We aim to respond to all enquiries within 24–48 hours. For urgent referrals, we prioritise and will get back to you as soon as possible.",
+          "You'll get an immediate confirmation when you submit. Our team is notified straight away and a real person will get back to you within 24 hours. Urgent referrals are prioritised for same-day response. We don't leave people waiting.",
       },
       {
         id: "assessment",
         question: "Is there an assessment before care starts?",
         answer:
           "Yes. We conduct an initial assessment to understand the client's needs, preferences, and goals. This helps us create a tailored care plan and match the right carer to each client.",
+      },
+      {
+        id: "immediate-help",
+        question: "Can I get help right away?",
+        answer:
+          "Yes. You can call us during business hours, or use the voice assistant on our website for immediate guidance. For non-urgent enquiries, the Request Care form gets you a personal response within 24 hours.",
       },
     ],
   },

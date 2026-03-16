@@ -1,25 +1,25 @@
 import { SITE } from "./constants";
 import { INTEGRATIONS } from "@/config/integrations";
 import { ELEVATOR_PITCH } from "@/content/about";
+import { AREAS_SERVED } from "@/content/areas-served";
+import { GMB_SERVICES } from "@/content/gmb-services";
 
 /**
  * JSON-LD schema generators for SEO.
  */
-
-const SYDNEY_REGIONS = [
-  "Inner West",
-  "Sydney CBD & East",
-  "North Shore",
-  "Western Sydney",
-  "South Sydney",
-  "Northern Beaches",
-] as const;
 
 export function getLocalBusinessSchema() {
   const sameAs = [
     ...Object.values(SITE.social).filter(Boolean),
     ...(SITE.gbpUrl ? [SITE.gbpUrl] : []),
   ] as string[];
+
+  const areaServed = [
+    { "@type": "City" as const, name: "Sydney", containedInPlace: { "@type": "State", name: "New South Wales" } },
+    ...AREAS_SERVED.map((area) => ({ "@type": "Place" as const, name: area.region })),
+    { "@type": "State" as const, name: "New South Wales" },
+    { "@type": "Country" as const, name: "Australia" },
+  ];
 
   return {
     "@context": "https://schema.org",
@@ -45,12 +45,20 @@ export function getLocalBusinessSchema() {
       addressLocality: "North Strathfield",
       addressRegion: "NSW",
     },
-    areaServed: [
-      { "@type": "City", name: "Sydney", containedInPlace: { "@type": "State", name: "New South Wales" } },
-      ...SYDNEY_REGIONS.map((name) => ({ "@type": "Place" as const, name })),
-      { "@type": "State", name: "New South Wales" },
-      { "@type": "Country", name: "Australia" },
-    ],
+    areaServed,
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Services offered",
+      itemListElement: GMB_SERVICES.map((service, index) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: service.name,
+          description: service.description ?? undefined,
+          ...(service.href ? { url: `${INTEGRATIONS.siteUrl}${service.href}` } : {}),
+        },
+      })),
+    },
     ...(sameAs.length > 0 ? { sameAs } : {}),
     priceRange: "$$",
     openingHoursSpecification: {

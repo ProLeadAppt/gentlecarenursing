@@ -9,9 +9,15 @@ import { Button } from "@/components/ui/Button";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
-export function ReferralForm() {
+interface ReferralFormProps {
+  /** When true, shows minimal fields first with an expand option */
+  compact?: boolean;
+}
+
+export function ReferralForm({ compact = false }: ReferralFormProps) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [expanded, setExpanded] = useState(!compact);
   const firstFieldRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -58,7 +64,10 @@ export function ReferralForm() {
       <div className="rounded-lg border border-accent/30 bg-accent/5 p-6 text-center" role="alert">
         <p className="text-lg font-semibold text-foreground">Enquiry Submitted</p>
         <p className="mt-2 text-muted-foreground">
-          Thank you. We&apos;ve received your referral and will respond within 24–48 hours.
+          Thank you — we&apos;ve received your enquiry. You&apos;ll hear from us within minutes.
+        </p>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Need to talk? Call us or send another message.
         </p>
         <button
           type="button"
@@ -72,7 +81,7 @@ export function ReferralForm() {
   }
 
   return (
-    <form className="space-y-6" onSubmit={handleSubmit} noValidate>
+    <form className="space-y-5" onSubmit={handleSubmit} noValidate>
       <FormField label="Your name" htmlFor="referrer-name" required>
         <Input
           ref={firstFieldRef}
@@ -84,25 +93,8 @@ export function ReferralForm() {
           aria-invalid={status === "error"}
         />
       </FormField>
-      <FormField label="Your email" htmlFor="referrer-email" required>
-        <Input id="referrer-email" name="referrerEmail" type="email" placeholder="your@email.com" required />
-      </FormField>
-      <FormField label="Your phone" htmlFor="referrer-phone">
-        <Input id="referrer-phone" name="referrerPhone" type="tel" placeholder="Phone number (optional)" />
-      </FormField>
-      <FormField label="Your role" htmlFor="referrer-role">
-        <Select id="referrer-role" name="referrerRole">
-          <option value="">Select...</option>
-          <option value="family">Family member</option>
-          <option value="ndis">NDIS support coordinator</option>
-          <option value="hospital">Hospital discharge planner</option>
-          <option value="healthcare">Healthcare professional</option>
-          <option value="self">Self-referral</option>
-          <option value="other">Other</option>
-        </Select>
-      </FormField>
-      <FormField label="Client / participant name" htmlFor="client-name">
-        <Input id="client-name" name="clientName" type="text" placeholder="Client name" />
+      <FormField label="Your phone" htmlFor="referrer-phone" required>
+        <Input id="referrer-phone" name="referrerPhone" type="tel" placeholder="Phone number" required />
       </FormField>
       <FormField label="Service type" htmlFor="service-type">
         <Select id="service-type" name="serviceType">
@@ -114,14 +106,47 @@ export function ReferralForm() {
           <option value="unsure">Not sure yet</option>
         </Select>
       </FormField>
-      <FormField label="Notes" htmlFor="referral-notes" hint="Tell us about the care needed, any relevant details, and preferred contact method.">
-        <Textarea
-          id="referral-notes"
-          name="notes"
-          rows={4}
-          placeholder="Describe the care needs..."
-        />
-      </FormField>
+
+      {!expanded && (
+        <button
+          type="button"
+          onClick={() => setExpanded(true)}
+          className="text-sm font-medium text-primary hover:underline"
+        >
+          + Add more details
+        </button>
+      )}
+
+      {expanded && (
+        <>
+          <FormField label="Your email" htmlFor="referrer-email">
+            <Input id="referrer-email" name="referrerEmail" type="email" placeholder="your@email.com" />
+          </FormField>
+          <FormField label="Your role" htmlFor="referrer-role">
+            <Select id="referrer-role" name="referrerRole">
+              <option value="">Select...</option>
+              <option value="family">Family member</option>
+              <option value="ndis">NDIS support coordinator</option>
+              <option value="hospital">Hospital discharge planner</option>
+              <option value="healthcare">Healthcare professional</option>
+              <option value="self">Self-referral</option>
+              <option value="other">Other</option>
+            </Select>
+          </FormField>
+          <FormField label="Client / participant name" htmlFor="client-name">
+            <Input id="client-name" name="clientName" type="text" placeholder="Client name" />
+          </FormField>
+          <FormField label="Notes" htmlFor="referral-notes" hint="Tell us about the care needed.">
+            <Textarea
+              id="referral-notes"
+              name="notes"
+              rows={3}
+              placeholder="Describe the care needs..."
+            />
+          </FormField>
+        </>
+      )}
+
       {status === "error" && (
         <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive" role="alert">
           {errorMessage}

@@ -1,13 +1,16 @@
 /**
  * Homepage content — single source of truth.
+ * Tone: warm, compassionate, reassuring; communicates care, safety, and responsiveness.
  */
 
 export const HOMEPAGE_HERO = {
-  headline: "Personalised In-Home Nursing & Care",
+  /** Optional soft line above headline — trust without sounding corporate */
+  trustLine: "Registered NDIS & DVA provider",
+  headline: "Care That Feels Calm, Safe, and Personal",
   subheadline:
-    "For families, NDIS participants, and referral partners. Registered provider. Dedicated support.",
-  /** Location + authority line (hero, below trust badge) */
-  locationLine: "Sydney's trusted in-home nursing provider — NDIS & DVA registered",
+    "In-home nursing and support across Sydney — for you or someone you love. We're here from the first conversation to ongoing care, and we respond quickly because we know that matters.",
+  /** Value pills: soft, trust-focused, not badge-y */
+  valuePills: ["We reply within 24 hours", "Registered & trusted", "Care tailored to you", "Here for Sydney"] as const,
 } as const;
 
 /** One-line local proof (e.g. near first CTA or after TrustBar) */
@@ -19,92 +22,110 @@ export const HOMEPAGE_LOCAL_PROOF = {
 
 export const WHO_WE_HELP = {
   title: "Who We Help",
-  subtitle: "We support families, coordinators, and healthcare professionals.",
+  subtitle:
+    "Whoever you are — a family looking for peace of mind, a coordinator needing a provider you can rely on, or a professional making a referral — we're here to help. No runaround, no long waits.",
   audiences: [
     {
       label: "Families",
       description:
-        "Caring for a loved one at home? We provide skilled nursing and personal care to support your family.",
+        "Caring for a loved one at home can be overwhelming. We provide skilled nursing and personal care so you can feel confident they're in good hands.",
     },
     {
       label: "NDIS Coordinators",
       description:
-        "Support coordinators and plan managers — we work with NDIS participants for quality in-home care.",
+        "You need a provider that's responsive and reliable. We work closely with NDIS participants and their coordinators to deliver quality in-home care.",
     },
     {
       label: "Discharge Planners",
       description:
-        "Hospital and aged care discharge teams — we help transition clients safely home with ongoing support.",
+        "Safe transition from hospital to home matters. We coordinate with your team and provide ongoing nursing and support so clients stay safe and supported.",
     },
     {
       label: "Referral Partners",
       description:
-        "GPs, specialists, and healthcare professionals — we make referrals simple and follow up quickly.",
+        "We make referrals straightforward and follow up quickly. You can refer with confidence knowing we'll respond and keep you in the loop.",
     },
   ],
 } as const;
 
 export const WHY_DIFFERENT = {
   title: "Why Gentle Care Is Different",
-  subtitle: "We focus on quality over volume.",
+  subtitle:
+    "We believe everyone deserves care that feels personal, professional, and reliable. Here's how we show up for you.",
   differentiators: [
     {
-      headline: "Smaller client load",
+      headline: "We take on fewer clients",
       description:
-        "We take on fewer clients so each person receives more dedicated, attentive care.",
+        "So each person gets more of our time and attention. You're not a number — you're someone we're committed to supporting well.",
     },
     {
-      headline: "Personalised support",
+      headline: "Care built around you",
       description:
-        "Care plans tailored to individual needs — not one-size-fits-all.",
+        "Your situation is unique. We create care plans that fit you or your loved one, not a one-size-fits-all approach.",
     },
     {
-      headline: "Fast response",
+      headline: "Quick, clear communication",
       description:
-        "We respond to enquiries quickly so families and referrers get answers when they need them.",
+        "We know waiting for answers is stressful. We respond promptly and keep you informed so you're never left wondering.",
     },
     {
-      headline: "Registered provider",
+      headline: "Registered and trusted",
       description:
-        "NDIS and DVA registered. Professional, compliant, and trusted by coordinators and planners.",
+        "Fully registered with NDIS and DVA. We meet the standards that matter to coordinators, planners, and families.",
+    },
+    {
+      headline: "A team that answers",
+      description:
+        "When you reach out, a real person follows up. No long waitlists or endless hold music — we're here to help.",
     },
   ],
 } as const;
 
 export const PROCESS_STEPS = {
   title: "How It Works",
-  subtitle: "From enquiry to care — we make it straightforward.",
+  subtitle:
+    "From your first enquiry to care at home — clear steps, quick response, and no one left waiting.",
   steps: [
     {
       number: 1,
-      headline: "Submit your enquiry",
-      description: "Tell us about your needs via our simple form or by contacting us directly.",
+      headline: "Tell us what you need",
+      description:
+        "Share your situation through our simple form. You'll get an immediate confirmation that we've received it — no sending into a void.",
     },
     {
       number: 2,
-      headline: "We respond quickly",
-      description: "Our team reviews your enquiry and gets back to you within 24–48 hours.",
+      headline: "We acknowledge and respond personally",
+      description:
+        "Our team is notified straight away. A real person follows up within 24 hours with supportive guidance, clear next steps, and answers to your questions.",
     },
     {
       number: 3,
-      headline: "Care begins",
-      description: "We match you with the right support and arrange care to start as soon as possible.",
+      headline: "Care that fits your life",
+      description:
+        "We match you or your loved one with the right support and arrange for care to begin when you're ready. You'll always know what happens next.",
     },
   ],
 } as const;
 
-export const AI_ASSISTANT = {
-  title: "Questions? Our AI Assistant Can Help",
+/** "Get in touch" / quick-response section — immediate acknowledgement, clear next steps, optional voice assistant */
+export const GET_IN_TOUCH = {
+  title: "Get Help Quickly — You're Not Left Waiting",
   subtitle:
-    "Get instant answers about our services, eligibility, or how to get started.",
-  primaryCtaLabel: "Speak With Our AI Assistant",
-  secondaryCtaLabel: "Request Care",
+    "When you reach out, our team is notified straight away. You'll get a personal response within 24 hours, with clear next steps and supportive guidance. No runaround.",
+  primaryCtaLabel: "Request Care",
+  secondaryCtaLabel: "Contact Us",
+  benefits: [
+    "You'll hear from us within 24 hours",
+    "Immediate confirmation when you enquire",
+    "Clear next steps — no waiting in the dark",
+  ] as const,
+  voiceAssistantLine: "Need guidance right now? Use our voice assistant below for immediate help.",
 } as const;
 
 export const HOMEPAGE_STATS = [
   { value: "10+", label: "Years of Experience" },
-  { value: "1,300+", label: "Clients Supported" },
-  { value: "24–48hr", label: "Response Time" },
+  { value: "1,300+", label: "Families & Clients Supported" },
+  { value: "24hr", label: "Personal Response Time" },
   { value: "100%", label: "NDIS & DVA Registered" },
 ] as const;
 
@@ -130,32 +151,21 @@ export const HOMEPAGE_TESTIMONIALS = [
   },
 ] as const;
 
-export const HOMEPAGE_AREAS = [
-  {
-    region: "Inner West",
-    suburbs: ["Strathfield", "Burwood", "Ashfield", "Concord", "Homebush", "Croydon"],
-  },
-  {
-    region: "Sydney CBD & East",
-    suburbs: ["Sydney CBD", "Surry Hills", "Bondi", "Randwick", "Paddington", "Woollahra"],
-  },
-  {
-    region: "North Shore",
-    suburbs: ["Chatswood", "North Sydney", "Lane Cove", "Willoughby", "Mosman", "Neutral Bay"],
-  },
-  {
-    region: "Western Sydney",
-    suburbs: ["Parramatta", "Blacktown", "Penrith", "Liverpool", "Bankstown", "Auburn"],
-  },
-  {
-    region: "South Sydney",
-    suburbs: ["Hurstville", "Kogarah", "Sutherland", "Cronulla", "Rockdale", "Mascot"],
-  },
-  {
-    region: "Northern Beaches",
-    suburbs: ["Manly", "Dee Why", "Brookvale", "Mona Vale", "Narrabeen", "Avalon"],
-  },
-] as const;
+/** Re-export single source for areas (GMB-aligned). Use AREAS_SERVED from areas-served.ts elsewhere. */
+export { AREAS_SERVED as HOMEPAGE_AREAS } from "./areas-served";
+
+/** Inline CTA bands between sections — warm, low-pressure, quick response */
+export const HOMEPAGE_INLINE_CTAS = {
+  afterWhoWeHelp: "Not sure where to start? We're happy to talk it through — and we'll get back to you quickly.",
+  afterWhyDifferent: "Ready to take the next step? Reach out and you'll hear from us within 24 hours.",
+} as const;
+
+/** Final CTA section — reassuring close, quick response */
+export const HOMEPAGE_FINAL_CTA = {
+  title: "We're Here to Help",
+  description:
+    "Request care or ask a question — you'll get a personal response within 24 hours and clear next steps. No obligation, no runaround.",
+} as const;
 
 export const HOMEPAGE_FAQ = [
   {
@@ -168,24 +178,30 @@ export const HOMEPAGE_FAQ = [
     id: "who-can-access",
     question: "Who can access your services?",
     answer:
-      "We support NDIS participants, DVA clients, aged care recipients, and private clients. If you or someone you care for needs in-home nursing or personal care, we can help. Contact us or use our AI assistant to discuss eligibility.",
+      "We support NDIS participants, DVA clients, aged care recipients, and private clients. If you or someone you care for needs in-home nursing or personal care, we can help. Get in touch and we'll talk through what might work for you.",
   },
   {
     id: "response-time",
     question: "How quickly do you respond?",
     answer:
-      "We aim to respond to all enquiries within 24–48 hours. For urgent referrals, we prioritise and will get back to you as soon as possible.",
+      "You'll get an immediate confirmation when you submit an enquiry. Our team is notified straight away and a real person will get back to you within 24 hours — often same day for urgent referrals. We don't leave people waiting.",
   },
   {
     id: "funding",
     question: "What funding do you accept?",
     answer:
-      "We accept NDIS, DVA, aged care (Home Care Packages, CHSP), and private funding. Our team can help you understand your options and what may apply to your situation.",
+      "We accept NDIS, DVA, aged care (Home Care Packages, CHSP), and private funding. Our team will help you understand your options in plain language.",
   },
   {
     id: "make-referral",
     question: "How do I make a referral?",
     answer:
-      "Use our Request Care form to submit an enquiry. Include the client's details, care needs, and funding type. We'll review and respond quickly. Support coordinators and discharge planners can also contact us directly.",
+      "Use our Request Care form with the client's details, care needs, and funding type. You'll receive confirmation that we've got it, and we'll respond with clear next steps within 24 hours. Support coordinators and discharge planners can also contact us directly.",
+  },
+  {
+    id: "immediate-help",
+    question: "Can I get help right away?",
+    answer:
+      "Yes. You can call us anytime during business hours, or use the voice assistant on this site for immediate guidance. For non-urgent enquiries, the Request Care form gets you a personal response within 24 hours.",
   },
 ] as const;

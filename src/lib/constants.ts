@@ -45,5 +45,6 @@ export const CTA_LINKS = {
   callUs: { href: SITE.phoneHref, label: "Call us" },
 } as const;
 
-/** Reassurance line shown next to CTAs (e.g. response time). */
-export const CTA_REASSURANCE = "We respond within 24–48 hours. No obligation.";
+/** Reassurance line below hero CTAs — calm, no pressure, quick response. */
+export const CTA_REASSURANCE =
+  "No obligation. We'll acknowledge your message quickly and get back to you within 24 hours — we're here to listen and help.";

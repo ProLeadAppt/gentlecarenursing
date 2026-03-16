@@ -54,7 +54,7 @@ export function Footer({
   return (
     <footer
       id="site-footer"
-      className="bg-[hsl(210,50%,14%)] text-white/90"
+      className="bg-primary text-white/90"
       role="contentinfo"
     >
       <Container>

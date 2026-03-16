@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { Phone } from "lucide-react";
 import { SITE, CTA_LINKS } from "@/lib/constants";
+import { useFormModal } from "@/contexts/FormModalContext";
 import { cn } from "@/lib/utils";
 
 export function MobileCta() {
   const [visible, setVisible] = useState(false);
+  const { openModal } = useFormModal();
 
   useEffect(() => {
     const hero = document.getElementById("hero-heading");
@@ -66,12 +67,13 @@ export function MobileCta() {
             <Phone className="h-5 w-5" />
           </a>
         )}
-        <Link
-          href={CTA_LINKS.requestCare.href}
+        <button
+          type="button"
+          onClick={() => openModal("referral")}
           className="flex h-12 flex-1 items-center justify-center rounded-xl bg-accent font-semibold text-white shadow-md transition-all duration-150 hover:bg-accent/90 active:scale-[0.98]"
         >
           {CTA_LINKS.requestCare.label}
-        </Link>
+        </button>
       </div>
     </div>
   );

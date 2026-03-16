@@ -24,7 +24,7 @@ export function ProcessSteps({
   cta,
 }: ProcessStepsProps) {
   return (
-    <Section>
+    <Section size="lg">
       <Container>
         <SectionHeader title={title} subtitle={subtitle} />
         <div className="relative mt-14 grid gap-10 sm:grid-cols-3 sm:gap-8">

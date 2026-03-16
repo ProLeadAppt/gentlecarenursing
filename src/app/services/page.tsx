@@ -9,6 +9,7 @@ import { Heading } from "@/components/ui/Heading";
 import { CTA_LINKS } from "@/lib/constants";
 import { createMetadata } from "@/lib/metadata";
 import { SERVICES } from "@/content/services";
+import { GMB_SERVICES } from "@/content/gmb-services";
 
 export const metadata = createMetadata({
   title: "Our Services",
@@ -73,6 +74,41 @@ export default function ServicesPage() {
                 ))}
               </tbody>
             </table>
+          </div>
+        </Container>
+      </Section>
+
+      {/* All services we offer — GMB-aligned list */}
+      <Section variant="muted">
+        <Container size="md">
+          <Heading level="h2" as="h2" className="mb-2 text-center">
+            All services we offer
+          </Heading>
+          <p className="mx-auto mb-8 max-w-2xl text-center text-muted-foreground">
+            We offer {GMB_SERVICES.length}+ in-home nursing and care services across Sydney. Names match our service profile for your reference.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {GMB_SERVICES.map((service) => (
+              <div
+                key={service.name}
+                className="flex items-start justify-between gap-2 rounded-xl border border-border bg-card px-4 py-3"
+              >
+                <div>
+                  <p className="font-medium text-foreground">{service.name}</p>
+                  {service.description && (
+                    <p className="mt-0.5 text-sm text-muted-foreground">{service.description}</p>
+                  )}
+                </div>
+                {service.href && (
+                  <Link
+                    href={service.href}
+                    className="shrink-0 text-sm font-medium text-primary hover:underline"
+                  >
+                    Learn more
+                  </Link>
+                )}
+              </div>
+            ))}
           </div>
         </Container>
       </Section>

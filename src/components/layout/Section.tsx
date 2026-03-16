@@ -18,11 +18,11 @@ const sizeStyles: Record<SectionSize, string> = {
 
 const variantStyles: Record<SectionVariant, string> = {
   default: "bg-background",
-  muted: "bg-[hsl(210,20%,95%)]",
+  muted: "bg-muted",
   card: "bg-card",
   primary: "bg-gradient-to-br from-primary via-primary to-primary-light text-primary-foreground",
-  accent: "bg-accent/8",
-  gradient: "bg-gradient-to-b from-primary/[0.04] to-background",
+  accent: "bg-accent/[0.06]",
+  gradient: "bg-gradient-to-b from-accent/[0.05] to-background",
 };
 
 export function Section({

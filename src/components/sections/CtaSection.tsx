@@ -14,17 +14,20 @@ interface CtaSectionProps {
   description?: string;
   primaryCta: CtaLink;
   secondaryCta?: CtaLink;
-  /** Short reassurance line (e.g. "We respond within 24–48 hours.") */
   reassurance?: string;
+  /** When set, primary CTA fires onClick instead of navigating */
+  onPrimaryClick?: () => void;
+  /** When set, secondary CTA fires onClick instead of navigating */
+  onSecondaryClick?: () => void;
   variant?: CtaSectionVariant;
   className?: string;
 }
 
 const variantStyles: Record<CtaSectionVariant, string> = {
-  primary: "bg-gradient-to-br from-[hsl(210,50%,18%)] via-primary to-primary-light text-white",
-  muted: "bg-[hsl(210,20%,95%)] text-foreground",
+  primary: "bg-gradient-to-br from-primary via-primary to-primary-light text-white",
+  muted: "bg-muted text-foreground",
   outline: "border-y border-border bg-card text-foreground",
-  accent: "bg-accent/8 text-foreground",
+  accent: "bg-accent/[0.08] text-foreground",
 };
 
 export function CtaSection({
@@ -33,6 +36,8 @@ export function CtaSection({
   primaryCta,
   secondaryCta,
   reassurance,
+  onPrimaryClick,
+  onSecondaryClick,
   variant = "primary",
   className,
 }: CtaSectionProps) {
@@ -41,7 +46,7 @@ export function CtaSection({
   return (
     <section
       className={cn(
-        "relative overflow-hidden py-16 sm:py-20",
+        "relative overflow-hidden py-20 sm:py-28",
         variantStyles[variant],
         className
       )}
@@ -78,7 +83,8 @@ export function CtaSection({
           )}
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button
-              href={primaryCta.href}
+              href={onPrimaryClick ? undefined : primaryCta.href}
+              onClick={onPrimaryClick}
               size="lg"
               variant={isInverted ? "inverted" : "primary"}
             >
@@ -86,7 +92,8 @@ export function CtaSection({
             </Button>
             {secondaryCta && (
               <Button
-                href={secondaryCta.href}
+                href={onSecondaryClick ? undefined : secondaryCta.href}
+                onClick={onSecondaryClick}
                 variant={isInverted ? "invertedOutline" : "outline"}
                 size="lg"
               >

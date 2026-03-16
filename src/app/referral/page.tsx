@@ -14,7 +14,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Request Care",
   description:
-    "Request care, make a referral, or book a consultation with Gentle Care Nursing. Simple process, fast response.",
+    "Request care or make a referral. You'll get immediate confirmation and a personal response within 24 hours with clear next steps.",
 });
 
 const REFERRAL_STEPS = [
@@ -22,19 +22,19 @@ const REFERRAL_STEPS = [
     number: 1,
     headline: "Submit your enquiry",
     description:
-      "Fill out the form below with your details and care needs. The more information you provide, the faster we can help.",
+      "Fill out the form below with your details and care needs. You'll get immediate confirmation that we've received it.",
   },
   {
     number: 2,
-    headline: "We review and respond",
+    headline: "We acknowledge and respond",
     description:
-      "Our team reviews your enquiry and contacts you within 24–48 hours to discuss next steps.",
+      "Our team is notified straight away. A real person will contact you within 24 hours with supportive guidance and clear next steps.",
   },
   {
     number: 3,
     headline: "Care is arranged",
     description:
-      "We conduct an assessment, create a tailored care plan, and arrange for care to begin as soon as possible.",
+      "We conduct an assessment, create a tailored care plan, and arrange for care to begin. You'll always know what happens next.",
   },
 ] as const;
 
@@ -49,8 +49,8 @@ export default function ReferralPage() {
           </Heading>
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground sm:text-xl">
             Whether you&apos;re a family member, support coordinator, discharge
-            planner, or healthcare professional — submit your enquiry below and
-            we&apos;ll respond quickly.
+            planner, or healthcare professional — submit below and you&apos;ll get
+            immediate confirmation and a personal response within 24 hours.
           </p>
         </Container>
       </Section>
@@ -66,7 +66,7 @@ export default function ReferralPage() {
         <Container size="sm">
           <SectionHeader
             title="Submit Your Enquiry"
-            subtitle="Fill out the form below and we'll be in touch within 24–48 hours."
+            subtitle="You'll receive confirmation straight away. Our team will get back to you within 24 hours with clear next steps."
           />
           <div className="mt-10">
             <Card variant="default" className="p-8">
@@ -83,20 +83,20 @@ export default function ReferralPage() {
           <Grid cols={3} gap="lg" className="mt-10">
             <div className="text-center">
               <Heading level="h3" as="h3" className="text-lg">
-                We Review Your Enquiry
+                Immediate Confirmation
               </Heading>
               <p className="mt-2 text-sm text-muted-foreground">
-                Our team reads every enquiry carefully and prepares to contact
-                you with the right information.
+                You&apos;ll get confirmation that we&apos;ve received your enquiry
+                right away. Our team is notified immediately.
               </p>
             </div>
             <div className="text-center">
               <Heading level="h3" as="h3" className="text-lg">
-                We Contact You
+                Personal Response Within 24 Hours
               </Heading>
               <p className="mt-2 text-sm text-muted-foreground">
-                We&apos;ll reach out within 24–48 hours to discuss your needs,
-                answer questions, and explain your options.
+                A real person will contact you with supportive guidance, clear
+                next steps, and answers to your questions.
               </p>
             </div>
             <div className="text-center">

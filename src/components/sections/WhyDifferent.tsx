@@ -3,10 +3,10 @@ import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "./SectionHeader";
 import { Heading } from "@/components/ui/Heading";
-import { UserCheck, Sparkles, Zap, ShieldCheck } from "lucide-react";
+import { UserCheck, Sparkles, Zap, ShieldCheck, MessageCircle } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-const DIFF_ICONS: LucideIcon[] = [UserCheck, Sparkles, Zap, ShieldCheck];
+const DIFF_ICONS: LucideIcon[] = [UserCheck, Sparkles, Zap, ShieldCheck, MessageCircle];
 
 export interface DifferentiatorItem {
   headline: string;
@@ -30,7 +30,7 @@ export function WhyDifferent({
   imageAlt = "Gentle Care nurse supporting an elderly client at home",
 }: WhyDifferentProps) {
   return (
-    <Section variant="muted">
+    <Section variant="default">
       <Container>
         <SectionHeader title={title} subtitle={subtitle} size="lg" />
         <div className="mt-12 grid items-center gap-12 lg:grid-cols-2">

@@ -4,10 +4,10 @@ import { Grid } from "@/components/layout/Grid";
 import { SectionHeader } from "./SectionHeader";
 import { TrustBar } from "./TrustBar";
 import { FaqPreview } from "./FaqPreview";
-import { CtaSection } from "./CtaSection";
+import { ServiceCtaWithModal } from "./ServiceCtaWithModal";
 import { Heading } from "@/components/ui/Heading";
 import { Card } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
+import { FormModalTrigger } from "@/components/ui/FormModalTrigger";
 import { CTA_LINKS } from "@/lib/constants";
 import { getServiceSchema, getFaqSchema } from "@/lib/schema";
 import { SERVICES } from "@/content/services";
@@ -76,7 +76,7 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
       />
 
       {/* Dark gradient hero — matches homepage hero treatment */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[hsl(210,50%,18%)] via-primary to-primary-light py-16 sm:py-20 lg:py-24">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary to-primary-light py-16 sm:py-20 lg:py-24">
         <div className="pointer-events-none absolute inset-0 opacity-[0.04]" aria-hidden>
           <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -108,12 +108,12 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
             {data.intro}
           </p>
           <div className="mt-8 flex justify-center gap-4">
-            <Button href={CTA_LINKS.requestCare.href} size="lg" variant="inverted">
+            <FormModalTrigger formType="referral" size="lg" variant="inverted">
               {CTA_LINKS.requestCare.label}
-            </Button>
-            <Button href={CTA_LINKS.contact.href} variant="invertedOutline" size="lg">
+            </FormModalTrigger>
+            <FormModalTrigger formType="contact" variant="invertedOutline" size="lg">
               {CTA_LINKS.contact.label}
-            </Button>
+            </FormModalTrigger>
           </div>
         </Container>
       </section>
@@ -224,12 +224,9 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
       </Section>
 
       {/* CTA */}
-      <CtaSection
+      <ServiceCtaWithModal
         title={data.cta.title}
         description={data.cta.description}
-        primaryCta={CTA_LINKS.requestCare}
-        secondaryCta={CTA_LINKS.contact}
-        variant="primary"
       />
     </>
   );

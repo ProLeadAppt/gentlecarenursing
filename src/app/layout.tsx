@@ -5,6 +5,8 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileCta } from "@/components/layout/MobileCta";
+import { FormModalProvider } from "@/contexts/FormModalContext";
+import { FormModal } from "@/components/ui/FormModal";
 import { getLocalBusinessSchema, getWebsiteSchema } from "@/lib/schema";
 
 const sourceSans = Source_Sans_3({
@@ -86,6 +88,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col antialiased">
+        <FormModalProvider>
         <a
           href="#main-content"
           className="fixed left-4 top-4 z-[100] -translate-y-16 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-lg transition focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
@@ -98,6 +101,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <MobileCta />
+        <FormModal />
 
         {gaId && (
           <>
@@ -110,6 +114,7 @@ export default function RootLayout({
             </Script>
           </>
         )}
+        </FormModalProvider>
       </body>
     </html>
   );

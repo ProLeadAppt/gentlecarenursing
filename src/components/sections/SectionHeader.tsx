@@ -44,7 +44,9 @@ export function SectionHeader({
         {title}
       </Heading>
       {subtitle && (
-        <p className={cn("mt-4", subtitleSizeClasses[size])}>{subtitle}</p>
+        <p className={cn("mt-4 max-w-2xl", align === "center" ? "mx-auto" : "", subtitleSizeClasses[size])}>
+          {subtitle}
+        </p>
       )}
     </div>
   );

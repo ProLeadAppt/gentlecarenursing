@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Grid } from "@/components/layout/Grid";
 import { Section } from "@/components/layout/Section";
@@ -23,16 +24,33 @@ interface WhoWeHelpProps {
   title?: string;
   subtitle?: string;
   audiences: readonly AudienceItem[];
+  /** Optional section-level image (e.g. family/carer or nurse with client) */
+  sectionImage?: string;
+  sectionImageAlt?: string;
 }
 
 export function WhoWeHelp({
   title = "Who We Help",
   subtitle = "We support families, coordinators, and healthcare professionals.",
   audiences,
+  sectionImage,
+  sectionImageAlt = "In-home nursing and care",
 }: WhoWeHelpProps) {
   return (
     <Section variant="default" size="lg">
       <Container>
+        {sectionImage && (
+          <div className="relative mx-auto mb-10 max-w-2xl overflow-hidden rounded-2xl">
+            <Image
+              src={sectionImage}
+              alt={sectionImageAlt}
+              width={800}
+              height={450}
+              className="h-auto w-full object-cover"
+              sizes="(max-width: 1024px) 100vw, 800px"
+            />
+          </div>
+        )}
         <SectionHeader title={title} subtitle={subtitle} size="lg" />
         <Grid cols={4} gap="lg" className="mt-12">
           {audiences.map((audience) => {

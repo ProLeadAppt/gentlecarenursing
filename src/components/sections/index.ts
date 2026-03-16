@@ -1,7 +1,7 @@
 /**
  * Section components.
  */
-export { AiAssistantSection } from "./AiAssistantSection";
+export { QuickResponseSection } from "./QuickResponseSection";
 export { CtaSection } from "./CtaSection";
 export type { CtaLink } from "./CtaSection";
 export { FaqAccordion } from "./FaqAccordion";
