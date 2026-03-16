@@ -27,6 +27,8 @@ interface WhoWeHelpProps {
   /** Optional section-level image (e.g. family/carer or nurse with client) */
   sectionImage?: string;
   sectionImageAlt?: string;
+  /** Optional section background variant (used by homepage for alternation) */
+  sectionVariant?: "default" | "muted" | "card" | "primary" | "accent" | "gradient" | "teal";
 }
 
 export function WhoWeHelp({
@@ -35,9 +37,10 @@ export function WhoWeHelp({
   audiences,
   sectionImage,
   sectionImageAlt = "In-home nursing and care",
+  sectionVariant = "default",
 }: WhoWeHelpProps) {
   return (
-    <Section variant="default" size="lg">
+    <Section variant={sectionVariant} size="xl">
       <Container>
         {sectionImage && (
           <div className="relative mx-auto mb-10 max-w-2xl overflow-hidden rounded-2xl">

@@ -58,6 +58,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: "/images/gentle%20care%20nursing%20favicon.jpg",
+  },
 };
 
 export const viewport: Viewport = {

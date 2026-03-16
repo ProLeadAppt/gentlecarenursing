@@ -18,6 +18,8 @@ interface TestimonialsProps {
   /** Label above the grid (e.g. "Trusted by families and professionals") */
   label?: string;
   testimonials: readonly Testimonial[];
+  /** Optional section background variant (used by homepage for alternation) */
+  sectionVariant?: "default" | "muted" | "card" | "primary" | "accent" | "gradient" | "teal";
 }
 
 export function Testimonials({
@@ -25,9 +27,10 @@ export function Testimonials({
   subtitle = "Trusted by families, support coordinators, and healthcare professionals.",
   label = "Trusted by families and professionals",
   testimonials,
+  sectionVariant = "gradient",
 }: TestimonialsProps) {
   return (
-    <Section variant="gradient">
+    <Section variant={sectionVariant} size="lg">
       <Container>
         <Reveal>
           <SectionHeader title={title} subtitle={subtitle} />

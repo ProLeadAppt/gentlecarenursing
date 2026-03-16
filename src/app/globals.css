@@ -34,6 +34,9 @@
   /* Warm cream for alternate sections (softer than muted) */
   --color-warm-cream: 48 25% 96%;
 
+  /* Soft teal for alternating homepage sections (#E8F4F3) */
+  --color-section-teal: 174 58% 94%;
+
   /* Semantic — warm sage green for trust */
   --color-trust: 152 20% 40%;
   --color-success: 152 22% 44%;
@@ -84,6 +87,7 @@
   --color-border: hsl(var(--color-border));
   --color-card: hsl(var(--color-card));
   --color-warm-cream: hsl(var(--color-warm-cream));
+  --color-section-teal: hsl(var(--color-section-teal));
   --color-destructive: hsl(var(--color-destructive));
   --color-destructive-foreground: hsl(var(--color-destructive-foreground));
   --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;

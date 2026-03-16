@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { StatsBar } from "@/components/sections/StatsBar";
+import { ReassuranceSection } from "@/components/sections/ReassuranceSection";
 import { WhoWeHelp } from "@/components/sections/WhoWeHelp";
 import { ServiceCards } from "@/components/sections/ServiceCards";
 import { WhyDifferent } from "@/components/sections/WhyDifferent";
@@ -12,12 +13,14 @@ import { AreasWeServe } from "@/components/sections/AreasWeServe";
 import { HomepageCtaSections } from "@/components/sections/HomepageCtaSections";
 import { CtaSection } from "@/components/sections/CtaSection";
 import Link from "next/link";
-import { CTA_LINKS } from "@/lib/constants";
+import { CTA_LINKS, HERO_REASSURANCE } from "@/lib/constants";
 import { getHowToSchema } from "@/lib/schema";
 import {
   HOMEPAGE_HERO,
+  REASSURANCE_SECTION,
   WHO_WE_HELP,
   WHY_DIFFERENT,
+  HOMEPAGE_SERVICES_IMAGE,
   PROCESS_STEPS,
   HOMEPAGE_STATS,
   HOMEPAGE_TESTIMONIALS,
@@ -49,19 +52,34 @@ export default function HomePage() {
         valuePills={HOMEPAGE_HERO.valuePills}
         primaryCta={CTA_LINKS.requestCare}
         secondaryCta={CTA_LINKS.contact}
+        reassurance={HERO_REASSURANCE}
+        imageSrc={HOMEPAGE_HERO.heroImageSrc}
+        imageAlt={HOMEPAGE_HERO.heroImageAlt}
       />
 
       <TrustBar variant="muted" />
 
       <StatsBar stats={HOMEPAGE_STATS} />
 
-      <div className="border-t border-border/50">
+      <div className="border-t border-border/30">
+        <ReassuranceSection
+          headline={REASSURANCE_SECTION.headline}
+          problems={REASSURANCE_SECTION.problems}
+          transitionLine={REASSURANCE_SECTION.transitionLine}
+          sectionVariant="teal"
+        />
+      </div>
+
+      <div className="border-t border-border/30">
         <WhoWeHelp
           title={WHO_WE_HELP.title}
           subtitle={WHO_WE_HELP.subtitle}
           audiences={WHO_WE_HELP.audiences}
+          sectionImage={WHO_WE_HELP.sectionImage}
+          sectionImageAlt={WHO_WE_HELP.sectionImageAlt}
+          sectionVariant="default"
         />
-        <div className="border-t border-border/50 bg-muted/50 py-6">
+        <div className="border-t border-border/30 bg-muted/50 py-6">
           <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
             <p className="text-sm text-muted-foreground">{HOMEPAGE_INLINE_CTAS.afterWhoWeHelp}</p>
             <Link
@@ -74,19 +92,25 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="border-t border-border/50">
+      <div className="border-t border-border/30">
         <ServiceCards
           subtitle="Personalised in-home nursing and care for NDIS, DVA, aged care, and private clients. We're here to support you or someone you love."
+          sectionImage={HOMEPAGE_SERVICES_IMAGE.sectionImage}
+          sectionImageAlt={HOMEPAGE_SERVICES_IMAGE.sectionImageAlt}
+          sectionVariant="teal"
         />
       </div>
 
-      <div className="border-t border-border/50">
+      <div className="border-t border-border/30">
         <WhyDifferent
           title={WHY_DIFFERENT.title}
           subtitle={WHY_DIFFERENT.subtitle}
           differentiators={WHY_DIFFERENT.differentiators}
+          imageSrc={WHY_DIFFERENT.imageSrc}
+          imageAlt={WHY_DIFFERENT.imageAlt}
+          sectionVariant="default"
         />
-        <div className="border-t border-border/50 bg-muted/50 py-6">
+        <div className="border-t border-border/30 bg-muted/50 py-6">
           <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
             <p className="text-sm text-muted-foreground">{HOMEPAGE_INLINE_CTAS.afterWhyDifferent}</p>
             <Link
@@ -99,25 +123,27 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="border-t border-border/50">
+      <div className="border-t border-border/30">
         <Testimonials
           testimonials={HOMEPAGE_TESTIMONIALS}
           title="What Families & Partners Say"
           subtitle="Hear from those who've trusted us with their care, and why they feel confident we'll look after them."
           label="Stories from families and professionals"
+          sectionVariant="teal"
         />
       </div>
 
-      <div className="border-t border-border/50">
+      <div className="border-t border-border/30">
         <ProcessSteps
           title={PROCESS_STEPS.title}
           subtitle={PROCESS_STEPS.subtitle}
           steps={PROCESS_STEPS.steps}
           cta={CTA_LINKS.requestCare}
+          sectionVariant="default"
         />
       </div>
 
-      <div className="border-t border-border/50">
+      <div className="border-t border-border/30">
         <QuickResponseSection
           title={GET_IN_TOUCH.title}
           subtitle={GET_IN_TOUCH.subtitle}
@@ -127,6 +153,7 @@ export default function HomePage() {
           secondaryCtaHref={CTA_LINKS.contact.href}
           benefits={GET_IN_TOUCH.benefits}
           voiceAssistantLine={GET_IN_TOUCH.voiceAssistantLine}
+          sectionVariant="teal"
         />
       </div>
 
@@ -134,19 +161,21 @@ export default function HomePage() {
         <HomepageCtaSections />
       </div>
 
-      <div className="border-t border-border/50">
+      <div className="border-t border-border/30">
         <FaqPreview
           items={HOMEPAGE_FAQ}
           title="Common Questions"
           subtitle="Quick answers to things people often ask. We're happy to explain more. Just get in touch."
+          sectionVariant="default"
         />
       </div>
 
-      <div className="border-t border-border/50">
+      <div className="border-t border-border/30">
         <AreasWeServe
           areas={HOMEPAGE_AREAS}
           title="Areas We Serve"
           subtitle="We provide in-home nursing and care across Sydney and surrounds. Wherever you are in the region, we're here to help."
+          sectionVariant="teal"
         />
       </div>
 

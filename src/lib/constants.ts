@@ -48,3 +48,7 @@ export const CTA_LINKS = {
 /** Reassurance line below hero CTAs: calm, no pressure, quick response. */
 export const CTA_REASSURANCE =
   "No obligation. We'll acknowledge your message quickly and get back to you within 24 hours. We're here to listen and help.";
+
+/** Hero-specific reassurance under CTAs (Gemma notified). */
+export const HERO_REASSURANCE =
+  "Submit an enquiry and Gemma will be notified immediately so your request can be reviewed quickly.";

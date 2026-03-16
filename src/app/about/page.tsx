@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Grid } from "@/components/layout/Grid";
@@ -47,6 +48,22 @@ export default function AboutPage() {
       </Section>
 
       <TrustBar variant="muted" />
+
+      {/* Care moment image */}
+      <Section>
+        <Container size="md">
+          <div className="relative mx-auto max-w-3xl overflow-hidden rounded-2xl">
+            <Image
+              src="/images/national-cancer-institute-BxXgTQEw1M4-unsplash.webp"
+              alt="A moment of gentle, supportive care in a home setting"
+              width={800}
+              height={533}
+              className="h-auto w-full object-cover"
+              sizes="(max-width: 1024px) 100vw, 800px"
+            />
+          </div>
+        </Container>
+      </Section>
 
       {/* Mission */}
       <Section>

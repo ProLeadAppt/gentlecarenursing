@@ -2,7 +2,9 @@ import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { Heading } from "@/components/ui/Heading";
-import { CTA_REASSURANCE } from "@/lib/constants";
+import { TYPOGRAPHY } from "@/design-system/tokens";
+import { HERO_REASSURANCE } from "@/lib/constants";
+import { Check } from "lucide-react";
 
 export interface HeroCta {
   href: string;
@@ -16,8 +18,10 @@ interface HeroProps {
   trustLine?: string;
   primaryCta: HeroCta;
   secondaryCta?: HeroCta;
-  /** Value pills shown between subheadline and CTAs */
+  /** Trust bullets shown below reassurance (with Check icons) */
   valuePills?: readonly string[];
+  /** Reassurance line under CTAs (default: HERO_REASSURANCE with Gemma) */
+  reassurance?: string;
   imageSrc?: string;
   imageAlt?: string;
 }
@@ -29,92 +33,89 @@ export function Hero({
   primaryCta,
   secondaryCta,
   valuePills,
-  imageSrc = "/images/hero-hands.webp",
-  imageAlt = "Caring hands. Personalised in-home nursing support",
+  reassurance = HERO_REASSURANCE,
+  imageSrc = "/images/carer-elderly.webp",
+  imageAlt = "Nurse assisting a patient in a home environment",
 }: HeroProps) {
   return (
     <section
-      className="relative overflow-hidden bg-gradient-to-br from-primary via-primary to-primary-light py-24 sm:py-28 lg:py-36"
+      className="relative min-h-[28rem] lg:min-h-[80vh] overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      <div className="absolute inset-0" aria-hidden>
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          fill
-          className="object-cover object-center opacity-[0.07]"
-          priority
-          sizes="(max-width: 768px) 100vw, 1200px"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/88 via-primary/75 to-primary-light/75" />
-      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-12 xl:gap-16 lg:items-center">
+        {/* Left column: warm light background, copy + CTAs + reassurance + trust bullets */}
+        <div className="order-1 flex flex-col justify-center bg-background py-16 sm:py-20 lg:py-24">
+          <Container size="lg" className="relative">
+            <div className="max-w-xl">
+              {trustLine && (
+                <p className="mb-5 text-sm font-medium tracking-wide text-muted-foreground sm:text-base">
+                  {trustLine}
+                </p>
+              )}
+              <Heading
+                level="h1"
+                as="h1"
+                id="hero-heading"
+                className={TYPOGRAPHY.heading.h1 + " text-foreground text-4xl sm:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] leading-tight mb-6"}
+              >
+                {headline}
+              </Heading>
+              {subheadline && (
+                <p className="text-lg sm:text-xl leading-relaxed text-muted-foreground mt-2">
+                  {subheadline}
+                </p>
+              )}
 
-      <div className="pointer-events-none absolute inset-0 opacity-[0.03]" aria-hidden>
-        <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="hero-dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1" fill="white" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#hero-dots)" />
-        </svg>
-      </div>
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+                <Button href={primaryCta.href} size="xl" variant="primary">
+                  {primaryCta.label}
+                </Button>
+                {secondaryCta && (
+                  <Button href={secondaryCta.href} variant="outline" size="xl">
+                    {secondaryCta.label}
+                  </Button>
+                )}
+              </div>
 
-      <div
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[700px] rounded-full bg-white/[0.04] blur-3xl"
-        aria-hidden
-      />
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground max-w-md">
+                {reassurance}
+              </p>
 
-      <Container size="md" className="relative">
-        <div className="mx-auto max-w-2xl text-center">
-          {trustLine && (
-            <p className="mb-6 text-sm font-medium tracking-wide text-white/60 sm:text-base">
-              {trustLine}
-            </p>
-          )}
-          <Heading
-            level="h1"
-            as="h1"
-            id="hero-heading"
-            className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-[3.25rem] lg:leading-[1.2]"
-          >
-            {headline}
-          </Heading>
-          {subheadline && (
-            <p className="mt-7 text-lg leading-relaxed text-white/85 sm:text-xl sm:leading-relaxed">
-              {subheadline}
-            </p>
-          )}
-
-          {valuePills && valuePills.length > 0 && (
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
-              {valuePills.map((pill) => (
-                <span
-                  key={pill}
-                  className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-medium text-white/80"
-                >
-                  {pill}
-                </span>
-              ))}
+              {valuePills && valuePills.length > 0 && (
+                <ul className="mt-8 flex flex-col gap-3" role="list">
+                  {valuePills.map((item) => (
+                    <li key={item} className="flex items-center gap-3">
+                      <span
+                        className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent"
+                        aria-hidden
+                      >
+                        <Check className="h-3.5 w-3.5" strokeWidth={2.5} />
+                      </span>
+                      <span className="text-sm font-medium text-foreground sm:text-base">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
-          )}
-
-          <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button href={primaryCta.href} size="xl" variant="inverted">
-              {primaryCta.label}
-            </Button>
-            {secondaryCta && (
-              <Button href={secondaryCta.href} variant="invertedOutline" size="xl">
-                {secondaryCta.label}
-              </Button>
-            )}
-          </div>
-
-          <p className="mt-10 max-w-md mx-auto text-[0.9375rem] leading-relaxed text-white/75">
-            {CTA_REASSURANCE}
-          </p>
+          </Container>
         </div>
-      </Container>
+
+        {/* Right column: large hero image */}
+        <div className="order-2 relative h-[24rem] min-h-[24rem] w-full lg:min-h-[32rem] lg:h-[80vh] lg:max-h-[42rem]">
+          <div className="absolute inset-0 overflow-hidden rounded-xl shadow-xl lg:rounded-l-2xl lg:rounded-r-none">
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              fill
+              className="object-cover object-center"
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

@@ -10,6 +10,8 @@ interface FaqPreviewProps {
   items: readonly { id: string; question: string; answer: string }[];
   viewAllHref?: string;
   viewAllLabel?: string;
+  /** Optional section background variant (used by homepage for alternation) */
+  sectionVariant?: "default" | "muted" | "card" | "primary" | "accent" | "gradient" | "teal";
 }
 
 export function FaqPreview({
@@ -18,6 +20,7 @@ export function FaqPreview({
   items,
   viewAllHref = "/faq",
   viewAllLabel = "View all FAQs",
+  sectionVariant = "muted",
 }: FaqPreviewProps) {
   const faqItems: FaqItem[] = items.map((item) => ({
     id: item.id,
@@ -26,7 +29,7 @@ export function FaqPreview({
   }));
 
   return (
-    <Section variant="muted">
+    <Section variant={sectionVariant} size="lg">
       <Container>
         <SectionHeader title={title} subtitle={subtitle} />
         <div className="mx-auto mt-12 max-w-2xl">

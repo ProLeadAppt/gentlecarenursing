@@ -11,6 +11,20 @@ export const HOMEPAGE_HERO = {
     "In-home nursing and support across Sydney, for you or someone you love. We're here from the first conversation to ongoing care, and we respond quickly because we know that matters.",
   /** Value pills: soft, trust-focused, not badge-y */
   valuePills: ["We reply within 24 hours", "Registered & trusted", "Care tailored to you", "Here for Sydney"] as const,
+  /** Hero image (right column). Default: carer-elderly. */
+  heroImageSrc: "/images/carer-elderly.webp",
+  heroImageAlt: "Nurse assisting a patient in a home environment",
+} as const;
+
+/** Emotional challenges section (after StatsBar): acknowledges what families face */
+export const REASSURANCE_SECTION = {
+  headline: "Finding the Right Care Should Feel Reassuring, Not Overwhelming.",
+  problems: [
+    "Reliable carers can be difficult to find.",
+    "Families want reassurance their loved ones are safe.",
+    "Coordinating support services can feel complicated.",
+  ] as const,
+  transitionLine: "That's exactly why Gentle Care Nursing exists.",
 } as const;
 
 /** One-line local proof (e.g. near first CTA or after TrustBar) */
@@ -24,6 +38,8 @@ export const WHO_WE_HELP = {
   title: "Who We Help",
   subtitle:
     "Whoever you are: a family looking for peace of mind, a coordinator needing a provider you can rely on, or a professional making a referral. We're here to help. No runaround, no long waits.",
+  sectionImage: "/images/age-cymru-2obyM4zYt3Y-unsplash.webp",
+  sectionImageAlt: "Older person and carer in a calm, supportive moment at home",
   audiences: [
     {
       label: "Families",
@@ -52,33 +68,36 @@ export const WHY_DIFFERENT = {
   title: "Why Gentle Care Is Different",
   subtitle:
     "We believe everyone deserves care that feels personal, professional, and reliable. Here's how we show up for you.",
+  imageSrc: "/images/age-cymru-bSXk1lOp8T0-unsplash.webp",
+  imageAlt: "Carer and client in a warm, personal moment of support at home",
   differentiators: [
     {
-      headline: "We take on fewer clients",
+      headline: "Personalised care plans",
       description:
-        "So each person gets more of our time and attention. You're not a number. You're someone we're committed to supporting well.",
+        "Your situation, health needs, and home life are unique. We listen carefully and create a care plan around you or your loved one, rather than forcing you into a one-size-fits-all service.",
     },
     {
-      headline: "Care built around you",
+      headline: "Experienced nursing team",
       description:
-        "Your situation is unique. We create care plans that fit you or your loved one, not a one-size-fits-all approach.",
+        "Gentle Care nurses bring years of clinical experience into the home, with the calm, professional support that helps people feel safe. Families and coordinators know there is a capable team standing behind every visit.",
     },
     {
-      headline: "Quick, clear communication",
+      headline: "Compassionate, dignified care",
       description:
-        "We know waiting for answers is stressful. We respond promptly and keep you informed so you're never left wondering.",
+        "Good care is about more than tasks. We take time to build trust, protect dignity, and support the emotional load families carry when someone they love needs extra help.",
     },
     {
-      headline: "Registered and trusted",
+      headline: "Responsive communication",
       description:
-        "Fully registered with NDIS and DVA. We meet the standards that matter to coordinators, planners, and families.",
-    },
-    {
-      headline: "A team that answers",
-      description:
-        "When you reach out, a real person follows up. No long waitlists or endless hold music. We're here to help.",
+        "We know waiting for a reply can be stressful. Enquiries submitted through this website are received straight away by our team so a real person can respond quickly with clear next steps and ongoing updates.",
     },
   ],
+} as const;
+
+/** Optional section image for Our Services (homepage). */
+export const HOMEPAGE_SERVICES_IMAGE = {
+  sectionImage: "/images/vitaly-gariev-Wk6f1CkGlEo-unsplash.webp",
+  sectionImageAlt: "Calm, professional in-home care moment",
 } as const;
 
 export const PROCESS_STEPS = {

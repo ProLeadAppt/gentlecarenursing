@@ -15,6 +15,8 @@ interface ProcessStepsProps {
   subtitle?: string;
   steps: readonly ProcessStep[];
   cta?: { href: string; label: string };
+  /** Optional section background variant (used by homepage for alternation) */
+  sectionVariant?: "default" | "muted" | "card" | "primary" | "accent" | "gradient" | "teal";
 }
 
 export function ProcessSteps({
@@ -22,9 +24,10 @@ export function ProcessSteps({
   subtitle = "From enquiry to care, we make it straightforward.",
   steps,
   cta,
+  sectionVariant = "default",
 }: ProcessStepsProps) {
   return (
-    <Section size="lg">
+    <Section size="xl" variant={sectionVariant}>
       <Container>
         <SectionHeader title={title} subtitle={subtitle} />
         <div className="relative mt-14 grid gap-10 sm:grid-cols-3 sm:gap-8">

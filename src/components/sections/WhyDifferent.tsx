@@ -20,6 +20,8 @@ interface WhyDifferentProps {
   /** Optional image to show alongside differentiators */
   imageSrc?: string;
   imageAlt?: string;
+  /** Optional section background variant (used by homepage for alternation) */
+  sectionVariant?: "default" | "muted" | "card" | "primary" | "accent" | "gradient" | "teal";
 }
 
 export function WhyDifferent({
@@ -28,9 +30,10 @@ export function WhyDifferent({
   differentiators,
   imageSrc = "/images/carer-elderly.webp",
   imageAlt = "Gentle Care nurse supporting an elderly client at home",
+  sectionVariant = "default",
 }: WhyDifferentProps) {
   return (
-    <Section variant="default">
+    <Section variant={sectionVariant} size="lg">
       <Container>
         <SectionHeader title={title} subtitle={subtitle} size="lg" />
         <div className="mt-12 grid items-center gap-12 lg:grid-cols-2">

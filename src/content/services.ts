@@ -8,6 +8,9 @@ import type { ServicePageData } from "@/components/sections/ServicePageLayout";
 export interface ServiceDefinition {
   slug: string;
   title: string;
+  /** One-line, outcome-focused benefit statement for the service */
+  benefitLine: string;
+  /** Short descriptive line used as supporting copy where needed */
   shortDescription: string;
   href: string;
 }
@@ -16,6 +19,7 @@ export const SERVICES: ServiceDefinition[] = [
   {
     slug: "ndis",
     title: "NDIS Services",
+    benefitLine: "Make NDIS care feel simpler, safer, and better coordinated.",
     shortDescription:
       "Registered NDIS provider. Personalised support for NDIS participants.",
     href: "/ndis",
@@ -23,6 +27,7 @@ export const SERVICES: ServiceDefinition[] = [
   {
     slug: "dva",
     title: "DVA & Community Nursing",
+    benefitLine: "Support veterans and their families with respectful, timely nursing at home.",
     shortDescription:
       "Community nursing and DVA-funded care for veterans.",
     href: "/dva",
@@ -30,12 +35,14 @@ export const SERVICES: ServiceDefinition[] = [
   {
     slug: "aged-care",
     title: "Aged Care / Support at Home",
+    benefitLine: "Help older Australians stay safe, comfortable, and independent at home.",
     shortDescription: "In-home support for older Australians.",
     href: "/aged-care",
   },
   {
     slug: "private-nursing",
     title: "Private Nursing & Personal Care",
+    benefitLine: "Access flexible, high-quality private nursing when you need it.",
     shortDescription: "Private in-home nursing and personal care.",
     href: "/private-nursing",
   },

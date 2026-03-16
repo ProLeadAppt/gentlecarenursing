@@ -15,6 +15,9 @@ export interface NavItem {
 
 export interface ServiceCard {
   title: string;
-  description: string;
+  /** One-line benefit statement shown prominently on the card */
+  benefit: string;
+  /** Optional supporting description for additional context */
+  description?: string;
   href: string;
 }

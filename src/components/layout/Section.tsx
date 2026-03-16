@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
 import { SPACING_SECTION } from "@/design-system/tokens";
 
-type SectionSize = "sm" | "md" | "lg";
-type SectionVariant = "default" | "muted" | "card" | "primary" | "accent" | "gradient";
+type SectionSize = "sm" | "md" | "lg" | "xl";
+type SectionVariant = "default" | "muted" | "card" | "primary" | "accent" | "gradient" | "teal";
 
 interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   size?: SectionSize;
@@ -14,6 +14,7 @@ const sizeStyles: Record<SectionSize, string> = {
   sm: SPACING_SECTION.pySm,
   md: SPACING_SECTION.py,
   lg: SPACING_SECTION.pyLg,
+  xl: SPACING_SECTION.pyXl,
 };
 
 const variantStyles: Record<SectionVariant, string> = {
@@ -23,6 +24,7 @@ const variantStyles: Record<SectionVariant, string> = {
   primary: "bg-gradient-to-br from-primary via-primary to-primary-light text-primary-foreground",
   accent: "bg-accent/[0.06]",
   gradient: "bg-gradient-to-b from-accent/[0.05] to-background",
+  teal: "bg-[hsl(var(--color-section-teal))]",
 };
 
 export function Section({

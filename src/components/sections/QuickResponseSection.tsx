@@ -21,6 +21,8 @@ export interface QuickResponseSectionProps {
   benefits?: readonly string[];
   /** Short line above chat/voice widgets, e.g. optional voice assistant for immediate help */
   voiceAssistantLine?: string;
+  /** Optional section background variant (used by homepage for alternation) */
+  sectionVariant?: "default" | "muted" | "card" | "primary" | "accent" | "gradient" | "teal";
 }
 
 export function QuickResponseSection({
@@ -32,13 +34,14 @@ export function QuickResponseSection({
   secondaryCtaHref = "/contact",
   benefits,
   voiceAssistantLine = "Need guidance right now? Use our voice assistant below for immediate help.",
+  sectionVariant = "accent",
 }: QuickResponseSectionProps) {
   const bullets = benefits?.length
     ? benefits.map((text, i) => ({ icon: [Phone, MessageCircle, HelpCircle][i % 3], text }))
     : DEFAULT_BENEFITS;
 
   return (
-    <Section variant="accent">
+    <Section variant={sectionVariant} size="lg">
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div>

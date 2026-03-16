@@ -23,6 +23,7 @@ export const SPACING_SECTION = {
   py: "py-20 sm:py-24",
   pySm: "py-16 sm:py-20",
   pyLg: "py-24 sm:py-32",
+  pyXl: "py-28 sm:py-36",
 } as const;
 
 export const TYPOGRAPHY = {

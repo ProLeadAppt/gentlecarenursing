@@ -15,15 +15,18 @@ interface AreasWeServeProps {
   title?: string;
   subtitle?: string;
   areas: readonly AreaGroup[];
+  /** Optional section background variant (used by homepage for alternation) */
+  sectionVariant?: "default" | "muted" | "card" | "primary" | "accent" | "gradient" | "teal";
 }
 
 export function AreasWeServe({
   title = "Areas We Serve",
   subtitle = "Providing in-home nursing and care across Sydney and surrounding regions.",
   areas,
+  sectionVariant = "muted",
 }: AreasWeServeProps) {
   return (
-    <Section id="areas-we-serve" variant="muted">
+    <Section id="areas-we-serve" variant={sectionVariant} size="lg">
       <Container>
         <Reveal>
           <SectionHeader title={title} subtitle={subtitle} />
