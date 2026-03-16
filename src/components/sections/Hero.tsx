@@ -42,7 +42,8 @@ export function Hero({
       className="relative min-h-[28rem] lg:min-h-[80vh] overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-12 xl:gap-16 lg:items-center">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 xl:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-12 xl:gap-16 lg:items-center">
         {/* Left column: warm light background, copy + CTAs + reassurance + trust bullets */}
         <div className="order-1 flex flex-col justify-center bg-background py-16 sm:py-20 lg:py-24">
           <Container size="lg" className="relative">
@@ -104,7 +105,7 @@ export function Hero({
 
         {/* Right column: large hero image */}
         <div className="order-2 relative h-[24rem] min-h-[24rem] w-full lg:min-h-[32rem] lg:h-[80vh] lg:max-h-[42rem]">
-          <div className="absolute inset-0 overflow-hidden rounded-xl shadow-xl lg:rounded-l-2xl lg:rounded-r-none">
+          <div className="absolute inset-0 overflow-hidden rounded-xl shadow-xl lg:rounded-2xl">
             <Image
               src={imageSrc}
               alt={imageAlt}
@@ -114,6 +115,7 @@ export function Hero({
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
+        </div>
         </div>
       </div>
     </section>
