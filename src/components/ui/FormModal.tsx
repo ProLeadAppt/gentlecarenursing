@@ -53,8 +53,8 @@ export function FormModal() {
   const title = activeForm === "referral" ? "Request Care" : "Contact Us";
   const subtitle =
     activeForm === "referral"
-      ? "Tell us about your needs — we'll respond within minutes."
-      : "Send us a message — we'll get back to you fast.";
+      ? "Tell us about your needs. We'll respond within minutes."
+      : "Send us a message. We'll get back to you fast.";
 
   return (
     <dialog

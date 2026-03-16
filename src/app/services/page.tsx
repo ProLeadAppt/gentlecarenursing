@@ -38,7 +38,7 @@ export default function ServicesPage() {
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground sm:text-xl">
             Gentle Care Nursing provides personalised in-home nursing and care across multiple
             funding streams. Whether you&apos;re an NDIS participant, a veteran, an older
-            Australian, or someone needing private care — we have you covered.
+            Australian, or someone needing private care. We have you covered.
           </p>
         </Container>
       </Section>
@@ -129,14 +129,14 @@ export default function ServicesPage() {
           <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-muted-foreground">
             We support families, NDIS participants and coordinators, DVA clients, hospital
             discharge planners, GPs, and healthcare professionals. If you&apos;re looking for a
-            care provider you can trust — we&apos;re here.
+            care provider you can trust. We&apos;re here.
           </p>
         </Container>
       </Section>
 
       <CtaSection
         title="Not Sure Which Service Fits?"
-        description="Contact us or submit an enquiry — we'll help you find the right support."
+        description="Contact us or submit an enquiry. We'll help you find the right support."
         primaryCta={CTA_LINKS.requestCare}
         secondaryCta={CTA_LINKS.contact}
         variant="primary"

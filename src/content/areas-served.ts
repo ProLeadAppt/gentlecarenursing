@@ -1,5 +1,5 @@
 /**
- * Single source of truth for areas served — must match GMB (Google Business Profile) exactly.
+ * Single source of truth for areas served. Must match GMB (Google Business Profile) exactly.
  * Used by schema (areaServed), AreasWeServe section, and any area-related copy.
  */
 

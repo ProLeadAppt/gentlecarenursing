@@ -56,7 +56,7 @@ export default function PrivacyPage() {
             Our website may use third-party services including analytics,
             customer relationship management (CRM) platforms, and communication
             tools. These services may collect data in accordance with their own
-            privacy policies. We use GoHighLevel as our CRM platform — form
+            privacy policies. We use GoHighLevel as our CRM platform. Form
             submissions and enquiries may be processed through this system.
           </p>
 

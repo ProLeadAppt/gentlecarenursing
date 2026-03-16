@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE } from "./constants";
 
-const defaultOgImage = { url: "/images/hero-hands.webp", width: 1200, height: 630, alt: `${SITE.name} — In-home nursing and care` };
+const defaultOgImage = { url: "/images/hero-hands.webp", width: 1200, height: 630, alt: `${SITE.name}. In-home nursing and care` };
 
 /**
  * Default metadata for the site.

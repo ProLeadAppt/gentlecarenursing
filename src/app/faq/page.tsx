@@ -55,7 +55,7 @@ export default function FAQPage() {
 
       <CtaSection
         title="Still Have Questions?"
-        description="Get in touch — we're happy to help you understand your options."
+        description="Get in touch. We're happy to help you understand your options."
         primaryCta={CTA_LINKS.contact}
         secondaryCta={CTA_LINKS.requestCare}
         variant="muted"

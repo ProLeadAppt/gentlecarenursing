@@ -10,8 +10,8 @@ export function HomepageCtaSections() {
   return (
     <>
       <CtaSection
-        title="Take the Next Step — We're Ready When You Are"
-        description="Share your situation with us and you'll get a personal response within 24 hours, with clear next steps. No pressure, no obligation — just supportive guidance when you need it."
+        title="Take the Next Step. We're Ready When You Are."
+        description="Share your situation with us and you'll get a personal response within 24 hours, with clear next steps. No pressure, no obligation. Just supportive guidance when you need it."
         primaryCta={CTA_LINKS.requestCare}
         secondaryCta={CTA_LINKS.contact}
         onPrimaryClick={() => openModal("referral")}

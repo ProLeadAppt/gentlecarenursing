@@ -64,7 +64,7 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
       <div className="rounded-lg border border-accent/30 bg-accent/5 p-6 text-center" role="alert">
         <p className="text-lg font-semibold text-foreground">Enquiry Submitted</p>
         <p className="mt-2 text-muted-foreground">
-          Thank you — we&apos;ve received your enquiry. You&apos;ll hear from us within minutes.
+          Thank you. We&apos;ve received your enquiry. You&apos;ll hear from us within minutes.
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
           Need to talk? Call us or send another message.

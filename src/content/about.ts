@@ -16,7 +16,7 @@ export const ABOUT_INTRO = {
 export const MISSION = {
   title: "Our Mission",
   description:
-    "To provide personalised, high-quality in-home nursing and care services that help people live safely, comfortably, and independently at home — while making it easy for families and professionals to access the support they need.",
+    "To provide personalised, high-quality in-home nursing and care services that help people live safely, comfortably, and independently at home, while making it easy for families and professionals to access the support they need.",
 } as const;
 
 export const VALUES = [
@@ -43,7 +43,7 @@ export const VALUES = [
   {
     title: "Responsiveness",
     description:
-      "We respond to enquiries quickly — within 24–48 hours. When families and coordinators need help, we move fast.",
+      "We respond to enquiries quickly, within 24 to 48 hours. When families and coordinators need help, we move fast.",
   },
   {
     title: "Compassion",
@@ -55,7 +55,7 @@ export const VALUES = [
 export const WHY_PERSONALISED = {
   title: "Why Personalised Care Matters",
   description:
-    "Many providers operate at scale — large client loads, rotating staff, and limited time per person. We chose a different model. By keeping our client load smaller, we can offer more consistent, more attentive, and more meaningful care. Families notice the difference. Coordinators trust the results.",
+    "Many providers operate at scale: large client loads, rotating staff, and limited time per person. We chose a different model. By keeping our client load smaller, we can offer more consistent, more attentive, and more meaningful care. Families notice the difference. Coordinators trust the results.",
 } as const;
 
 export const PROFESSIONAL_TRUST = {

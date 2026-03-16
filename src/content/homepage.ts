@@ -1,21 +1,21 @@
 /**
- * Homepage content — single source of truth.
+ * Homepage content. Single source of truth.
  * Tone: warm, compassionate, reassuring; communicates care, safety, and responsiveness.
  */
 
 export const HOMEPAGE_HERO = {
-  /** Optional soft line above headline — trust without sounding corporate */
+  /** Optional soft line above headline (trust without sounding corporate) */
   trustLine: "Registered NDIS & DVA provider",
   headline: "Care That Feels Calm, Safe, and Personal",
   subheadline:
-    "In-home nursing and support across Sydney — for you or someone you love. We're here from the first conversation to ongoing care, and we respond quickly because we know that matters.",
+    "In-home nursing and support across Sydney, for you or someone you love. We're here from the first conversation to ongoing care, and we respond quickly because we know that matters.",
   /** Value pills: soft, trust-focused, not badge-y */
   valuePills: ["We reply within 24 hours", "Registered & trusted", "Care tailored to you", "Here for Sydney"] as const,
 } as const;
 
 /** One-line local proof (e.g. near first CTA or after TrustBar) */
 export const HOMEPAGE_LOCAL_PROOF = {
-  line: "Serving Sydney and surrounds — in-home nursing and care when you need it.",
+  line: "Serving Sydney and surrounds. In-home nursing and care when you need it.",
   linkLabel: "View areas we serve",
   linkHref: "#areas-we-serve",
 } as const;
@@ -23,7 +23,7 @@ export const HOMEPAGE_LOCAL_PROOF = {
 export const WHO_WE_HELP = {
   title: "Who We Help",
   subtitle:
-    "Whoever you are — a family looking for peace of mind, a coordinator needing a provider you can rely on, or a professional making a referral — we're here to help. No runaround, no long waits.",
+    "Whoever you are: a family looking for peace of mind, a coordinator needing a provider you can rely on, or a professional making a referral. We're here to help. No runaround, no long waits.",
   audiences: [
     {
       label: "Families",
@@ -56,7 +56,7 @@ export const WHY_DIFFERENT = {
     {
       headline: "We take on fewer clients",
       description:
-        "So each person gets more of our time and attention. You're not a number — you're someone we're committed to supporting well.",
+        "So each person gets more of our time and attention. You're not a number. You're someone we're committed to supporting well.",
     },
     {
       headline: "Care built around you",
@@ -76,7 +76,7 @@ export const WHY_DIFFERENT = {
     {
       headline: "A team that answers",
       description:
-        "When you reach out, a real person follows up. No long waitlists or endless hold music — we're here to help.",
+        "When you reach out, a real person follows up. No long waitlists or endless hold music. We're here to help.",
     },
   ],
 } as const;
@@ -84,13 +84,13 @@ export const WHY_DIFFERENT = {
 export const PROCESS_STEPS = {
   title: "How It Works",
   subtitle:
-    "From your first enquiry to care at home — clear steps, quick response, and no one left waiting.",
+    "From your first enquiry to care at home: clear steps, quick response, and no one left waiting.",
   steps: [
     {
       number: 1,
       headline: "Tell us what you need",
       description:
-        "Share your situation through our simple form. You'll get an immediate confirmation that we've received it — no sending into a void.",
+        "Share your situation through our simple form. You'll get an immediate confirmation that we've received it. No sending into a void.",
     },
     {
       number: 2,
@@ -107,9 +107,9 @@ export const PROCESS_STEPS = {
   ],
 } as const;
 
-/** "Get in touch" / quick-response section — immediate acknowledgement, clear next steps, optional voice assistant */
+/** Get in touch / quick-response section: immediate acknowledgement, clear next steps, optional voice assistant */
 export const GET_IN_TOUCH = {
-  title: "Get Help Quickly — You're Not Left Waiting",
+  title: "Get Help Quickly. You're Not Left Waiting.",
   subtitle:
     "When you reach out, our team is notified straight away. You'll get a personal response within 24 hours, with clear next steps and supportive guidance. No runaround.",
   primaryCtaLabel: "Request Care",
@@ -117,7 +117,7 @@ export const GET_IN_TOUCH = {
   benefits: [
     "You'll hear from us within 24 hours",
     "Immediate confirmation when you enquire",
-    "Clear next steps — no waiting in the dark",
+    "Clear next steps. No waiting in the dark.",
   ] as const,
   voiceAssistantLine: "Need guidance right now? Use our voice assistant below for immediate help.",
 } as const;
@@ -154,17 +154,17 @@ export const HOMEPAGE_TESTIMONIALS = [
 /** Re-export single source for areas (GMB-aligned). Use AREAS_SERVED from areas-served.ts elsewhere. */
 export { AREAS_SERVED as HOMEPAGE_AREAS } from "./areas-served";
 
-/** Inline CTA bands between sections — warm, low-pressure, quick response */
+/** Inline CTA bands between sections: warm, low-pressure, quick response */
 export const HOMEPAGE_INLINE_CTAS = {
-  afterWhoWeHelp: "Not sure where to start? We're happy to talk it through — and we'll get back to you quickly.",
+  afterWhoWeHelp: "Not sure where to start? We're happy to talk it through, and we'll get back to you quickly.",
   afterWhyDifferent: "Ready to take the next step? Reach out and you'll hear from us within 24 hours.",
 } as const;
 
-/** Final CTA section — reassuring close, quick response */
+/** Final CTA section: reassuring close, quick response */
 export const HOMEPAGE_FINAL_CTA = {
   title: "We're Here to Help",
   description:
-    "Request care or ask a question — you'll get a personal response within 24 hours and clear next steps. No obligation, no runaround.",
+    "Request care or ask a question. You'll get a personal response within 24 hours and clear next steps. No obligation, no runaround.",
 } as const;
 
 export const HOMEPAGE_FAQ = [
@@ -184,7 +184,7 @@ export const HOMEPAGE_FAQ = [
     id: "response-time",
     question: "How quickly do you respond?",
     answer:
-      "You'll get an immediate confirmation when you submit an enquiry. Our team is notified straight away and a real person will get back to you within 24 hours — often same day for urgent referrals. We don't leave people waiting.",
+      "You'll get an immediate confirmation when you submit an enquiry. Our team is notified straight away and a real person will get back to you within 24 hours (often same day for urgent referrals). We don't leave people waiting.",
   },
   {
     id: "funding",

@@ -1,5 +1,5 @@
 /**
- * FAQ items — full list for the FAQ page and service page snippets.
+ * FAQ items. Full list for the FAQ page and service page snippets.
  */
 
 export interface FaqCategory {
@@ -79,7 +79,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "private-cost",
         question: "How much does private care cost?",
         answer:
-          "Costs for private care depend on the type of service, duration, and frequency. Contact us for a personalised quote — we're transparent about pricing with no hidden fees.",
+          "Costs for private care depend on the type of service, duration, and frequency. Contact us for a personalised quote. We're transparent about pricing with no hidden fees.",
       },
       {
         id: "dva-cost",
@@ -102,13 +102,13 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "who-can-refer",
         question: "Who can make a referral?",
         answer:
-          "Anyone can make a referral — families, NDIS support coordinators, hospital discharge planners, GPs, specialists, and other healthcare professionals. Self-referrals are also welcome.",
+          "Anyone can make a referral: families, NDIS support coordinators, hospital discharge planners, GPs, specialists, and other healthcare professionals. Self-referrals are also welcome.",
       },
       {
         id: "referral-info",
         question: "What information do I need to make a referral?",
         answer:
-          "The more detail, the better — but we can work with what you have. Ideally: client name, contact details, funding type (NDIS, DVA, aged care, private), a brief description of care needs, and any relevant medical information.",
+          "The more detail, the better, but we can work with what you have. Ideally: client name, contact details, funding type (NDIS, DVA, aged care, private), a brief description of care needs, and any relevant medical information.",
       },
     ],
   },
@@ -131,7 +131,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "different",
         question: "What makes Gentle Care different?",
         answer:
-          "We take on fewer clients so each person receives more dedicated, attentive care. We focus on quality over volume — personalised care plans, consistent carers, fast response times, and genuine support for families and referral partners.",
+          "We take on fewer clients so each person receives more dedicated, attentive care. We focus on quality over volume: personalised care plans, consistent carers, fast response times, and genuine support for families and referral partners.",
       },
     ],
   },

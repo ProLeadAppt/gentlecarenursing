@@ -26,7 +26,7 @@ export default function ContactPage() {
           </Heading>
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground sm:text-xl">
             Have a question, need information, or want to discuss care options?
-            We&apos;re here to help — you&apos;ll get an immediate confirmation and a personal response within 24 hours.
+            We&apos;re here to help. You&apos;ll get an immediate confirmation and a personal response within 24 hours.
           </p>
         </Container>
       </Section>
@@ -41,7 +41,7 @@ export default function ContactPage() {
               </Heading>
               <p className="mt-4 text-muted-foreground">
                 Whether you&apos;re a family member, support coordinator, or
-                healthcare professional — we&apos;re happy to answer your
+                healthcare professional. We&apos;re happy to answer your
                 questions and discuss how we can help.
               </p>
 

@@ -7,7 +7,7 @@ import { Phone, MessageCircle, HelpCircle } from "lucide-react";
 const DEFAULT_BENEFITS = [
   { icon: Phone, text: "You'll hear from us within 24 hours" },
   { icon: MessageCircle, text: "Immediate confirmation when you enquire" },
-  { icon: HelpCircle, text: "Clear next steps — no waiting in the dark" },
+  { icon: HelpCircle, text: "Clear next steps. No waiting in the dark." },
 ] as const;
 
 export interface QuickResponseSectionProps {
@@ -24,7 +24,7 @@ export interface QuickResponseSectionProps {
 }
 
 export function QuickResponseSection({
-  title = "Get Help Quickly — You're Not Left Waiting",
+  title = "Get Help Quickly. You're Not Left Waiting.",
   subtitle = "When you reach out, our team is notified straight away. You'll get a personal response within 24 hours, with clear next steps and supportive guidance. No runaround.",
   primaryCtaLabel = "Request Care",
   secondaryCtaLabel = "Contact Us",

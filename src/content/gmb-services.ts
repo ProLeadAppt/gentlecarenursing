@@ -1,5 +1,5 @@
 /**
- * Single source of truth for services offered — must match GMB (Google Business Profile) exactly.
+ * Single source of truth for services offered. Must match GMB (Google Business Profile) exactly.
  * Used by schema (hasOfferCatalog) and the Services page "All services we offer" section.
  */
 
@@ -31,7 +31,7 @@ export const GMB_SERVICES: readonly GmbService[] = [
   { name: "Wellness checks", description: "Regular health assessments and monitoring", href: "/aged-care" },
   { name: "Companion care", description: "Social engagement and companionship", href: "/aged-care" },
   { name: "Daily living support", description: "Meal preparation, light housekeeping, appointments", href: "/aged-care" },
-  { name: "Flexible scheduling care", description: "Care when you need it — one-off or regular", href: "/private-nursing" },
+  { name: "Flexible scheduling care", description: "Care when you need it, one-off or regular", href: "/private-nursing" },
   { name: "Health monitoring", description: "Regular wellness and health monitoring at home", href: "/private-nursing" },
   { name: "Disability support", description: "In-home support for people with disability", href: "/ndis" },
   { name: "Transition care", description: "Support transitioning from hospital or facility to home" },

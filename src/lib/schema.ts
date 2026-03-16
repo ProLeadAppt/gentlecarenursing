@@ -121,7 +121,7 @@ export interface HowToStep {
 }
 
 /**
- * HowTo schema for "How to request care" — supports AEO / featured snippets.
+ * HowTo schema for "How to request care". Supports AEO / featured snippets.
  */
 export function getHowToSchema(
   name: string,

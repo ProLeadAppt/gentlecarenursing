@@ -49,7 +49,7 @@ export default function ReferralPage() {
           </Heading>
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground sm:text-xl">
             Whether you&apos;re a family member, support coordinator, discharge
-            planner, or healthcare professional — submit below and you&apos;ll get
+            planner, or healthcare professional. Submit below and you&apos;ll get
             immediate confirmation and a personal response within 24 hours.
           </p>
         </Container>
@@ -57,7 +57,7 @@ export default function ReferralPage() {
 
       <ProcessSteps
         title="How It Works"
-        subtitle="Simple, fast, and transparent — from enquiry to care."
+        subtitle="Simple, fast, and transparent. From enquiry to care."
         steps={REFERRAL_STEPS}
       />
 
@@ -114,7 +114,7 @@ export default function ReferralPage() {
 
       <CtaSection
         title="Prefer to Speak With Someone?"
-        description="Contact us directly by phone or email — we're here to help."
+        description="Contact us directly by phone or email. We're here to help."
         primaryCta={CTA_LINKS.contact}
         secondaryCta={CTA_LINKS.callUs}
         variant="muted"

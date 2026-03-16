@@ -30,7 +30,7 @@ export function Hero({
   secondaryCta,
   valuePills,
   imageSrc = "/images/hero-hands.webp",
-  imageAlt = "Caring hands — personalised in-home nursing support",
+  imageAlt = "Caring hands. Personalised in-home nursing support",
 }: HeroProps) {
   return (
     <section

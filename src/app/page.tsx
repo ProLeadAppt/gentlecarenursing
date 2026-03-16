@@ -103,7 +103,7 @@ export default function HomePage() {
         <Testimonials
           testimonials={HOMEPAGE_TESTIMONIALS}
           title="What Families & Partners Say"
-          subtitle="Hear from those who've trusted us with their care — and why they feel confident we'll look after them."
+          subtitle="Hear from those who've trusted us with their care, and why they feel confident we'll look after them."
           label="Stories from families and professionals"
         />
       </div>
@@ -138,7 +138,7 @@ export default function HomePage() {
         <FaqPreview
           items={HOMEPAGE_FAQ}
           title="Common Questions"
-          subtitle="Quick answers to things people often ask. We're happy to explain more — just get in touch."
+          subtitle="Quick answers to things people often ask. We're happy to explain more. Just get in touch."
         />
       </div>
 

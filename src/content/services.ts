@@ -73,7 +73,7 @@ export const NDIS_PAGE: ServicePageData = {
       {
         title: "In-Home Nursing",
         description:
-          "Skilled registered nurses delivering clinical care in your home — medication management, wound care, health monitoring, and more.",
+          "Skilled registered nurses delivering clinical care in your home: medication management, wound care, health monitoring, and more.",
       },
       {
         title: "Personal Care",
@@ -106,7 +106,7 @@ export const NDIS_PAGE: ServicePageData = {
   whyChoose: {
     title: "Why Choose Gentle Care for NDIS",
     description:
-      "We do things differently — and it makes a real difference for participants and coordinators.",
+      "We do things differently, and it makes a real difference for participants and coordinators.",
     reasons: [
       {
         title: "Registered NDIS Provider",
@@ -116,7 +116,7 @@ export const NDIS_PAGE: ServicePageData = {
       {
         title: "Smaller Client Load",
         description:
-          "We take on fewer clients so every participant gets more dedicated, attentive care — not a rushed service.",
+          "We take on fewer clients so every participant gets more dedicated, attentive care, not a rushed service.",
       },
       {
         title: "Fast, Easy Referrals",
@@ -158,7 +158,7 @@ export const DVA_PAGE: ServicePageData = {
   title: "DVA & Community Nursing",
   href: "/dva",
   intro:
-    "Gentle Care Nursing is a registered DVA community nursing provider. We deliver in-home nursing and personal care for veterans, war widows, and their families — helping them stay comfortable, independent, and well-supported at home.",
+    "Gentle Care Nursing is a registered DVA community nursing provider. We deliver in-home nursing and personal care for veterans, war widows, and their families, helping them stay comfortable, independent, and well-supported at home.",
 
   whoItHelps: {
     title: "Who This Is For",
@@ -182,12 +182,12 @@ export const DVA_PAGE: ServicePageData = {
       {
         title: "Community Nursing",
         description:
-          "Registered nurses providing clinical care at home — wound management, medication administration, health assessments, and chronic disease monitoring.",
+          "Registered nurses providing clinical care at home: wound management, medication administration, health assessments, and chronic disease monitoring.",
       },
       {
         title: "Personal Care",
         description:
-          "Help with daily living — bathing, dressing, grooming, toileting, mobility assistance, and meal support.",
+          "Help with daily living: bathing, dressing, grooming, toileting, mobility assistance, and meal support.",
       },
       {
         title: "Post-Hospital Care",
@@ -215,12 +215,12 @@ export const DVA_PAGE: ServicePageData = {
   whyChoose: {
     title: "Why Choose Gentle Care for DVA",
     description:
-      "Veterans deserve dedicated, high-quality care — and that's exactly what we provide.",
+      "Veterans deserve dedicated, high-quality care, and that's exactly what we provide.",
     reasons: [
       {
         title: "Registered DVA Provider",
         description:
-          "We are a registered DVA community nursing provider. Claims are handled directly — no out-of-pocket costs for eligible veterans.",
+          "We are a registered DVA community nursing provider. Claims are handled directly. No out-of-pocket costs for eligible veterans.",
       },
       {
         title: "Personalised, Respectful Care",
@@ -267,7 +267,7 @@ export const AGED_CARE_PAGE: ServicePageData = {
   title: "Aged Care / Support at Home",
   href: "/aged-care",
   intro:
-    "Gentle Care Nursing helps older Australians stay safe, comfortable, and independent at home. We provide in-home nursing and personal care that supports ageing in place — so families can feel confident their loved ones are well looked after.",
+    "Gentle Care Nursing helps older Australians stay safe, comfortable, and independent at home. We provide in-home nursing and personal care that supports ageing in place, so families can feel confident their loved ones are well looked after.",
 
   whoItHelps: {
     title: "Who This Is For",
@@ -291,7 +291,7 @@ export const AGED_CARE_PAGE: ServicePageData = {
       {
         title: "In-Home Nursing",
         description:
-          "Registered nurses providing clinical care at home — medication management, wound care, health monitoring, and chronic disease support.",
+          "Registered nurses providing clinical care at home: medication management, wound care, health monitoring, and chronic disease support.",
       },
       {
         title: "Personal Care Assistance",
@@ -329,7 +329,7 @@ export const AGED_CARE_PAGE: ServicePageData = {
       {
         title: "Ageing in Place",
         description:
-          "We help older Australians stay at home longer by providing the right level of support — from light assistance to complex nursing.",
+          "We help older Australians stay at home longer by providing the right level of support, from light assistance to complex nursing.",
       },
       {
         title: "Dedicated, Consistent Carers",
@@ -361,7 +361,7 @@ export const AGED_CARE_PAGE: ServicePageData = {
       id: "aged-care-differ",
       question: "What makes Gentle Care different from other aged care providers?",
       answer:
-        "We take on fewer clients so each person gets more dedicated, personalised care. Our focus is on quality over volume — and families tell us they notice the difference.",
+        "We take on fewer clients so each person gets more dedicated, personalised care. Our focus is on quality over volume, and families tell us they notice the difference.",
     },
   ],
 
@@ -376,7 +376,7 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
   title: "Private Nursing & Personal Care",
   href: "/private-nursing",
   intro:
-    "When you need nursing or personal care outside of funded programs, Gentle Care Nursing provides private in-home services tailored to your needs. No waitlists, no complex applications — just quality care when you need it.",
+    "When you need nursing or personal care outside of funded programs, Gentle Care Nursing provides private in-home services tailored to your needs. No waitlists, no complex applications. Just quality care when you need it.",
 
   whoItHelps: {
     title: "Who This Is For",
@@ -395,12 +395,12 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
   supportAvailable: {
     title: "What We Provide",
     description:
-      "Our private services cover the same high standard of care as our funded programs — available on a fee-for-service basis.",
+      "Our private services cover the same high standard of care as our funded programs, available on a fee-for-service basis.",
     features: [
       {
         title: "Private Nursing",
         description:
-          "Registered nurses providing clinical care at home — wound care, injections, health assessments, medication management, and post-surgical support.",
+          "Registered nurses providing clinical care at home: wound care, injections, health assessments, medication management, and post-surgical support.",
       },
       {
         title: "Personal Care",
@@ -410,7 +410,7 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
       {
         title: "Post-Surgery Recovery",
         description:
-          "Skilled nursing care during recovery — wound monitoring, medication management, and coordination with your treating team.",
+          "Skilled nursing care during recovery: wound monitoring, medication management, and coordination with your treating team.",
       },
       {
         title: "Respite for Families",
@@ -420,7 +420,7 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
       {
         title: "Flexible Scheduling",
         description:
-          "Care when you need it — one-off visits, regular weekly support, or short-term intensive care during recovery.",
+          "Care when you need it: one-off visits, regular weekly support, or short-term intensive care during recovery.",
       },
       {
         title: "Health Monitoring",
@@ -433,17 +433,17 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
   whyChoose: {
     title: "Why Choose Gentle Care for Private Services",
     description:
-      "Private care should feel premium — because you're choosing it, and you deserve the best.",
+      "Private care should feel premium, because you're choosing it and you deserve the best.",
     reasons: [
       {
         title: "No Waitlists",
         description:
-          "Private services mean we can start care quickly — often within days of your enquiry.",
+          "Private services mean we can start care quickly, often within days of your enquiry.",
       },
       {
         title: "Your Schedule, Your Terms",
         description:
-          "Flexible care arrangements that fit your life. One-off, regular, or intensive — you choose.",
+          "Flexible care arrangements that fit your life. One-off, regular, or intensive. You choose.",
       },
       {
         title: "Same High Standard",
@@ -458,7 +458,7 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
       id: "private-cost",
       question: "How much does private nursing cost?",
       answer:
-        "Costs depend on the type of care, duration, and frequency. Contact us for a personalised quote — we'll be transparent about pricing with no hidden fees.",
+        "Costs depend on the type of care, duration, and frequency. Contact us for a personalised quote. We'll be transparent about pricing with no hidden fees.",
     },
     {
       id: "private-start",

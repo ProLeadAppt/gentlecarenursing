@@ -19,7 +19,7 @@ interface ProcessStepsProps {
 
 export function ProcessSteps({
   title = "How It Works",
-  subtitle = "From enquiry to care — we make it straightforward.",
+  subtitle = "From enquiry to care, we make it straightforward.",
   steps,
   cta,
 }: ProcessStepsProps) {

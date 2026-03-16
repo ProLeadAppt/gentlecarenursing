@@ -45,6 +45,6 @@ export const CTA_LINKS = {
   callUs: { href: SITE.phoneHref, label: "Call us" },
 } as const;
 
-/** Reassurance line below hero CTAs — calm, no pressure, quick response. */
+/** Reassurance line below hero CTAs: calm, no pressure, quick response. */
 export const CTA_REASSURANCE =
-  "No obligation. We'll acknowledge your message quickly and get back to you within 24 hours — we're here to listen and help.";
+  "No obligation. We'll acknowledge your message quickly and get back to you within 24 hours. We're here to listen and help.";
