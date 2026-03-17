@@ -1,7 +1,7 @@
 import { GuidePageLayout } from "@/components/sections/GuidePageLayout";
 import { getAllGuideSlugs, getGuideBySlug } from "@/content/guides";
 import { createMetadata } from "@/lib/metadata";
-import { INTEGRATIONS } from "@/lib/integrations";
+import { INTEGRATIONS } from "@/config/integrations";
 import type { Metadata } from "next";
 
 type Props = { params: Promise<{ slug: string }> };
