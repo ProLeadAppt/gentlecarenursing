@@ -52,6 +52,13 @@ export default function ReferralPage() {
             planner, or healthcare professional. Submit below and you&apos;ll get
             immediate confirmation and a personal response within 24 hours.
           </p>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
+            Support coordinators and discharge planners can also visit our{" "}
+            <a href="/referrers" className="font-medium text-primary underline-offset-2 hover:underline">
+              For Coordinators &amp; Referrers
+            </a>{" "}
+            page to see how we work with referrers.
+          </p>
         </Container>
       </Section>
 

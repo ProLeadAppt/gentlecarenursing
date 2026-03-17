@@ -62,6 +62,18 @@ export default async function AreaRegionPage({ params }: Props) {
           />
           <div className="mx-auto max-w-2xl">
             <p className="text-lg leading-relaxed text-muted-foreground">{area.body}</p>
+            {area.examples && area.examples.length > 0 && (
+              <div className="mt-8">
+                <h2 className="font-[family-name:var(--font-dm-sans)] text-lg font-semibold text-foreground">
+                  Examples of clients we’ve helped in {area.region}
+                </h2>
+                <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted-foreground">
+                  {area.examples.map((example) => (
+                    <li key={example}>• {example}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <h2 className="mt-10 font-[family-name:var(--font-dm-sans)] text-xl font-semibold text-foreground">
               Suburbs we serve in {area.region}
             </h2>

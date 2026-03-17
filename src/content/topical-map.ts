@@ -14,6 +14,7 @@ export type PillarId =
   | "about"
   | "contact"
   | "referral"
+  | "referrers"
   | "faq"
   | "areas";
 
@@ -39,7 +40,16 @@ export const TOPICAL_MAP: readonly Pillar[] = [
     id: "services",
     title: "Our Services",
     path: "/services",
-    clusterPaths: ["/ndis", "/dva", "/aged-care", "/private-nursing"],
+    clusterPaths: [
+      "/ndis",
+      "/dva",
+      "/aged-care",
+      "/private-nursing",
+      "/services/post-hospital-care",
+      "/services/complex-care",
+      "/services/hospital-at-home",
+      "/services/palliative-care",
+    ],
     relatedPillarIds: ["ndis", "dva", "aged-care", "private-nursing", "referral"],
   },
   {
@@ -89,7 +99,14 @@ export const TOPICAL_MAP: readonly Pillar[] = [
     title: "Request Care / Referral",
     path: "/referral",
     clusterPaths: [],
-    relatedPillarIds: ["services", "contact", "areas"],
+    relatedPillarIds: ["services", "contact", "areas", "referrers"],
+  },
+  {
+    id: "referrers",
+    title: "For Coordinators & Referrers",
+    path: "/referrers",
+    clusterPaths: [],
+    relatedPillarIds: ["referral", "services", "contact"],
   },
   {
     id: "faq",

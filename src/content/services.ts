@@ -62,6 +62,22 @@ export const SERVICES: ServiceDefinition[] = [
       "Tracheostomy care, PEG feeding, catheter management, wound care, and other complex nursing at home.",
     href: "/services/complex-care",
   },
+  {
+    slug: "hospital-at-home",
+    title: "Hospital-at-Home & Step-Down Care",
+    benefitLine: "Bridge the gap between hospital and home with coordinated, hospital-level nursing support at home.",
+    shortDescription:
+      "Hospital-at-home and step-down care so you can safely leave hospital sooner and continue recovery at home.",
+    href: "/services/hospital-at-home",
+  },
+  {
+    slug: "palliative-care",
+    title: "Palliative & End-of-Life Support at Home",
+    benefitLine: "Compassionate palliative and end-of-life support so more of your time can be spent together at home.",
+    shortDescription:
+      "Palliative and end-of-life nursing support at home, focused on comfort, dignity, and support for families.",
+    href: "/services/palliative-care",
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -616,6 +632,15 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
     description:
       "Tell us about your upcoming or recent hospital stay and we'll help you plan safe, supportive care at home.",
   },
+  testimonials: [
+    {
+      quote:
+        "Gentle Care made coming home from hospital so much less stressful. The nurses were calm, organised, and helped us understand exactly what to do between visits.",
+      name: "Linda R.",
+      role: "Daughter of post-surgical client, Inner West",
+      rating: 5,
+    },
+  ],
 };
 
 export const COMPLEX_CARE_PAGE: ServicePageData = {
@@ -721,6 +746,225 @@ export const COMPLEX_CARE_PAGE: ServicePageData = {
     title: "Discuss Complex Care at Home",
     description:
       "Share your current situation and we’ll let you know how we can safely support complex care at home.",
+  },
+  testimonials: [
+    {
+      quote:
+        "Our son’s tracheostomy care at home felt daunting until Gentle Care became involved. Their clinical skill and steady presence made everyday life feel possible again.",
+      name: "Marc & Elise T.",
+      role: "Parents of NDIS participant, North Shore",
+      rating: 5,
+    },
+  ],
+};
+
+export const HOSPITAL_AT_HOME_PAGE: ServicePageData = {
+  title: "Hospital-at-Home & Step-Down Care",
+  href: "/services/hospital-at-home",
+  snippetAnswer:
+    "Hospital-at-home and step-down care means receiving hospital-level nursing and personal care at home after an admission, so you can leave hospital sooner while your recovery continues safely with skilled support.",
+  intro:
+    "Some people are ready to leave hospital but still need more support than a standard discharge offers. Our hospital-at-home and step-down care service brings experienced nurses and carers to you, so you can keep recovering in the comfort of your own home.",
+
+  whoItHelps: {
+    title: "Who Hospital-at-Home Is For",
+    description:
+      "This service is designed for people who are clinically stable enough to be at home, but still need close nursing oversight.",
+    audiences: [
+      "People who could be at home if nursing and personal care were available",
+      "Patients waiting for hospital discharge who want to go home sooner",
+      "NDIS participants and older adults needing step-down support after acute care",
+      "Veterans and DVA clients who can safely recover at home",
+      "Families who want to reduce hospital time but keep care safe and structured",
+    ],
+  },
+
+  supportAvailable: {
+    title: "What Hospital-at-Home Support Includes",
+    description:
+      "We coordinate closely with hospital teams so your at-home care plan matches your clinical needs and goals.",
+    features: [
+      {
+        title: "Hospital-Level Nursing at Home",
+        description:
+          "Registered nurses provide observations, medication management, wound care, and other nursing tasks according to your discharge plan.",
+      },
+      {
+        title: "Structured Step-Down Care",
+        description:
+          "A planned schedule of visits that can start more intensive and reduce gradually as your condition stabilises and confidence grows.",
+      },
+      {
+        title: "Personal Care and Mobility Support",
+        description:
+          "Help with bathing, dressing, transfers, and mobility so you can safely move around your home and avoid falls.",
+      },
+      {
+        title: "Coordination With Hospital and GPs",
+        description:
+          "We work from your discharge summary, liaise with hospital teams and your GP where needed, and escalate any concerns quickly.",
+      },
+      {
+        title: "Family Education and Support",
+        description:
+          "We show families how to support recovery safely at home and what signs mean it’s time to call us or the treating team.",
+      },
+    ],
+  },
+
+  whyChoose: {
+    title: "Why Choose Hospital-at-Home With Gentle Care",
+    description:
+      "Our goal is to make leaving hospital feel safe and supported, not rushed or overwhelming.",
+    reasons: [
+      {
+        title: "Experience With Step-Down Programs",
+        description:
+          "We regularly partner with hospitals and discharge planners to deliver structured hospital-at-home and step-down care programs.",
+      },
+      {
+        title: "Safe Transitions, Not Shortcuts",
+        description:
+          "We only provide hospital-at-home support when it is clinically appropriate and safe to do so, with clear escalation pathways.",
+      },
+      {
+        title: "Flexible Across Funding Types",
+        description:
+          "Support can be delivered under NDIS, DVA, aged care packages, or privately, depending on your circumstances.",
+      },
+    ],
+  },
+
+  faqs: [
+    {
+      id: "hospital-at-home-safe",
+      question: "Is hospital-at-home care as safe as staying in hospital?",
+      answer:
+        "For the right people, yes. We work with your hospital team to make sure you are clinically suitable for hospital-at-home care, and we follow clear plans and escalation procedures if your condition changes.",
+    },
+    {
+      id: "hospital-at-home-start",
+      question: "How do I organise hospital-at-home or step-down care?",
+      answer:
+        "You can ask your hospital team or discharge planner to contact us, or you can submit a Request Care enquiry yourself. We’ll review your situation and coordinate with the hospital to plan safe support.",
+    },
+    {
+      id: "hospital-at-home-funding",
+      question: "Can hospital-at-home support be funded by NDIS, DVA, or aged care packages?",
+      answer:
+        "In many cases, yes. Hospital-at-home and step-down care can be delivered under NDIS, DVA community nursing, aged care packages, or private funding. We’ll help you understand which options apply.",
+    },
+  ],
+
+  cta: {
+    title: "Plan Hospital-at-Home or Step-Down Care",
+    description:
+      "Tell us about your hospital stay and discharge plans so we can help you arrange safe, supported recovery at home.",
+  },
+};
+
+export const PALLIATIVE_CARE_PAGE: ServicePageData = {
+  title: "Palliative & End-of-Life Support at Home",
+  href: "/services/palliative-care",
+  snippetAnswer:
+    "Palliative and end-of-life care at home focuses on comfort, symptom management, and emotional support so you and your family can spend more time together in a familiar environment.",
+  intro:
+    "Facing a serious illness or the end of life is never easy. Our palliative and end-of-life support at home focuses on comfort, dignity, and calm, working alongside your treating team so more of your energy can go into being together.",
+
+  whoItHelps: {
+    title: "Who Palliative Home Support Is For",
+    description:
+      "This service is for people with life-limiting illness who wish to remain at home, and for the families supporting them.",
+    audiences: [
+      "People with serious or life-limiting illnesses choosing to remain at home",
+      "Families wanting more support to care for a loved one at the end of life",
+      "Older adults whose focus has shifted from cure to comfort",
+      "NDIS, DVA, or aged care clients needing palliative-focused support",
+      "Carers who need guidance and respite while still being closely involved",
+    ],
+  },
+
+  supportAvailable: {
+    title: "What Palliative & End-of-Life Support Includes",
+    description:
+      "We tailor palliative support to your clinical needs, preferences, culture, and faith, working with your palliative care team where involved.",
+    features: [
+      {
+        title: "Symptom Monitoring and Comfort Measures",
+        description:
+          "Regular visits to monitor symptoms, support comfort measures, and help implement the plans of your palliative care and medical teams.",
+      },
+      {
+        title: "Personal Care With Dignity",
+        description:
+          "Gentle assistance with bathing, dressing, repositioning, and continence care to maximise comfort and preserve dignity.",
+      },
+      {
+        title: "Support for Families and Carers",
+        description:
+          "Practical guidance, reassurance, and education for families about what to expect and how to provide day-to-day support.",
+      },
+      {
+        title: "Coordination With Palliative Care Teams",
+        description:
+          "We communicate with specialist palliative care teams, GPs, and other providers so everyone is aligned and informed.",
+      },
+      {
+        title: "Flexible Visit Patterns",
+        description:
+          "Visits can increase as needs change, including more frequent contact in the final stages if clinically appropriate and available.",
+      },
+    ],
+  },
+
+  whyChoose: {
+    title: "Why Choose Gentle Care for Palliative Support",
+    description:
+      "Palliative care is as much about people and presence as it is about clinical skill. We bring both into your home.",
+    reasons: [
+      {
+        title: "Calm, Compassionate Team",
+        description:
+          "Our nurses and carers are chosen for their calm presence and sensitivity, as well as their clinical experience.",
+      },
+      {
+        title: "Home-Focused Approach",
+        description:
+          "We support the rhythms, culture, and preferences of your household, not just a roster of tasks.",
+      },
+      {
+        title: "Respect for Choices",
+        description:
+          "We respect your goals of care, faith, and preferences, and we work in partnership with your wider support network.",
+      },
+    ],
+  },
+
+  faqs: [
+    {
+      id: "palliative-when-start",
+      question: "When is the right time to start palliative care at home?",
+      answer:
+        "Palliative care can begin alongside treatment, not only at the very end of life. If comfort, quality of life, or support for family is becoming a priority, it may be the right time to talk with us and your treating team.",
+    },
+    {
+      id: "palliative-funding",
+      question: "How is palliative home care funded?",
+      answer:
+        "Funding for palliative support may come from aged care packages, DVA, NDIS, state-funded palliative services, or private payment. We can help you understand options based on your situation.",
+    },
+    {
+      id: "palliative-what-expect",
+      question: "What can we expect from palliative visits?",
+      answer:
+        "Visits focus on comfort, reassurance, and practical support. We’ll monitor symptoms, support personal care, answer questions, and liaise with your palliative care and medical teams as needed.",
+    },
+  ],
+
+  cta: {
+    title: "Talk About Palliative Support at Home",
+    description:
+      "If you’re considering palliative or end-of-life care at home, contact us so we can explore what support is possible for you and your family.",
   },
 };
 

@@ -17,12 +17,14 @@ export interface AreaContent {
   description: string;
   /** Short paragraph: who we serve, how to get care, reassurance */
   body: string;
+  /** Optional: short examples of the kinds of clients we support in this region */
+  examples?: string[];
   /** Suburbs in this region (from AREAS_SERVED) */
   suburbs: readonly string[];
 }
 
 const AREA_BODY_TEMPLATE =
-  "We provide in-home nursing and personal care across {suburbs}. Whether you or your loved one is on NDIS, DVA, a Home Care Package, or private funding, we work with coordinators and discharge planners to arrange care quickly. You'll get a personal response within 24 hours and clear next steps.";
+  "We provide in-home nursing and personal care across {suburbs}. Whether you or your loved one is on NDIS, DVA, a Home Care Package, or private funding, we work with coordinators and discharge planners to arrange care quickly. You'll get a personal response within 24 hours and clear next steps. We also support post-hospital care and complex clinical care at home across this region.";
 
 export function slugifyRegion(region: string): string {
   return region
@@ -41,6 +43,11 @@ export const AREAS_CONTENT: AreaContent[] = AREAS_SERVED.map((area) => {
     headline: `In-home nursing and care in ${area.region} — NDIS, DVA, aged care, and private.`,
     description: `Gentle Care Nursing provides in-home nursing and personal care across ${area.region} (${area.suburbs.join(", ")}). Registered NDIS and DVA provider. Personal response within 24 hours.`,
     body: AREA_BODY_TEMPLATE.replace("{suburbs}", suburbList),
+    examples: [
+      `An older person in ${area.region} coming home from hospital who needs short-term nursing and personal care to regain confidence.`,
+      `An NDIS participant in ${area.region} with complex care needs receiving regular nursing visits at home.`,
+      `A family in ${area.region} arranging in-home support so a parent can stay safely at home instead of moving to residential care.`,
+    ],
     suburbs: area.suburbs,
   };
 });

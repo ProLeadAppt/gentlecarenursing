@@ -5,6 +5,7 @@ import { SectionHeader } from "./SectionHeader";
 import { TrustBar } from "./TrustBar";
 import { FaqPreview } from "./FaqPreview";
 import { ServiceCtaWithModal } from "./ServiceCtaWithModal";
+import { Testimonials } from "./Testimonials";
 import { Heading } from "@/components/ui/Heading";
 import { Card } from "@/components/ui/Card";
 import { FormModalTrigger } from "@/components/ui/FormModalTrigger";
@@ -46,6 +47,13 @@ export interface ServicePageData {
     title: string;
     description?: string;
   };
+  /** Optional service or region-specific testimonials to surface on the page */
+  testimonials?: {
+    quote: string;
+    name: string;
+    role: string;
+    rating?: number;
+  }[];
 }
 
 interface ServicePageLayoutProps {
@@ -229,6 +237,16 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
           </ul>
         </Container>
       </Section>
+
+      {data.testimonials && data.testimonials.length > 0 && (
+        <Testimonials
+          title="What Our Clients Say About This Type of Care"
+          subtitle="Real experiences from families, coordinators, and health professionals."
+          label={undefined}
+          testimonials={data.testimonials}
+          sectionVariant="default"
+        />
+      )}
 
       {/* CTA */}
       <ServiceCtaWithModal

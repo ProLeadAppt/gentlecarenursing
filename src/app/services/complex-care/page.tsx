@@ -1,6 +1,9 @@
 import { ServicePageLayout } from "@/components/sections/ServicePageLayout";
 import { COMPLEX_CARE_PAGE } from "@/content/services";
+import { INTEGRATIONS } from "@/config/integrations";
 import { createMetadata } from "@/lib/metadata";
+
+const canonical = `${INTEGRATIONS.siteUrl}/services/complex-care`;
 
 export const metadata = createMetadata({
   title: "Complex Clinical Care at Home",
@@ -13,7 +16,7 @@ export const metadata = createMetadata({
     "catheter management at home",
     "complex wound care at home",
   ],
-  canonical: "/services/complex-care",
+  canonical,
 });
 
 export default function ComplexCarePage() {

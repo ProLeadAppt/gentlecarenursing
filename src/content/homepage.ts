@@ -169,6 +169,8 @@ export const HOMEPAGE_TESTIMONIALS = [
     name: "Sarah M.",
     role: "Family Member, Sydney",
     rating: 5,
+    serviceTag: "aged-care",
+    regionTag: "inner-west",
   },
   {
     quote:
@@ -176,6 +178,8 @@ export const HOMEPAGE_TESTIMONIALS = [
     name: "James L.",
     role: "NDIS Support Coordinator",
     rating: 5,
+    serviceTag: "ndis",
+    regionTag: "sydney-wide",
   },
   {
     quote:
@@ -183,6 +187,8 @@ export const HOMEPAGE_TESTIMONIALS = [
     name: "Dr. Priya K.",
     role: "Hospital Discharge Planner",
     rating: 5,
+    serviceTag: "post-hospital-care",
+    regionTag: "north-shore",
   },
 ] as const;
 

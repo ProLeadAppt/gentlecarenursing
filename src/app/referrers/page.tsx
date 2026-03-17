@@ -3,12 +3,14 @@ import { Section } from "@/components/layout/Section";
 import { Grid } from "@/components/layout/Grid";
 import { SectionHeader } from "@/components/sections/SectionHeader";
 import { CtaSection } from "@/components/sections/CtaSection";
+import { ReferrerBlocksSection } from "@/components/sections/ReferrerBlocksSection";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Heading } from "@/components/ui/Heading";
 import { Card } from "@/components/ui/Card";
 import { CTA_LINKS } from "@/lib/constants";
+import { INTEGRATIONS } from "@/config/integrations";
 import { createMetadata } from "@/lib/metadata";
-import { getFaqSchema } from "@/lib/schema";
+import { getBreadcrumbListSchema, getFaqSchema } from "@/lib/schema";
 
 const REFERRER_FAQS = [
   {
@@ -33,23 +35,33 @@ const REFERRER_FAQS = [
   },
 ] as const;
 
+const canonical = `${INTEGRATIONS.siteUrl}/referrers`;
+
 export const metadata = createMetadata({
   title: "For Coordinators & Referrers",
   description:
     "Information for NDIS support coordinators, plan managers, hospital discharge planners, and healthcare professionals who want to refer to Gentle Care Nursing.",
-  canonical: "/referrers",
+  canonical,
 });
 
 export default function ReferrersPage() {
   const faqSchema = getFaqSchema(
     REFERRER_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
   );
+  const breadcrumbSchema = getBreadcrumbListSchema([
+    { label: "Home", path: "/" },
+    { label: "For Coordinators & Referrers", path: "/referrers" },
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       {/* Intro */}
@@ -74,7 +86,7 @@ export default function ReferrersPage() {
       </Section>
 
       {/* How to refer */}
-      <Section>
+      <Section id="how-to-refer">
         <Container size="md">
           <SectionHeader
             title="How to Refer"
@@ -122,6 +134,16 @@ export default function ReferrersPage() {
           </div>
         </Container>
       </Section>
+
+      {/* Referrer-specific information */}
+      <ReferrerBlocksSection
+        referrerTypes={[
+          "ndis-support-coordinator",
+          "plan-manager",
+          "hospital-discharge-planner",
+          "gp-primary-care",
+        ]}
+      />
 
       {/* What you can expect */}
       <Section variant="muted">
