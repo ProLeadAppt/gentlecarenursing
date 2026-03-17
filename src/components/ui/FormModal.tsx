@@ -5,6 +5,7 @@ import { X } from "lucide-react";
 import { useFormModal } from "@/contexts/FormModalContext";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { ReferralForm } from "@/components/forms/ReferralForm";
+import { CareFinder } from "@/components/forms/CareFinder";
 
 export function FormModal() {
   const { activeForm, closeModal } = useFormModal();
@@ -50,11 +51,29 @@ export function FormModal() {
     return () => dialog.removeEventListener("cancel", handleCancel);
   }, [closeModal]);
 
-  const title = activeForm === "referral" ? "Request Care" : "Contact Us";
-  const subtitle =
-    activeForm === "referral"
-      ? "Tell us about your needs. We'll respond within minutes."
-      : "Send us a message. We'll get back to you fast.";
+  const getHeaderContent = () => {
+    switch (activeForm) {
+      case "referral":
+        return {
+          title: "Request Care",
+          subtitle: "Tell us about your needs. We'll respond within minutes.",
+        };
+      case "contact":
+        return {
+          title: "Contact Us",
+          subtitle: "Send us a message. We'll get back to you fast.",
+        };
+      case "care-finder":
+        return {
+          title: "Care Finder",
+          subtitle: "Tell us what you need. We'll find the right care.",
+        };
+      default:
+        return { title: "", subtitle: "" };
+    }
+  };
+
+  const { title, subtitle } = getHeaderContent();
 
   return (
     <dialog
@@ -69,10 +88,10 @@ export function FormModal() {
         {/* Header */}
         <div className="flex items-center justify-between border-b border-border px-6 py-4">
           <div>
-            <h2 className="font-[family-name:var(--font-dm-sans)] text-xl font-bold text-foreground">
+            <h2 className="font-[family-name:var(--font-serif)] text-2xl font-bold text-foreground leading-none">
               {title}
             </h2>
-            <p className="mt-0.5 text-sm text-muted-foreground">{subtitle}</p>
+            <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>
           </div>
           <button
             type="button"
@@ -88,6 +107,7 @@ export function FormModal() {
         <div className="flex-1 overflow-y-auto px-6 py-6">
           {activeForm === "referral" && <ReferralForm compact />}
           {activeForm === "contact" && <ContactForm />}
+          {activeForm === "care-finder" && <CareFinder />}
         </div>
       </div>
     </dialog>

@@ -1,11 +1,15 @@
+"use client";
+
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { Heading } from "@/components/ui/Heading";
+import { useFormModal } from "@/contexts/FormModalContext";
 import { ClipboardList, MailCheck, Users, HouseHeart } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { CTA_LINKS } from "@/lib/constants";
 
 export interface ProcessStep {
   number: number;
@@ -18,6 +22,7 @@ interface ProcessStepsProps {
   subtitle?: string;
   steps: readonly ProcessStep[];
   cta?: { href: string; label: string };
+  onCtaClick?: () => void;
   /** Optional section background variant (used by homepage for alternation) */
   sectionVariant?: "default" | "muted" | "card" | "primary" | "accent" | "gradient" | "teal";
 }
@@ -29,8 +34,21 @@ export function ProcessSteps({
   subtitle = "From your first enquiry to care at home: clear steps, quick response, and no one left waiting or wondering what happens next.",
   steps,
   cta,
+  onCtaClick,
   sectionVariant = "default",
 }: ProcessStepsProps) {
+  const { openModal } = useFormModal();
+
+  const handleCtaClick = (e: React.MouseEvent) => {
+    if (onCtaClick) {
+      e.preventDefault();
+      onCtaClick();
+    } else if (cta?.href === CTA_LINKS.requestCare.href) {
+      e.preventDefault();
+      openModal("care-finder");
+    }
+  };
+
   return (
     <Section size="xl" variant={sectionVariant}>
       <Container>
@@ -93,7 +111,11 @@ export function ProcessSteps({
             <div className="pt-4 text-center text-sm text-muted-foreground">
               <p>No pressure to decide on the spot. Reach out and we&apos;ll guide you through the next steps.</p>
               <div className="mt-5 flex justify-center">
-                <Button href={cta.href} size="lg">
+                <Button 
+                  href={cta.href} 
+                  onClick={handleCtaClick}
+                  size="lg"
+                >
                   {cta.label}
                 </Button>
               </div>

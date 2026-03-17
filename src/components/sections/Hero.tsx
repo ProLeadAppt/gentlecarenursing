@@ -9,6 +9,7 @@ import { TYPOGRAPHY, ANIMATION_VARIANTS } from "@/design-system/tokens";
 import { HERO_REASSURANCE } from "@/lib/constants";
 import { Check } from "lucide-react";
 import { Magnetic } from "@/components/animations/Magnetic";
+import { useFormModal } from "@/contexts/FormModalContext";
 
 export interface HeroCta {
   href: string;
@@ -41,6 +42,8 @@ export function Hero({
   imageSrc = "/images/carer-elderly.webp",
   imageAlt = "Nurse assisting a patient in a home environment",
 }: HeroProps) {
+  const { openModal } = useFormModal();
+
   return (
     <section
       className="relative min-h-[28rem] lg:min-h-[85vh] overflow-hidden flex items-center"
@@ -89,7 +92,11 @@ export function Hero({
                 className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
               >
                 <Magnetic>
-                  <Button href={primaryCta.href} size="xl" variant="primary">
+                  <Button 
+                    onClick={() => openModal("care-finder")}
+                    size="xl" 
+                    variant="primary"
+                  >
                     {primaryCta.label}
                   </Button>
                 </Magnetic>

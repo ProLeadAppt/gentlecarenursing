@@ -19,7 +19,17 @@ interface ReferralPayload {
   notes?: string;
 }
 
-type FormPayload = ContactPayload | ReferralPayload;
+interface CareFinderPayload {
+  type: "care-finder";
+  seekingFor: string;
+  serviceType: string;
+  name: string;
+  phone: string;
+  email: string;
+  notes?: string;
+}
+
+type FormPayload = ContactPayload | ReferralPayload | CareFinderPayload;
 
 function validatePayload(body: unknown): body is FormPayload {
   if (!body || typeof body !== "object") return false;
@@ -42,6 +52,21 @@ function validatePayload(body: unknown): body is FormPayload {
       obj.referrerName.trim().length > 0 &&
       typeof obj.referrerEmail === "string" &&
       obj.referrerEmail.includes("@")
+    );
+  }
+
+  if (obj.type === "care-finder") {
+    return (
+      typeof obj.seekingFor === "string" &&
+      obj.seekingFor.trim().length > 0 &&
+      typeof obj.serviceType === "string" &&
+      obj.serviceType.trim().length > 0 &&
+      typeof obj.name === "string" &&
+      obj.name.trim().length > 0 &&
+      typeof obj.phone === "string" &&
+      obj.phone.trim().length > 0 &&
+      typeof obj.email === "string" &&
+      obj.email.includes("@")
     );
   }
 

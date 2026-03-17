@@ -5,6 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { GHLWidgets } from "@/components/embeds/GHLWidgets";
 import { Phone, MessageCircle, HelpCircle } from "lucide-react";
+import { useFormModal } from "@/contexts/FormModalContext";
 
 const DEFAULT_BENEFITS = [
   { icon: Phone, text: "You'll hear from us within 24 hours" },
@@ -38,6 +39,7 @@ export function QuickResponseSection({
   voiceAssistantLine = "Need guidance right now? Use our voice assistant below for immediate help.",
   sectionVariant = "accent",
 }: QuickResponseSectionProps) {
+  const { openModal } = useFormModal();
   const bullets = benefits?.length
     ? benefits.map((text, i) => ({ icon: [Phone, MessageCircle, HelpCircle][i % 3], text }))
     : DEFAULT_BENEFITS;
@@ -60,7 +62,12 @@ export function QuickResponseSection({
               ))}
             </ul>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Button href={primaryCtaHref} variant="secondary" size="lg" className="w-full sm:w-auto">
+              <Button 
+                onClick={() => openModal("care-finder")}
+                variant="secondary" 
+                size="lg" 
+                className="w-full sm:w-auto"
+              >
                 {primaryCtaLabel}
               </Button>
               <Button href={secondaryCtaHref} variant="outline" size="lg" className="w-full sm:w-auto">

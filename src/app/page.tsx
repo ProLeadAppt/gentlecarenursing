@@ -1,3 +1,5 @@
+"use client";
+
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { StatsBar } from "@/components/sections/StatsBar";
@@ -15,6 +17,8 @@ import { HomepageCtaSections } from "@/components/sections/HomepageCtaSections";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { SectionDivider } from "@/components/sections/SectionDivider";
 import { SectionReveal } from "@/components/animations/SectionReveal";
+import { useFormModal } from "@/contexts/FormModalContext";
+import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import { CTA_LINKS, HERO_REASSURANCE } from "@/lib/constants";
 import { getHowToSchema } from "@/lib/schema";
@@ -43,6 +47,8 @@ const howToSchema = getHowToSchema(
 );
 
 export default function HomePage() {
+  const { openModal } = useFormModal();
+
   return (
     <>
       <script
@@ -97,12 +103,13 @@ export default function HomePage() {
           <div className="border-t border-border/30 bg-muted/50 py-8">
             <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
               <p className="text-sm text-muted-foreground">{HOMEPAGE_INLINE_CTAS.afterWhoWeHelp}</p>
-              <Link
-                href={CTA_LINKS.requestCare.href}
-                className="mt-3 inline-block min-h-[2.75rem] py-2 font-medium text-primary hover:underline"
+              <Button
+                onClick={() => openModal("care-finder")}
+                variant="ghost"
+                className="mt-3 text-primary hover:underline hover:bg-transparent h-auto p-0 font-medium"
               >
                 Request care or contact us
-              </Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -136,12 +143,13 @@ export default function HomePage() {
           <div className="border-t border-border/30 bg-muted/50 py-8">
             <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
               <p className="text-sm text-muted-foreground">{HOMEPAGE_INLINE_CTAS.afterWhyDifferent}</p>
-              <Link
-                href={CTA_LINKS.requestCare.href}
-                className="mt-3 inline-block min-h-[2.75rem] py-2 font-medium text-primary hover:underline"
+              <Button
+                onClick={() => openModal("care-finder")}
+                variant="ghost"
+                className="mt-3 text-primary hover:underline hover:bg-transparent h-auto p-0 font-medium"
               >
                 Get in touch
-              </Link>
+              </Button>
             </div>
           </div>
         </div>
