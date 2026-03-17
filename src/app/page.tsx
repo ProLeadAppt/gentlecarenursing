@@ -14,6 +14,7 @@ import { AreasWeServe } from "@/components/sections/AreasWeServe";
 import { HomepageCtaSections } from "@/components/sections/HomepageCtaSections";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { SectionDivider } from "@/components/sections/SectionDivider";
+import { SectionReveal } from "@/components/animations/SectionReveal";
 import Link from "next/link";
 import { CTA_LINKS, HERO_REASSURANCE } from "@/lib/constants";
 import { getHowToSchema } from "@/lib/schema";
@@ -60,158 +61,184 @@ export default function HomePage() {
         imageAlt={HOMEPAGE_HERO.heroImageAlt}
       />
 
-      <TrustBar variant="muted" />
+      <SectionReveal>
+        <TrustBar variant="muted" />
+      </SectionReveal>
 
-      <StatsBar stats={HOMEPAGE_STATS} />
+      <SectionReveal delay={0.1}>
+        <StatsBar stats={HOMEPAGE_STATS} />
+      </SectionReveal>
 
       <div className="h-12 shrink-0 sm:h-14" aria-hidden />
 
-      <div>
-        <ReassuranceSection
-          headline={REASSURANCE_SECTION.headline}
-          problems={REASSURANCE_SECTION.problems}
-          transitionLine={REASSURANCE_SECTION.transitionLine}
-          sectionVariant="teal"
-        />
-      </div>
+      <SectionReveal>
+        <div>
+          <ReassuranceSection
+            headline={REASSURANCE_SECTION.headline}
+            problems={REASSURANCE_SECTION.problems}
+            transitionLine={REASSURANCE_SECTION.transitionLine}
+            sectionVariant="teal"
+          />
+        </div>
+      </SectionReveal>
 
       <SectionDivider variant="tealToWhite" />
 
-      <div>
-        <WhoWeHelp
-          title={WHO_WE_HELP.title}
-          subtitle={WHO_WE_HELP.subtitle}
-          audiences={WHO_WE_HELP.audiences}
-          sectionImage={WHO_WE_HELP.sectionImage}
-          sectionImageAlt={WHO_WE_HELP.sectionImageAlt}
-          sectionVariant="default"
-        />
-        <div className="border-t border-border/30 bg-muted/50 py-8">
-          <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
-            <p className="text-sm text-muted-foreground">{HOMEPAGE_INLINE_CTAS.afterWhoWeHelp}</p>
-            <Link
-              href={CTA_LINKS.requestCare.href}
-              className="mt-3 inline-block min-h-[2.75rem] py-2 font-medium text-primary hover:underline"
-            >
-              Request care or contact us
-            </Link>
+      <SectionReveal>
+        <div>
+          <WhoWeHelp
+            title={WHO_WE_HELP.title}
+            subtitle={WHO_WE_HELP.subtitle}
+            audiences={WHO_WE_HELP.audiences}
+            sectionImage={WHO_WE_HELP.sectionImage}
+            sectionImageAlt={WHO_WE_HELP.sectionImageAlt}
+            sectionVariant="default"
+          />
+          <div className="border-t border-border/30 bg-muted/50 py-8">
+            <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
+              <p className="text-sm text-muted-foreground">{HOMEPAGE_INLINE_CTAS.afterWhoWeHelp}</p>
+              <Link
+                href={CTA_LINKS.requestCare.href}
+                className="mt-3 inline-block min-h-[2.75rem] py-2 font-medium text-primary hover:underline"
+              >
+                Request care or contact us
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      </SectionReveal>
 
       <SectionDivider variant="whiteToTeal" />
 
-      <div>
-        <ServiceCards
-          subtitle="Personalised in-home nursing and care for NDIS, DVA, aged care, and private clients. We're here to support you or someone you love."
-          sectionImage={HOMEPAGE_SERVICES_IMAGE.sectionImage}
-          sectionImageAlt={HOMEPAGE_SERVICES_IMAGE.sectionImageAlt}
-          sectionVariant="teal"
-        />
-      </div>
+      <SectionReveal>
+        <div>
+          <ServiceCards
+            subtitle="Personalised in-home nursing and care for NDIS, DVA, aged care, and private clients. We're here to support you or someone you love."
+            sectionImage={HOMEPAGE_SERVICES_IMAGE.sectionImage}
+            sectionImageAlt={HOMEPAGE_SERVICES_IMAGE.sectionImageAlt}
+            sectionVariant="teal"
+          />
+        </div>
+      </SectionReveal>
 
       <SectionDivider variant="tealToWhite" />
 
-      <div>
-        <WhyDifferent
-          title={WHY_DIFFERENT.title}
-          subtitle={WHY_DIFFERENT.subtitle}
-          differentiators={WHY_DIFFERENT.differentiators}
-          imageSrc={WHY_DIFFERENT.imageSrc}
-          imageAlt={WHY_DIFFERENT.imageAlt}
-          sectionVariant="default"
-        />
-        <div className="border-t border-border/30 bg-muted/50 py-8">
-          <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
-            <p className="text-sm text-muted-foreground">{HOMEPAGE_INLINE_CTAS.afterWhyDifferent}</p>
-            <Link
-              href={CTA_LINKS.requestCare.href}
-              className="mt-3 inline-block min-h-[2.75rem] py-2 font-medium text-primary hover:underline"
-            >
-              Get in touch
-            </Link>
+      <SectionReveal>
+        <div>
+          <WhyDifferent
+            title={WHY_DIFFERENT.title}
+            subtitle={WHY_DIFFERENT.subtitle}
+            differentiators={WHY_DIFFERENT.differentiators}
+            imageSrc={WHY_DIFFERENT.imageSrc}
+            imageAlt={WHY_DIFFERENT.imageAlt}
+            sectionVariant="default"
+          />
+          <div className="border-t border-border/30 bg-muted/50 py-8">
+            <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
+              <p className="text-sm text-muted-foreground">{HOMEPAGE_INLINE_CTAS.afterWhyDifferent}</p>
+              <Link
+                href={CTA_LINKS.requestCare.href}
+                className="mt-3 inline-block min-h-[2.75rem] py-2 font-medium text-primary hover:underline"
+              >
+                Get in touch
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      </SectionReveal>
 
       <SectionDivider variant="whiteToTeal" />
 
-      <div>
-        <Testimonials
-          testimonials={HOMEPAGE_TESTIMONIALS}
-          title="What Families & Partners Say"
-          subtitle="Hear from those who've trusted us with their care, and why they feel confident we'll look after them."
-          label="Stories from families and professionals"
-          sectionVariant="teal"
-        />
-      </div>
+      <SectionReveal>
+        <div>
+          <Testimonials
+            testimonials={HOMEPAGE_TESTIMONIALS}
+            title="What Families & Partners Say"
+            subtitle="Hear from those who've trusted us with their care, and why they feel confident we'll look after them."
+            label="Stories from families and professionals"
+            sectionVariant="teal"
+          />
+        </div>
+      </SectionReveal>
 
       <SectionDivider variant="tealToWhite" />
 
-      <div>
-        <ProcessSteps
-          title={PROCESS_STEPS.title}
-          subtitle={PROCESS_STEPS.subtitle}
-          steps={PROCESS_STEPS.steps}
-          cta={CTA_LINKS.requestCare}
-          sectionVariant="default"
-        />
-      </div>
+      <SectionReveal>
+        <div>
+          <ProcessSteps
+            title={PROCESS_STEPS.title}
+            subtitle={PROCESS_STEPS.subtitle}
+            steps={PROCESS_STEPS.steps}
+            cta={CTA_LINKS.requestCare}
+            sectionVariant="default"
+          />
+        </div>
+      </SectionReveal>
 
       <SectionDivider variant="whiteToTeal" />
 
-      <div>
-        <ReferralProfessionalsSection
-          headline={REFERRAL_PROFESSIONALS.headline}
-          subtitle={REFERRAL_PROFESSIONALS.subtitle}
-          cta={CTA_LINKS.makeReferral}
-          sectionVariant="teal"
-        />
-      </div>
+      <SectionReveal>
+        <div>
+          <ReferralProfessionalsSection
+            headline={REFERRAL_PROFESSIONALS.headline}
+            subtitle={REFERRAL_PROFESSIONALS.subtitle}
+            cta={CTA_LINKS.makeReferral}
+            sectionVariant="teal"
+          />
+        </div>
+      </SectionReveal>
 
       <SectionDivider variant="tealToWhite" />
 
-      <div>
-        <QuickResponseSection
-          title={GET_IN_TOUCH.title}
-          subtitle={GET_IN_TOUCH.subtitle}
-          primaryCtaLabel={GET_IN_TOUCH.primaryCtaLabel}
-          secondaryCtaLabel={GET_IN_TOUCH.secondaryCtaLabel}
-          primaryCtaHref={CTA_LINKS.requestCare.href}
-          secondaryCtaHref={CTA_LINKS.contact.href}
-          benefits={GET_IN_TOUCH.benefits}
-          voiceAssistantLine={GET_IN_TOUCH.voiceAssistantLine}
-          sectionVariant="default"
-        />
-      </div>
+      <SectionReveal>
+        <div>
+          <QuickResponseSection
+            title={GET_IN_TOUCH.title}
+            subtitle={GET_IN_TOUCH.subtitle}
+            primaryCtaLabel={GET_IN_TOUCH.primaryCtaLabel}
+            secondaryCtaLabel={GET_IN_TOUCH.secondaryCtaLabel}
+            primaryCtaHref={CTA_LINKS.requestCare.href}
+            secondaryCtaHref={CTA_LINKS.contact.href}
+            benefits={GET_IN_TOUCH.benefits}
+            voiceAssistantLine={GET_IN_TOUCH.voiceAssistantLine}
+            sectionVariant="default"
+          />
+        </div>
+      </SectionReveal>
 
       <div className="h-12 shrink-0 sm:h-14" aria-hidden />
 
-      <div>
-        <HomepageCtaSections />
-      </div>
+      <SectionReveal>
+        <div>
+          <HomepageCtaSections />
+        </div>
+      </SectionReveal>
 
       <div className="h-12 shrink-0 sm:h-14" aria-hidden />
 
-      <div>
-        <FaqPreview
-          items={HOMEPAGE_FAQ}
-          title="Common Questions"
-          subtitle="Quick answers to things people often ask. We're happy to explain more. Just get in touch."
-          sectionVariant="default"
-        />
-      </div>
+      <SectionReveal>
+        <div>
+          <FaqPreview
+            items={HOMEPAGE_FAQ}
+            title="Common Questions"
+            subtitle="Quick answers to things people often ask. We're happy to explain more. Just get in touch."
+            sectionVariant="default"
+          />
+        </div>
+      </SectionReveal>
 
       <SectionDivider variant="whiteToTeal" />
 
-      <div>
-        <AreasWeServe
-          areas={HOMEPAGE_AREAS}
-          title="Areas We Serve"
-          subtitle="We provide in-home nursing and care across Sydney and surrounds. Wherever you are in the region, we're here to help."
-          sectionVariant="teal"
-        />
-      </div>
+      <SectionReveal>
+        <div>
+          <AreasWeServe
+            areas={HOMEPAGE_AREAS}
+            title="Areas We Serve"
+            subtitle="We provide in-home nursing and care across Sydney and surrounds. Wherever you are in the region, we're here to help."
+            sectionVariant="teal"
+          />
+        </div>
+      </SectionReveal>
 
       <SectionDivider variant="tealToWhite" />
 

@@ -13,7 +13,7 @@ interface HeaderProps {
 export function Header({ cta = CTA_LINKS.requestCare }: HeaderProps) {
   return (
     <header
-      className="sticky top-0 z-50 w-full border-b border-border/60 bg-white/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/85"
+      className="glass-morphism sticky top-0 z-50 w-full shadow-sm"
       role="banner"
     >
       <Container>

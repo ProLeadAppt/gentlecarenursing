@@ -1,7 +1,6 @@
 /**
- * Gentle Care Nursing — Design System Tokens
- * Warm, welcoming, compassionate, feminine healthcare.
  * Muted teal/sage, warm off-whites, breathable spacing, soft borders and shadows.
+ * Premium elevation: Framer Motion variants and layered shadows.
  */
 
 export const SPACING = {
@@ -28,20 +27,47 @@ export const SPACING_SECTION = {
 
 export const TYPOGRAPHY = {
   heading: {
-    h1: "font-[family-name:var(--font-dm-sans)] text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl",
-    h2: "font-[family-name:var(--font-dm-sans)] text-3xl font-bold tracking-tight sm:text-4xl",
+    h1: "font-[family-name:var(--font-serif)] text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl",
+    h2: "font-[family-name:var(--font-serif)] text-3xl font-bold tracking-tight sm:text-4xl",
     h3: "font-[family-name:var(--font-dm-sans)] text-xl font-semibold sm:text-2xl",
     h4: "font-[family-name:var(--font-dm-sans)] text-lg font-semibold",
     h5: "font-[family-name:var(--font-dm-sans)] text-base font-semibold",
   },
   body: {
     lg: "text-lg leading-relaxed text-muted-foreground",
-    base: "text-base leading-relaxed",
+    base: "text-base leading-relaxed tracking-wide",
     sm: "text-sm leading-relaxed text-muted-foreground",
     xs: "text-xs text-muted-foreground",
   },
-  lead: "text-lg sm:text-xl leading-relaxed text-muted-foreground",
+  lead: "text-lg sm:text-xl leading-relaxed text-muted-foreground font-medium",
   caption: "text-sm text-muted-foreground",
+} as const;
+
+/** High-end multi-stop shadows for natural depth */
+export const SHADOWS_LAYERED = {
+  sm: "0 1px 2px rgba(45, 42, 38, 0.02), 0 2px 4px rgba(45, 42, 38, 0.02)",
+  md: "0 4px 6px -1px rgba(45, 42, 38, 0.03), 0 10px 15px -3px rgba(45, 42, 38, 0.03)",
+  lg: "0 10px 25px -5px rgba(45, 42, 38, 0.04), 0 20px 48px -12px rgba(45, 42, 38, 0.04)",
+  glass: "0 8px 32px 0 rgba(132, 40, 51, 0.05)",
+} as const;
+
+/** Orchestrated entrance animations */
+export const ANIMATION_VARIANTS = {
+  container: {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    },
+  },
+  item: {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    },
+  },
 } as const;
 
 export const RADIUS = {

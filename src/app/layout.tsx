@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Source_Sans_3, DM_Sans } from "next/font/google";
+import { Source_Sans_3, DM_Sans, Cormorant_Garamond } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
@@ -18,6 +18,13 @@ const sourceSans = Source_Sans_3({
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
   weight: ["500", "600", "700"],
   display: "swap",
@@ -78,7 +85,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sourceSans.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${sourceSans.variable} ${dmSans.variable} ${cormorant.variable}`}>
       <head>
         <link rel="preload" href="/images/hero-hands.webp" as="image" />
         <script
