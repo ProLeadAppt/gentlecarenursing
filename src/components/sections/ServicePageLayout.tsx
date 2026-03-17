@@ -12,6 +12,7 @@ import { FormModalTrigger } from "@/components/ui/FormModalTrigger";
 import { CTA_LINKS } from "@/lib/constants";
 import { getServiceSchema, getFaqSchema } from "@/lib/schema";
 import { SERVICES } from "@/content/services";
+import { ALL_GUIDES } from "@/content/guides";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import type { FaqItem } from "./FaqAccordion";
 import Link from "next/link";
@@ -47,6 +48,11 @@ export interface ServicePageData {
     title: string;
     description?: string;
   };
+  /** Optional anonymised case stories to illustrate real-world outcomes */
+  caseStories?: {
+    title: string;
+    summary: string;
+  }[];
   /** Optional service or region-specific testimonials to surface on the page */
   testimonials?: {
     quote: string;
@@ -54,6 +60,8 @@ export interface ServicePageData {
     role: string;
     rating?: number;
   }[];
+  /** Optional guide slugs that are especially relevant to this service */
+  relatedGuideSlugs?: string[];
 }
 
 interface ServicePageLayoutProps {
@@ -75,6 +83,11 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
     }),
     ...(faqItems.length > 0 ? [getFaqSchema(data.faqs)] : []),
   ];
+
+  const relatedGuides =
+    data.relatedGuideSlugs?.map((slug) => ALL_GUIDES.find((g) => g.slug === slug)).filter(
+      (g): g is (typeof ALL_GUIDES)[number] => g != null
+    ) ?? [];
 
   return (
     <>
@@ -204,6 +217,32 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
         </Container>
       </Section>
 
+      {data.caseStories && data.caseStories.length > 0 && (
+        <Section variant="muted">
+          <Container>
+            <SectionHeader
+              title="Real Examples of How This Helps"
+              subtitle="Names and details are changed for privacy, but the situations are drawn from the kinds of referrals we regularly support."
+            />
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              {data.caseStories.map((story) => (
+                <article
+                  key={story.title}
+                  className="h-full rounded-2xl border border-border bg-card p-5 text-left shadow-sm"
+                >
+                  <Heading level="h3" as="h3" className="text-base font-semibold">
+                    {story.title}
+                  </Heading>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {story.summary}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </Container>
+        </Section>
+      )}
+
       {/* FAQ Preview */}
       {faqItems.length > 0 && (
         <FaqPreview
@@ -237,6 +276,37 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
           </ul>
         </Container>
       </Section>
+
+      {relatedGuides.length > 0 && (
+        <Section>
+          <Container>
+            <SectionHeader
+              title="Short Guides for Common Situations"
+              subtitle="These guides explain typical scenarios we support and how care at home can work in practice."
+            />
+            <ul className="mt-8 grid gap-4 md:grid-cols-2">
+              {relatedGuides.map((guide) => (
+                <li key={guide.slug}>
+                  <Link
+                    href={`/guides/${guide.slug}`}
+                    className="block h-full rounded-xl border border-border bg-card p-5 text-left shadow-sm transition hover:border-primary/40 hover:bg-primary/[0.02]"
+                  >
+                    <Heading level="h3" as="h3" className="text-base font-semibold">
+                      {guide.title}
+                    </Heading>
+                    <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
+                      {guide.snippetAnswer}
+                    </p>
+                    <span className="mt-3 inline-flex text-sm font-medium text-primary">
+                      Read guide
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Container>
+        </Section>
+      )}
 
       {data.testimonials && data.testimonials.length > 0 && (
         <Testimonials
