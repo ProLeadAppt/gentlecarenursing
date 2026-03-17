@@ -1,11 +1,10 @@
 /**
  * Section components.
  *
- * Client components (HomepageCtaSections, ServiceCtaWithModal, AiAssistantSection)
+ * Client components (HomepageCtaSections, ServiceCtaWithModal)
  * are included for discoverability but should be imported directly in route files
  * to ensure proper tree-shaking.
  */
-export { AiAssistantSection } from "./AiAssistantSection";
 export { AreasWeServe } from "./AreasWeServe";
 export { CredentialsSection } from "./CredentialsSection";
 export { CtaSection } from "./CtaSection";

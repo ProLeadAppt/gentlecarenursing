@@ -49,8 +49,8 @@ export default function ReferrersPage() {
     REFERRER_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
   );
   const breadcrumbSchema = getBreadcrumbListSchema([
-    { label: "Home", path: "/" },
-    { label: "For Coordinators & Referrers", path: "/referrers" },
+    { name: "Home", item: "/" },
+    { name: "For Coordinators & Referrers", item: "/referrers" },
   ]);
 
   return (
