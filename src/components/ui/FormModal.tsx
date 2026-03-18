@@ -4,8 +4,8 @@ import { useEffect, useRef, useCallback } from "react";
 import { X } from "lucide-react";
 import { useFormModal } from "@/contexts/FormModalContext";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { ReferralForm } from "@/components/forms/ReferralForm";
 import { CareFinder } from "@/components/forms/CareFinder";
+import { ReferralConcierge } from "@/components/forms/ReferralConcierge";
 
 export function FormModal() {
   const { activeForm, closeModal } = useFormModal();
@@ -55,18 +55,18 @@ export function FormModal() {
     switch (activeForm) {
       case "referral":
         return {
-          title: "Request Care",
-          subtitle: "Tell us about your needs. We'll respond within minutes.",
+          title: "Referral Concierge",
+          subtitle: "A premium, guided process for healthcare professionals and families.",
         };
       case "contact":
         return {
-          title: "Contact Us",
-          subtitle: "Send us a message. We'll get back to you fast.",
+          title: "Get in Touch",
+          subtitle: "Have a question? We're here to help you navigate your care journey.",
         };
       case "care-finder":
         return {
-          title: "Care Finder",
-          subtitle: "Tell us what you need. We'll find the right care.",
+          title: "Care Finder Concierge",
+          subtitle: "Tell us about your needs and we'll guide you through the next steps.",
         };
       default:
         return { title: "", subtitle: "" };
@@ -78,34 +78,34 @@ export function FormModal() {
   return (
     <dialog
       ref={dialogRef}
-      className="fixed inset-0 z-[100] m-0 h-full w-full max-w-none max-h-none bg-transparent p-0 backdrop:bg-black/50 backdrop:backdrop-blur-sm open:flex open:items-center open:justify-center"
+      className="fixed inset-0 z-[100] m-0 h-full w-full max-w-none max-h-none bg-transparent p-0 backdrop:bg-black/60 backdrop:backdrop-blur-md open:flex open:items-center open:justify-center"
       onClick={handleBackdropClick}
     >
       <div
         ref={contentRef}
-        className="relative mx-auto flex max-h-[90dvh] w-full max-w-lg flex-col overflow-hidden rounded-none bg-card shadow-2xl sm:rounded-2xl sm:m-4"
+        className="relative mx-auto flex max-h-[95dvh] w-full max-w-2xl flex-col overflow-hidden rounded-[2.5rem] border border-border/60 bg-card shadow-2xl sm:m-6"
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-border px-6 py-4">
+        <div className="flex items-start justify-between border-b border-border/40 bg-muted/20 px-8 py-8 sm:px-10">
           <div>
-            <h2 className="font-[family-name:var(--font-serif)] text-2xl font-bold text-foreground leading-none">
+            <h2 className="font-[family-name:var(--font-serif)] text-2xl sm:text-3xl font-bold text-foreground leading-tight">
               {title}
             </h2>
-            <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>
+            <p className="mt-2 text-sm sm:text-base text-muted-foreground">{subtitle}</p>
           </div>
           <button
             type="button"
             onClick={closeModal}
-            className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="flex h-10 w-10 items-center justify-center rounded-full text-muted-foreground transition-all hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20"
             aria-label="Close"
           >
-            <X className="h-5 w-5" />
+            <X className="h-6 w-6" />
           </button>
         </div>
 
         {/* Body */}
-        <div className="flex-1 overflow-y-auto px-6 py-6">
-          {activeForm === "referral" && <ReferralForm compact />}
+        <div className="flex-1 overflow-y-auto px-8 py-8 sm:px-10">
+          {activeForm === "referral" && <ReferralConcierge />}
           {activeForm === "contact" && <ContactForm />}
           {activeForm === "care-finder" && <CareFinder />}
         </div>
