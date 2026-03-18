@@ -8,7 +8,7 @@ export const ELEVATOR_PITCH =
 
 export const ABOUT_INTRO = {
   title: "About Gentle Care Nursing",
-  lead: "We are a boutique nursing and care provider focused on providing personalised, high-quality support to a smaller number of participants. This ensures every individual receives the dedicated attention they deserve to maintain their independence and dignity.",
+  lead: "We are a boutique nursing and care provider focused on providing personalised, high-quality support to a smaller number of people. This ensures every individual receives the time and attention they need to maintain their independence and dignity.",
   /** Stats in prose for GEO / authority */
   statsLine: "With 10+ years of experience and a deep focus on compassionate clinical care, we respond to every enquiry within 24 hours.",
 } as const;
@@ -23,7 +23,7 @@ export const VALUES = [
   {
     title: "Quality Over Volume",
     description:
-      "We take on fewer clients so every person receives more dedicated, attentive care. We don't rush. We don't cut corners.",
+      "We take on fewer clients so every person receives more dedicated, attentive care. We don't rush, and we don't cut corners.",
   },
   {
     title: "Trust and Transparency",
@@ -43,7 +43,7 @@ export const VALUES = [
   {
     title: "Responsiveness",
     description:
-      "We respond to enquiries quickly, within 24 to 48 hours. When families and coordinators need help, we move fast.",
+      "We respond to enquiries quickly, usually within 24 to 48 hours. When families and coordinators need help, we move fast.",
   },
   {
     title: "Compassion",

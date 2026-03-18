@@ -49,7 +49,7 @@ export function ProcessTimeline() {
           <Reveal delay={0.3} y={15}>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
               We've refined our process to be as fast, clear, and reassuring as possible. 
-              No waiting in limbo—just clinical excellence and personal connection.
+              No waiting in limbo: just clinical excellence and personal connection.
             </p>
           </Reveal>
         </div>

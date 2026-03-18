@@ -87,7 +87,7 @@ export function CareFinder() {
           We&apos;ve Received Your Request
         </h3>
         <p className="mt-4 max-w-sm text-muted-foreground">
-          Gemma or one of our clinical leads will review your details and reach out within 24 hours to guide you through the next steps.
+          Gemma or one of our nursing leads will review your details and reach out within 24 hours to talk about how we can help.
         </p>
       </div>
     );
@@ -228,7 +228,7 @@ export function CareFinder() {
                 </>
               ) : (
                 <>
-                  Complete Request
+                  Send Request
                   <Check className="h-4 w-4" />
                 </>
               )}

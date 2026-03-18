@@ -1,7 +1,7 @@
 /**
- * Content for area/region landing pages (Local SEO — neighborhood-style).
+ * Content for area/region landing pages (Local SEO: neighbourhood-style).
  * One entry per region; used by /areas and /areas/[region].
- * Answer-first copy for featured snippets and AEO.
+ * Answer-first copy for featured snippets and search results.
  */
 
 import { AREAS_SERVED } from "./areas-served";
@@ -11,7 +11,7 @@ export interface AreaContent {
   region: string;
   /** URL slug (e.g. inner-west) */
   slug: string;
-  /** Direct answer for "in-home nursing [region]" — first 1–2 sentences */
+  /** Direct answer for "in-home nursing [region]" (one or two sentences) */
   headline: string;
   /** Snippet-style description (meta + above fold) */
   description: string;
@@ -40,13 +40,13 @@ export const AREAS_CONTENT: AreaContent[] = AREAS_SERVED.map((area) => {
   return {
     region: area.region,
     slug,
-    headline: `In-home nursing and care in ${area.region} — NDIS, DVA, aged care, and private.`,
+    headline: `In-home nursing and care in ${area.region}: NDIS, DVA, aged care, and private.`,
     description: `Gentle Care Nursing provides in-home nursing and personal care across ${area.region} (${area.suburbs.join(", ")}). Registered NDIS and DVA provider. Personal response within 24 hours.`,
     body: AREA_BODY_TEMPLATE.replace("{suburbs}", suburbList),
     examples: [
-      `An older person in ${area.region} coming home from hospital who needs short-term nursing and personal care to regain confidence.`,
-      `An NDIS participant in ${area.region} with complex care needs receiving regular nursing visits at home.`,
-      `A family in ${area.region} arranging in-home support so a parent can stay safely at home instead of moving to residential care.`,
+      `An older person in ${area.region} coming home from hospital who needs short-term nursing and personal care to feel more confident.`,
+      `An NDIS participant in ${area.region} needing regular nursing visits at home.`,
+      `A family in ${area.region} looking for support so a parent can stay safely at home instead of moving to residential care.`,
     ],
     suburbs: area.suburbs,
   };

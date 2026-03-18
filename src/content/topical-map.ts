@@ -1,7 +1,7 @@
 /**
  * Topical map for SEO (Caleb Ulku MVC + silos).
  * Pillars and clusters; use for breadcrumbs, related links, and internal linking.
- * Only link related content — avoid "connect everything to everything".
+ * Only link related content: avoid "connect everything to everything".
  */
 
 export type PillarId =

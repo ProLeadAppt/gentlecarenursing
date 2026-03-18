@@ -147,9 +147,9 @@ export const NDIS_PAGE: ServicePageData = {
           "We take on fewer clients so every participant gets more dedicated, attentive care, not a rushed service.",
       },
       {
-        title: "Fast, Easy Referrals",
+        title: "Fast and simple care setup",
         description:
-          "Simple referral process with quick turnaround. We respond to enquiries within 24–48 hours.",
+          "We focus on keeping things simple. We respond to your call or message quickly, usually within 24 to 48 hours, so you're not left waiting.",
       },
     ],
   },
@@ -165,7 +165,7 @@ export const NDIS_PAGE: ServicePageData = {
       id: "ndis-get-started",
       question: "How do I get started with NDIS services?",
       answer:
-        "You or your support coordinator can submit an enquiry through our Request Care form. We'll review your needs and respond within 24–48 hours to discuss how we can help.",
+        "You or your support coordinator can reach out through our Request Care form. We'll listen to what you need and get back to you within 24 to 48 hours to talk about how we can help.",
     },
     {
       id: "ndis-funding",
@@ -395,7 +395,7 @@ export const AGED_CARE_PAGE: ServicePageData = {
       id: "aged-care-funding",
       question: "What funding options are available for aged care?",
       answer:
-        "We work with Home Care Packages (Levels 1–4), the Commonwealth Home Support Programme (CHSP), and private funding. Your aged care assessment team (ACAT/ACAS) can help determine your eligibility for government-funded support.",
+        "We work with Home Care Packages (Levels 1 to 4), the Commonwealth Home Support Programme (CHSP), and private funding. Your aged care assessment team (ACAT or ACAS) can help you understand if you are eligible for government-funded support.",
     },
     {
       id: "aged-care-start",
@@ -584,7 +584,7 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
       {
         title: "Short-Term Intensive Support",
         description:
-          "More frequent visits in the first 1–2 weeks after discharge, tapering as you become more confident and independent at home.",
+          "More frequent visits in the first one or two weeks after you come home, slowly reducing as you feel more confident and independent.",
       },
       {
         title: "Coordination With Your Treating Team",
@@ -627,7 +627,7 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
       id: "post-hospital-start",
       question: "How quickly can post-hospital care start?",
       answer:
-        "In many cases we can begin visits within 24–48 hours of receiving your referral or enquiry, depending on your location and care needs. We confirm start dates and visit frequency with you before you leave hospital where possible.",
+        "In many cases, we can begin visits within 24 to 48 hours of hearing from you, depending on your location and what care you need. We'll confirm start dates and how often we'll visit before you leave hospital whenever we can.",
     },
     {
       id: "post-hospital-referral",
@@ -1026,7 +1026,7 @@ export const NURSING_CARE_PAGE: ServicePageData = {
   supportAvailable: {
     title: "Clinical Support Available",
     description:
-      "We provide a broad range of clinical nursing services, delivered by experts who prioritize your comfort.",
+      "We provide a broad range of clinical nursing services, delivered by experts who prioritise your comfort.",
     features: [
       {
         title: "Wound Management",
@@ -1064,7 +1064,7 @@ export const NURSING_CARE_PAGE: ServicePageData = {
   whyChoose: {
     title: "Why Choose Gentle Care for Nursing",
     description:
-      "We bring hospital-level expertise into the home with a boutique, person-centered approach.",
+      "We bring hospital-level expertise into the home with a boutique, person-centred approach.",
     reasons: [
       {
         title: "Expertise You Can Trust",
@@ -1125,7 +1125,7 @@ export const PERSONAL_CARE_PAGE: ServicePageData = {
   title: "Personal Care & Daily Support",
   href: "/services/personal-care",
   snippetAnswer:
-    "Personal care is assistance with the private tasks of daily living—such as bathing, dressing, and grooming—delivered with respect, dignity, and a focus on your choice.",
+    "Personal care is help with the private tasks of daily living, such as bathing, dressing, and grooming, delivered with respect, dignity, and a focus on your choice.",
   intro:
     "Independence starts with feeling good in yourself. Our personal care services provide gentle, respectful assistance with daily routines, ensuring you feel comfortable, confident, and in control of your day.",
 
@@ -1302,9 +1302,9 @@ export const DAILY_LIVING_PAGE: ServicePageData = {
           "We don't just 'do for you'. We work 'with you' to help you maintain or improve your own domestic skills where possible.",
       },
       {
-        title: "Reliability You Can Count On",
+        title: "Reliability you can count on",
         description:
-          "We know how important routine is. Our team is punctual, consistent, and always ready to help.",
+          "We know how important routine is. Our team is always on time, consistent, and ready to help.",
       },
     ],
   },
@@ -1361,7 +1361,7 @@ export const COMMUNITY_PARTICIPATION_PAGE: ServicePageData = {
       {
         title: "Social & Recreational Outings",
         description:
-          "Going to the cinema, visiting a park, attending a club, or meeting friends for coffee—your choice, our support.",
+          "Going to the cinema, visiting a park, attending a club, or meeting friends for coffee: your choice, our support.",
       },
       {
         title: "Appointment Support",
@@ -1419,7 +1419,7 @@ export const COMMUNITY_PARTICIPATION_PAGE: ServicePageData = {
       id: "community-transport",
       question: "Do you provide your own transport?",
       answer:
-        "Yes, our support workers can use their own insured vehicles to transport you, or we can use your vehicle or public transport—whatever suits you best.",
+        "Yes, our support workers can use their own insured vehicles to transport you, or we can use your vehicle or public transport: whatever suits you best.",
     },
     {
       id: "community-goals",
@@ -1498,7 +1498,7 @@ export const OVERNIGHT_SUPPORT_PAGE: ServicePageData = {
   whyChoose: {
     title: "Sleep With Confidence",
     description:
-      "We prioritize your safety and the quality of your sleep, providing a calm and capable presence.",
+      "We prioritise your safety and the quality of your sleep, providing a calm and capable presence.",
     reasons: [
       {
         title: "Clinical Oversight",

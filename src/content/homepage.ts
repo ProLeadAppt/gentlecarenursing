@@ -5,7 +5,7 @@
 
 export const HOMEPAGE_HERO = {
   /** Updated based on Gemma's request */
-  trustLine: "Registered NDIS Provider | DVA Approved Provider | Aged Care - Support at Home",
+  trustLine: "Registered NDIS Provider, DVA Approved Provider, Aged Care: Support at Home",
   headline: "Compassionate In-Home Care & Disability Support in Sydney",
   subheadline:
     "Providing personalised, compassionate care to support independence, dignity, and wellbeing at home. We respond quickly because we know that matters.",
@@ -37,7 +37,7 @@ export const HOMEPAGE_LOCAL_PROOF = {
 export const WHO_WE_HELP = {
   title: "Who We Help",
   subtitle:
-    "Whoever you are: a family looking for peace of mind, a coordinator needing a provider you can rely on, or a professional making a referral. We focus on quality support for a smaller number of participants to maintain the highest standards.",
+    "Whoever you are: a family looking for peace of mind, a coordinator needing a provider you can rely on, or a professional making a referral. We focus on quality support for a smaller number of people so we can give you the time and attention you deserve.",
   sectionImage: "/images/age-cymru-2obyM4zYt3Y-unsplash.webp",
   sectionImageAlt: "Older person and carer in a calm, supportive moment at home",
   audiences: [
@@ -54,7 +54,7 @@ export const WHO_WE_HELP = {
     {
       label: "Hospitals & Planners",
       description:
-        "Safe transition from hospital to home matters. We coordinate with discharge teams to provide nursing and support that assists recovery and avoids readmission.",
+        "Safe transition from hospital to home matters. We coordinate with discharge teams to provide nursing and support that helps with recovery and avoids having to go back to hospital.",
     },
     {
       label: "Plan Managers",
@@ -87,9 +87,9 @@ export const WHY_DIFFERENT = {
         "We focus on providing personalised care to a smaller number of participants. This ensures we can maintain quality and never rush our support.",
     },
     {
-      headline: "Collaborative approach",
+      headline: "Working together",
       description:
-        "We work closely with support coordinators, families, and allied health professionals to ensure a seamless and holistic care experience.",
+        "We work closely with support coordinators, families, and health professionals to make sure everything runs smoothly and you feel well looked after.",
     },
   ],
 } as const;
@@ -103,13 +103,13 @@ export const HOMEPAGE_SERVICES_IMAGE = {
 export const PROCESS_STEPS = {
   title: "How It Works",
   subtitle:
-    "From your first enquiry to care at home: clear steps, quick response, and no one left waiting or wondering what happens next.",
+    "From your first call to care at home: simple steps, quick response, and no one left waiting or wondering what happens next.",
   steps: [
     {
       number: 1,
       headline: "Submit an enquiry or referral",
       description:
-        "Use our simple online form to tell us about your situation, or submit a referral if you're a coordinator or health professional. It only takes a few minutes.",
+        "Use our simple online form to tell us about your situation, or reach out if you're a coordinator or health professional. It only takes a few minutes.",
     },
     {
       number: 2,
@@ -121,7 +121,7 @@ export const PROCESS_STEPS = {
       number: 3,
       headline: "Understanding your needs",
       description:
-        "A real person follows up within 24 hours to listen, ask questions, and understand your goals, funding, and preferences. Together, we agree on what support will help most.",
+        "A real person follows up within 24 hours to listen and understand what's important to you. Together, we'll talk about what support will help most.",
     },
     {
       number: 4,
@@ -143,12 +143,12 @@ export const REFERRAL_PROFESSIONALS = {
 export const GET_IN_TOUCH = {
   title: "Get Help Quickly. You're Not Left Waiting.",
   subtitle:
-    "When you reach out, our team is notified straight away. You'll get a personal response within 24 hours, with clear next steps and supportive guidance. No runaround.",
+    "When you reach out, our team is notified straight away. You'll get a personal response within 24 hours to talk through next steps. No being passed around.",
   primaryCtaLabel: "Request Care",
   secondaryCtaLabel: "Contact Us",
   benefits: [
     "You'll hear from us within 24 hours",
-    "Immediate confirmation when you enquire",
+    "We confirm your message as soon as you send it",
     "Clear next steps. No waiting in the dark.",
   ] as const,
   voiceAssistantLine: "Need guidance right now? Use our voice assistant below for immediate help.",

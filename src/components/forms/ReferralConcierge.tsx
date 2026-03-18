@@ -88,7 +88,7 @@ export function ReferralConcierge() {
           Referral Submitted
         </h3>
         <p className="mt-4 max-w-sm text-lg text-muted-foreground leading-relaxed">
-          Thank you for trusting us with your client. Our clinical leads will review the details and contact you within 24 hours to confirm the next steps.
+          Thank you for trusting us with your client. Our nursing leads will review the details and contact you within 24 hours to confirm the next steps.
         </p>
       </div>
     );
@@ -153,7 +153,7 @@ export function ReferralConcierge() {
                         <option value="Other">Other Professional</option>
                       </Select>
                     </FormField>
-                    <FormField label="Organization" htmlFor="ref-org">
+                    <FormField label="Organisation" htmlFor="ref-org">
                       <Input id="ref-org" name="organization" value={formData.organization} onChange={handleInputChange} placeholder="e.g. Royal Prince Alfred" />
                     </FormField>
                   </div>
@@ -215,8 +215,8 @@ export function ReferralConcierge() {
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/5 text-primary mb-2">
                     <ClipboardCheck className="h-5 w-5" />
                   </div>
-                  <h3 className="font-[family-name:var(--font-serif)] text-2xl font-bold">Clinical Notes</h3>
-                  <p className="text-muted-foreground">Any specific clinical requirements or urgency?</p>
+                  <h3 className="font-[family-name:var(--font-serif)] text-2xl font-bold">Nursing Notes</h3>
+                  <p className="text-muted-foreground">Any specific clinical requirements or urgency we should know about?</p>
                 </div>
                 <FormField label="Additional Notes" htmlFor="ref-notes">
                   <Textarea 
@@ -229,7 +229,7 @@ export function ReferralConcierge() {
                   />
                 </FormField>
                 <p className="text-xs text-muted-foreground italic">
-                  Note: A clinical lead will follow up for detailed documentation.
+                  Note: A nursing lead will follow up for more details soon.
                 </p>
               </div>
             )}
