@@ -4,13 +4,13 @@
  */
 
 export const HOMEPAGE_HERO = {
-  /** Optional soft line above headline (trust without sounding corporate) */
-  trustLine: "Registered NDIS & DVA provider",
-  headline: "Care That Feels Calm, Safe, and Personal",
+  /** Updated based on Gemma's request */
+  trustLine: "Registered NDIS Provider | DVA Approved Provider | Aged Care - Support at Home",
+  headline: "Compassionate In-Home Care & Disability Support in Sydney",
   subheadline:
-    "In-home nursing and support across Sydney, for you or someone you love. We're here from the first conversation to ongoing care, and we respond quickly because we know that matters.",
+    "Providing personalised, compassionate care to support independence, dignity, and wellbeing at home. We respond quickly because we know that matters.",
   /** Value pills: soft, trust-focused, not badge-y */
-  valuePills: ["We reply within 24 hours", "Registered & trusted", "Care tailored to you", "Here for Sydney"] as const,
+  valuePills: ["We reply within 24 hours", "Quality care, smaller client load", "Dignity and independence", "Here for Sydney"] as const,
   /** Hero image (right column). Default: carer-elderly. */
   heroImageSrc: "/images/carer-elderly.webp",
   heroImageAlt: "Nurse assisting a patient in a home environment",
@@ -37,59 +37,59 @@ export const HOMEPAGE_LOCAL_PROOF = {
 export const WHO_WE_HELP = {
   title: "Who We Help",
   subtitle:
-    "Whoever you are: a family looking for peace of mind, a coordinator needing a provider you can rely on, or a professional making a referral. We're here to help. No runaround, no long waits.",
+    "Whoever you are: a family looking for peace of mind, a coordinator needing a provider you can rely on, or a professional making a referral. We focus on quality support for a smaller number of participants to maintain the highest standards.",
   sectionImage: "/images/age-cymru-2obyM4zYt3Y-unsplash.webp",
   sectionImageAlt: "Older person and carer in a calm, supportive moment at home",
   audiences: [
     {
+      label: "Support Coordinators",
+      description:
+        "You need a provider that's responsive and reliable. We work closely with NDIS participants and coordinators to deliver quality in-home care without the high client volume.",
+    },
+    {
       label: "Families",
       description:
-        "Caring for a loved one at home can be overwhelming. We provide skilled nursing and personal care so you can feel confident they're in good hands.",
+        "Caring for a loved one can be overwhelming. We provide skilled nursing and personal care so you can feel confident they're supported with dignity and respect.",
     },
     {
-      label: "NDIS Coordinators",
+      label: "Hospitals & Planners",
       description:
-        "You need a provider that's responsive and reliable. We work closely with NDIS participants and their coordinators to deliver quality in-home care.",
+        "Safe transition from hospital to home matters. We coordinate with discharge teams to provide nursing and support that assists recovery and avoids readmission.",
     },
     {
-      label: "Discharge Planners",
+      label: "Plan Managers",
       description:
-        "Safe transition from hospital to home matters. We coordinate with your team and provide ongoing nursing and support so clients stay safe and supported.",
-    },
-    {
-      label: "Referral Partners",
-      description:
-        "We make referrals straightforward and follow up quickly. You can refer with confidence knowing we'll respond and keep you in the loop.",
+        "We make the process straightforward and follow up quickly. You can trust our registration and compliance for all NDIS and DVA participants.",
     },
   ],
 } as const;
 
 export const WHY_DIFFERENT = {
-  title: "Why Gentle Care Is Different",
+  title: "Why Choose Gentle Care",
   subtitle:
-    "We believe everyone deserves care that feels personal, professional, and reliable. Here's how we show up for you.",
+    "We believe everyone deserves care that feels personal, professional, and reliable. Here's why families and coordinators trust us.",
   imageSrc: "/images/age-cymru-bSXk1lOp8T0-unsplash.webp",
   imageAlt: "Carer and client in a warm, personal moment of support at home",
   differentiators: [
     {
-      headline: "Personalised care plans",
+      headline: "Person-centred care",
       description:
-        "Your situation, health needs, and home life are unique. We listen carefully and create a care plan around you or your loved one, rather than forcing you into a one-size-fits-all service.",
+        "Your health needs and home life are unique. We listen carefully and create a care plan around you, ensuring your voice is heard in every decision.",
     },
     {
-      headline: "Experienced nursing team",
+      headline: "Experienced staff",
       description:
-        "Gentle Care nurses bring years of clinical experience into the home, with the calm, professional support that helps people feel safe. Families and coordinators know there is a capable team standing behind every visit.",
+        "Our team brings years of clinical experience into the home with the compassion and professionalism that helps you feel safe and supported.",
     },
     {
-      headline: "Compassionate, dignified care",
+      headline: "Quality over volume",
       description:
-        "Good care is about more than tasks. We take time to build trust, protect dignity, and support the emotional load families carry when someone they love needs extra help.",
+        "We focus on providing personalised care to a smaller number of participants. This ensures we can maintain quality and never rush our support.",
     },
     {
-      headline: "Responsive communication",
+      headline: "Collaborative approach",
       description:
-        "We know waiting for a reply can be stressful. Enquiries submitted through this website are received straight away by our team so a real person can respond quickly with clear next steps and ongoing updates.",
+        "We work closely with support coordinators, families, and allied health professionals to ensure a seamless and holistic care experience.",
     },
   ],
 } as const;
@@ -134,9 +134,9 @@ export const PROCESS_STEPS = {
 
 /** Section encouraging healthcare professionals and coordinators to make referrals */
 export const REFERRAL_PROFESSIONALS = {
-  headline: "Simple Referrals for Healthcare Professionals.",
+  headline: "We Welcome Referrals from Partners in Care",
   subtitle:
-    "Gentle Care works closely with support coordinators, discharge planners, and healthcare providers. We make referrals straightforward and respond quickly so you and your clients know what happens next.",
+    "Gentle Care works closely with Support Coordinators, Plan Managers, Hospitals, Allied Health Professionals, and Families. We make the transition easy and keep you informed.",
 } as const;
 
 /** Get in touch / quick-response section: immediate acknowledgement, clear next steps, optional voice assistant */

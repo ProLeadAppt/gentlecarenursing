@@ -72,7 +72,7 @@ export function Hero({
                   level="h1"
                   as="h1"
                   id="hero-heading"
-                  className={TYPOGRAPHY.heading.h1 + " text-foreground text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] leading-[1.1] mb-6"}
+                  className={TYPOGRAPHY.heading.h1 + " text-foreground text-4xl sm:text-5xl lg:text-[4rem] xl:text-[4.5rem] leading-[1.05] tracking-tight mb-8"}
                 >
                   {headline}
                 </Heading>
@@ -151,16 +151,16 @@ export function Hero({
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           >
-            <div className="absolute inset-0 overflow-hidden rounded-[2rem] shadow-2xl lg:rounded-[2.5rem]">
+            <div className="absolute inset-0 overflow-hidden rounded-[2.5rem] shadow-2xl lg:rounded-[3.5rem]">
               <Image
                 src={imageSrc}
                 alt={imageAlt}
                 fill
-                className="object-cover object-center transition-transform duration-[10s] hover:scale-105"
+                className="object-cover object-center transition-transform duration-[10s] hover:scale-110"
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent pointer-events-none" />
             </div>
           </motion.div>
         </div>

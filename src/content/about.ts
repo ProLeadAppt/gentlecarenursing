@@ -8,9 +8,9 @@ export const ELEVATOR_PITCH =
 
 export const ABOUT_INTRO = {
   title: "About Gentle Care Nursing",
-  lead: "We're a nursing and care provider that believes in doing things differently. Smaller client load. More dedicated support. Genuine care that families and referral partners can rely on.",
+  lead: "We are a boutique nursing and care provider focused on providing personalised, high-quality support to a smaller number of participants. This ensures every individual receives the dedicated attention they deserve to maintain their independence and dignity.",
   /** Stats in prose for GEO / authority */
-  statsLine: "With 10+ years of experience and 1,300+ clients supported, we respond to every enquiry within 24–48 hours.",
+  statsLine: "With 10+ years of experience and a deep focus on compassionate clinical care, we respond to every enquiry within 24 hours.",
 } as const;
 
 export const MISSION = {
