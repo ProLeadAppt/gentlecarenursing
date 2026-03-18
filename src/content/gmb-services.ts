@@ -23,22 +23,22 @@ export const GMB_SERVICES: readonly GmbService[] = [
   },
   {
     name: "Assistance with Daily Living",
-    description: "Practical help with meal prep, household tasks, and daily routines for independence at home.",
+    description: "Practical help with meals, simple household tasks, and daily routines to keep things running smoothly at home.",
     href: "/services/assistance-with-daily-living",
   },
   {
     name: "Community Participation",
-    description: "Support for social activities, appointments, and social inclusion to achieve your goals.",
+    description: "Support for getting out and about, joining in social activities, or attending appointments with confidence.",
     href: "/services/community-participation",
   },
   {
     name: "Complex Care Support",
-    description: "Specialised clinical care for higher-need participants including PEG feeding and tracheostomy care.",
+    description: "Experienced nursing care for more complex needs: including PEG feeding, tracheostomy care, and dedicated clinical support.",
     href: "/services/complex-care",
   },
   {
     name: "Overnight Support",
-    description: "Active overnight care or sleepover support for peace of mind and safety while you sleep.",
+    description: "A calm and capable presence through the night: offering either active support or sleepover care so you can rest easily.",
     href: "/services/overnight-support",
   },
   {
