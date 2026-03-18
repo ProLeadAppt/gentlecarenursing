@@ -14,22 +14,22 @@ export const GMB_SERVICES: readonly GmbService[] = [
   {
     name: "Personal Care",
     description: "Assistance with bathing, dressing, grooming, and mobility, protecting dignity and choice.",
-    href: "/personal-care",
+    href: "/services/personal-care",
   },
   {
     name: "Nursing Care",
     description: "Professional, clinical support from experienced registered nurses including wound care and medication management.",
-    href: "/nursing-care",
+    href: "/services/nursing-care",
   },
   {
     name: "Assistance with Daily Living",
     description: "Practical help with meal prep, household tasks, and daily routines for independence at home.",
-    href: "/assistance-with-daily-living",
+    href: "/services/assistance-with-daily-living",
   },
   {
     name: "Community Participation",
     description: "Support for social activities, appointments, and social inclusion to achieve your goals.",
-    href: "/community-participation",
+    href: "/services/community-participation",
   },
   {
     name: "Complex Care Support",
@@ -39,7 +39,7 @@ export const GMB_SERVICES: readonly GmbService[] = [
   {
     name: "Overnight Support",
     description: "Active overnight care or sleepover support for peace of mind and safety while you sleep.",
-    href: "/overnight-support",
+    href: "/services/overnight-support",
   },
   {
     name: "Post-Hospital Support",

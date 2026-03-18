@@ -21,28 +21,28 @@ export const SERVICES: ServiceDefinition[] = [
     title: "Personal Care",
     benefitLine: "Support with daily living that protects dignity and choice.",
     shortDescription: "Assistance with bathing, dressing, grooming, and mobility.",
-    href: "/personal-care",
+    href: "/services/personal-care",
   },
   {
     slug: "nursing-care",
     title: "Nursing Care",
     benefitLine: "Professional, clinical support from experienced registered nurses.",
     shortDescription: "Wound care, medication management, and clinical monitoring at home.",
-    href: "/nursing-care",
+    href: "/services/nursing-care",
   },
   {
     slug: "daily-living",
     title: "Assistance with Daily Living",
     benefitLine: "Practical help for a more independent life at home.",
     shortDescription: "Support with meal prep, household tasks, and daily routines.",
-    href: "/assistance-with-daily-living",
+    href: "/services/assistance-with-daily-living",
   },
   {
     slug: "community-participation",
     title: "Community Participation",
     benefitLine: "Stay connected with your community and achieve your goals.",
     shortDescription: "Support for social activities, appointments, and social inclusion.",
-    href: "/community-participation",
+    href: "/services/community-participation",
   },
   {
     slug: "complex-care",
@@ -56,7 +56,7 @@ export const SERVICES: ServiceDefinition[] = [
     title: "Overnight Support",
     benefitLine: "Peace of mind and safety while you sleep.",
     shortDescription: "Active overnight care or sleepover support for peace of mind.",
-    href: "/overnight-support",
+    href: "/services/overnight-support",
   },
   {
     slug: "post-hospital-care",
@@ -1000,3 +1000,542 @@ export const PALLIATIVE_CARE_PAGE: ServicePageData = {
   },
 };
 
+
+export const NURSING_CARE_PAGE: ServicePageData = {
+  title: "Nursing Care at Home",
+  href: "/services/nursing-care",
+  snippetAnswer:
+    "In-home nursing care is professional clinical support delivered by registered nurses in your own home, covering wound care, medication management, and health monitoring across Sydney.",
+  intro:
+    "General nursing care shouldn't feel clinical or rushed. We provide experienced Registered Nurses who take the time to understand your health goals, providing expert medical support that honors your independence and privacy.",
+
+  whoItHelps: {
+    title: "Who Nursing Care Is For",
+    description:
+      "Our nursing services are for anyone requiring professional clinical oversight or technical medical support at home.",
+    audiences: [
+      "People managing chronic health conditions like diabetes or heart disease",
+      "Patients needing professional wound care and dressing changes",
+      "Individuals requiring help with medication administration or injections",
+      "Families seeking registered nurse oversight for a loved one's health",
+      "NDIS, DVA, and Aged Care participants with clinical needs",
+      "Anyone wanting to avoid hospital visits for routine clinical tasks",
+    ],
+  },
+
+  supportAvailable: {
+    title: "Clinical Support Available",
+    description:
+      "We provide a broad range of clinical nursing services, delivered by experts who prioritize your comfort.",
+    features: [
+      {
+        title: "Wound Management",
+        description:
+          "Professional assessment and dressing of acute, chronic, or surgical wounds to promote healing and prevent infection.",
+      },
+      {
+        title: "Medication Management",
+        description:
+          "Administration of medications, including injections and sub-cut infusions, ensuring safety and compliance with your doctor's orders.",
+      },
+      {
+        title: "Health & Vital Monitoring",
+        description:
+          "Regular checks of blood pressure, blood sugar, oxygen levels, and general wellness to catch health changes early.",
+      },
+      {
+        title: "Continence & Catheter Care",
+        description:
+          "Professional support for catheter changes and continence management, delivered with absolute discretion and dignity.",
+      },
+      {
+        title: "Chronic Disease Support",
+        description:
+          "Ongoing clinical management and education for long-term conditions to help you stay well and out of hospital.",
+      },
+      {
+        title: "Clinical Liaison",
+        description:
+          "We speak the language of your doctors and specialists, ensuring your entire health team is coordinated and informed.",
+      },
+    ],
+  },
+
+  whyChoose: {
+    title: "Why Choose Gentle Care for Nursing",
+    description:
+      "We bring hospital-level expertise into the home with a boutique, person-centered approach.",
+    reasons: [
+      {
+        title: "Expertise You Can Trust",
+        description:
+          "Our nursing team is led by clinicians with over a decade of experience in acute, community, and specialized care.",
+      },
+      {
+        title: "Calm & Unrushed",
+        description:
+          "We schedule longer visits so our nurses have time to truly care for you, answer your questions, and coordinate your health.",
+      },
+      {
+        title: "Seamless Coordination",
+        description:
+          "We work directly with your GP and specialists, taking the stress of health communication off your shoulders.",
+      },
+    ],
+  },
+
+  faqs: [
+    {
+      id: "nurse-qualification",
+      question: "Are your nurses Registered Nurses (RNs)?",
+      answer:
+        "Yes, all our clinical care is delivered or supervised by AHPRA Registered Nurses with significant experience in Australian healthcare settings.",
+    },
+    {
+      id: "nurse-referral",
+      question: "Do I need a doctor's referral for home nursing?",
+      answer:
+        "While a referral is helpful for coordinating care, you can contact us directly. For some funding streams (like DVA), a specific referral form from your GP may be required.",
+    },
+    {
+      id: "nurse-cost",
+      question: "Is home nursing covered by my funding?",
+      answer:
+        "Yes, nursing care is often covered by NDIS (Disability), DVA (Veterans), and Home Care Packages (Aged Care). We also offer private-pay options.",
+    },
+  ],
+
+  cta: {
+    title: "Arrange a Clinical Consultation",
+    description:
+      "Speak with our clinical lead about how our nursing team can support your health at home.",
+  },
+  testimonials: [
+    {
+      quote:
+        "The level of clinical knowledge combined with genuine kindness is what sets Gentle Care apart. Our mother's wound healed faster than we ever expected because of their dedicated care.",
+      name: "Elizabeth S.",
+      role: "Daughter of Nursing Client, Northern Beaches",
+      rating: 5,
+    },
+  ],
+};
+
+export const PERSONAL_CARE_PAGE: ServicePageData = {
+  title: "Personal Care & Daily Support",
+  href: "/services/personal-care",
+  snippetAnswer:
+    "Personal care is assistance with the private tasks of daily living—such as bathing, dressing, and grooming—delivered with respect, dignity, and a focus on your choice.",
+  intro:
+    "Independence starts with feeling good in yourself. Our personal care services provide gentle, respectful assistance with daily routines, ensuring you feel comfortable, confident, and in control of your day.",
+
+  whoItHelps: {
+    title: "Who Personal Care Is For",
+    description:
+      "We support people of all ages who need a helping hand with their daily self-care routines.",
+    audiences: [
+      "NDIS participants needing support with daily living tasks",
+      "Older Australians wanting to maintain independence at home",
+      "Veterans requiring assistance through DVA programs",
+      "People recovering from surgery or temporary illness",
+      "Individuals with mobility challenges or physical disabilities",
+      "Families seeking a reliable, respectful carer for a loved one",
+    ],
+  },
+
+  supportAvailable: {
+    title: "How We Can Help",
+    description:
+      "Our personal care is completely tailored to your preferences, routines, and comfort.",
+    features: [
+      {
+        title: "Showering & Bathing",
+        description:
+          "Help with showering, sponge baths, or hair washing, always prioritizing your safety and privacy.",
+      },
+      {
+        title: "Dressing & Grooming",
+        description:
+          "Assistance with choosing outfits, dressing, shaving, and skincare to help you look and feel your best.",
+      },
+      {
+        title: "Mobility & Transfers",
+        description:
+          "Safe and gentle support moving around your home, getting in and out of bed, or using mobility aids.",
+      },
+      {
+        title: "Oral & Personal Hygiene",
+        description:
+          "Help with teeth cleaning, continence support, and other private hygiene tasks handled with absolute discretion.",
+      },
+      {
+        title: "Meal Assistance",
+        description:
+          "Support with set-up, serving, and eating if needed, ensuring you get the nutrition you need comfortably.",
+      },
+      {
+        title: "Skin Integrity Checks",
+        description:
+          "Our carers are trained to subtly monitor for skin changes, ensuring small issues don't become bigger health problems.",
+      },
+    ],
+  },
+
+  whyChoose: {
+    title: "Dignity is Our Priority",
+    description:
+      "We believe personal care should never feel like a 'transaction'. It should feel like support from someone you trust.",
+    reasons: [
+      {
+        title: "Continuity of Care",
+        description:
+          "We match you with a consistent carer so you don't have to explain your routines to a new person every week.",
+      },
+      {
+        title: "Respectful & Discreet",
+        description:
+          "We understand these are private tasks. Our team is trained to provide support with the utmost respect and minimal intrusion.",
+      },
+      {
+        title: "Your Routine, Not Ours",
+        description:
+          "We follow your lead. If you like things done a certain way or at a certain time, that is exactly how we do it.",
+      },
+    ],
+  },
+
+  faqs: [
+    {
+      id: "personal-care-choice",
+      question: "Can I choose my own carer?",
+      answer:
+        "Yes. We understand that personal care is intimate. We introduce you to potential carers and ensure they are a good match for your personality and needs.",
+    },
+    {
+      id: "personal-care-duration",
+      question: "How long are the visits?",
+      answer:
+        "Visits are scheduled based on your needs, ranging from a quick 45-minute morning routine to longer sessions of several hours.",
+    },
+  ],
+
+  cta: {
+    title: "Request a Personal Care Plan",
+    description:
+      "Contact us to discuss how we can help you or your loved one stay independent and well-supported at home.",
+  },
+};
+
+export const DAILY_LIVING_PAGE: ServicePageData = {
+  title: "Assistance with Daily Living",
+  href: "/services/assistance-with-daily-living",
+  snippetAnswer:
+    "Assistance with daily living provides practical help with household tasks, meal preparation, and routines, helping NDIS and aged care participants live more independently at home.",
+  intro:
+    "A well-supported home is the foundation of independence. We provide practical, reliable help with the domestic tasks that keep your life running smoothly, delivered by a team that respects your home and your preferences.",
+
+  whoItHelps: {
+    title: "Who This Support Is For",
+    description:
+      "Daily living support is ideal for anyone who finds household management challenging or time-consuming.",
+    audiences: [
+      "NDIS participants with core support funding",
+      "Older Australians needing help to maintain their home",
+      "People recovering from major surgery or injury",
+      "Individuals with physical or cognitive challenges",
+      "Busy families needing extra support for a loved one",
+      "Anyone wanting to focus on their goals rather than housework",
+    ],
+  },
+
+  supportAvailable: {
+    title: "Practical Support at Home",
+    description:
+      "We help with the 'little things' that make a big difference to your quality of life.",
+    features: [
+      {
+        title: "Meal Preparation",
+        description:
+          "Help with planning, cooking, and serving nutritious meals that you enjoy, following your dietary requirements.",
+      },
+      {
+        title: "Light Housekeeping",
+        description:
+          "Keeping your living areas clean and tidy, including vacuuming, dusting, and general home organization.",
+      },
+      {
+        title: "Laundry & Linen Care",
+        description:
+          "Washing, drying, and ironing of clothes and bed linens to keep you comfortable and fresh.",
+      },
+      {
+        title: "Grocery Shopping",
+        description:
+          "Help with creating shopping lists and either accompanying you to the shops or doing the shopping for you.",
+      },
+      {
+        title: "Household Admin",
+        description:
+          "Assistance with simple tasks like sorting mail, following up on appointments, or organizing your week.",
+      },
+      {
+        title: "Daily Routine Support",
+        description:
+          "Giving you the structure and help needed to start and end your day successfully.",
+      },
+    ],
+  },
+
+  whyChoose: {
+    title: "More Than Just 'Help'",
+    description:
+      "We view daily living support as a way to empower you, not just to tick off a to-do list.",
+    reasons: [
+      {
+        title: "Respect for Your Space",
+        description:
+          "We understand we are guests in your home. Our team works with care, discretion, and deep respect for your environment.",
+      },
+      {
+        title: "Building Independence",
+        description:
+          "We don't just 'do for you'. We work 'with you' to help you maintain or improve your own domestic skills where possible.",
+      },
+      {
+        title: "Reliability You Can Count On",
+        description:
+          "We know how important routine is. Our team is punctual, consistent, and always ready to help.",
+      },
+    ],
+  },
+
+  faqs: [
+    {
+      id: "daily-living-ndis",
+      question: "Can I use my NDIS Core Supports for this?",
+      answer:
+        "Yes, Assistance with Daily Life is a standard part of Core Supports in most NDIS plans. We can work with you and your coordinator to set this up.",
+    },
+    {
+      id: "daily-living-frequency",
+      question: "How often can I have someone visit?",
+      answer:
+        "It's completely up to you. Some clients have an hour or two once a week, while others have daily support for several hours.",
+    },
+  ],
+
+  cta: {
+    title: "Simplify Your Daily Life",
+    description:
+      "Contact us to see how our team can help take the stress out of managing your home.",
+  },
+};
+
+export const COMMUNITY_PARTICIPATION_PAGE: ServicePageData = {
+  title: "Community Participation",
+  href: "/services/community-participation",
+  snippetAnswer:
+    "Community participation support helps individuals with disability or age-related needs engage in social activities, attend appointments, and build connections within their local community.",
+  intro:
+    "Life happens outside the home. We support you to stay connected with your community, achieve your social goals, and enjoy the activities you love, with a capable and enthusiastic support team by your side.",
+
+  whoItHelps: {
+    title: "Who This Support Is For",
+    description:
+      "Our community support is for anyone wanting to build social confidence or stay active in Sydney.",
+    audiences: [
+      "NDIS participants wanting to achieve social or recreational goals",
+      "Older Australians wishing to stay involved in community groups",
+      "Individuals wanting to build confidence in public spaces",
+      "People needing transport and support for appointments",
+      "Anyone wanting to explore new hobbies or social circles",
+      "Families wanting their loved ones to have meaningful community engagement",
+    ],
+  },
+
+  supportAvailable: {
+    title: "Connection & Inclusion",
+    description:
+      "What does 'participation' look like for you? We help you make it happen.",
+    features: [
+      {
+        title: "Social & Recreational Outings",
+        description:
+          "Going to the cinema, visiting a park, attending a club, or meeting friends for coffee—your choice, our support.",
+      },
+      {
+        title: "Appointment Support",
+        description:
+          "Reliable transport and companion support for medical, therapeutic, or personal appointments.",
+      },
+      {
+        title: "Skills & Hobby Building",
+        description:
+          "Support to attend classes, learn new skills, or pursue hobbies like art, swimming, or gardening.",
+      },
+      {
+        title: "Transport Assistance",
+        description:
+          "Safe and reliable transport to and from your activities, including help with navigating public transport if that is your goal.",
+      },
+      {
+        title: "Volunteer & Work Support",
+        description:
+          "Help with getting to and participating in volunteer roles or supported employment opportunities.",
+      },
+      {
+        title: "Building Social Confidence",
+        description:
+          "Gentle encouragement and practical support to help you feel comfortable in a variety of social settings.",
+      },
+    ],
+  },
+
+  whyChoose: {
+    title: "Your Goals, Our Support",
+    description:
+      "We don't just provide a 'driver'. We provide a support partner who is invested in your social success.",
+    reasons: [
+      {
+        title: "Enthusiastic Support Team",
+        description:
+          "Our team members are active, engaged, and love helping you achieve your community goals.",
+      },
+      {
+        title: "Flexible & Spontaneous",
+        description:
+          "While we love a plan, we also understand that social opportunities can be spontaneous. we work to be as flexible as possible.",
+      },
+      {
+        title: "Safety & Confidence",
+        description:
+          "Our team is fully insured and trained in providing safe community support, allowing you to focus on the fun parts.",
+      },
+    ],
+  },
+
+  faqs: [
+    {
+      id: "community-transport",
+      question: "Do you provide your own transport?",
+      answer:
+        "Yes, our support workers can use their own insured vehicles to transport you, or we can use your vehicle or public transport—whatever suits you best.",
+    },
+    {
+      id: "community-goals",
+      question: "Can you help me achieve my specific NDIS social goals?",
+      answer:
+        "Absolutely. We work directly with your NDIS plan and your support coordinator to ensure our visits are aligned with your documented goals.",
+    },
+  ],
+  cta: {
+    title: "Connect With Your Community",
+    description:
+      "Tell us what you want to achieve outside the home, and we'll help you find the right support to make it happen.",
+  },
+};
+
+export const OVERNIGHT_SUPPORT_PAGE: ServicePageData = {
+  title: "Overnight Support",
+  href: "/services/overnight-support",
+  snippetAnswer:
+    "Overnight support provides safety and care throughout the night, with options for active overnight nursing or sleepover support to ensure NDIS and aged care participants are well-monitored while they sleep.",
+  intro:
+    "Peace of mind shouldn't stop when the sun goes down. Our overnight support ensures you or your loved one are safe, monitored, and comfortable throughout the night, delivered by a team trained in nocturnal care and clinical safety.",
+
+  whoItHelps: {
+    title: "Who Overnight Support Is For",
+    description:
+      "This support is designed for families and individuals who need the security of professional care during the night.",
+    audiences: [
+      "People at risk of falls or wandering during the night",
+      "Individuals needing repositioning or regular medication overnight",
+      "NDIS participants requiring clinical monitoring while they sleep",
+      "Older Australians who feel vulnerable or unsafe living alone at night",
+      "Families providing full-time care who need a restful night's sleep",
+      "Patients transitioning home from hospital needing short-term night support",
+    ],
+  },
+
+  supportAvailable: {
+    title: "Safety Throughout the Night",
+    description:
+      "We offer two main models of overnight support, tailored to your specific care needs.",
+    features: [
+      {
+        title: "Active Overnight Care",
+        description:
+          "The support worker or nurse remains awake throughout the shift to provide continuous monitoring and immediate clinical assistance.",
+      },
+      {
+        title: "Sleepover Support",
+        description:
+          "The support worker sleeps in your home but is available to provide assistance up to two times during the night as needed.",
+      },
+      {
+        title: "Medication & Hydration",
+        description:
+          "Ensuring overnight medications are administered on time and hydration is maintained through the night.",
+      },
+      {
+        title: "Toileting & Personal Care",
+        description:
+          "Gentle assistance with using the bathroom or managing continence, minimizing falls risk in the dark.",
+      },
+      {
+        title: "Safety & Comfort Checks",
+        description:
+          "Regular, non-intrusive checks to ensure you are comfortable, breathing well, and safe in your environment.",
+      },
+      {
+        title: "Morning & Evening Routines",
+        description:
+          "Seamless transition from your evening routine to bed, and assistance with your morning routine when you wake.",
+      },
+    ],
+  },
+
+  whyChoose: {
+    title: "Sleep With Confidence",
+    description:
+      "We prioritize your safety and the quality of your sleep, providing a calm and capable presence.",
+    reasons: [
+      {
+        title: "Clinical Oversight",
+        description:
+          "Even for non-clinical sleepovers, our overnight team has access to our on-call clinical leads if health questions arise.",
+      },
+      {
+        title: "Reliable & Familiar",
+        description:
+          "We match you with consistent overnight carers so you can feel comfortable and safe having them in your home.",
+      },
+      {
+        title: "Calm & Professional",
+        description:
+          "Our team is trained to provide overnight support that is discreet and minimally disruptive to your rest.",
+      },
+    ],
+  },
+
+  faqs: [
+    {
+      id: "overnight-active-vs-sleepover",
+      question: "What is the difference between active overnight and sleepover?",
+      answer:
+        "Active overnight means the staff member is awake and working. Sleepover means they have a bed and sleep, but can be woken for limited assistance.",
+    },
+    {
+      id: "overnight-funding",
+      question: "Is overnight support funded by NDIS?",
+      answer:
+        "Yes, NDIS plans often include funding for overnight support under Core Supports, specifically for 'assistance with daily life'.",
+    },
+  ],
+
+  cta: {
+    title: "Secure Your Overnight Care",
+    description:
+      "Contact us to discuss which model of overnight support is right for you or your loved one.",
+  },
+};

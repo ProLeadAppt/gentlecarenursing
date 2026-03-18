@@ -100,62 +100,63 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
         }}
       />
 
-      {/* Premium Service Hero — Soft Gradients & Motion */}
-      <section className="relative overflow-hidden bg-white py-24 lg:py-32 border-b border-border/40">
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-accent/15 blur-[120px]" />
-          <div className="absolute bottom-[-5%] left-[-5%] w-[35%] h-[35%] rounded-full bg-primary/5 blur-[100px]" />
+      {/* Cinematic Service Hero */}
+      <section className="relative overflow-hidden bg-white pt-32 pb-24 lg:pt-40 lg:pb-32">
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-accent/[0.08] blur-[120px]" />
+          <div className="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] rounded-full bg-primary/[0.04] blur-[100px]" />
         </div>
 
         <Container size="md" className="relative z-10">
           <Reveal delay={0.1}>
-            <Breadcrumbs
-              items={[
-                { label: "Home", href: "/" },
-                { label: "Services", href: "/services" },
-                { label: data.title },
-              ]}
-              className="mb-10 justify-center"
-            />
+            <div className="flex justify-center mb-10">
+              <Breadcrumbs
+                items={[
+                  { label: "Home", href: "/" },
+                  { label: "Services", href: "/services" },
+                  { label: data.title },
+                ]}
+              />
+            </div>
           </Reveal>
           
-          <Reveal delay={0.2} y={30}>
-            <Heading level="h1" as="h1" className="text-center text-5xl sm:text-6xl font-bold tracking-tight mb-6">
-              {data.title}
-            </Heading>
-          </Reveal>
-
-          <Reveal delay={0.3} y={15}>
-            <p className="mx-auto text-center text-xl font-semibold text-primary mb-10 tracking-[0.05em] uppercase sm:text-base">
-              Sydney-Wide Boutique Clinical Care
-            </p>
+          <Reveal delay={0.2}>
+            <div className="text-center">
+              <span className="mb-6 inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-primary/70">
+                Premium Clinical Care
+              </span>
+              <Heading level="h1" className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-8 font-[family-name:var(--font-serif)] leading-[1.1]">
+                {data.title}
+              </Heading>
+            </div>
           </Reveal>
 
           {data.snippetAnswer && (
-            <Reveal delay={0.4} y={15}>
-              <div className="mx-auto mb-10 max-w-3xl rounded-[2rem] bg-accent/5 border border-accent/20 p-8 shadow-sm">
-                <p className="text-center text-lg font-bold leading-relaxed text-foreground sm:text-xl italic" role="doc-abstract">
-                  "{data.snippetAnswer}"
+            <Reveal delay={0.3}>
+              <div className="mx-auto mb-12 max-w-3xl rounded-[3rem] bg-accent/[0.03] border border-accent/15 p-10 shadow-sm backdrop-blur-sm">
+                <p className="text-center text-xl font-medium leading-relaxed text-foreground italic font-[family-name:var(--font-serif)]">
+                  &ldquo;{data.snippetAnswer}&rdquo;
                 </p>
               </div>
             </Reveal>
           )}
 
-          <Reveal delay={0.5} y={10}>
-            <p className="mx-auto max-w-2xl text-center text-lg leading-relaxed text-muted-foreground sm:text-xl">
+          <Reveal delay={0.4}>
+            <p className="mx-auto max-w-2xl text-center text-xl leading-relaxed text-muted-foreground font-medium">
               {data.intro}
             </p>
           </Reveal>
 
-          <Reveal delay={0.6} y={10}>
-            <div className="mt-12 flex flex-col sm:flex-row justify-center gap-6">
+          <Reveal delay={0.5}>
+            <div className="mt-14 flex flex-col sm:flex-row justify-center gap-6">
               <Magnetic>
-                <FormModalTrigger formType="referral" size="xl" variant="primary" className="px-10 shadow-lg shadow-primary/20">
+                <FormModalTrigger formType="care-finder" size="xl" variant="primary" className="px-12 shadow-xl shadow-primary/20 rounded-2xl h-16">
                   {CTA_LINKS.requestCare.label}
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </FormModalTrigger>
               </Magnetic>
               <Magnetic>
-                <FormModalTrigger formType="contact" variant="outline" size="xl" className="px-10">
+                <FormModalTrigger formType="contact" variant="outline" size="xl" className="px-12 rounded-2xl h-16 border-2">
                   {CTA_LINKS.contact.label}
                 </FormModalTrigger>
               </Magnetic>
@@ -166,12 +167,13 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
 
       <TrustMarquee />
 
-      {/* Who It Helps — Enhanced Layout */}
-      <Section className="bg-muted/30">
+      {/* Who It Helps — Boutique Grid */}
+      <Section className="bg-muted/30 border-y border-border/40">
         <Container>
           <Reveal>
-            <div className="text-center mb-16">
-              <Heading level="h2" as="h2" className="text-3xl sm:text-4xl font-bold mb-4">
+            <div className="text-center mb-20">
+              <span className="mb-4 inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60">Tailored Support</span>
+              <Heading level="h2" className="text-4xl sm:text-5xl font-bold font-[family-name:var(--font-serif)] mb-6">
                 {data.whoItHelps.title}
               </Heading>
               <p className="mx-auto max-w-2xl text-lg text-muted-foreground font-medium">
@@ -180,14 +182,14 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {data.whoItHelps.audiences.map((audience, i) => (
-              <Reveal key={audience} delay={i * 0.1} y={15}>
-                <div className="group h-full flex items-center gap-4 rounded-2xl border border-border bg-white px-6 py-5 shadow-sm transition-all hover:border-primary/30 hover:shadow-md">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/15 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                    <UserCheck className="h-5 w-5" />
+              <Reveal key={audience} delay={i * 0.1}>
+                <div className="group h-full flex items-center gap-5 rounded-[2rem] border border-border/60 bg-white p-6 shadow-sm transition-all duration-500 hover:border-primary/20 hover:shadow-xl hover:-translate-y-1">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                    <UserCheck className="h-6 w-6" strokeWidth={1.5} />
                   </div>
-                  <span className="text-base font-bold text-foreground">{audience}</span>
+                  <span className="text-lg font-bold tracking-tight text-foreground">{audience}</span>
                 </div>
               </Reveal>
             ))}
@@ -195,75 +197,82 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
         </Container>
       </Section>
 
-      {/* Support Available — Premium Card Reveal */}
-      <Section className="bg-white">
+      {/* Support Available — Premium Features */}
+      <Section className="bg-white overflow-hidden">
         <Container>
           <Reveal>
-            <div className="text-center mb-16">
-               <Heading level="h2" as="h2" className="text-3xl sm:text-4xl font-bold mb-4">
+            <div className="text-center mb-20">
+               <span className="mb-4 inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60">Service Highlights</span>
+               <Heading level="h2" className="text-4xl sm:text-5xl font-bold font-[family-name:var(--font-serif)] mb-6">
                 {data.supportAvailable.title}
                </Heading>
-               <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+               <p className="mx-auto max-w-2xl text-lg text-muted-foreground font-medium">
                 {data.supportAvailable.description}
                </p>
             </div>
           </Reveal>
 
-          <Grid cols={2} gap="lg" className="mt-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {data.supportAvailable.features.map((feature, i) => (
-              <Reveal key={feature.title} delay={i * 0.1} y={20}>
-                <div className="group h-full rounded-[2.5rem] border border-border/60 bg-white p-10 transition-all duration-300 hover:border-accent/40 hover:shadow-[0_40px_80px_-20px_rgba(132,40,51,0.06)] relative overflow-hidden">
-                  <div className="absolute top-0 right-0 p-8 text-primary/5 group-hover:text-primary/10 transition-colors">
-                    <Activity className="h-24 w-24" strokeWidth={1} />
+              <Reveal key={feature.title} delay={i * 0.1}>
+                <div className="group relative h-full rounded-[3rem] border border-border/50 bg-card/30 p-10 sm:p-12 transition-all duration-700 hover:border-accent/30 hover:bg-card/50 hover:shadow-2xl overflow-hidden">
+                  <div className="absolute top-0 right-0 p-12 text-primary/5 group-hover:text-primary/[0.08] transition-all duration-1000 group-hover:scale-125">
+                    <Activity className="h-32 w-32" strokeWidth={0.5} />
                   </div>
-                  <Heading level="h3" as="h3" className="text-2xl font-bold mb-4 relative z-10 group-hover:text-primary transition-colors">
+                  
+                  <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 text-primary mb-8 ring-1 ring-primary/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                    <CheckCircle2 className="h-7 w-7" strokeWidth={1.5} />
+                  </div>
+
+                  <Heading level="h3" className="text-2xl sm:text-3xl font-bold mb-6 tracking-tight relative z-10 group-hover:text-primary transition-colors font-[family-name:var(--font-serif)]">
                     {feature.title}
                   </Heading>
-                  <p className="text-lg leading-relaxed text-muted-foreground relative z-10">
+                  <p className="text-lg leading-[1.8] text-muted-foreground relative z-10 font-medium">
                     {feature.description}
                   </p>
                 </div>
               </Reveal>
             ))}
-          </Grid>
+          </div>
         </Container>
       </Section>
 
       {/* Why Choose Gentle Care — Clinical Focus */}
-      <Section className="bg-primary/[0.02] border-y border-primary/5">
+      <Section className="bg-primary/[0.02] border-y border-primary/10">
         <Container>
           <Reveal>
-            <div className="text-center mb-16">
-              <Heading level="h2" as="h2" className="text-3xl sm:text-4xl font-bold mb-4">
+            <div className="text-center mb-20">
+              <span className="mb-4 inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60">The Gentle Care Difference</span>
+              <Heading level="h2" className="text-4xl sm:text-5xl font-bold font-[family-name:var(--font-serif)] mb-6">
                 {data.whyChoose.title}
               </Heading>
-              <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+              <p className="mx-auto max-w-2xl text-lg text-muted-foreground font-medium">
                 {data.whyChoose.description}
               </p>
             </div>
           </Reveal>
 
-          <Grid cols={3} gap="lg" className="mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
             {data.whyChoose.reasons.map((reason, i) => {
               const icons = [ShieldCheck, Sparkles, Heart];
               const Icon = icons[i % 3];
               return (
-                <Reveal key={reason.title} delay={i * 0.15} y={15}>
-                  <div className="flex flex-col items-center text-center">
-                    <div className="h-16 w-16 rounded-[1.5rem] bg-white shadow-md border border-border/50 flex items-center justify-center mb-8 rotate-3 transform transition-transform hover:rotate-0">
-                      <Icon className="h-8 w-8 text-primary" />
+                <Reveal key={reason.title} delay={i * 0.15}>
+                  <div className="flex flex-col items-center text-center group">
+                    <div className="h-20 w-20 rounded-[2rem] bg-white shadow-xl border border-border/50 flex items-center justify-center mb-10 transition-all duration-700 group-hover:scale-110 group-hover:rotate-12 group-hover:shadow-primary/10 border-b-4 border-b-primary/20 group-hover:border-b-primary">
+                      <Icon className="h-10 w-10 text-primary" strokeWidth={1.5} />
                     </div>
-                    <Heading level="h3" as="h3" className="text-xl font-bold mb-4">
+                    <Heading level="h3" className="text-2xl font-bold mb-6 tracking-tight">
                       {reason.title}
                     </Heading>
-                    <p className="text-base leading-relaxed text-muted-foreground">
+                    <p className="text-lg leading-relaxed text-muted-foreground font-medium">
                       {reason.description}
                     </p>
                   </div>
                 </Reveal>
               );
             })}
-          </Grid>
+          </div>
         </Container>
       </Section>
 
@@ -271,25 +280,26 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
         <Section className="bg-white">
           <Container>
             <Reveal>
-              <div className="text-center mb-16">
-                 <Heading level="h2" as="h2" className="text-3xl sm:text-4xl font-bold mb-4">
-                  Real Examples of How This Helps
+              <div className="text-center mb-20">
+                <span className="mb-4 inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60">Real Impact</span>
+                 <Heading level="h2" className="text-4xl sm:text-5xl font-bold font-[family-name:var(--font-serif)] mb-6">
+                  Providing Clinical Peace of Mind
                  </Heading>
-                 <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-                   Names and details are changed for privacy, but these situations reflect the quality clinical support we provide daily across Sydney.
+                 <p className="mx-auto max-w-2xl text-lg text-muted-foreground font-medium">
+                   Anonymised examples of the boutique clinical support we provide daily across Sydney.
                  </p>
               </div>
             </Reveal>
-            <div className="mt-8 grid gap-8 md:grid-cols-2">
+            <div className="grid gap-10 md:grid-cols-2">
               {data.caseStories.map((story, i) => (
-                <Reveal key={story.title} delay={i * 0.1} y={20}>
-                  <article className="group h-full rounded-[2rem] border border-border bg-card p-10 text-left shadow-sm transition-all hover:border-primary/30 hover:shadow-xl">
-                    <div className="mb-6 inline-flex px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-[10px] font-bold uppercase tracking-widest text-accent">Anonymised Case Story</div>
-                    <Heading level="h3" as="h3" className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">
+                <Reveal key={story.title} delay={i * 0.1}>
+                  <article className="group h-full rounded-[3rem] border border-border/40 bg-card/20 p-10 sm:p-14 text-left shadow-sm transition-all duration-700 hover:border-primary/20 hover:bg-card/40 hover:shadow-2xl">
+                    <div className="mb-8 inline-flex px-4 py-1.5 rounded-full bg-accent/5 border border-accent/15 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">Case Analysis</div>
+                    <Heading level="h3" className="text-3xl font-bold mb-6 group-hover:text-primary transition-colors leading-tight font-[family-name:var(--font-serif)]">
                       {story.title}
                     </Heading>
-                    <p className="text-lg leading-relaxed text-muted-foreground">
-                      {story.summary}
+                    <p className="text-lg leading-[1.8] text-muted-foreground font-medium italic border-l-4 border-primary/20 pl-6 group-hover:border-primary transition-all">
+                      &ldquo;{story.summary}&rdquo;
                     </p>
                   </article>
                 </Reveal>
@@ -309,84 +319,84 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
         />
       )}
 
-      {/* Related services — internal linking with premium treatment */}
-      <Section className="bg-muted/30">
+      {/* Premium Internal Linking */}
+      <Section className="bg-muted/30 border-t border-border/40">
         <Container>
           <Reveal>
-            <div className="text-center mb-12">
-               <Heading level="h2" as="h2" className="text-2xl font-bold">Related Services</Heading>
-               <p className="mt-2 text-muted-foreground">Explore our other in-home nursing and care options.</p>
+            <div className="text-center mb-16">
+               <Heading level="h2" className="text-3xl font-bold font-[family-name:var(--font-serif)]">Explore Related Services</Heading>
+               <p className="mt-4 text-muted-foreground font-medium">Boutique clinical care tailored to your unique required outcomes.</p>
             </div>
           </Reveal>
-          <ul className="mt-8 flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {SERVICES.filter((s) => s.href !== data.href)
               .slice(0, 3)
               .map((service, i) => (
                 <Reveal key={service.href} delay={i * 0.1}>
-                  <li>
-                    <Link
-                      href={service.href}
-                      className="group inline-flex items-center gap-2 rounded-2xl border border-border bg-white px-8 py-4 text-base font-bold text-foreground shadow-sm transition-all hover:border-primary hover:text-primary hover:shadow-lg hover:-translate-y-1"
-                    >
-                      {service.title}
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </li>
+                  <Link
+                    href={service.href}
+                    className="group inline-flex items-center gap-3 rounded-2xl border border-border/60 bg-white px-10 py-5 text-lg font-bold text-foreground shadow-sm transition-all duration-500 hover:border-primary/30 hover:text-primary hover:shadow-xl hover:-translate-y-1"
+                  >
+                    {service.title}
+                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </Link>
                 </Reveal>
               ))}
-          </ul>
+          </div>
         </Container>
       </Section>
 
       {relatedGuides.length > 0 && (
-        <Section className="bg-white">
+        <Section className="bg-white border-t border-border/40">
           <Container>
             <Reveal>
-              <div className="text-center mb-12">
-                 <Heading level="h2" as="h2" className="text-2xl font-bold">Short Guides for Common Situations</Heading>
-                 <p className="mt-2 text-muted-foreground">Practical advice for families and coordinators.</p>
+              <div className="text-center mb-20">
+                 <span className="mb-4 inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60">Expert Resources</span>
+                 <Heading level="h2" className="text-4xl sm:text-5xl font-bold font-[family-name:var(--font-serif)] mb-6">Practical Clinical Guides</Heading>
+                 <p className="mx-auto max-w-2xl text-lg text-muted-foreground font-medium">Navigating the healthcare system with expert advice.</p>
               </div>
             </Reveal>
-            <ul className="mt-8 grid gap-8 md:grid-cols-2">
+            <div className="grid gap-10 lg:grid-cols-2">
               {relatedGuides.map((guide, i) => (
-                <Reveal key={guide.slug} delay={i * 0.1} y={20}>
-                  <li className="h-full">
-                    <Link
-                      href={`/guides/${guide.slug}`}
-                      className="group block h-full rounded-[2rem] border border-border bg-white p-10 text-left shadow-sm transition-all hover:border-primary/40 hover:shadow-2xl"
-                    >
-                      <Heading level="h3" as="h3" className="text-xl font-bold group-hover:text-primary transition-colors">
-                        {guide.title}
-                      </Heading>
-                      <p className="mt-5 line-clamp-3 text-base text-muted-foreground leading-relaxed">
-                        {guide.snippetAnswer}
-                      </p>
-                      <span className="mt-8 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-primary border-b-2 border-primary/20 group-hover:border-primary transition-all">
-                        Read full guide <ArrowRight className="h-4 w-4" />
-                      </span>
-                    </Link>
-                  </li>
+                <Reveal key={guide.slug} delay={i * 0.1}>
+                  <Link
+                    href={`/guides/${guide.slug}`}
+                    className="group block h-full rounded-[3rem] border border-border/50 bg-card/30 p-12 transition-all duration-700 hover:border-primary/30 hover:bg-card/50 hover:shadow-2xl overflow-hidden relative"
+                  >
+                    <div className="absolute top-0 right-0 p-10 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-700 pointer-events-none">
+                      <ArrowRight className="h-40 w-40 -rotate-45" />
+                    </div>
+                    <Heading level="h3" className="text-2xl sm:text-3xl font-bold group-hover:text-primary transition-colors font-[family-name:var(--font-serif)] mb-6">
+                      {guide.title}
+                    </Heading>
+                    <p className="text-lg leading-[1.8] text-muted-foreground font-medium mb-8">
+                      {guide.snippetAnswer}
+                    </p>
+                    <span className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.3em] text-primary group-hover:gap-4 transition-all">
+                      Read full manual <ArrowRight className="h-5 w-5" />
+                    </span>
+                  </Link>
                 </Reveal>
               ))}
-            </ul>
+            </div>
           </Container>
         </Section>
       )}
 
       {data.testimonials && data.testimonials.length > 0 && (
         <Testimonials
-          title="What Our Clients Say About This Type of Care"
-          subtitle="Real experiences from families, coordinators, and health professionals."
+          title="What Our Clients Say"
+          subtitle="Real outcomes for patients requiring boutique clinical support at home."
           label={undefined}
           testimonials={data.testimonials}
           sectionVariant="default"
         />
       )}
 
-      {/* CTA */}
+      {/* CTA Section — High Impact */}
       <ServiceCtaWithModal
         title={data.cta.title}
-        description={data.cta.description}
+        description={data.cta.description || "Our clinical lead is ready to guide you through a tailored care plan."}
       />
     </>
   );
