@@ -49,7 +49,7 @@ export function BentoServiceGrid() {
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:auto-rows-[18rem]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:auto-rows-[22rem]">
           {/* Featured Hero Card - Occupies 2x2 on desktop */}
           <BentoCard
             index={0}
@@ -65,7 +65,7 @@ export function BentoServiceGrid() {
               key={service.slug}
               index={idx + 1}
               className={cn(
-                "group transition-all duration-700 h-full min-h-[18rem]",
+                "group transition-all duration-700 h-full min-h-[20rem] lg:min-h-0",
                 // Alternating styles for a generic but premium feel
                 idx % 4 === 0 ? "bg-accent/10 border border-accent/20" : 
                 idx % 4 === 1 ? "bg-white border border-border/80 shadow-sm" :
@@ -124,7 +124,7 @@ function BentoCard({ service, className, dark, index, isFeatured }: BentoCardPro
       {/* Content */}
       <div className="relative z-20 h-full flex flex-col">
         <div className={cn(
-          "h-14 w-14 rounded-2xl flex items-center justify-center mb-8 sm:mb-10 shadow-lg transition-all duration-700 group-hover:scale-110 group-hover:rotate-[8deg]",
+          "h-14 w-14 rounded-2xl flex items-center justify-center mb-6 sm:mb-8 shadow-lg transition-all duration-700 group-hover:scale-110 group-hover:rotate-[8deg]",
           dark 
             ? "bg-white/15 text-white ring-1 ring-white/30 backdrop-blur-md" 
             : "bg-white text-primary ring-1 ring-primary/10 shadow-primary/5"
@@ -144,8 +144,8 @@ function BentoCard({ service, className, dark, index, isFeatured }: BentoCardPro
           <p className={cn(
             "text-base sm:text-lg font-medium leading-relaxed max-w-[400px]",
             dark ? "text-white/80" : "text-muted-foreground",
-            // More intelligent clamping
-            isFeatured ? "line-clamp-4 lg:line-clamp-6" : "line-clamp-3 sm:line-clamp-4"
+            // More intelligent clamping - increased lines since we have more height
+            isFeatured ? "line-clamp-6 lg:line-clamp-8" : "line-clamp-3 md:line-clamp-4"
           )}>
             {service.benefitLine}
           </p>
@@ -154,7 +154,8 @@ function BentoCard({ service, className, dark, index, isFeatured }: BentoCardPro
         {/* Footer */}
         <div className="mt-auto pt-8 flex items-center justify-between">
           <span className={cn(
-            "text-[10px] font-bold tracking-[0.3em] uppercase transition-all duration-700 transform translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100",
+            "text-[10px] font-bold tracking-[0.3em] uppercase transition-all duration-700 transform",
+            "opacity-100 translate-x-0 lg:opacity-0 lg:translate-x-2 lg:group-hover:translate-x-0 lg:group-hover:opacity-100",
             dark ? "text-white/90" : "text-primary"
           )}>
             Service Details
