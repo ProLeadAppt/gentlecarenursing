@@ -1,8 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Grid } from "@/components/layout/Grid";
-import { SectionHeader } from "./SectionHeader";
-import { TrustBar } from "./TrustBar";
+import { TrustMarquee } from "./TrustMarquee";
 import { FaqPreview } from "./FaqPreview";
 import { ServiceCtaWithModal } from "./ServiceCtaWithModal";
 import { Testimonials } from "./Testimonials";
@@ -14,6 +13,9 @@ import { getServiceSchema, getFaqSchema } from "@/lib/schema";
 import { SERVICES } from "@/content/services";
 import { ALL_GUIDES } from "@/content/guides";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { Reveal } from "@/components/animations/Reveal";
+import { Magnetic } from "@/components/animations/Magnetic";
+import { CheckCircle2, ArrowRight, UserCheck, Heart, ShieldCheck, Sparkles, Activity } from "lucide-react";
 import type { FaqItem } from "./FaqAccordion";
 import Link from "next/link";
 
@@ -98,145 +100,199 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
         }}
       />
 
-      {/* Dark gradient hero — matches homepage hero treatment */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary to-primary-light py-16 sm:py-20 lg:py-24">
-        <div className="pointer-events-none absolute inset-0 opacity-[0.04]" aria-hidden>
-          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="service-dots" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
-                <circle cx="2" cy="2" r="1.5" fill="white" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#service-dots)" />
-          </svg>
+      {/* Premium Service Hero — Soft Gradients & Motion */}
+      <section className="relative overflow-hidden bg-white py-24 lg:py-32 border-b border-border/40">
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-accent/15 blur-[120px]" />
+          <div className="absolute bottom-[-5%] left-[-5%] w-[35%] h-[35%] rounded-full bg-primary/5 blur-[100px]" />
         </div>
-        <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[600px] rounded-full bg-white/[0.03] blur-3xl" aria-hidden />
 
-        <Container size="md" className="relative">
-          <Breadcrumbs
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Services", href: "/services" },
-              { label: data.title },
-            ]}
-            className="mb-6 justify-center [&_a]:text-white/80 [&_a:hover]:text-white [&_span]:text-white/90"
-          />
-          <Heading level="h1" as="h1" className="text-center text-white">
-            {data.title}
-          </Heading>
-          <p className="mt-3 text-center text-base font-medium text-white/70 sm:text-lg">
-            In-home nursing and care across Sydney and surrounds
-          </p>
-          {data.snippetAnswer && (
-            <p className="mx-auto mt-5 max-w-2xl text-center text-lg font-medium leading-relaxed text-white sm:text-xl" role="doc-abstract">
-              {data.snippetAnswer}
+        <Container size="md" className="relative z-10">
+          <Reveal delay={0.1}>
+            <Breadcrumbs
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Services", href: "/services" },
+                { label: data.title },
+              ]}
+              className="mb-10 justify-center"
+            />
+          </Reveal>
+          
+          <Reveal delay={0.2} y={30}>
+            <Heading level="h1" as="h1" className="text-center text-5xl sm:text-6xl font-bold tracking-tight mb-6">
+              {data.title}
+            </Heading>
+          </Reveal>
+
+          <Reveal delay={0.3} y={15}>
+            <p className="mx-auto text-center text-xl font-semibold text-primary mb-10 tracking-[0.05em] uppercase sm:text-base">
+              Sydney-Wide Boutique Clinical Care
             </p>
+          </Reveal>
+
+          {data.snippetAnswer && (
+            <Reveal delay={0.4} y={15}>
+              <div className="mx-auto mb-10 max-w-3xl rounded-[2rem] bg-accent/5 border border-accent/20 p-8 shadow-sm">
+                <p className="text-center text-lg font-bold leading-relaxed text-foreground sm:text-xl italic" role="doc-abstract">
+                  "{data.snippetAnswer}"
+                </p>
+              </div>
+            </Reveal>
           )}
-          <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-white/80 sm:text-xl">
-            {data.intro}
-          </p>
-          <div className="mt-8 flex justify-center gap-4">
-            <FormModalTrigger formType="referral" size="lg" variant="inverted">
-              {CTA_LINKS.requestCare.label}
-            </FormModalTrigger>
-            <FormModalTrigger formType="contact" variant="invertedOutline" size="lg">
-              {CTA_LINKS.contact.label}
-            </FormModalTrigger>
-          </div>
+
+          <Reveal delay={0.5} y={10}>
+            <p className="mx-auto max-w-2xl text-center text-lg leading-relaxed text-muted-foreground sm:text-xl">
+              {data.intro}
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.6} y={10}>
+            <div className="mt-12 flex flex-col sm:flex-row justify-center gap-6">
+              <Magnetic>
+                <FormModalTrigger formType="referral" size="xl" variant="primary" className="px-10 shadow-lg shadow-primary/20">
+                  {CTA_LINKS.requestCare.label}
+                </FormModalTrigger>
+              </Magnetic>
+              <Magnetic>
+                <FormModalTrigger formType="contact" variant="outline" size="xl" className="px-10">
+                  {CTA_LINKS.contact.label}
+                </FormModalTrigger>
+              </Magnetic>
+            </div>
+          </Reveal>
         </Container>
       </section>
 
-      <TrustBar variant="muted" />
+      <TrustMarquee />
 
-      {/* Who It Helps */}
-      <Section>
+      {/* Who It Helps — Enhanced Layout */}
+      <Section className="bg-muted/30">
         <Container>
-          <SectionHeader
-            title={data.whoItHelps.title}
-            subtitle={data.whoItHelps.description}
-          />
-          <Grid cols={2} gap="md" className="mx-auto mt-10 max-w-3xl">
-            {data.whoItHelps.audiences.map((audience) => (
-              <div
-                key={audience}
-                className="flex items-start gap-3 rounded-xl border border-border bg-card p-4 shadow-sm"
-              >
-                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </span>
-                <span className="text-sm font-medium text-foreground">{audience}</span>
-              </div>
+          <Reveal>
+            <div className="text-center mb-16">
+              <Heading level="h2" as="h2" className="text-3xl sm:text-4xl font-bold mb-4">
+                {data.whoItHelps.title}
+              </Heading>
+              <p className="mx-auto max-w-2xl text-lg text-muted-foreground font-medium">
+                {data.whoItHelps.description}
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {data.whoItHelps.audiences.map((audience, i) => (
+              <Reveal key={audience} delay={i * 0.1} y={15}>
+                <div className="group h-full flex items-center gap-4 rounded-2xl border border-border bg-white px-6 py-5 shadow-sm transition-all hover:border-primary/30 hover:shadow-md">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/15 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                    <UserCheck className="h-5 w-5" />
+                  </div>
+                  <span className="text-base font-bold text-foreground">{audience}</span>
+                </div>
+              </Reveal>
             ))}
-          </Grid>
+          </div>
         </Container>
       </Section>
 
-      {/* Support Available */}
-      <Section variant="muted">
+      {/* Support Available — Premium Card Reveal */}
+      <Section className="bg-white">
         <Container>
-          <SectionHeader
-            title={data.supportAvailable.title}
-            subtitle={data.supportAvailable.description}
-          />
+          <Reveal>
+            <div className="text-center mb-16">
+               <Heading level="h2" as="h2" className="text-3xl sm:text-4xl font-bold mb-4">
+                {data.supportAvailable.title}
+               </Heading>
+               <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+                {data.supportAvailable.description}
+               </p>
+            </div>
+          </Reveal>
+
           <Grid cols={2} gap="lg" className="mt-12">
-            {data.supportAvailable.features.map((feature) => (
-              <Card key={feature.title} variant="default">
-                <Heading level="h3" as="h3" className="text-lg">
-                  {feature.title}
-                </Heading>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {feature.description}
-                </p>
-              </Card>
+            {data.supportAvailable.features.map((feature, i) => (
+              <Reveal key={feature.title} delay={i * 0.1} y={20}>
+                <div className="group h-full rounded-[2.5rem] border border-border/60 bg-white p-10 transition-all duration-300 hover:border-accent/40 hover:shadow-[0_40px_80px_-20px_rgba(132,40,51,0.06)] relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-8 text-primary/5 group-hover:text-primary/10 transition-colors">
+                    <Activity className="h-24 w-24" strokeWidth={1} />
+                  </div>
+                  <Heading level="h3" as="h3" className="text-2xl font-bold mb-4 relative z-10 group-hover:text-primary transition-colors">
+                    {feature.title}
+                  </Heading>
+                  <p className="text-lg leading-relaxed text-muted-foreground relative z-10">
+                    {feature.description}
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </Grid>
         </Container>
       </Section>
 
-      {/* Why Choose Gentle Care */}
-      <Section>
+      {/* Why Choose Gentle Care — Clinical Focus */}
+      <Section className="bg-primary/[0.02] border-y border-primary/5">
         <Container>
-          <SectionHeader
-            title={data.whyChoose.title}
-            subtitle={data.whyChoose.description}
-          />
+          <Reveal>
+            <div className="text-center mb-16">
+              <Heading level="h2" as="h2" className="text-3xl sm:text-4xl font-bold mb-4">
+                {data.whyChoose.title}
+              </Heading>
+              <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+                {data.whyChoose.description}
+              </p>
+            </div>
+          </Reveal>
+
           <Grid cols={3} gap="lg" className="mt-12">
-            {data.whyChoose.reasons.map((reason) => (
-              <div key={reason.title} className="text-center">
-                <Heading level="h3" as="h3" className="text-lg">
-                  {reason.title}
-                </Heading>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {reason.description}
-                </p>
-              </div>
-            ))}
+            {data.whyChoose.reasons.map((reason, i) => {
+              const icons = [ShieldCheck, Sparkles, Heart];
+              const Icon = icons[i % 3];
+              return (
+                <Reveal key={reason.title} delay={i * 0.15} y={15}>
+                  <div className="flex flex-col items-center text-center">
+                    <div className="h-16 w-16 rounded-[1.5rem] bg-white shadow-md border border-border/50 flex items-center justify-center mb-8 rotate-3 transform transition-transform hover:rotate-0">
+                      <Icon className="h-8 w-8 text-primary" />
+                    </div>
+                    <Heading level="h3" as="h3" className="text-xl font-bold mb-4">
+                      {reason.title}
+                    </Heading>
+                    <p className="text-base leading-relaxed text-muted-foreground">
+                      {reason.description}
+                    </p>
+                  </div>
+                </Reveal>
+              );
+            })}
           </Grid>
         </Container>
       </Section>
 
       {data.caseStories && data.caseStories.length > 0 && (
-        <Section variant="muted">
+        <Section className="bg-white">
           <Container>
-            <SectionHeader
-              title="Real Examples of How This Helps"
-              subtitle="Names and details are changed for privacy, but the situations are drawn from the kinds of referrals we regularly support."
-            />
-            <div className="mt-8 grid gap-6 md:grid-cols-2">
-              {data.caseStories.map((story) => (
-                <article
-                  key={story.title}
-                  className="h-full rounded-2xl border border-border bg-card p-5 text-left shadow-sm"
-                >
-                  <Heading level="h3" as="h3" className="text-base font-semibold">
-                    {story.title}
-                  </Heading>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {story.summary}
-                  </p>
-                </article>
+            <Reveal>
+              <div className="text-center mb-16">
+                 <Heading level="h2" as="h2" className="text-3xl sm:text-4xl font-bold mb-4">
+                  Real Examples of How This Helps
+                 </Heading>
+                 <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+                   Names and details are changed for privacy, but these situations reflect the quality clinical support we provide daily across Sydney.
+                 </p>
+              </div>
+            </Reveal>
+            <div className="mt-8 grid gap-8 md:grid-cols-2">
+              {data.caseStories.map((story, i) => (
+                <Reveal key={story.title} delay={i * 0.1} y={20}>
+                  <article className="group h-full rounded-[2rem] border border-border bg-card p-10 text-left shadow-sm transition-all hover:border-primary/30 hover:shadow-xl">
+                    <div className="mb-6 inline-flex px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-[10px] font-bold uppercase tracking-widest text-accent">Anonymised Case Story</div>
+                    <Heading level="h3" as="h3" className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">
+                      {story.title}
+                    </Heading>
+                    <p className="text-lg leading-relaxed text-muted-foreground">
+                      {story.summary}
+                    </p>
+                  </article>
+                </Reveal>
               ))}
             </div>
           </Container>
@@ -253,55 +309,64 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
         />
       )}
 
-      {/* Related services — internal linking */}
-      <Section variant="muted">
+      {/* Related services — internal linking with premium treatment */}
+      <Section className="bg-muted/30">
         <Container>
-          <SectionHeader
-            title="Related Services"
-            subtitle="Explore our other in-home nursing and care options."
-          />
-          <ul className="mt-8 flex flex-wrap justify-center gap-4">
+          <Reveal>
+            <div className="text-center mb-12">
+               <Heading level="h2" as="h2" className="text-2xl font-bold">Related Services</Heading>
+               <p className="mt-2 text-muted-foreground">Explore our other in-home nursing and care options.</p>
+            </div>
+          </Reveal>
+          <ul className="mt-8 flex flex-wrap justify-center gap-6">
             {SERVICES.filter((s) => s.href !== data.href)
               .slice(0, 3)
-              .map((service) => (
-                <li key={service.href}>
-                  <Link
-                    href={service.href}
-                    className="rounded-lg border border-border bg-card px-5 py-3 text-sm font-medium text-foreground shadow-sm transition hover:border-primary/30 hover:bg-primary/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                  >
-                    {service.title}
-                  </Link>
-                </li>
+              .map((service, i) => (
+                <Reveal key={service.href} delay={i * 0.1}>
+                  <li>
+                    <Link
+                      href={service.href}
+                      className="group inline-flex items-center gap-2 rounded-2xl border border-border bg-white px-8 py-4 text-base font-bold text-foreground shadow-sm transition-all hover:border-primary hover:text-primary hover:shadow-lg hover:-translate-y-1"
+                    >
+                      {service.title}
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </li>
+                </Reveal>
               ))}
           </ul>
         </Container>
       </Section>
 
       {relatedGuides.length > 0 && (
-        <Section>
+        <Section className="bg-white">
           <Container>
-            <SectionHeader
-              title="Short Guides for Common Situations"
-              subtitle="These guides explain typical scenarios we support and how care at home can work in practice."
-            />
-            <ul className="mt-8 grid gap-4 md:grid-cols-2">
-              {relatedGuides.map((guide) => (
-                <li key={guide.slug}>
-                  <Link
-                    href={`/guides/${guide.slug}`}
-                    className="block h-full rounded-xl border border-border bg-card p-5 text-left shadow-sm transition hover:border-primary/40 hover:bg-primary/[0.02]"
-                  >
-                    <Heading level="h3" as="h3" className="text-base font-semibold">
-                      {guide.title}
-                    </Heading>
-                    <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
-                      {guide.snippetAnswer}
-                    </p>
-                    <span className="mt-3 inline-flex text-sm font-medium text-primary">
-                      Read guide
-                    </span>
-                  </Link>
-                </li>
+            <Reveal>
+              <div className="text-center mb-12">
+                 <Heading level="h2" as="h2" className="text-2xl font-bold">Short Guides for Common Situations</Heading>
+                 <p className="mt-2 text-muted-foreground">Practical advice for families and coordinators.</p>
+              </div>
+            </Reveal>
+            <ul className="mt-8 grid gap-8 md:grid-cols-2">
+              {relatedGuides.map((guide, i) => (
+                <Reveal key={guide.slug} delay={i * 0.1} y={20}>
+                  <li className="h-full">
+                    <Link
+                      href={`/guides/${guide.slug}`}
+                      className="group block h-full rounded-[2rem] border border-border bg-white p-10 text-left shadow-sm transition-all hover:border-primary/40 hover:shadow-2xl"
+                    >
+                      <Heading level="h3" as="h3" className="text-xl font-bold group-hover:text-primary transition-colors">
+                        {guide.title}
+                      </Heading>
+                      <p className="mt-5 line-clamp-3 text-base text-muted-foreground leading-relaxed">
+                        {guide.snippetAnswer}
+                      </p>
+                      <span className="mt-8 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-primary border-b-2 border-primary/20 group-hover:border-primary transition-all">
+                        Read full guide <ArrowRight className="h-4 w-4" />
+                      </span>
+                    </Link>
+                  </li>
+                </Reveal>
               ))}
             </ul>
           </Container>

@@ -1,9 +1,10 @@
 "use client";
 
 import { Hero } from "@/components/sections/Hero";
-import { TrustBar } from "@/components/sections/TrustBar";
+import { TrustMarquee } from "@/components/sections/TrustMarquee";
 import { AboutUsSection } from "@/components/sections/AboutUsSection";
-import { ServiceCards } from "@/components/sections/ServiceCards";
+import { BentoServiceGrid } from "@/components/sections/BentoServiceGrid";
+import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
 import { WhyDifferent } from "@/components/sections/WhyDifferent";
 import { ReferralSection } from "@/components/sections/ReferralSection";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -60,10 +61,8 @@ export default function HomePage() {
         imageAlt={HOMEPAGE_HERO.heroImageAlt}
       />
 
-      {/* 2. Trust Bar (NDIS/DVA Badges) */}
-      <SectionReveal>
-        <TrustBar variant="muted" />
-      </SectionReveal>
+      {/* 2. Trust Marquee (Social Proof) */}
+      <TrustMarquee />
 
       {/* 3. About Us (Personal/Quality) */}
       <SectionReveal>
@@ -74,19 +73,12 @@ export default function HomePage() {
         />
       </SectionReveal>
 
-      <SectionDivider variant="whiteToTeal" />
+      {/* 4. Process Timeline (Clear Journey) */}
+      <ProcessTimeline />
 
-      {/* 4. Services (Action-oriented) */}
-      <SectionReveal>
-        <ServiceCards
-          subtitle="Personalised in-home nursing and care for NDIS, DVA, aged care, and private clients. We're here to support you or someone you love."
-          sectionImage={HOMEPAGE_SERVICES_IMAGE.sectionImage}
-          sectionImageAlt={HOMEPAGE_SERVICES_IMAGE.sectionImageAlt}
-          sectionVariant="teal"
-        />
-      </SectionReveal>
-
-      <SectionDivider variant="tealToWhite" />
+      {/* 5. Services (Action-oriented) */}
+      <BentoServiceGrid />
+      <SectionDivider variant="curve" color="#fcf9f9" bgColor="white" />
 
       {/* 5. Why Choose GCN (Differentiators) */}
       <SectionReveal>
@@ -114,7 +106,7 @@ export default function HomePage() {
         </div>
       </SectionReveal>
 
-      <SectionDivider variant="whiteToTeal" />
+      <SectionDivider variant="wave" color="#fcf9f9" bgColor="white" flip />
 
       {/* 6. Referral Section (Professional Focus) */}
       <SectionReveal>
@@ -124,7 +116,7 @@ export default function HomePage() {
         />
       </SectionReveal>
 
-      <SectionDivider variant="tealToWhite" />
+      <SectionDivider variant="curve" color="#fcf9f9" bgColor="#fcf9f9" position="top" />
 
       {/* 7. Testimonials */}
       <SectionReveal>
@@ -137,7 +129,7 @@ export default function HomePage() {
         />
       </SectionReveal>
 
-      <SectionDivider variant="tealToWhite" />
+      <SectionDivider variant="slant" color="white" bgColor="#fcf9f9" />
 
       {/* 8. Service Areas (GEO relevance) */}
       <SectionReveal>
@@ -149,7 +141,7 @@ export default function HomePage() {
         />
       </SectionReveal>
 
-      <SectionDivider variant="whiteToTeal" />
+      <SectionDivider variant="curve" color="#fcf9f9" bgColor="white" />
 
       {/* 9. FAQ (Objection Handling) */}
       <SectionReveal>

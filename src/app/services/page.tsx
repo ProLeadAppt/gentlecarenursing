@@ -1,115 +1,126 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
-import { ServiceCards } from "@/components/sections/ServiceCards";
-import { TrustBar } from "@/components/sections/TrustBar";
+import { BentoServiceGrid } from "@/components/sections/BentoServiceGrid";
+import { TrustMarquee } from "@/components/sections/TrustMarquee";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Heading } from "@/components/ui/Heading";
-import { Reveal } from "@/components/ui/Reveal";
+import { Reveal } from "@/components/animations/Reveal";
 import { CTA_LINKS } from "@/lib/constants";
 import { createMetadata } from "@/lib/metadata";
-import { SERVICES } from "@/content/services";
 import { GMB_SERVICES } from "@/content/gmb-services";
+import { ShieldCheck, Heart, UserCheck } from "lucide-react";
 
 export const metadata = createMetadata({
   title: "Our Services",
   description:
-    "In-home nursing and care services across NDIS, DVA, aged care, and private. Personalised support for you or your loved ones.",
+    "Boutique in-home nursing and care services across NDIS, DVA, aged care, and private. Personalised clinical support led by experienced nurses.",
   keywords: [
-    "in-home nursing",
-    "NDIS services",
-    "DVA nursing",
-    "aged care services",
-    "private nursing",
-    "personal care",
+    "in-home nursing Sydney",
+    "NDIS registered provider",
+    "DVA community nursing",
+    "boutique aged care",
+    "private nursing care",
+    "complex care support",
   ],
 });
 
 export default function ServicesPage() {
   return (
     <>
-      {/* Intro */}
-      <Section size="lg" variant="card">
+      {/* Premium Hero Intro */}
+      <Section size="lg" className="bg-white border-b border-border/40">
         <Container size="md">
           <Reveal>
-            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Our Services" }]} className="mb-6" />
-            <Heading level="h1" as="h1" className="text-center">
-              Our Services
+            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Our Services" }]} className="mb-8" />
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-primary/80 mb-4">What We Do</p>
+            <Heading level="h1" as="h1" className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight">
+              Clinical Excellence <br/> at Home
             </Heading>
-            <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              Gentle Care Nursing provides personalised in-home nursing and care across multiple
-              funding streams. Whether you&apos;re an NDIS participant, a veteran, an older
-              Australian, or someone needing private care. We have you covered.
+            <p className="mt-8 text-xl leading-relaxed text-muted-foreground sm:text-2xl font-medium max-w-3xl">
+              Gentle Care Nursing provides high-end, personalised in-home nursing and care. 
+              We focus on quality over volume, ensuring every participant receives the 
+              dedicated attention they deserve.
             </p>
           </Reveal>
         </Container>
       </Section>
 
-      <TrustBar variant="muted" />
+      <TrustMarquee />
 
-      {/* Services at a glance — table for GEO / citation-friendly parsing */}
-      <Section>
+      {/* Service Highlights / Bento Focus */}
+      <BentoServiceGrid />
+
+      {/* Trust & Methodology Section */}
+      <Section className="bg-muted/30">
+        <Container size="lg">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              { 
+                title: "Registered & Verified", 
+                desc: "Fully registered NDIS and DVA provider meeting all quality and safety benchmarks.", 
+                icon: ShieldCheck 
+              },
+              { 
+                title: "Clinician-Led", 
+                desc: "Owned and operated by experienced Registered Nurses with 10+ years of expertise.", 
+                icon: UserCheck 
+              },
+              { 
+                title: "Person-Centred", 
+                desc: "We match you with the right carer who aligns with your personality and health goals.", 
+                icon: Heart 
+              },
+            ].map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <Reveal key={item.title} delay={i * 0.1} y={20}>
+                  <div className="flex flex-col items-center text-center">
+                    <div className="h-14 w-14 rounded-2xl bg-white shadow-sm border border-border/50 flex items-center justify-center mb-6">
+                      <Icon className="h-7 w-7 text-primary" strokeWidth={2} />
+                    </div>
+                    <Heading level="h3" className="text-xl font-bold mb-3">{item.title}</Heading>
+                    <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </Container>
+      </Section>
+
+      {/* All Specific Care Services — GMB-aligned */}
+      <Section className="bg-white">
         <Container size="md">
           <Reveal>
-            <Heading level="h2" as="h2" className="mb-6 text-center">
-              Services at a glance
-            </Heading>
-            <div className="overflow-x-auto rounded-xl border border-border">
-              <table className="w-full min-w-[320px] text-left text-sm">
-                <thead>
-                  <tr className="border-b border-border bg-muted/50">
-                    <th className="px-4 py-3 font-semibold text-foreground">Service</th>
-                    <th className="px-4 py-3 font-semibold text-foreground">Description</th>
-                    <th className="px-4 py-3 font-semibold text-foreground">Link</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {SERVICES.map((s) => (
-                    <tr key={s.href} className="border-b border-border last:border-0">
-                      <td className="px-4 py-3 font-medium text-foreground">{s.title}</td>
-                      <td className="px-4 py-3 text-muted-foreground">{s.shortDescription}</td>
-                      <td className="px-4 py-3">
-                        <Link href={s.href} className="font-medium text-primary hover:underline">
-                          Learn more
-                        </Link>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="text-center mb-16">
+              <Heading level="h2" as="h2" className="text-3xl sm:text-4xl font-bold mb-4">
+                Clinical Service Directory
+              </Heading>
+              <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+                We offer {GMB_SERVICES.length}+ specialised clinical services across Sydney. 
+                Our team is equipped for both complex medical Needs and daily living support.
+              </p>
             </div>
           </Reveal>
-        </Container>
-      </Section>
 
-      {/* All services we offer — GMB-aligned list */}
-      <Section variant="muted">
-        <Container size="md">
-          <Reveal>
-            <Heading level="h2" as="h2" className="mb-2 text-center">
-              All services we offer
-            </Heading>
-            <p className="mx-auto mb-8 max-w-2xl text-center text-muted-foreground">
-              We offer {GMB_SERVICES.length}+ in-home nursing and care services across Sydney. Names match our service profile for your reference.
-            </p>
-          </Reveal>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {GMB_SERVICES.map((service, index) => (
-              <Reveal key={service.name} delay={index * 60}>
-                <div className="flex items-start justify-between gap-2 rounded-xl border border-border bg-card px-4 py-3">
+              <Reveal key={service.name} delay={index * 0.05} y={15}>
+                <div className="group flex flex-col justify-between h-full rounded-[1.5rem] border border-border/60 bg-white p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-[0_20px_40px_-15px_rgba(132,40,51,0.08)]">
                   <div>
-                    <p className="font-medium text-foreground">{service.name}</p>
+                    <p className="font-bold text-lg text-foreground mb-2 group-hover:text-primary transition-colors">{service.name}</p>
                     {service.description && (
-                      <p className="mt-0.5 text-sm text-muted-foreground">{service.description}</p>
+                      <p className="text-sm leading-relaxed text-muted-foreground">{service.description}</p>
                     )}
                   </div>
                   {service.href && (
                     <Link
                       href={service.href}
-                      className="shrink-0 text-sm font-medium text-primary hover:underline"
+                      className="mt-6 inline-flex items-center text-xs font-bold uppercase tracking-wider text-primary group-hover:gap-2 transition-all"
                     >
-                      Learn more
+                      Learn more <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                     </Link>
                   )}
                 </div>
@@ -119,32 +130,9 @@ export default function ServicesPage() {
         </Container>
       </Section>
 
-      <ServiceCards
-        title="Our Care Categories"
-        subtitle="Select a service to learn more about how we can help."
-        cols={2}
-        cardVariant="elevated"
-      />
-
-      {/* Who We Work With */}
-      <Section variant="muted">
-        <Container size="md">
-          <Reveal>
-            <Heading level="h2" as="h2" className="text-center">
-              Who We Work With
-            </Heading>
-            <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-muted-foreground">
-              We support families, NDIS participants and coordinators, DVA clients, hospital
-              discharge planners, GPs, and healthcare professionals. If you&apos;re looking for a
-              care provider you can trust. We&apos;re here.
-            </p>
-          </Reveal>
-        </Container>
-      </Section>
-
       <CtaSection
-        title="Not Sure Which Service Fits?"
-        description="Contact us or submit an enquiry. We'll help you find the right support."
+        title="Ready to Discuss Your Care?"
+        description="Whether you have an NDIS plan or need private clinical support, our team is ready to respond within 24 hours."
         primaryCta={CTA_LINKS.requestCare}
         secondaryCta={CTA_LINKS.contact}
         variant="primary"
