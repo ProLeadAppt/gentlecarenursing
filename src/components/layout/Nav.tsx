@@ -5,7 +5,8 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { SITE } from "@/lib/constants";
+import { SITE, CTA_LINKS } from "@/lib/constants";
+import { useFormModal } from "@/contexts/FormModalContext";
 import type { NavItem } from "@/types";
 
 interface NavProps {
@@ -92,6 +93,7 @@ function DesktopDropdown({ item }: { item: NavItem }) {
 export function Nav({ links, cta, className }: NavProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const { openModal } = useFormModal();
 
   return (
     <div className={cn("flex items-center", className)}>
@@ -127,7 +129,18 @@ export function Nav({ links, cta, className }: NavProps) {
           </a>
         )}
         {cta && (
-          <Button href={cta.href} size="sm" variant="secondary">
+          <Button 
+            href={cta.label === CTA_LINKS.requestCare.label || cta.label === CTA_LINKS.makeReferral.label ? undefined : cta.href} 
+            size="sm" 
+            variant="secondary"
+            onClick={
+              cta.label === CTA_LINKS.requestCare.label 
+                ? () => openModal("care-finder") 
+                : cta.label === CTA_LINKS.makeReferral.label 
+                ? () => openModal("referral") 
+                : undefined
+            }
+          >
             {cta.label}
           </Button>
         )}
@@ -221,10 +234,14 @@ export function Nav({ links, cta, className }: NavProps) {
             )}
             {cta && (
               <Button
-                href={cta.href}
+                href={cta.label === CTA_LINKS.requestCare.label || cta.label === CTA_LINKS.makeReferral.label ? undefined : cta.href}
                 size="md"
                 className="w-full"
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  setMobileOpen(false);
+                  if (cta.label === CTA_LINKS.requestCare.label) openModal("care-finder");
+                  else if (cta.label === CTA_LINKS.makeReferral.label) openModal("referral");
+                }}
               >
                 {cta.label}
               </Button>

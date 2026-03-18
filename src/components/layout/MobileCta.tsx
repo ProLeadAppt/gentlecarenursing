@@ -72,7 +72,7 @@ export function MobileCta() {
           onClick={() => openModal("referral")}
           className="flex h-12 flex-1 items-center justify-center rounded-xl bg-accent font-semibold text-white shadow-md transition-all duration-150 hover:bg-accent/90 active:scale-[0.98]"
         >
-          {CTA_LINKS.requestCare.label}
+          {CTA_LINKS.makeReferral.label}
         </button>
       </div>
     </div>

@@ -158,6 +158,8 @@ export default function HomePage() {
         title={HOMEPAGE_FINAL_CTA.title}
         primaryCta={CTA_LINKS.requestCare}
         secondaryCta={CTA_LINKS.makeReferral}
+        onPrimaryClick={() => openModal("care-finder")}
+        onSecondaryClick={() => openModal("referral")}
         reassurance={HOMEPAGE_FINAL_CTA.reassurance}
         variant="primary"
       />
