@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
@@ -94,6 +95,14 @@ export function Nav({ links, cta, className }: NavProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const { openModal } = useFormModal();
+  const pathname = usePathname();
+
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(href + "/");
+
+  const isParentActive = (item: NavItem) =>
+    isActive(item.href) ||
+    (item.children?.some((child) => isActive(child.href)) ?? false);
 
   return (
     <div className={cn("flex items-center", className)}>
@@ -109,7 +118,13 @@ export function Nav({ links, cta, className }: NavProps) {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-foreground/70 transition-colors hover:text-primary"
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-primary",
+                isActive(item.href)
+                  ? "text-primary font-semibold"
+                  : "text-foreground/70"
+              )}
+              aria-current={isActive(item.href) ? "page" : undefined}
             >
               {item.label}
             </Link>

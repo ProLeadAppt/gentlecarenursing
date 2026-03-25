@@ -34,6 +34,7 @@ export const NAV_LINKS: readonly NavItem[] = [
     ],
   },
   { href: "/referral", label: "Referrals" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ] as const;
 

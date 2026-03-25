@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { SPACING_SECTION } from "@/design-system/tokens";
 
 type SectionSize = "sm" | "md" | "lg" | "xl";
-type SectionVariant = "default" | "muted" | "card" | "primary" | "accent" | "gradient" | "teal" | "clinical-white" | "premium-accent";
+type SectionVariant = "default" | "muted" | "card" | "primary" | "accent" | "gradient" | "teal" | "clinical-white" | "premium-accent" | "blend-cream-to-white" | "blend-white-to-cream";
 
 interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   size?: SectionSize;
@@ -27,6 +27,8 @@ const variantStyles: Record<SectionVariant, string> = {
   teal: "bg-[hsl(var(--color-section-teal))]",
   "clinical-white": "bg-white relative",
   "premium-accent": "bg-accent/[0.03] border-y border-accent/10",
+  "blend-cream-to-white": "section-blend-cream-to-white",
+  "blend-white-to-cream": "section-blend-white-to-cream",
 };
 
 export function Section({

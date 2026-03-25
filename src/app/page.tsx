@@ -13,6 +13,7 @@ import { AreasWeServe } from "@/components/sections/AreasWeServe";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { SectionDivider } from "@/components/sections/SectionDivider";
 import { SectionReveal } from "@/components/animations/SectionReveal";
+import { NewsletterSignup } from "@/components/forms/NewsletterSignup";
 import { useFormModal } from "@/contexts/FormModalContext";
 import { Button } from "@/components/ui/Button";
 import { CTA_LINKS, HERO_REASSURANCE } from "@/lib/constants";
@@ -50,12 +51,10 @@ export default function HomePage() {
       
       {/* 1. Hero (Immediate Clarity) */}
       <Hero
-        headline={HOMEPAGE_HERO.headline}
+        headlineSegments={HOMEPAGE_HERO.headlineSegments}
         subheadline={HOMEPAGE_HERO.subheadline}
-        trustLine={HOMEPAGE_HERO.trustLine}
-        valuePills={HOMEPAGE_HERO.valuePills}
+        eyebrow={HOMEPAGE_HERO.eyebrow}
         primaryCta={CTA_LINKS.requestCare}
-        secondaryCta={CTA_LINKS.contact}
         reassurance={HERO_REASSURANCE}
         imageSrc={HOMEPAGE_HERO.heroImageSrc}
         imageAlt={HOMEPAGE_HERO.heroImageAlt}
@@ -153,7 +152,14 @@ export default function HomePage() {
         />
       </SectionReveal>
 
-      {/* 10. Final CTA */}
+      {/* 10. Newsletter */}
+      <SectionReveal>
+        <section className="py-20 sm:py-24">
+          <NewsletterSignup variant="section" />
+        </section>
+      </SectionReveal>
+
+      {/* 11. Final CTA */}
       <CtaSection
         title={HOMEPAGE_FINAL_CTA.title}
         primaryCta={CTA_LINKS.requestCare}

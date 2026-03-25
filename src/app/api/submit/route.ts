@@ -29,7 +29,12 @@ interface CareFinderPayload {
   notes?: string;
 }
 
-type FormPayload = ContactPayload | ReferralPayload | CareFinderPayload;
+interface NewsletterPayload {
+  type: "newsletter";
+  email: string;
+}
+
+type FormPayload = ContactPayload | ReferralPayload | CareFinderPayload | NewsletterPayload;
 
 function validatePayload(body: unknown): body is FormPayload {
   if (!body || typeof body !== "object") return false;
@@ -52,6 +57,13 @@ function validatePayload(body: unknown): body is FormPayload {
       obj.referrerName.trim().length > 0 &&
       typeof obj.referrerEmail === "string" &&
       obj.referrerEmail.includes("@")
+    );
+  }
+
+  if (obj.type === "newsletter") {
+    return (
+      typeof obj.email === "string" &&
+      obj.email.includes("@")
     );
   }
 

@@ -8,7 +8,7 @@ import { MobileCta } from "@/components/layout/MobileCta";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { FormModalProvider } from "@/contexts/FormModalContext";
 import { FormModal } from "@/components/ui/FormModal";
-import { getLocalBusinessSchema, getWebsiteSchema, getOrganizationSchema } from "@/lib/schema";
+import { getLocalBusinessSchema, getWebsiteSchema, getOrganizationSchema, getAggregateRatingSchema } from "@/lib/schema";
 
 const sourceSans = Source_Sans_3({
   variable: "--font-source-sans",
@@ -85,9 +85,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sourceSans.variable} ${dmSans.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${sourceSans.variable} ${dmSans.variable} ${cormorant.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="preload" href="/images/hero-hands.webp" as="image" />
+        <link rel="preload" href="/images/carer-elderly.webp" as="image" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -95,15 +95,16 @@ export default function RootLayout({
               getOrganizationSchema(),
               getLocalBusinessSchema(),
               getWebsiteSchema(),
+              getAggregateRatingSchema(),
             ]),
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col antialiased">
+      <body className="min-h-screen flex flex-col antialiased" suppressHydrationWarning>
         <FormModalProvider>
         <a
           href="#main-content"
-          className="fixed left-4 top-4 z-[100] -translate-y-16 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-lg transition focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
         >
           Skip to main content
         </a>

@@ -17,12 +17,12 @@ export const SPACING = {
   "5xl": "6rem",
 } as const;
 
-/** Section vertical rhythm — generous and breathable */
+/** Section vertical rhythm — generous and breathable (10x elevated spacing) */
 export const SPACING_SECTION = {
-  py: "py-24 sm:py-28",
-  pySm: "py-16 sm:py-20",
-  pyLg: "py-28 sm:py-36",
-  pyXl: "py-32 sm:py-40",
+  py: "py-28 sm:py-32",
+  pySm: "py-20 sm:py-24",
+  pyLg: "py-32 sm:py-40",
+  pyXl: "py-36 sm:py-44",
 } as const;
 
 export const TYPOGRAPHY = {
@@ -70,6 +70,69 @@ export const ANIMATION_VARIANTS = {
   },
 } as const;
 
+/** Hero cinematic entrance — staggered word-by-word reveal */
+export const HERO_VARIANTS = {
+  container: {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.18, delayChildren: 0.3 },
+    },
+  },
+  word: {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+    },
+  },
+  image: {
+    hidden: { opacity: 0, x: 30, rotateY: 3 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      rotateY: 0,
+      transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 1.4 },
+    },
+  },
+  badge: {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { type: "spring", stiffness: 120, damping: 18 },
+    },
+  },
+  credentials: {
+    hidden: { opacity: 0, x: -10 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+    },
+  },
+} as const;
+
+/** Testimonial staggered card reveal */
+export const TESTIMONIAL_VARIANTS = {
+  container: {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+    },
+  },
+  card: {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 100, damping: 20 },
+    },
+  },
+} as const;
+
 export const RADIUS = {
   sm: "rounded-lg",
   md: "rounded-[0.9375rem]",
@@ -89,7 +152,7 @@ export const CONTAINER_PADDING = "px-4 sm:px-6 lg:px-8" as const;
 
 export const BUTTON_VARIANTS = {
   primary:
-    "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 focus-visible:ring-primary active:scale-[0.99] transition-all duration-200 rounded-xl",
+    "bg-gradient-to-br from-primary to-[#6b2028] text-primary-foreground shadow-[0_4px_16px_rgba(132,40,51,0.25)] hover:shadow-[0_8px_24px_rgba(132,40,51,0.3)] hover:-translate-y-px focus-visible:ring-primary active:scale-[0.98] active:shadow-sm transition-all duration-200 rounded-xl",
   secondary:
     "bg-accent text-accent-foreground shadow-sm hover:bg-accent/90 focus-visible:ring-accent active:scale-[0.99] transition-all duration-200 rounded-xl",
   outline:

@@ -3,6 +3,7 @@ import { INTEGRATIONS } from "@/config/integrations";
 import { ELEVATOR_PITCH } from "@/content/about";
 import { AREAS_SERVED } from "@/content/areas-served";
 import { GMB_SERVICES } from "@/content/gmb-services";
+import { GOOGLE_REVIEWS } from "@/content/reviews";
 
 /**
  * JSON-LD schema generators for SEO.
@@ -189,5 +190,56 @@ export function getHowToSchema(
       name: s.headline,
       text: s.description,
     })),
+  };
+}
+
+export function getAggregateRatingSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AggregateRating",
+    itemReviewed: {
+      "@type": "MedicalBusiness",
+      name: SITE.name,
+    },
+    ratingValue: GOOGLE_REVIEWS.averageRating.toString(),
+    bestRating: "5",
+    worstRating: "1",
+    ratingCount: GOOGLE_REVIEWS.reviewCount.toString(),
+  };
+}
+
+export function getArticleSchema(post: {
+  title: string;
+  excerpt: string;
+  publishedAt: string;
+  updatedAt?: string;
+  author: { name: string; role?: string };
+  featuredImageSrc?: string;
+  url: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
+    author: {
+      "@type": "Person",
+      name: post.author.name,
+      ...(post.author.role ? { jobTitle: post.author.role } : {}),
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE.name,
+      url: INTEGRATIONS.siteUrl,
+    },
+    ...(post.featuredImageSrc
+      ? { image: `${INTEGRATIONS.siteUrl}${post.featuredImageSrc}` }
+      : {}),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": post.url,
+    },
   };
 }

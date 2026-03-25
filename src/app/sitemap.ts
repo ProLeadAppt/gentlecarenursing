@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllAreaSlugs } from "@/content/areas-content";
 import { getAllGuideSlugs } from "@/content/guides";
+import { getAllBlogPosts } from "@/content/blog";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gentlecarenursing.com.au";
 
@@ -22,6 +23,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/contact", priority: 0.8, changeFrequency: "monthly" },
     { path: "/faq", priority: 0.7, changeFrequency: "monthly" },
     { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
+    { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
+    { path: "/guides", priority: 0.7, changeFrequency: "monthly" },
     { path: "/areas", priority: 0.85, changeFrequency: "monthly" },
   ];
 
@@ -33,6 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const guideSlugs = getAllGuideSlugs();
   for (const slug of guideSlugs) {
     routes.push({ path: `/guides/${slug}`, priority: 0.7, changeFrequency: "monthly" });
+  }
+
+  routes.push({ path: "/blog", priority: 0.8, changeFrequency: "weekly" });
+  const blogPosts = getAllBlogPosts();
+  for (const post of blogPosts) {
+    routes.push({ path: `/blog/${post.slug}`, priority: 0.7, changeFrequency: "monthly" });
   }
 
   return routes.map((route) => ({

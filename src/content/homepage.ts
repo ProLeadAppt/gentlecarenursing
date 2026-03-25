@@ -4,13 +4,15 @@
  */
 
 export const HOMEPAGE_HERO = {
-  /** Updated based on Gemma's request */
-  trustLine: "Registered NDIS Provider, DVA Approved Provider, Aged Care: Support at Home",
-  headline: "Compassionate In-Home Care & Disability Support in Sydney",
+  eyebrow: "Clinician-Led · Boutique · Sydney",
+  /** Segmented headline for staggered cinematic reveal */
+  headlineSegments: [
+    "Compassionate",
+    "In-Home Care",
+    "& Disability Support",
+  ] as const,
   subheadline:
-    "Providing personalised, compassionate care to support independence, dignity, and wellbeing at home. We respond quickly because we know that matters.",
-  /** Value pills: soft, trust-focused, not badge-y */
-  valuePills: ["We reply within 24 hours", "Quality care, smaller client load", "Dignity and independence", "Here for Sydney"] as const,
+    "Quality over volume. Your loved ones deserve a team that actually cares.",
   /** Hero image (right column). Default: carer-elderly. */
   heroImageSrc: "/images/carer-elderly.webp",
   heroImageAlt: "Nurse assisting a patient in a home environment",

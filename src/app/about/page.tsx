@@ -1,11 +1,12 @@
-import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Grid } from "@/components/layout/Grid";
 import { SectionHeader } from "@/components/sections/SectionHeader";
-import { TrustBar } from "@/components/sections/TrustBar";
 import { CredentialsSection } from "@/components/sections/CredentialsSection";
 import { CtaSection } from "@/components/sections/CtaSection";
+import { FounderStory } from "@/components/sections/FounderStory";
+import { TeamGrid } from "@/components/sections/TeamGrid";
+import { MilestoneTimeline } from "@/components/sections/MilestoneTimeline";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Heading } from "@/components/ui/Heading";
 import { Card } from "@/components/ui/Card";
@@ -16,8 +17,10 @@ import {
   ELEVATOR_PITCH,
   MISSION,
   VALUES,
-  WHY_PERSONALISED,
-  PROFESSIONAL_TRUST,
+  FOUNDER_STORY,
+  TEAM_MEMBERS,
+  MILESTONES,
+  TRUST_STATS,
 } from "@/content/about";
 
 export const metadata = createMetadata({
@@ -29,11 +32,18 @@ export const metadata = createMetadata({
 export default function AboutPage() {
   return (
     <>
-      {/* Intro */}
+      {/* Hero Intro */}
       <Section size="lg" variant="card">
         <Container size="md">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About Us" }]} className="mb-6" />
-          <Heading level="h1" as="h1" className="text-center">
+          <Breadcrumbs
+            items={[{ label: "Home", href: "/" }, { label: "About Us" }]}
+            className="mb-6"
+          />
+          <Heading
+            level="h1"
+            as="h1"
+            className="text-center font-[family-name:var(--font-serif)] text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight"
+          >
             {ABOUT_INTRO.title}
           </Heading>
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground sm:text-xl">
@@ -42,34 +52,39 @@ export default function AboutPage() {
           <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-muted-foreground">
             {ABOUT_INTRO.lead}
           </p>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-sm font-medium text-foreground/90">
-            {ABOUT_INTRO.statsLine}
-          </p>
         </Container>
       </Section>
 
-      <TrustBar variant="muted" />
-
-      <CredentialsSection variant="default" showLinks />
-
-      {/* Care moment image */}
-      <Section>
-        <Container size="md">
-          <div className="relative mx-auto max-w-3xl overflow-hidden rounded-2xl">
-            <Image
-              src="/images/national-cancer-institute-BxXgTQEw1M4-unsplash.webp"
-              alt="A moment of gentle, supportive care in a home setting"
-              width={800}
-              height={533}
-              className="h-auto w-full object-cover"
-              sizes="(max-width: 1024px) 100vw, 800px"
-            />
+      {/* Stats Bar */}
+      <Section size="sm" variant="muted">
+        <Container>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4 text-center">
+            {TRUST_STATS.map((stat) => (
+              <div key={stat.label}>
+                <p className="font-[family-name:var(--font-serif)] text-3xl sm:text-4xl font-bold text-primary">
+                  {stat.value}
+                </p>
+                <p className="mt-1 text-sm font-medium text-muted-foreground">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
           </div>
         </Container>
       </Section>
 
+      {/* Founder Story */}
+      <FounderStory
+        name={FOUNDER_STORY.name}
+        title={FOUNDER_STORY.title}
+        bio={FOUNDER_STORY.bio}
+        quote={FOUNDER_STORY.quote}
+        imageSrc={FOUNDER_STORY.imageSrc}
+        imageAlt={FOUNDER_STORY.imageAlt}
+      />
+
       {/* Mission */}
-      <Section>
+      <Section variant="muted">
         <Container size="md">
           <SectionHeader title={MISSION.title} />
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground">
@@ -79,7 +94,7 @@ export default function AboutPage() {
       </Section>
 
       {/* Values */}
-      <Section variant="muted">
+      <Section>
         <Container>
           <SectionHeader
             title="Our Values"
@@ -100,34 +115,14 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* Why Personalised Care */}
-      <Section>
-        <Container size="md">
-          <SectionHeader title={WHY_PERSONALISED.title} />
-          <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground">
-            {WHY_PERSONALISED.description}
-          </p>
-        </Container>
-      </Section>
+      {/* Team */}
+      <TeamGrid members={TEAM_MEMBERS} />
 
-      {/* Professional Trust */}
-      <Section variant="card">
-        <Container size="md">
-          <SectionHeader title={PROFESSIONAL_TRUST.title} />
-          <ul className="mx-auto mt-8 max-w-xl space-y-4">
-            {PROFESSIONAL_TRUST.items.map((item) => (
-              <li key={item} className="flex items-start gap-3">
-                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </span>
-                <span className="text-foreground">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </Section>
+      {/* Milestone Timeline */}
+      <MilestoneTimeline milestones={MILESTONES} />
+
+      {/* Credentials */}
+      <CredentialsSection variant="default" showLinks />
 
       {/* CTA */}
       <CtaSection

@@ -102,8 +102,9 @@ function BentoCard({ service, className, dark, index, isFeatured }: BentoCardPro
         delay: index * 0.1, 
         ease: [0.21, 1, 0.44, 1] 
       }}
+      whileHover={{ y: -4 }}
       className={cn(
-        "relative rounded-[2.5rem] p-8 sm:p-10 flex flex-col justify-between overflow-hidden cursor-pointer",
+        "relative rounded-[2.5rem] p-8 sm:p-10 flex flex-col justify-between overflow-hidden cursor-pointer transition-shadow duration-500 hover:shadow-card-hover",
         className
       )}
     >
@@ -124,7 +125,7 @@ function BentoCard({ service, className, dark, index, isFeatured }: BentoCardPro
       {/* Content */}
       <div className="relative z-20 h-full flex flex-col">
         <div className={cn(
-          "h-14 w-14 rounded-2xl flex items-center justify-center mb-6 sm:mb-8 shadow-lg transition-all duration-700 group-hover:scale-110 group-hover:rotate-[8deg]",
+          "h-14 w-14 rounded-2xl flex items-center justify-center mb-6 sm:mb-8 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-[5deg]",
           dark 
             ? "bg-white/15 text-white ring-1 ring-white/30 backdrop-blur-md" 
             : "bg-white text-primary ring-1 ring-primary/10 shadow-primary/5"

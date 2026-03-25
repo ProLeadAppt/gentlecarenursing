@@ -54,6 +54,8 @@
   --space-xl: 2rem;
   --space-2xl: 3rem;
   --space-3xl: 4rem;
+  --space-4xl: 5rem;
+  --space-5xl: 6rem;
 
   --container-max: 72rem;
   --container-padding: 1.25rem;
@@ -208,6 +210,80 @@ body {
   animation: hero-in 0.4s ease-out both;
 }
 
+/* ---------------------------------------------------------------------------
+   Ambient orb keyframes (GPU-composited for hero background)
+   --------------------------------------------------------------------------- */
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-25px, 25px) scale(0.97); }
+  66% { transform: translate(20px, -15px) scale(1.03); }
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.ambient-orb-sage {
+  background: radial-gradient(circle, rgba(107,147,96,0.12) 0%, transparent 70%);
+  animation: orb-drift-1 20s ease-in-out infinite;
+}
+
+.ambient-orb-teal {
+  background: radial-gradient(circle, rgba(27,107,109,0.08) 0%, transparent 70%);
+  animation: orb-drift-2 25s ease-in-out infinite;
+}
+
+/* ---------------------------------------------------------------------------
+   Gradient divider line animation
+   --------------------------------------------------------------------------- */
+@keyframes line-draw {
+  from { width: 0; }
+  to { width: 40px; }
+}
+
+.gradient-divider {
+  height: 2px;
+  background: linear-gradient(90deg, #6b9360, #1b6b6d);
+  border-radius: 1px;
+}
+
+/* ---------------------------------------------------------------------------
+   Section background transitions (smooth gradient blends)
+   --------------------------------------------------------------------------- */
+.section-blend-cream-to-white {
+  background: linear-gradient(180deg, #fdf6ec 0%, #f8f4ef 40%, #ffffff 100%);
+}
+
+.section-blend-white-to-cream {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f4ef 60%, #fdf6ec 100%);
+}
+
+/* ---------------------------------------------------------------------------
+   Image overlay treatment (brand gradient)
+   --------------------------------------------------------------------------- */
+.image-brand-overlay {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+}
+
+.image-brand-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(107,147,96,0.12) 0%, rgba(253,246,236,0.6) 100%);
+  pointer-events: none;
+}
+
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   .reveal {
@@ -222,6 +298,17 @@ body {
     animation: none;
     opacity: 1;
     transform: none;
+  }
+
+  .ambient-orb,
+  .ambient-orb-sage,
+  .ambient-orb-teal {
+    animation: none;
+  }
+
+  .gradient-divider {
+    animation: none;
+    width: 40px;
   }
 }
 

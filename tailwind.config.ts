@@ -76,6 +76,19 @@ const config: Config = {
         "pw-muted": "#736e62",
         "pw-subtle": "#b5afa3",
         "pw-border": "#e8e0d4",
+        "pw-berry": {
+          50: "#fdf2f4",
+          100: "#fbe5e8",
+          200: "#f7ccd3",
+          300: "#f1a3af",
+          400: "#e87285",
+          DEFAULT: "#842833",
+          500: "#842833",
+          600: "#6b2028",
+          700: "#561a20",
+          800: "#48171c",
+          900: "#3d161b",
+        },
       },
       fontFamily: {
         display: ["var(--font-display)", "system-ui", "sans-serif"],
@@ -106,9 +119,10 @@ const config: Config = {
         "pw-wide": "1400px",
       },
       spacing: {
-        section: "6rem",
-        "section-sm": "4rem",
-        "section-lg": "8rem",
+        section: "7rem",
+        "section-sm": "5rem",
+        "section-lg": "9rem",
+        "section-xl": "10rem",
       },
       boxShadow: {
         pw: "0 2px 8px rgba(107,147,96,0.08), 0 8px 24px rgba(107,147,96,0.04)",
@@ -117,8 +131,12 @@ const config: Config = {
         "pw-xl":
           "0 8px 32px rgba(107,147,96,0.12), 0 24px 64px rgba(107,147,96,0.08)",
         "glow-sage": "0 0 24px rgba(107,147,96,0.15)",
+        "glow-teal": "0 0 24px rgba(27,107,109,0.15)",
+        "glow-berry": "0 0 24px rgba(132,40,51,0.15)",
         "glow-terracotta": "0 0 24px rgba(196,112,75,0.15)",
         "glow-amber": "0 0 24px rgba(212,160,60,0.2)",
+        "card-hover":
+          "0 8px 24px rgba(107,147,96,0.08), 0 20px 48px rgba(107,147,96,0.06)",
       },
       keyframes: {
         marquee: {
@@ -129,11 +147,16 @@ const config: Config = {
           "0%, 100%": { boxShadow: "0 0 16px rgba(107,147,96,0.3)" },
           "50%": { boxShadow: "0 0 32px rgba(107,147,96,0.5)" },
         },
+        "pulse-dot": {
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: "0.6", transform: "scale(1.4)" },
+        },
       },
       animation: {
         marquee: "marquee 30s linear infinite",
         "marquee-slow": "marquee 45s linear infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        "pulse-dot": "pulse-dot 2s ease-in-out infinite",
       },
       backgroundImage: {
         "radial-spotlight":

@@ -12,16 +12,33 @@ export function FormModal() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
+  const triggerRef = useRef<Element | null>(null);
+
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
 
     if (activeForm) {
+      // Save the element that triggered the modal for focus return
+      triggerRef.current = document.activeElement;
       dialog.showModal();
       document.body.style.overflow = "hidden";
+
+      // Auto-focus first input inside the modal after render
+      requestAnimationFrame(() => {
+        const firstInput = contentRef.current?.querySelector<HTMLElement>(
+          "input, select, textarea, button:not([aria-label='Close'])"
+        );
+        firstInput?.focus();
+      });
     } else {
       dialog.close();
       document.body.style.overflow = "";
+
+      // Return focus to the trigger element
+      if (triggerRef.current instanceof HTMLElement) {
+        triggerRef.current.focus();
+      }
     }
 
     return () => {
@@ -80,6 +97,8 @@ export function FormModal() {
       ref={dialogRef}
       className="fixed inset-0 z-[100] m-0 h-full w-full max-w-none max-h-none bg-transparent p-0 backdrop:bg-black/60 backdrop:backdrop-blur-md open:flex open:items-center open:justify-center"
       onClick={handleBackdropClick}
+      aria-labelledby="modal-title"
+      aria-describedby="modal-subtitle"
     >
       <div
         ref={contentRef}
@@ -88,10 +107,10 @@ export function FormModal() {
         {/* Header */}
         <div className="flex items-start justify-between border-b border-border/40 bg-muted/20 px-8 py-8 sm:px-10">
           <div>
-            <h2 className="font-[family-name:var(--font-serif)] text-2xl sm:text-3xl font-bold text-foreground leading-tight">
+            <h2 id="modal-title" className="font-[family-name:var(--font-serif)] text-2xl sm:text-3xl font-bold text-foreground leading-tight">
               {title}
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-muted-foreground">{subtitle}</p>
+            <p id="modal-subtitle" className="mt-2 text-sm sm:text-base text-muted-foreground">{subtitle}</p>
           </div>
           <button
             type="button"

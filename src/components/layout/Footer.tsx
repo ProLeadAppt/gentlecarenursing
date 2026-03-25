@@ -5,7 +5,8 @@ import { Grid } from "./Grid";
 import { FooterColumn } from "./FooterColumn";
 import { CTA_LINKS, SITE } from "@/lib/constants";
 import { Heading } from "@/components/ui/Heading";
-import { ShieldCheck, BadgeCheck, Phone, MapPin, Mail, ChevronRight } from "lucide-react";
+import { ShieldCheck, BadgeCheck, Phone, MapPin, Mail, ChevronRight, Facebook, Instagram } from "lucide-react";
+import { NewsletterSignup } from "@/components/forms/NewsletterSignup";
 
 export interface FooterLink {
   href: string;
@@ -29,6 +30,8 @@ const defaultInfoLinks: FooterLink[] = [
   { href: "/services", label: "Service Directory" },
   { href: "/care-finder", label: "Care Finder Tool" },
   { href: "/referrers", label: "Referral Portal" },
+  { href: "/blog", label: "Blog" },
+  { href: "/guides", label: "Care Guides" },
   { href: "/faq", label: "Client FAQ" },
   { href: "/contact", label: "Contact Us" },
 ];
@@ -76,6 +79,35 @@ export function Footer({
                 <BadgeCheck className="h-4 w-4 text-accent" />
                 <span className="text-[10px] font-bold uppercase tracking-widest">DVA Provider</span>
               </div>
+            </div>
+
+            {/* Newsletter */}
+            <NewsletterSignup variant="inline" />
+
+            {/* Social Media */}
+            <div className="flex gap-3">
+              {SITE.social.facebook && (
+                <a
+                  href={SITE.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow us on Facebook"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 border border-white/10 text-white/60 transition-all hover:bg-primary hover:text-white hover:border-primary"
+                >
+                  <Facebook className="h-4 w-4" />
+                </a>
+              )}
+              {SITE.social.instagram && (
+                <a
+                  href={SITE.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow us on Instagram"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 border border-white/10 text-white/60 transition-all hover:bg-primary hover:text-white hover:border-primary"
+                >
+                  <Instagram className="h-4 w-4" />
+                </a>
+              )}
             </div>
           </div>
 
