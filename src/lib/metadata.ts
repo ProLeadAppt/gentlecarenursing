@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SITE } from "./constants";
+import { getVerification } from "./seo-verification";
 
 const defaultOgImage = { url: "/images/hero-hands.webp", width: 1200, height: 630, alt: `${SITE.name}. In-home nursing and care` };
 
@@ -30,6 +31,7 @@ export const defaultMetadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  verification: getVerification(),
 };
 
 /**
