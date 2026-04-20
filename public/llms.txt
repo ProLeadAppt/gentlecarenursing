@@ -10,21 +10,72 @@ Gentle Care Nursing Services is a Sydney-based provider of in-home nursing and p
 - Aged care and support at home (Home Care Packages, CHSP)
 - Private nursing and personal care
 
+## Services in detail
+
+- Post-hospital care: Skilled nursing and personal care during the transition home after a hospital stay, with visits coordinated from discharge and stepped down as recovery progresses.
+- Complex care: Specialised in-home nursing for people with higher clinical needs such as tracheostomy care, PEG feeding, catheter management, and complex wound care.
+- Hospital at Home: Hospital-level nursing and personal care delivered in the home for people who are clinically stable but still need close nursing oversight after an acute admission.
+- Palliative care: Comfort-focused nursing and personal care at home for people with life-limiting illness, supporting symptom management, dignity, and family wellbeing alongside the palliative care team.
+- Personal care: Respectful, consistent assistance with bathing, dressing, grooming, and mobility to help people maintain independence and dignity at home.
+- Nursing care: Professional clinical support from AHPRA-registered nurses covering wound management, medication administration, health monitoring, and chronic disease support at home.
+- Overnight support: Active overnight nursing or sleepover support to keep individuals safe and monitored through the night, with options tailored to clinical need.
+- Community participation: Support for NDIS participants and older Australians to engage in social activities, attend appointments, and build connections in the community.
+- Assistance with daily living: Practical help with meal preparation, household tasks, laundry, and daily routines to support independent living at home.
+
+## Who we serve
+
+- NDIS participants — /ndis
+- DVA veterans and war widows — /dva
+- Aged care / Home Care Package recipients — /aged-care
+- Private clients — /private-nursing
+- Referrers: hospitals, GPs, support coordinators — /referrers
+
+## Areas served
+
+- Inner West — /areas/inner-west
+- Sydney CBD & East — /areas/sydney-cbd-east
+- North Shore — /areas/north-shore
+- Western Sydney — /areas/western-sydney
+- South Sydney — /areas/south-sydney
+- Northern Beaches — /areas/northern-beaches
+
 ## Key facts
 
 - Registered NDIS provider and registered DVA provider
 - We respond to all enquiries within 24–48 hours
-- Serving Inner West, North Shore, Western Sydney, Northern Beaches, South Sydney, Sydney CBD and East
 - 10+ years of experience; 1,300+ clients supported
+
+## Common questions
+
+**Q: Are you a registered NDIS and DVA provider?**
+A: Yes. Gentle Care Nursing is fully registered with the NDIS and is a registered DVA community nursing provider. We meet all required quality and safety standards.
+
+**Q: How do I get started?**
+A: Submit an enquiry through our Request Care form, or contact us by phone or email. A real person will get back to you within 24 hours with clear next steps.
+
+**Q: What funding do you accept?**
+A: We accept NDIS, DVA, aged care (Home Care Packages Levels 1–4, CHSP), and private funding. Our team can help you understand which options apply to your situation.
+
+**Q: Is DVA care free for veterans?**
+A: For eligible veterans with a DVA Gold or White Card, services are provided at no out-of-pocket cost. We handle all claims directly with DVA on your behalf.
+
+**Q: What makes Gentle Care different?**
+A: We take on fewer clients so each person receives more dedicated, attentive care — personalised care plans, consistent carers, fast response times, and genuine support for families and referral partners.
 
 ## Main pages
 
 - Home: /
+- Services: /services
 - NDIS Services: /ndis
 - DVA & Community Nursing: /dva
 - Aged Care: /aged-care
 - Private Nursing: /private-nursing
-- Request Care (referral form): /referral
+- Referrers: /referrers
+- Request Care: /referral
+- About: /about
+- Blog: /blog
+- Guides: /guides
+- Areas: /areas
 - Contact: /contact
 - FAQ: /faq
 
@@ -33,3 +84,7 @@ Gentle Care Nursing Services is a Sydney-based provider of in-home nursing and p
 Phone: 1300 004 267
 Email: info@gentlecarenursing.com.au
 Address: Level 1/5 George St, North Strathfield, NSW 2137, Australia
+
+## Structured data
+
+This site publishes schema.org JSON-LD: MedicalBusiness, Organization, WebSite, AggregateRating, BlogPosting, FAQPage, HowTo, BreadcrumbList.
