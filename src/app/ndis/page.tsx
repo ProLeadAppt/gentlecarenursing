@@ -1,6 +1,7 @@
 import { ServicePageLayout } from "@/components/sections/ServicePageLayout";
 import { NDIS_PAGE } from "@/content/services";
 import { createMetadata } from "@/lib/metadata";
+import { INTEGRATIONS } from "@/config/integrations";
 
 export const metadata = createMetadata({
   title: "NDIS Services Sydney",
@@ -13,6 +14,10 @@ export const metadata = createMetadata({
     "NDIS in-home support",
     "registered NDIS provider",
   ],
+  canonical: `${INTEGRATIONS.siteUrl}/ndis`,
+  openGraph: {
+    images: [{ url: "/images/og/ndis.png", width: 1200, height: 630, alt: "NDIS Nursing & Care — Gentle Care Nursing" }],
+  },
 });
 
 export default function NDISPage() {
