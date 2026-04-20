@@ -26,6 +26,17 @@
     "eslint-config-next": "16.1.6",
     "tailwind-merge": "^2.6.0",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
-  }
+  },
+  "browserslist": [
+    "chrome >= 92",
+    "edge >= 92",
+    "firefox >= 90",
+    "safari >= 15",
+    "ios_saf >= 15",
+    "samsung >= 16",
+    "not dead",
+    "not op_mini all"
+  ]
 }

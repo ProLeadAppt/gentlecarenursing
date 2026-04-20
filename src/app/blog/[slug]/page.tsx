@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { createMetadata } from "@/lib/metadata";
+import { INTEGRATIONS } from "@/config/integrations";
 import { getArticleSchema } from "@/lib/schema";
 import { BlogPostLayout } from "@/components/sections/BlogPostLayout";
 import { getAllBlogPosts, getBlogPostBySlug } from "@/content/blog";
@@ -20,20 +21,10 @@ export async function generateMetadata({ params }: Props) {
   return createMetadata({
     title: post.title,
     description: post.excerpt,
-    ...(post.featuredImageSrc
-      ? {
-          openGraph: {
-            images: [
-              {
-                url: post.featuredImageSrc,
-                width: 1200,
-                height: 630,
-                alt: post.featuredImageAlt ?? post.title,
-              },
-            ],
-          },
-        }
-      : {}),
+    canonical: `${INTEGRATIONS.siteUrl}/blog/${slug}`,
+    openGraph: {
+      images: [{ url: `${INTEGRATIONS.siteUrl}/blog/${slug}/opengraph-image`, width: 1200, height: 630, alt: post.title }],
+    },
   });
 }
 

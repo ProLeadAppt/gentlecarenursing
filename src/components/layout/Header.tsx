@@ -27,8 +27,10 @@ export function Header({ cta = CTA_LINKS.requestCare }: HeaderProps) {
               alt={SITE.name}
               width={200}
               height={48}
+              sizes="200px"
               className="h-10 w-auto lg:h-12"
               priority
+              fetchPriority="high"
             />
           </Link>
           <Nav links={NAV_LINKS} cta={cta} />

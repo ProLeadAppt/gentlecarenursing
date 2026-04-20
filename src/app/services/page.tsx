@@ -9,6 +9,7 @@ import { Heading } from "@/components/ui/Heading";
 import { Reveal } from "@/components/animations/Reveal";
 import { CTA_LINKS } from "@/lib/constants";
 import { createMetadata } from "@/lib/metadata";
+import { INTEGRATIONS } from "@/config/integrations";
 import { GMB_SERVICES } from "@/content/gmb-services";
 import { ShieldCheck, Heart, UserCheck } from "lucide-react";
 
@@ -24,6 +25,10 @@ export const metadata = createMetadata({
     "private nursing care",
     "complex care support",
   ],
+  canonical: `${INTEGRATIONS.siteUrl}/services`,
+  openGraph: {
+    images: [{ url: "/images/og/services.png", width: 1200, height: 630, alt: "In-Home Services — Gentle Care Nursing" }],
+  },
 });
 
 export default function ServicesPage() {

@@ -6,6 +6,7 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Heading } from "@/components/ui/Heading";
 import { CTA_LINKS } from "@/lib/constants";
 import { createMetadata } from "@/lib/metadata";
+import { INTEGRATIONS } from "@/config/integrations";
 import { FAQ_CATEGORIES, ALL_FAQ_ITEMS } from "@/content/faq";
 import { getFaqSchema } from "@/lib/schema";
 
@@ -13,6 +14,7 @@ export const metadata = createMetadata({
   title: "Frequently Asked Questions",
   description:
     "Common questions about Gentle Care Nursing services, referrals, funding, and how to get started.",
+  canonical: `${INTEGRATIONS.siteUrl}/faq`,
 });
 
 export default function FAQPage() {

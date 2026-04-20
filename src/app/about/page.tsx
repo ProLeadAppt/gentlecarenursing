@@ -12,6 +12,7 @@ import { Heading } from "@/components/ui/Heading";
 import { Card } from "@/components/ui/Card";
 import { CTA_LINKS } from "@/lib/constants";
 import { createMetadata } from "@/lib/metadata";
+import { INTEGRATIONS } from "@/config/integrations";
 import {
   ABOUT_INTRO,
   ELEVATOR_PITCH,
@@ -27,6 +28,7 @@ export const metadata = createMetadata({
   title: "About Us",
   description:
     "Learn about Gentle Care Nursing: our mission, values, and commitment to personalised, high-quality in-home care. Registered NDIS and DVA provider.",
+  canonical: `${INTEGRATIONS.siteUrl}/about`,
 });
 
 export default function AboutPage() {
