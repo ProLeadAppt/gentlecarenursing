@@ -87,7 +87,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sourceSans.variable} ${dmSans.variable} ${cormorant.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="preload" href="/images/carer-elderly.webp" as="image" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

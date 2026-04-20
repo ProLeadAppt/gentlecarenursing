@@ -194,9 +194,6 @@ export function Hero({
           <motion.div
             className="order-2 relative h-[32rem] min-h-[32rem] w-full lg:min-h-[42rem] lg:h-[80vh] lg:max-h-[50rem]"
             style={{ y, opacity }}
-            variants={prefersReducedMotion ? undefined : HERO_VARIANTS.image}
-            initial={prefersReducedMotion ? false : "hidden"}
-            animate="visible"
           >
             <div className="relative h-full w-full">
               {/* Decorative blurs */}
@@ -210,6 +207,7 @@ export function Hero({
                   fill
                   className="object-cover object-center"
                   priority
+                  fetchPriority="high"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
