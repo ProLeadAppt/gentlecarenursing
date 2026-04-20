@@ -22,20 +22,9 @@ export async function generateMetadata({ params }: Props) {
     title: post.title,
     description: post.excerpt,
     canonical: `${INTEGRATIONS.siteUrl}/blog/${slug}`,
-    ...(post.featuredImageSrc
-      ? {
-          openGraph: {
-            images: [
-              {
-                url: post.featuredImageSrc,
-                width: 1200,
-                height: 630,
-                alt: post.featuredImageAlt ?? post.title,
-              },
-            ],
-          },
-        }
-      : {}),
+    openGraph: {
+      images: [{ url: `${INTEGRATIONS.siteUrl}/blog/${slug}/opengraph-image`, width: 1200, height: 630 }],
+    },
   });
 }
 
