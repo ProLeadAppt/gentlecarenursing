@@ -56,11 +56,11 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Gentle Care Nursing",
     locale: "en_AU",
-    images: [{ url: "/images/hero-hands.webp", width: 1200, height: 630, alt: "Gentle Care Nursing. In-home nursing and care" }],
+    images: [{ url: "/images/og/default.png", width: 1200, height: 630, alt: "Gentle Care Nursing. In-home nursing and care" }],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/images/hero-hands.webp"],
+    images: ["/images/og/default.png"],
   },
   robots: {
     index: true,
