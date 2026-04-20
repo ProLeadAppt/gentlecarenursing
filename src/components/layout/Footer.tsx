@@ -62,7 +62,9 @@ export function Footer({
                 alt={SITE.name}
                 width={200}
                 height={50}
+                sizes="200px"
                 className="h-12 w-auto brightness-0 invert"
+                loading="lazy"
               />
             </Link>
             <p className="text-lg leading-relaxed text-white/60 font-medium">
