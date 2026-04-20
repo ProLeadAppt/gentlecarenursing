@@ -2,11 +2,13 @@ import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Heading } from "@/components/ui/Heading";
 import { createMetadata } from "@/lib/metadata";
+import { INTEGRATIONS } from "@/config/integrations";
 import { SITE } from "@/lib/constants";
 
 export const metadata = createMetadata({
   title: "Privacy Policy",
   description: `Privacy policy for ${SITE.name}. How we collect, use, and protect your personal information.`,
+  canonical: `${INTEGRATIONS.siteUrl}/privacy`,
 });
 
 export default function PrivacyPage() {

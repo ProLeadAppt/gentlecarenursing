@@ -2,11 +2,13 @@ import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Heading } from "@/components/ui/Heading";
 import { createMetadata } from "@/lib/metadata";
+import { INTEGRATIONS } from "@/config/integrations";
 import { SITE } from "@/lib/constants";
 
 export const metadata = createMetadata({
   title: "Terms of Service",
   description: `Terms of service for ${SITE.name}. Conditions governing use of our website and care services.`,
+  canonical: `${INTEGRATIONS.siteUrl}/terms`,
 });
 
 export default function TermsPage() {

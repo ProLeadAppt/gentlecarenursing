@@ -5,10 +5,12 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Heading } from "@/components/ui/Heading";
 import { Reveal } from "@/components/animations/Reveal";
 import { createMetadata } from "@/lib/metadata";
+import { INTEGRATIONS } from "@/config/integrations";
 
 export const metadata = createMetadata({
   title: "Care Finder | Gentle Care Nursing",
   description: "Find the right in-home nursing and care support for your specific situation with our guided tool.",
+  canonical: `${INTEGRATIONS.siteUrl}/care-finder`,
 });
 
 export default function CareFinderPage() {

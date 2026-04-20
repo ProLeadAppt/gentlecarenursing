@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { createMetadata } from "@/lib/metadata";
+import { INTEGRATIONS } from "@/config/integrations";
 import { getArticleSchema } from "@/lib/schema";
 import { BlogPostLayout } from "@/components/sections/BlogPostLayout";
 import { getAllBlogPosts, getBlogPostBySlug } from "@/content/blog";
@@ -20,6 +21,7 @@ export async function generateMetadata({ params }: Props) {
   return createMetadata({
     title: post.title,
     description: post.excerpt,
+    canonical: `${INTEGRATIONS.siteUrl}/blog/${slug}`,
     ...(post.featuredImageSrc
       ? {
           openGraph: {

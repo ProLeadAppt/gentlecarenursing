@@ -4,6 +4,7 @@ import { Section } from "@/components/layout/Section";
 import { Heading } from "@/components/ui/Heading";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { createMetadata } from "@/lib/metadata";
+import { INTEGRATIONS } from "@/config/integrations";
 import { GUIDES } from "@/content/guides";
 import { ArrowRight, BookOpen } from "lucide-react";
 
@@ -11,6 +12,7 @@ export const metadata = createMetadata({
   title: "Care Guides",
   description:
     "Free in-home care guides for families, carers, and professionals. Expert advice on recovery, aged care, NDIS support, and more.",
+  canonical: `${INTEGRATIONS.siteUrl}/guides`,
 });
 
 const INTENT_LABELS: Record<string, string> = {

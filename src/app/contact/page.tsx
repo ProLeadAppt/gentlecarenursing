@@ -8,11 +8,13 @@ import { Heading } from "@/components/ui/Heading";
 import { Card } from "@/components/ui/Card";
 import { CTA_LINKS, SITE } from "@/lib/constants";
 import { createMetadata } from "@/lib/metadata";
+import { INTEGRATIONS } from "@/config/integrations";
 
 export const metadata = createMetadata({
   title: "Contact Us",
   description:
     "Get in touch with Gentle Care Nursing. Phone, email, or submit an enquiry. We acknowledge straight away and respond within 24 hours.",
+  canonical: `${INTEGRATIONS.siteUrl}/contact`,
 });
 
 export default function ContactPage() {

@@ -10,11 +10,13 @@ import { Heading } from "@/components/ui/Heading";
 import { Card } from "@/components/ui/Card";
 import { CTA_LINKS } from "@/lib/constants";
 import { createMetadata } from "@/lib/metadata";
+import { INTEGRATIONS } from "@/config/integrations";
 
 export const metadata = createMetadata({
   title: "Request Care",
   description:
     "Request care or make a referral. You'll get immediate confirmation and a personal response within 24 hours with clear next steps.",
+  canonical: `${INTEGRATIONS.siteUrl}/referral`,
 });
 
 const REFERRAL_STEPS = [
