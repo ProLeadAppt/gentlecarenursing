@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find \"d:/Dev/Gentle Care Nursing/src/components\" -type f -name \"*.tsx\" -exec wc -l {} +)",
+      "Bash(xargs wc:*)",
+      "Read(//c/Users/domin/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.5/skills/brainstorming/**)",
+      "Bash(bash \"C:\\\\Users\\\\domin\\\\.claude\\\\plugins\\\\cache\\\\claude-plugins-official\\\\superpowers\\\\5.0.5\\\\skills\\\\brainstorming\\\\scripts\\\\start-server.sh\" --project-dir \"d:\\\\Dev\\\\Gentle Care Nursing\")",
+      "Bash(npx next:*)",
+      "Bash(grep -r \"Newsletter\\\\|subscribe\\\\|email.*signup\\\\|lead.*magnet\\\\|free.*download\" 'd:\\\\Dev\\\\Gentle Care Nursing\\\\src' --include=*.tsx --include=*.ts)",
+      "Bash(grep -E \"\\\\.tsx$|error|sitemap|robots\")"
+    ]
+  }
+}

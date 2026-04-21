@@ -100,7 +100,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const ghlWebhookUrl = process.env.GHL_WEBHOOK_URL;
+    let ghlWebhookUrl = process.env.GHL_WEBHOOK_URL;
+    if (body.type === "contact" && process.env.GHL_CONTACT_WEBHOOK_URL) {
+      ghlWebhookUrl = process.env.GHL_CONTACT_WEBHOOK_URL;
+    } else if (body.type === "referral" && process.env.GHL_REFERRAL_WEBHOOK_URL) {
+      ghlWebhookUrl = process.env.GHL_REFERRAL_WEBHOOK_URL;
+    } else if (body.type === "care-finder" && process.env.GHL_CAREFINDER_WEBHOOK_URL) {
+      ghlWebhookUrl = process.env.GHL_CAREFINDER_WEBHOOK_URL;
+    }
 
     if (ghlWebhookUrl) {
       const ghlResponse = await fetch(ghlWebhookUrl, {
