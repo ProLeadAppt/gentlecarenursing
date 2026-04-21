@@ -103,8 +103,8 @@ export async function POST(request: NextRequest) {
     let ghlWebhookUrl = process.env.GHL_WEBHOOK_URL;
     if (body.type === "contact" && process.env.GHL_CONTACT_WEBHOOK_URL) {
       ghlWebhookUrl = process.env.GHL_CONTACT_WEBHOOK_URL;
-    } else if (body.type === "referral" && process.env.GHL_REFERRAL_WEBHOOK_URL) {
-      ghlWebhookUrl = process.env.GHL_REFERRAL_WEBHOOK_URL;
+    } else if (body.type === "referral") {
+      ghlWebhookUrl = process.env.GHL_REFERRAL_WEBHOOK_URL || "https://services.leadconnectorhq.com/hooks/7UPJe3L1GjcRcKMn1ONh/webhook-trigger/c4f328f9-7528-4c6a-8fa9-7346433cd9df";
     } else if (body.type === "care-finder" && process.env.GHL_CAREFINDER_WEBHOOK_URL) {
       ghlWebhookUrl = process.env.GHL_CAREFINDER_WEBHOOK_URL;
     }
