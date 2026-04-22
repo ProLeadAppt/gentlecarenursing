@@ -10,7 +10,7 @@ export const ABOUT_INTRO = {
   title: "About Gentle Care Nursing",
   lead: "We are a boutique nursing and care provider focused on providing personalised, high-quality support to a smaller number of people. This ensures every individual receives the time and attention they need to maintain their independence and dignity.",
   /** Stats in prose for GEO / authority */
-  statsLine: "With 10+ years of experience and a deep focus on compassionate clinical care, we respond to every enquiry within 24 hours.",
+  statsLine: "With 13+ years of experience and a deep focus on compassionate clinical care, we respond to every enquiry within 24 hours.",
 } as const;
 
 export const MISSION = {
@@ -69,14 +69,20 @@ export const PROFESSIONAL_TRUST = {
   ],
 } as const;
 
-/** Founder story — placeholder content until Gemma provides her details */
+/** Founder story — Gemma, Founder & Clinical Director */
 export const FOUNDER_STORY = {
   name: "Gemma",
   title: "Founder & Clinical Director",
-  bio: "After more than a decade in clinical nursing, I saw firsthand how large providers struggled to give people the individual attention they deserved. Families were frustrated. Coordinators were let down. I started Gentle Care Nursing because I believed there was a better way — a boutique model where quality comes before volume, and every person is treated like family.",
+  bio: "Gentle Care Nursing Services began because I wanted to provide care that is genuinely compassionate, personal, and consistent. Through my 13 years of experience across dementia care, palliative care, disability support, and mental health challenges, I saw how important it is for individuals and families to feel supported by a team that values dignity, trust, and continuity of care.",
+  qualifications: [
+    "Registered Nurse (13+ Years Experience)",
+    "Aged Care Certifications",
+    "Disability Support Certifications",
+    "Clinical Leadership and Care Planning",
+  ],
   quote:
-    "I started this because I wanted to build the kind of service I'd trust with my own family.",
-  imageSrc: "/images/national-cancer-institute-BxXgTQEw1M4-unsplash.webp",
+    "My favourite part of this work is being able to make a meaningful difference in people’s lives while giving families peace of mind that their loved one is being cared for with compassion, dignity, and respect.",
+  imageSrc: "/images/gemma-profile.webp",
   imageAlt: "Gemma, Founder and Clinical Director of Gentle Care Nursing",
 } as const;
 
@@ -85,7 +91,7 @@ export const TEAM_MEMBERS = [
   {
     name: "Gemma",
     role: "Founder & Clinical Director",
-    bio: "Registered Nurse with 10+ years in clinical care. Leads all care planning and quality oversight.",
+    bio: "Registered Nurse with 13 years in clinical care. Leads all care planning and quality oversight.",
   },
   {
     name: "Sandra",
@@ -95,26 +101,26 @@ export const TEAM_MEMBERS = [
   {
     name: "Nursing Team",
     role: "Registered Nurses & Carers",
-    bio: "Qualified professionals selected for clinical skills, compassion, and commitment to boutique care.",
+    bio: "Our team consists of approximately 8 nurses and 30 carers/support staff, all selected for their clinical skills and commitment to boutique, person-centred care.",
   },
 ] as const;
 
-/** Key milestones — placeholder dates for timeline */
+/** Key milestones — From founding to registered provider status */
 export const MILESTONES = [
   {
-    year: "2014",
+    year: "2018",
     title: "Gentle Care Nursing Founded",
     description:
       "Born from a belief that in-home care should be personal, responsive, and clinician-led.",
   },
   {
-    year: "2016",
+    year: "2019",
     title: "NDIS Registered Provider",
     description:
       "Registered as an NDIS provider to support participants with in-home nursing and disability support.",
   },
   {
-    year: "2018",
+    year: "2020",
     title: "DVA Approved Provider",
     description:
       "Approved to deliver community nursing services for veterans and their families.",
@@ -129,14 +135,26 @@ export const MILESTONES = [
     year: "2025",
     title: "Boutique Model, Proven Results",
     description:
-      "Continuing to grow with intention. Smaller client loads, dedicated nurses, and a 24-hour response guarantee.",
+      "Continuing to grow with intention. Smaller client loads, 38 dedicated staff, and a 24-hour response guarantee.",
   },
 ] as const;
 
-/** Trust statistics bar — placeholder numbers */
+/** Trust statistics bar — Real numbers from Gemma's background */
 export const TRUST_STATS = [
-  { value: "10+", label: "Years of Experience" },
-  { value: "150+", label: "Families Supported" },
+  { value: "13+", label: "Years of Experience" },
+  { value: "60+", label: "Families Supported" },
+  { value: "38", label: "Dedicated Staff" },
   { value: "24hr", label: "Response Guarantee" },
-  { value: "100%", label: "NDIS & DVA Registered" },
 ] as const;
+
+/** Case studies — Placeholder for future detailed cases */
+export const CASE_STUDIES = {
+  title: "Coming Soon: Case Studies",
+  description: "We are currently preparing anonymised case studies to show how we support families through complex situations.",
+  topics: [
+    "Complex Home Care",
+    "Disability Support (NDIS)",
+    "Hospital-to-Home Transitions",
+    "Palliative and End of Life Care",
+  ],
+} as const;

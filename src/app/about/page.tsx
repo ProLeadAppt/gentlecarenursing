@@ -22,6 +22,7 @@ import {
   TEAM_MEMBERS,
   MILESTONES,
   TRUST_STATS,
+  CASE_STUDIES,
 } from "@/content/about";
 
 export const metadata = createMetadata({
@@ -83,6 +84,7 @@ export default function AboutPage() {
         quote={FOUNDER_STORY.quote}
         imageSrc={FOUNDER_STORY.imageSrc}
         imageAlt={FOUNDER_STORY.imageAlt}
+        qualifications={FOUNDER_STORY.qualifications}
       />
 
       {/* Mission */}
@@ -122,6 +124,28 @@ export default function AboutPage() {
 
       {/* Milestone Timeline */}
       <MilestoneTimeline milestones={MILESTONES} />
+
+      {/* Case Studies Placeholder */}
+      <Section variant="muted">
+        <Container size="md" className="text-center">
+          <Heading level="h2" as="h2" className="font-[family-name:var(--font-serif)] text-3xl font-bold">
+            {CASE_STUDIES.title}
+          </Heading>
+          <p className="mt-4 text-lg text-muted-foreground">
+            {CASE_STUDIES.description}
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            {CASE_STUDIES.topics.map((topic) => (
+              <span
+                key={topic}
+                className="inline-flex items-center rounded-full bg-background px-4 py-2 text-sm font-medium text-foreground shadow-pw-sm border border-border"
+              >
+                {topic}
+              </span>
+            ))}
+          </div>
+        </Container>
+      </Section>
 
       {/* Credentials */}
       <CredentialsSection variant="default" showLinks />

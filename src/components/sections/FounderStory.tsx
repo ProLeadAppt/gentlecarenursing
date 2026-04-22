@@ -13,6 +13,7 @@ interface FounderStoryProps {
   quote: string;
   imageSrc: string;
   imageAlt: string;
+  qualifications?: readonly string[];
 }
 
 export function FounderStory({
@@ -22,6 +23,7 @@ export function FounderStory({
   quote,
   imageSrc,
   imageAlt,
+  qualifications,
 }: FounderStoryProps) {
   return (
     <Section size="lg">
@@ -66,6 +68,22 @@ export function FounderStory({
             >
               {bio}
             </motion.p>
+
+            {qualifications && qualifications.length > 0 && (
+              <motion.div variants={ANIMATION_VARIANTS.item} className="space-y-3">
+                <p className="text-sm font-semibold text-foreground">Qualifications & Experience</p>
+                <div className="flex flex-wrap gap-2">
+                  {qualifications.map((qual) => (
+                    <span
+                      key={qual}
+                      className="inline-flex items-center rounded-full bg-pw-sage/10 px-3 py-1 text-xs font-medium text-pw-sage"
+                    >
+                      {qual}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            )}
 
             {/* Pull quote */}
             <motion.blockquote

@@ -42,8 +42,8 @@ export function Hero({
   eyebrow = "Clinician-Led · Boutique · Sydney",
   primaryCta,
   reassurance = HERO_REASSURANCE,
-  imageSrc = "/images/carer-elderly.webp",
-  imageAlt = "Nurse assisting a patient in a home environment",
+  imageSrc = "/images/vitaly-gariev-Wk6f1CkGlEo-unsplash.webp",
+  imageAlt = "Professional nurse providing compassionate in-home care",
   credentials = defaultCredentials,
 }: HeroProps) {
   const { openModal } = useFormModal();

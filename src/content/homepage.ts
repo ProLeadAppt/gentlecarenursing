@@ -14,8 +14,8 @@ export const HOMEPAGE_HERO = {
   subheadline:
     "Quality over volume. Your loved ones deserve a team that actually cares.",
   /** Hero image (right column). Default: carer-elderly. */
-  heroImageSrc: "/images/carer-elderly.webp",
-  heroImageAlt: "Nurse assisting a patient in a home environment",
+  heroImageSrc: "/images/vitaly-gariev-Wk6f1CkGlEo-unsplash.webp",
+  heroImageAlt: "Professional nurse providing compassionate in-home care",
 } as const;
 
 /** Emotional challenges section (after StatsBar): acknowledges what families face */
@@ -157,10 +157,10 @@ export const GET_IN_TOUCH = {
 } as const;
 
 export const HOMEPAGE_STATS = [
-  { value: "10+", label: "Years of Experience" },
-  { value: "1,300+", label: "Families & Clients Supported" },
-  { value: "24hr", label: "Personal Response Time" },
-  { value: "100%", label: "NDIS & DVA Registered" },
+  { value: "13+", label: "Years of Experience" },
+  { value: "60+", label: "Families Supported" },
+  { value: "38", label: "Dedicated Staff" },
+  { value: "24hr", label: "Response Guarantee" },
 ] as const;
 
 /** Testimonials for homepage. Replace with real, legally cleared quotes when available. */
@@ -240,6 +240,30 @@ export const HOMEPAGE_FAQ = [
     question: "How do I make a referral?",
     answer:
       "Use our Request Care form with the client's details, care needs, and funding type. You'll receive confirmation that we've got it, and we'll respond with clear next steps within 24 hours. Support coordinators and discharge planners can also contact us directly.",
+  },
+  {
+    id: "continuity-of-care",
+    question: "Will I have the same nurse or carer each visit?",
+    answer:
+      "Yes. Continuity of care is one of our core values. We match you with a consistent team so you can build trust and familiarity. We don't believe in rotating strangers through your home.",
+  },
+  {
+    id: "costs-and-funding",
+    question: "How much does it cost and how much time can I access?",
+    answer:
+      "Costs depend on the level of care required and your funding type (NDIS, DVA, or aged care). We provide a clear breakdown of fees and help you understand how many hours of support your budget allows. There are no hidden charges.",
+  },
+  {
+    id: "complex-care",
+    question: "Do you support complex care needs at home?",
+    answer:
+      "Absolutely. Our nursing team is experienced in complex clinical care, including post-hospital recovery, dementia care, and disability support. We work closely with your healthcare team to ensure a safe, professional environment at home.",
+  },
+  {
+    id: "respite-and-overnight",
+    question: "Do you offer respite or overnight care?",
+    answer:
+      "Yes. We provide respite care to give family members a break, as well as overnight and 24/7 support for those with higher needs. We can arrange care that fits your specific schedule and requirements.",
   },
   {
     id: "immediate-help",

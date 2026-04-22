@@ -30,8 +30,8 @@ export function WhyDifferent({
   title = "Why Gentle Care Is Different",
   subtitle = "We focus on quality over volume.",
   differentiators,
-  imageSrc = "/images/carer-elderly.webp",
-  imageAlt = "Gentle Care nurse supporting an elderly client at home",
+  imageSrc = "/images/vitaly-gariev-Wk6f1CkGlEo-unsplash.webp",
+  imageAlt = "Professional nurse providing compassionate in-home care",
   sectionVariant = "default",
 }: WhyDifferentProps) {
   return (
