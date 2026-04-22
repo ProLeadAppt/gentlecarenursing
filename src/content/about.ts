@@ -82,7 +82,7 @@ export const FOUNDER_STORY = {
   ],
   quote:
     "My favourite part of this work is being able to make a meaningful difference in people’s lives while giving families peace of mind that their loved one is being cared for with compassion, dignity, and respect.",
-  imageSrc: "/images/gemma-profile.webp",
+  imageSrc: "/images/gemma-profile.jpg",
   imageAlt: "Gemma, Founder and Clinical Director of Gentle Care Nursing",
 } as const;
 
