@@ -55,8 +55,7 @@ function validatePayload(body: unknown): body is FormPayload {
     return (
       typeof obj.referrerName === "string" &&
       obj.referrerName.trim().length > 0 &&
-      typeof obj.referrerEmail === "string" &&
-      obj.referrerEmail.includes("@")
+      (!obj.referrerEmail || (typeof obj.referrerEmail === "string" && obj.referrerEmail.includes("@")))
     );
   }
 
@@ -101,12 +100,12 @@ export async function POST(request: NextRequest) {
     }
 
     let ghlWebhookUrl = process.env.GHL_WEBHOOK_URL;
-    if (body.type === "contact" && process.env.GHL_CONTACT_WEBHOOK_URL) {
-      ghlWebhookUrl = process.env.GHL_CONTACT_WEBHOOK_URL;
+    if (body.type === "contact") {
+      ghlWebhookUrl = process.env.GHL_CONTACT_WEBHOOK_URL || "https://services.leadconnectorhq.com/hooks/7UPJe3L1GjcRcKMn1ONh/webhook-trigger/f85cdd65-ecf1-4d35-bf4d-4443a28c2bbc";
     } else if (body.type === "referral") {
       ghlWebhookUrl = process.env.GHL_REFERRAL_WEBHOOK_URL || "https://services.leadconnectorhq.com/hooks/7UPJe3L1GjcRcKMn1ONh/webhook-trigger/c4f328f9-7528-4c6a-8fa9-7346433cd9df";
-    } else if (body.type === "care-finder" && process.env.GHL_CAREFINDER_WEBHOOK_URL) {
-      ghlWebhookUrl = process.env.GHL_CAREFINDER_WEBHOOK_URL;
+    } else if (body.type === "care-finder") {
+      ghlWebhookUrl = process.env.GHL_CAREFINDER_WEBHOOK_URL || "https://services.leadconnectorhq.com/hooks/7UPJe3L1GjcRcKMn1ONh/webhook-trigger/51e4eb16-5111-4d22-8e9c-e62be73961e1";
     }
 
     if (ghlWebhookUrl) {
