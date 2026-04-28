@@ -122,7 +122,7 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
           <Reveal delay={0.2}>
             <div className="text-center">
               <span className="mb-6 inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-primary/70">
-                Premium Clinical Care
+                Personalised Clinical Care
               </span>
               <Heading level="h1" className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-8 font-[family-name:var(--font-serif)] leading-[1.1]">
                 {data.title}

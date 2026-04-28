@@ -73,7 +73,7 @@ export function FormModal() {
       case "referral":
         return {
           title: "Referral Concierge",
-          subtitle: "A premium, guided process for healthcare professionals and families.",
+          subtitle: "A simple, guided process for healthcare professionals and families.",
         };
       case "contact":
         return {
