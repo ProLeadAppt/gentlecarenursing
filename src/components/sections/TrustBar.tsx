@@ -10,7 +10,7 @@ export interface TrustItem {
 
 const defaultTrustItems: TrustItem[] = [
   { label: "Registered NDIS Provider", variant: "trust" },
-  { label: "Registered DVA Provider", variant: "trust" },
+  { label: "DVA Contracted Provider", variant: "trust" },
   { label: "In-Home Nursing & Care", variant: "default" },
   { label: "Personalised Support", variant: "default" },
 ];

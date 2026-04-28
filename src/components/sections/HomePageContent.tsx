@@ -7,7 +7,8 @@ import { BentoServiceGrid } from "@/components/sections/BentoServiceGrid";
 import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
 import { WhyDifferent } from "@/components/sections/WhyDifferent";
 import { ReferralSection } from "@/components/sections/ReferralSection";
-import { Testimonials } from "@/components/sections/Testimonials";
+import { Section } from "@/components/layout/Section";
+import { Container } from "@/components/layout/Container";
 import { FaqPreview } from "@/components/sections/FaqPreview";
 import { AreasWeServe } from "@/components/sections/AreasWeServe";
 import { CtaSection } from "@/components/sections/CtaSection";
@@ -24,7 +25,6 @@ import {
   HOMEPAGE_SERVICES_IMAGE,
   PROCESS_STEPS,
   REFERRAL_PROFESSIONALS,
-  HOMEPAGE_TESTIMONIALS,
   HOMEPAGE_FAQ,
   HOMEPAGE_AREAS,
   HOMEPAGE_INLINE_CTAS,
@@ -117,15 +117,23 @@ export default function HomePageContent() {
 
       <SectionDivider variant="curve" color="#fcf9f9" bgColor="#fcf9f9" position="top" />
 
-      {/* 7. Testimonials */}
+      {/* 7. Testimonials placeholder — real, consented quotes coming soon */}
       <SectionReveal>
-        <Testimonials
-          testimonials={HOMEPAGE_TESTIMONIALS}
-          title="What Families & Partners Say"
-          subtitle="Hear from those who've trusted us with their care, and why they feel confident we'll look after them."
-          label="Stories from families and professionals"
-          sectionVariant="teal"
-        />
+        <Section id="testimonials" variant="teal" size="xl">
+          <Container size="md">
+            <div className="text-center">
+              <span className="mb-4 inline-block text-xs font-bold uppercase tracking-[0.2em] text-pw-sage">
+                Stories from families and professionals
+              </span>
+              <h2 className="font-[family-name:var(--font-serif)] text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-6">
+                What Families &amp; Partners Say
+              </h2>
+              <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground font-medium">
+                Client stories are shared only with consent. Testimonials coming soon.
+              </p>
+            </div>
+          </Container>
+        </Section>
       </SectionReveal>
 
       <SectionDivider variant="slant" color="white" bgColor="#fcf9f9" />

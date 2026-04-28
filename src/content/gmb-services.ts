@@ -52,7 +52,7 @@ export const GMB_SERVICES: readonly GmbService[] = [
     href: "/ndis",
   },
   {
-    name: "DVA Approved Provider",
+    name: "DVA Contracted Community Nursing Provider",
     description: "Dedicated community nursing and personal care for Sydney's veteran community.",
     href: "/dva",
   },

@@ -71,7 +71,7 @@ export function ReferralSection({ headline, subtitle }: ReferralSectionProps) {
           <div className="mt-20 text-center flex flex-col items-center">
             <div className="flex items-center gap-3 mb-8 px-6 py-2 bg-white rounded-full border border-border/50 shadow-sm">
                 <ShieldCheck className="h-4 w-4 text-primary" />
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground">Certified NDIS & DVA Registered Provider</span>
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground">Registered NDIS Provider · DVA Contracted Community Nursing</span>
             </div>
             
             <Button

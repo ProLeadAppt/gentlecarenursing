@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils";
 
 const TRUST_ITEMS = [
   { label: "Registered NDIS Provider", icon: ShieldCheck },
-  { label: "Registered DVA Provider", icon: BadgeCheck },
-  { label: "10+ Years Experience", icon: Award },
-  { label: "24-Hour Response", icon: Star },
+  { label: "DVA Contracted Provider", icon: BadgeCheck },
+  { label: "10+ Yrs Clinician Experience", icon: Award },
+  { label: "Quick Response Window", icon: Star },
   { label: "Clinical Excellence", icon: CheckCircle2 },
-  { label: "Boutique Care Model", icon: Heart },
+  { label: "Personalised Care Model", icon: Heart },
 ];
 
 export function TrustMarquee() {

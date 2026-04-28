@@ -15,13 +15,13 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "registered-provider",
         question: "Are you a registered NDIS and DVA provider?",
         answer:
-          "Yes. Gentle Care Nursing is fully registered with the NDIS and is a registered DVA community nursing provider. We meet all required quality and safety standards.",
+          "Yes. Gentle Care Nursing is fully registered with the NDIS and is a DVA Contracted Community Nursing Provider, supporting eligible Veteran Card holders with clinically required nursing and personal care services at home. We meet all required quality and safety standards.",
       },
       {
         id: "what-services",
         question: "What services does Gentle Care Nursing provide?",
         answer:
-          "We provide in-home nursing and personal care services across NDIS, DVA, aged care (Home Care Packages and CHSP), and private funding. Our services include clinical nursing, personal care, medication management, wound care, post-hospital recovery, respite, and more.",
+          "We provide in-home nursing and personal care services across NDIS, DVA, aged care (Support at Home and CHSP), and private funding. Our services include clinical nursing, personal care, medication management, wound care, post-hospital recovery, respite, and more.",
       },
       {
         id: "service-areas",
@@ -73,7 +73,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "funding-types",
         question: "What funding do you accept?",
         answer:
-          "We accept NDIS, DVA, aged care (Home Care Packages Levels 1–4, CHSP), and private funding. Our team can help you understand which options may apply to your situation.",
+          "We accept NDIS, DVA, aged care (Support at Home and CHSP), and private funding. Our team can help you understand which options may apply to your situation.",
       },
       {
         id: "private-cost",
@@ -122,10 +122,10 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
           "Yes. We are a fully registered NDIS provider, meeting all quality and safety standards required by the NDIS Quality and Safeguards Commission.",
       },
       {
-        id: "dva-registered",
-        question: "Are you a registered DVA provider?",
+        id: "dva-contracted",
+        question: "Are you a DVA Contracted Community Nursing Provider?",
         answer:
-          "Yes. Gentle Care Nursing is a registered DVA community nursing provider. We provide care to eligible veterans and handle DVA claims directly.",
+          "Yes. Gentle Care Nursing is contracted to provide DVA Community Nursing services. We support eligible Veteran Card holders with clinically required nursing and personal care services at home and handle DVA claims directly.",
       },
       {
         id: "different",

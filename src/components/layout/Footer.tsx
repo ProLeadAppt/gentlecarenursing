@@ -21,7 +21,7 @@ interface FooterProps {
 const defaultServiceLinks: FooterLink[] = [
   { href: "/ndis", label: "NDIS Nursing & Support" },
   { href: "/dva", label: "DVA Community Nursing" },
-  { href: "/aged-care", label: "Boutique Aged Care" },
+  { href: "/aged-care", label: "Aged Care at Home" },
   { href: "/private-nursing", label: "Private Clinical Care" },
 ];
 
@@ -68,8 +68,8 @@ export function Footer({
               />
             </Link>
             <p className="text-lg leading-relaxed text-white/60 font-medium">
-              A boutique nursing service dedicated to quality over volume. 
-              Providing clinical excellence across Sydney since 2014.
+              A nursing service dedicated to quality over volume. Led by a care
+              professional with over 10 years of hands-on experience.
             </p>
             
             <div className="flex gap-4">
@@ -79,7 +79,7 @@ export function Footer({
               </div>
               <div className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-2xl">
                 <BadgeCheck className="h-4 w-4 text-accent" />
-                <span className="text-[10px] font-bold uppercase tracking-widest">DVA Provider</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest">DVA Contracted Provider</span>
               </div>
             </div>
 

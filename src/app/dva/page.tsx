@@ -6,12 +6,12 @@ import { INTEGRATIONS } from "@/config/integrations";
 export const metadata = createMetadata({
   title: "DVA & Community Nursing Sydney",
   description:
-    "Registered DVA community nursing provider. In-home nursing and personal care for veterans, war widows, and their families.",
+    "DVA Contracted Community Nursing Provider supporting eligible Veteran Card holders with clinically required nursing and personal care services at home.",
   keywords: [
     "DVA nursing",
     "DVA community nursing",
     "veteran home care",
-    "DVA provider",
+    "DVA contracted provider",
     "community nursing",
   ],
   canonical: `${INTEGRATIONS.siteUrl}/dva`,

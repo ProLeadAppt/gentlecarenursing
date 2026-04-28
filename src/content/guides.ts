@@ -108,7 +108,7 @@ export const GUIDES: readonly Guide[] = [
         id: "funding",
         heading: "How is dementia care at home usually funded?",
         body:
-          "In-home dementia support can be funded through Home Care Packages, CHSP, NDIS (for younger-onset dementia), DVA, or private payment. Your assessment team or coordinator can help work out the right mix.",
+          "In-home dementia support can be funded through Support at Home, CHSP, NDIS (for younger-onset dementia), DVA, or private payment. Your assessment team or coordinator can help work out the right mix.",
       },
     ],
     cta: {

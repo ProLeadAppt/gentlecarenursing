@@ -39,7 +39,7 @@ export function WhyDifferent({
       <Container>
         <Reveal>
           <div className="text-center mb-16">
-            <p className="text-sm font-bold uppercase tracking-[0.25em] text-primary/80 mb-4">The Boutique Difference</p>
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-primary/80 mb-4">The Personalised Difference</p>
             <Heading level="h2" as="h2" className="text-4xl sm:text-5xl font-bold tracking-tight">
               {title}
             </Heading>
@@ -95,7 +95,7 @@ export function WhyDifferent({
               </div>
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Expertise</p>
-                <p className="text-sm font-bold">10+ Years Exp.</p>
+                <p className="text-sm font-bold">10+ Yrs Clinician Exp.</p>
               </div>
             </motion.div>
             

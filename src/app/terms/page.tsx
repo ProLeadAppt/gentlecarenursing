@@ -43,7 +43,7 @@ export default function TermsPage() {
           <h2>Eligibility and Referrals</h2>
           <p>
             Our services are available to individuals with an active NDIS plan,
-            DVA entitlements, aged care home care packages, or private funding
+            DVA entitlements, aged care funding (Support at Home or CHSP), or private funding
             arrangements. Referrals may be submitted by support coordinators,
             families, hospital discharge planners, or the individuals themselves.
           </p>

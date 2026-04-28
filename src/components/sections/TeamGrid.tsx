@@ -43,7 +43,7 @@ export function TeamGrid({ members }: TeamGridProps) {
           </h2>
           <p className="mt-4 max-w-xl mx-auto text-muted-foreground leading-relaxed">
             A small, dedicated team of clinicians and coordinators committed to
-            boutique care.
+            personalised care.
           </p>
         </motion.div>
 

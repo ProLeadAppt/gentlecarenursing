@@ -24,7 +24,7 @@ export interface AreaContent {
 }
 
 const AREA_BODY_TEMPLATE =
-  "We provide in-home nursing and personal care across {suburbs}. Whether you or your loved one is on NDIS, DVA, a Home Care Package, or private funding, we work with coordinators and discharge planners to arrange care quickly. You'll get a personal response within 24 hours and clear next steps. We also support post-hospital care and complex clinical care at home across this region.";
+  "We provide in-home nursing and personal care across {suburbs}. Whether you or your loved one is on NDIS, DVA, Support at Home, or private funding, we work with coordinators and discharge planners to arrange care quickly. You'll get a personal response within 24 hours and clear next steps. We also support post-hospital care and complex clinical care at home across this region.";
 
 export function slugifyRegion(region: string): string {
   return region
@@ -41,7 +41,7 @@ export const AREAS_CONTENT: AreaContent[] = AREAS_SERVED.map((area) => {
     region: area.region,
     slug,
     headline: `In-home nursing and care in ${area.region}: NDIS, DVA, aged care, and private.`,
-    description: `Gentle Care Nursing provides in-home nursing and personal care across ${area.region} (${area.suburbs.join(", ")}). Registered NDIS and DVA provider. Personal response within 24 hours.`,
+    description: `Gentle Care Nursing provides in-home nursing and personal care across ${area.region} (${area.suburbs.join(", ")}). Registered NDIS provider and DVA Contracted Community Nursing Provider. Personal response within 24 hours.`,
     body: AREA_BODY_TEMPLATE.replace("{suburbs}", suburbList),
     examples: [
       `An older person in ${area.region} coming home from hospital who needs short-term nursing and personal care to feel more confident.`,

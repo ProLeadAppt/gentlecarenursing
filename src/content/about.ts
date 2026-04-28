@@ -4,13 +4,13 @@
 
 /** One-sentence entity definition for GEO / schema and on-page use */
 export const ELEVATOR_PITCH =
-  "Gentle Care Nursing is a Sydney-based, registered NDIS and DVA provider delivering in-home nursing and personal care to families, NDIS participants, and referral partners.";
+  "Gentle Care Nursing is a Sydney-based, registered NDIS provider and DVA Contracted Community Nursing Provider, delivering in-home nursing and personal care to families, NDIS participants, and referral partners.";
 
 export const ABOUT_INTRO = {
   title: "About Gentle Care Nursing",
-  lead: "We are a boutique nursing and care provider focused on providing personalised, high-quality support to a smaller number of people. This ensures every individual receives the time and attention they need to maintain their independence and dignity.",
+  lead: "We are a personalised nursing and care provider focused on providing high-quality support to a smaller number of people. This ensures every individual receives the time and attention they need to maintain their independence and dignity.",
   /** Stats in prose for GEO / authority */
-  statsLine: "With 13+ years of experience and a deep focus on compassionate clinical care, we respond to every enquiry within 24 hours.",
+  statsLine: "Led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support. We aim to respond to every enquiry within 24 hours.",
 } as const;
 
 export const MISSION = {
@@ -38,7 +38,7 @@ export const VALUES = [
   {
     title: "Professionalism",
     description:
-      "We're registered, compliant, and experienced. NDIS and DVA registered. Families and coordinators can refer with confidence.",
+      "We're registered, compliant, and experienced. Registered NDIS provider and DVA Contracted Community Nursing Provider. Families and coordinators can refer with confidence.",
   },
   {
     title: "Responsiveness",
@@ -62,7 +62,7 @@ export const PROFESSIONAL_TRUST = {
   title: "Professional, Registered, Trusted",
   items: [
     "Registered NDIS provider",
-    "Registered DVA community nursing provider",
+    "DVA Contracted Community Nursing Provider",
     "Qualified registered nurses and care professionals",
     "Compliant with all relevant industry standards",
     "Trusted by families, support coordinators, and healthcare professionals",
@@ -75,7 +75,7 @@ export const FOUNDER_STORY = {
   title: "Founder & Clinical Director",
   bio: "Gentle Care Nursing Services began because I wanted to provide care that is genuinely compassionate, personal, and consistent. Through my 13 years of experience across dementia care, palliative care, disability support, and mental health challenges, I saw how important it is for individuals and families to feel supported by a team that values dignity, trust, and continuity of care.",
   qualifications: [
-    "Registered Nurse (13+ Years Experience)",
+    "Registered Nurse (10+ Years Experience)",
     "Aged Care Certifications",
     "Disability Support Certifications",
     "Clinical Leadership and Care Planning",
@@ -91,7 +91,7 @@ export const TEAM_MEMBERS = [
   {
     name: "Gemma",
     role: "Founder & Clinical Director",
-    bio: "Registered Nurse with 13 years in clinical care. Leads all care planning and quality oversight.",
+    bio: "Registered Nurse with over a decade of hands-on experience in clinical care. Leads all care planning and quality oversight.",
   },
   {
     name: "Sandra",
@@ -101,7 +101,7 @@ export const TEAM_MEMBERS = [
   {
     name: "Nursing Team",
     role: "Registered Nurses & Carers",
-    bio: "Our team consists of approximately 8 nurses and 30 carers/support staff, all selected for their clinical skills and commitment to boutique, person-centred care.",
+    bio: "Our small clinical team is selected for their clinical skills and commitment to personalised, person-centred care.",
   },
 ] as const;
 
@@ -121,9 +121,9 @@ export const MILESTONES = [
   },
   {
     year: "2020",
-    title: "DVA Approved Provider",
+    title: "DVA Contracted Community Nursing Provider",
     description:
-      "Approved to deliver community nursing services for veterans and their families.",
+      "Contracted to deliver DVA Community Nursing services for eligible Veteran Card holders.",
   },
   {
     year: "2022",
@@ -133,18 +133,18 @@ export const MILESTONES = [
   },
   {
     year: "2025",
-    title: "Boutique Model, Proven Results",
+    title: "Personalised Model, Proven Results",
     description:
-      "Continuing to grow with intention. Smaller client loads, 38 dedicated staff, and a 24-hour response guarantee.",
+      "Continuing to grow with intention. Smaller client loads, a dedicated clinical team, and a clear response window.",
   },
 ] as const;
 
-/** Trust statistics bar — Real numbers from Gemma's background */
+/** Trust statistics bar — Verified, conservative figures */
 export const TRUST_STATS = [
-  { value: "13+", label: "Years of Experience" },
-  { value: "60+", label: "Families Supported" },
-  { value: "38", label: "Dedicated Staff" },
-  { value: "24hr", label: "Response Guarantee" },
+  { value: "10+", label: "Yrs Clinician Experience" },
+  { value: "Quality", label: "Over Volume" },
+  { value: "Small", label: "Clinical Team" },
+  { value: "~24hr", label: "Response Window" },
 ] as const;
 
 /** Case studies — Placeholder for future detailed cases */

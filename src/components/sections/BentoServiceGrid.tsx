@@ -38,13 +38,13 @@ export function BentoServiceGrid() {
           </Reveal>
           <Reveal delay={0.2}>
             <Heading level="h2" className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground font-[family-name:var(--font-serif)]">
-              Boutique Care & Support
+              Personalised Care & Support
             </Heading>
           </Reveal>
           <Reveal delay={0.3}>
             <p className="mt-8 text-xl leading-relaxed text-muted-foreground font-medium">
               A private health nursing service dedicated to quality over volume, 
-              providing hyper-personalized clinical care that honors your independence.
+              providing personalised clinical care that honors your independence.
             </p>
           </Reveal>
         </div>

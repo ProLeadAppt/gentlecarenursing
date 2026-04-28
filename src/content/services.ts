@@ -193,9 +193,9 @@ export const DVA_PAGE: ServicePageData = {
   title: "DVA & Community Nursing",
   href: "/dva",
   snippetAnswer:
-    "DVA community nursing is in-home nursing and care for veterans and war widows, funded by the Department of Veterans' Affairs and delivered by registered providers like Gentle Care Nursing in Sydney.",
+    "DVA Community Nursing is in-home nursing and care for eligible Veteran Card holders, funded by the Department of Veterans' Affairs and delivered by contracted providers like Gentle Care Nursing in Sydney.",
   intro:
-    "Gentle Care Nursing is a registered DVA community nursing provider. We deliver in-home nursing and personal care for veterans, war widows, and their families, helping them stay comfortable, independent, and well-supported at home.",
+    "Gentle Care Nursing Services is a DVA Contracted Community Nursing Provider, supporting eligible Veteran Card holders with clinically required nursing and personal care services at home.",
 
   whoItHelps: {
     title: "Who This Is For",
@@ -255,9 +255,9 @@ export const DVA_PAGE: ServicePageData = {
       "Veterans deserve dedicated, high-quality care, and that's exactly what we provide.",
     reasons: [
       {
-        title: "Registered DVA Provider",
+        title: "DVA Contracted Community Nursing Provider",
         description:
-          "We are a registered DVA community nursing provider. Claims are handled directly. No out-of-pocket costs for eligible veterans.",
+          "We are a DVA Contracted Community Nursing provider, supporting eligible Veteran Card holders with clinically required nursing and personal care at home. Claims are handled directly with no out-of-pocket costs for eligible veterans.",
       },
       {
         title: "Personalised, Respectful Care",
@@ -308,12 +308,12 @@ export const DVA_PAGE: ServicePageData = {
 };
 
 export const AGED_CARE_PAGE: ServicePageData = {
-  title: "Aged Care / Support at Home",
+  title: "Aged Care at Home / Support at Home",
   href: "/aged-care",
   snippetAnswer:
-    "Aged care at home includes in-home nursing and personal care for older Australians, including Home Care Package and CHSP support, so you or your loved one can age safely and comfortably at home.",
+    "We support older Australians through Support at Home, DVA, and private care arrangements. We can also work with clients, families and care partners to deliver approved in-home nursing and personal care services.",
   intro:
-    "Gentle Care Nursing helps older Australians stay safe, comfortable, and independent at home. We provide in-home nursing and personal care that supports ageing in place, so families can feel confident their loved ones are well looked after.",
+    "Gentle Care Nursing helps older Australians stay safe, comfortable, and independent at home. We support older Australians through Support at Home, DVA, and private care arrangements, working with clients, families and care partners to deliver approved in-home nursing and personal care services.",
 
   whoItHelps: {
     title: "Who This Is For",
@@ -322,7 +322,7 @@ export const AGED_CARE_PAGE: ServicePageData = {
     audiences: [
       "Older Australians wanting to stay at home",
       "Families looking for in-home care for a parent or relative",
-      "Home Care Package recipients",
+      "Support at Home recipients",
       "CHSP (Commonwealth Home Support Programme) clients",
       "Hospital discharge planners arranging post-acute home care",
       "GPs and specialists referring patients for nursing at home",
@@ -395,7 +395,7 @@ export const AGED_CARE_PAGE: ServicePageData = {
       id: "aged-care-funding",
       question: "What funding options are available for aged care?",
       answer:
-        "We work with Home Care Packages (Levels 1 to 4), the Commonwealth Home Support Programme (CHSP), and private funding. Your aged care assessment team (ACAT or ACAS) can help you understand if you are eligible for government-funded support.",
+        "We work with Support at Home, the Commonwealth Home Support Programme (CHSP), DVA, and private funding. Your aged care assessment team (ACAT or ACAS) can help you understand if you are eligible for government-funded support.",
     },
     {
       id: "aged-care-start",
@@ -639,7 +639,7 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
       id: "post-hospital-funding",
       question: "Is post-hospital care funded by NDIS, DVA, or aged care packages?",
       answer:
-        "Yes, in many cases. Post-hospital support may be funded through NDIS, DVA community nursing, Home Care Packages, CHSP, or paid privately. We can talk through your situation and help you understand which funding streams may apply.",
+        "Yes, in many cases. Post-hospital support may be funded through NDIS, DVA community nursing, Support at Home, CHSP, or paid privately. We can talk through your situation and help you understand which funding streams may apply.",
     },
   ],
 
@@ -648,15 +648,7 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
     description:
       "Tell us about your upcoming or recent hospital stay and we'll help you plan safe, supportive care at home.",
   },
-  testimonials: [
-    {
-      quote:
-        "Gentle Care made coming home from hospital so much less stressful. The nurses were calm, organised, and helped us understand exactly what to do between visits.",
-      name: "Linda R.",
-      role: "Daughter of post-surgical client, Inner West",
-      rating: 5,
-    },
-  ],
+  testimonials: [],
   relatedGuideSlugs: ["in-home-care-after-hip-replacement", "in-home-care-after-stroke"],
   caseStories: [
     {
@@ -756,7 +748,7 @@ export const COMPLEX_CARE_PAGE: ServicePageData = {
       id: "complex-care-funding",
       question: "Can complex care be funded by NDIS, DVA, or aged care packages?",
       answer:
-        "Complex care can often be funded under NDIS, DVA community nursing, or Home Care Packages, depending on your situation and assessments. We can work with your coordinator or case manager to clarify funding options.",
+        "Complex care can often be funded under NDIS, DVA community nursing, or Support at Home, depending on your situation and assessments. We can work with your coordinator or case manager to clarify funding options.",
     },
     {
       id: "complex-care-start",
@@ -771,15 +763,7 @@ export const COMPLEX_CARE_PAGE: ServicePageData = {
     description:
       "Share your current situation and we’ll let you know how we can safely support complex care at home.",
   },
-  testimonials: [
-    {
-      quote:
-        "Our son’s tracheostomy care at home felt daunting until Gentle Care became involved. Their clinical skill and steady presence made everyday life feel possible again.",
-      name: "Marc & Elise T.",
-      role: "Parents of NDIS participant, North Shore",
-      rating: 5,
-    },
-  ],
+  testimonials: [],
   relatedGuideSlugs: ["in-home-care-for-chronic-wounds"],
   caseStories: [
     {
@@ -1064,12 +1048,12 @@ export const NURSING_CARE_PAGE: ServicePageData = {
   whyChoose: {
     title: "Why Choose Gentle Care for Nursing",
     description:
-      "We bring hospital-level expertise into the home with a boutique, person-centred approach.",
+      "We bring hospital-level expertise into the home with a personalised, person-centred approach.",
     reasons: [
       {
         title: "Expertise You Can Trust",
         description:
-          "Our nursing team is led by clinicians with over a decade of experience in acute, community, and specialized care.",
+          "Led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support.",
       },
       {
         title: "Calm & Unrushed",
@@ -1101,7 +1085,7 @@ export const NURSING_CARE_PAGE: ServicePageData = {
       id: "nurse-cost",
       question: "Is home nursing covered by my funding?",
       answer:
-        "Yes, nursing care is often covered by NDIS (Disability), DVA (Veterans), and Home Care Packages (Aged Care). We also offer private-pay options.",
+        "Yes, nursing care is often covered by NDIS (Disability), DVA Community Nursing (Veterans), and Support at Home (Aged Care). We also offer private-pay options.",
     },
   ],
 
@@ -1110,15 +1094,7 @@ export const NURSING_CARE_PAGE: ServicePageData = {
     description:
       "Speak with our clinical lead about how our nursing team can support your health at home.",
   },
-  testimonials: [
-    {
-      quote:
-        "The level of clinical knowledge combined with genuine kindness is what sets Gentle Care apart. Our mother's wound healed faster than we ever expected because of their dedicated care.",
-      name: "Elizabeth S.",
-      role: "Daughter of Nursing Client, Northern Beaches",
-      rating: 5,
-    },
-  ],
+  testimonials: [],
 };
 
 export const PERSONAL_CARE_PAGE: ServicePageData = {
