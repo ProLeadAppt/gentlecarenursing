@@ -182,7 +182,7 @@ export function Nav({ links, cta, className }: NavProps) {
             ? "max-h-[calc(100vh-64px)] opacity-100"
             : "max-h-0 opacity-0 overflow-hidden"
         )}
-        aria-hidden={!mobileOpen}
+        inert={!mobileOpen}
       >
         <div className="mx-auto max-w-[72rem] px-4 py-4 sm:px-6">
           <nav className="flex flex-col gap-1" aria-label="Mobile navigation">

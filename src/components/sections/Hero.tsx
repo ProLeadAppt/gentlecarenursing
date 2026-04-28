@@ -159,7 +159,7 @@ export function Hero({
               {/* Reassurance */}
               <motion.p
                 variants={HERO_VARIANTS.word}
-                className="mt-8 text-sm leading-relaxed text-muted-foreground/80 max-w-md italic border-l-2 border-accent/30 pl-4 py-1"
+                className="mt-8 text-sm leading-relaxed text-foreground/70 max-w-md italic border-l-2 border-accent/30 pl-4 py-1"
               >
                 {reassurance}
               </motion.p>

@@ -34,7 +34,7 @@ export function MobileCta() {
         visible ? "translate-y-0" : "translate-y-full"
       )}
       style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
-      aria-hidden={!visible}
+      inert={!visible}
     >
       <div className="flex items-center gap-3">
         {SITE.phone && (

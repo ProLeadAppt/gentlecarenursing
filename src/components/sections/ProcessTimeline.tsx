@@ -104,19 +104,19 @@ function TimelineStep({
       >
         <p
           className="text-[10px] font-bold uppercase tracking-[0.2em] mb-2 transition-colors duration-700"
-          style={{ color: isActive ? step.color : "#736e62" }}
+          style={{ color: isActive ? step.color : "#5a544a" }}
         >
           {step.stepLabel}
         </p>
         <h3
           className="text-lg font-bold transition-colors duration-700"
-          style={{ color: isActive ? "#2d2926" : "#736e62" }}
+          style={{ color: isActive ? "#2d2926" : "#5a544a" }}
         >
           {step.title}
         </h3>
         <p
           className="mt-2 text-sm leading-relaxed transition-colors duration-700"
-          style={{ color: isActive ? "#736e62" : "#a09888" }}
+          style={{ color: isActive ? "#5a544a" : "#6b6557" }}
         >
           {step.description}
         </p>

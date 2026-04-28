@@ -7,6 +7,7 @@ import { CTA_LINKS, SITE } from "@/lib/constants";
 import { Heading } from "@/components/ui/Heading";
 import { ShieldCheck, BadgeCheck, Phone, MapPin, Mail, ChevronRight, Facebook, Instagram } from "lucide-react";
 import { NewsletterSignup } from "@/components/forms/NewsletterSignup";
+import { InstallButton } from "@/components/pwa/InstallButton";
 
 export interface FooterLink {
   href: string;
@@ -117,7 +118,7 @@ export function Footer({
           <div className="lg:col-span-1" /> {/* Spacer */}
           
           <div className="lg:col-span-2">
-            <h4 className="text-[11px] font-bold uppercase tracking-[0.3em] text-accent mb-8">Specialised Care</h4>
+            <h2 className="text-[11px] font-bold uppercase tracking-[0.3em] text-accent mb-8">Specialised Care</h2>
             <ul className="space-y-4">
               {serviceLinks.map(link => (
                 <li key={link.href}>
@@ -131,7 +132,7 @@ export function Footer({
           </div>
 
           <div className="lg:col-span-2">
-            <h4 className="text-[11px] font-bold uppercase tracking-[0.3em] text-accent mb-8">Information</h4>
+            <h2 className="text-[11px] font-bold uppercase tracking-[0.3em] text-accent mb-8">Information</h2>
             <ul className="space-y-4">
               {infoLinks.map(link => (
                 <li key={link.href}>
@@ -145,14 +146,14 @@ export function Footer({
           </div>
 
           <div className="lg:col-span-3">
-             <h4 className="text-[11px] font-bold uppercase tracking-[0.3em] text-accent mb-8">Concierge Contact</h4>
+             <h2 className="text-[11px] font-bold uppercase tracking-[0.3em] text-accent mb-8">Concierge Contact</h2>
              <div className="space-y-6">
                 <a href={SITE.phoneHref} className="flex items-center gap-4 group">
                   <div className="h-10 w-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-primary transition-colors">
                     <Phone className="h-4 w-4" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-widest text-white/40">Clinical Support</p>
+                    <p className="text-[10px] uppercase tracking-widest text-white/70">Clinical Support</p>
                     <p className="text-sm font-bold">{SITE.phone}</p>
                   </div>
                 </a>
@@ -162,7 +163,7 @@ export function Footer({
                     <Mail className="h-4 w-4" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-widest text-white/40">Email Enquiries</p>
+                    <p className="text-[10px] uppercase tracking-widest text-white/70">Email Enquiries</p>
                     <p className="text-sm font-bold">{SITE.email}</p>
                   </div>
                 </a>
@@ -172,7 +173,7 @@ export function Footer({
                     <MapPin className="h-4 w-4" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-widest text-white/40">Sydney Regional HQ</p>
+                    <p className="text-[10px] uppercase tracking-widest text-white/70">Sydney Regional HQ</p>
                     <p className="text-sm font-bold">{SITE.address}</p>
                   </div>
                 </div>
@@ -180,8 +181,13 @@ export function Footer({
           </div>
         </div>
 
+        {/* Install app row */}
+        <div className="mt-12 flex justify-center md:justify-start">
+          <InstallButton />
+        </div>
+
         {/* Legal & Attribution */}
-        <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] font-medium tracking-widest uppercase text-white/30">
+        <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] font-medium tracking-widest uppercase text-white/70">
           <div className="flex items-center gap-6">
             <span>© {new Date().getFullYear()} {SITE.name}</span>
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>

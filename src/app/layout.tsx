@@ -9,6 +9,7 @@ import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { FormModalProvider } from "@/contexts/FormModalContext";
 import { FormModal } from "@/components/ui/FormModal";
 import { getLocalBusinessSchema, getWebsiteSchema, getOrganizationSchema } from "@/lib/schema";
+import { ServiceWorkerRegister } from "@/components/pwa/ServiceWorkerRegister";
 
 const sourceSans = Source_Sans_3({
   variable: "--font-source-sans",
@@ -66,15 +67,23 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  manifest: "/manifest.webmanifest",
+  applicationName: "Gentle Care Nursing",
+  appleWebApp: {
+    capable: true,
+    title: "Gentle Care",
+    statusBarStyle: "default",
+  },
   icons: {
     icon: "/images/gentle%20care%20nursing%20favicon.jpg",
+    apple: "/icons/apple-touch-icon.png",
   },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#1e3a5f",
+  themeColor: "#3D0A11",
 };
 
 const gaId = process.env.NEXT_PUBLIC_GA_ID;
@@ -114,6 +123,7 @@ export default function RootLayout({
         <MobileCta />
         <ScrollToTop />
         <FormModal />
+        <ServiceWorkerRegister />
 
         {gaId && (
           <>
