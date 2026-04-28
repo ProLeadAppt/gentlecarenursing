@@ -103,7 +103,7 @@ export function NewsletterSignup({
   // Inline variant (footer)
   return (
     <div className={cn("space-y-3", className)}>
-      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">
         Stay Informed
       </p>
 
@@ -126,12 +126,13 @@ export function NewsletterSignup({
           <button
             type="submit"
             disabled={status === "submitting"}
+            aria-label="Subscribe to newsletter"
             className="shrink-0 rounded-lg bg-primary px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary/90 disabled:opacity-60"
           >
             {status === "submitting" ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
+              <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
             ) : (
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4" aria-hidden />
             )}
           </button>
         </form>
