@@ -4,10 +4,10 @@
 
 /** One-sentence entity definition for GEO / schema and on-page use */
 export const ELEVATOR_PITCH =
-  "Gentle Care Nursing is a Sydney-based, registered NDIS provider and DVA Contracted Community Nursing Provider, delivering in-home nursing and personal care to families, NDIS participants, and referral partners.";
+  "Gentle Care Nursing Services is a Sydney-based, registered NDIS provider and DVA Contracted Community Nursing Provider, delivering in-home nursing and personal care to families, NDIS participants, and referral partners.";
 
 export const ABOUT_INTRO = {
-  title: "About Gentle Care Nursing",
+  title: "About Gentle Care Nursing Services",
   lead: "We are a personalised nursing and care provider focused on providing high-quality support to a smaller number of people. This ensures every individual receives the time and attention they need to maintain their independence and dignity.",
   /** Stats in prose for GEO / authority */
   statsLine: "Led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support. We aim to respond to every enquiry within 24 hours.",
@@ -83,7 +83,7 @@ export const FOUNDER_STORY = {
   quote:
     "My favourite part of this work is being able to make a meaningful difference in people’s lives while giving families peace of mind that their loved one is being cared for with compassion, dignity, and respect.",
   imageSrc: "/images/gemma-profile.jpg",
-  imageAlt: "Gemma, Founder and Clinical Director of Gentle Care Nursing",
+  imageAlt: "Gemma, Founder and Clinical Director of Gentle Care Nursing Services",
 } as const;
 
 /** Team members — placeholder data until Gemma provides real team info */
@@ -109,7 +109,7 @@ export const TEAM_MEMBERS = [
 export const MILESTONES = [
   {
     year: "2018",
-    title: "Gentle Care Nursing Founded",
+    title: "Gentle Care Nursing Services Founded",
     description:
       "Born from a belief that in-home care should be personal, responsive, and clinician-led.",
   },

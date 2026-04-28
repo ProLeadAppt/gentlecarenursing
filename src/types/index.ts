@@ -1,5 +1,5 @@
 /**
- * Shared types for Gentle Care Nursing.
+ * Shared types for Gentle Care Nursing Services.
  */
 
 export interface NavLink {

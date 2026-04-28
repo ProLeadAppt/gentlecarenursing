@@ -42,7 +42,7 @@ export const BLOG_CATEGORIES: Record<BlogCategory, { label: string; color: strin
 };
 
 const DEFAULT_AUTHOR: BlogAuthor = {
-  name: "Gentle Care Nursing",
+  name: "Gentle Care Nursing Services",
   role: "Clinical Team",
 };
 
@@ -84,7 +84,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <li>Provide regular updates to your coordinator and family</li>
         <li>Be transparent about pricing and service agreements</li>
       </ul>
-      <p>At Gentle Care Nursing, we keep our client list intentionally small so every person receives dedicated, personalised attention. We're a registered NDIS provider, led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support.</p>
+      <p>At Gentle Care Nursing Services, we keep our client list intentionally small so every person receives dedicated, personalised attention. We're a registered NDIS provider, led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support.</p>
 
       <h2>Questions to ask your provider</h2>
       <p>Before signing a service agreement, ask:</p>
@@ -134,7 +134,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>The personalised-care difference</h2>
-      <p>A personalised provider like Gentle Care Nursing takes a different approach. We intentionally limit our client load so we can offer:</p>
+      <p>A personalised provider like Gentle Care Nursing Services takes a different approach. We intentionally limit our client load so we can offer:</p>
       <ul>
         <li>Consistent, familiar nurses and carers</li>
         <li>Faster response times (we aim to respond within 24 hours)</li>
@@ -188,7 +188,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <li>Providing consistent, familiar carers</li>
         <li>Being responsive when needs change</li>
       </ul>
-      <p>At Gentle Care Nursing, we believe aged care should feel personal. That's why we keep our client load small and match every person with a dedicated carer who understands their needs, preferences, and personality.</p>
+      <p>At Gentle Care Nursing Services, we believe aged care should feel personal. That's why we keep our client load small and match every person with a dedicated carer who understands their needs, preferences, and personality.</p>
     `,
     category: "aged-care",
     author: DEFAULT_AUTHOR,
@@ -235,7 +235,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <li>Had a fall before hospitalisation and is at risk of falling again</li>
       </ul>
 
-      <h2>How Gentle Care Nursing helps</h2>
+      <h2>How Gentle Care Nursing Services helps</h2>
       <p>We work closely with hospital discharge teams to ensure a seamless transition from hospital to home. Our registered nurses can be in your loved one's home within 24 hours of referral, providing clinical oversight, personal care, and the peace of mind that comes from knowing a qualified professional is looking after things.</p>
     `,
     category: "clinical",
@@ -276,7 +276,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <li><strong>Connect with other carers:</strong> Carer support groups (online and in-person) provide understanding and practical advice.</li>
         <li><strong>Consider in-home nursing:</strong> A registered nurse visiting regularly can take clinical tasks off your plate — medication management, wound care, health monitoring — so you can focus on being a family member, not a clinician.</li>
       </ul>
-      <p>At Gentle Care Nursing, we support family carers as much as we support clients. If you're feeling overwhelmed, get in touch. We can discuss what support might help, with no obligation.</p>
+      <p>At Gentle Care Nursing Services, we support family carers as much as we support clients. If you're feeling overwhelmed, get in touch. We can discuss what support might help, with no obligation.</p>
     `,
     category: "family-carers",
     author: DEFAULT_AUTHOR,

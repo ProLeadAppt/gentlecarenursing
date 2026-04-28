@@ -27,7 +27,7 @@ export const metadata = createMetadata({
   ],
   canonical: `${INTEGRATIONS.siteUrl}/services`,
   openGraph: {
-    images: [{ url: "/images/og/services.png", width: 1200, height: 630, alt: "In-Home Services — Gentle Care Nursing" }],
+    images: [{ url: "/images/og/services.png", width: 1200, height: 630, alt: "In-Home Services — Gentle Care Nursing Services" }],
   },
 });
 
@@ -44,7 +44,7 @@ export default function ServicesPage() {
               Clinical Excellence <br/> at Home
             </Heading>
             <p className="mt-8 text-xl leading-relaxed text-muted-foreground sm:text-2xl font-medium max-w-3xl">
-              Gentle Care Nursing provides high-end, personalised in-home nursing and care. 
+              Gentle Care Nursing Services provides high-end, personalised in-home nursing and care. 
               We focus on quality over volume, ensuring every participant receives the 
               dedicated attention they deserve.
             </p>

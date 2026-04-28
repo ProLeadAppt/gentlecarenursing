@@ -16,7 +16,7 @@ export const metadata = createMetadata({
   ],
   canonical: `${INTEGRATIONS.siteUrl}/private-nursing`,
   openGraph: {
-    images: [{ url: "/images/og/private-nursing.png", width: 1200, height: 630, alt: "Private Nursing & Personal Care — Gentle Care Nursing" }],
+    images: [{ url: "/images/og/private-nursing.png", width: 1200, height: 630, alt: "Private Nursing & Personal Care — Gentle Care Nursing Services" }],
   },
 });
 

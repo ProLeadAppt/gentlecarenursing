@@ -36,11 +36,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gentlecarenursing.c
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Gentle Care Nursing | In-Home Nursing & Care Services",
-    template: "%s | Gentle Care Nursing",
+    default: "Gentle Care Nursing Services | In-Home Nursing & Care",
+    template: "%s | Gentle Care Nursing Services",
   },
   description:
-    "Personalised in-home nursing and care services. Registered NDIS and DVA provider. Trusted by families, support coordinators, and healthcare professionals.",
+    "Personalised in-home nursing and care services. Registered NDIS provider and DVA Contracted Community Nursing Provider. Trusted by families, support coordinators, and healthcare professionals.",
   keywords: [
     "NDIS nursing",
     "in-home care",
@@ -50,14 +50,14 @@ export const metadata: Metadata = {
     "personal care",
     "in-home nursing",
     "registered NDIS provider",
-    "DVA provider",
+    "DVA contracted community nursing",
   ],
-  authors: [{ name: "Gentle Care Nursing" }],
+  authors: [{ name: "Gentle Care Nursing Services" }],
   openGraph: {
     type: "website",
-    siteName: "Gentle Care Nursing",
+    siteName: "Gentle Care Nursing Services",
     locale: "en_AU",
-    images: [{ url: "/images/og/default.png", width: 1200, height: 630, alt: "Gentle Care Nursing. In-home nursing and care" }],
+    images: [{ url: "/images/og/default.png", width: 1200, height: 630, alt: "Gentle Care Nursing Services. In-home nursing and care" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   manifest: "/manifest.webmanifest",
-  applicationName: "Gentle Care Nursing",
+  applicationName: "Gentle Care Nursing Services",
   appleWebApp: {
     capable: true,
     title: "Gentle Care",

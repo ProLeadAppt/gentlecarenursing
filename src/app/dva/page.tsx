@@ -16,7 +16,7 @@ export const metadata = createMetadata({
   ],
   canonical: `${INTEGRATIONS.siteUrl}/dva`,
   openGraph: {
-    images: [{ url: "/images/og/dva.png", width: 1200, height: 630, alt: "DVA & Community Nursing — Gentle Care Nursing" }],
+    images: [{ url: "/images/og/dva.png", width: 1200, height: 630, alt: "DVA & Community Nursing — Gentle Care Nursing Services" }],
   },
 });
 

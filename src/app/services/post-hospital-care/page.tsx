@@ -8,7 +8,7 @@ const canonical = `${INTEGRATIONS.siteUrl}/services/post-hospital-care`;
 export const metadata = createMetadata({
   title: "Post-Hospital Nursing & Care at Home",
   description:
-    "Post-hospital in-home nursing and personal care in Sydney. Gentle Care Nursing coordinates with hospital discharge teams and families so recovery continues safely at home.",
+    "Post-hospital in-home nursing and personal care in Sydney. Gentle Care Nursing Services coordinates with hospital discharge teams and families so recovery continues safely at home.",
   keywords: [
     "post-hospital care",
     "post hospital nursing",

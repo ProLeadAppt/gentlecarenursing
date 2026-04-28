@@ -33,7 +33,7 @@ import {
 import { ABOUT_INTRO } from "@/content/about";
 
 const howToSchema = getHowToSchema(
-  "How to request care from Gentle Care Nursing",
+  "How to request care from Gentle Care Nursing Services",
   "Tell us what you need and get immediate confirmation. We acknowledge straight away and respond within 24 hours with clear next steps, then match you with the right support.",
   PROCESS_STEPS.steps,
   "/"

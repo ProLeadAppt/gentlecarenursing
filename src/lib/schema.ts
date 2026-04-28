@@ -30,15 +30,14 @@ export function getLocalBusinessSchema() {
     url: INTEGRATIONS.siteUrl,
     telephone: SITE.phone || undefined,
     email: SITE.email || undefined,
-    address: SITE.address
-      ? {
-          "@type": "PostalAddress",
-          streetAddress: SITE.address,
-          addressLocality: "North Strathfield",
-          addressRegion: "NSW",
-          addressCountry: "AU",
-        }
-      : undefined,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Level 1/5 George St",
+      addressLocality: "North Strathfield",
+      addressRegion: "NSW",
+      postalCode: "2137",
+      addressCountry: "AU",
+    },
     geo: {
       "@type": "GeoCoordinates",
       latitude: -33.864,

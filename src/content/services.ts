@@ -75,9 +75,9 @@ export const NDIS_PAGE: ServicePageData = {
   title: "NDIS Services",
   href: "/ndis",
   snippetAnswer:
-    "NDIS in-home nursing is skilled nursing and personal care at home for NDIS participants, delivered by a registered NDIS provider like Gentle Care Nursing across Sydney.",
+    "NDIS in-home nursing is skilled nursing and personal care at home for NDIS participants, delivered by a registered NDIS provider like Gentle Care Nursing Services across Sydney.",
   intro:
-    "As a registered NDIS provider, Gentle Care Nursing delivers personalised in-home nursing and support for NDIS participants. We work closely with participants, families, and support coordinators to provide high-quality care that helps people live more independently.",
+    "As a registered NDIS provider, Gentle Care Nursing Services delivers personalised in-home nursing and support for NDIS participants. We work closely with participants, families, and support coordinators to provide high-quality care that helps people live more independently.",
 
   whoItHelps: {
     title: "Who This Is For",
@@ -157,9 +157,9 @@ export const NDIS_PAGE: ServicePageData = {
   faqs: [
     {
       id: "ndis-registered",
-      question: "Is Gentle Care Nursing a registered NDIS provider?",
+      question: "Is Gentle Care Nursing Services a registered NDIS provider?",
       answer:
-        "Yes. Gentle Care Nursing is a fully registered NDIS provider. We meet all quality and safety standards required by the NDIS Quality and Safeguards Commission.",
+        "Yes. Gentle Care Nursing Services is a fully registered NDIS provider. We meet all quality and safety standards required by the NDIS Quality and Safeguards Commission.",
     },
     {
       id: "ndis-get-started",
@@ -193,7 +193,7 @@ export const DVA_PAGE: ServicePageData = {
   title: "DVA & Community Nursing",
   href: "/dva",
   snippetAnswer:
-    "DVA Community Nursing is in-home nursing and care for eligible Veteran Card holders, funded by the Department of Veterans' Affairs and delivered by contracted providers like Gentle Care Nursing in Sydney.",
+    "DVA Community Nursing is in-home nursing and care for eligible Veteran Card holders, funded by the Department of Veterans' Affairs and delivered by contracted providers like Gentle Care Nursing Services in Sydney.",
   intro:
     "Gentle Care Nursing Services is a DVA Contracted Community Nursing Provider, supporting eligible Veteran Card holders with clinically required nursing and personal care services at home.",
 
@@ -313,7 +313,7 @@ export const AGED_CARE_PAGE: ServicePageData = {
   snippetAnswer:
     "We support older Australians through Support at Home, DVA, and private care arrangements. We can also work with clients, families and care partners to deliver approved in-home nursing and personal care services.",
   intro:
-    "Gentle Care Nursing helps older Australians stay safe, comfortable, and independent at home. We support older Australians through Support at Home, DVA, and private care arrangements, working with clients, families and care partners to deliver approved in-home nursing and personal care services.",
+    "Gentle Care Nursing Services helps older Australians stay safe, comfortable, and independent at home. We support older Australians through Support at Home, DVA, and private care arrangements, working with clients, families and care partners to deliver approved in-home nursing and personal care services.",
 
   whoItHelps: {
     title: "Who This Is For",
@@ -432,7 +432,7 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
   snippetAnswer:
     "Private in-home nursing is nursing and personal care you pay for yourself (not NDIS, DVA, or aged care funded), with no waitlists and flexible scheduling across Sydney.",
   intro:
-    "When you need nursing or personal care outside of funded programs, Gentle Care Nursing provides private in-home services tailored to your needs. No waitlists, no complex applications. Just quality care when you need it.",
+    "When you need nursing or personal care outside of funded programs, Gentle Care Nursing Services provides private in-home services tailored to your needs. No waitlists, no complex applications. Just quality care when you need it.",
 
   whoItHelps: {
     title: "Who This Is For",
@@ -548,7 +548,7 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
   title: "Post-Hospital Nursing & Care at Home",
   href: "/services/post-hospital-care",
   snippetAnswer:
-    "Post-hospital in-home nursing is support from qualified nurses and carers after someone leaves hospital, so recovery continues safely at home. Gentle Care Nursing coordinates with hospital discharge teams and families to start visits quickly across Sydney.",
+    "Post-hospital in-home nursing is support from qualified nurses and carers after someone leaves hospital, so recovery continues safely at home. Gentle Care Nursing Services coordinates with hospital discharge teams and families to start visits quickly across Sydney.",
   intro:
     "Leaving hospital can feel overwhelming. Our post-hospital nursing and care at home service helps you or your loved one recover safely and comfortably, with skilled support and clear communication from day one.",
 

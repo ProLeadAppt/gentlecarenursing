@@ -4,7 +4,7 @@ import { getAreaContentBySlug } from "@/content/areas-content";
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "In-home nursing across Sydney — Gentle Care Nursing";
+export const alt = "In-home nursing across Sydney — Gentle Care Nursing Services";
 
 export default async function AreaOgImage({ params }: { params: Promise<{ region: string }> }) {
   const { region: slug } = await params;

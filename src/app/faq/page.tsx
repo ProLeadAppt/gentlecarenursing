@@ -13,7 +13,7 @@ import { getFaqSchema } from "@/lib/schema";
 export const metadata = createMetadata({
   title: "Frequently Asked Questions",
   description:
-    "Common questions about Gentle Care Nursing services, referrals, funding, and how to get started.",
+    "Common questions about Gentle Care Nursing Services services, referrals, funding, and how to get started.",
   canonical: `${INTEGRATIONS.siteUrl}/faq`,
 });
 

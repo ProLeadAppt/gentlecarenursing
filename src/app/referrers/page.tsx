@@ -14,7 +14,7 @@ import { getBreadcrumbListSchema, getFaqSchema } from "@/lib/schema";
 
 const REFERRER_FAQS = [
   {
-    question: "How do I refer a client to Gentle Care Nursing?",
+    question: "How do I refer a client to Gentle Care Nursing Services?",
     answer:
       "You can use our Request Care form with the client’s details, care needs, and funding type, or contact us directly by phone or email. We’ll acknowledge your referral straight away and respond personally within 24 hours.",
   },
@@ -40,10 +40,10 @@ const canonical = `${INTEGRATIONS.siteUrl}/referrers`;
 export const metadata = createMetadata({
   title: "For Coordinators & Referrers",
   description:
-    "Information for NDIS support coordinators, plan managers, hospital discharge planners, and healthcare professionals who want to refer to Gentle Care Nursing.",
+    "Information for NDIS support coordinators, plan managers, hospital discharge planners, and healthcare professionals who want to refer to Gentle Care Nursing Services.",
   canonical,
   openGraph: {
-    images: [{ url: "/images/og/referrers.png", width: 1200, height: 630, alt: "For Referrers — Gentle Care Nursing" }],
+    images: [{ url: "/images/og/referrers.png", width: 1200, height: 630, alt: "For Referrers — Gentle Care Nursing Services" }],
   },
 });
 
@@ -83,7 +83,7 @@ export default function ReferrersPage() {
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground sm:text-xl">
             Whether you’re an NDIS support coordinator, plan manager, hospital
             discharge planner, GP, or other health professional, we make it easy
-            to refer to Gentle Care Nursing and stay informed about your client’s care.
+            to refer to Gentle Care Nursing Services and stay informed about your client’s care.
           </p>
         </Container>
       </Section>

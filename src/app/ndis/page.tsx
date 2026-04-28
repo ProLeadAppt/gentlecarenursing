@@ -16,7 +16,7 @@ export const metadata = createMetadata({
   ],
   canonical: `${INTEGRATIONS.siteUrl}/ndis`,
   openGraph: {
-    images: [{ url: "/images/og/ndis.png", width: 1200, height: 630, alt: "NDIS Nursing & Care — Gentle Care Nursing" }],
+    images: [{ url: "/images/og/ndis.png", width: 1200, height: 630, alt: "NDIS Nursing & Care — Gentle Care Nursing Services" }],
   },
 });
 
