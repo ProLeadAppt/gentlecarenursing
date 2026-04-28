@@ -4,6 +4,7 @@ import { Container } from "./Container";
 import { Grid } from "./Grid";
 import { FooterColumn } from "./FooterColumn";
 import { CTA_LINKS, SITE } from "@/lib/constants";
+import { AREAS_SERVED } from "@/content/areas-served";
 import { Heading } from "@/components/ui/Heading";
 import { ShieldCheck, BadgeCheck, Phone, MapPin, Mail, ChevronRight, Facebook, Instagram } from "lucide-react";
 import { NewsletterSignup } from "@/components/forms/NewsletterSignup";
@@ -17,14 +18,31 @@ export interface FooterLink {
 interface FooterProps {
   serviceLinks?: FooterLink[];
   infoLinks?: FooterLink[];
+  regionLinks?: FooterLink[];
 }
 
 const defaultServiceLinks: FooterLink[] = [
   { href: "/ndis", label: "NDIS Nursing & Support" },
   { href: "/dva", label: "DVA Community Nursing" },
+  { href: "/services/nursing-care", label: "In-Home Nursing Care" },
+  { href: "/services/personal-care", label: "Personal Care & Daily Living" },
+  { href: "/services/complex-care", label: "Complex Care Support" },
   { href: "/aged-care", label: "Aged Care at Home" },
   { href: "/private-nursing", label: "Private Clinical Care" },
 ];
+
+function regionSlug(region: string): string {
+  return region
+    .toLowerCase()
+    .replace(/\s*&\s*/g, " ")
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
+}
+
+const defaultRegionLinks: FooterLink[] = AREAS_SERVED.map((a) => ({
+  href: `/areas/${regionSlug(a.region)}`,
+  label: a.region,
+}));
 
 const defaultInfoLinks: FooterLink[] = [
   { href: "/about", label: "Our Story" },
@@ -40,6 +58,7 @@ const defaultInfoLinks: FooterLink[] = [
 export function Footer({
   serviceLinks = defaultServiceLinks,
   infoLinks = defaultInfoLinks,
+  regionLinks = defaultRegionLinks,
 }: FooterProps) {
   return (
     <footer
@@ -115,12 +134,24 @@ export function Footer({
           </div>
 
           {/* Links Grid */}
-          <div className="lg:col-span-1" /> {/* Spacer */}
-          
           <div className="lg:col-span-2">
             <h2 className="text-[11px] font-bold uppercase tracking-[0.3em] text-accent mb-8">Specialised Care</h2>
             <ul className="space-y-4">
               {serviceLinks.map(link => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm font-medium hover:text-white transition-colors flex items-center group">
+                    <ChevronRight className="h-3 w-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="lg:col-span-2">
+            <h2 className="text-[11px] font-bold uppercase tracking-[0.3em] text-accent mb-8">Care by Region</h2>
+            <ul className="space-y-4">
+              {regionLinks.map(link => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-sm font-medium hover:text-white transition-colors flex items-center group">
                     <ChevronRight className="h-3 w-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" />
@@ -145,7 +176,7 @@ export function Footer({
             </ul>
           </div>
 
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
              <h2 className="text-[11px] font-bold uppercase tracking-[0.3em] text-accent mb-8">Concierge Contact</h2>
              <div className="space-y-6">
                 <a href={SITE.phoneHref} className="flex items-center gap-4 group">

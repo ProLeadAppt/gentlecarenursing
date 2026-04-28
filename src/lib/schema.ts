@@ -146,6 +146,83 @@ export function getBreadcrumbListSchema(items: { name: string; item: string }[])
   };
 }
 
+/**
+ * Service + region landing page schema bundle.
+ * Returns an array combining MedicalService, WebPage with areaServed (GeoShape),
+ * and a localised provider reference. Use alongside breadcrumb + FAQ schemas.
+ */
+export function getServiceRegionSchemas(args: {
+  serviceName: string;
+  serviceDescription: string;
+  region: string;
+  suburbs: readonly string[];
+  path: string;
+  pageTitle: string;
+  pageDescription: string;
+}) {
+  const url = `${INTEGRATIONS.siteUrl}${args.path}`;
+  const medicalService = {
+    "@context": "https://schema.org",
+    "@type": "MedicalService" as const,
+    name: `${args.serviceName} in ${args.region}, Sydney`,
+    description: args.serviceDescription,
+    url,
+    provider: {
+      "@type": "MedicalBusiness",
+      name: SITE.name,
+      url: INTEGRATIONS.siteUrl,
+      telephone: SITE.phone,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: SITE.address,
+        addressLocality: "North Strathfield",
+        addressRegion: "NSW",
+        addressCountry: "AU",
+      },
+    },
+    areaServed: [
+      {
+        "@type": "AdministrativeArea",
+        name: `${args.region}, Sydney`,
+        containedInPlace: {
+          "@type": "City",
+          name: "Sydney",
+          containedInPlace: { "@type": "State", name: "New South Wales" },
+        },
+      },
+      ...args.suburbs.map((suburb) => ({
+        "@type": "Place" as const,
+        name: `${suburb}, NSW`,
+      })),
+    ],
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceUrl: url,
+      servicePhone: SITE.phone,
+      availableLanguage: { "@type": "Language", name: "English" },
+    },
+  };
+
+  const webPage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: args.pageTitle,
+    description: args.pageDescription,
+    url,
+    about: {
+      "@type": "MedicalBusiness",
+      name: SITE.name,
+      areaServed: {
+        "@type": "AdministrativeArea",
+        name: `${args.region}, Sydney`,
+      },
+    },
+    isPartOf: { "@type": "WebSite", url: INTEGRATIONS.siteUrl, name: SITE.name },
+  };
+
+  return [medicalService, webPage];
+}
+
 /** WebPage + areaServed for area/region landing pages (local SEO + GEO). */
 export function getAreaPageSchema(region: string, path: string, description: string) {
   return {

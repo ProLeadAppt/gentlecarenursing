@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllAreaSlugs } from "@/content/areas-content";
 import { getAllGuideSlugs } from "@/content/guides";
 import { getAllBlogPosts } from "@/content/blog";
+import { SERVICE_REGION_PAGES } from "@/content/service-regions";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gentlecarenursing.com.au";
 
@@ -31,6 +32,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const areaSlugs = getAllAreaSlugs();
   for (const slug of areaSlugs) {
     routes.push({ path: `/areas/${slug}`, priority: 0.8, changeFrequency: "monthly" });
+  }
+
+  for (const page of SERVICE_REGION_PAGES) {
+    routes.push({ path: page.path, priority: 0.85, changeFrequency: "monthly" });
   }
 
   const guideSlugs = getAllGuideSlugs();
