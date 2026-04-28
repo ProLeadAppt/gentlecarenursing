@@ -6,12 +6,11 @@ import { INTEGRATIONS } from "@/config/integrations";
 export const metadata = createMetadata({
   title: "Aged Care Sydney | Support at Home",
   description:
-    "In-home nursing and personal care for older Australians. Home Care Packages, CHSP, and private aged care support.",
+    "In-home nursing and personal care for older Australians. We support clients through Support at Home, DVA, and private care arrangements.",
   keywords: [
     "aged care at home",
     "in-home aged care",
-    "home care package",
-    "CHSP",
+    "support at home",
     "elderly home care",
     "aged care nursing",
   ],

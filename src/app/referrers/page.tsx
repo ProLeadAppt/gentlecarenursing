@@ -204,7 +204,7 @@ export default function ReferrersPage() {
               under DVA.
             </li>
             <li>
-              • Older Australians on Home Care Packages or CHSP who need extra nursing or daily
+              • Older Australians on Support at Home or CHSP who need extra nursing or daily
               living support to stay safely at home.
             </li>
             <li>

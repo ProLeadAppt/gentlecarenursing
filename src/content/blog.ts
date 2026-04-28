@@ -84,7 +84,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <li>Provide regular updates to your coordinator and family</li>
         <li>Be transparent about pricing and service agreements</li>
       </ul>
-      <p>At Gentle Care Nursing, we keep our client list intentionally small so every person receives dedicated, personalised attention. We're registered NDIS providers with 10+ years of clinical nursing experience.</p>
+      <p>At Gentle Care Nursing, we keep our client list intentionally small so every person receives dedicated, personalised attention. We're a registered NDIS provider, led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support.</p>
 
       <h2>Questions to ask your provider</h2>
       <p>Before signing a service agreement, ask:</p>
@@ -133,15 +133,15 @@ export const BLOG_POSTS: BlogPost[] = [
         <li>Are vague about pricing or service agreements</li>
       </ul>
 
-      <h2>The boutique difference</h2>
-      <p>A boutique provider like Gentle Care Nursing takes a different approach. We intentionally limit our client load so we can offer:</p>
+      <h2>The personalised-care difference</h2>
+      <p>A personalised provider like Gentle Care Nursing takes a different approach. We intentionally limit our client load so we can offer:</p>
       <ul>
         <li>Consistent, familiar nurses and carers</li>
-        <li>Faster response times (within 24 hours guaranteed)</li>
+        <li>Faster response times (we aim to respond within 24 hours)</li>
         <li>Personalised care plans tailored to individual needs</li>
         <li>Direct access to our clinical director</li>
       </ul>
-      <p>When you choose boutique care, you're choosing a team that knows your loved one by name — not by file number.</p>
+      <p>When you choose personalised, relationship-based care, you're choosing a team that knows your loved one by name — not by file number.</p>
     `,
     category: "family-carers",
     author: DEFAULT_AUTHOR,
@@ -173,8 +173,8 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Funding options</h2>
       <p>In-home aged care can be funded through:</p>
       <ol>
+        <li><strong>Support at Home:</strong> The current government-funded in-home aged care program for older Australians</li>
         <li><strong>Commonwealth Home Support Programme (CHSP):</strong> Entry-level support for everyday tasks</li>
-        <li><strong>Home Care Packages:</strong> More comprehensive support with four levels of funding</li>
         <li><strong>DVA services:</strong> For eligible veterans and their partners</li>
         <li><strong>Private funding:</strong> Self-funded care without wait times</li>
       </ol>
@@ -194,7 +194,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: DEFAULT_AUTHOR,
     publishedAt: "2025-09-20",
     readingTimeMinutes: 5,
-    tags: ["aged care", "home care packages", "Support at Home", "Sydney"],
+    tags: ["aged care", "Support at Home", "Sydney"],
     relatedSlugs: ["choosing-the-right-home-care-provider", "tips-for-family-carers-avoiding-burnout"],
   },
   {

@@ -4,7 +4,6 @@ import { Grid } from "@/components/layout/Grid";
 import { TrustMarquee } from "./TrustMarquee";
 import { FaqPreview } from "./FaqPreview";
 import { ServiceCtaWithModal } from "./ServiceCtaWithModal";
-import { Testimonials } from "./Testimonials";
 import { Heading } from "@/components/ui/Heading";
 import { Card } from "@/components/ui/Card";
 import { FormModalTrigger } from "@/components/ui/FormModalTrigger";
@@ -167,7 +166,7 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
 
       <TrustMarquee />
 
-      {/* Who It Helps — Boutique Grid */}
+      {/* Who It Helps — Personalised Grid */}
       <Section className="bg-muted/30 border-y border-border/40">
         <Container>
           <Reveal>
@@ -286,7 +285,7 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
                   Providing Clinical Peace of Mind
                  </Heading>
                  <p className="mx-auto max-w-2xl text-lg text-muted-foreground font-medium">
-                   Anonymised examples of the boutique clinical support we provide daily across Sydney.
+                   Anonymised examples of the personalised clinical support we provide daily across Sydney.
                  </p>
               </div>
             </Reveal>
@@ -325,7 +324,7 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
           <Reveal>
             <div className="text-center mb-16">
                <Heading level="h2" className="text-3xl font-bold font-[family-name:var(--font-serif)]">Explore Related Services</Heading>
-               <p className="mt-4 text-muted-foreground font-medium">Boutique clinical care tailored to your unique required outcomes.</p>
+               <p className="mt-4 text-muted-foreground font-medium">Personalised clinical care tailored to your unique required outcomes.</p>
             </div>
           </Reveal>
           <div className="flex flex-wrap justify-center gap-6">
@@ -383,15 +382,7 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
         </Section>
       )}
 
-      {data.testimonials && data.testimonials.length > 0 && (
-        <Testimonials
-          title="What Our Clients Say"
-          subtitle="Real outcomes for patients requiring boutique clinical support at home."
-          label={undefined}
-          testimonials={data.testimonials}
-          sectionVariant="default"
-        />
-      )}
+      {/* Testimonials removed pending consented client quotes. */}
 
       {/* CTA Section — High Impact */}
       <ServiceCtaWithModal

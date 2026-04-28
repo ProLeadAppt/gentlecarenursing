@@ -196,7 +196,7 @@ export default async function AreaRegionPage({ params }: Props) {
                 Ready to discuss care in {area.region}?
               </Heading>
               <p className="text-xl text-muted-foreground font-medium mb-12">
-                Our clinical lead, Gemma, is available to discuss your specific requirements and ensure a seamless start to boutique support.
+                Our clinical lead, Gemma, is available to discuss your specific requirements and ensure a seamless start to personalised support.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-6">
                 <Magnetic>

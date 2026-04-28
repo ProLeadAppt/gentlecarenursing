@@ -8,7 +8,7 @@ import { MobileCta } from "@/components/layout/MobileCta";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { FormModalProvider } from "@/contexts/FormModalContext";
 import { FormModal } from "@/components/ui/FormModal";
-import { getLocalBusinessSchema, getWebsiteSchema, getOrganizationSchema, getAggregateRatingSchema } from "@/lib/schema";
+import { getLocalBusinessSchema, getWebsiteSchema, getOrganizationSchema } from "@/lib/schema";
 
 const sourceSans = Source_Sans_3({
   variable: "--font-source-sans",
@@ -94,7 +94,6 @@ export default function RootLayout({
               getOrganizationSchema(),
               getLocalBusinessSchema(),
               getWebsiteSchema(),
-              getAggregateRatingSchema(),
             ]),
           }}
         />

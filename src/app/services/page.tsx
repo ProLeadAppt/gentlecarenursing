@@ -16,12 +16,12 @@ import { ShieldCheck, Heart, UserCheck } from "lucide-react";
 export const metadata = createMetadata({
   title: "Our Services",
   description:
-    "Boutique in-home nursing and care services across NDIS, DVA, aged care, and private. Personalised clinical support led by experienced nurses.",
+    "Personalised in-home nursing and care services across NDIS, DVA, aged care, and private. Quality-focused clinical support led by experienced nurses.",
   keywords: [
     "in-home nursing Sydney",
     "NDIS registered provider",
     "DVA community nursing",
-    "boutique aged care",
+    "aged care at home",
     "private nursing care",
     "complex care support",
   ],
@@ -69,7 +69,7 @@ export default function ServicesPage() {
               },
               { 
                 title: "Clinician-Led", 
-                desc: "Owned and operated by experienced Registered Nurses with 10+ years of expertise.", 
+                desc: "Led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support.",
                 icon: UserCheck 
               },
               { 

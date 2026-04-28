@@ -4,7 +4,7 @@
  */
 
 export const HOMEPAGE_HERO = {
-  eyebrow: "Clinician-Led · Boutique · Sydney",
+  eyebrow: "Clinician-Led · Personalised · Sydney",
   /** Segmented headline for staggered cinematic reveal */
   headlineSegments: [
     "Compassionate",
@@ -157,41 +157,10 @@ export const GET_IN_TOUCH = {
 } as const;
 
 export const HOMEPAGE_STATS = [
-  { value: "13+", label: "Years of Experience" },
-  { value: "60+", label: "Families Supported" },
-  { value: "38", label: "Dedicated Staff" },
-  { value: "24hr", label: "Response Guarantee" },
-] as const;
-
-/** Testimonials for homepage. Replace with real, legally cleared quotes when available. */
-export const HOMEPAGE_TESTIMONIALS = [
-  {
-    quote:
-      "Gentle Care Nursing made finding care for my mother so much easier. They responded quickly, matched us with an excellent nurse, and the quality of care has been outstanding. I finally feel confident she's in good hands.",
-    name: "Sarah M.",
-    role: "Family Member, Sydney",
-    rating: 5,
-    serviceTag: "aged-care",
-    regionTag: "inner-west",
-  },
-  {
-    quote:
-      "As a support coordinator, I need providers I can trust. Gentle Care is responsive, professional, and genuinely cares about participant outcomes. They've become my go-to for in-home nursing referrals.",
-    name: "James L.",
-    role: "NDIS Support Coordinator",
-    rating: 5,
-    serviceTag: "ndis",
-    regionTag: "sydney-wide",
-  },
-  {
-    quote:
-      "The discharge planning team at our hospital has referred several patients to Gentle Care. Their turnaround time is impressive and the continuity of care from hospital to home is exactly what our patients need.",
-    name: "Dr. Priya K.",
-    role: "Hospital Discharge Planner",
-    rating: 5,
-    serviceTag: "post-hospital-care",
-    regionTag: "north-shore",
-  },
+  { value: "10+", label: "Yrs Clinician Experience" },
+  { value: "Quality", label: "Over Volume" },
+  { value: "Small", label: "Clinical Team" },
+  { value: "~24hr", label: "Response Window" },
 ] as const;
 
 /** Re-export single source for areas (GMB-aligned). Use AREAS_SERVED from areas-served.ts elsewhere. */
@@ -215,7 +184,7 @@ export const HOMEPAGE_FAQ = [
     id: "are-you-registered",
     question: "Are you registered with NDIS and DVA?",
     answer:
-      "Yes. Gentle Care Nursing is a registered NDIS provider and a registered DVA community nursing provider. We meet the quality and safety standards required by both schemes, so coordinators and referrers can refer with confidence.",
+      "Yes. Gentle Care Nursing is a registered NDIS provider and a DVA Contracted Community Nursing Provider, supporting eligible Veteran Card holders with clinically required nursing and personal care services at home. We meet the quality and safety standards required by both schemes, so coordinators and referrers can refer with confidence.",
   },
   {
     id: "who-can-access",
@@ -233,7 +202,7 @@ export const HOMEPAGE_FAQ = [
     id: "funding",
     question: "What funding do you accept?",
     answer:
-      "We accept NDIS, DVA, aged care (Home Care Packages, CHSP), and private funding. Our team will help you understand your options in plain language.",
+      "We accept NDIS, DVA, aged care (Support at Home and CHSP), and private funding. Our team will help you understand your options in plain language.",
   },
   {
     id: "make-referral",
@@ -263,7 +232,7 @@ export const HOMEPAGE_FAQ = [
     id: "respite-and-overnight",
     question: "Do you offer respite or overnight care?",
     answer:
-      "Yes. We provide respite care to give family members a break, as well as overnight and 24/7 support for those with higher needs. We can arrange care that fits your specific schedule and requirements.",
+      "Yes. We provide respite care to give family members a break. We can provide overnight support and extended hours depending on care needs, funding and staff availability.",
   },
   {
     id: "immediate-help",

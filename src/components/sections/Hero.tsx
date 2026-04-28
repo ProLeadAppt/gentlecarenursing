@@ -31,15 +31,15 @@ interface HeroProps {
 
 const defaultCredentials = [
   { label: "NDIS Registered", color: "#6b9360" },
-  { label: "DVA Approved", color: "#1b6b6d" },
-  { label: "10+ Years", color: "#c4704b" },
+  { label: "DVA Contracted", color: "#1b6b6d" },
+  { label: "10+ Yrs Clinician Experience", color: "#c4704b" },
 ] as const;
 
 export function Hero({
   headlineSegments,
   headline,
   subheadline,
-  eyebrow = "Clinician-Led · Boutique · Sydney",
+  eyebrow = "Clinician-Led · Personalised · Sydney",
   primaryCta,
   reassurance = HERO_REASSURANCE,
   imageSrc = "/images/vitaly-gariev-Wk6f1CkGlEo-unsplash.webp",
@@ -226,21 +226,9 @@ export function Hero({
                   </span>
                   <div>
                     <p className="text-sm font-bold text-foreground">
-                      <span className="text-primary">24h</span> Response Guarantee
+                      <span className="text-primary">~24hr</span> Response Window
                     </p>
                   </div>
-                </motion.div>
-
-                {/* Floating badge: Star rating */}
-                <motion.div
-                  className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-md border border-white/50"
-                  variants={HERO_VARIANTS.badge}
-                  initial={prefersReducedMotion ? false : "hidden"}
-                  animate="visible"
-                  transition={prefersReducedMotion ? undefined : { delay: 2.0 }}
-                >
-                  <span className="text-amber-400 text-sm" aria-hidden>★★★★★</span>
-                  <span className="text-xs text-muted-foreground ml-1.5 font-medium">5.0 rated</span>
                 </motion.div>
               </div>
             </div>

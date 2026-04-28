@@ -11,13 +11,13 @@ const CREDENTIALS = [
   },
   {
     icon: FileCheck,
-    title: "Registered DVA community nursing provider",
-    description: "Approved to deliver DVA-funded in-home nursing and care for veterans and war widows.",
+    title: "DVA Contracted Community Nursing Provider",
+    description: "Contracted to deliver DVA Community Nursing services for eligible Veteran Card holders at home.",
   },
   {
     icon: Clock,
-    title: "24-hour response",
-    description: "Every enquiry is acknowledged quickly. You'll get a personal response within 24 hours with clear next steps.",
+    title: "Quick response window",
+    description: "Every enquiry is acknowledged quickly. We aim to respond within 24 hours with clear next steps.",
   },
   {
     icon: Users,

@@ -21,8 +21,8 @@ const CARDS: CardConfig[] = [
   { output: "default.png",         title: "Gentle Care Nursing",                    subtitle: "In-home nursing & care across Sydney" },
   { output: "home.png",            title: "Personalised In-Home Nursing & Care",    subtitle: "Trusted across Sydney" },
   { output: "ndis.png",            title: "NDIS Nursing & Care",                     subtitle: "Registered NDIS provider" },
-  { output: "dva.png",             title: "DVA & Community Nursing",                 subtitle: "Registered DVA provider for veterans" },
-  { output: "aged-care.png",       title: "Aged Care at Home",                       subtitle: "Home Care Packages, CHSP, and private support" },
+  { output: "dva.png",             title: "DVA & Community Nursing",                 subtitle: "DVA Contracted Community Nursing Provider" },
+  { output: "aged-care.png",       title: "Aged Care at Home",                       subtitle: "Support at Home, CHSP, DVA, and private support" },
   { output: "private-nursing.png", title: "Private Nursing & Personal Care",         subtitle: "One-off or ongoing support, your way" },
   { output: "services.png",        title: "In-Home Services",                        subtitle: "Nursing, personal care, complex care, and more" },
   { output: "referrers.png",       title: "For Referrers",                           subtitle: "Fast, reliable care referrals for your clients" },
@@ -57,7 +57,7 @@ function renderCard(card: CardConfig) {
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 24, opacity: 0.8 }}>
           <span>gentlecarenursing.com.au</span>
-          <span>Registered NDIS & DVA provider</span>
+          <span>NDIS Registered · DVA Contracted</span>
         </div>
       </div>
     ),

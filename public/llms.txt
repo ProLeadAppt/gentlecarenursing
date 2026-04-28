@@ -1,13 +1,13 @@
 # Gentle Care Nursing Services
 
-Gentle Care Nursing Services is a Sydney-based provider of in-home nursing and personal care. We are a registered NDIS provider and a registered DVA community nursing provider.
+Gentle Care Nursing Services is a Sydney-based provider of in-home nursing and personal care. We are a registered NDIS provider and a DVA Contracted Community Nursing Provider, supporting eligible Veteran Card holders with clinically required nursing and personal care services at home.
 
 ## What we do
 
 - In-home nursing and personal care across Sydney and surrounds
 - NDIS-funded support for participants, families, and support coordinators
-- DVA community nursing for veterans and war widows
-- Aged care and support at home (Home Care Packages, CHSP)
+- DVA Community Nursing for eligible Veteran Card holders
+- Aged care at home through Support at Home, CHSP, and DVA
 - Private nursing and personal care
 
 ## Services in detail
@@ -18,15 +18,15 @@ Gentle Care Nursing Services is a Sydney-based provider of in-home nursing and p
 - Palliative care: Comfort-focused nursing and personal care at home for people with life-limiting illness, supporting symptom management, dignity, and family wellbeing alongside the palliative care team.
 - Personal care: Respectful, consistent assistance with bathing, dressing, grooming, and mobility to help people maintain independence and dignity at home.
 - Nursing care: Professional clinical support from AHPRA-registered nurses covering wound management, medication administration, health monitoring, and chronic disease support at home.
-- Overnight support: Active overnight nursing or sleepover support to keep individuals safe and monitored through the night, with options tailored to clinical need.
+- Overnight support: Active overnight nursing or sleepover support depending on care needs, funding and staff availability.
 - Community participation: Support for NDIS participants and older Australians to engage in social activities, attend appointments, and build connections in the community.
 - Assistance with daily living: Practical help with meal preparation, household tasks, laundry, and daily routines to support independent living at home.
 
 ## Who we serve
 
 - NDIS participants — /ndis
-- DVA veterans and war widows — /dva
-- Aged care / Home Care Package recipients — /aged-care
+- DVA Veteran Card holders — /dva
+- Older Australians on Support at Home or CHSP — /aged-care
 - Private clients — /private-nursing
 - Referrers: hospitals, GPs, support coordinators — /referrers
 
@@ -41,26 +41,26 @@ Gentle Care Nursing Services is a Sydney-based provider of in-home nursing and p
 
 ## Key facts
 
-- Registered NDIS provider and registered DVA provider
-- We respond to all enquiries within 24–48 hours
-- 10+ years of experience; 1,300+ clients supported
+- Registered NDIS provider and DVA Contracted Community Nursing Provider
+- We aim to respond to all enquiries within 24 hours, with urgent referrals prioritised
+- Led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support
 
 ## Common questions
 
-**Q: Are you a registered NDIS and DVA provider?**
-A: Yes. Gentle Care Nursing is fully registered with the NDIS and is a registered DVA community nursing provider. We meet all required quality and safety standards.
+**Q: Are you registered with NDIS and DVA?**
+A: Yes. Gentle Care Nursing is fully registered with the NDIS and is a DVA Contracted Community Nursing Provider, supporting eligible Veteran Card holders with clinically required nursing and personal care services at home. We meet all required quality and safety standards.
 
 **Q: How do I get started?**
-A: Submit an enquiry through our Request Care form, or contact us by phone or email. A real person will get back to you within 24 hours with clear next steps.
+A: Submit an enquiry through our Request Care form, or contact us by phone or email. We aim to respond within 24 hours with clear next steps, and urgent referrals are prioritised.
 
 **Q: What funding do you accept?**
-A: We accept NDIS, DVA, aged care (Home Care Packages Levels 1–4, CHSP), and private funding. Our team can help you understand which options apply to your situation.
+A: We accept NDIS, DVA, aged care (Support at Home and CHSP), and private funding. Our team can help you understand which options apply to your situation.
 
 **Q: Is DVA care free for veterans?**
 A: For eligible veterans with a DVA Gold or White Card, services are provided at no out-of-pocket cost. We handle all claims directly with DVA on your behalf.
 
 **Q: What makes Gentle Care different?**
-A: We take on fewer clients so each person receives more dedicated, attentive care — personalised care plans, consistent carers, fast response times, and genuine support for families and referral partners.
+A: We take on fewer clients so each person receives more dedicated, attentive care — personalised care plans, consistent carers, prompt responses, and genuine support for families and referral partners.
 
 ## Main pages
 
@@ -68,7 +68,7 @@ A: We take on fewer clients so each person receives more dedicated, attentive ca
 - Services: /services
 - NDIS Services: /ndis
 - DVA & Community Nursing: /dva
-- Aged Care: /aged-care
+- Aged Care at Home: /aged-care
 - Private Nursing: /private-nursing
 - Referrers: /referrers
 - Request Care: /referral
@@ -87,4 +87,4 @@ Address: Level 1/5 George St, North Strathfield, NSW 2137, Australia
 
 ## Structured data
 
-This site publishes schema.org JSON-LD: MedicalBusiness, Organization, WebSite, AggregateRating, BlogPosting, FAQPage, HowTo, BreadcrumbList.
+This site publishes schema.org JSON-LD: MedicalBusiness, Organization, WebSite, BlogPosting, FAQPage, HowTo, BreadcrumbList.

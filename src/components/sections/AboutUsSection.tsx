@@ -30,7 +30,7 @@ export function AboutUsSection({
           <div className="space-y-12">
             <Reveal>
               <div>
-                <p className="text-sm font-bold uppercase tracking-[0.25em] text-primary/80 mb-6">Our Boutique Philosophy</p>
+                <p className="text-sm font-bold uppercase tracking-[0.25em] text-primary/80 mb-6">Our Care Philosophy</p>
                 <Heading level="h2" as="h2" className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.1]">
                   {title}
                 </Heading>
@@ -50,7 +50,7 @@ export function AboutUsSection({
                     <Heart className="h-6 w-6 text-accent group-hover:text-white transition-colors duration-500" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold mb-1">Clinical Excellence Since 2014</h3>
+                    <h3 className="text-lg font-bold mb-1">Led by Over a Decade of Hands-On Experience</h3>
                     <p className="text-muted-foreground">{statsLine}</p>
                   </div>
                 </div>
