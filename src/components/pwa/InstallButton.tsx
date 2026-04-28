@@ -79,7 +79,6 @@ export function InstallButton({ className = "" }: { className?: string }) {
       <button
         type="button"
         onClick={handleClick}
-        aria-label="Install Gentle Care Nursing app"
         aria-expanded={isIOS ? showIOSHelp : undefined}
         className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] text-white/80 transition-all hover:border-white/30 hover:bg-white/10 hover:text-white"
       >
