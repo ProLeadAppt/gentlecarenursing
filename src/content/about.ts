@@ -73,7 +73,7 @@ export const PROFESSIONAL_TRUST = {
 export const FOUNDER_STORY = {
   name: "Gemma",
   title: "Founder & Clinical Director",
-  bio: "Gentle Care Nursing Services began because I wanted to provide care that is genuinely compassionate, personal, and consistent. Through my 13 years of experience across dementia care, palliative care, disability support, and mental health challenges, I saw how important it is for individuals and families to feel supported by a team that values dignity, trust, and continuity of care.",
+  bio: "Gentle Care Nursing Services began because I wanted to provide care that is genuinely compassionate, personal, and consistent. Through over a decade of hands-on experience across dementia care, palliative care, disability support, and mental health challenges, I saw how important it is for individuals and families to feel supported by a team that values dignity, trust, and continuity of care.",
   qualifications: [
     "Registered Nurse (10+ Years Experience)",
     "Aged Care Certifications",

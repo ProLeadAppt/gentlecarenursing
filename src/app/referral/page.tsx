@@ -101,7 +101,7 @@ export default function ReferralPage() {
             </div>
             <div className="text-center">
               <Heading level="h3" as="h3" className="text-lg">
-                Personal Response Within 24 Hours
+                Personal Response — We Aim for 24 Hours
               </Heading>
               <p className="mt-2 text-sm text-muted-foreground">
                 A real person will contact you with supportive guidance, clear

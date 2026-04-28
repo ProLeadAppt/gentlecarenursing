@@ -19,7 +19,7 @@ const STEPS = [
     shadowClass: "shadow-[0_4px_16px_rgba(107,147,96,0.12)]",
   },
   {
-    title: "We Respond Within 24 Hours",
+    title: "We Aim to Respond Within 24 Hours",
     description:
       "A registered nurse personally reviews your needs and calls you.",
     icon: PhoneCall,

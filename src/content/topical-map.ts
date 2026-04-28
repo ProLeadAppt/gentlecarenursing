@@ -4,6 +4,38 @@
  * Only link related content: avoid "connect everything to everything".
  */
 
+import { AREAS_SERVED } from "./areas-served";
+
+function regionSlug(region: string): string {
+  return region
+    .toLowerCase()
+    .replace(/\s*&\s*/g, " ")
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
+}
+
+const REGION_SLUGS = AREAS_SERVED.map((a) => regionSlug(a.region));
+
+/**
+ * Service × region cluster paths. Generated from AREAS_SERVED so the map
+ * stays in sync with the GMB-aligned region list. Each entry is a leaf page
+ * at /services/[service]/[region] backed by content/service-regions.ts.
+ */
+const SERVICE_REGION_CLUSTERS: Record<
+  | "ndis-services"
+  | "dva-community-nursing"
+  | "in-home-nursing-care"
+  | "personal-care-daily-living"
+  | "complex-care-support",
+  readonly string[]
+> = {
+  "ndis-services": REGION_SLUGS.map((r) => `/services/ndis-services/${r}`),
+  "dva-community-nursing": REGION_SLUGS.map((r) => `/services/dva-community-nursing/${r}`),
+  "in-home-nursing-care": REGION_SLUGS.map((r) => `/services/in-home-nursing-care/${r}`),
+  "personal-care-daily-living": REGION_SLUGS.map((r) => `/services/personal-care-daily-living/${r}`),
+  "complex-care-support": REGION_SLUGS.map((r) => `/services/complex-care-support/${r}`),
+};
+
 export type PillarId =
   | "home"
   | "services"
@@ -11,6 +43,9 @@ export type PillarId =
   | "dva"
   | "aged-care"
   | "private-nursing"
+  | "in-home-nursing"
+  | "personal-care"
+  | "complex-care"
   | "about"
   | "contact"
   | "referral"
@@ -45,26 +80,58 @@ export const TOPICAL_MAP: readonly Pillar[] = [
       "/dva",
       "/aged-care",
       "/private-nursing",
+      "/services/nursing-care",
+      "/services/personal-care",
       "/services/post-hospital-care",
       "/services/complex-care",
       "/services/hospital-at-home",
       "/services/palliative-care",
     ],
-    relatedPillarIds: ["ndis", "dva", "aged-care", "private-nursing", "referral"],
+    relatedPillarIds: [
+      "ndis",
+      "dva",
+      "aged-care",
+      "private-nursing",
+      "in-home-nursing",
+      "personal-care",
+      "complex-care",
+      "referral",
+    ],
   },
   {
     id: "ndis",
     title: "NDIS Services",
     path: "/ndis",
-    clusterPaths: [],
-    relatedPillarIds: ["services", "referral", "areas"],
+    clusterPaths: SERVICE_REGION_CLUSTERS["ndis-services"],
+    relatedPillarIds: ["services", "referral", "areas", "in-home-nursing", "complex-care"],
   },
   {
     id: "dva",
     title: "DVA & Community Nursing",
     path: "/dva",
-    clusterPaths: [],
-    relatedPillarIds: ["services", "referral", "areas"],
+    clusterPaths: SERVICE_REGION_CLUSTERS["dva-community-nursing"],
+    relatedPillarIds: ["services", "referral", "areas", "in-home-nursing", "complex-care"],
+  },
+  {
+    id: "in-home-nursing",
+    title: "In-Home Nursing Care",
+    path: "/services/nursing-care",
+    clusterPaths: SERVICE_REGION_CLUSTERS["in-home-nursing-care"],
+    relatedPillarIds: ["services", "ndis", "dva", "complex-care", "referral", "areas"],
+  },
+  {
+    id: "personal-care",
+    title: "Personal Care & Daily Living Assistance",
+    path: "/services/personal-care",
+    clusterPaths: SERVICE_REGION_CLUSTERS["personal-care-daily-living"],
+    relatedPillarIds: ["services", "ndis", "in-home-nursing", "referral", "areas"],
+  },
+  {
+    id: "complex-care",
+    title: "Complex Care Support",
+    path: "/services/complex-care",
+    clusterPaths: SERVICE_REGION_CLUSTERS["complex-care-support"],
+    relatedPillarIds: ["services", "ndis", "dva", "in-home-nursing", "referral", "areas"],
   },
   {
     id: "aged-care",

@@ -489,7 +489,7 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
   whyChoose: {
     title: "Why Choose Gentle Care for Private Services",
     description:
-      "Private care should feel premium, because you're choosing it and you deserve the best.",
+      "When you're paying for care directly, you deserve the same quality-focused, relationship-based support we provide to every client.",
     reasons: [
       {
         title: "No Waitlists",
