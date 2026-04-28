@@ -1,4 +1,4 @@
-# Gentle Care Nursing — Design System
+# Gentle Care Nursing Services — Design System
 
 Premium, calm, healthcare-appropriate, highly polished, conversion-focused.
 

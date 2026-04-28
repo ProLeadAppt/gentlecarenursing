@@ -41,7 +41,7 @@ export const AREAS_CONTENT: AreaContent[] = AREAS_SERVED.map((area) => {
     region: area.region,
     slug,
     headline: `In-home nursing and care in ${area.region}: NDIS, DVA, aged care, and private.`,
-    description: `Gentle Care Nursing provides in-home nursing and personal care across ${area.region} (${area.suburbs.join(", ")}). Registered NDIS provider and DVA Contracted Community Nursing Provider. Personal response within 24 hours.`,
+    description: `Gentle Care Nursing Services provides in-home nursing and personal care across ${area.region} (${area.suburbs.join(", ")}). Registered NDIS provider and DVA Contracted Community Nursing Provider. Personal response within 24 hours.`,
     body: AREA_BODY_TEMPLATE.replace("{suburbs}", suburbList),
     examples: [
       `An older person in ${area.region} coming home from hospital who needs short-term nursing and personal care to feel more confident.`,

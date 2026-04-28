@@ -41,7 +41,7 @@ export function CredentialsSection({
     <Section variant={variant} size="md">
       <Container>
         <h2 className="text-center font-[family-name:var(--font-dm-sans)] text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-          Why trust Gentle Care Nursing
+          Why trust Gentle Care Nursing Services
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-base text-muted-foreground">
           Credentials and commitments that matter to families, participants, and referral partners.

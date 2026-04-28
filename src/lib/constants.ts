@@ -1,15 +1,31 @@
 /**
- * Site-wide constants for Gentle Care Nursing.
+ * Site-wide constants for Gentle Care Nursing Services.
  * Update these to reflect final content and GoHighLevel integration.
  */
 
+/**
+ * Canonical NAP (Name / Address / Phone) — must match the verified
+ * Google Business Profile exactly. Any drift breaks local-SEO trust.
+ *
+ * GBP source of truth (last confirmed 2026-04-28):
+ *   Name:    Gentle Care Nursing Services
+ *   Address: Level 1/5 George St, North Strathfield NSW 2137, Australia
+ *   Phone:   +61 1300 004 267
+ *
+ * Display rules:
+ *   - SITE.name           -> exact business name shown on GBP
+ *   - SITE.address        -> single-line postal form for body text and schema
+ *   - SITE.phone          -> human-readable display, matches GBP exactly
+ *   - SITE.phoneHref      -> tel: link in E.164 (international), so all
+ *                            carriers route correctly (no spaces in tel:)
+ */
 export const SITE = {
   name: "Gentle Care Nursing Services",
   tagline: "Personalised in-home nursing and care",
-  phone: "1300 004 267",
-  phoneHref: "tel:1300004267",
+  phone: "+61 1300 004 267",
+  phoneHref: "tel:+611300004267",
   email: "info@gentlecarenursing.com.au",
-  address: "Level 1/5 George St, North Strathfield, NSW 2137",
+  address: "Level 1/5 George St, North Strathfield NSW 2137, Australia",
   /** Optional: Google Business Profile URL for entity linking and footer */
   gbpUrl: "",
   social: {

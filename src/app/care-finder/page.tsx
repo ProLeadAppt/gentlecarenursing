@@ -8,7 +8,7 @@ import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
 
 export const metadata = createMetadata({
-  title: "Care Finder | Gentle Care Nursing",
+  title: "Care Finder | Gentle Care Nursing Services",
   description: "Find the right in-home nursing and care support for your specific situation with our guided tool.",
   canonical: `${INTEGRATIONS.siteUrl}/care-finder`,
 });

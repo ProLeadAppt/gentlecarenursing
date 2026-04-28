@@ -16,7 +16,7 @@ export function GuidePageLayout({ guide }: GuidePageLayoutProps) {
         <Container size="md">
           <SectionHeader title={guide.title} subtitle={guide.snippetAnswer} size="lg" />
           <p className="mx-auto mt-4 max-w-2xl text-center text-base text-muted-foreground">
-            This short guide explains what to expect and how Gentle Care Nursing can support you at home. It does not replace advice from your doctor or treating team.
+            This short guide explains what to expect and how Gentle Care Nursing Services can support you at home. It does not replace advice from your doctor or treating team.
           </p>
         </Container>
       </Section>

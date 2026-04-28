@@ -13,7 +13,7 @@ import { INTEGRATIONS } from "@/config/integrations";
 export const metadata = createMetadata({
   title: "Contact Us",
   description:
-    "Get in touch with Gentle Care Nursing. Phone, email, or submit an enquiry. We acknowledge straight away and respond within 24 hours.",
+    "Get in touch with Gentle Care Nursing Services. Phone, email, or submit an enquiry. We acknowledge straight away and respond within 24 hours.",
   canonical: `${INTEGRATIONS.siteUrl}/contact`,
 });
 

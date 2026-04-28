@@ -1,7 +1,7 @@
 {
-  "name": "Gentle Care Nursing",
+  "name": "Gentle Care Nursing Services",
   "short_name": "Gentle Care",
-  "description": "Personalised in-home nursing and care across Sydney. NDIS Registered, DVA Contracted Community Nursing Provider.",
+  "description": "Personalised in-home nursing and care across Sydney. Registered NDIS provider and DVA Contracted Community Nursing Provider.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

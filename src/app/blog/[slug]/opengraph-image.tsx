@@ -4,13 +4,13 @@ import { getBlogPostBySlug } from "@/content/blog";
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Gentle Care Nursing blog post";
+export const alt = "Gentle Care Nursing Services blog post";
 
 export default async function BlogOgImage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getBlogPostBySlug(slug);
 
-  const title = post?.title ?? "Gentle Care Nursing";
+  const title = post?.title ?? "Gentle Care Nursing Services";
   const category = post?.category ?? "";
   const author = post?.author?.name ?? "";
 

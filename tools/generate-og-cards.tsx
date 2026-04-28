@@ -18,7 +18,7 @@ interface CardConfig {
 }
 
 const CARDS: CardConfig[] = [
-  { output: "default.png",         title: "Gentle Care Nursing",                    subtitle: "In-home nursing & care across Sydney" },
+  { output: "default.png",         title: "Gentle Care Nursing Services",           subtitle: "In-home nursing & care across Sydney" },
   { output: "home.png",            title: "Personalised In-Home Nursing & Care",    subtitle: "Trusted across Sydney" },
   { output: "ndis.png",            title: "NDIS Nursing & Care",                     subtitle: "Registered NDIS provider" },
   { output: "dva.png",             title: "DVA & Community Nursing",                 subtitle: "DVA Contracted Community Nursing Provider" },

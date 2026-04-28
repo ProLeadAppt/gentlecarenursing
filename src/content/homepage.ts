@@ -26,7 +26,7 @@ export const REASSURANCE_SECTION = {
     "Families want reassurance their loved ones are safe.",
     "Coordinating support services can feel complicated.",
   ] as const,
-  transitionLine: "That's exactly why Gentle Care Nursing exists.",
+  transitionLine: "That's exactly why Gentle Care Nursing Services exists.",
 } as const;
 
 /** One-line local proof (e.g. near first CTA or after TrustBar) */
@@ -184,7 +184,7 @@ export const HOMEPAGE_FAQ = [
     id: "are-you-registered",
     question: "Are you registered with NDIS and DVA?",
     answer:
-      "Yes. Gentle Care Nursing is a registered NDIS provider and a DVA Contracted Community Nursing Provider, supporting eligible Veteran Card holders with clinically required nursing and personal care services at home. We meet the quality and safety standards required by both schemes, so coordinators and referrers can refer with confidence.",
+      "Yes. Gentle Care Nursing Services is a registered NDIS provider and a DVA Contracted Community Nursing Provider, supporting eligible Veteran Card holders with clinically required nursing and personal care services at home. We meet the quality and safety standards required by both schemes, so coordinators and referrers can refer with confidence.",
   },
   {
     id: "who-can-access",
