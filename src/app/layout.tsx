@@ -98,18 +98,16 @@ export default function RootLayout({
     <html lang="en" className={`${sourceSans.variable} ${dmSans.variable} ${cormorant.variable}`} suppressHydrationWarning>
       <head>
         {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZ2588QL1J"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-SZ2588QL1J" strategy="beforeInteractive" />
+        <Script id="google-analytics" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-              gtag('config', 'G-SZ2588QL1J');
-            `,
-          }}
-        />
+            gtag('config', 'G-SZ2588QL1J');
+          `}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
