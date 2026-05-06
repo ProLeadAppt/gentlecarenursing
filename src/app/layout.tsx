@@ -10,6 +10,7 @@ import { FormModalProvider } from "@/contexts/FormModalContext";
 import { FormModal } from "@/components/ui/FormModal";
 import { getLocalBusinessSchema, getWebsiteSchema, getOrganizationSchema } from "@/lib/schema";
 import { ServiceWorkerRegister } from "@/components/pwa/ServiceWorkerRegister";
+import { FloatingContact } from "@/components/ui/FloatingContact";
 
 const sourceSans = Source_Sans_3({
   variable: "--font-source-sans",
@@ -106,6 +107,31 @@ export default function RootLayout({
             ]),
           }}
         />
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "wmn8hytn79");
+            `,
+          }}
+        />
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZ2588QL1J"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-SZ2588QL1J');
+            `,
+          }}
+        />
       </head>
       <body className="min-h-screen flex flex-col antialiased" suppressHydrationWarning>
         <FormModalProvider>
@@ -123,19 +149,8 @@ export default function RootLayout({
         <MobileCta />
         <ScrollToTop />
         <FormModal />
+        <FloatingContact />
         <ServiceWorkerRegister />
-
-        {gaId && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-              strategy="afterInteractive"
-            />
-            <Script id="gtag-init" strategy="afterInteractive">
-              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${gaId}');`}
-            </Script>
-          </>
-        )}
         </FormModalProvider>
       </body>
     </html>

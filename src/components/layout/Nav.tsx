@@ -108,7 +108,7 @@ export function Nav({ links, cta, className }: NavProps) {
     <div className={cn("flex items-center", className)}>
       {/* Desktop nav */}
       <nav
-        className="hidden items-center gap-8 lg:flex"
+        className="hidden items-center gap-8 xl:flex"
         aria-label="Main navigation"
       >
         {links.map((item) =>
@@ -133,7 +133,7 @@ export function Nav({ links, cta, className }: NavProps) {
       </nav>
 
       {/* Desktop right side: phone + CTA */}
-      <div className="ml-8 hidden items-center gap-4 lg:flex">
+      <div className="ml-8 hidden items-center gap-4 xl:flex">
         {SITE.phone && (
           <a
             href={`tel:${SITE.phone.replace(/\s/g, "")}`}
@@ -164,7 +164,7 @@ export function Nav({ links, cta, className }: NavProps) {
       {/* Mobile toggle */}
       <button
         type="button"
-        className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground/70 transition-colors hover:bg-muted lg:hidden"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground/70 transition-colors hover:bg-muted xl:hidden"
         aria-expanded={mobileOpen}
         aria-controls="mobile-nav"
         onClick={() => setMobileOpen(!mobileOpen)}
@@ -177,7 +177,7 @@ export function Nav({ links, cta, className }: NavProps) {
       <div
         id="mobile-nav"
         className={cn(
-          "fixed inset-x-0 top-[64px] z-40 overflow-y-auto border-t border-border/40 bg-white transition-all duration-200 lg:hidden",
+          "fixed inset-x-0 top-[64px] z-40 overflow-y-auto border-t border-border/40 bg-white transition-all duration-200 xl:hidden",
           mobileOpen
             ? "max-h-[calc(100vh-64px)] opacity-100"
             : "max-h-0 opacity-0 overflow-hidden"

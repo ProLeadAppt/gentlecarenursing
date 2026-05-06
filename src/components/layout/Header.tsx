@@ -17,7 +17,7 @@ export function Header({ cta = CTA_LINKS.requestCare }: HeaderProps) {
       role="banner"
     >
       <Container>
-        <div className="flex h-16 items-center justify-between lg:h-20">
+        <div className="flex h-16 items-center justify-between xl:h-20">
           <Link
             href="/"
             className="shrink-0 transition-opacity hover:opacity-80"
@@ -28,7 +28,7 @@ export function Header({ cta = CTA_LINKS.requestCare }: HeaderProps) {
               width={200}
               height={48}
               sizes="200px"
-              className="h-10 w-auto lg:h-12"
+              className="h-10 w-auto xl:h-12"
               priority
               fetchPriority="high"
             />

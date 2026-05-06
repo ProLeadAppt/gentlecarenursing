@@ -115,27 +115,6 @@ export default function HomePageContent() {
         />
       </SectionReveal>
 
-      <SectionDivider variant="curve" color="#fcf9f9" bgColor="#fcf9f9" position="top" />
-
-      {/* 7. Testimonials placeholder — real, consented quotes coming soon */}
-      <SectionReveal>
-        <Section id="testimonials" variant="teal" size="xl">
-          <Container size="md">
-            <div className="text-center">
-              <span className="mb-4 inline-block text-xs font-bold uppercase tracking-[0.2em] text-pw-sage">
-                Stories from families and professionals
-              </span>
-              <h2 className="font-[family-name:var(--font-serif)] text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-6">
-                What Families &amp; Partners Say
-              </h2>
-              <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground font-medium">
-                Client stories are shared only with consent. Testimonials coming soon.
-              </p>
-            </div>
-          </Container>
-        </Section>
-      </SectionReveal>
-
       <SectionDivider variant="slant" color="white" bgColor="#fcf9f9" />
 
       {/* 8. Service Areas (GEO relevance) */}
