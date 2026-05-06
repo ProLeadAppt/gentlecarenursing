@@ -120,18 +120,16 @@ export default function RootLayout({
           }}
         />
         {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZ2588QL1J"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-SZ2588QL1J" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-              gtag('config', 'G-SZ2588QL1J');
-            `,
-          }}
-        />
+            gtag('config', 'G-SZ2588QL1J');
+          `}
+        </Script>
       </head>
       <body className="min-h-screen flex flex-col antialiased" suppressHydrationWarning>
         <FormModalProvider>
