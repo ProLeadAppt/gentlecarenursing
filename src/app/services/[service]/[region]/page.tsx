@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: Props) {
   const { service, region } = await params;
   const page = getServiceRegionPage(service, region);
   if (!page) return {};
+  const ogImageUrl = `${INTEGRATIONS.siteUrl}${page.path}/opengraph-image`;
   return createMetadata({
     title: page.metaTitle,
     description: page.metaDescription,
@@ -30,6 +31,14 @@ export async function generateMetadata({ params }: Props) {
       title: page.metaTitle,
       description: page.metaDescription,
       url: `${INTEGRATIONS.siteUrl}${page.path}`,
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${page.service.title} in ${page.region.region}, Sydney — Gentle Care Nursing`,
+        },
+      ],
     },
   });
 }
