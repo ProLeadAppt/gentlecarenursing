@@ -17,14 +17,6 @@ export const metadata = createMetadata({
   title: "Our Services",
   description:
     "Personalised in-home nursing and care services across NDIS, DVA, aged care, and private. Quality-focused clinical support led by experienced nurses.",
-  keywords: [
-    "in-home nursing Sydney",
-    "NDIS registered provider",
-    "DVA community nursing",
-    "aged care at home",
-    "private nursing care",
-    "complex care support",
-  ],
   canonical: `${INTEGRATIONS.siteUrl}/services`,
   openGraph: {
     images: [{ url: "/images/og/services.png", width: 1200, height: 630, alt: "In-Home Services — Gentle Care Nursing Services" }],

@@ -15,14 +15,6 @@ export const defaultMetadata: Metadata = {
   },
   description:
     "Personalised in-home nursing and care services. Registered NDIS and DVA provider. Trusted by families, support coordinators, and healthcare professionals.",
-  keywords: [
-    "NDIS nursing",
-    "in-home care",
-    "community nursing",
-    "aged care",
-    "DVA care",
-    "personal care",
-  ],
   authors: [{ name: SITE.name }],
   openGraph: {
     type: "website",

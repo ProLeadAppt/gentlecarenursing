@@ -42,17 +42,6 @@ export const metadata: Metadata = {
   },
   description:
     "Personalised in-home nursing and care services. Registered NDIS provider and DVA Contracted Community Nursing Provider. Trusted by families, support coordinators, and healthcare professionals.",
-  keywords: [
-    "NDIS nursing",
-    "in-home care",
-    "community nursing",
-    "aged care",
-    "DVA care",
-    "personal care",
-    "in-home nursing",
-    "registered NDIS provider",
-    "DVA contracted community nursing",
-  ],
   authors: [{ name: "Gentle Care Nursing Services" }],
   openGraph: {
     type: "website",

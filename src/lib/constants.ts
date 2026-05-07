@@ -73,3 +73,12 @@ export const CTA_REASSURANCE =
 /** Hero-specific reassurance under CTAs (team notified). */
 export const HERO_REASSURANCE =
   "Submit an enquiry and our team is notified immediately so your request can be reviewed quickly.";
+
+/**
+ * Last meaningful copy/structure update across the site (ISO date).
+ * Used as the sitemap `lastModified` for static pages that don't have
+ * their own date field. Bump this when you ship a copy refresh, voice
+ * sweep, or page-structure change so crawlers see a fresh `lastmod`.
+ * Don't bump for purely cosmetic CSS or component changes.
+ */
+export const SITE_LAST_UPDATED = "2026-05-07";

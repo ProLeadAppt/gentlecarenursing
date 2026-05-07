@@ -9,13 +9,6 @@ export const metadata = createMetadata({
   title: "Assistance with Daily Living | In-Home Support Sydney",
   description:
     "Practical help with household tasks, meal preparation, and daily routines. Support for NDIS and aged care participants to live more independently at home.",
-  keywords: [
-    "assistance with daily living",
-    "NDIS household tasks",
-    "home support Sydney",
-    "meal preparation services",
-    "domestic assistance Sydney",
-  ],
   canonical,
 });
 
