@@ -2,22 +2,63 @@ import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "./SectionHeader";
 import { CTA_LINKS } from "@/lib/constants";
-import { Guide } from "@/content/guides";
+import { Guide, GUIDE_ABOUT_ENTITIES } from "@/content/guides";
+import { getMedicalGuideSchema, getBreadcrumbListSchema } from "@/lib/schema";
 import Link from "next/link";
 
 interface GuidePageLayoutProps {
   guide: Guide;
 }
 
+function formatReviewedDate(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  return d.toLocaleDateString("en-AU", { year: "numeric", month: "long", day: "numeric" });
+}
+
 export function GuidePageLayout({ guide }: GuidePageLayoutProps) {
+  const schemas = [
+    ...getMedicalGuideSchema({
+      title: guide.title,
+      snippetAnswer: guide.snippetAnswer,
+      slug: guide.slug,
+      publishedAt: guide.publishedAt,
+      reviewedAt: guide.reviewedAt,
+      reviewer: guide.reviewer,
+      about: GUIDE_ABOUT_ENTITIES[guide.id],
+    }),
+    getBreadcrumbListSchema([
+      { name: "Home", item: "/" },
+      { name: "Guides", item: "/guides" },
+      { name: guide.title, item: `/guides/${guide.slug}` },
+    ]),
+  ];
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
+      />
+
       <Section size="lg" variant="card">
         <Container size="md">
           <SectionHeader title={guide.title} subtitle={guide.snippetAnswer} size="lg" />
           <p className="mx-auto mt-4 max-w-2xl text-center text-base text-muted-foreground">
             This short guide explains what to expect and how Gentle Care Nursing Services can support you at home. It does not replace advice from your doctor or treating team.
           </p>
+          {guide.reviewedAt && (
+            <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
+              Last clinically reviewed: {formatReviewedDate(guide.reviewedAt)}
+              {guide.reviewer && (
+                <>
+                  {" "}by {guide.reviewer.name}
+                  {guide.reviewer.role ? `, ${guide.reviewer.role}` : ""}
+                </>
+              )}
+              .
+            </p>
+          )}
         </Container>
       </Section>
 

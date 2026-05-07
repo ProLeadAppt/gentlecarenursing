@@ -87,4 +87,4 @@ Address: Level 1/5 George St, North Strathfield NSW 2137, Australia
 
 ## Structured data
 
-This site publishes schema.org JSON-LD: MedicalBusiness, Organization, WebSite, BlogPosting, FAQPage, HowTo, BreadcrumbList.
+This site publishes schema.org JSON-LD: MedicalBusiness, Organization (with knowsAbout, contactPoint, areaServed, address), WebSite, BlogPosting, Article (on guides, with optional reviewedBy and dateReviewed), FAQPage, HowTo, BreadcrumbList, MedicalService, MedicalCondition and MedicalProcedure (on relevant guides), AggregateRating (where review data is verified). Organization is referenced via @id from WebSite.publisher.

@@ -63,6 +63,10 @@ export interface ServicePageData {
   }[];
   /** Optional guide slugs that are especially relevant to this service */
   relatedGuideSlugs?: string[];
+  /** ISO date (YYYY-MM-DD) the page content was last clinically reviewed. */
+  reviewedAt?: string;
+  /** Named clinician who reviewed the page. Populate only with consent and AHPRA confirmation. */
+  reviewer?: { name: string; role?: string };
 }
 
 interface ServicePageLayoutProps {

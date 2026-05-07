@@ -1,5 +1,13 @@
 /**
  * FAQ items. Full list for the FAQ page and service page snippets.
+ *
+ * Answer style (AEO/AI-citable): each answer is written as a self-contained
+ * 40–60 word passage. It restates enough of the question to stand alone,
+ * names "Gentle Care Nursing Services" explicitly, and includes at least one
+ * verifiable specific (regulator, suburb region, funding category, registered
+ * status). Voice rules in `.agents/product-marketing-context.md` are binding:
+ * no "boutique", no "guarantee", DVA wording exact, response phrased as
+ * "we aim to respond within 24 hours".
  */
 
 export interface FaqCategory {
@@ -15,25 +23,25 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "registered-provider",
         question: "Are you a registered NDIS and DVA provider?",
         answer:
-          "Yes. Gentle Care Nursing Services is fully registered with the NDIS and is a DVA Contracted Community Nursing Provider, supporting eligible Veteran Card holders with clinically required nursing and personal care services at home. We meet all required quality and safety standards.",
+          "Yes. Gentle Care Nursing Services is a fully registered NDIS provider and a DVA Contracted Community Nursing Provider, supporting eligible Veteran Card holders with clinically required nursing and personal care at home in Sydney. We meet the quality and safety standards set by the NDIS Quality and Safeguards Commission and the Department of Veterans’ Affairs.",
       },
       {
         id: "what-services",
         question: "What services does Gentle Care Nursing Services provide?",
         answer:
-          "We provide in-home nursing and personal care services across NDIS, DVA, aged care (Support at Home and CHSP), and private funding. Our services include clinical nursing, personal care, medication management, wound care, post-hospital recovery, respite, and more.",
+          "Gentle Care Nursing Services provides in-home nursing and personal care across Sydney, including community nursing, post-hospital care, complex care, palliative care, wound care, medication management, personal care, and overnight support. Care is funded through NDIS, DVA Community Nursing, aged care (Support at Home and CHSP), and private payment, and is delivered by AHPRA-registered nurses and experienced care professionals.",
       },
       {
         id: "service-areas",
-        question: "What areas do you service?",
+        question: "What areas in Sydney do you service?",
         answer:
-          "We provide in-home nursing and care across Sydney and surrounds, including Inner West, North Shore, Western Sydney, Northern Beaches, South Sydney, and Sydney CBD and East. Contact us to confirm coverage for your suburb.",
+          "Gentle Care Nursing Services delivers in-home nursing and care across Sydney and surrounds, including the Inner West, North Shore, Western Sydney, Northern Beaches, South Sydney, and Sydney CBD and East. If your suburb is near these regions, contact us to confirm coverage; we can usually arrange care across Greater Sydney depending on referral type and staff availability.",
       },
       {
         id: "who-provides",
-        question: "Who provides the care?",
+        question: "Who actually delivers the care?",
         answer:
-          "All care is delivered by qualified registered nurses and experienced care professionals. We carefully match clients with carers based on needs, preferences, and compatibility.",
+          "Care from Gentle Care Nursing Services is delivered by AHPRA-registered nurses and experienced care professionals, supervised by our clinical lead. Clinical tasks such as wound care, medication administration, and complex care are performed by registered nurses. Clients are matched with consistent carers based on care needs, preferences, and clinical complexity, so the same small team supports each person.",
       },
     ],
   },
@@ -42,27 +50,27 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
     items: [
       {
         id: "how-start",
-        question: "How do I get started?",
+        question: "How do I get started with Gentle Care Nursing Services?",
         answer:
-          "Submit an enquiry through our Request Care form, or contact us by phone or email. You'll get immediate confirmation and a personal response within 24 hours with clear next steps. We'll discuss your needs, explain your options, and arrange care as quickly as possible.",
+          "To start with Gentle Care Nursing Services, submit an enquiry through our Request Care form, or contact us by phone or email. You will receive an immediate confirmation that your enquiry has been received, and we aim to respond within 24 hours during business hours with clear next steps. Urgent referrals from hospitals and coordinators are prioritised.",
       },
       {
         id: "response-time",
         question: "How quickly do you respond to enquiries?",
         answer:
-          "You'll get an immediate confirmation when you submit. Our team is notified straight away and a real person will get back to you within 24 hours. Urgent referrals are prioritised for same-day response. We don't leave people waiting.",
+          "Gentle Care Nursing Services aims to respond to every enquiry within 24 hours during business hours. After you submit an enquiry, our team is notified straight away and a real person follows up. Urgent referrals — for example, from hospital discharge planners or NDIS support coordinators with same-day needs — are prioritised so families and clients are not left waiting.",
       },
       {
         id: "assessment",
         question: "Is there an assessment before care starts?",
         answer:
-          "Yes. We conduct an initial assessment to understand the client's needs, preferences, and goals. This helps us create a tailored care plan and match the right carer to each client.",
+          "Yes. Before care begins, Gentle Care Nursing Services completes an initial assessment to understand the person’s clinical needs, daily routines, home environment, and goals. The assessment informs a tailored care plan, identifies the right registered nurse or carer for the match, and confirms how the care will be funded through NDIS, DVA, aged care, or private payment.",
       },
       {
         id: "immediate-help",
         question: "Can I get help right away?",
         answer:
-          "Yes. You can call us during business hours, or use the voice assistant on our website for immediate guidance. For non-urgent enquiries, the Request Care form gets you a personal response within 24 hours.",
+          "If you need help quickly, call Gentle Care Nursing Services during business hours and our team can talk through urgent options. For non-urgent enquiries, the Request Care form sends an immediate acknowledgement, and we aim to respond within 24 hours. Urgent post-hospital and community nursing referrals are prioritised, with start dates depending on care needs and staff availability.",
       },
     ],
   },
@@ -71,21 +79,21 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
     items: [
       {
         id: "funding-types",
-        question: "What funding do you accept?",
+        question: "What funding types do you accept?",
         answer:
-          "We accept NDIS, DVA, aged care (Support at Home and CHSP), and private funding. Our team can help you understand which options may apply to your situation.",
+          "Gentle Care Nursing Services accepts NDIS funding for participants, DVA Community Nursing for eligible Veteran Card holders, aged care funding through Support at Home and the Commonwealth Home Support Programme (CHSP), and private fee-for-service payment. Our team can help families and coordinators work out which funding option applies to a particular situation before care starts.",
       },
       {
         id: "private-cost",
-        question: "How much does private care cost?",
+        question: "How much does private nursing care cost?",
         answer:
-          "Costs for private care depend on the type of service, duration, and frequency. Contact us for a personalised quote. We're transparent about pricing with no hidden fees.",
+          "The cost of private in-home nursing through Gentle Care Nursing Services depends on the type of care (registered nurse vs. personal care), shift length, time of day, and travel. We are upfront about pricing and provide a written quote before care starts, with no hidden fees. Contact us for a personalised quote based on your specific care needs.",
       },
       {
         id: "dva-cost",
-        question: "Is DVA care free for veterans?",
+        question: "Is DVA Community Nursing free for eligible veterans?",
         answer:
-          "For eligible veterans with a DVA Gold or White Card, services are provided at no out-of-pocket cost. We handle all claims directly with DVA on your behalf.",
+          "For eligible Veteran Card holders, DVA Community Nursing through Gentle Care Nursing Services is provided at no out-of-pocket cost when the care is clinically required and approved under the DVA Community Nursing programme. Gentle Care is a DVA Contracted Community Nursing Provider, so we handle all claims and clinical reporting directly with the Department of Veterans’ Affairs.",
       },
     ],
   },
@@ -94,21 +102,21 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
     items: [
       {
         id: "how-refer",
-        question: "How do I make a referral?",
+        question: "How do I make a referral to Gentle Care Nursing Services?",
         answer:
-          "Use our Request Care form to submit a referral. Include the client's details, care needs, and funding type. We'll review and respond quickly. Support coordinators, discharge planners, and healthcare professionals can also contact us directly.",
+          "To refer a client to Gentle Care Nursing Services, submit our Request Care form with the client’s details, care needs, and funding type, or contact us directly by phone or email. Support coordinators, hospital discharge planners, GPs, and allied health professionals can also send referrals. We aim to acknowledge referrals within 24 hours during business hours, with urgent referrals prioritised.",
       },
       {
         id: "who-can-refer",
         question: "Who can make a referral?",
         answer:
-          "Anyone can make a referral: families, NDIS support coordinators, hospital discharge planners, GPs, specialists, and other healthcare professionals. Self-referrals are also welcome.",
+          "Anyone can make a referral to Gentle Care Nursing Services. This includes families and carers, NDIS support coordinators and plan managers, hospital discharge planners and case managers, GPs and specialists, allied health professionals, and DVA contacts. Self-referrals from participants, veterans, and older Australians seeking in-home nursing or personal care are also welcome.",
       },
       {
         id: "referral-info",
         question: "What information do I need to make a referral?",
         answer:
-          "The more detail, the better, but we can work with what you have. Ideally: client name, contact details, funding type (NDIS, DVA, aged care, private), a brief description of care needs, and any relevant medical information.",
+          "When referring a client to Gentle Care Nursing Services, ideally include the client’s name and contact details, funding type (NDIS, DVA, aged care, or private), a short description of clinical and personal care needs, the suburb, and any relevant medical information. We can work with partial information and follow up to confirm the rest before care begins.",
       },
     ],
   },
@@ -119,19 +127,19 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "ndis-registered",
         question: "Is Gentle Care Nursing Services a registered NDIS provider?",
         answer:
-          "Yes. We are a fully registered NDIS provider, meeting all quality and safety standards required by the NDIS Quality and Safeguards Commission.",
+          "Yes. Gentle Care Nursing Services is a fully registered NDIS provider supporting participants across Sydney with in-home nursing, personal care, complex care, and community participation. We meet all quality and safety standards required by the NDIS Quality and Safeguards Commission, so support coordinators and plan managers can refer with confidence and bill against the relevant Core Supports and Capacity Building line items.",
       },
       {
         id: "dva-contracted",
         question: "Are you a DVA Contracted Community Nursing Provider?",
         answer:
-          "Yes. Gentle Care Nursing Services is contracted to provide DVA Community Nursing services. We support eligible Veteran Card holders with clinically required nursing and personal care services at home and handle DVA claims directly.",
+          "Yes. Gentle Care Nursing Services is contracted to provide DVA Community Nursing services for eligible Veteran Card holders. We deliver clinically required nursing and personal care at home — including wound care, medication management, chronic disease monitoring, and post-hospital support — and submit claims and clinical reporting directly to the Department of Veterans’ Affairs.",
       },
       {
         id: "different",
-        question: "What makes Gentle Care different?",
+        question: "What makes Gentle Care Nursing Services different?",
         answer:
-          "We take on fewer clients so each person receives more dedicated, attentive care. We focus on quality over volume: personalised care plans, consistent carers, fast response times, and genuine support for families and referral partners.",
+          "Gentle Care Nursing Services deliberately keeps a small caseload so each client gets dedicated, clinician-led care from a consistent team. We are led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support. We aim to respond to enquiries within 24 hours during business hours, with urgent referrals prioritised.",
       },
     ],
   },
