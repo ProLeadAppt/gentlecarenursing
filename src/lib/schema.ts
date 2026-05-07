@@ -121,13 +121,72 @@ export function getOrganizationSchema() {
     ...Object.values(SITE.social).filter(Boolean),
     ...(SITE.gbpUrl ? [SITE.gbpUrl] : []),
   ] as string[];
+
+  // knowsAbout strengthens entity profile for AI engines on healthcare queries.
+  // Keep terms aligned with services we actually deliver and language used on-site.
+  const knowsAbout = [
+    "In-home nursing",
+    "Community nursing",
+    "NDIS in-home support",
+    "DVA Community Nursing",
+    "Aged care at home",
+    "Support at Home",
+    "Commonwealth Home Support Programme",
+    "Post-hospital care",
+    "Hospital at Home",
+    "Complex care at home",
+    "Palliative care at home",
+    "Wound care",
+    "Medication management",
+    "Tracheostomy care",
+    "PEG feeding",
+    "Catheter management",
+    "Personal care",
+    "Overnight nursing support",
+  ];
+
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": `${INTEGRATIONS.siteUrl}/#organization`,
     name: SITE.name,
+    legalName: SITE.name,
+    description: ELEVATOR_PITCH,
     url: INTEGRATIONS.siteUrl,
     logo: `${INTEGRATIONS.siteUrl}/images/logo.png`,
+    slogan: "Personalised, clinician-led in-home nursing and care",
+    telephone: SITE.phone,
+    email: SITE.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Level 1/5 George St",
+      addressLocality: "North Strathfield",
+      addressRegion: "NSW",
+      postalCode: "2137",
+      addressCountry: "AU",
+    },
+    areaServed: [
+      { "@type": "City", name: "Sydney", containedInPlace: { "@type": "State", name: "New South Wales" } },
+      { "@type": "State", name: "New South Wales" },
+      { "@type": "Country", name: "Australia" },
+    ],
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: SITE.phone,
+        email: SITE.email,
+        contactType: "customer service",
+        areaServed: "AU",
+        availableLanguage: ["English"],
+        hoursAvailable: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "08:00",
+          closes: "17:00",
+        },
+      },
+    ],
+    knowsAbout,
     ...(sameAs.length > 0 ? { sameAs } : {}),
   };
 }
@@ -282,6 +341,75 @@ export function getAggregateRatingSchema() {
     worstRating: "1",
     ratingCount: GOOGLE_REVIEWS.reviewCount.toString(),
   };
+}
+
+/**
+ * Schema bundle for clinical/care guides at /guides/[slug].
+ * Returns Article + WebPage so AI engines can extract guide content
+ * with clear authorship, freshness, and topical entity binding.
+ *
+ * `about` accepts MedicalCondition / MedicalProcedure entities for
+ * condition-specific guides (e.g. hip replacement -> MedicalProcedure).
+ */
+export interface GuideAboutEntity {
+  type: "MedicalCondition" | "MedicalProcedure" | "Thing";
+  name: string;
+  alternateName?: string;
+}
+
+export function getMedicalGuideSchema(args: {
+  title: string;
+  snippetAnswer: string;
+  slug: string;
+  publishedAt?: string;
+  reviewedAt?: string;
+  reviewer?: { name: string; role?: string };
+  about?: readonly GuideAboutEntity[];
+}) {
+  const url = `${INTEGRATIONS.siteUrl}/guides/${args.slug}`;
+  const isoDate = args.reviewedAt ?? args.publishedAt;
+
+  const aboutEntities = (args.about ?? []).map((entity) => ({
+    "@type": entity.type,
+    name: entity.name,
+    ...(entity.alternateName ? { alternateName: entity.alternateName } : {}),
+  }));
+
+  const article = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: args.title,
+    description: args.snippetAnswer,
+    url,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    publisher: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
+    ...(args.publishedAt ? { datePublished: args.publishedAt } : {}),
+    ...(isoDate ? { dateModified: isoDate } : {}),
+    ...(args.reviewedAt && args.reviewer
+      ? {
+          reviewedBy: {
+            "@type": "Person",
+            name: args.reviewer.name,
+            ...(args.reviewer.role ? { jobTitle: args.reviewer.role } : {}),
+          },
+          dateReviewed: args.reviewedAt,
+        }
+      : {}),
+    ...(aboutEntities.length > 0 ? { about: aboutEntities } : {}),
+  };
+
+  const webPage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: args.title,
+    description: args.snippetAnswer,
+    url,
+    isPartOf: { "@type": "WebSite", url: INTEGRATIONS.siteUrl, name: SITE.name },
+    ...(isoDate ? { dateModified: isoDate } : {}),
+    ...(aboutEntities.length > 0 ? { about: aboutEntities } : {}),
+  };
+
+  return [article, webPage];
 }
 
 export function getArticleSchema(post: {

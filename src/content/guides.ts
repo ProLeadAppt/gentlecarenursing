@@ -25,7 +25,49 @@ export interface Guide {
     label: string;
     href: string;
   };
+  /** ISO date (YYYY-MM-DD) the guide was first published. Optional — populate when known. */
+  publishedAt?: string;
+  /**
+   * ISO date (YYYY-MM-DD) the guide was last clinically reviewed.
+   * Surfaced visibly on-page and in schema for AI freshness signals.
+   * Populate together with `reviewer` when a clinician has signed off.
+   */
+  reviewedAt?: string;
+  /** Named clinician who reviewed the guide. Populate only with consent and AHPRA confirmation. */
+  reviewer?: { name: string; role?: string };
 }
+
+/**
+ * Topical entities each guide is about — used for schema.org `about`
+ * (MedicalCondition / MedicalProcedure). Helps AI engines bind the guide
+ * to the right clinical query intent.
+ */
+export const GUIDE_ABOUT_ENTITIES: Record<GuideId, ReadonlyArray<{
+  type: "MedicalCondition" | "MedicalProcedure" | "Thing";
+  name: string;
+  alternateName?: string;
+}>> = {
+  "in-home-care-after-hip-replacement": [
+    { type: "MedicalProcedure", name: "Hip replacement", alternateName: "Total hip arthroplasty" },
+    { type: "Thing", name: "Post-operative recovery at home" },
+  ],
+  "in-home-care-for-dementia": [
+    { type: "MedicalCondition", name: "Dementia" },
+    { type: "Thing", name: "In-home dementia care" },
+  ],
+  "in-home-care-for-chronic-wounds": [
+    { type: "MedicalCondition", name: "Chronic wound" },
+    { type: "MedicalProcedure", name: "Wound care" },
+  ],
+  "in-home-care-after-stroke": [
+    { type: "MedicalCondition", name: "Stroke", alternateName: "Cerebrovascular accident" },
+    { type: "Thing", name: "Stroke recovery at home" },
+  ],
+  "support-for-family-carers-and-burnout": [
+    { type: "Thing", name: "Family carer support" },
+    { type: "MedicalCondition", name: "Caregiver burnout" },
+  ],
+};
 
 export const GUIDES: readonly Guide[] = [
   {
