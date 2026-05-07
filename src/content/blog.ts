@@ -49,7 +49,7 @@ const DEFAULT_AUTHOR: BlogAuthor = {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "understanding-ndis-in-home-nursing",
-    title: "Understanding NDIS In-Home Nursing: What's Covered and How to Access It",
+    title: "NDIS In-Home Nursing: What's Covered and How to Access It",
     excerpt:
       "A clear guide to NDIS-funded in-home nursing services — what's included, how to request it, and what to expect from your provider.",
     content: `
