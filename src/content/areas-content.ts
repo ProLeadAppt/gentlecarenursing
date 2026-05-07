@@ -37,11 +37,17 @@ export function slugifyRegion(region: string): string {
 export const AREAS_CONTENT: AreaContent[] = AREAS_SERVED.map((area) => {
   const slug = slugifyRegion(area.region);
   const suburbList = area.suburbs.slice(0, 4).join(", ") + (area.suburbs.length > 4 ? " and more" : "");
+  // Meta description kept ≤160 chars across all six regions. Suburbs were
+  // moved out (they live in the page body) and the redundant ", Sydney"
+  // suffix is dropped for regions whose names already include "Sydney".
+  // DVA wording is locked to "DVA Contracted Community Nursing Provider"
+  // per the binding voice rule.
+  const sydneySuffix = /sydney/i.test(area.region) ? "" : ", Sydney";
   return {
     region: area.region,
     slug,
     headline: `In-home nursing and care in ${area.region}: NDIS, DVA, aged care, and private.`,
-    description: `Gentle Care Nursing Services provides in-home nursing and personal care across ${area.region} (${area.suburbs.join(", ")}). Registered NDIS provider and DVA Contracted Community Nursing Provider. Personal response within 24 hours.`,
+    description: `In-home nursing and personal care in ${area.region}${sydneySuffix}. Registered NDIS provider and DVA Contracted Community Nursing Provider. Response within 24 hours.`,
     body: AREA_BODY_TEMPLATE.replace("{suburbs}", suburbList),
     examples: [
       `An older person in ${area.region} coming home from hospital who needs short-term nursing and personal care to feel more confident.`,

@@ -4,7 +4,7 @@ import { INTEGRATIONS } from "@/config/integrations";
 import HomePageContent from "@/components/sections/HomePageContent";
 
 export const metadata: Metadata = createMetadata({
-  title: "Gentle Care Nursing Services | In-Home Nursing & Care Services",
+  title: "Gentle Care Nursing Services | In-Home Nursing Sydney",
   description:
     "Personalised in-home nursing and care services. Registered NDIS and DVA provider. Trusted by families, support coordinators, and healthcare professionals.",
   canonical: `${INTEGRATIONS.siteUrl}/`,

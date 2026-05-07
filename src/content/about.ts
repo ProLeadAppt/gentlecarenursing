@@ -105,37 +105,41 @@ export const TEAM_MEMBERS = [
   },
 ] as const;
 
-/** Key milestones — From founding to registered provider status */
+/**
+ * Key milestones. Voice rule (binding) prohibits specific year/duration claims
+ * ("since 2014", "X+ years operating"), so the badge labels are stage markers
+ * rather than calendar years. Order is the journey order, not date order.
+ */
 export const MILESTONES = [
   {
-    year: "2018",
+    year: "Start",
     title: "Gentle Care Nursing Services Founded",
     description:
-      "Born from a belief that in-home care should be personal, responsive, and clinician-led.",
+      "Founded by a clinician who wanted in-home care to be personal, responsive, and clinician-led.",
   },
   {
-    year: "2019",
-    title: "NDIS Registered Provider",
+    year: "NDIS",
+    title: "Registered NDIS Provider",
     description:
       "Registered as an NDIS provider to support participants with in-home nursing and disability support.",
   },
   {
-    year: "2020",
+    year: "DVA",
     title: "DVA Contracted Community Nursing Provider",
     description:
-      "Contracted to deliver DVA Community Nursing services for eligible Veteran Card holders.",
+      "Contracted to provide DVA Community Nursing services for eligible Veteran Card holders.",
   },
   {
-    year: "2022",
-    title: "Expanded Across Sydney",
+    year: "Sydney",
+    title: "Coverage Across Greater Sydney",
     description:
       "Extended coverage across Greater Sydney, supporting families from the Inner West to the North Shore and beyond.",
   },
   {
-    year: "2025",
-    title: "Personalised Model, Proven Results",
+    year: "Today",
+    title: "Personalised, Clinician-Led Model",
     description:
-      "Continuing to grow with intention. Smaller client loads, a dedicated clinical team, and a clear response window.",
+      "Growing with intention: a deliberately small caseload, a dedicated clinical team, and a clear response window.",
   },
 ] as const;
 

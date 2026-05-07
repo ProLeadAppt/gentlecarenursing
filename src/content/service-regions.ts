@@ -578,7 +578,14 @@ function buildPage(
   region: RegionDefinition
 ): ServiceRegionPageData {
   const path = `/services/${service.slug}/${region.slug}`;
-  const metaTitle = `${service.title} in ${region.region} Sydney | Gentle Care Nursing`;
+  // Title template kept ≤62 chars across all 30 service×region combos so it
+  // doesn't truncate in Google SERPs. Uses `shortTitle` (e.g. "Personal Care"
+  // not "Personal Care & Daily Living") and avoids double-Sydney for regions
+  // whose names already contain "Sydney" (e.g. "Sydney CBD & East").
+  const regionPhrase = /sydney/i.test(region.region)
+    ? region.region
+    : `${region.region} Sydney`;
+  const metaTitle = `${service.shortTitle} in ${regionPhrase} | Gentle Care`;
   // Keep meta description ≤160 chars for SERP display.
   const metaDescription =
     `${service.title} in ${region.region}, Sydney. Clinician-led, relationship-based care. We aim to respond within 24 hours.`;
