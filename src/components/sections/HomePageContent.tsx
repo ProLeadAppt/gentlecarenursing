@@ -2,6 +2,7 @@
 
 import { Hero } from "@/components/sections/Hero";
 import { TrustMarquee } from "@/components/sections/TrustMarquee";
+import { EvidencePanel } from "@/components/sections/EvidencePanel";
 import { AboutUsSection } from "@/components/sections/AboutUsSection";
 import { BentoServiceGrid } from "@/components/sections/BentoServiceGrid";
 import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
@@ -23,6 +24,7 @@ import {
   HOMEPAGE_HERO,
   WHY_DIFFERENT,
   HOMEPAGE_SERVICES_IMAGE,
+  HOMEPAGE_EVIDENCE,
   PROCESS_STEPS,
   REFERRAL_PROFESSIONALS,
   HOMEPAGE_FAQ,
@@ -62,6 +64,13 @@ export default function HomePageContent() {
 
       {/* 2. Trust Marquee (Social Proof) */}
       <TrustMarquee />
+
+      {/* 2b. Evidence Panel (AEO/GEO citable facts) */}
+      <EvidencePanel
+        heading={HOMEPAGE_EVIDENCE.heading}
+        intro={HOMEPAGE_EVIDENCE.intro}
+        items={HOMEPAGE_EVIDENCE.items}
+      />
 
       {/* 3. About Us (Personal/Quality) */}
       <SectionReveal>

@@ -191,6 +191,39 @@ export function getOrganizationSchema() {
   };
 }
 
+/**
+ * Person schema for the founder. Linked to Organization via `worksFor` so
+ * Google and AI engines can resolve the founder ↔ business relationship.
+ *
+ * E-E-A-T: a Person node with role, jobTitle, and a worksFor reference is
+ * one of the strongest signals AI engines use to attribute authority and
+ * experience to the business in healthcare contexts. Only populate fields
+ * we can verify — never fabricate credentials, AHPRA numbers, or awards.
+ */
+export function getPersonSchema(args: {
+  name: string;
+  jobTitle: string;
+  description: string;
+  imagePath?: string;
+  /** Absolute URL for the page that profiles this person (usually /about). */
+  profilePath?: string;
+  /** Areas of expertise — short noun phrases. Mirrors knowsAbout style. */
+  knowsAbout?: readonly string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${INTEGRATIONS.siteUrl}/#person-${args.name.toLowerCase().replace(/\s+/g, "-")}`,
+    name: args.name,
+    jobTitle: args.jobTitle,
+    description: args.description,
+    ...(args.imagePath ? { image: `${INTEGRATIONS.siteUrl}${args.imagePath}` } : {}),
+    ...(args.profilePath ? { url: `${INTEGRATIONS.siteUrl}${args.profilePath}` } : {}),
+    worksFor: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
+    ...(args.knowsAbout && args.knowsAbout.length > 0 ? { knowsAbout: [...args.knowsAbout] } : {}),
+  };
+}
+
 /** BreadcrumbList schema for current page. Items: { name, item (url) } */
 export function getBreadcrumbListSchema(items: { name: string; item: string }[]) {
   return {

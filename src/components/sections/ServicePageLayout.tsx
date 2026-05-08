@@ -4,6 +4,7 @@ import { Grid } from "@/components/layout/Grid";
 import { TrustMarquee } from "./TrustMarquee";
 import { FaqPreview } from "./FaqPreview";
 import { ServiceCtaWithModal } from "./ServiceCtaWithModal";
+import { EvidencePanel, type EvidenceItem } from "./EvidencePanel";
 import { Heading } from "@/components/ui/Heading";
 import { Card } from "@/components/ui/Card";
 import { FormModalTrigger } from "@/components/ui/FormModalTrigger";
@@ -63,6 +64,17 @@ export interface ServicePageData {
   }[];
   /** Optional guide slugs that are especially relevant to this service */
   relatedGuideSlugs?: string[];
+  /**
+   * Optional AEO/GEO evidence panel. When provided, renders a "Quick facts"
+   * block immediately after the hero, surfacing citable factual claims
+   * (registration, area, response window, funding, scope) for AI engines.
+   */
+  evidence?: {
+    eyebrow?: string;
+    heading?: string;
+    intro?: string;
+    items: readonly EvidenceItem[];
+  };
   /** ISO date (YYYY-MM-DD) the page content was last clinically reviewed. */
   reviewedAt?: string;
   /** Named clinician who reviewed the page. Populate only with consent and AHPRA confirmation. */
@@ -167,6 +179,15 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
           </Reveal>
         </Container>
       </section>
+
+      {data.evidence && (
+        <EvidencePanel
+          eyebrow={data.evidence.eyebrow}
+          heading={data.evidence.heading}
+          intro={data.evidence.intro}
+          items={data.evidence.items}
+        />
+      )}
 
       <TrustMarquee />
 
