@@ -50,6 +50,8 @@ export const GUIDE_ABOUT_ENTITIES: Record<GuideId, ReadonlyArray<{
   "in-home-care-after-hip-replacement": [
     { type: "MedicalProcedure", name: "Hip replacement", alternateName: "Total hip arthroplasty" },
     { type: "Thing", name: "Post-operative recovery at home" },
+    { type: "MedicalCondition", name: "Hip osteoarthritis", alternateName: "Hip OA" },
+    { type: "Thing", name: "In-home post-hospital nursing in Sydney" },
   ],
   "in-home-care-for-dementia": [
     { type: "MedicalCondition", name: "Dementia" },
@@ -73,9 +75,9 @@ export const GUIDES: readonly Guide[] = [
   {
     id: "in-home-care-after-hip-replacement",
     slug: "in-home-care-after-hip-replacement",
-    title: "In-Home Care After Hip Replacement",
+    title: "In-Home Care After Hip Replacement in Sydney",
     snippetAnswer:
-      "In-home care after hip replacement is short-term nursing and personal care at home to support your recovery, reduce falls risk, and keep your pain and mobility on track after you leave hospital.",
+      "In-home care after hip replacement is short-term nursing and personal care at home — across Sydney and surrounds — to support your recovery, reduce falls risk, and keep your pain and mobility on track after you leave hospital. Visits are typically more frequent in the first one to two weeks, then step down as confidence and mobility return.",
     intent: "post-hospital",
     primaryServiceSlug: "post-hospital-care",
     sections: [
@@ -83,30 +85,78 @@ export const GUIDES: readonly Guide[] = [
         id: "what-it-is",
         heading: "What does in-home care after hip replacement include?",
         body:
-          "After a hip replacement, most people leave hospital before they feel completely steady on their feet. In-home care bridges the gap between hospital and full independence.",
+          "After a hip replacement, most people leave hospital before they feel completely steady on their feet. In-home care bridges the gap between hospital and full independence — clinical oversight, personal care, and the practical support that keeps recovery on track.",
         bullets: [
           "Nursing checks on your wound, pain, and medications",
           "Help with bathing, dressing, and getting in and out of bed or chairs",
           "Support with exercises prescribed by your physio (not replacing physiotherapy)",
-          "Monitoring for signs that you need extra review from your surgeon or GP",
+          "Falls prevention — managing thresholds, rugs, bathroom transfers, and mobility aids",
+          "Monitoring for signs of infection, deep vein thrombosis (DVT), or dislocation that need extra review from your surgeon or GP",
+        ],
+      },
+      {
+        id: "sydney-coverage",
+        heading: "Where in Sydney do you provide post-hip-replacement care?",
+        body:
+          "Gentle Care Nursing Services delivers post-hip-replacement support across Greater Sydney, including the Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, and the CBD and Eastern Suburbs. We work alongside discharge planners and orthopaedic teams at the major Sydney hospitals where hip-replacement surgery is performed.",
+        bullets: [
+          "Royal Prince Alfred Hospital (RPA) and Concord Hospital — Inner West",
+          "Royal North Shore Hospital (RNSH), the Mater Hospital, and North Shore Private — North Shore",
+          "St Vincent's Hospital and Prince of Wales Hospital — CBD and Eastern Suburbs",
+          "Westmead, Blacktown, Nepean, and Liverpool Hospital — Western Sydney",
+          "St George Hospital (Kogarah) and Sutherland Hospital (Caringbah) — South Sydney",
+          "Northern Beaches Hospital (Frenchs Forest) and Mona Vale Hospital — Northern Beaches",
         ],
       },
       {
         id: "who-its-for",
         heading: "Who is this type of support right for?",
         body:
-          "In-home support after hip replacement is most helpful when you are safe to be at home, but still need another pair of hands and clinical oversight.",
+          "In-home support after hip replacement is most helpful when you are safe to be at home, but still need another pair of hands and clinical oversight. It works for older Australians on Support at Home or DVA, NDIS participants recovering from a planned hip replacement, and private clients arranging their own post-surgical recovery.",
         bullets: [
           "Older adults who feel unsteady or anxious about falls after surgery",
-          "People living alone who don’t have family nearby to assist every day",
+          "People living alone who don't have family nearby to assist every day",
           "Families who can help but need guidance and occasional respite",
+          "Veterans accessing DVA-funded community nursing after a hip replacement",
+          "NDIS participants whose plan funds short-term post-hospital recovery support",
         ],
+      },
+      {
+        id: "first-two-weeks",
+        heading: "What does the first two weeks at home usually look like?",
+        body:
+          "The first one to two weeks at home are when most complications either appear or get caught early — wound infection, DVT, dislocation, or simply doing too much too soon. Visits are typically daily or near-daily during this period, focused on the wound, the medication regime, mobility, and falls prevention. Care steps down as confidence and mobility return.",
       },
       {
         id: "how-long",
         heading: "How long do people usually need help?",
         body:
-          "The length of support depends on your age, other health conditions, and home environment. Many people need more intensive help in the first 1–2 weeks, then gradually step down visits as confidence and mobility return.",
+          "The length of support depends on your age, other health conditions, and home environment. Many people need more intensive help in the first one to two weeks, then gradually step down visits as confidence and mobility return. By around the six-week mark, most people are managing more independently — though some choose to keep a smaller schedule of visits going for longer.",
+      },
+      {
+        id: "funding",
+        heading: "How is post-hip-replacement care at home funded in Sydney?",
+        body:
+          "Funding usually comes from one of four sources, and the right one depends on your situation. Most Sydney readers will be eligible for one of these — your discharge planner, GP, or aged-care assessor can confirm.",
+        bullets: [
+          "DVA Community Nursing — for eligible Veteran Card holders, by referral from your GP or treating doctor",
+          "Support at Home or CHSP — for older Australians with an aged-care assessment outcome",
+          "NDIS — for participants whose plan funds short-term post-hospital nursing or personal care",
+          "Private fee-for-service — when no funded program applies, or to top up other supports",
+        ],
+      },
+      {
+        id: "what-to-watch-for",
+        heading: "What should I watch for at home and when should I call someone?",
+        body:
+          "Most hip-replacement recoveries go well, but the early window is when complications matter most. Contact your treating team or 000 promptly if any of the following appear, and call us if you'd like a nursing review.",
+        bullets: [
+          "Increasing redness, swelling, warmth, or fluid leaking from the wound",
+          "Calf pain, swelling, or sudden shortness of breath (possible DVT or pulmonary embolism)",
+          "Sudden, severe pain in the hip, especially with a change in leg length or alignment (possible dislocation)",
+          "A fever above 38°C in the first weeks after surgery",
+          "Pain that isn't controlled by your prescribed medication regime",
+        ],
       },
     ],
     cta: {
