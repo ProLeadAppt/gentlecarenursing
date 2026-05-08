@@ -39,6 +39,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
     { path: "/guides", priority: 0.7, changeFrequency: "monthly" },
     { path: "/areas", priority: 0.85, changeFrequency: "monthly" },
+    {
+      path: "/compare/registered-ndis-provider-vs-non-registered",
+      priority: 0.75,
+      changeFrequency: "monthly",
+    },
   ];
 
   const entries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
