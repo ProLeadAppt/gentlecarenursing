@@ -32,10 +32,17 @@ export function BlogCard({ post, className }: BlogCardProps) {
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
+          // No featured image: show the Gentle Care heart-handshake mark
+          // as a soft, on-brand placeholder. Uses the favicon webp so the
+          // browser can lazy-load it from cache once it's fetched once.
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-4xl font-[family-name:var(--font-serif)] text-muted-foreground/20 select-none">
-              GCN
-            </span>
+            <Image
+              src="/images/gentle care nursing favicon.webp"
+              alt="Gentle Care Nursing Services"
+              width={88}
+              height={88}
+              className="h-20 w-20 opacity-60 select-none"
+            />
           </div>
         )}
         {/* Category badge */}
