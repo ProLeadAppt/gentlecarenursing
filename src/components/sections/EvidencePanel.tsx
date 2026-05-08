@@ -63,6 +63,15 @@ interface EvidencePanelProps {
    * inside a section that already owns the H2.
    */
   headingLevel?: "h2" | "h3";
+  /**
+   * Visual density. "default" matches the original prominent treatment used
+   * above the fold on service pages. "compact" tightens padding, drops one
+   * size off the heading, and is intended for the bottom-of-homepage
+   * placement where the panel exists primarily for AI-engine extraction
+   * rather than as a hero element. Either way the same `<dl>` semantics
+   * are preserved so the citable factual data is identical.
+   */
+  density?: "default" | "compact";
 }
 
 export function EvidencePanel({
@@ -72,27 +81,30 @@ export function EvidencePanel({
   items,
   tone = "muted",
   headingLevel = "h2",
+  density = "default",
 }: EvidencePanelProps) {
   const HeadingTag = headingLevel;
   const surfaceClass =
     tone === "muted"
       ? "bg-muted/40 border-border/60"
       : "bg-white border-border/70";
+  const isCompact = density === "compact";
+  const sectionPadding = isCompact ? "py-8 sm:py-10" : "py-12 sm:py-16";
+  const cardPadding = isCompact ? "px-5 py-6 sm:px-7 sm:py-7" : "px-6 py-8 sm:px-10 sm:py-10";
+  const headerSpacing = isCompact ? "mb-5" : "mb-6 sm:mb-8";
+  const headingClass = isCompact
+    ? "mt-2 text-xl sm:text-2xl font-bold tracking-tight text-foreground font-[family-name:var(--font-serif)]"
+    : "mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-[family-name:var(--font-serif)]";
 
   return (
-    <section className="py-12 sm:py-16" aria-labelledby="evidence-panel-heading">
+    <section className={sectionPadding} aria-labelledby="evidence-panel-heading">
       <Container size="md">
-        <div
-          className={`rounded-3xl border ${surfaceClass} px-6 py-8 sm:px-10 sm:py-10`}
-        >
-          <div className="mb-6 sm:mb-8">
+        <div className={`rounded-3xl border ${surfaceClass} ${cardPadding}`}>
+          <div className={headerSpacing}>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary/70">
               {eyebrow}
             </p>
-            <HeadingTag
-              id="evidence-panel-heading"
-              className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-[family-name:var(--font-serif)]"
-            >
+            <HeadingTag id="evidence-panel-heading" className={headingClass}>
               {heading}
             </HeadingTag>
             {intro && (
