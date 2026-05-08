@@ -31,7 +31,7 @@ export function WhyDifferent({
   subtitle = "We focus on quality over volume.",
   differentiators,
   imageSrc = "/images/vitaly-gariev-Wk6f1CkGlEo-unsplash.webp",
-  imageAlt = "Professional nurse providing compassionate in-home care",
+  imageAlt = "Personalised in-home care delivered with warmth",
   sectionVariant = "default",
 }: WhyDifferentProps) {
   return (
@@ -94,8 +94,8 @@ export function WhyDifferent({
                 <Star className="h-6 w-6 text-accent" />
               </div>
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Expertise</p>
-                <p className="text-sm font-bold">10+ Yrs Clinician Exp.</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Experience</p>
+                <p className="text-sm font-bold">10+ Yrs Hands-On Care</p>
               </div>
             </motion.div>
             

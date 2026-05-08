@@ -1,16 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShieldCheck, Heart, Award, Star, CheckCircle2, BadgeCheck } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { ShieldCheck, Heart, Award, Star, BadgeCheck } from "lucide-react";
 
 const TRUST_ITEMS = [
   { label: "Registered NDIS Provider", icon: ShieldCheck },
   { label: "DVA Contracted Provider", icon: BadgeCheck },
-  { label: "10+ Yrs Clinician Experience", icon: Award },
-  { label: "Quick Response Window", icon: Star },
-  { label: "Clinical Excellence", icon: CheckCircle2 },
-  { label: "Personalised Care Model", icon: Heart },
+  { label: "10+ Yrs Hands-On Care", icon: Award },
+  { label: "~24hr Response Window", icon: Star },
+  { label: "Personalised Care", icon: Heart },
 ];
 
 export function TrustMarquee() {

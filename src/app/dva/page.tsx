@@ -7,16 +7,9 @@ export const metadata = createMetadata({
   title: "DVA & Community Nursing Sydney",
   description:
     "DVA Contracted Community Nursing Provider supporting eligible Veteran Card holders with clinically required nursing and personal care services at home.",
-  keywords: [
-    "DVA nursing",
-    "DVA community nursing",
-    "veteran home care",
-    "DVA contracted provider",
-    "community nursing",
-  ],
   canonical: `${INTEGRATIONS.siteUrl}/dva`,
   openGraph: {
-    images: [{ url: "/images/og/dva.png", width: 1200, height: 630, alt: "DVA & Community Nursing — Gentle Care Nursing Services" }],
+    images: [{ url: "/images/og/dva.png", width: 1200, height: 630, alt: "DVA & Community Nursing | Gentle Care Nursing Services" }],
   },
 });
 

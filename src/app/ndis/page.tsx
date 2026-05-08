@@ -7,16 +7,9 @@ export const metadata = createMetadata({
   title: "NDIS Services Sydney",
   description:
     "Registered NDIS provider delivering personalised in-home nursing and support for NDIS participants in Sydney. Trusted by support coordinators and families.",
-  keywords: [
-    "NDIS provider",
-    "NDIS nursing",
-    "NDIS personal care",
-    "NDIS in-home support",
-    "registered NDIS provider",
-  ],
   canonical: `${INTEGRATIONS.siteUrl}/ndis`,
   openGraph: {
-    images: [{ url: "/images/og/ndis.png", width: 1200, height: 630, alt: "NDIS Nursing & Care — Gentle Care Nursing Services" }],
+    images: [{ url: "/images/og/ndis.png", width: 1200, height: 630, alt: "NDIS Nursing & Care | Gentle Care Nursing Services" }],
   },
 });
 

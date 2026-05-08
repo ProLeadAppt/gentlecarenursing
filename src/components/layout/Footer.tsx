@@ -88,8 +88,8 @@ export function Footer({
               />
             </Link>
             <p className="text-lg leading-relaxed text-white/60 font-medium">
-              A nursing service dedicated to quality over volume. Led by a care
-              professional with over 10 years of hands-on experience.
+              Personalised in-home care and support, led by a care professional
+              with over 10 years of hands-on experience.
             </p>
             
             <div className="flex gap-4">

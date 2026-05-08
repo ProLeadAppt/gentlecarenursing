@@ -9,13 +9,6 @@ export const metadata = createMetadata({
   title: "Overnight Support & Sleepover Care at Home | Sydney",
   description:
     "Peace of mind while you sleep. Professional active overnight and sleepover care for NDIS and aged care participants across Sydney.",
-  keywords: [
-    "overnight care Sydney",
-    "sleepover support NDIS",
-    "active overnight nursing",
-    "night-time home care",
-    "falls prevention overnight",
-  ],
   canonical,
 });
 

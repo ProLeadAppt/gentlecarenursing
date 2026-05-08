@@ -32,18 +32,18 @@ interface HeroProps {
 const defaultCredentials = [
   { label: "NDIS Registered", color: "#6b9360" },
   { label: "DVA Contracted", color: "#1b6b6d" },
-  { label: "10+ Yrs Clinician Experience", color: "#c4704b" },
+  { label: "Aged Care Support", color: "#c4704b" },
 ] as const;
 
 export function Hero({
   headlineSegments,
   headline,
   subheadline,
-  eyebrow = "Clinician-Led · Personalised · Sydney",
+  eyebrow = "Personalised · Compassionate · Trusted",
   primaryCta,
   reassurance = HERO_REASSURANCE,
   imageSrc = "/images/vitaly-gariev-Wk6f1CkGlEo-unsplash.webp",
-  imageAlt = "Professional nurse providing compassionate in-home care",
+  imageAlt = "Personalised in-home care delivered with warmth",
   credentials = defaultCredentials,
 }: HeroProps) {
   const { openModal } = useFormModal();
@@ -58,7 +58,7 @@ export function Hero({
   const opacity = useTransform(scrollYProgress, [0, 0.5], prefersReducedMotion ? [1, 1] : [1, 0]);
 
   // Determine headline segments — support both new segmented and legacy single-string API
-  const segments = headlineSegments ?? (headline ? [headline] : ["Compassionate", "In-Home Care", "& Disability Support"]);
+  const segments = headlineSegments ?? (headline ? [headline] : ["Personalised", "In-Home Care & Support"]);
 
   return (
     <section

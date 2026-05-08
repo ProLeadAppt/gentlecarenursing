@@ -36,23 +36,16 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gentlecarenursing.c
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  // Title template uses the full entity name "Gentle Care Nursing Services".
+  // This is the canonical brand suffix Google and AI engines use to
+  // disambiguate the entity. Don't shorten to "Gentle Care" — that loses
+  // the "Nursing Services" entity-defining keyword pair sitewide.
   title: {
     default: "Gentle Care Nursing Services | In-Home Nursing & Care",
     template: "%s | Gentle Care Nursing Services",
   },
   description:
     "Personalised in-home nursing and care services. Registered NDIS provider and DVA Contracted Community Nursing Provider. Trusted by families, support coordinators, and healthcare professionals.",
-  keywords: [
-    "NDIS nursing",
-    "in-home care",
-    "community nursing",
-    "aged care",
-    "DVA care",
-    "personal care",
-    "in-home nursing",
-    "registered NDIS provider",
-    "DVA contracted community nursing",
-  ],
   authors: [{ name: "Gentle Care Nursing Services" }],
   openGraph: {
     type: "website",

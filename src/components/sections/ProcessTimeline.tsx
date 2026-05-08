@@ -10,7 +10,7 @@ const STEPS = [
   {
     title: "Make an Enquiry",
     description:
-      "Tell us about your care needs. Takes just 2 minutes.",
+      "Tell us a little about the support you're looking for.",
     icon: MessageSquare,
     stepLabel: "Step 1",
     color: "#6b9360",
@@ -21,7 +21,7 @@ const STEPS = [
   {
     title: "We Aim to Respond Within 24 Hours",
     description:
-      "A registered nurse personally reviews your needs and calls you.",
+      "Our team personally reviews your needs and contacts you.",
     icon: PhoneCall,
     stepLabel: "Step 2",
     color: "#1b6b6d",
@@ -32,7 +32,7 @@ const STEPS = [
   {
     title: "We Match You With Your Carer",
     description:
-      "Matched for skills, personality, and location.",
+      "We carefully match you with the right support team.",
     icon: UserPlus,
     stepLabel: "Step 3",
     color: "#c4704b",
@@ -65,7 +65,7 @@ function TimelineStep({
   const Icon = step.icon;
 
   return (
-    <div ref={ref} className="relative pl-16 sm:pl-20 pb-12 last:pb-0">
+    <div ref={ref} className="relative pl-16 sm:pl-20 pb-6 sm:pb-8 last:pb-0">
       {/* Circle */}
       <motion.div
         className="absolute left-0 flex h-12 w-12 items-center justify-center rounded-full border-2 transition-colors duration-700"
@@ -146,7 +146,7 @@ export function ProcessTimeline() {
     >
       <div className="mx-auto max-w-3xl px-6 lg:px-8">
         {/* Header */}
-        <div ref={headerRef} className="text-center mb-16 sm:mb-20">
+        <div ref={headerRef} className="text-center mb-12 sm:mb-14">
           <motion.p
             className="text-xs font-bold uppercase tracking-[0.2em] text-pw-sage mb-4"
             initial={{ opacity: 0, y: 12 }}
@@ -156,7 +156,7 @@ export function ProcessTimeline() {
             Your Journey
           </motion.p>
           <motion.h2
-            className="font-[family-name:var(--font-serif)] text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground"
+            className="font-[family-name:var(--font-serif)] text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-foreground"
             initial={{ opacity: 0, y: 16 }}
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
             transition={{

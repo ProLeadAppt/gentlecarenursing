@@ -51,7 +51,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "understanding-ndis-in-home-nursing",
     title: "NDIS In-Home Nursing: What's Covered and How to Access It",
     excerpt:
-      "A clear guide to NDIS-funded in-home nursing services — what's included, how to request it, and what to expect from your provider.",
+      "A clear guide to NDIS-funded in-home nursing services: what's included, how to request it, and what to expect from your provider.",
     content: `
       <p>Navigating the NDIS can feel overwhelming, especially when you're trying to understand what nursing and care services your plan actually covers. This guide breaks it down in plain language.</p>
 
@@ -73,7 +73,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <li><strong>A support coordinator</strong> (or self-management) to help you find a registered provider</li>
         <li><strong>A service agreement</strong> between you and your chosen provider</li>
       </ol>
-      <p>Your support coordinator can help you identify the right provider. When choosing, look for a registered NDIS provider with clinical nursing experience — not just personal care.</p>
+      <p>Your support coordinator can help you identify the right provider. When choosing, look for a registered NDIS provider with clinical nursing experience, not just personal care.</p>
 
       <h2>What to expect from a quality provider</h2>
       <p>A good NDIS nursing provider should:</p>
@@ -112,7 +112,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>Choosing a home care provider is one of the most important decisions a family can make. The quality of care directly affects your loved one's safety, independence, and wellbeing. Here's how to make the right choice.</p>
 
       <h2>Quality over volume</h2>
-      <p>Large providers often manage hundreds of clients with rotating staff. This can mean inconsistent care, unfamiliar faces, and limited personal attention. Look for a provider that prioritises quality over volume — one that keeps their client list manageable so every person receives dedicated support.</p>
+      <p>Large providers often manage hundreds of clients with rotating staff. This can mean inconsistent care, unfamiliar faces, and limited personal attention. Look for a provider that prioritises quality over volume: one that keeps their client list manageable so every person receives dedicated support.</p>
 
       <h2>Key things to check</h2>
       <ul>
@@ -141,7 +141,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <li>Personalised care plans tailored to individual needs</li>
         <li>Direct access to our clinical director</li>
       </ul>
-      <p>When you choose personalised, relationship-based care, you're choosing a team that knows your loved one by name — not by file number.</p>
+      <p>When you choose personalised, relationship-based care, you're choosing a team that knows your loved one by name, not by file number.</p>
     `,
     category: "family-carers",
     author: DEFAULT_AUTHOR,
@@ -247,7 +247,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "tips-for-family-carers-avoiding-burnout",
-    title: "5 Signs of Carer Burnout — and What to Do About It",
+    title: "5 Signs of Carer Burnout: What to Do About It",
     excerpt:
       "Family carers often put everyone else first. Here are the warning signs of burnout and practical steps to protect your own wellbeing.",
     content: `
@@ -274,7 +274,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <li><strong>Explore respite care:</strong> Even a few hours of professional support each week can make a huge difference.</li>
         <li><strong>Talk to your GP:</strong> They can connect you with carer support services and check on your own health.</li>
         <li><strong>Connect with other carers:</strong> Carer support groups (online and in-person) provide understanding and practical advice.</li>
-        <li><strong>Consider in-home nursing:</strong> A registered nurse visiting regularly can take clinical tasks off your plate — medication management, wound care, health monitoring — so you can focus on being a family member, not a clinician.</li>
+        <li><strong>Consider in-home nursing:</strong> A registered nurse visiting regularly can take clinical tasks off your plate (medication management, wound care, health monitoring) so you can focus on being a family member, not a clinician.</li>
       </ul>
       <p>At Gentle Care Nursing Services, we support family carers as much as we support clients. If you're feeling overwhelmed, get in touch. We can discuss what support might help, with no obligation.</p>
     `,

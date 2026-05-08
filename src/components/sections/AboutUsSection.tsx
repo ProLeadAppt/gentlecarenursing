@@ -1,11 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
 import { Heading } from "@/components/ui/Heading";
 import { Reveal } from "@/components/animations/Reveal";
-import { ShieldCheck, Heart, Sparkles } from "lucide-react";
+import { Heart, Sparkles } from "lucide-react";
 
 interface AboutUsSectionProps {
   title: string;
@@ -31,7 +30,7 @@ export function AboutUsSection({
             <Reveal>
               <div>
                 <p className="text-sm font-bold uppercase tracking-[0.25em] text-primary/80 mb-6">Our Care Philosophy</p>
-                <Heading level="h2" as="h2" className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.1]">
+                <Heading level="h2" as="h2" className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground leading-[1.15]">
                   {title}
                 </Heading>
               </div>
@@ -50,7 +49,7 @@ export function AboutUsSection({
                     <Heart className="h-6 w-6 text-accent group-hover:text-white transition-colors duration-500" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold mb-1">Led by Over a Decade of Hands-On Experience</h3>
+                    <h3 className="text-lg font-bold mb-1">Over 10 Years of Hands-On Care Experience</h3>
                     <p className="text-muted-foreground">{statsLine}</p>
                   </div>
                 </div>
@@ -61,7 +60,7 @@ export function AboutUsSection({
                   </div>
                   <div>
                     <h3 className="text-lg font-bold mb-1">Personalised Care Management</h3>
-                    <p className="text-muted-foreground">Every client has a dedicated Clinical Lead – no generic call centres.</p>
+                    <p className="text-muted-foreground">Every client receives personalised coordination and consistent support.</p>
                   </div>
                 </div>
               </div>
@@ -85,27 +84,8 @@ export function AboutUsSection({
               </div>
             </Reveal>
 
-            {/* Floating Trust Element */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="absolute -bottom-10 -right-6 sm:right-6 bg-white p-8 rounded-[2rem] shadow-2xl border border-border/50 max-w-[280px]"
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <ShieldCheck className="h-5 w-5 text-primary" />
-                </div>
-                <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Sydney Regionwide</span>
-              </div>
-              <p className="text-sm font-medium leading-relaxed italic text-foreground/80">
-                "Our smaller caseload ensures your family gets the attention they deserve."
-              </p>
-            </motion.div>
-            
             {/* Background Decorative Blob */}
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-accent/10 rounded-full blur-3xl -z-10 animate-pulse" />
+            <div className="absolute -top-10 -left-10 w-40 h-40 bg-accent/10 rounded-full blur-3xl -z-10" />
           </div>
         </div>
       </Container>

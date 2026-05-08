@@ -31,11 +31,6 @@ export function BentoServiceGrid() {
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         <div className="mx-auto max-w-2xl text-center mb-20 lg:mb-28">
-          <Reveal delay={0.1}>
-            <span className="mb-6 inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60">
-              Clinical Excellence
-            </span>
-          </Reveal>
           <Reveal delay={0.2}>
             <Heading level="h2" className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground font-[family-name:var(--font-serif)]">
               Personalised Care & Support
@@ -43,8 +38,7 @@ export function BentoServiceGrid() {
           </Reveal>
           <Reveal delay={0.3}>
             <p className="mt-8 text-xl leading-relaxed text-muted-foreground font-medium">
-              A private health nursing service dedicated to quality over volume, 
-              providing personalised clinical care that honors your independence.
+              Personalised in-home support focused on quality care, consistency and independence.
             </p>
           </Reveal>
         </div>

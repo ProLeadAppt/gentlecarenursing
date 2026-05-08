@@ -291,9 +291,26 @@ Cannot evaluate backlinks, GBP completeness, NAP citations, or domain authority 
 
 ---
 
-## 5. Implementation log — 2026-05-07 pass
+## 5. Implementation log
 
-Shipped on branch `chore/seo-audit-titles-descriptions`:
+### Pass 2 — 2026-05-07 (housekeeping + blog CWV)
+
+Branch: `chore/seo-housekeeping-and-blog-cwv`.
+
+- **T5 — `BlogCard` `<img>` → `next/image`.** [src/components/sections/BlogCard.tsx:26](../src/components/sections/BlogCard.tsx#L26): now uses `Image` with `fill` and a responsive `sizes` attribute matched to the blog grid. Restores responsive image selection, lazy-loading defaults, and AVIF/WebP conversion. CWV lift on `/blog` and any other surface that renders `BlogCard`.
+- **T2 — Sitemap `lastModified` from content dates.** [src/app/sitemap.ts](../src/app/sitemap.ts): blog and guide entries now use the post's `updatedAt`/`publishedAt` and the guide's `reviewedAt`/`publishedAt`. Static pages use a new `SITE_LAST_UPDATED` constant in [src/lib/constants.ts](../src/lib/constants.ts) — bump it manually when copy or page structure changes ship.
+- **T4 — HSTS header added.** [netlify.toml](../netlify.toml): `Strict-Transport-Security = "max-age=31536000; includeSubDomains"`. No `preload` (intentionally — preload is irreversible; safe default).
+- **O10 — `keywords` arrays removed.** Stripped from `defaultMetadata` ([src/lib/metadata.ts](../src/lib/metadata.ts)), root `layout.tsx`, and 14 page files (`/aged-care`, `/dva`, `/ndis`, `/private-nursing`, `/services`, and the 9 service-detail pages). Google has ignored `meta keywords` since 2009; Princeton GEO research suggests keyword stuffing reduces AI visibility by 10%, so cleaner to remove.
+- TypeScript and ESLint clean.
+
+Skipped:
+
+- **O8** — alt-text non-optional in `ServiceCards.tsx` and `WhoWeHelp.tsx`. Both components are unused in the app (no callers found via grep), so the fallback strings are dead code paths. Tightening dead code isn't worth the noise.
+- **T3 (env-var verification)** — requires Netlify dashboard access. Action item for the team: confirm `NEXT_PUBLIC_SITE_URL` is exactly `https://gentlecarenursing.com.au` in production and previews.
+
+### Pass 1 — 2026-05-07 (titles, descriptions, voice rule)
+
+Shipped on branch `chore/seo-audit-titles-descriptions` (PR #9, merged):
 
 - **O1 — Service-region title template fixed.** [src/content/service-regions.ts](../src/content/service-regions.ts#L580): now uses `service.shortTitle`, drops the second "Sydney" for regions whose names already contain it, and shortens the brand suffix to "Gentle Care". All 30 combos now ≤62 chars (29 of 30 ≤56).
 - **O2 — Area-page meta description trimmed.** [src/content/areas-content.ts](../src/content/areas-content.ts#L37): suburbs moved out of the description (still in body), redundant ", Sydney" suffix dropped for regions already containing "Sydney". All 6 area descriptions now ≤160 chars. DVA wording preserved exactly per voice rule.

@@ -9,13 +9,6 @@ export const metadata = createMetadata({
   title: "Community Participation | NDIS Social Support Sydney",
   description:
     "Stay connected and active. Support for social outings, appointments, and community engagement for NDIS and aged care participants in Sydney.",
-  keywords: [
-    "community participation NDIS",
-    "social inclusion Sydney",
-    "disability social support",
-    "appointment transport Sydney",
-    "community engagement aged care",
-  ],
   canonical,
 });
 

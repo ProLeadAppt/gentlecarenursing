@@ -26,7 +26,7 @@ export const SERVICES: ServiceDefinition[] = [
   {
     slug: "nursing-care",
     title: "Nursing Care",
-    benefitLine: "Professional, clinical support from experienced registered nurses.",
+    benefitLine: "Personalised in-home support focused on quality care, consistency and independence.",
     shortDescription: "Wound care, medication management, and clinical monitoring at home.",
     href: "/services/nursing-care",
   },
@@ -101,7 +101,7 @@ export const NDIS_PAGE: ServicePageData = {
       {
         title: "In-Home Nursing",
         description:
-          "Skilled registered nurses delivering clinical care in your home: medication management, wound care, health monitoring, and more.",
+          "Skilled nurses delivering clinical care in your home: medication management, wound care, health monitoring, and more.",
       },
       {
         title: "Personal Care",
@@ -219,7 +219,7 @@ export const DVA_PAGE: ServicePageData = {
       {
         title: "Community Nursing",
         description:
-          "Registered nurses providing clinical care at home: wound management, medication administration, health assessments, and chronic disease monitoring.",
+          "Experienced nurses providing clinical care at home: wound management, medication administration, health assessments, and chronic disease monitoring.",
       },
       {
         title: "Personal Care",
@@ -239,7 +239,7 @@ export const DVA_PAGE: ServicePageData = {
       {
         title: "Wound Care",
         description:
-          "Specialist wound assessment and management by experienced registered nurses in the comfort of your home.",
+          "Specialist wound assessment and management by experienced nurses in the comfort of your home.",
       },
       {
         title: "Medication Management",
@@ -337,7 +337,7 @@ export const AGED_CARE_PAGE: ServicePageData = {
       {
         title: "In-Home Nursing",
         description:
-          "Registered nurses providing clinical care at home: medication management, wound care, health monitoring, and chronic disease support.",
+          "Experienced nurses providing clinical care at home: medication management, wound care, health monitoring, and chronic disease support.",
       },
       {
         title: "Personal Care Assistance",
@@ -456,7 +456,7 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
       {
         title: "Private Nursing",
         description:
-          "Registered nurses providing clinical care at home: wound care, injections, health assessments, medication management, and post-surgical support.",
+          "Experienced nurses providing clinical care at home: wound care, injections, health assessments, medication management, and post-surgical support.",
       },
       {
         title: "Personal Care",
@@ -574,7 +574,7 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
       {
         title: "Clinical Nursing at Home",
         description:
-          "Registered nurses provide wound care, medication management, observations, and chronic disease monitoring so your recovery stays on track.",
+          "Experienced nurses provide wound care, medication management, observations, and chronic disease monitoring so your recovery stays on track.",
       },
       {
         title: "Personal Care and Daily Support",
@@ -803,7 +803,7 @@ export const HOSPITAL_AT_HOME_PAGE: ServicePageData = {
       {
         title: "Hospital-Level Nursing at Home",
         description:
-          "Registered nurses provide observations, medication management, wound care, and other nursing tasks according to your discharge plan.",
+          "Experienced nurses provide observations, medication management, wound care, and other nursing tasks according to your discharge plan.",
       },
       {
         title: "Structured Step-Down Care",
@@ -989,9 +989,9 @@ export const NURSING_CARE_PAGE: ServicePageData = {
   title: "Nursing Care at Home",
   href: "/services/nursing-care",
   snippetAnswer:
-    "In-home nursing care is professional clinical support delivered by registered nurses in your own home, covering wound care, medication management, and health monitoring across Sydney.",
+    "In-home nursing care is professional clinical support delivered by experienced nurses in your own home, covering wound care, medication management, and health monitoring across Sydney.",
   intro:
-    "General nursing care shouldn't feel clinical or rushed. We provide experienced Registered Nurses who take the time to understand your health goals, providing expert medical support that honors your independence and privacy.",
+    "General nursing care shouldn't feel clinical or rushed. Our experienced nurses take the time to understand your health goals, providing expert support that honours your independence and privacy.",
 
   whoItHelps: {
     title: "Who Nursing Care Is For",
@@ -1001,7 +1001,7 @@ export const NURSING_CARE_PAGE: ServicePageData = {
       "People managing chronic health conditions like diabetes or heart disease",
       "Patients needing professional wound care and dressing changes",
       "Individuals requiring help with medication administration or injections",
-      "Families seeking registered nurse oversight for a loved one's health",
+      "Families seeking experienced nurse oversight for a loved one's health",
       "NDIS, DVA, and Aged Care participants with clinical needs",
       "Anyone wanting to avoid hospital visits for routine clinical tasks",
     ],

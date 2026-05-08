@@ -2,13 +2,21 @@
  * About page content.
  */
 
-/** One-sentence entity definition for GEO / schema and on-page use */
+/**
+ * One-sentence entity definition. Used as schema description on
+ * MedicalBusiness/Organization and on the about page. Keeps the full
+ * entity name and the "in-home nursing" keyword pair — these are the
+ * canonical anchors for GEO/AEO entity recognition and Google ranking
+ * for "[NDIS|DVA] in-home nursing Sydney" intents.
+ */
 export const ELEVATOR_PITCH =
-  "Gentle Care Nursing Services is a Sydney-based, registered NDIS provider and DVA Contracted Community Nursing Provider, delivering in-home nursing and personal care to families, NDIS participants, and referral partners.";
+  "Gentle Care Nursing Services is a Sydney-based, registered NDIS provider and DVA Contracted Community Nursing Provider, delivering personalised in-home nursing and care to families, NDIS participants, and referral partners.";
 
 export const ABOUT_INTRO = {
+  // H1 keeps the full entity name. Visible nav can still use the short
+  // "About" label.
   title: "About Gentle Care Nursing Services",
-  lead: "We are a personalised nursing and care provider focused on providing high-quality support to a smaller number of people. This ensures every individual receives the time and attention they need to maintain their independence and dignity.",
+  lead: "We are a personalised in-home nursing and care provider focused on delivering high-quality support with a more attentive and hands-on approach.",
   /** Stats in prose for GEO / authority */
   statsLine: "Led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support. We aim to respond to every enquiry within 24 hours.",
 } as const;
@@ -21,7 +29,7 @@ export const MISSION = {
 
 export const VALUES = [
   {
-    title: "Quality Over Volume",
+    title: "Quality-Focused Support",
     description:
       "We take on fewer clients so every person receives more dedicated, attentive care. We don't rush, and we don't cut corners.",
   },
@@ -38,7 +46,7 @@ export const VALUES = [
   {
     title: "Professionalism",
     description:
-      "We're registered, compliant, and experienced. Registered NDIS provider and DVA Contracted Community Nursing Provider. Families and coordinators can refer with confidence.",
+      "We're registered, compliant, and experienced. Registered NDIS provider and DVA Contracted provider. Families and coordinators can refer with confidence.",
   },
   {
     title: "Responsiveness",
@@ -62,36 +70,30 @@ export const PROFESSIONAL_TRUST = {
   title: "Professional, Registered, Trusted",
   items: [
     "Registered NDIS provider",
-    "DVA Contracted Community Nursing Provider",
-    "Qualified registered nurses and care professionals",
+    "DVA Contracted provider",
+    "Experienced care professionals and support workers",
     "Compliant with all relevant industry standards",
     "Trusted by families, support coordinators, and healthcare professionals",
   ],
 } as const;
 
-/** Founder story — Gemma, Founder & Clinical Director */
+/** Founder story — Gemma, Founder of Gentle Care */
 export const FOUNDER_STORY = {
   name: "Gemma",
-  title: "Founder & Clinical Director",
-  bio: "Gentle Care Nursing Services began because I wanted to provide care that is genuinely compassionate, personal, and consistent. Through over a decade of hands-on experience across dementia care, palliative care, disability support, and mental health challenges, I saw how important it is for individuals and families to feel supported by a team that values dignity, trust, and continuity of care.",
-  qualifications: [
-    "Registered Nurse (10+ Years Experience)",
-    "Aged Care Certifications",
-    "Disability Support Certifications",
-    "Clinical Leadership and Care Planning",
-  ],
+  title: "Founder",
+  bio: "Gentle Care was created to provide families with dependable, compassionate support that feels personal, respectful and consistent.\n\nThrough over a decade of hands-on experience across dementia care, palliative care, disability support and mental health, I saw how important it is for individuals and families to feel supported by a team that values dignity, trust and continuity of care.",
   quote:
-    "My favourite part of this work is being able to make a meaningful difference in people’s lives while giving families peace of mind that their loved one is being cared for with compassion, dignity, and respect.",
+    "My favourite part of this work is being able to make a meaningful difference in people’s lives while giving families peace of mind knowing their loved one is being cared for with compassion, dignity and respect.",
   imageSrc: "/images/gemma-profile.jpg",
-  imageAlt: "Gemma, Founder and Clinical Director of Gentle Care Nursing Services",
+  imageAlt: "Gemma, Founder of Gentle Care",
 } as const;
 
 /** Team members — placeholder data until Gemma provides real team info */
 export const TEAM_MEMBERS = [
   {
     name: "Gemma",
-    role: "Founder & Clinical Director",
-    bio: "Registered Nurse with over a decade of hands-on experience in clinical care. Leads all care planning and quality oversight.",
+    role: "Founder",
+    bio: "Care professional with over a decade of hands-on experience. Leads all care planning and quality oversight.",
   },
   {
     name: "Sandra",
@@ -99,9 +101,9 @@ export const TEAM_MEMBERS = [
     bio: "Ensures every client is matched with the right carer and manages scheduling across all regions.",
   },
   {
-    name: "Nursing Team",
-    role: "Registered Nurses & Carers",
-    bio: "Our small clinical team is selected for their clinical skills and commitment to personalised, person-centred care.",
+    name: "Care Team",
+    role: "Care Professionals & Support Workers",
+    bio: "Our small team is selected for their experience and commitment to personalised, person-centred care.",
   },
 ] as const;
 
@@ -113,9 +115,9 @@ export const TEAM_MEMBERS = [
 export const MILESTONES = [
   {
     year: "Start",
-    title: "Gentle Care Nursing Services Founded",
+    title: "Gentle Care Founded",
     description:
-      "Founded by a clinician who wanted in-home care to be personal, responsive, and clinician-led.",
+      "Founded to make in-home care feel personal, responsive, and led by genuine relationships.",
   },
   {
     year: "NDIS",
@@ -125,7 +127,7 @@ export const MILESTONES = [
   },
   {
     year: "DVA",
-    title: "DVA Contracted Community Nursing Provider",
+    title: "DVA Contracted Provider",
     description:
       "Contracted to provide DVA Community Nursing services for eligible Veteran Card holders.",
   },
@@ -137,17 +139,17 @@ export const MILESTONES = [
   },
   {
     year: "Today",
-    title: "Personalised, Clinician-Led Model",
+    title: "Personalised, Quality-Focused Model",
     description:
-      "Growing with intention: a deliberately small caseload, a dedicated clinical team, and a clear response window.",
+      "Growing with intention: a deliberately small caseload, a dedicated team, and a clear response window.",
   },
 ] as const;
 
 /** Trust statistics bar — Verified, conservative figures */
 export const TRUST_STATS = [
-  { value: "10+", label: "Yrs Clinician Experience" },
-  { value: "Quality", label: "Over Volume" },
-  { value: "Small", label: "Clinical Team" },
+  { value: "10+", label: "Years Hands-On Care Experience" },
+  { value: "Personal", label: "Quality-Focused Support" },
+  { value: "Small", label: "Dedicated Team" },
   { value: "~24hr", label: "Response Window" },
 ] as const;
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Clock, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { BlogPost } from "@/content/blog";
@@ -23,10 +24,12 @@ export function BlogCard({ post, className }: BlogCardProps) {
       {/* Gradient header (placeholder for featured image) */}
       <div className="h-40 bg-gradient-to-br from-muted via-accent/5 to-muted relative">
         {post.featuredImageSrc ? (
-          <img
+          <Image
             src={post.featuredImageSrc}
             alt={post.featuredImageAlt ?? post.title}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">

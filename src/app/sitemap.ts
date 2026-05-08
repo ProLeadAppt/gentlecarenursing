@@ -1,13 +1,25 @@
 import type { MetadataRoute } from "next";
 import { getAllAreaSlugs } from "@/content/areas-content";
-import { getAllGuideSlugs } from "@/content/guides";
+import { ALL_GUIDES } from "@/content/guides";
 import { getAllBlogPosts } from "@/content/blog";
 import { SERVICE_REGION_PAGES } from "@/content/service-regions";
+import { SITE_LAST_UPDATED } from "@/lib/constants";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gentlecarenursing.com.au";
 
+/**
+ * Returns a Date for the static-page lastmod. Falls back to "now" if the
+ * SITE_LAST_UPDATED constant is malformed (defensive — should never happen).
+ */
+function staticPageLastModified(): Date {
+  const d = new Date(SITE_LAST_UPDATED);
+  return Number.isNaN(d.getTime()) ? new Date() : d;
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes: { path: string; priority: number; changeFrequency: "weekly" | "monthly" | "yearly" }[] = [
+  const staticLastMod = staticPageLastModified();
+
+  const staticRoutes: { path: string; priority: number; changeFrequency: "weekly" | "monthly" | "yearly" }[] = [
     { path: "/", priority: 1.0, changeFrequency: "weekly" },
     { path: "/about", priority: 0.8, changeFrequency: "monthly" },
     { path: "/services", priority: 0.9, changeFrequency: "monthly" },
@@ -29,30 +41,59 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/areas", priority: 0.85, changeFrequency: "monthly" },
   ];
 
-  const areaSlugs = getAllAreaSlugs();
-  for (const slug of areaSlugs) {
-    routes.push({ path: `/areas/${slug}`, priority: 0.8, changeFrequency: "monthly" });
-  }
-
-  for (const page of SERVICE_REGION_PAGES) {
-    routes.push({ path: page.path, priority: 0.85, changeFrequency: "monthly" });
-  }
-
-  const guideSlugs = getAllGuideSlugs();
-  for (const slug of guideSlugs) {
-    routes.push({ path: `/guides/${slug}`, priority: 0.7, changeFrequency: "monthly" });
-  }
-
-  routes.push({ path: "/blog", priority: 0.8, changeFrequency: "weekly" });
-  const blogPosts = getAllBlogPosts();
-  for (const post of blogPosts) {
-    routes.push({ path: `/blog/${post.slug}`, priority: 0.7, changeFrequency: "monthly" });
-  }
-
-  return routes.map((route) => ({
+  const entries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
     url: `${BASE_URL}${route.path}`,
-    lastModified: new Date(),
+    lastModified: staticLastMod,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }));
+
+  for (const slug of getAllAreaSlugs()) {
+    entries.push({
+      url: `${BASE_URL}/areas/${slug}`,
+      lastModified: staticLastMod,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    });
+  }
+
+  for (const page of SERVICE_REGION_PAGES) {
+    entries.push({
+      url: `${BASE_URL}${page.path}`,
+      lastModified: staticLastMod,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    });
+  }
+
+  for (const guide of ALL_GUIDES) {
+    const dateString = guide.reviewedAt ?? guide.publishedAt;
+    const lastMod = dateString ? new Date(dateString) : staticLastMod;
+    entries.push({
+      url: `${BASE_URL}/guides/${guide.slug}`,
+      lastModified: Number.isNaN(lastMod.getTime()) ? staticLastMod : lastMod,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+  }
+
+  entries.push({
+    url: `${BASE_URL}/blog`,
+    lastModified: staticLastMod,
+    changeFrequency: "weekly",
+    priority: 0.8,
+  });
+
+  for (const post of getAllBlogPosts()) {
+    const dateString = post.updatedAt ?? post.publishedAt;
+    const lastMod = new Date(dateString);
+    entries.push({
+      url: `${BASE_URL}/blog/${post.slug}`,
+      lastModified: Number.isNaN(lastMod.getTime()) ? staticLastMod : lastMod,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+  }
+
+  return entries;
 }
