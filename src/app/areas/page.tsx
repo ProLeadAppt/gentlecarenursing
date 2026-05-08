@@ -12,7 +12,7 @@ import { INTEGRATIONS } from "@/config/integrations";
 export const metadata = createMetadata({
   title: "Areas We Serve | Sydney Regions",
   description:
-    "In-home nursing and care across Sydney: Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, and Sydney CBD & East. NDIS, DVA, aged care, and private.",
+    "In-home nursing and care across Sydney including Inner West, North Shore, Western Sydney, South Sydney, and Sydney CBD & East. NDIS, DVA, aged care.",
   canonical: `${INTEGRATIONS.siteUrl}/areas`,
 });
 

@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props) {
           url: ogImageUrl,
           width: 1200,
           height: 630,
-          alt: `${page.service.title} in ${page.region.region}, Sydney — Gentle Care Nursing`,
+          alt: `${page.service.title} in ${page.region.region}, Sydney | Gentle Care Nursing`,
         },
       ],
     },

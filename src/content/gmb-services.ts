@@ -18,7 +18,7 @@ export const GMB_SERVICES: readonly GmbService[] = [
   },
   {
     name: "Nursing Care",
-    description: "Professional, clinical support from experienced registered nurses including wound care and medication management.",
+    description: "Professional, clinical support from experienced nurses including wound care and medication management.",
     href: "/services/nursing-care",
   },
   {

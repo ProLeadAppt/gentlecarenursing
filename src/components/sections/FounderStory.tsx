@@ -13,7 +13,6 @@ interface FounderStoryProps {
   quote: string;
   imageSrc: string;
   imageAlt: string;
-  qualifications?: readonly string[];
 }
 
 export function FounderStory({
@@ -23,7 +22,6 @@ export function FounderStory({
   quote,
   imageSrc,
   imageAlt,
-  qualifications,
 }: FounderStoryProps) {
   return (
     <Section size="lg">
@@ -62,35 +60,21 @@ export function FounderStory({
               </p>
             </motion.div>
 
-            <motion.p
+            <motion.div
               variants={ANIMATION_VARIANTS.item}
-              className="text-base leading-relaxed text-muted-foreground"
+              className="space-y-4 text-base leading-relaxed text-muted-foreground"
             >
-              {bio}
-            </motion.p>
-
-            {qualifications && qualifications.length > 0 && (
-              <motion.div variants={ANIMATION_VARIANTS.item} className="space-y-3">
-                <p className="text-sm font-semibold text-foreground">Qualifications & Experience</p>
-                <div className="flex flex-wrap gap-2">
-                  {qualifications.map((qual) => (
-                    <span
-                      key={qual}
-                      className="inline-flex items-center rounded-full bg-pw-sage/10 px-3 py-1 text-xs font-medium text-pw-sage"
-                    >
-                      {qual}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            )}
+              {bio.split("\n\n").map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </motion.div>
 
             {/* Pull quote */}
             <motion.blockquote
               variants={ANIMATION_VARIANTS.item}
-              className="relative border-l-2 border-primary/30 pl-6 py-2"
+              className="relative border-l-2 border-primary/40 pl-6 py-2"
             >
-              <p className="font-[family-name:var(--font-serif)] text-xl italic text-foreground/90 leading-relaxed">
+              <p className="font-[family-name:var(--font-serif)] text-xl text-foreground leading-relaxed">
                 &ldquo;{quote}&rdquo;
               </p>
               <cite className="mt-3 block text-sm font-semibold text-primary not-italic">

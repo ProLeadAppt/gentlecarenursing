@@ -16,10 +16,10 @@ import { ShieldCheck, Heart, UserCheck } from "lucide-react";
 export const metadata = createMetadata({
   title: "Our Services",
   description:
-    "Personalised in-home nursing and care services across NDIS, DVA, aged care, and private. Quality-focused clinical support led by experienced nurses.",
+    "Personalised in-home care and support across NDIS, DVA, aged care, and private. Quality-focused care led by experienced care professionals.",
   canonical: `${INTEGRATIONS.siteUrl}/services`,
   openGraph: {
-    images: [{ url: "/images/og/services.png", width: 1200, height: 630, alt: "In-Home Services — Gentle Care Nursing Services" }],
+    images: [{ url: "/images/og/services.png", width: 1200, height: 630, alt: "In-Home Services | Gentle Care Nursing Services" }],
   },
 });
 
@@ -33,12 +33,11 @@ export default function ServicesPage() {
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Our Services" }]} className="mb-8" />
             <p className="text-sm font-bold uppercase tracking-[0.25em] text-primary/80 mb-4">What We Do</p>
             <Heading level="h1" as="h1" className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight">
-              Clinical Excellence <br/> at Home
+              Personalised Care <br/> at Home
             </Heading>
             <p className="mt-8 text-xl leading-relaxed text-muted-foreground sm:text-2xl font-medium max-w-3xl">
-              Gentle Care Nursing Services provides high-end, personalised in-home nursing and care. 
-              We focus on quality over volume, ensuring every participant receives the 
-              dedicated attention they deserve.
+              Gentle Care provides personalised in-home care and support, focused on
+              consistency, dignity, and giving every person the attention they deserve.
             </p>
           </Reveal>
         </Container>
@@ -59,10 +58,10 @@ export default function ServicesPage() {
                 desc: "Fully registered NDIS and DVA provider meeting all quality and safety benchmarks.", 
                 icon: ShieldCheck 
               },
-              { 
-                title: "Clinician-Led", 
-                desc: "Led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support.",
-                icon: UserCheck 
+              {
+                title: "Over 10 Years of Hands-On Care Experience",
+                desc: "Led by a care professional with over a decade of hands-on experience across disability, aged care and in-home support.",
+                icon: UserCheck
               },
               { 
                 title: "Person-Centred", 
@@ -93,11 +92,11 @@ export default function ServicesPage() {
           <Reveal>
             <div className="text-center mb-16">
               <Heading level="h2" as="h2" className="text-3xl sm:text-4xl font-bold mb-4">
-                Clinical Service Directory
+                Care Service Directory
               </Heading>
               <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-                We offer {GMB_SERVICES.length}+ specialised clinical services across Sydney. 
-                Our team is equipped for both complex medical Needs and daily living support.
+                We offer {GMB_SERVICES.length}+ in-home care services across Sydney —
+                from complex care needs to everyday support at home.
               </p>
             </div>
           </Reveal>

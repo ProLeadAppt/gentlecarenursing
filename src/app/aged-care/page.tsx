@@ -9,7 +9,7 @@ export const metadata = createMetadata({
     "In-home nursing and personal care for older Australians. We support clients through Support at Home, DVA, and private care arrangements.",
   canonical: `${INTEGRATIONS.siteUrl}/aged-care`,
   openGraph: {
-    images: [{ url: "/images/og/aged-care.png", width: 1200, height: 630, alt: "Aged Care at Home — Gentle Care Nursing Services" }],
+    images: [{ url: "/images/og/aged-care.png", width: 1200, height: 630, alt: "Aged Care at Home | Gentle Care Nursing Services" }],
   },
 });
 

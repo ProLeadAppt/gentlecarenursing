@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props) {
     description: area.description,
     canonical: `${INTEGRATIONS.siteUrl}/areas/${area.slug}`,
     openGraph: {
-      images: [{ url: `${INTEGRATIONS.siteUrl}/areas/${area.slug}/opengraph-image`, width: 1200, height: 630, alt: `In-home nursing in ${area.region} — Gentle Care Nursing Services` }],
+      images: [{ url: `${INTEGRATIONS.siteUrl}/areas/${area.slug}/opengraph-image`, width: 1200, height: 630, alt: `In-home nursing in ${area.region} | Gentle Care Nursing Services` }],
     },
   });
 }

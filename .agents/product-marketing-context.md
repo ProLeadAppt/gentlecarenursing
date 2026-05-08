@@ -1,17 +1,23 @@
 # Product Marketing Context: Gentle Care Nursing
 
-*Last updated: 2026-04-28*
+*Last updated: 2026-05-08 — refreshed per Gemma's brand direction email*
 
 > **Voice rules (binding — applied sitewide):**
-> - Do NOT use "boutique". Use instead: personalised care, quality-focused care, small caseload, clinician-led care, consistent person-centred support, relationship-based care.
+> - Do NOT use "boutique". Use instead: personalised care, quality-focused care, small caseload, consistent person-centred support, relationship-based care.
+> - Do NOT use "clinician-led" or "Clinician-Led" in marketing copy or hero/eyebrow taglines (Gemma 2026-05-08 — too clinical). Use: "personalised", "quality-focused", "experienced", "hands-on care". "Clinician" / "registered nurse" remain acceptable inside clinical service descriptions and regulatory accuracy contexts (AHPRA registration, DVA Community Nursing scope).
+> - Do NOT use "Registered Nurse" as a brand descriptor in hero/founder framing. Use: "care professional" or "support worker". AHPRA-registered nurse references inside clinical service descriptions are still accurate and allowed.
+> - Hero eyebrow: "Personalised · Compassionate · Trusted" (replaces the previous "Clinician-Led · Personalised · Sydney" eyebrow).
+> - Hero headline: "Personalised In-Home Care & Support". Subhead: "Thoughtful, quality-focused support delivered with dignity, consistency and compassion."
+> - Decade-of-experience phrasing: "Over 10 Years of Hands-On Care Experience" (replaces "10+ Yrs Clinician Experience" and "Led by Over a Decade of Hands-On Experience").
 > - Do NOT use "24-hour response guarantee". Use: "We aim to respond within 24 hours" or "Prompt response within business hours, with urgent referrals prioritised".
 > - Do NOT use specific years/duration claims ("since 2014", "X+ years operating"). Use: "Led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support."
-> - DVA wording must be: "DVA Contracted Community Nursing Provider" or "Contracted to provide DVA Community Nursing services". Never "DVA Registered Provider" or "DVA Approved".
+> - DVA wording must be: "DVA Contracted Community Nursing Provider" or "Contracted to provide DVA Community Nursing services". Never "DVA Registered Provider" or "DVA Approved". Reduce repetition — once per page is enough.
+> - Reduce repetitive trust badges (NDIS Registered, DVA Contracted, Quick Response, Clinical Excellence). One reference per surface.
 > - 24/7: "We can provide overnight support and extended hours depending on care needs, funding and staff availability."
-> - Tone: professional, accurate, healthcare-appropriate. NOT commercial. NOT salesy.
+> - Tone: warm, genuine, healthcare-appropriate. NOT commercial. NOT salesy. NOT clinical-jargon-heavy.
 
 ## Product Overview
-**One-liner:** Personalised, clinician-led in-home nursing and disability support in Sydney, with a deliberately small caseload.
+**One-liner:** Personalised in-home care and support in Sydney, with a deliberately small caseload focused on quality, consistency and dignity.
 **What it does:** Provides personalised, high-quality clinical care and personal support to NDIS participants, veterans (DVA), and older Australians at home.
 **Product category:** In-Home Care / Community Nursing
 **Product type:** Service

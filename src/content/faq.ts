@@ -58,13 +58,13 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "response-time",
         question: "How quickly do you respond to enquiries?",
         answer:
-          "Gentle Care Nursing Services aims to respond to every enquiry within 24 hours during business hours. After you submit an enquiry, our team is notified straight away and a real person follows up. Urgent referrals — for example, from hospital discharge planners or NDIS support coordinators with same-day needs — are prioritised so families and clients are not left waiting.",
+          "Gentle Care Nursing Services aims to respond to every enquiry within 24 hours during business hours. After you submit an enquiry, our team is notified straight away and a real person follows up. Urgent referrals (for example, from hospital discharge planners or NDIS support coordinators with same-day needs) are prioritised so families and clients are not left waiting.",
       },
       {
         id: "assessment",
         question: "Is there an assessment before care starts?",
         answer:
-          "Yes. Before care begins, Gentle Care Nursing Services completes an initial assessment to understand the person’s clinical needs, daily routines, home environment, and goals. The assessment informs a tailored care plan, identifies the right registered nurse or carer for the match, and confirms how the care will be funded through NDIS, DVA, aged care, or private payment.",
+          "Yes. Before care begins, Gentle Care Nursing Services completes an initial assessment to understand the person’s clinical needs, daily routines, home environment, and goals. The assessment informs a tailored care plan, identifies the right care professional or support worker for the match, and confirms how the care will be funded through NDIS, DVA, aged care, or private payment.",
       },
       {
         id: "immediate-help",
@@ -87,7 +87,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "private-cost",
         question: "How much does private nursing care cost?",
         answer:
-          "The cost of private in-home nursing through Gentle Care Nursing Services depends on the type of care (registered nurse vs. personal care), shift length, time of day, and travel. We are upfront about pricing and provide a written quote before care starts, with no hidden fees. Contact us for a personalised quote based on your specific care needs.",
+          "The cost of private in-home nursing through Gentle Care Nursing Services depends on the type of care (clinical nursing vs. personal care), shift length, time of day, and travel. We are upfront about pricing and provide a written quote before care starts, with no hidden fees. Contact us for a personalised quote based on your specific care needs.",
       },
       {
         id: "dva-cost",
@@ -133,13 +133,13 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "dva-contracted",
         question: "Are you a DVA Contracted Community Nursing Provider?",
         answer:
-          "Yes. Gentle Care Nursing Services is contracted to provide DVA Community Nursing services for eligible Veteran Card holders. We deliver clinically required nursing and personal care at home — including wound care, medication management, chronic disease monitoring, and post-hospital support — and submit claims and clinical reporting directly to the Department of Veterans’ Affairs.",
+          "Yes. Gentle Care Nursing Services is contracted to provide DVA Community Nursing services for eligible Veteran Card holders. We deliver clinically required nursing and personal care at home, including wound care, medication management, chronic disease monitoring, and post-hospital support, and submit claims and clinical reporting directly to the Department of Veterans’ Affairs.",
       },
       {
         id: "different",
         question: "What makes Gentle Care Nursing Services different?",
         answer:
-          "Gentle Care Nursing Services deliberately keeps a small caseload so each client gets dedicated, clinician-led care from a consistent team. We are led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support. We aim to respond to enquiries within 24 hours during business hours, with urgent referrals prioritised.",
+          "Gentle Care Nursing Services deliberately keeps a small caseload so each client gets dedicated, personalised care from a consistent team. We are led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support. We aim to respond to enquiries within 24 hours during business hours, with urgent referrals prioritised.",
       },
     ],
   },

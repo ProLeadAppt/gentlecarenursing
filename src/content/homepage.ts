@@ -4,18 +4,18 @@
  */
 
 export const HOMEPAGE_HERO = {
-  eyebrow: "Clinician-Led · Personalised · Sydney",
-  /** Segmented headline for staggered cinematic reveal */
+  // Eyebrow refreshed 2026-05-08 per Gemma's direction — drop "Clinician-Led".
+  eyebrow: "Personalised · Compassionate · Trusted",
+  /** Segmented headline for staggered cinematic reveal. */
   headlineSegments: [
-    "Compassionate",
-    "In-Home Care",
-    "& Disability Support",
+    "Personalised",
+    "In-Home Care & Support",
   ] as const,
   subheadline:
-    "Quality over volume. Your loved ones deserve a team that actually cares.",
+    "Thoughtful, quality-focused support delivered with dignity, consistency and compassion.",
   /** Hero image (right column). Default: carer-elderly. */
   heroImageSrc: "/images/vitaly-gariev-Wk6f1CkGlEo-unsplash.webp",
-  heroImageAlt: "Professional nurse providing compassionate in-home care",
+  heroImageAlt: "Personalised in-home care delivered with warmth in Sydney",
 } as const;
 
 /** Emotional challenges section (after StatsBar): acknowledges what families face */
@@ -84,7 +84,7 @@ export const WHY_DIFFERENT = {
         "Our team brings years of clinical experience into the home with the compassion and professionalism that helps you feel safe and supported.",
     },
     {
-      headline: "Quality over volume",
+      headline: "Quality-focused support",
       description:
         "We focus on providing personalised care to a smaller number of participants. This ensures we can maintain quality and never rush our support.",
     },
@@ -157,9 +157,9 @@ export const GET_IN_TOUCH = {
 } as const;
 
 export const HOMEPAGE_STATS = [
-  { value: "10+", label: "Yrs Clinician Experience" },
-  { value: "Quality", label: "Over Volume" },
-  { value: "Small", label: "Clinical Team" },
+  { value: "10+", label: "Years Hands-On Care Experience" },
+  { value: "Personal", label: "Quality-Focused Support" },
+  { value: "Small", label: "Dedicated Team" },
   { value: "~24hr", label: "Response Window" },
 ] as const;
 

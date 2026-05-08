@@ -28,7 +28,7 @@ import {
 export const metadata = createMetadata({
   title: "About Us",
   description:
-    "Learn about Gentle Care Nursing Services: our mission, values, and commitment to personalised, high-quality in-home care. Registered NDIS and DVA provider.",
+    "About Gentle Care: a personalised in-home care provider focused on quality, consistency and genuine relationships. Registered NDIS and DVA Contracted provider.",
   canonical: `${INTEGRATIONS.siteUrl}/about`,
 });
 
@@ -84,7 +84,6 @@ export default function AboutPage() {
         quote={FOUNDER_STORY.quote}
         imageSrc={FOUNDER_STORY.imageSrc}
         imageAlt={FOUNDER_STORY.imageAlt}
-        qualifications={FOUNDER_STORY.qualifications}
       />
 
       {/* Mission */}
