@@ -4,8 +4,7 @@ import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "@/components/animations/Reveal";
 import { Heading } from "@/components/ui/Heading";
-import { UserCheck, Sparkles, Zap, ShieldCheck, MessageCircle, Heart, Award, Star } from "lucide-react";
-import { motion } from "framer-motion";
+import { UserCheck, Sparkles, ShieldCheck, Heart, Award } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 const DIFF_ICONS: LucideIcon[] = [UserCheck, Heart, Award, ShieldCheck, Sparkles];
@@ -65,40 +64,6 @@ export function WhyDifferent({
               </div>
             </Reveal>
 
-            {/* Floating Trust Badge 1 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="absolute -top-6 -right-6 z-20 bg-white p-6 rounded-3xl shadow-xl border border-border/50 hidden sm:flex items-center gap-4"
-            >
-              <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center">
-                <ShieldCheck className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Registered</p>
-                <p className="text-sm font-bold">NDIS & DVA</p>
-              </div>
-            </motion.div>
-
-            {/* Floating Trust Badge 2 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.7, duration: 0.8 }}
-              className="absolute -bottom-6 -left-6 z-20 bg-white p-6 rounded-3xl shadow-xl border border-border/50 hidden sm:flex items-center gap-4"
-            >
-              <div className="h-12 w-12 rounded-2xl bg-accent/10 flex items-center justify-center">
-                <Star className="h-6 w-6 text-accent" />
-              </div>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Experience</p>
-                <p className="text-sm font-bold">10+ Yrs Hands-On Care</p>
-              </div>
-            </motion.div>
-            
             {/* Background Decorative Element */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-accent/5 rounded-full blur-[80px] -z-10" />
           </div>

@@ -1,17 +1,12 @@
 "use client";
 
 import { Hero } from "@/components/sections/Hero";
-import { TrustMarquee } from "@/components/sections/TrustMarquee";
-import { EvidencePanel } from "@/components/sections/EvidencePanel";
-import { AboutUsSection } from "@/components/sections/AboutUsSection";
 import { BentoServiceGrid } from "@/components/sections/BentoServiceGrid";
-import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
+import { PhilosophyJourney } from "@/components/sections/PhilosophyJourney";
 import { WhyDifferent } from "@/components/sections/WhyDifferent";
 import { ReferralSection } from "@/components/sections/ReferralSection";
-import { Section } from "@/components/layout/Section";
-import { Container } from "@/components/layout/Container";
-import { FaqPreview } from "@/components/sections/FaqPreview";
-import { AreasWeServe } from "@/components/sections/AreasWeServe";
+import { CompactAreasLine } from "@/components/sections/CompactAreasLine";
+import { EvidencePanel } from "@/components/sections/EvidencePanel";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { SectionDivider } from "@/components/sections/SectionDivider";
 import { SectionReveal } from "@/components/animations/SectionReveal";
@@ -19,11 +14,10 @@ import { NewsletterSignup } from "@/components/forms/NewsletterSignup";
 import { useFormModal } from "@/contexts/FormModalContext";
 import { Button } from "@/components/ui/Button";
 import { CTA_LINKS, HERO_REASSURANCE } from "@/lib/constants";
-import { getHowToSchema } from "@/lib/schema";
+import { getFaqSchema, getHowToSchema } from "@/lib/schema";
 import {
   HOMEPAGE_HERO,
   WHY_DIFFERENT,
-  HOMEPAGE_SERVICES_IMAGE,
   HOMEPAGE_EVIDENCE,
   PROCESS_STEPS,
   REFERRAL_PROFESSIONALS,
@@ -34,12 +28,43 @@ import {
 } from "@/content/homepage";
 import { ABOUT_INTRO } from "@/content/about";
 
+/**
+ * Homepage flow (compaction pass — 2026-05-08):
+ *
+ *   1. Hero
+ *   2. Personalised Care & Support (services, compact bento grid)
+ *   3. Our Care Philosophy + Your Journey (two-column on desktop, stacks on mobile)
+ *   4. Why Choose Gentle Care (no floating credential badges on the photo)
+ *   5. Referral section (for partners/coordinators)
+ *   6. Compact Areas line (one row, six region names + link to /areas)
+ *   7. Evidence Panel (AEO/GEO citable facts — moved to the bottom, compact treatment)
+ *   8. Newsletter
+ *   9. Final CTA
+ *
+ * Removed from the homepage (still live on the rest of the site):
+ *   - TrustMarquee carousel
+ *   - Standalone AboutUsSection + standalone ProcessTimeline (replaced by
+ *     PhilosophyJourney; the standalone components remain available for
+ *     other pages)
+ *   - Full AreasWeServe card grid (replaced by CompactAreasLine; full grid
+ *     still on /areas)
+ *   - Visible FaqPreview (the same FAQ items continue to be emitted as
+ *     FAQPage JSON-LD via getFaqSchema below, so AI engines and Google
+ *     still see them in static HTML; users go to /faq for the visible UI)
+ */
+
 const howToSchema = getHowToSchema(
   "How to request care from Gentle Care Nursing Services",
   "Tell us what you need and get immediate confirmation. We acknowledge straight away and respond within 24 hours with clear next steps, then match you with the right support.",
   PROCESS_STEPS.steps,
   "/"
 );
+
+// FAQ schema is still emitted in the static HTML even though the visible
+// FAQ section was removed from the homepage. This keeps the AEO signal —
+// AI engines extract from JSON-LD, not from the rendered DOM. Users who
+// want the full FAQ click through to /faq, where the visible UI lives.
+const faqSchema = getFaqSchema([...HOMEPAGE_FAQ]);
 
 export default function HomePageContent() {
   const { openModal } = useFormModal();
@@ -49,6 +74,10 @@ export default function HomePageContent() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       {/* 1. Hero (Immediate Clarity) */}
@@ -62,33 +91,21 @@ export default function HomePageContent() {
         imageAlt={HOMEPAGE_HERO.heroImageAlt}
       />
 
-      {/* 2. Trust Marquee (Social Proof) */}
-      <TrustMarquee />
+      {/* 2. Services — sit directly under the hero per Gemma's brief */}
+      <BentoServiceGrid />
 
-      {/* 2b. Evidence Panel (AEO/GEO citable facts) */}
-      <EvidencePanel
-        heading={HOMEPAGE_EVIDENCE.heading}
-        intro={HOMEPAGE_EVIDENCE.intro}
-        items={HOMEPAGE_EVIDENCE.items}
-      />
-
-      {/* 3. About Us (Personal/Quality) */}
+      {/* 3. Our Care Philosophy + Your Journey (combined two-column section) */}
       <SectionReveal>
-        <AboutUsSection
+        <PhilosophyJourney
           title={ABOUT_INTRO.title}
           lead={ABOUT_INTRO.lead}
           statsLine={ABOUT_INTRO.statsLine}
         />
       </SectionReveal>
 
-      {/* 4. Process Timeline (Clear Journey) */}
-      <ProcessTimeline />
-
-      {/* 5. Services (Action-oriented) */}
-      <BentoServiceGrid />
       <SectionDivider variant="curve" color="#fcf9f9" bgColor="white" />
 
-      {/* 5. Why Choose GCN (Differentiators) */}
+      {/* 4. Why Choose Gentle Care */}
       <SectionReveal>
         <div>
           <WhyDifferent
@@ -99,7 +116,7 @@ export default function HomePageContent() {
             imageAlt={WHY_DIFFERENT.imageAlt}
             sectionVariant="default"
           />
-          <div className="border-t border-border/30 bg-muted/50 py-8">
+          <div className="border-t border-border/30 bg-muted/50 py-6">
             <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
               <p className="text-sm text-muted-foreground">{HOMEPAGE_INLINE_CTAS.afterWhyDifferent}</p>
               <Button
@@ -116,7 +133,7 @@ export default function HomePageContent() {
 
       <SectionDivider variant="wave" color="#fcf9f9" bgColor="white" flip />
 
-      {/* 6. Referral Section (Professional Focus) */}
+      {/* 5. Referral section (Professional Focus) */}
       <SectionReveal>
         <ReferralSection
           headline={REFERRAL_PROFESSIONALS.headline}
@@ -124,38 +141,25 @@ export default function HomePageContent() {
         />
       </SectionReveal>
 
-      <SectionDivider variant="slant" color="white" bgColor="#fcf9f9" />
+      {/* 6. Compact Areas We Serve line (local-SEO anchor without the card grid) */}
+      <CompactAreasLine areas={HOMEPAGE_AREAS} />
 
-      {/* 8. Service Areas (GEO relevance) */}
+      {/* 7. Evidence Panel (AEO/GEO) — moved to bottom, compact treatment */}
+      <EvidencePanel
+        heading={HOMEPAGE_EVIDENCE.heading}
+        intro={HOMEPAGE_EVIDENCE.intro}
+        items={HOMEPAGE_EVIDENCE.items}
+        density="compact"
+      />
+
+      {/* 8. Newsletter */}
       <SectionReveal>
-        <AreasWeServe
-          areas={HOMEPAGE_AREAS}
-          title="Areas We Serve"
-          subtitle="We provide in-home nursing and care across Sydney and surrounds. Wherever you are in the region, we're here to help."
-          sectionVariant="default"
-        />
-      </SectionReveal>
-
-      <SectionDivider variant="curve" color="#fcf9f9" bgColor="white" />
-
-      {/* 9. FAQ (Objection Handling) */}
-      <SectionReveal>
-        <FaqPreview
-          items={HOMEPAGE_FAQ}
-          title="Common Questions"
-          subtitle="Quick answers to things people often ask. We're happy to explain more. Just get in touch."
-          sectionVariant="teal"
-        />
-      </SectionReveal>
-
-      {/* 10. Newsletter */}
-      <SectionReveal>
-        <section className="py-20 sm:py-24">
+        <section className="py-16 sm:py-20">
           <NewsletterSignup variant="section" />
         </section>
       </SectionReveal>
 
-      {/* 11. Final CTA */}
+      {/* 9. Final CTA */}
       <CtaSection
         title={HOMEPAGE_FINAL_CTA.title}
         primaryCta={CTA_LINKS.requestCare}

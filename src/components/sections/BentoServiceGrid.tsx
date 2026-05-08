@@ -23,31 +23,31 @@ export function BentoServiceGrid() {
   const otherServices = SERVICES.filter(s => s.slug !== "nursing-care");
 
   return (
-    <section className="py-24 sm:py-32 lg:py-40 bg-white overflow-hidden relative">
+    <section className="py-16 sm:py-20 lg:py-24 bg-white overflow-hidden relative">
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-1/4 w-[60%] h-[40%] rounded-full bg-accent/[0.03] blur-[120px]" />
         <div className="absolute bottom-0 right-1/4 w-[50%] h-[50%] rounded-full bg-primary/[0.02] blur-[100px]" />
       </div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-        <div className="mx-auto max-w-2xl text-center mb-20 lg:mb-28">
+        <div className="mx-auto max-w-2xl text-center mb-12 lg:mb-14">
           <Reveal delay={0.2}>
-            <Heading level="h2" className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground font-[family-name:var(--font-serif)]">
+            <Heading level="h2" className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground font-[family-name:var(--font-serif)]">
               Personalised Care & Support
             </Heading>
           </Reveal>
           <Reveal delay={0.3}>
-            <p className="mt-8 text-xl leading-relaxed text-muted-foreground font-medium">
+            <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground font-medium">
               Personalised in-home support focused on quality care, consistency and independence.
             </p>
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:auto-rows-[22rem]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:auto-rows-[15rem]">
           {/* Featured Hero Card - Occupies 2x2 on desktop */}
           <BentoCard
             index={0}
-            className="md:col-span-2 lg:row-span-2 bg-primary group ring-1 ring-primary/20 shadow-2xl shadow-primary/10"
+            className="md:col-span-2 lg:row-span-2 bg-primary group ring-1 ring-primary/20 shadow-xl shadow-primary/10"
             service={mainService}
             dark
             isFeatured
@@ -59,11 +59,11 @@ export function BentoServiceGrid() {
               key={service.slug}
               index={idx + 1}
               className={cn(
-                "group transition-all duration-700 h-full min-h-[20rem] lg:min-h-0",
+                "group transition-all duration-700 h-full min-h-[14rem] lg:min-h-0",
                 // Alternating styles for a generic but premium feel
-                idx % 4 === 0 ? "bg-accent/10 border border-accent/20" : 
+                idx % 4 === 0 ? "bg-accent/10 border border-accent/20" :
                 idx % 4 === 1 ? "bg-white border border-border/80 shadow-sm" :
-                idx % 4 === 2 ? "bg-muted/40 border border-border/50" : 
+                idx % 4 === 2 ? "bg-muted/40 border border-border/50" :
                 "bg-accent/5 border border-accent/10"
               )}
               service={service}
@@ -98,70 +98,69 @@ function BentoCard({ service, className, dark, index, isFeatured }: BentoCardPro
       }}
       whileHover={{ y: -4 }}
       className={cn(
-        "relative rounded-[2.5rem] p-8 sm:p-10 flex flex-col justify-between overflow-hidden cursor-pointer transition-shadow duration-500 hover:shadow-card-hover",
+        "relative rounded-[1.75rem] p-6 sm:p-7 flex flex-col justify-between overflow-hidden cursor-pointer transition-shadow duration-500 hover:shadow-card-hover",
         className
       )}
     >
       <Link href={service.href} className="absolute inset-0 z-30 focus:outline-none" aria-label={`View details for ${service.title}`} />
-      
+
       {/* Premium Overlays */}
       <div className={cn(
         "absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none",
-        dark 
-          ? "bg-gradient-to-br from-white/10 via-transparent to-transparent" 
+        dark
+          ? "bg-gradient-to-br from-white/10 via-transparent to-transparent"
           : "bg-gradient-to-br from-primary/5 via-transparent to-transparent"
       )} />
 
       {isFeatured && (
-        <div className="absolute -top-24 -right-24 w-80 h-80 bg-white/10 rounded-full blur-[100px] transition-all duration-1000 group-hover:bg-white/20 pointer-events-none z-0" />
+        <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full blur-[80px] transition-all duration-1000 group-hover:bg-white/20 pointer-events-none z-0" />
       )}
 
       {/* Content */}
       <div className="relative z-20 h-full flex flex-col">
         <div className={cn(
-          "h-14 w-14 rounded-2xl flex items-center justify-center mb-6 sm:mb-8 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-[5deg]",
-          dark 
-            ? "bg-white/15 text-white ring-1 ring-white/30 backdrop-blur-md" 
+          "h-11 w-11 rounded-xl flex items-center justify-center mb-4 sm:mb-5 shadow-md transition-all duration-500 group-hover:scale-110 group-hover:rotate-[5deg]",
+          dark
+            ? "bg-white/15 text-white ring-1 ring-white/30 backdrop-blur-md"
             : "bg-white text-primary ring-1 ring-primary/10 shadow-primary/5"
         )}>
-          <Icon className="h-7 w-7" strokeWidth={1.5} />
+          <Icon className="h-5 w-5" strokeWidth={1.5} />
         </div>
-        
-        <div className="space-y-4">
+
+        <div className="space-y-2">
           <h3 className={cn(
-            "text-2xl font-bold tracking-tight transition-colors duration-500 font-[family-name:var(--font-serif)]",
-            isFeatured ? "sm:text-3xl lg:text-4xl" : "sm:text-2xl",
+            "text-lg font-bold tracking-tight transition-colors duration-500 font-[family-name:var(--font-serif)]",
+            isFeatured ? "sm:text-2xl lg:text-3xl" : "sm:text-xl",
             dark ? "text-white" : "text-foreground group-hover:text-primary"
           )}>
             {service.title}
           </h3>
-          
+
           <p className={cn(
-            "text-base sm:text-lg font-medium leading-relaxed max-w-[400px]",
+            "text-sm sm:text-base font-medium leading-relaxed max-w-[360px]",
             dark ? "text-white/80" : "text-muted-foreground",
-            // More intelligent clamping - increased lines since we have more height
-            isFeatured ? "line-clamp-6 lg:line-clamp-8" : "line-clamp-3 md:line-clamp-4"
+            isFeatured ? "line-clamp-4 lg:line-clamp-6" : "line-clamp-2 md:line-clamp-3"
           )}>
             {service.benefitLine}
           </p>
         </div>
 
         {/* Footer */}
-        <div className="mt-auto pt-8 flex items-center justify-between">
+        <div className="mt-auto pt-5 flex items-center justify-between">
           <span className={cn(
-            "text-[10px] font-bold tracking-[0.3em] uppercase transition-all duration-700 transform",
+            "text-[10px] font-bold tracking-[0.25em] uppercase transition-all duration-700 transform",
             "opacity-100 translate-x-0 lg:opacity-0 lg:translate-x-2 lg:group-hover:translate-x-0 lg:group-hover:opacity-100",
             dark ? "text-white/90" : "text-primary"
           )}>
-            Service Details
+            Details
           </span>
           <div className={cn(
-            "h-12 w-12 rounded-full flex items-center justify-center transition-all duration-700 shadow-md",
-            dark 
-              ? "bg-white/15 text-white ring-1 ring-white/30 group-hover:bg-white group-hover:text-primary group-hover:rotate-45" 
+            "h-9 w-9 rounded-full flex items-center justify-center transition-all duration-700 shadow-md",
+            dark
+              ? "bg-white/15 text-white ring-1 ring-white/30 group-hover:bg-white group-hover:text-primary group-hover:rotate-45"
               : "bg-primary text-white shadow-primary/20 group-hover:bg-primary-dark group-hover:rotate-45"
           )}>
-            <ArrowUpRight className="h-5 w-5" strokeWidth={2.5} />
+            <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
           </div>
         </div>
       </div>
