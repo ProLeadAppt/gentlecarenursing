@@ -30,7 +30,6 @@ export function Header({ cta = CTA_LINKS.requestCare }: HeaderProps) {
               sizes="200px"
               className="h-10 w-auto xl:h-12"
               priority
-              fetchPriority="high"
             />
           </Link>
           <Nav links={NAV_LINKS} cta={cta} />

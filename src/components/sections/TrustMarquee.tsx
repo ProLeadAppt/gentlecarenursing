@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { ShieldCheck, Heart, Award, Star, BadgeCheck } from "lucide-react";
 
 const TRUST_ITEMS = [
@@ -12,24 +13,34 @@ const TRUST_ITEMS = [
 ];
 
 export function TrustMarquee() {
+  const ref = useRef<HTMLDivElement>(null);
+  // The marquee was running per-frame even when the section was off-screen,
+  // burning main-thread time on every page that includes it. Pause when out
+  // of view; resume when scrolled back. `useInView` registers an IntersectionObserver
+  // — cheap relative to the per-frame transform updates it gates.
+  const inView = useInView(ref, { margin: "200px" });
+  const prefersReducedMotion = useReducedMotion();
+  const animateMarquee = inView && !prefersReducedMotion;
+
   // Triple the items to ensure seamless loop
   const displayItems = [...TRUST_ITEMS, ...TRUST_ITEMS, ...TRUST_ITEMS];
 
   return (
-    <div className="relative py-12 bg-white border-y border-border/50 overflow-hidden select-none">
+    <div
+      ref={ref}
+      className="relative py-12 bg-white border-y border-border/50 overflow-hidden select-none"
+    >
       <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
       <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
-      
+
       <motion.div
         className="flex gap-12 whitespace-nowrap items-center"
-        animate={{
-          x: [0, -1035], // Approximate overlap distance
-        }}
-        transition={{
-          duration: 30,
-          repeat: Infinity,
-          ease: "linear",
-        }}
+        animate={animateMarquee ? { x: [0, -1035] } : { x: 0 }}
+        transition={
+          animateMarquee
+            ? { duration: 30, repeat: Infinity, ease: "linear" }
+            : { duration: 0 }
+        }
       >
         {displayItems.map((item, i) => {
           const Icon = item.icon;

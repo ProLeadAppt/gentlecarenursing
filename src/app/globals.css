@@ -312,6 +312,20 @@ body {
   }
 }
 
+/*
+ * Below `md` (≤767px), pause the continuously-animated ambient orbs.
+ * They're a desktop atmosphere effect — on mobile the orbs are mostly
+ * off-screen or behind text, and the indefinite keyframe animation
+ * prevents the browser from idling, hurting battery and CWV INP.
+ */
+@media (max-width: 767px) {
+  .ambient-orb,
+  .ambient-orb-sage,
+  .ambient-orb-teal {
+    animation: none;
+  }
+}
+
 /* Key phrase emphasis — use for Registered NDIS & DVA, Sydney, etc. */
 .text-strong {
   color: hsl(var(--color-foreground-strong));
