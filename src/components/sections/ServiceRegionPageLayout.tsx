@@ -8,6 +8,7 @@ import { Magnetic } from "@/components/animations/Magnetic";
 import { FormModalTrigger } from "@/components/ui/FormModalTrigger";
 import { FaqPreview } from "./FaqPreview";
 import { ServiceCtaWithModal } from "./ServiceCtaWithModal";
+import { EvidencePanel, type EvidenceItem } from "./EvidencePanel";
 import { CTA_LINKS, SITE } from "@/lib/constants";
 import {
   ArrowRight,
@@ -23,8 +24,98 @@ interface Props {
   data: ServiceRegionPageData;
 }
 
+/**
+ * Build the AEO/GEO evidence panel for this service × region page.
+ *
+ * The panel is server-rendered and surfaces citable facts AI engines extract
+ * directly: registration, service area, response window, funding, scope.
+ * Each fact is derived from data already on the page (suburbs, service type,
+ * funding lines from `included`) so we never invent claims here.
+ */
+function buildRegionEvidence(data: ServiceRegionPageData): readonly EvidenceItem[] {
+  const { service, region } = data;
+  const suburbList = region.suburbs.slice(0, 6).join(", ");
+
+  // Service-aware registration line — keeps the regulatory wording exact
+  // (DVA / NDIS / AHPRA references must match the binding voice rules).
+  const registration: Record<typeof service.slug, string> = {
+    "ndis-services":
+      "Registered NDIS provider, compliant with the NDIS Quality and Safeguards Commission.",
+    "dva-community-nursing":
+      "DVA Contracted Community Nursing Provider, delivering services under the DVA Community Nursing programme.",
+    "in-home-nursing-care":
+      "Clinical care delivered or supervised by AHPRA-registered nurses; registered NDIS provider and DVA Contracted Community Nursing Provider.",
+    "personal-care-daily-living":
+      "Registered NDIS provider; personal care delivered by experienced support workers.",
+    "complex-care-support":
+      "Complex care delivered or supervised by AHPRA-registered nurses; registered NDIS provider.",
+  };
+
+  const funding: Record<typeof service.slug, string> = {
+    "ndis-services":
+      "Self-Managed, Plan-Managed and NDIA-Managed NDIS participants. Core Supports and Capacity Building line items where applicable.",
+    "dva-community-nursing":
+      "DVA Community Nursing programme — claims submitted directly to the Department of Veterans' Affairs; no out-of-pocket cost for clinically required, approved care.",
+    "in-home-nursing-care":
+      "NDIS, DVA Community Nursing, aged care (Support at Home, CHSP), and private fee-for-service.",
+    "personal-care-daily-living":
+      "NDIS Core Supports (Assistance with Daily Life), aged care packages, DVA where part of approved care, and private fee-for-service.",
+    "complex-care-support":
+      "NDIS (including high-intensity supports where applicable), DVA Community Nursing, aged care packages, and private fee-for-service.",
+  };
+
+  const scope: Record<typeof service.slug, string> = {
+    "ndis-services":
+      "In-home nursing, personal care, complex care (PEG, tracheostomy, catheter), and community participation tailored to NDIS goals.",
+    "dva-community-nursing":
+      "Wound care, medication management, continence and catheter care, chronic disease monitoring, and personal care where part of approved care.",
+    "in-home-nursing-care":
+      "Wound care, medication management, chronic disease monitoring, complex care (PEG, tracheostomy, catheter), post-surgical and palliative support.",
+    "personal-care-daily-living":
+      "Showering, dressing, grooming, mobility support, meal preparation, and assistance with everyday routines.",
+    "complex-care-support":
+      "PEG feeding, tracheostomy care, catheter management, complex wound care, and high-intensity nursing supports at home.",
+  };
+
+  return [
+    {
+      label: "Registration",
+      value: registration[service.slug],
+      icon: "registration",
+    },
+    {
+      label: "Service area",
+      value: `${region.region}, Sydney — including ${suburbList}.`,
+      icon: "area",
+    },
+    {
+      label: "Response window",
+      value:
+        "Enquiries acknowledged immediately; we aim to respond within 24 hours during business hours, with urgent referrals prioritised.",
+      icon: "response",
+    },
+    {
+      label: "Funding accepted",
+      value: funding[service.slug],
+      icon: "funding",
+    },
+    {
+      label: "Scope of care",
+      value: scope[service.slug],
+      icon: "scope",
+    },
+    {
+      label: "Office",
+      value:
+        "Based in North Strathfield — visit-routing planned around real travel distances and household preferences.",
+      icon: "credential",
+    },
+  ];
+}
+
 export function ServiceRegionPageLayout({ data }: Props) {
   const { service, region } = data;
+  const evidenceItems = buildRegionEvidence(data);
 
   const breadcrumbItems = [
     { label: "Home", href: "/" },
@@ -108,6 +199,12 @@ export function ServiceRegionPageLayout({ data }: Props) {
           </Reveal>
         </Container>
       </section>
+
+      <EvidencePanel
+        heading={`Quick facts: ${service.title} in ${region.region}`}
+        intro={`Citable facts for families, ${service.slug === "ndis-services" ? "support coordinators, plan managers" : service.slug === "dva-community-nursing" ? "GPs and DVA contacts" : "GPs and discharge planners"} considering ${service.title.toLowerCase()} across ${region.region}.`}
+        items={evidenceItems}
+      />
 
       {/* Service overview + suburbs sidebar */}
       <Section className="bg-muted/30 border-y border-border/40">
