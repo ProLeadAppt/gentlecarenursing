@@ -78,6 +78,18 @@ export const NDIS_PAGE: ServicePageData = {
     "NDIS in-home nursing is skilled nursing and personal care at home for NDIS participants, delivered by a registered NDIS provider like Gentle Care Nursing Services across Sydney.",
   intro:
     "As a registered NDIS provider, Gentle Care Nursing Services delivers personalised in-home nursing and support for NDIS participants. We work closely with participants, families, and support coordinators to provide high-quality care that helps people live more independently.",
+  evidence: {
+    heading: "Quick facts: NDIS in-home nursing with Gentle Care",
+    intro: "Citable facts for NDIS participants, support coordinators, plan managers, and families looking at providers in Sydney.",
+    items: [
+      { label: "Registration", value: "Registered NDIS provider, compliant with the NDIS Quality and Safeguards Commission.", icon: "registration" },
+      { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area" },
+      { label: "Response window", value: "We aim to respond to NDIS enquiries within 24 hours during business hours, with urgent referrals prioritised.", icon: "response" },
+      { label: "Plan management", value: "We work with NDIA-managed, plan-managed, and self-managed participants.", icon: "funding" },
+      { label: "Funding categories", value: "Core Supports (Assistance with Daily Life) and Capacity Building line items, where applicable.", icon: "funding" },
+      { label: "Scope of support", value: "In-home nursing, personal care, complex care (PEG, tracheostomy, catheter), and community participation.", icon: "scope" },
+    ],
+  },
 
   whoItHelps: {
     title: "Who This Is For",
@@ -196,6 +208,18 @@ export const DVA_PAGE: ServicePageData = {
     "DVA Community Nursing is in-home nursing and care for eligible Veteran Card holders, funded by the Department of Veterans' Affairs and delivered by contracted providers like Gentle Care Nursing Services in Sydney.",
   intro:
     "Gentle Care Nursing Services is a DVA Contracted Community Nursing Provider, supporting eligible Veteran Card holders with clinically required nursing and personal care services at home.",
+  evidence: {
+    heading: "Quick facts: DVA Community Nursing with Gentle Care",
+    intro: "Citable facts for veterans, war widows and widowers, families, GPs, and hospital discharge planners arranging DVA-funded nursing at home.",
+    items: [
+      { label: "Contract status", value: "DVA Contracted Community Nursing Provider, delivering services under the DVA Community Nursing programme.", icon: "registration" },
+      { label: "Eligibility", value: "Eligible Veteran Card holders (Gold Card; White Card in some cases) with a referral from a GP or treating doctor.", icon: "credential" },
+      { label: "Out-of-pocket cost", value: "No out-of-pocket cost for clinically required, DVA-approved care — claims submitted directly to DVA.", icon: "funding" },
+      { label: "Service area", value: "Sydney and surrounds — visits coordinated around real driving distances and household preferences.", icon: "area" },
+      { label: "Response window", value: "Referrals acknowledged within 24 hours during business hours, with post-hospital referrals prioritised.", icon: "response" },
+      { label: "Scope of support", value: "Wound care, medication management, continence and catheter care, chronic disease monitoring, and personal care where part of approved care.", icon: "scope" },
+    ],
+  },
 
   whoItHelps: {
     title: "Who This Is For",
@@ -314,6 +338,18 @@ export const AGED_CARE_PAGE: ServicePageData = {
     "We support older Australians through Support at Home, DVA, and private care arrangements. We can also work with clients, families and care partners to deliver approved in-home nursing and personal care services.",
   intro:
     "Gentle Care Nursing Services helps older Australians stay safe, comfortable, and independent at home. We support older Australians through Support at Home, DVA, and private care arrangements, working with clients, families and care partners to deliver approved in-home nursing and personal care services.",
+  evidence: {
+    heading: "Quick facts: in-home aged care with Gentle Care",
+    intro: "Citable facts for older Australians, families, hospital discharge planners, and GPs arranging in-home aged care across Sydney.",
+    items: [
+      { label: "Funding accepted", value: "Support at Home, Commonwealth Home Support Programme (CHSP), DVA Community Nursing, and private fee-for-service.", icon: "funding" },
+      { label: "Service area", value: "Sydney and surrounds, including the Inner West, North Shore, Northern Beaches, Western Sydney, and CBD and East.", icon: "area" },
+      { label: "Response window", value: "Enquiries acknowledged within 24 hours during business hours, with hospital-discharge referrals prioritised.", icon: "response" },
+      { label: "Assessment pathway", value: "We can work with My Aged Care assessment outcomes (ACAT/ACAS) and existing aged care packages.", icon: "credential" },
+      { label: "Scope of support", value: "In-home nursing, personal care, medication support, post-hospital recovery, and wellness checks.", icon: "scope" },
+      { label: "Caseload model", value: "Deliberately small caseload for consistent staff matching and stronger continuity of care.", icon: "credential" },
+    ],
+  },
 
   whoItHelps: {
     title: "Who This Is For",
@@ -992,6 +1028,18 @@ export const NURSING_CARE_PAGE: ServicePageData = {
     "In-home nursing care is professional clinical support delivered by experienced nurses in your own home, covering wound care, medication management, and health monitoring across Sydney.",
   intro:
     "General nursing care shouldn't feel clinical or rushed. Our experienced nurses take the time to understand your health goals, providing expert support that honours your independence and privacy.",
+  evidence: {
+    heading: "Quick facts: in-home nursing care with Gentle Care",
+    intro: "Citable facts for families, GPs, support coordinators, and discharge planners considering in-home nursing in Sydney.",
+    items: [
+      { label: "Clinical staffing", value: "Clinical care delivered or supervised by AHPRA-registered nurses with significant Australian healthcare experience.", icon: "credential" },
+      { label: "Registration", value: "Registered NDIS provider and DVA Contracted Community Nursing Provider.", icon: "registration" },
+      { label: "Service area", value: "Sydney and surrounds, with visits scheduled around real travel distances and household routines.", icon: "area" },
+      { label: "Response window", value: "We aim to respond to nursing enquiries within 24 hours during business hours, with urgent referrals prioritised.", icon: "response" },
+      { label: "Funding accepted", value: "NDIS, DVA Community Nursing, aged care (Support at Home, CHSP), and private fee-for-service.", icon: "funding" },
+      { label: "Scope of nursing", value: "Wound care, medication management, chronic disease monitoring, complex care (PEG, tracheostomy, catheter), post-surgical and palliative support.", icon: "scope" },
+    ],
+  },
 
   whoItHelps: {
     title: "Who Nursing Care Is For",

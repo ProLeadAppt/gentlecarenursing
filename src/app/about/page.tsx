@@ -13,6 +13,7 @@ import { Card } from "@/components/ui/Card";
 import { CTA_LINKS } from "@/lib/constants";
 import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
+import { getPersonSchema } from "@/lib/schema";
 import {
   ABOUT_INTRO,
   ELEVATOR_PITCH,
@@ -25,6 +26,25 @@ import {
   CASE_STUDIES,
 } from "@/content/about";
 
+const founderSchema = getPersonSchema({
+  name: FOUNDER_STORY.name,
+  jobTitle: FOUNDER_STORY.title,
+  // Use the first paragraph of the founder bio so the schema description is
+  // self-contained and doesn't carry a stray "\n\n" from the on-page format.
+  description: FOUNDER_STORY.bio.split("\n\n")[0],
+  imagePath: FOUNDER_STORY.imageSrc,
+  profilePath: "/about",
+  knowsAbout: [
+    "In-home nursing",
+    "Dementia care",
+    "Palliative care",
+    "Disability support",
+    "Mental health support",
+    "Aged care at home",
+    "Care planning",
+  ],
+});
+
 export const metadata = createMetadata({
   title: "About Us",
   description:
@@ -35,6 +55,11 @@ export const metadata = createMetadata({
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(founderSchema) }}
+      />
+
       {/* Hero Intro */}
       <Section size="lg" variant="card">
         <Container size="md">

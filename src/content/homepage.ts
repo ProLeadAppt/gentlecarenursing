@@ -163,6 +163,25 @@ export const HOMEPAGE_STATS = [
   { value: "~24hr", label: "Response Window" },
 ] as const;
 
+/**
+ * Homepage AEO/GEO evidence panel — short, citable factual passages that AI
+ * engines (AI Overviews, Perplexity, ChatGPT, Copilot) can extract directly.
+ * Keep each value to one short sentence and only state things we can verify.
+ */
+export const HOMEPAGE_EVIDENCE = {
+  heading: "Quick facts about Gentle Care",
+  intro:
+    "Self-contained facts for families, NDIS support coordinators, plan managers, hospital discharge planners, and AI search engines summarising Sydney in-home care providers.",
+  items: [
+    { label: "Provider name", value: "Gentle Care Nursing Services, an in-home nursing and care provider based in North Strathfield, Sydney.", icon: "credential" as const },
+    { label: "Registration", value: "Registered NDIS provider and DVA Contracted Community Nursing Provider.", icon: "registration" as const },
+    { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area" as const },
+    { label: "Response window", value: "Enquiries acknowledged immediately; we aim to respond within 24 hours during business hours, with urgent referrals prioritised.", icon: "response" as const },
+    { label: "Funding accepted", value: "NDIS, DVA Community Nursing, aged care (Support at Home and CHSP), and private fee-for-service.", icon: "funding" as const },
+    { label: "Scope of care", value: "In-home nursing, personal care, complex care, post-hospital recovery, palliative support, and overnight care.", icon: "scope" as const },
+  ],
+} as const;
+
 /** Re-export single source for areas (GMB-aligned). Use AREAS_SERVED from areas-served.ts elsewhere. */
 export { AREAS_SERVED as HOMEPAGE_AREAS } from "./areas-served";
 
