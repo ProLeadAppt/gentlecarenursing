@@ -89,6 +89,11 @@ export default function HomePageContent() {
         reassurance={HERO_REASSURANCE}
         imageSrc={HOMEPAGE_HERO.heroImageSrc}
         imageAlt={HOMEPAGE_HERO.heroImageAlt}
+        videoSrc={[
+          { src: "/video/hero-loop.webm", type: "video/webm" },
+          { src: "/video/hero-loop.mp4", type: "video/mp4" },
+        ]}
+        videoPoster={HOMEPAGE_HERO.heroImageSrc}
       />
 
       {/* 2. Services — sit directly under the hero per Gemma's brief */}
