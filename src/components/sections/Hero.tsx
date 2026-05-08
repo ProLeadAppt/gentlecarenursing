@@ -27,6 +27,10 @@ interface HeroProps {
   reassurance?: string;
   imageSrc?: string;
   imageAlt?: string;
+  /** Optional looping background video. When provided, replaces the static hero image. */
+  videoSrc?: string;
+  /** Optional poster shown while the video loads — usually the same as imageSrc. */
+  videoPoster?: string;
   credentials?: readonly { label: string; color: string }[];
 }
 
@@ -45,6 +49,8 @@ export function Hero({
   reassurance = HERO_REASSURANCE,
   imageSrc = "/images/vitaly-gariev-Wk6f1CkGlEo-unsplash.webp",
   imageAlt = "Personalised in-home care delivered with warmth",
+  videoSrc,
+  videoPoster,
   credentials = defaultCredentials,
 }: HeroProps) {
   const { openModal } = useFormModal();
@@ -208,15 +214,29 @@ export function Hero({
               <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl z-0" />
 
               <div className="relative h-full w-full overflow-hidden rounded-[3rem] shadow-[0_32px_64px_-16px_rgba(132,40,51,0.2)] lg:rounded-[4.5rem] border border-white/20 image-brand-overlay">
-                <Image
-                  src={imageSrc}
-                  alt={imageAlt}
-                  fill
-                  className="object-cover object-center"
-                  priority
-                  fetchPriority="high"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
+                {videoSrc ? (
+                  <video
+                    className="absolute inset-0 h-full w-full object-cover object-center"
+                    src={videoSrc}
+                    poster={videoPoster ?? imageSrc}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    aria-label={imageAlt}
+                  />
+                ) : (
+                  <Image
+                    src={imageSrc}
+                    alt={imageAlt}
+                    fill
+                    className="object-cover object-center"
+                    priority
+                    fetchPriority="high"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
 
                 {/* Floating badge: 24h Response */}
