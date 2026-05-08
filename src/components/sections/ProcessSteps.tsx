@@ -67,7 +67,7 @@ export function ProcessSteps({
             </Heading>
           </Reveal>
           <Reveal delay={0.3}>
-            <p className="mt-8 mx-auto max-w-2xl text-xl leading-relaxed text-muted-foreground font-medium">
+            <p className="mt-8 mx-auto max-w-2xl text-xl leading-relaxed text-foreground/90 font-medium">
               {subtitle}
             </p>
           </Reveal>
@@ -107,10 +107,10 @@ export function ProcessSteps({
                     </div>
 
                     <div className="space-y-4 px-4 lg:px-0">
-                      <Heading level="h3" className="text-2xl font-bold font-[family-name:var(--font-serif)] group-hover:text-primary transition-colors duration-500">
+                      <Heading level="h3" className="text-3xl sm:text-[2rem] lg:text-[2.25rem] leading-[1.15] font-bold font-[family-name:var(--font-serif)] text-foreground group-hover:text-primary transition-colors duration-500">
                         {step.headline}
                       </Heading>
-                      <p className="text-base leading-relaxed text-muted-foreground font-medium">
+                      <p className="text-lg leading-relaxed text-foreground/85 font-medium">
                         {step.description}
                       </p>
                     </div>
@@ -123,7 +123,7 @@ export function ProcessSteps({
           {cta && (
             <Reveal delay={0.6}>
               <div className="mt-24 pt-16 border-t border-border/40 text-center">
-                <p className="max-w-2xl mx-auto text-lg text-muted-foreground font-medium mb-12 italic opacity-80">
+                <p className="max-w-2xl mx-auto text-lg text-foreground/85 font-medium mb-12 italic">
                   "No pressure to decide on the spot. Reach out and we&apos;ll guide you through the next steps with zero obligation."
                 </p>
                 <div className="flex justify-center">

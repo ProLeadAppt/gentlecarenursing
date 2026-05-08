@@ -23,12 +23,13 @@
   --color-accent-foreground: 0 0% 35%;
   --color-accent-light: 349 27% 88%;
 
-  /* Neutrals and surfaces (#ffffff, #5a5a5a, #595758) */
+  /* Neutrals and surfaces — darkened for accessibility (WCAG AA+ for elderly readers).
+     Body and secondary text now meet stricter contrast against white backgrounds. */
   --color-background: 0 0% 100%;
-  --color-foreground: 0 0% 35%; /* #5a5a5a */
-  --color-foreground-strong: 0 1% 34%; /* #595758 */
+  --color-foreground: 0 0% 20%; /* ~#333333 — strong body text */
+  --color-foreground-strong: 0 0% 13%; /* ~#212121 — emphasised text */
   --color-muted: 349 27% 97%; /* subtle surface tint just above white */
-  --color-muted-foreground: 0 1% 45%; /* slightly lighter grey for secondary text */
+  --color-muted-foreground: 0 0% 30%; /* ~#4d4d4d — secondary text, still passes AA on white */
   --color-border: 349 20% 88%;
   --color-card: 0 0% 100%;
 
