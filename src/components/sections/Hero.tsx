@@ -8,6 +8,7 @@ import { HERO_VARIANTS } from "@/design-system/tokens";
 import { HERO_REASSURANCE, SITE } from "@/lib/constants";
 import { Magnetic } from "@/components/animations/Magnetic";
 import { useFormModal } from "@/contexts/FormModalContext";
+import { useIsDesktop } from "@/hooks/useMediaQuery";
 
 export interface HeroCta {
   href: string;
@@ -48,14 +49,20 @@ export function Hero({
 }: HeroProps) {
   const { openModal } = useFormModal();
   const prefersReducedMotion = useReducedMotion();
+  const isDesktop = useIsDesktop();
+  // Parallax stays off below `md` and when the user prefers reduced motion.
+  // Hooks must be called unconditionally; we gate the *output* via this flag
+  // so the scroll-driven transforms become inert (`y: 0%`, `opacity: 1`) on
+  // mobile, eliminating per-frame layout reads on the LCP element.
+  const enableParallax = isDesktop && !prefersReducedMotion;
   const containerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? ["0%", "0%"] : ["0%", "20%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], prefersReducedMotion ? [1, 1] : [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], enableParallax ? ["0%", "20%"] : ["0%", "0%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], enableParallax ? [1, 0] : [1, 1]);
 
   // Determine headline segments — support both new segmented and legacy single-string API
   const segments = headlineSegments ?? (headline ? [headline] : ["Personalised", "In-Home Care & Support"]);

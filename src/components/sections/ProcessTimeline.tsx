@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, useInView, useReducedMotion } from "fr
 import { MessageSquare, PhoneCall, UserPlus, Heart } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useFormModal } from "@/contexts/FormModalContext";
+import { useIsDesktop } from "@/hooks/useMediaQuery";
 
 const STEPS = [
   {
@@ -130,8 +131,15 @@ export function ProcessTimeline() {
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const headerInView = useInView(headerRef, { once: true, margin: "-60px" });
+  const isDesktop = useIsDesktop();
+  const prefersReducedMotion = useReducedMotion();
+  // Self-drawing line is a desktop flourish — on mobile it's a per-frame
+  // scroll subscription for ~2px of visual gain. Render the static line on
+  // mobile / reduced-motion and skip the scroll subscription entirely.
+  const enableLineDraw = isDesktop && !prefersReducedMotion;
 
-  // Scroll progress for the self-drawing line
+  // Scroll progress for the self-drawing line. Hooks must be called
+  // unconditionally; we just don't read the resulting transform when gated.
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start 0.7", "end 0.8"],
@@ -171,12 +179,16 @@ export function ProcessTimeline() {
 
         {/* Vertical timeline */}
         <div className="relative">
-          {/* Self-drawing line */}
+          {/* Self-drawing line — animated on desktop, static on mobile/reduced-motion. */}
           <div className="absolute left-[1.375rem] top-0 bottom-0 w-0.5 bg-pw-border">
-            <motion.div
-              className="w-full bg-gradient-to-b from-pw-sage via-pw-teal to-primary"
-              style={{ height: lineHeight }}
-            />
+            {enableLineDraw ? (
+              <motion.div
+                className="w-full bg-gradient-to-b from-pw-sage via-pw-teal to-primary"
+                style={{ height: lineHeight }}
+              />
+            ) : (
+              <div className="h-full w-full bg-gradient-to-b from-pw-sage via-pw-teal to-primary" />
+            )}
           </div>
 
           {/* Steps */}
