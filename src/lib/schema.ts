@@ -88,6 +88,41 @@ export function getServiceSchema(service: {
   };
 }
 
+/**
+ * MedicalProcedure schema for clinical procedures a service page describes.
+ *
+ * Used to bind a service page (e.g. /services/complex-care) to specific
+ * procedures Google's clinical-content classifier and AI engines can
+ * recognise — tracheostomy care, PEG feeding, catheter management, etc.
+ *
+ * Each procedure links back to the page's MedicalService via `relevantSpecialty`
+ * so the entity graph stays connected. Keep `description` short and factual —
+ * AI engines extract these descriptions when answering procedure-specific
+ * queries (e.g. "PEG feeding home care Sydney").
+ *
+ * Only populate this with procedures we genuinely deliver. Do not list
+ * a procedure here unless the service page also references it in body
+ * content; mismatches between schema and page content can hurt rather
+ * than help on Google's quality systems.
+ */
+export function getMedicalProcedureSchema(args: {
+  name: string;
+  alternateName?: string;
+  description?: string;
+  /** URL of the service page that delivers this procedure. */
+  pageUrl: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "MedicalProcedure" as const,
+    name: args.name,
+    ...(args.alternateName ? { alternateName: args.alternateName } : {}),
+    ...(args.description ? { description: args.description } : {}),
+    url: `${INTEGRATIONS.siteUrl}${args.pageUrl}`,
+    provider: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
+  };
+}
+
 export function getFaqSchema(
   items: { question: string; answer: string }[]
 ) {
