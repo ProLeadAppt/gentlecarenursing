@@ -699,9 +699,35 @@ export const COMPLEX_CARE_PAGE: ServicePageData = {
   title: "Complex Clinical Care at Home",
   href: "/services/complex-care",
   snippetAnswer:
-    "Complex clinical care at home means specialised nursing for people with higher health needs, such as tracheostomy care, PEG feeding, catheter management, and complex wound care, delivered safely in their own home.",
+    "Complex clinical care at home is specialised nursing for people with higher health needs — including tracheostomy care, PEG feeding, catheter management, and complex wound care — delivered safely in the home across Sydney by experienced nurses, in coordination with treating teams at hospitals like RPA, Westmead, RNSH, and St Vincent's.",
   intro:
-    "Many people with higher health needs can live safely at home with the right support. Our complex clinical care service brings experienced nurses to you, so advanced care can continue in a familiar, comfortable environment.",
+    "Many people with higher health needs can live safely at home with the right support. Our complex clinical care service brings experienced nurses to you across Sydney and surrounds, so advanced care can continue in a familiar, comfortable environment — whether you're transitioning from a Sydney hospital, managing a long-term condition, or coordinating care with your treating team.",
+  procedures: [
+    {
+      name: "Tracheostomy care",
+      alternateName: "Tracheostomy management",
+      description:
+        "Airway care, tube changes as directed by the treating team, stoma site monitoring, and suctioning support, delivered in the home by experienced nurses across Sydney.",
+    },
+    {
+      name: "PEG feeding",
+      alternateName: "Percutaneous endoscopic gastrostomy feeding",
+      description:
+        "PEG site care, enteral feeding regimes, flushing, and tolerance monitoring delivered in the home, in line with dietitian and medical instructions.",
+    },
+    {
+      name: "Catheter management",
+      alternateName: "Indwelling urinary catheter care",
+      description:
+        "Indwelling and intermittent catheter care, monitoring, and troubleshooting in the home, with escalation to GPs and specialists when needed.",
+    },
+    {
+      name: "Complex wound care",
+      alternateName: "Chronic and complex wound management",
+      description:
+        "Assessment and management of complex or chronic wounds — leg ulcers, pressure injuries, surgical wounds — following specialist plans and reporting back to treating teams.",
+    },
+  ],
 
   whoItHelps: {
     title: "Who Complex Care Is For",

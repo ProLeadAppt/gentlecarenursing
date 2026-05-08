@@ -9,7 +9,7 @@ import { Heading } from "@/components/ui/Heading";
 import { Card } from "@/components/ui/Card";
 import { FormModalTrigger } from "@/components/ui/FormModalTrigger";
 import { CTA_LINKS } from "@/lib/constants";
-import { getServiceSchema, getFaqSchema } from "@/lib/schema";
+import { getServiceSchema, getFaqSchema, getMedicalProcedureSchema } from "@/lib/schema";
 import { SERVICES } from "@/content/services";
 import { ALL_GUIDES } from "@/content/guides";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
@@ -79,6 +79,23 @@ export interface ServicePageData {
   reviewedAt?: string;
   /** Named clinician who reviewed the page. Populate only with consent and AHPRA confirmation. */
   reviewer?: { name: string; role?: string };
+  /**
+   * Optional list of clinical procedures this service page describes.
+   *
+   * Each entry is emitted as a MedicalProcedure schema node alongside the
+   * page's MedicalService schema, so AI engines and Google's clinical
+   * content classifier can resolve the page to specific procedure-level
+   * intents — e.g. "PEG feeding home care Sydney", "tracheostomy care at
+   * home", "catheter management Sydney".
+   *
+   * Only populate this with procedures the page actually describes in
+   * body content. Schema/content mismatch hurts rather than helps.
+   */
+  procedures?: readonly {
+    name: string;
+    alternateName?: string;
+    description?: string;
+  }[];
 }
 
 interface ServicePageLayoutProps {
@@ -92,12 +109,26 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
     answer: f.answer,
   }));
 
+  // Only emit MedicalProcedure schema when we have a stable page URL to
+  // bind each procedure to — `provider` and `url` both depend on it.
+  const procedureSchemas = data.procedures && data.href
+    ? data.procedures.map((p) =>
+        getMedicalProcedureSchema({
+          name: p.name,
+          alternateName: p.alternateName,
+          description: p.description,
+          pageUrl: data.href!,
+        })
+      )
+    : [];
+
   const schemas = [
     getServiceSchema({
       name: data.title,
       description: data.intro,
       url: data.href ?? "",
     }),
+    ...procedureSchemas,
     ...(faqItems.length > 0 ? [getFaqSchema(data.faqs)] : []),
   ];
 
