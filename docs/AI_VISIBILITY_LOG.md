@@ -64,11 +64,17 @@ Three branches merged and deployed today. Any movement in the next checkpoint sh
 
 Live-site verification snapshot: [`docs/evidence/2026-05-08/BASELINE.md`](evidence/2026-05-08/BASELINE.md). Static HTML snapshots saved alongside for `diff`-based regression checking at the next checkpoint.
 
+**External-listing audit completed 2026-05-08:**
+
+- ✅ **DVA Panel of Community Nursing Providers** — Gentle Care Nursing Services Pty Ltd verified on the current April 2026 ACT/NSW PDF, listed in 63 LGA/suburb sections including every Sydney region we target. Phone (1300 004 267) and legal name match site + GBP. Source: https://www.dva.gov.au/sites/default/files/2026-04/cnactnsw.pdf — re-verify each quarter.
+- ⏳ **NDIS Provider Finder** — Gemma to verify listing surfaces correctly, registration groups match website claims. See [`docs/external-listings-checklist.md`](external-listings-checklist.md).
+- ⏳ **My Aged Care directory** — Gemma to verify listing exists and Support at Home / CHSP categories are current. See [`docs/external-listings-checklist.md`](external-listings-checklist.md).
+
 **Predicted movement by 2026-06-07** (informed guesses, to be measured against actuals):
 
 | Query | Pre-deploy reason for 0 citation | Post-deploy expected change |
 |---|---|---|
-| 2 — DVA community nursing | DVA panel PDF + competitor pages dominate | Possible: AI engines may begin citing GCN's `/dva` evidence panel directly, even without GCN being added to the DVA panel PDF. |
+| 2 — DVA community nursing | DVA panel PDF + competitor pages dominate | **Likely** (upgraded 2026-05-08 after audit): GCN is verified on the April 2026 DVA panel PDF in 63 NSW LGA sections. Combined with `/dva` evidence panel citing the DVA programme name exactly, AI engines that pull from dva.gov.au should begin attributing citations correctly. |
 | 3 — registered NDIS provider in-home nursing | NDIS Provider Finder + competitor pages dominate | Possible: `/ndis` evidence panel is one of the few that names NDIA-managed/Plan-managed/Self-managed explicitly with a registered-provider claim. |
 | 5 — complex care tracheostomy/PEG Sydney | Competitors have stronger clinical-procedure copy | Unlikely to move — needs `MedicalProcedure` schema (deferred). |
 | 7 — in-home care after hip replacement | Top results are US/global clinical content | Possible: `/guides/in-home-care-after-hip-replacement` already exists; deploy didn't change it. Should still be the strongest Sydney-anchored option. |
