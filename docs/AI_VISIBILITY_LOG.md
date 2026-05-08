@@ -52,6 +52,32 @@ Add a dedicated row for manual AI engine checks (ChatGPT-with-web, Perplexity, G
 
 ---
 
+## Deploy event — 2026-05-08
+
+Three branches merged and deployed today. Any movement in the next checkpoint should be attributable to this deploy.
+
+| PR | Branch | Tip |
+|---|---|---|
+| #11 | `chore/seo-pass-3-fixes` | `f5b4783` — Gemma's voice refresh, em-dash sweep, meta tightening |
+| #12 | `chore/aeo-evidence-panel-and-person-schema` | `a5646e1` — `EvidencePanel` on /, /ndis, /dva, /aged-care, /services/nursing-care; Person schema on /about |
+| #13 | `chore/cwv-mobile-pass` | `8aa7e4b` — AVIF/WebP, mobile motion gating, hero parallax off below md |
+
+Live-site verification snapshot: [`docs/evidence/2026-05-08/BASELINE.md`](evidence/2026-05-08/BASELINE.md). Static HTML snapshots saved alongside for `diff`-based regression checking at the next checkpoint.
+
+**Predicted movement by 2026-06-07** (informed guesses, to be measured against actuals):
+
+| Query | Pre-deploy reason for 0 citation | Post-deploy expected change |
+|---|---|---|
+| 2 — DVA community nursing | DVA panel PDF + competitor pages dominate | Possible: AI engines may begin citing GCN's `/dva` evidence panel directly, even without GCN being added to the DVA panel PDF. |
+| 3 — registered NDIS provider in-home nursing | NDIS Provider Finder + competitor pages dominate | Possible: `/ndis` evidence panel is one of the few that names NDIA-managed/Plan-managed/Self-managed explicitly with a registered-provider claim. |
+| 5 — complex care tracheostomy/PEG Sydney | Competitors have stronger clinical-procedure copy | Unlikely to move — needs `MedicalProcedure` schema (deferred). |
+| 7 — in-home care after hip replacement | Top results are US/global clinical content | Possible: `/guides/in-home-care-after-hip-replacement` already exists; deploy didn't change it. Should still be the strongest Sydney-anchored option. |
+| 9 — aged care at home Support at Home | My Aged Care + government pages dominate | Possible: `/aged-care` evidence panel now names "Support at Home" + CHSP + DVA explicitly — the citable factual format AI engines extract. |
+
+The other queries (1, 4, 6, 8, 10) were not directly addressed by today's deploy and shouldn't move much without the next-wave work (region pages, comparison page, pricing page).
+
+---
+
 ## Sources (baseline run)
 
 Per query, the URLs used to populate the table above. Kept here so future runs can compare authoritative-source movements over time.
