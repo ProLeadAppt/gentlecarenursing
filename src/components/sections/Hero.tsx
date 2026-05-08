@@ -27,8 +27,10 @@ interface HeroProps {
   reassurance?: string;
   imageSrc?: string;
   imageAlt?: string;
-  /** Optional looping background video. When provided, replaces the static hero image. */
-  videoSrc?: string;
+  /** Optional looping background video. Single string for one source, or
+      an array of `{ src, type }` to provide multiple formats (e.g. WebM + MP4)
+      so the browser can pick the smallest one it supports. */
+  videoSrc?: string | readonly { src: string; type: string }[];
   /** Optional poster shown while the video loads — usually the same as imageSrc. */
   videoPoster?: string;
   credentials?: readonly { label: string; color: string }[];
@@ -203,9 +205,16 @@ export function Hero({
             </div>
           </motion.div>
 
-          {/* Right column: hero image with floating badges */}
+          {/* Right column: hero media (image OR square looping video) with floating badges.
+              When `videoSrc` is set, the container locks to a 1:1 ratio so the
+              square source (e.g. 960×960) fills edge-to-edge with no cropping
+              of any in-frame copy. Image mode keeps the original tall layout. */}
           <motion.div
-            className="order-2 relative h-[32rem] min-h-[32rem] w-full lg:min-h-[42rem] lg:h-[80vh] lg:max-h-[50rem]"
+            className={
+              videoSrc
+                ? "order-2 relative w-full max-w-[40rem] mx-auto aspect-square lg:max-w-none lg:aspect-square lg:h-auto"
+                : "order-2 relative h-[32rem] min-h-[32rem] w-full lg:min-h-[42rem] lg:h-[80vh] lg:max-h-[50rem]"
+            }
             style={{ y, opacity }}
           >
             <div className="relative h-full w-full">
@@ -213,11 +222,17 @@ export function Hero({
               <div className="absolute -top-6 -right-6 w-32 h-32 bg-accent/20 rounded-full blur-2xl z-0" />
               <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl z-0" />
 
-              <div className="relative h-full w-full overflow-hidden rounded-[3rem] shadow-[0_32px_64px_-16px_rgba(132,40,51,0.2)] lg:rounded-[4.5rem] border border-white/20 image-brand-overlay">
+              <div
+                className={
+                  videoSrc
+                    ? "relative h-full w-full overflow-hidden rounded-[3rem] lg:rounded-[4.5rem] shadow-[0_32px_64px_-16px_rgba(132,40,51,0.2)] ring-1 ring-black/5 bg-warm-cream"
+                    : "relative h-full w-full overflow-hidden rounded-[3rem] shadow-[0_32px_64px_-16px_rgba(132,40,51,0.2)] lg:rounded-[4.5rem] border border-white/20 image-brand-overlay"
+                }
+              >
                 {videoSrc ? (
                   <video
                     className="absolute inset-0 h-full w-full object-cover object-center"
-                    src={videoSrc}
+                    {...(typeof videoSrc === "string" ? { src: videoSrc } : {})}
                     poster={videoPoster ?? imageSrc}
                     autoPlay
                     loop
@@ -225,7 +240,10 @@ export function Hero({
                     playsInline
                     preload="metadata"
                     aria-label={imageAlt}
-                  />
+                  >
+                    {Array.isArray(videoSrc) &&
+                      videoSrc.map((s) => <source key={s.src} src={s.src} type={s.type} />)}
+                  </video>
                 ) : (
                   <Image
                     src={imageSrc}
@@ -237,11 +255,39 @@ export function Hero({
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+                {/* Subtle bottom vignette — only when no video, so we never dim copy baked into the frame */}
+                {!videoSrc && (
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+                )}
 
-                {/* Floating badge: 24h Response */}
+                {/* In image mode the badge sits inside the media (over the photo).
+                    In video mode it lives OUTSIDE this overflow-hidden wrapper
+                    (rendered below) so it can hover off the rounded corner without
+                    being clipped, and never covers in-frame copy. */}
+                {!videoSrc && (
+                  <motion.div
+                    className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm px-5 py-3 rounded-xl shadow-lg border border-white/50 flex items-center gap-3"
+                    variants={HERO_VARIANTS.badge}
+                    initial={prefersReducedMotion ? false : "hidden"}
+                    animate="visible"
+                    transition={prefersReducedMotion ? undefined : { delay: 1.8 }}
+                  >
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pw-sage opacity-75" />
+                      <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-pw-sage" />
+                    </span>
+                    <div>
+                      <p className="text-sm font-bold text-foreground">
+                        <span className="text-primary">~24hr</span> Response Window
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+              </div>
+
+              {videoSrc && (
                 <motion.div
-                  className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm px-5 py-3 rounded-xl shadow-lg border border-white/50 flex items-center gap-3"
+                  className="absolute -bottom-5 left-4 sm:left-6 bg-white px-5 py-3 rounded-2xl shadow-xl ring-1 ring-black/5 flex items-center gap-3 z-30"
                   variants={HERO_VARIANTS.badge}
                   initial={prefersReducedMotion ? false : "hidden"}
                   animate="visible"
@@ -257,7 +303,7 @@ export function Hero({
                     </p>
                   </div>
                 </motion.div>
-              </div>
+              )}
             </div>
           </motion.div>
         </div>
