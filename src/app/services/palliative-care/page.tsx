@@ -6,9 +6,9 @@ import { createMetadata } from "@/lib/metadata";
 const canonical = `${INTEGRATIONS.siteUrl}/services/palliative-care`;
 
 export const metadata = createMetadata({
-  title: "Palliative & End-of-Life Care at Home",
+  title: "Palliative Care at Home Sydney | Gentle Care Nursing",
   description:
-    "Palliative and end-of-life nursing support at home in Sydney, focused on comfort, dignity, and support for families.",
+    "In-home palliative and end-of-life nursing across Sydney — comfort, symptom management, and family support, in coordination with Sacred Heart, RPA, and SLHD palliative teams.",
   canonical,
 });
 
