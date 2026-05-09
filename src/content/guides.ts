@@ -167,9 +167,9 @@ export const GUIDES: readonly Guide[] = [
   {
     id: "in-home-care-for-dementia",
     slug: "in-home-care-for-dementia",
-    title: "In-Home Care for People Living With Dementia",
+    title: "In-Home Care for People Living With Dementia in Sydney",
     snippetAnswer:
-      "In-home dementia care combines gentle daily support and nursing oversight so a person living with dementia can stay safely at home for longer, while families get practical help and guidance.",
+      "In-home dementia care is gentle daily support and nursing oversight at home — across Sydney and surrounds — so a person living with dementia can stay safely in familiar surroundings for longer, while families get practical help, education, and respite. Support is tailored to the stage of dementia and works alongside Sydney memory clinics, the Cognitive Decline Partnership Centre pathways, and Dementia Australia resources.",
     intent: "dementia",
     primaryServiceSlug: "aged-care",
     sections: [
@@ -177,30 +177,82 @@ export const GUIDES: readonly Guide[] = [
         id: "what-support",
         heading: "What does in-home dementia care involve?",
         body:
-          "Support is tailored to the person and their stage of dementia. The focus is on safety, familiarity, and keeping daily life as calm and predictable as possible.",
+          "Support is tailored to the person and their stage of dementia. The focus is on safety, familiarity, and keeping daily life as calm and predictable as possible — particularly important because people living with dementia generally do better in environments they recognise.",
         bullets: [
           "Help with bathing, dressing, meals, and gentle prompting",
-          "Monitoring for changes in mood, behaviour, or physical health",
-          "Support to keep routines and meaningful activities going",
-          "Nursing input for medications, wounds, and other health needs",
+          "Monitoring for changes in mood, behaviour, sleep, or physical health",
+          "Support to keep routines, meaningful activities, and social connections going",
+          "Nursing input for medications, wounds, continence care, and other health needs",
+          "Falls prevention — managing rugs, lighting, thresholds, and bathroom transfers",
+          "Guidance on responding to behavioural and psychological symptoms (BPSD) like agitation, sundowning, or wandering",
+        ],
+      },
+      {
+        id: "sydney-coverage",
+        heading: "Where in Sydney do you provide in-home dementia care?",
+        body:
+          "Gentle Care Nursing Services provides in-home dementia support across Greater Sydney, including the Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, and the CBD and Eastern Suburbs. We work alongside Sydney memory clinics and specialist services where people living with dementia receive their diagnosis and ongoing review.",
+        bullets: [
+          "Royal Prince Alfred Hospital (RPA) memory and cognition clinics — Inner West",
+          "Royal North Shore Hospital (RNSH) and Macquarie University memory clinics — North Shore",
+          "Westmead and Concord Centre for Mental Health — Western Sydney",
+          "Prince of Wales Hospital (POW) and St Vincent's — CBD and Eastern Suburbs",
+          "St George Hospital and Sutherland Hospital — South Sydney",
+          "Northern Beaches Hospital — Northern Beaches",
         ],
       },
       {
         id: "family-role",
         heading: "How does in-home care support families and carers?",
         body:
-          "Family and unpaid carers often carry most of the load. In-home dementia care is there to share that responsibility rather than replace it.",
+          "Family and unpaid carers often carry most of the load. In-home dementia care shares that responsibility rather than replacing it — which is one of the most reliable ways to keep someone living at home for longer and reduce the risk of carer burnout.",
         bullets: [
-          "Regular breaks so family carers can rest or work",
+          "Regular breaks so family carers can rest, work, or attend to their own health",
           "Clear updates about what is changing and what to watch for",
-          "Guidance on how to respond to common dementia-related behaviours",
+          "Guidance on how to respond to common behavioural and psychological symptoms",
+          "Connection to Dementia Australia resources and local Sydney support groups",
+          "Practical advice on home safety adjustments as needs change",
+        ],
+      },
+      {
+        id: "who-its-for",
+        heading: "Who is in-home dementia care suitable for?",
+        body:
+          "In-home dementia support is most helpful when someone has a confirmed diagnosis (or is being assessed) and the family wants to keep them at home as long as it is safe to do so. It works at every stage from mild cognitive impairment through to advanced dementia, with the support adjusting as needs change.",
+        bullets: [
+          "Older Australians recently diagnosed who are still mostly independent but need light support",
+          "People in the moderate stage who need help with daily routines and supervision",
+          "Advanced dementia clients who need more intensive personal and nursing care",
+          "Younger people with younger-onset dementia, often funded under NDIS",
+          "Families wanting respite while their loved one stays in familiar surroundings",
+          "Veterans accessing DVA-funded community nursing for dementia-related needs",
+        ],
+      },
+      {
+        id: "what-to-watch-for",
+        heading: "What changes should families watch for at home?",
+        body:
+          "Dementia changes over time, and certain signs warrant earlier review by your GP, geriatrician, or memory clinic team. Contact your treating team or 000 promptly if any of the following appear, and call us if you'd like a nursing review.",
+        bullets: [
+          "Sudden confusion or a step-change in cognition (possible delirium, infection, or new stroke)",
+          "New falls, especially with possible head strikes",
+          "Increasing agitation, distress, or wandering, particularly at dusk",
+          "Weight loss, refusing meals, or difficulty swallowing",
+          "Skin breakdown, pressure injuries, or untreated wounds",
+          "Signs the family carer is struggling — exhaustion, low mood, or withdrawal",
         ],
       },
       {
         id: "funding",
-        heading: "How is dementia care at home usually funded?",
+        heading: "How is dementia care at home funded in Sydney?",
         body:
-          "In-home dementia support can be funded through Support at Home, CHSP, NDIS (for younger-onset dementia), DVA, or private payment. Your assessment team or coordinator can help work out the right mix.",
+          "Funding usually comes from one of four sources, and the right one depends on age and circumstances. The My Aged Care or NDIS assessment team can confirm what applies.",
+        bullets: [
+          "Support at Home or CHSP — for older Australians (65+) with an aged-care assessment outcome",
+          "NDIS — for people under 65 with younger-onset dementia",
+          "DVA Community Nursing — for eligible Veteran Card holders, by referral from a GP or treating doctor",
+          "Private fee-for-service — when no funded program applies, or to top up other supports",
+        ],
       },
     ],
     cta: {
