@@ -584,9 +584,21 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
   title: "Post-Hospital Nursing & Care at Home",
   href: "/services/post-hospital-care",
   snippetAnswer:
-    "Post-hospital in-home nursing is support from qualified nurses and carers after someone leaves hospital, so recovery continues safely at home. Gentle Care Nursing Services coordinates with hospital discharge teams and families to start visits quickly across Sydney.",
+    "Post-hospital in-home nursing is support from qualified nurses and carers after someone leaves hospital, so recovery continues safely at home. Gentle Care Nursing Services coordinates with discharge planners at Sydney hospitals — including RPA, Westmead, Royal North Shore, and St Vincent's — and supports recovery pathways aligned with NSW Health's Out of Hospital Care framework.",
   intro:
-    "Leaving hospital can feel overwhelming. Our post-hospital nursing and care at home service helps you or your loved one recover safely and comfortably, with skilled support and clear communication from day one.",
+    "Leaving hospital can feel overwhelming. Our post-hospital nursing and care at home service helps you or your loved one recover safely and comfortably, with skilled support and clear communication from day one. We work with discharge planners across major Sydney hospitals (RPA, Westmead, Royal North Shore, St Vincent's, Concord, Prince of Wales) and align with NSW Health's Out of Hospital Care pathways so the transition home is structured, not rushed.",
+  evidence: {
+    heading: "Quick facts: post-hospital care at home with Gentle Care",
+    intro: "Citable facts for hospital discharge planners, GPs, families, and NDIS or DVA referrers arranging in-home recovery support across Sydney.",
+    items: [
+      { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area" },
+      { label: "Hospitals coordinated with", value: "Discharge planners at RPA, Westmead, Royal North Shore, St Vincent's, Concord, and Prince of Wales — among other Sydney metropolitan hospitals.", icon: "credential" },
+      { label: "Response window", value: "Hospital-discharge referrals prioritised, with visits often starting within 24 to 48 hours of referral, depending on location.", icon: "response" },
+      { label: "Funding accepted", value: "NDIS, DVA Community Nursing, aged care (Support at Home, CHSP), and private fee-for-service.", icon: "funding" },
+      { label: "Scope of support", value: "Wound care, medication management, observations, personal care, mobility and transfer support, and family education.", icon: "scope" },
+      { label: "Care model", value: "Aligned with NSW Health Out of Hospital Care pathways — structured step-down visits that can start more frequent and reduce as recovery progresses.", icon: "credential" },
+    ],
+  },
 
   whoItHelps: {
     title: "Who This Is For",
