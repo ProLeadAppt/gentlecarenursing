@@ -211,9 +211,9 @@ export const GUIDES: readonly Guide[] = [
   {
     id: "in-home-care-for-chronic-wounds",
     slug: "in-home-care-for-chronic-wounds",
-    title: "In-Home Care for Chronic and Complex Wounds",
+    title: "In-Home Care for Chronic and Complex Wounds in Sydney",
     snippetAnswer:
-      "In-home wound care brings experienced nurses to you so chronic or complex wounds can be dressed, monitored, and escalated early without constant trips back to hospital or clinics.",
+      "In-home wound care is regular nursing visits at home — across Sydney and surrounds — to dress, monitor, and escalate chronic or complex wounds without constant trips back to hospital or specialist clinics. Visits follow your specialist or GP wound plan and keep your treating team updated.",
     intent: "wounds",
     primaryServiceSlug: "complex-care",
     sections: [
@@ -221,30 +221,88 @@ export const GUIDES: readonly Guide[] = [
         id: "when-helpful",
         heading: "When is in-home wound care helpful?",
         body:
-          "Wounds that are slow to heal or need specialised dressings are hard to manage alone. In-home care is particularly useful when travel is tiring or mobility is limited.",
+          "Wounds that are slow to heal or need specialised dressings are hard to manage alone. In-home care is particularly useful when travel to a wound clinic is tiring, mobility is limited, or the wound regime is too complex for family to manage on their own.",
         bullets: [
-          "Leg ulcers, pressure injuries, or surgical wounds that are slow to heal",
-          "People with diabetes or vascular disease needing close monitoring",
-          "Clients who already have other supports at home and want care coordinated",
+          "Venous and arterial leg ulcers, often needing compression bandaging",
+          "Pressure injuries (stages 1–4) on heels, sacrum, or other pressure points",
+          "Surgical wounds that are slow to heal or have dehisced",
+          "Diabetic foot ulcers needing close monitoring and offloading",
+          "People with diabetes, vascular disease, or lymphoedema needing ongoing wound care",
+          "Clients who already have other supports at home and want wound care coordinated with them",
+        ],
+      },
+      {
+        id: "sydney-coverage",
+        heading: "Where in Sydney do you provide in-home wound care?",
+        body:
+          "Gentle Care Nursing Services provides in-home wound care across Greater Sydney, including the Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, and the CBD and Eastern Suburbs. We work from plans set by GPs, specialists, and the wound and vascular clinics at major Sydney hospitals.",
+        bullets: [
+          "Royal Prince Alfred Hospital (RPA) wound and vascular services — Inner West",
+          "Royal North Shore Hospital (RNSH) and the Mater — North Shore",
+          "Westmead Hospital and Blacktown Hospital — Western Sydney",
+          "St Vincent's Hospital and Prince of Wales Hospital — CBD and Eastern Suburbs",
+          "St George Hospital (Kogarah) and Sutherland Hospital (Caringbah) — South Sydney",
+          "Northern Beaches Hospital (Frenchs Forest) — Northern Beaches",
         ],
       },
       {
         id: "what-nurses-do",
         heading: "What do nurses do during home wound visits?",
         body:
-          "Nurses follow your specialist or GP’s wound plan, while keeping an eye on the bigger picture of your health and comfort.",
+          "Nurses follow your specialist or GP wound plan and keep an eye on the bigger picture of your health and comfort. Wound care at home is delivered in line with Australian wound management standards (Wounds Australia) and the protocols set by your treating team.",
         bullets: [
-          "Clean and redress wounds using appropriate products",
-          "Check for signs of infection or poor circulation",
-          "Monitor pain, mobility, and how the wound affects daily life",
-          "Update your treating team when things improve or change",
+          "Cleanse and redress wounds using the dressing products specified in your plan",
+          "Apply compression bandaging for venous leg ulcers when prescribed and clinically appropriate",
+          "Check for signs of infection, poor circulation, or deteriorating skin around the wound",
+          "Monitor pain, mobility, and how the wound is affecting daily life",
+          "Photograph and document the wound to track healing over time",
+          "Update your treating GP, specialist, or wound clinic when things improve or change",
+        ],
+      },
+      {
+        id: "who-its-for",
+        heading: "Who is in-home wound care suitable for?",
+        body:
+          "In-home wound care suits people who are clinically stable but need regular skilled wound management at home. It works for older Australians on Support at Home or DVA, NDIS participants with complex wounds, and private clients arranging their own care.",
+        bullets: [
+          "Older adults with leg ulcers, pressure injuries, or surgical wounds who find clinic travel difficult",
+          "People with diabetes managing foot ulcers and needing close monitoring",
+          "Veterans accessing DVA Community Nursing for wound care after surgery or injury",
+          "NDIS participants with chronic or complex wounds funded under their plan",
+          "Families wanting wound care coordinated with other in-home supports",
+        ],
+      },
+      {
+        id: "what-to-watch-for",
+        heading: "What signs of wound deterioration should families watch for?",
+        body:
+          "Most wounds improve gradually with consistent care, but some signs warrant earlier escalation to your treating team. Contact your GP, wound clinic, or 000 promptly if any of the following appear, and call us if you'd like a nursing review.",
+        bullets: [
+          "Increasing redness, swelling, warmth, or pain around the wound (possible infection)",
+          "Foul-smelling discharge, pus, or sudden increase in fluid leaking from the dressing",
+          "A fever above 38°C or feeling generally unwell",
+          "The wound getting bigger, deeper, or developing dark/black tissue",
+          "New numbness, coldness, or colour change in the limb (possible circulation problem)",
+          "Sudden severe pain in the wound or limb that isn't controlled by your usual medications",
+        ],
+      },
+      {
+        id: "funding",
+        heading: "How is in-home wound care funded in Sydney?",
+        body:
+          "Funding usually comes from one of four sources, and the right one depends on your situation. Your GP, specialist, or aged-care assessor can confirm which applies.",
+        bullets: [
+          "DVA Community Nursing — for eligible Veteran Card holders, by referral from your GP or treating doctor",
+          "Support at Home or CHSP — for older Australians with an aged-care assessment outcome",
+          "NDIS — for participants whose plan funds complex wound care or community nursing",
+          "Private fee-for-service — when no funded program applies, or to top up other supports",
         ],
       },
       {
         id: "safety",
         heading: "Is home wound care safe?",
         body:
-          "Yes, when it is planned properly and delivered by experienced nurses. We only manage wounds at home that are clinically appropriate and always escalate quickly if there are signs of concern.",
+          "Yes, when it is planned properly and delivered by experienced nurses. We only manage wounds at home that are clinically appropriate, follow the plan set by your treating team, and always escalate quickly if there are signs of concern. If a wound becomes unsafe to manage at home, we work with your GP or specialist to arrange the right level of care.",
       },
     ],
     cta: {
@@ -259,9 +317,9 @@ export const EXTRA_GUIDES: readonly Guide[] = [
   {
     id: "in-home-care-after-stroke",
     slug: "in-home-care-after-stroke",
-    title: "In-Home Care After Stroke",
+    title: "In-Home Care After Stroke in Sydney",
     snippetAnswer:
-      "In-home care after stroke combines nursing, personal care, and family education so recovery and rehabilitation can continue safely at home, not only in hospital or rehab.",
+      "In-home care after stroke is short-term to ongoing nursing, personal care, and family education at home — across Sydney and surrounds — so recovery and rehabilitation can continue safely after acute hospital and inpatient rehab. Visits often start more frequent in the first weeks home and step down as mobility, communication, and confidence return.",
     intent: "stroke",
     primaryServiceSlug: "post-hospital-care",
     sections: [
@@ -269,29 +327,68 @@ export const EXTRA_GUIDES: readonly Guide[] = [
         id: "why-home",
         heading: "Why is in-home care important after a stroke?",
         body:
-          "Leaving hospital after a stroke can feel uncertain. In-home support helps you continue rehabilitation while reducing the risk of falls, complications, or carer burnout.",
+          "Leaving hospital or inpatient rehab after a stroke can feel uncertain. In-home support helps continue rehabilitation while reducing the risk of falls, secondary stroke, complications, and carer burnout — and bridges the gap between the structured environment of a stroke unit and managing at home.",
         bullets: [
-          "Monitoring for changes in mobility, speech, or alertness",
-          "Support with safe transfers, toileting, and bathing",
-          "Help to follow therapy programs set by your rehab team",
+          "Monitoring for changes in mobility, speech, swallowing, or alertness that may signal a secondary stroke or new complication",
+          "Support with safe transfers, toileting, bathing, and mobility around the home",
+          "Help to follow therapy programs set by your rehab team (physio, occupational therapy, speech)",
+          "Medication management, including blood thinners and blood-pressure medications",
+          "Family education on stroke recognition (FAST signs) and when to call 000 or the stroke team",
+        ],
+      },
+      {
+        id: "sydney-coverage",
+        heading: "Where in Sydney do you provide post-stroke care?",
+        body:
+          "Gentle Care Nursing Services delivers post-stroke support across Greater Sydney, including the Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, and the CBD and Eastern Suburbs. We work alongside discharge planners and stroke teams at the Sydney hospitals running acute stroke units and rehabilitation services, and complement programs like the NSW Stroke Reperfusion Program.",
+        bullets: [
+          "Royal Prince Alfred Hospital (RPA) acute stroke unit — Inner West",
+          "Royal North Shore Hospital (RNSH) acute stroke unit — North Shore",
+          "Westmead Hospital acute stroke unit and Liverpool Hospital — Western Sydney",
+          "St Vincent's Hospital and Prince of Wales Hospital — CBD and Eastern Suburbs",
+          "Royal Rehab (Ryde) and POW Rehabilitation — common inpatient rehab pathways before home",
+          "St George Hospital (Kogarah) and Sutherland Hospital (Caringbah) — South Sydney",
+          "Northern Beaches Hospital (Frenchs Forest) — Northern Beaches",
         ],
       },
       {
         id: "who-benefits",
         heading: "Who benefits most from stroke support at home?",
         body:
-          "This type of support is most helpful when someone is medically stable but still has mobility, communication, or thinking changes that make day-to-day life harder.",
+          "Post-stroke home support is most helpful when someone is medically stable but still has mobility, communication, swallowing, or thinking changes that make day-to-day life harder. It works for older Australians on Support at Home or DVA, NDIS participants under 65 whose plans fund stroke recovery support, and private clients arranging their own care.",
         bullets: [
-          "People who feel unsteady or need help getting around their home",
+          "People who feel unsteady, have weakness on one side, or need help getting around the home safely",
           "Families unsure how much to assist without doing everything for their loved one",
-          "Clients juggling multiple follow-up appointments and community supports",
+          "Clients managing multiple follow-up appointments — neurology, rehab, GP, allied health",
+          "Veterans accessing DVA-funded community nursing after a stroke",
+          "Younger NDIS participants whose plan funds short-term stroke recovery support",
+        ],
+      },
+      {
+        id: "what-to-watch-for",
+        heading: "What should families watch for at home, and when should they call someone?",
+        body:
+          "The first weeks after a stroke are when the risk of a secondary stroke or new complication is highest. Use the FAST signs and contact your stroke team or 000 immediately if any of the following appear, and call us if you'd like a nursing review.",
+        bullets: [
+          "Face drooping, arm weakness, or speech difficulty (FAST signs) — call 000 immediately",
+          "Sudden severe headache, confusion, or loss of vision",
+          "Difficulty swallowing, coughing while eating, or pocketing food (aspiration risk)",
+          "New falls, especially with a possible head strike",
+          "Skin breakdown over the heels, sacrum, or other pressure points if mobility is reduced",
+          "Signs of low mood, withdrawal, or post-stroke depression",
         ],
       },
       {
         id: "funding",
-        heading: "How is stroke-related home support usually funded?",
+        heading: "How is stroke-related home support funded in Sydney?",
         body:
-          "Depending on your age and situation, support might be funded through NDIS, aged care packages, DVA, state programs, or private payment. We can talk through options with you and your coordinator.",
+          "Funding usually comes from one of four sources, and the right one depends on your situation. Most Sydney readers will be eligible for one of these — your discharge planner, GP, or aged-care assessor can confirm.",
+        bullets: [
+          "DVA Community Nursing — for eligible Veteran Card holders, by referral from your GP or treating doctor",
+          "Support at Home or CHSP — for older Australians with an aged-care assessment outcome",
+          "NDIS — for participants under 65 whose plan funds stroke recovery, personal care, or community nursing",
+          "Private fee-for-service — when no funded program applies, or to top up other supports",
+        ],
       },
     ],
     cta: {
