@@ -945,9 +945,21 @@ export const PALLIATIVE_CARE_PAGE: ServicePageData = {
   title: "Palliative & End-of-Life Support at Home",
   href: "/services/palliative-care",
   snippetAnswer:
-    "Palliative and end-of-life care at home focuses on comfort, symptom management, and emotional support so you and your family can spend more time together in a familiar environment.",
+    "Palliative and end-of-life care at home is in-home nursing focused on comfort, symptom management, and family support, delivered across Sydney by experienced nurses in coordination with specialist palliative teams at services like Sacred Heart Health Service (St Vincent's), RPA, and Sydney Local Health District community palliative care.",
   intro:
-    "Facing a serious illness or the end of life is never easy. Our palliative and end-of-life support at home focuses on comfort, dignity, and calm, working alongside your treating team so more of your energy can go into being together.",
+    "Facing a serious illness or the end of life is never easy. Our palliative and end-of-life support at home focuses on comfort, dignity, and calm, delivered across Sydney and surrounds in coordination with specialist palliative care teams — including Sacred Heart Palliative Care at St Vincent's, RPA Palliative Care, and Sydney Local Health District community palliative services — so more of your energy can go into being together.",
+  evidence: {
+    heading: "Quick facts: palliative care at home with Gentle Care",
+    intro: "Citable facts for families, GPs, specialist palliative care teams, and hospital discharge planners arranging in-home palliative support across Sydney.",
+    items: [
+      { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area" },
+      { label: "Coordination", value: "We work alongside specialist palliative care teams (e.g. Sacred Heart at St Vincent's, RPA, SLHD community palliative care) and treating GPs.", icon: "credential" },
+      { label: "Response window", value: "Referrals from palliative care teams and hospital discharge planners acknowledged within 24 hours during business hours, and prioritised.", icon: "response" },
+      { label: "Funding accepted", value: "Aged care (Support at Home, CHSP), DVA, NDIS where palliative needs are funded under the plan, and private fee-for-service.", icon: "funding" },
+      { label: "Scope of support", value: "Symptom monitoring, comfort measures, personal care with dignity, repositioning and continence support, and family education.", icon: "scope" },
+      { label: "Caseload model", value: "Deliberately small caseload so the same nurses and carers are present through changing needs in the final weeks and days.", icon: "credential" },
+    ],
+  },
 
   whoItHelps: {
     title: "Who Palliative Home Support Is For",
