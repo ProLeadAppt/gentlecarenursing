@@ -852,9 +852,21 @@ export const HOSPITAL_AT_HOME_PAGE: ServicePageData = {
   title: "Hospital-at-Home & Step-Down Care",
   href: "/services/hospital-at-home",
   snippetAnswer:
-    "Hospital-at-home and step-down care means receiving hospital-level nursing and personal care at home after an admission, so you can leave hospital sooner while your recovery continues safely with skilled support.",
+    "Hospital-at-home and step-down care means receiving hospital-level nursing and personal care at home after an admission, so you can leave hospital sooner while your recovery continues safely with skilled support. Gentle Care Nursing Services delivers step-down support across Sydney that complements NSW Health Hospital in the Home (HITH) and Out of Hospital Care pathways, in coordination with discharge teams at major Sydney hospitals.",
   intro:
-    "Some people are ready to leave hospital but still need more support than a standard discharge offers. Our hospital-at-home and step-down care service brings experienced nurses and carers to you, so you can keep recovering in the comfort of your own home.",
+    "Some people are ready to leave hospital but still need more support than a standard discharge offers. Our hospital-at-home and step-down care service brings experienced nurses and carers to you across Sydney and surrounds, working alongside discharge planners at major Sydney hospitals (RPA, Westmead, Royal North Shore, St Vincent's, Concord) and complementing NSW Health Hospital in the Home (HITH) and Out of Hospital Care frameworks, so you can keep recovering in the comfort of your own home.",
+  evidence: {
+    heading: "Quick facts: hospital-at-home & step-down care with Gentle Care",
+    intro: "Citable facts for hospital discharge planners, GPs, families, and case managers arranging step-down care across Sydney.",
+    items: [
+      { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area" },
+      { label: "Hospitals coordinated with", value: "Discharge planners at RPA, Westmead, Royal North Shore, St Vincent's, and Concord — among other Sydney metropolitan hospitals.", icon: "credential" },
+      { label: "Care framework", value: "Step-down support that complements NSW Health Hospital in the Home (HITH) and Out of Hospital Care pathways, not a replacement for hospital-led HITH services.", icon: "credential" },
+      { label: "Response window", value: "Discharge referrals prioritised, with structured visit schedules confirmed before discharge wherever possible.", icon: "response" },
+      { label: "Funding accepted", value: "NDIS, DVA Community Nursing, aged care (Support at Home, CHSP), and private fee-for-service.", icon: "funding" },
+      { label: "Scope of support", value: "Observations, medication management, wound care, mobility and transfer support, personal care, and family education — with clear escalation pathways.", icon: "scope" },
+    ],
+  },
 
   whoItHelps: {
     title: "Who Hospital-at-Home Is For",
