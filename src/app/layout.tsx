@@ -131,6 +131,21 @@ export default function RootLayout({
             `,
           }}
         />
+        {/*
+          SearchAtlas OTTO dynamic-optimization loader. The data: src decodes to
+          a tiny script that appends the real https://dashboard.searchatlas.com
+          loader to <head>. The data: URI src and the dashboard.searchatlas.com
+          load both need to be permitted by Content-Security-Policy (see
+          netlify.toml) or OTTO will be blocked and silently fail to pick up
+          the page.
+        */}
+        <script
+          type="text/javascript"
+          id="sa-dynamic-optimization"
+          data-uuid="1ca3ea08-0eb4-40c3-9058-7ee1a1f845d9"
+          src="data:text/javascript;base64,dmFyIHNjcmlwdCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoInNjcmlwdCIpO3NjcmlwdC5zZXRBdHRyaWJ1dGUoIm5vd3Byb2NrZXQiLCAiIik7c2NyaXB0LnNldEF0dHJpYnV0ZSgibml0cm8tZXhjbHVkZSIsICIiKTtzY3JpcHQuc3JjID0gImh0dHBzOi8vZGFzaGJvYXJkLnNlYXJjaGF0bGFzLmNvbS9zY3JpcHRzL2R5bmFtaWNfb3B0aW1pemF0aW9uLmpzIjtzY3JpcHQuZGF0YXNldC51dWlkID0gIjFjYTNlYTA4LTBlYjQtNDBjMy05MDU4LTdlZTFhMWY4NDVkOSI7c2NyaXB0LmlkID0gInNhLWR5bmFtaWMtb3B0aW1pemF0aW9uLWxvYWRlciI7ZG9jdW1lbnQuaGVhZC5hcHBlbmRDaGlsZChzY3JpcHQpOw=="
+          {...{ nowprocket: "", "nitro-exclude": "" }}
+        />
       </head>
       <body className="min-h-screen flex flex-col antialiased" suppressHydrationWarning>
         <FormModalProvider>
