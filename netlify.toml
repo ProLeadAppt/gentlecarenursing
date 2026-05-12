@@ -13,7 +13,15 @@
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;"
+    # SearchAtlas OTTO needs:
+    #   - data: in script-src (the loader is delivered as a data: URI)
+    #   - https://dashboard.searchatlas.com in script-src (the real loader script)
+    #   - https://*.searchatlas.com in connect-src (OTTO runtime API calls back to
+    #     dashboard.searchatlas.com and ottoapi.searchatlas.com for optimization
+    #     payloads)
+    #   - https://www.clarity.ms in script-src + connect-src (existing Clarity
+    #     loader was previously CSP-blocked too)
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' data: https://www.googletagmanager.com https://www.google-analytics.com https://dashboard.searchatlas.com https://www.clarity.ms; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://dashboard.searchatlas.com https://ottoapi.searchatlas.com https://www.clarity.ms https://*.clarity.ms;"
 
 # PWA manifest needs the correct MIME so browsers and validators
 # (e.g. Chrome DevTools, Lighthouse PWA audits) accept it without warnings.

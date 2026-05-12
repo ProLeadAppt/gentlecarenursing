@@ -131,6 +131,14 @@ export default function RootLayout({
             `,
           }}
         />
+        {/*
+          SearchAtlas OTTO dynamic-optimization loader. The data: src decodes to
+          a tiny script that appends the real https://dashboard.searchatlas.com
+          loader to <head>. The data: URI src and the dashboard.searchatlas.com
+          load both need to be permitted by Content-Security-Policy (see
+          netlify.toml) or OTTO will be blocked and silently fail to pick up
+          the page.
+        */}
         <script
           type="text/javascript"
           id="sa-dynamic-optimization"
