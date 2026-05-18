@@ -28,9 +28,19 @@ export interface Guide {
   /** ISO date (YYYY-MM-DD) the guide was first published. Optional — populate when known. */
   publishedAt?: string;
   /**
+   * ISO date (YYYY-MM-DD) the guide content was last meaningfully updated.
+   * Distinct from `reviewedAt` — this is editorial freshness, not a clinical
+   * review claim, so it can be populated without AHPRA reviewer sign-off.
+   * Renders as "Last updated: [date]" on the page and powers `dateModified`
+   * in the Article/WebPage schema for AI engine freshness signals.
+   */
+  updatedAt?: string;
+  /**
    * ISO date (YYYY-MM-DD) the guide was last clinically reviewed.
    * Surfaced visibly on-page and in schema for AI freshness signals.
    * Populate together with `reviewer` when a clinician has signed off.
+   * Reserved for genuine AHPRA-confirmed clinical review — for non-clinical
+   * editorial updates, use `updatedAt` instead.
    */
   reviewedAt?: string;
   /** Named clinician who reviewed the guide. Populate only with consent and AHPRA confirmation. */
@@ -80,6 +90,7 @@ export const GUIDES: readonly Guide[] = [
       "In-home care after hip replacement is short-term nursing and personal care at home — across Sydney and surrounds — to support your recovery, reduce falls risk, and keep your pain and mobility on track after you leave hospital. Visits are typically more frequent in the first one to two weeks, then step down as confidence and mobility return.",
     intent: "post-hospital",
     primaryServiceSlug: "post-hospital-care",
+    updatedAt: "2026-05-08",
     sections: [
       {
         id: "what-it-is",
@@ -172,6 +183,7 @@ export const GUIDES: readonly Guide[] = [
       "In-home dementia care is gentle daily support and nursing oversight at home — across Sydney and surrounds — so a person living with dementia can stay safely in familiar surroundings for longer, while families get practical help, education, and respite. Support is tailored to the stage of dementia and works alongside Sydney memory clinics, the Cognitive Decline Partnership Centre pathways, and Dementia Australia resources.",
     intent: "dementia",
     primaryServiceSlug: "aged-care",
+    updatedAt: "2026-05-09",
     sections: [
       {
         id: "what-support",
@@ -268,6 +280,7 @@ export const GUIDES: readonly Guide[] = [
       "In-home wound care is regular nursing visits at home — across Sydney and surrounds — to dress, monitor, and escalate chronic or complex wounds without constant trips back to hospital or specialist clinics. Visits follow your specialist or GP wound plan and keep your treating team updated.",
     intent: "wounds",
     primaryServiceSlug: "complex-care",
+    updatedAt: "2026-05-09",
     sections: [
       {
         id: "when-helpful",
@@ -374,6 +387,7 @@ export const EXTRA_GUIDES: readonly Guide[] = [
       "In-home care after stroke is short-term to ongoing nursing, personal care, and family education at home — across Sydney and surrounds — so recovery and rehabilitation can continue safely after acute hospital and inpatient rehab. Visits often start more frequent in the first weeks home and step down as mobility, communication, and confidence return.",
     intent: "stroke",
     primaryServiceSlug: "post-hospital-care",
+    updatedAt: "2026-05-09",
     sections: [
       {
         id: "why-home",

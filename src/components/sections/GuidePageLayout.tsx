@@ -10,7 +10,7 @@ interface GuidePageLayoutProps {
   guide: Guide;
 }
 
-function formatReviewedDate(iso: string): string {
+function formatGuideDate(iso: string): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return iso;
   return d.toLocaleDateString("en-AU", { year: "numeric", month: "long", day: "numeric" });
@@ -23,6 +23,7 @@ export function GuidePageLayout({ guide }: GuidePageLayoutProps) {
       snippetAnswer: guide.snippetAnswer,
       slug: guide.slug,
       publishedAt: guide.publishedAt,
+      updatedAt: guide.updatedAt,
       reviewedAt: guide.reviewedAt,
       reviewer: guide.reviewer,
       about: GUIDE_ABOUT_ENTITIES[guide.id],
@@ -47,9 +48,9 @@ export function GuidePageLayout({ guide }: GuidePageLayoutProps) {
           <p className="mx-auto mt-4 max-w-2xl text-center text-base text-muted-foreground">
             This short guide explains what to expect and how Gentle Care Nursing Services can support you at home. It does not replace advice from your doctor or treating team.
           </p>
-          {guide.reviewedAt && (
+          {guide.reviewedAt ? (
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
-              Last clinically reviewed: {formatReviewedDate(guide.reviewedAt)}
+              Last clinically reviewed: {formatGuideDate(guide.reviewedAt)}
               {guide.reviewer && (
                 <>
                   {" "}by {guide.reviewer.name}
@@ -58,7 +59,11 @@ export function GuidePageLayout({ guide }: GuidePageLayoutProps) {
               )}
               .
             </p>
-          )}
+          ) : guide.updatedAt ? (
+            <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
+              Last updated: {formatGuideDate(guide.updatedAt)}.
+            </p>
+          ) : null}
         </Container>
       </Section>
 
