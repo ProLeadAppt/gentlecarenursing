@@ -50,6 +50,7 @@ export const NAV_LINKS: readonly NavItem[] = [
       { href: "/services/complex-care", label: "Complex Care Support" },
       { href: "/aged-care", label: "Aged Care at Home" },
       { href: "/private-nursing", label: "Private Nursing" },
+      { href: "/compare", label: "Compare Options" },
     ],
   },
   { href: "/areas", label: "Areas" },

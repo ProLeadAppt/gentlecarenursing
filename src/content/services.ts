@@ -192,6 +192,7 @@ export const NDIS_PAGE: ServicePageData = {
     description:
       "Submit your enquiry or referral and we'll get back to you quickly.",
   },
+  relatedCompareSlugs: ["registered-ndis-provider-vs-non-registered"],
   caseStories: [
     {
       title: "Case example: Stabilising support for an NDIS participant at home",
@@ -322,6 +323,7 @@ export const DVA_PAGE: ServicePageData = {
     description:
       "Get in touch and we'll arrange the right care for you or your loved one.",
   },
+  relatedCompareSlugs: ["dva-community-nursing-vs-private-nursing"],
   caseStories: [
     {
       title: "Case example: Supporting a veteran to remain at home",
@@ -571,6 +573,7 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
     description:
       "Contact us for a personalised quote and get care started quickly.",
   },
+  relatedCompareSlugs: ["dva-community-nursing-vs-private-nursing"],
   caseStories: [
     {
       title: "Case example: Short-term private support after surgery",
