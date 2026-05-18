@@ -41,10 +41,9 @@ import type { ComparePageContent } from "./compare-registered-vs-unregistered";
 
 export const COMPARE_DVA_VS_PRIVATE_NURSING: ComparePageContent = {
   h1: "DVA Community Nursing vs Private In-Home Nursing: A Plain-English Comparison",
-  metaTitle:
-    "DVA Community Nursing vs Private Nursing — Sydney Comparison",
+  metaTitle: "DVA Community Nursing vs Private Nursing Sydney",
   metaDescription:
-    "Side-by-side comparison of DVA Community Nursing and private in-home nursing for Sydney veterans and families. Who can use each, what they cover, costs, and how to combine them.",
+    "DVA Community Nursing vs private in-home nursing in Sydney. Eligibility, cost, scope of care, and how veterans and families combine both. Plain English.",
   canonicalPath: "/compare/dva-community-nursing-vs-private-nursing",
   snippetAnswer:
     "DVA Community Nursing is in-home nursing for eligible Veteran Card holders, funded by the Department of Veterans' Affairs and delivered at no out-of-pocket cost by providers on the DVA panel. Private in-home nursing is paid out-of-pocket, has no eligibility requirements or waitlists, and offers more flexibility on scope and scheduling. Many veterans use both — DVA for clinical scope, private for top-up support.",
