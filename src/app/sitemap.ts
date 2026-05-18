@@ -3,6 +3,7 @@ import { getAllAreaSlugs } from "@/content/areas-content";
 import { ALL_GUIDES } from "@/content/guides";
 import { getAllBlogPosts } from "@/content/blog";
 import { SERVICE_REGION_PAGES } from "@/content/service-regions";
+import { CONDITIONS } from "@/content/conditions";
 import { SITE_LAST_UPDATED } from "@/lib/constants";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gentlecarenursing.com.au";
@@ -45,6 +46,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
     },
     {
+      path: "/conditions",
+      priority: 0.85,
+      changeFrequency: "monthly",
+    },
+    {
       path: "/compare/registered-ndis-provider-vs-non-registered",
       priority: 0.75,
       changeFrequency: "monthly",
@@ -78,6 +84,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: staticLastMod,
       changeFrequency: "monthly",
       priority: 0.85,
+    });
+  }
+
+  for (const c of CONDITIONS) {
+    entries.push({
+      url: `${BASE_URL}/conditions/${c.slug}`,
+      lastModified: staticLastMod,
+      changeFrequency: "monthly",
+      priority: 0.8,
     });
   }
 
