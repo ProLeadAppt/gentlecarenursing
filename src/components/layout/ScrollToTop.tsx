@@ -60,8 +60,8 @@ export function ScrollToTop() {
       aria-label="Scroll to top"
       className={
         isLightVariant
-          ? "fixed bottom-24 right-4 z-30 flex h-12 w-12 items-center justify-center rounded-xl bg-white text-primary shadow-lg transition hover:bg-white/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:bottom-6 lg:right-6"
-          : "fixed bottom-24 right-4 z-30 flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-lg transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:bottom-6 lg:right-6"
+          ? "fixed bottom-24 left-4 z-30 flex h-12 w-12 items-center justify-center rounded-xl bg-white text-primary shadow-lg transition hover:bg-white/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:bottom-6 lg:left-6"
+          : "fixed bottom-24 left-4 z-30 flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-lg transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:bottom-6 lg:left-6"
       }
     >
       <ChevronUp className="h-6 w-6" strokeWidth={2.5} aria-hidden />
