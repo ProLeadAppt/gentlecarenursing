@@ -60,6 +60,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.75,
       changeFrequency: "monthly",
     },
+    {
+      path: "/compare/in-home-nursing-vs-residential-aged-care",
+      priority: 0.75,
+      changeFrequency: "monthly",
+    },
+    {
+      path: "/compare/clinician-led-vs-agency-staff",
+      priority: 0.75,
+      changeFrequency: "monthly",
+    },
   ];
 
   const entries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
