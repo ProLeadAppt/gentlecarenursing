@@ -430,12 +430,18 @@ export function getMedicalGuideSchema(args: {
   snippetAnswer: string;
   slug: string;
   publishedAt?: string;
+  /**
+   * Editorial "last updated" date. Used as the schema `dateModified` fallback
+   * after `reviewedAt`. Does not imply clinical review — purely a freshness
+   * signal AI engines (and Google) look for.
+   */
+  updatedAt?: string;
   reviewedAt?: string;
   reviewer?: { name: string; role?: string };
   about?: readonly GuideAboutEntity[];
 }) {
   const url = `${INTEGRATIONS.siteUrl}/guides/${args.slug}`;
-  const isoDate = args.reviewedAt ?? args.publishedAt;
+  const isoDate = args.reviewedAt ?? args.updatedAt ?? args.publishedAt;
 
   const aboutEntities = (args.about ?? []).map((entity) => ({
     "@type": entity.type,
