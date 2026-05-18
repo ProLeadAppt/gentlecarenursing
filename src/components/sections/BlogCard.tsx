@@ -35,10 +35,18 @@ export function BlogCard({ post, className }: BlogCardProps) {
           // No featured image: show the Gentle Care heart-handshake mark
           // as a soft, on-brand placeholder. Uses the favicon webp so the
           // browser can lazy-load it from cache once it's fetched once.
+          //
+          // Alt text: the visual is a decorative brand logo, but it appears
+          // as the visual representation of *this post* on the card. Using
+          // the post title makes it meaningful for Google Image indexing
+          // and keeps it consistent with the alt pattern used in the
+          // featured-image branch above. Avoids the SEO issue of every
+          // blog card on /blog sharing identical "Gentle Care Nursing
+          // Services" alt text.
           <div className="absolute inset-0 flex items-center justify-center">
             <Image
               src="/images/gentle care nursing favicon.webp"
-              alt="Gentle Care Nursing Services"
+              alt={post.title}
               width={88}
               height={88}
               className="h-20 w-20 opacity-60 select-none"
