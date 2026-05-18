@@ -3,6 +3,7 @@ import { getAllAreaSlugs } from "@/content/areas-content";
 import { ALL_GUIDES } from "@/content/guides";
 import { getAllBlogPosts } from "@/content/blog";
 import { SERVICE_REGION_PAGES } from "@/content/service-regions";
+import { SUBURBS } from "@/content/suburbs";
 import { SITE_LAST_UPDATED } from "@/lib/constants";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gentlecarenursing.com.au";
@@ -39,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
     { path: "/guides", priority: 0.7, changeFrequency: "monthly" },
     { path: "/areas", priority: 0.85, changeFrequency: "monthly" },
+    { path: "/suburbs", priority: 0.8, changeFrequency: "monthly" },
     {
       path: "/compare",
       priority: 0.7,
@@ -69,6 +71,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: staticLastMod,
       changeFrequency: "monthly",
       priority: 0.8,
+    });
+  }
+
+  for (const s of SUBURBS) {
+    entries.push({
+      url: `${BASE_URL}/suburbs/${s.slug}`,
+      lastModified: staticLastMod,
+      changeFrequency: "monthly",
+      priority: 0.7,
     });
   }
 
