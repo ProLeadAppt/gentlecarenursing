@@ -44,6 +44,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.75,
       changeFrequency: "monthly",
     },
+    {
+      path: "/compare/dva-community-nursing-vs-private-nursing",
+      priority: 0.75,
+      changeFrequency: "monthly",
+    },
   ];
 
   const entries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
