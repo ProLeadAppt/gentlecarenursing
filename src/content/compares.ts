@@ -35,6 +35,20 @@ export const ALL_COMPARES: readonly CompareEntry[] = [
     summary:
       "How DVA Community Nursing compares to private in-home nursing for Sydney veterans and families — eligibility, cost, scope, and how to combine them.",
   },
+  {
+    slug: "in-home-nursing-vs-residential-aged-care",
+    href: "/compare/in-home-nursing-vs-residential-aged-care",
+    title: "In-Home Nursing vs Residential Aged Care",
+    summary:
+      "How in-home nursing compares to residential aged care for Sydney families — clinical scope, funding, social environment, and signs it may be time to consider a move.",
+  },
+  {
+    slug: "clinician-led-vs-agency-staff",
+    href: "/compare/clinician-led-vs-agency-staff",
+    title: "Clinician-Led vs Agency-Staff In-Home Nursing",
+    summary:
+      "How clinician-led in-home nursing compares to agency-staff models — clinical oversight, staff continuity, response times, scope, and which suits which household.",
+  },
 ] as const;
 
 export function getCompareBySlug(slug: string): CompareEntry | undefined {

@@ -10,7 +10,7 @@ import { Card } from "@/components/ui/Card";
 import { CTA_LINKS } from "@/lib/constants";
 import { INTEGRATIONS } from "@/config/integrations";
 import { createMetadata } from "@/lib/metadata";
-import { getBreadcrumbListSchema, getFaqSchema } from "@/lib/schema";
+import { getBreadcrumbListSchema, getFaqSchema, getHowToSchema } from "@/lib/schema";
 
 const REFERRER_FAQS = [
   {
@@ -55,6 +55,34 @@ export default function ReferrersPage() {
     { name: "Home", item: "/" },
     { name: "For Coordinators & Referrers", item: "/referrers" },
   ]);
+  // HowTo schema mirrors the visible "How to Refer" 3-step section below.
+  // Google requires HowTo step text to match visible content, so any change
+  // to the visible steps must be reflected here in the same wording.
+  const howToSchema = getHowToSchema(
+    "How to refer a client to in-home nursing in Sydney",
+    "Three steps for NDIS support coordinators, plan managers, hospital discharge planners, and GPs to refer a client to Gentle Care Nursing Services for in-home nursing and personal care across Sydney.",
+    [
+      {
+        number: 1,
+        headline: "Share the client's details",
+        description:
+          "Submit our Request Care form or contact us directly with the client's details, funding type (NDIS, DVA, aged care, private), key needs, and any relevant reports or discharge summaries. You receive immediate confirmation that we've received it.",
+      },
+      {
+        number: 2,
+        headline: "We acknowledge and assess",
+        description:
+          "Our team is notified straight away. Within 24 hours during business hours, a real person responds to you or the client with supportive guidance, next steps, and proposed timeframes for assessment and care commencement.",
+      },
+      {
+        number: 3,
+        headline: "Care begins and you stay informed",
+        description:
+          "Once a care plan is agreed, we match the client with the right nurse or carer and begin visits. With the client's consent, we keep you informed at key points so you always know how things are progressing.",
+      },
+    ],
+    "/referrers"
+  );
 
   return (
     <>
@@ -65,6 +93,10 @@ export default function ReferrersPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
 
       {/* Intro */}

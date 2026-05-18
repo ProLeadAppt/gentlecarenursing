@@ -88,6 +88,13 @@ export interface ServicePageData {
   /** Named clinician who reviewed the page. Populate only with consent and AHPRA confirmation. */
   reviewer?: { name: string; role?: string };
   /**
+   * Override the breadcrumb parent (default: {label: "Services", href: "/services"}).
+   * Used by /conditions/* pages to surface "Conditions" instead of "Services" in
+   * the hero breadcrumb, since those pages are routed under /conditions but
+   * still use this layout's component shape.
+   */
+  breadcrumbParent?: { label: string; href: string };
+  /**
    * Optional list of clinical procedures this service page describes.
    *
    * Each entry is emitted as a MedicalProcedure schema node alongside the
@@ -172,7 +179,7 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
               <Breadcrumbs
                 items={[
                   { label: "Home", href: "/" },
-                  { label: "Services", href: "/services" },
+                  data.breadcrumbParent ?? { label: "Services", href: "/services" },
                   { label: data.title },
                 ]}
               />

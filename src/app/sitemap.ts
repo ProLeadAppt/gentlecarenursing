@@ -4,6 +4,7 @@ import { ALL_GUIDES } from "@/content/guides";
 import { getAllBlogPosts } from "@/content/blog";
 import { SERVICE_REGION_PAGES } from "@/content/service-regions";
 import { SUBURBS } from "@/content/suburbs";
+import { CONDITIONS } from "@/content/conditions";
 import { SITE_LAST_UPDATED } from "@/lib/constants";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gentlecarenursing.com.au";
@@ -39,11 +40,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
     { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
     { path: "/guides", priority: 0.7, changeFrequency: "monthly" },
+    { path: "/glossary", priority: 0.7, changeFrequency: "monthly" },
     { path: "/areas", priority: 0.85, changeFrequency: "monthly" },
     { path: "/suburbs", priority: 0.8, changeFrequency: "monthly" },
     {
       path: "/compare",
       priority: 0.7,
+      changeFrequency: "monthly",
+    },
+    {
+      path: "/conditions",
+      priority: 0.85,
       changeFrequency: "monthly",
     },
     {
@@ -53,6 +60,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       path: "/compare/dva-community-nursing-vs-private-nursing",
+      priority: 0.75,
+      changeFrequency: "monthly",
+    },
+    {
+      path: "/compare/in-home-nursing-vs-residential-aged-care",
+      priority: 0.75,
+      changeFrequency: "monthly",
+    },
+    {
+      path: "/compare/clinician-led-vs-agency-staff",
       priority: 0.75,
       changeFrequency: "monthly",
     },
@@ -89,6 +106,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: staticLastMod,
       changeFrequency: "monthly",
       priority: 0.85,
+    });
+  }
+
+  for (const c of CONDITIONS) {
+    entries.push({
+      url: `${BASE_URL}/conditions/${c.slug}`,
+      lastModified: staticLastMod,
+      changeFrequency: "monthly",
+      priority: 0.8,
     });
   }
 

@@ -455,6 +455,7 @@ export const AGED_CARE_PAGE: ServicePageData = {
       "Get in touch to discuss care options for your loved one.",
   },
   relatedGuideSlugs: ["in-home-care-for-dementia", "support-for-family-carers-and-burnout"],
+  relatedCompareSlugs: ["in-home-nursing-vs-residential-aged-care"],
   caseStories: [
     {
       title: "Case example: Helping an older person come home safely",
@@ -1207,6 +1208,7 @@ export const NURSING_CARE_PAGE: ServicePageData = {
     description:
       "Speak with our clinical lead about how our nursing team can support your health at home.",
   },
+  relatedCompareSlugs: ["clinician-led-vs-agency-staff"],
   testimonials: [],
 };
 
