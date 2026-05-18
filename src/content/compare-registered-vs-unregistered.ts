@@ -86,10 +86,9 @@ export interface ComparePageContent {
 
 export const COMPARE_REGISTERED_VS_UNREGISTERED: ComparePageContent = {
   h1: "Registered NDIS Provider vs Non-Registered: A Plain-English Comparison",
-  metaTitle:
-    "Registered vs Non-Registered NDIS Provider — Plain-English Guide",
+  metaTitle: "Registered vs Non-Registered NDIS Provider",
   metaDescription:
-    "Side-by-side comparison of registered and non-registered NDIS providers. What each can deliver, who can use them, and how to choose. Sydney-focused, plain English.",
+    "Side-by-side: registered vs non-registered NDIS providers. What each delivers, who can use them, pricing, and how to choose. Plain English, Sydney-focused.",
   canonicalPath: "/compare/registered-ndis-provider-vs-non-registered",
   snippetAnswer:
     "A registered NDIS provider is audited against the NDIS Practice Standards and can deliver the full range of supports — including specialist behaviour support, SDA, and high-intensity supports for NDIA-managed participants. A non-registered provider has more flexibility on pricing and scope, but cannot be claimed by NDIA-managed participants and cannot deliver certain regulated supports. Self-managed and plan-managed participants can use either.",
