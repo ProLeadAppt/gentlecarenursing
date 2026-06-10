@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import { useRef } from "react";
 import { Button } from "@/components/ui/Button";
 import { HERO_VARIANTS } from "@/design-system/tokens";
-import { HERO_REASSURANCE, SITE } from "@/lib/constants";
+import { SITE } from "@/lib/constants";
 import { Magnetic } from "@/components/animations/Magnetic";
 import { useFormModal } from "@/contexts/FormModalContext";
 import { useIsDesktop } from "@/hooks/useMediaQuery";
@@ -24,7 +24,6 @@ interface HeroProps {
   eyebrow?: string;
   primaryCta: HeroCta;
   secondaryCta?: HeroCta;
-  reassurance?: string;
   imageSrc?: string;
   imageAlt?: string;
   /** Optional looping background video. Single string for one source, or
@@ -33,14 +32,7 @@ interface HeroProps {
   videoSrc?: string | readonly { src: string; type: string }[];
   /** Optional poster shown while the video loads — usually the same as imageSrc. */
   videoPoster?: string;
-  credentials?: readonly { label: string; color: string }[];
 }
-
-const defaultCredentials = [
-  { label: "NDIS Registered", color: "#6b9360" },
-  { label: "DVA Contracted", color: "#1b6b6d" },
-  { label: "Aged Care Support", color: "#c4704b" },
-] as const;
 
 export function Hero({
   headlineSegments,
@@ -49,12 +41,10 @@ export function Hero({
   eyebrow,
   primaryCta,
   secondaryCta,
-  reassurance = HERO_REASSURANCE,
   imageSrc = "/images/vitaly-gariev-Wk6f1CkGlEo-unsplash.webp",
   imageAlt = "Personalised in-home care delivered with warmth",
   videoSrc,
   videoPoster,
-  credentials = defaultCredentials,
 }: HeroProps) {
   const { openModal } = useFormModal();
   const prefersReducedMotion = useReducedMotion();
@@ -79,7 +69,12 @@ export function Hero({
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[40rem] lg:min-h-[90vh] overflow-hidden flex items-center bg-white"
+      // Reduced from 90vh → auto height. 90vh + flex items-center produced
+      // huge empty space above the content because the image column is
+      // ~50rem tall and the content column is much shorter. Clean, simple
+      // hero now: content sits at the top of the left column, image fills
+      // its natural aspect ratio.
+      className="relative overflow-hidden bg-white"
       aria-labelledby="hero-heading"
     >
       {/* Ambient gradient orbs — GPU-composited */}
@@ -91,9 +86,9 @@ export function Hero({
 
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 xl:px-12 w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-16 xl:gap-24 lg:items-center">
-          {/* Left column: staggered cinematic copy */}
+          {/* Left column: headline + subheadline + CTAs, top-aligned. */}
           <motion.div
-            className="order-1 flex flex-col justify-center py-20 sm:py-24 lg:py-32"
+            className="order-1 flex flex-col justify-start py-16 sm:py-20 lg:py-24"
             variants={prefersReducedMotion ? undefined : HERO_VARIANTS.container}
             initial={prefersReducedMotion ? false : "hidden"}
             animate="visible"
@@ -203,37 +198,12 @@ export function Hero({
                 )}
               </motion.div>
 
-              {/* Reassurance */}
-              <motion.p
-                variants={HERO_VARIANTS.word}
-                className="mt-8 text-sm leading-relaxed text-foreground/70 max-w-md italic border-l-2 border-accent/30 pl-4 py-1"
-              >
-                {reassurance}
-              </motion.p>
-
-              {/* Trust credentials — dot-prefixed inline */}
-              <motion.div
-                className="mt-10 flex flex-wrap gap-x-5 gap-y-3"
-                variants={HERO_VARIANTS.word}
-              >
-                {credentials.map((cred, i) => (
-                  <motion.div
-                    key={cred.label}
-                    className="flex items-center gap-2"
-                    variants={HERO_VARIANTS.credentials}
-                    custom={i}
-                  >
-                    <span
-                      className="w-2 h-2 rounded-full shrink-0"
-                      style={{ backgroundColor: cred.color }}
-                      aria-hidden
-                    />
-                    <span className="text-sm text-muted-foreground font-medium">
-                      {cred.label}
-                    </span>
-                  </motion.div>
-                ))}
-              </motion.div>
+              {/* Trust credentials removed per Gemma's brief 2026-06-10:
+                  the subheadline already shows the same three credentials
+                  (NDIS Registered · DVA Contracted · Aged Care Support),
+                  so the dotted row below the CTAs was a duplicate.
+                  Reassurance strip also removed for the same reason —
+                  clean, not busy. */}
             </div>
           </motion.div>
 
@@ -245,7 +215,10 @@ export function Hero({
             className={
               videoSrc
                 ? "order-2 relative w-full max-w-[40rem] mx-auto aspect-square lg:max-w-none lg:aspect-square lg:h-auto"
-                : "order-2 relative h-[32rem] min-h-[32rem] w-full lg:min-h-[42rem] lg:h-[80vh] lg:max-h-[50rem]"
+                // Trimmed down from h-[80vh] / min-h-[42rem]: the hero no
+                // longer stretches to fill the viewport. Image is now a
+                // comfortable 4:3 portrait on desktop.
+                : "order-2 relative aspect-[4/3] w-full lg:aspect-[5/4] max-h-[36rem] mx-auto"
             }
             style={{ y, opacity }}
           >
@@ -291,51 +264,9 @@ export function Hero({
                 {!videoSrc && (
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
                 )}
-
-                {/* In image mode the badge sits inside the media (over the photo).
-                    In video mode it lives OUTSIDE this overflow-hidden wrapper
-                    (rendered below) so it can hover off the rounded corner without
-                    being clipped, and never covers in-frame copy. */}
-                {!videoSrc && (
-                  <motion.div
-                    className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm px-5 py-3 rounded-xl shadow-lg border border-white/50 flex items-center gap-3"
-                    variants={HERO_VARIANTS.badge}
-                    initial={prefersReducedMotion ? false : "hidden"}
-                    animate="visible"
-                    transition={prefersReducedMotion ? undefined : { delay: 1.8 }}
-                  >
-                    <span className="relative flex h-2.5 w-2.5">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pw-sage opacity-75" />
-                      <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-pw-sage" />
-                    </span>
-                    <div>
-                      <p className="text-sm font-bold text-foreground">
-                        <span className="text-primary">~24hr</span> Response Window
-                      </p>
-                    </div>
-                  </motion.div>
-                )}
+                {/* Badge overlays removed per Gemma's brief 2026-06-10
+                    (no repeated badges or reassurance strips on the hero image). */}
               </div>
-
-              {videoSrc && (
-                <motion.div
-                  className="absolute -bottom-5 left-4 sm:left-6 bg-white px-5 py-3 rounded-2xl shadow-xl ring-1 ring-black/5 flex items-center gap-3 z-30"
-                  variants={HERO_VARIANTS.badge}
-                  initial={prefersReducedMotion ? false : "hidden"}
-                  animate="visible"
-                  transition={prefersReducedMotion ? undefined : { delay: 1.8 }}
-                >
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pw-sage opacity-75" />
-                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-pw-sage" />
-                  </span>
-                  <div>
-                    <p className="text-sm font-bold text-foreground">
-                      <span className="text-primary">~24hr</span> Response Window
-                    </p>
-                  </div>
-                </motion.div>
-              )}
             </div>
           </motion.div>
         </div>
