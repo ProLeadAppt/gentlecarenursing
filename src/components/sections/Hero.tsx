@@ -32,6 +32,8 @@ interface HeroProps {
   videoSrc?: string | readonly { src: string; type: string }[];
   /** Optional poster shown while the video loads — usually the same as imageSrc. */
   videoPoster?: string;
+  /** Brand-coloured credential dots — small row, not a full strip. */
+  credentials?: readonly { label: string; color: string }[];
 }
 
 export function Hero({
@@ -45,6 +47,7 @@ export function Hero({
   imageAlt = "Personalised in-home care delivered with warmth",
   videoSrc,
   videoPoster,
+  credentials = [],
 }: HeroProps) {
   const { openModal } = useFormModal();
   const prefersReducedMotion = useReducedMotion();
@@ -197,6 +200,31 @@ export function Hero({
                   </a>
                 )}
               </motion.div>
+
+              {/* Brand-coloured credential dots — single row, small.
+                  Restored per Tyson's character pass; complements (not
+                  duplicates) the subheadline text above by giving each
+                  item its own brand colour. */}
+              {credentials.length > 0 && (
+                <motion.div
+                  className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2"
+                  variants={HERO_VARIANTS.word}
+                >
+                  {credentials.map((cred) => (
+                    <span
+                      key={cred.label}
+                      className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground"
+                    >
+                      <span
+                        aria-hidden
+                        className="inline-block h-2 w-2 rounded-full"
+                        style={{ backgroundColor: cred.color }}
+                      />
+                      {cred.label}
+                    </span>
+                  ))}
+                </motion.div>
+              )}
 
               {/* Trust credentials removed per Gemma's brief 2026-06-10:
                   the subheadline already shows the same three credentials

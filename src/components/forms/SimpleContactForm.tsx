@@ -54,8 +54,16 @@ export function SimpleContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-border/60 bg-white p-8 text-center">
-        <h3 className="text-xl font-semibold text-foreground">
+      <div className="rounded-2xl border border-pw-border bg-white p-8 text-center shadow-sm">
+        <div
+          className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full"
+          style={{ background: "rgba(107,147,96,0.12)" }}
+        >
+          <span className="text-2xl text-pw-sage" aria-hidden>
+            ✓
+          </span>
+        </div>
+        <h3 className="text-xl font-semibold text-foreground font-[family-name:var(--font-serif)]">
           Thanks — we&apos;ve got your message.
         </h3>
         <p className="mt-2 text-muted-foreground">
@@ -69,7 +77,7 @@ export function SimpleContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="grid gap-4 rounded-2xl border border-border/60 bg-white p-6 sm:p-8 shadow-sm"
+      className="grid gap-5 rounded-2xl border border-pw-border bg-white p-6 sm:p-8 shadow-[0_20px_60px_-30px_rgba(132,40,51,0.25)]"
       noValidate
     >
       <FormField label="Your name" htmlFor="home-name" required>
