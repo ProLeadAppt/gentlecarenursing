@@ -8,8 +8,7 @@ export type BlogCategory =
   | "ndis"
   | "aged-care"
   | "clinical"
-  | "family-carers"
-  | "guides";
+  | "family-carers";
 
 export interface BlogAuthor {
   name: string;
@@ -38,7 +37,6 @@ export const BLOG_CATEGORIES: Record<BlogCategory, { label: string; color: strin
   "aged-care": { label: "Aged Care", color: "bg-pw-teal/10 text-pw-teal" },
   clinical: { label: "Clinical", color: "bg-primary/10 text-primary" },
   "family-carers": { label: "Family Carers", color: "bg-pw-terracotta/10 text-pw-terracotta" },
-  guides: { label: "Guides", color: "bg-pw-amber/10 text-pw-amber-700" },
 };
 
 const DEFAULT_AUTHOR: BlogAuthor = {
@@ -84,7 +82,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <li>Provide regular updates to your coordinator and family</li>
         <li>Be transparent about pricing and service agreements</li>
       </ul>
-      <p>At Gentle Care Nursing Services, we keep our client list intentionally small so every person receives dedicated, personalised attention. We're a registered NDIS provider, led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support.</p>
+      <p>At Gentle Care Nursing Services, we keep our client list intentionally small so every person receives dedicated, personalised attention. We're a registered NDIS provider, led by a care team with strong hands-on experience in community care, aged care, disability support, and nursing services.</p>
 
       <h2>Questions to ask your provider</h2>
       <p>Before signing a service agreement, ask:</p>

@@ -84,8 +84,9 @@ export const TOPICAL_MAP: readonly Pillar[] = [
       "/services/personal-care",
       "/services/post-hospital-care",
       "/services/complex-care",
-      "/services/hospital-at-home",
-      "/services/palliative-care",
+      // 2026-06-10: /services/hospital-at-home and /services/palliative-care
+      // hidden from internal links per Gemma's brief (the pages still exist
+      // and are still served for SEO/backlink equity).
     ],
     relatedPillarIds: [
       "ndis",

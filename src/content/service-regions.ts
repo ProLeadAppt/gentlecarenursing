@@ -373,7 +373,7 @@ const NURSING_SERVICE: ServiceDefinition = {
       id: "nursing-qualifications-{slug}",
       question: "What are your nurses' qualifications?",
       answer:
-        "All clinical nursing care is delivered or supervised by AHPRA-registered nurses with substantial experience in Australian healthcare settings. Our team is led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support.",
+        "All clinical nursing care is delivered or supervised by AHPRA-registered nurses with substantial experience in Australian healthcare settings. Our team is led by a care team with strong hands-on experience in community care, aged care, disability support, and nursing services.",
     },
     {
       id: "nursing-insurance-{slug}",

@@ -49,7 +49,7 @@ export function AboutUsSection({
                     <Heart className="h-6 w-6 text-accent group-hover:text-white transition-colors duration-500" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold mb-1">Over 10 Years of Hands-On Care Experience</h3>
+                    <h3 className="text-lg font-bold mb-1">Experienced Care Team</h3>
                     <p className="text-muted-foreground">{statsLine}</p>
                   </div>
                 </div>

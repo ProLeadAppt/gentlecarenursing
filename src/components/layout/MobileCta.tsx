@@ -48,7 +48,7 @@ export function MobileCta() {
         )}
         <button
           type="button"
-          onClick={() => openModal("care-finder")}
+          onClick={() => openModal("contact")}
           className="flex h-12 flex-1 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[#6b2028] font-semibold text-white shadow-[0_4px_16px_rgba(132,40,51,0.25)] transition-all duration-200 hover:shadow-[0_8px_24px_rgba(132,40,51,0.3)] active:scale-[0.98]"
         >
           Request Care

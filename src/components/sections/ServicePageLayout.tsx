@@ -11,10 +11,9 @@ import { FormModalTrigger } from "@/components/ui/FormModalTrigger";
 import { CTA_LINKS } from "@/lib/constants";
 import { getServiceSchema, getFaqSchema, getMedicalProcedureSchema } from "@/lib/schema";
 import { SERVICES } from "@/content/services";
-import { ALL_GUIDES } from "@/content/guides";
-import { ALL_COMPARES } from "@/content/compares";
-import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+// ALL_GUIDES + ALL_COMPARES imports removed 2026-06-10 — /guides and /compare pages deleted
 import { Reveal } from "@/components/animations/Reveal";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Magnetic } from "@/components/animations/Magnetic";
 import { CheckCircle2, ArrowRight, UserCheck, Heart, ShieldCheck, Sparkles, Activity } from "lucide-react";
 import type { FaqItem } from "./FaqAccordion";
@@ -63,13 +62,14 @@ export interface ServicePageData {
     role: string;
     rating?: number;
   }[];
-  /** Optional guide slugs that are especially relevant to this service */
+  /** Optional guide slugs that are especially relevant to this service —
+   * field kept for data compatibility but no longer rendered since
+   * /guides was removed 2026-06-10. */
   relatedGuideSlugs?: string[];
   /**
    * Optional comparison-page slugs (see src/content/compares.ts) that are
-   * especially relevant to this service. Renders a contextual "Compare
-   * options" link block — both for users weighing alternatives and for
-   * internal-PageRank flow into /compare/* pages.
+   * especially relevant to this service. Field kept for data compatibility
+   * but no longer rendered since /compare was removed 2026-06-10.
    */
   relatedCompareSlugs?: string[];
   /**
@@ -147,16 +147,6 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
     ...(faqItems.length > 0 ? [getFaqSchema(data.faqs)] : []),
   ];
 
-  const relatedGuides =
-    data.relatedGuideSlugs?.map((slug) => ALL_GUIDES.find((g) => g.slug === slug)).filter(
-      (g): g is (typeof ALL_GUIDES)[number] => g != null
-    ) ?? [];
-
-  const relatedCompares =
-    data.relatedCompareSlugs?.map((slug) => ALL_COMPARES.find((c) => c.slug === slug)).filter(
-      (c): c is (typeof ALL_COMPARES)[number] => c != null
-    ) ?? [];
-
   return (
     <>
       <script
@@ -216,7 +206,7 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
           <Reveal delay={0.5}>
             <div className="mt-14 flex flex-col sm:flex-row justify-center gap-6">
               <Magnetic>
-                <FormModalTrigger formType="care-finder" size="xl" variant="primary" className="px-12 shadow-xl shadow-primary/20 rounded-2xl h-16">
+                <FormModalTrigger formType="contact" size="xl" variant="primary" className="px-12 shadow-xl shadow-primary/20 rounded-2xl h-16">
                   {CTA_LINKS.requestCare.label}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </FormModalTrigger>
@@ -421,82 +411,8 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
         </Container>
       </Section>
 
-      {relatedGuides.length > 0 && (
-        <Section className="bg-white border-t border-border/40">
-          <Container>
-            <Reveal>
-              <div className="text-center mb-20">
-                 <span className="mb-4 inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60">Expert Resources</span>
-                 <Heading level="h2" className="text-4xl sm:text-5xl font-bold font-[family-name:var(--font-serif)] mb-6">Practical Clinical Guides</Heading>
-                 <p className="mx-auto max-w-2xl text-lg text-muted-foreground font-medium">Navigating the healthcare system with expert advice.</p>
-              </div>
-            </Reveal>
-            <div className="grid gap-10 lg:grid-cols-2">
-              {relatedGuides.map((guide, i) => (
-                <Reveal key={guide.slug} delay={i * 0.1}>
-                  <Link
-                    href={`/guides/${guide.slug}`}
-                    className="group block h-full rounded-[3rem] border border-border/50 bg-card/30 p-12 transition-all duration-700 hover:border-primary/30 hover:bg-card/50 hover:shadow-2xl overflow-hidden relative"
-                  >
-                    <div className="absolute top-0 right-0 p-10 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-700 pointer-events-none">
-                      <ArrowRight className="h-40 w-40 -rotate-45" />
-                    </div>
-                    <Heading level="h3" className="text-2xl sm:text-3xl font-bold group-hover:text-primary transition-colors font-[family-name:var(--font-serif)] mb-6">
-                      {guide.title}
-                    </Heading>
-                    <p className="text-lg leading-[1.8] text-muted-foreground font-medium mb-8">
-                      {guide.snippetAnswer}
-                    </p>
-                    <span className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.3em] text-primary group-hover:gap-4 transition-all">
-                      Read full manual <ArrowRight className="h-5 w-5" />
-                    </span>
-                  </Link>
-                </Reveal>
-              ))}
-            </div>
-          </Container>
-        </Section>
-      )}
-
-      {relatedCompares.length > 0 && (
-        <Section className="bg-muted/30 border-t border-border/40">
-          <Container size="md">
-            <Reveal>
-              <div className="text-center mb-10">
-                <span className="mb-3 inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60">
-                  Compare options
-                </span>
-                <Heading level="h2" className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-serif)]">
-                  Still deciding?
-                </Heading>
-                <p className="mx-auto mt-3 max-w-xl text-base text-muted-foreground">
-                  Side-by-side comparisons of the funding and provider choices that come up most often.
-                </p>
-              </div>
-            </Reveal>
-            <div className={`grid gap-6 ${relatedCompares.length > 1 ? "md:grid-cols-2" : ""}`}>
-              {relatedCompares.map((compare, i) => (
-                <Reveal key={compare.slug} delay={i * 0.1}>
-                  <Link
-                    href={compare.href}
-                    className="group flex h-full flex-col rounded-2xl border border-border/60 bg-card/40 p-7 transition-all duration-500 hover:border-primary/40 hover:bg-card/70 hover:shadow-lg"
-                  >
-                    <Heading level="h3" className="text-xl font-bold font-[family-name:var(--font-serif)] group-hover:text-primary transition-colors">
-                      {compare.title}
-                    </Heading>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                      {compare.summary}
-                    </p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-primary group-hover:gap-3 transition-all">
-                      Read the comparison <ArrowRight className="h-4 w-4" />
-                    </span>
-                  </Link>
-                </Reveal>
-              ))}
-            </div>
-          </Container>
-        </Section>
-      )}
+      {/* Related guides & compare sections removed 2026-06-10 — the
+          /guides and /compare pages were deleted per Gemma's brief. */}
 
       {/* Testimonials removed pending consented client quotes. */}
 

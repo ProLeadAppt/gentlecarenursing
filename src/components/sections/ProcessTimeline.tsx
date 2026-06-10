@@ -206,7 +206,7 @@ export function ProcessTimeline() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
           <Button
-            onClick={() => openModal("care-finder")}
+            onClick={() => openModal("contact")}
             variant="primary"
             size="lg"
             className="group"

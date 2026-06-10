@@ -8,7 +8,7 @@ type ButtonVariant = keyof typeof BUTTON_VARIANTS;
 type ButtonSize = keyof typeof BUTTON_SIZES;
 
 interface FormModalTriggerProps {
-  formType: "referral" | "contact" | "care-finder";
+  formType: "referral" | "contact";
   variant?: ButtonVariant;
   size?: ButtonSize;
   children: React.ReactNode;

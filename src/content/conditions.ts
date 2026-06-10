@@ -156,7 +156,6 @@ export const CONDITIONS: readonly ConditionEntry[] = [
         description:
           "Tell us where you're at — newly diagnosed, navigating a relapse, or supporting progressive MS — and we'll talk through practical options for care at home.",
       },
-      relatedGuideSlugs: ["support-for-family-carers-and-burnout"],
     },
   },
 
@@ -277,7 +276,6 @@ export const CONDITIONS: readonly ConditionEntry[] = [
         description:
           "Tell us about your situation and we'll talk through what safe, consistent in-home care could look like — at the stage you're at now and as needs change.",
       },
-      relatedGuideSlugs: ["support-for-family-carers-and-burnout"],
     },
   },
 
@@ -518,7 +516,6 @@ export const CONDITIONS: readonly ConditionEntry[] = [
         description:
           "Tell us where you are — leaving rehab, established at home, or facing new complications — and we'll talk through what safe, consistent in-home care could look like.",
       },
-      relatedGuideSlugs: ["in-home-care-for-chronic-wounds"],
     },
   },
 
@@ -625,7 +622,7 @@ export const CONDITIONS: readonly ConditionEntry[] = [
           id: "abi-stroke",
           question: "Do you support stroke survivors after rehab?",
           answer:
-            "Yes. Stroke is one of the most common causes of acquired brain injury, and our team supports stroke survivors after both inpatient rehab and direct hospital discharge. See our [in-home care after stroke guide](/guides/in-home-care-after-stroke) for the specific Sydney pathways and what we cover.",
+            "Yes. Stroke is one of the most common causes of acquired brain injury, and our team supports stroke survivors after both inpatient rehab and direct hospital discharge. We can talk through the specific Sydney stroke pathways with you and what our team can cover.",
         },
         {
           id: "abi-behaviour",
@@ -639,7 +636,6 @@ export const CONDITIONS: readonly ConditionEntry[] = [
         description:
           "Tell us about your situation — leaving rehab, established at home, or facing new challenges — and we'll talk through what consistent in-home care could look like.",
       },
-      relatedGuideSlugs: ["in-home-care-after-stroke"],
     },
   },
 

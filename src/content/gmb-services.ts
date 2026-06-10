@@ -22,11 +22,6 @@ export const GMB_SERVICES: readonly GmbService[] = [
     href: "/services/nursing-care",
   },
   {
-    name: "Assistance with Daily Living",
-    description: "Practical help with meals, simple household tasks, and daily routines to keep things running smoothly at home.",
-    href: "/services/assistance-with-daily-living",
-  },
-  {
     name: "Community Participation",
     description: "Support for getting out and about, joining in social activities, or attending appointments with confidence.",
     href: "/services/community-participation",

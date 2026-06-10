@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
 import { getAllAreaSlugs } from "@/content/areas-content";
-import { ALL_GUIDES } from "@/content/guides";
 import { getAllBlogPosts } from "@/content/blog";
 import { SERVICE_REGION_PAGES } from "@/content/service-regions";
 import { SUBURBS } from "@/content/suburbs";
@@ -21,6 +20,8 @@ function staticPageLastModified(): Date {
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticLastMod = staticPageLastModified();
 
+  // 2026-06-10: removed /compare, /compare/*, /guides, /guides/*, /glossary,
+  // /care-finder from sitemap — those pages were deleted per Gemma's brief.
   const staticRoutes: { path: string; priority: number; changeFrequency: "weekly" | "monthly" | "yearly" }[] = [
     { path: "/", priority: 1.0, changeFrequency: "weekly" },
     { path: "/about", priority: 0.8, changeFrequency: "monthly" },
@@ -39,38 +40,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/faq", priority: 0.7, changeFrequency: "monthly" },
     { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
     { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
-    { path: "/guides", priority: 0.7, changeFrequency: "monthly" },
-    { path: "/glossary", priority: 0.7, changeFrequency: "monthly" },
     { path: "/areas", priority: 0.85, changeFrequency: "monthly" },
     { path: "/suburbs", priority: 0.8, changeFrequency: "monthly" },
     {
-      path: "/compare",
-      priority: 0.7,
-      changeFrequency: "monthly",
-    },
-    {
       path: "/conditions",
       priority: 0.85,
-      changeFrequency: "monthly",
-    },
-    {
-      path: "/compare/registered-ndis-provider-vs-non-registered",
-      priority: 0.75,
-      changeFrequency: "monthly",
-    },
-    {
-      path: "/compare/dva-community-nursing-vs-private-nursing",
-      priority: 0.75,
-      changeFrequency: "monthly",
-    },
-    {
-      path: "/compare/in-home-nursing-vs-residential-aged-care",
-      priority: 0.75,
-      changeFrequency: "monthly",
-    },
-    {
-      path: "/compare/clinician-led-vs-agency-staff",
-      priority: 0.75,
       changeFrequency: "monthly",
     },
   ];
@@ -115,17 +89,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: staticLastMod,
       changeFrequency: "monthly",
       priority: 0.8,
-    });
-  }
-
-  for (const guide of ALL_GUIDES) {
-    const dateString = guide.reviewedAt ?? guide.publishedAt;
-    const lastMod = dateString ? new Date(dateString) : staticLastMod;
-    entries.push({
-      url: `${BASE_URL}/guides/${guide.slug}`,
-      lastModified: Number.isNaN(lastMod.getTime()) ? staticLastMod : lastMod,
-      changeFrequency: "monthly",
-      priority: 0.7,
     });
   }
 

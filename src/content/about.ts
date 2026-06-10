@@ -17,8 +17,11 @@ export const ABOUT_INTRO = {
   // "About" label.
   title: "About Gentle Care Nursing Services",
   lead: "We are a personalised in-home nursing and care provider focused on delivering high-quality support with a more attentive and hands-on approach.",
-  /** Stats in prose for GEO / authority */
-  statsLine: "Led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support. We aim to respond to every enquiry within 24 hours.",
+  /** Stats in prose for GEO / authority.
+   *  Updated 2026-06-10 per Gemma's brief — dropped "over 10 years",
+   *  replaced with the softer, team-led framing she requested. */
+  statsLine:
+    "Led by a care team with strong hands-on experience in community care, aged care, disability support, and nursing services. We aim to respond to every enquiry within 24 hours.",
 } as const;
 
 export const MISSION = {
@@ -145,12 +148,13 @@ export const MILESTONES = [
   },
 ] as const;
 
-/** Trust statistics bar — Verified, conservative figures */
+/** Trust statistics bar — Verified, conservative figures.
+ *  Updated 2026-06-10 per Gemma's brief — drop the "10+" stat. */
 export const TRUST_STATS = [
-  { value: "10+", label: "Years Hands-On Care Experience" },
-  { value: "Personal", label: "Quality-Focused Support" },
-  { value: "Small", label: "Dedicated Team" },
-  { value: "~24hr", label: "Response Window" },
+  { value: "Led", label: "By an experienced care team" },
+  { value: "Personal", label: "Quality-focused support" },
+  { value: "Small", label: "Dedicated caseload" },
+  { value: "~24hr", label: "Response window" },
 ] as const;
 
 /** Case studies — Placeholder for future detailed cases */

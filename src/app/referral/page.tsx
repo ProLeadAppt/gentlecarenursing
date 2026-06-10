@@ -50,9 +50,11 @@ export default function ReferralPage() {
             Request Care
           </Heading>
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            Whether you&apos;re a family member, support coordinator, discharge
-            planner, or healthcare professional. Submit below and you&apos;ll get
-            immediate confirmation and a personal response within 24 hours.
+            {/* Updated 2026-06-10 per Gemma's brief — her verbatim referral wording. */}
+            If you are a support coordinator, case manager, health professional,
+            family member, or representative, you can make a referral to Gentle
+            Care Nursing Services. We will review the client&apos;s needs and
+            respond as soon as possible.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
             Support coordinators and discharge planners can also visit our{" "}

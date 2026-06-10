@@ -206,7 +206,9 @@ export default async function SuburbPage({ params }: Props) {
               { href: "/private-nursing", label: "Private in-home nursing" },
               { href: "/services/nursing-care", label: "General nursing care" },
               { href: "/services/complex-care", label: "Complex care" },
-              { href: "/services/palliative-care", label: "Palliative care" },
+              // 2026-06-10: /services/palliative-care hidden from internal
+              // links per Gemma's brief (the page still exists and is still
+              // served for SEO/backlink equity).
               { href: "/services/post-hospital-care", label: "Post-hospital care" },
             ].map((s) => (
               <Link

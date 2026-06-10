@@ -31,13 +31,6 @@ export const SERVICES: ServiceDefinition[] = [
     href: "/services/nursing-care",
   },
   {
-    slug: "daily-living",
-    title: "Assistance with Daily Living",
-    benefitLine: "Practical help for a more independent life at home.",
-    shortDescription: "Support with meal prep, household tasks, and daily routines.",
-    href: "/services/assistance-with-daily-living",
-  },
-  {
     slug: "community-participation",
     title: "Community Participation",
     benefitLine: "Stay connected with your community and achieve your goals.",
@@ -77,7 +70,9 @@ export const NDIS_PAGE: ServicePageData = {
   snippetAnswer:
     "NDIS in-home nursing is skilled nursing and personal care at home for NDIS participants, delivered by a registered NDIS provider like Gentle Care Nursing Services across Sydney.",
   intro:
-    "As a registered NDIS provider, Gentle Care Nursing Services delivers personalised in-home nursing and support for NDIS participants. We work closely with participants, families, and support coordinators to provide high-quality care that helps people live more independently.",
+    // Updated 2026-06-10 per Gemma's brief — replaced verbose old intro
+    // with her verbatim NDIS wording.
+    "Gentle Care Nursing Services is a registered NDIS provider supporting participants with in-home care, daily personal activities, community access, high intensity supports, and supported independent living needs. Our team works closely with participants, families, guardians, and support coordinators to deliver safe, consistent, and person-centred care.",
   evidence: {
     heading: "Quick facts: NDIS in-home nursing with Gentle Care",
     intro: "Citable facts for NDIS participants, support coordinators, plan managers, and families looking at providers in Sydney.",
@@ -192,7 +187,6 @@ export const NDIS_PAGE: ServicePageData = {
     description:
       "Submit your enquiry or referral and we'll get back to you quickly.",
   },
-  relatedCompareSlugs: ["registered-ndis-provider-vs-non-registered"],
   caseStories: [
     {
       title: "Case example: Stabilising support for an NDIS participant at home",
@@ -208,7 +202,9 @@ export const DVA_PAGE: ServicePageData = {
   snippetAnswer:
     "DVA Community Nursing is in-home nursing and care for eligible Veteran Card holders, funded by the Department of Veterans' Affairs and delivered by contracted providers like Gentle Care Nursing Services in Sydney.",
   intro:
-    "Gentle Care Nursing Services is a DVA Contracted Community Nursing Provider, supporting eligible Veteran Card holders with clinically required nursing and personal care services at home.",
+    // Updated 2026-06-10 per Gemma's brief — replaced verbose old intro
+    // with her verbatim DVA wording.
+    "Gentle Care Nursing Services provides community nursing and in-home support for eligible DVA clients. We assist veterans and their families with nursing care, personal care, post-hospital support, and ongoing care needs at home, subject to DVA eligibility and clinical assessment.",
   evidence: {
     heading: "Quick facts: DVA Community Nursing with Gentle Care",
     intro: "Citable facts for veterans, war widows and widowers, families, GPs, and hospital discharge planners arranging DVA-funded nursing at home.",
@@ -323,7 +319,6 @@ export const DVA_PAGE: ServicePageData = {
     description:
       "Get in touch and we'll arrange the right care for you or your loved one.",
   },
-  relatedCompareSlugs: ["dva-community-nursing-vs-private-nursing"],
   caseStories: [
     {
       title: "Case example: Supporting a veteran to remain at home",
@@ -339,7 +334,9 @@ export const AGED_CARE_PAGE: ServicePageData = {
   snippetAnswer:
     "We support older Australians through Support at Home, DVA, and private care arrangements. We can also work with clients, families and care partners to deliver approved in-home nursing and personal care services.",
   intro:
-    "Gentle Care Nursing Services helps older Australians stay safe, comfortable, and independent at home. We support older Australians through Support at Home, DVA, and private care arrangements, working with clients, families and care partners to deliver approved in-home nursing and personal care services.",
+    // Updated 2026-06-10 per Gemma's brief — replaced verbose old intro
+    // with her verbatim Aged Care wording.
+    "We support aged care clients to remain safe and comfortable at home. Our services can include personal care, nursing support, companionship, transport assistance, respite support, and help after hospital discharge.",
   evidence: {
     heading: "Quick facts: in-home aged care with Gentle Care",
     intro: "Citable facts for older Australians, families, hospital discharge planners, and GPs arranging in-home aged care across Sydney.",
@@ -454,8 +451,6 @@ export const AGED_CARE_PAGE: ServicePageData = {
     description:
       "Get in touch to discuss care options for your loved one.",
   },
-  relatedGuideSlugs: ["in-home-care-for-dementia", "support-for-family-carers-and-burnout"],
-  relatedCompareSlugs: ["in-home-nursing-vs-residential-aged-care"],
   caseStories: [
     {
       title: "Case example: Helping an older person come home safely",
@@ -574,7 +569,6 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
     description:
       "Contact us for a personalised quote and get care started quickly.",
   },
-  relatedCompareSlugs: ["dva-community-nursing-vs-private-nursing"],
   caseStories: [
     {
       title: "Case example: Short-term private support after surgery",
@@ -701,7 +695,6 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
       "Tell us about your upcoming or recent hospital stay and we'll help you plan safe, supportive care at home.",
   },
   testimonials: [],
-  relatedGuideSlugs: ["in-home-care-after-hip-replacement", "in-home-care-after-stroke"],
   caseStories: [
     {
       title: "Case example: From hospital to home after hip surgery",
@@ -842,7 +835,6 @@ export const COMPLEX_CARE_PAGE: ServicePageData = {
       "Share your current situation and we’ll let you know how we can safely support complex care at home.",
   },
   testimonials: [],
-  relatedGuideSlugs: ["in-home-care-for-chronic-wounds"],
   caseStories: [
     {
       title: "Case example: Complex care at home for a younger adult",
@@ -1167,7 +1159,7 @@ export const NURSING_CARE_PAGE: ServicePageData = {
       {
         title: "Expertise You Can Trust",
         description:
-          "Led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support.",
+          "Led by a care team with strong hands-on experience in community care, aged care, disability support, and nursing services.",
       },
       {
         title: "Calm & Unrushed",
@@ -1208,7 +1200,6 @@ export const NURSING_CARE_PAGE: ServicePageData = {
     description:
       "Speak with our clinical lead about how our nursing team can support your health at home.",
   },
-  relatedCompareSlugs: ["clinician-led-vs-agency-staff"],
   testimonials: [],
 };
 

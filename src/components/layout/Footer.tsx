@@ -7,7 +7,7 @@ import { CTA_LINKS, SITE } from "@/lib/constants";
 import { AREAS_SERVED } from "@/content/areas-served";
 import { Heading } from "@/components/ui/Heading";
 import { ShieldCheck, BadgeCheck, Phone, MapPin, Mail, ChevronRight, Facebook, Instagram } from "lucide-react";
-import { NewsletterSignup } from "@/components/forms/NewsletterSignup";
+// NewsletterSignup removed 2026-06-10 per Gemma's brief
 import { InstallButton } from "@/components/pwa/InstallButton";
 
 export interface FooterLink {
@@ -47,7 +47,7 @@ const defaultRegionLinks: FooterLink[] = AREAS_SERVED.map((a) => ({
 const defaultInfoLinks: FooterLink[] = [
   { href: "/about", label: "Our Story" },
   { href: "/services", label: "Service Directory" },
-  { href: "/care-finder", label: "Care Finder Tool" },
+  { href: "/contact", label: "Contact Us" },
   { href: "/referrers", label: "Referral Portal" },
   { href: "/blog", label: "Blog" },
   { href: "/guides", label: "Care Guides" },
@@ -89,7 +89,7 @@ export function Footer({
             </Link>
             <p className="text-lg leading-relaxed text-white/60 font-medium">
               Personalised in-home care and support, led by a care professional
-              with over 10 years of hands-on experience.
+              with strong hands-on experience in community care, aged care, disability support, and nursing services.
             </p>
             
             <div className="flex gap-4">
@@ -103,8 +103,7 @@ export function Footer({
               </div>
             </div>
 
-            {/* Newsletter */}
-            <NewsletterSignup variant="inline" />
+            {/* Newsletter removed 2026-06-10 per Gemma's brief */}
 
             {/* Social Media */}
             <div className="flex gap-3">

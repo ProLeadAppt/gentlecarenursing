@@ -63,7 +63,7 @@ export function QuickResponseSection({
             </ul>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Button 
-                onClick={() => openModal("care-finder")}
+                onClick={() => openModal("contact")}
                 variant="secondary" 
                 size="lg" 
                 className="w-full sm:w-auto"

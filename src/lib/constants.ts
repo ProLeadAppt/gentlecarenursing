@@ -36,27 +36,30 @@ export const SITE = {
 
 import type { NavItem } from "@/types";
 
+/**
+ * Primary site navigation — locked per Gemma's brief (2026-06-10).
+ * Six top-level items, with Services as a dropdown of the six core services.
+ * Removed from menu (but pages still live, see sitemap): About, Areas, Blog,
+ * Conditions, Compare, Guides, Glossary, FAQ, Care Finder, Private Nursing.
+ */
 export const NAV_LINKS: readonly NavItem[] = [
-  { href: "/about", label: "About" },
+  { href: "/", label: "Home" },
   {
     href: "/services",
     label: "Services",
     children: [
-      { href: "/services", label: "All Services" },
-      { href: "/ndis", label: "NDIS Services" },
-      { href: "/dva", label: "DVA Community Nursing" },
-      { href: "/services/nursing-care", label: "In-Home Nursing Care" },
-      { href: "/services/personal-care", label: "Personal Care & Daily Living" },
-      { href: "/services/complex-care", label: "Complex Care Support" },
-      { href: "/aged-care", label: "Aged Care at Home" },
-      { href: "/private-nursing", label: "Private Nursing" },
-      { href: "/conditions", label: "Care by Condition" },
-      { href: "/compare", label: "Compare Options" },
+      { href: "/services/nursing-care", label: "Clinical Nursing" },
+      { href: "/services/personal-care", label: "Personal Care" },
+      { href: "/services/complex-care", label: "Complex Care" },
+      { href: "/services/overnight-support", label: "Overnight Support" },
+      { href: "/services/post-hospital-care", label: "Post-Hospital Support" },
+      { href: "/services/community-participation", label: "Community Participation" },
     ],
   },
-  { href: "/areas", label: "Areas" },
+  { href: "/ndis", label: "NDIS" },
+  { href: "/dva", label: "DVA" },
+  { href: "/aged-care", label: "Aged Care" },
   { href: "/referral", label: "Referrals" },
-  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ] as const;
 

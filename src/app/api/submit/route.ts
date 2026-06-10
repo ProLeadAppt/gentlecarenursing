@@ -19,22 +19,7 @@ interface ReferralPayload {
   notes?: string;
 }
 
-interface CareFinderPayload {
-  type: "care-finder";
-  seekingFor: string;
-  serviceType: string;
-  name: string;
-  phone: string;
-  email: string;
-  notes?: string;
-}
-
-interface NewsletterPayload {
-  type: "newsletter";
-  email: string;
-}
-
-type FormPayload = ContactPayload | ReferralPayload | CareFinderPayload | NewsletterPayload;
+type FormPayload = ContactPayload | ReferralPayload;
 
 function validatePayload(body: unknown): body is FormPayload {
   if (!body || typeof body !== "object") return false;
@@ -56,28 +41,6 @@ function validatePayload(body: unknown): body is FormPayload {
       typeof obj.referrerName === "string" &&
       obj.referrerName.trim().length > 0 &&
       (!obj.referrerEmail || (typeof obj.referrerEmail === "string" && obj.referrerEmail.includes("@")))
-    );
-  }
-
-  if (obj.type === "newsletter") {
-    return (
-      typeof obj.email === "string" &&
-      obj.email.includes("@")
-    );
-  }
-
-  if (obj.type === "care-finder") {
-    return (
-      typeof obj.seekingFor === "string" &&
-      obj.seekingFor.trim().length > 0 &&
-      typeof obj.serviceType === "string" &&
-      obj.serviceType.trim().length > 0 &&
-      typeof obj.name === "string" &&
-      obj.name.trim().length > 0 &&
-      typeof obj.phone === "string" &&
-      obj.phone.trim().length > 0 &&
-      typeof obj.email === "string" &&
-      obj.email.includes("@")
     );
   }
 
@@ -104,8 +67,6 @@ export async function POST(request: NextRequest) {
       ghlWebhookUrl = process.env.GHL_CONTACT_WEBHOOK_URL || "https://services.leadconnectorhq.com/hooks/7UPJe3L1GjcRcKMn1ONh/webhook-trigger/f85cdd65-ecf1-4d35-bf4d-4443a28c2bbc";
     } else if (body.type === "referral") {
       ghlWebhookUrl = process.env.GHL_REFERRAL_WEBHOOK_URL || "https://services.leadconnectorhq.com/hooks/7UPJe3L1GjcRcKMn1ONh/webhook-trigger/c4f328f9-7528-4c6a-8fa9-7346433cd9df";
-    } else if (body.type === "care-finder") {
-      ghlWebhookUrl = process.env.GHL_CAREFINDER_WEBHOOK_URL || "https://services.leadconnectorhq.com/hooks/7UPJe3L1GjcRcKMn1ONh/webhook-trigger/51e4eb16-5111-4d22-8e9c-e62be73961e1";
     }
 
     if (ghlWebhookUrl) {
