@@ -95,7 +95,7 @@ export default async function AreaRegionPage({ params }: Props) {
           <Reveal delay={0.4}>
             <div className="mt-14 flex flex-col sm:flex-row justify-center gap-6">
               <Magnetic>
-                <FormModalTrigger formType="care-finder" size="xl" variant="primary" className="px-12 shadow-xl shadow-primary/20 rounded-2xl h-16">
+                <FormModalTrigger formType="contact" size="xl" variant="primary" className="px-12 shadow-xl shadow-primary/20 rounded-2xl h-16">
                   Check Availability in {area.region}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </FormModalTrigger>
@@ -172,7 +172,7 @@ export default async function AreaRegionPage({ params }: Props) {
                     <p className="text-base text-muted-foreground leading-relaxed mb-8">
                       We work with support coordinators, discharge planners, and families across Sydney. Submit an enquiry for a clinical response within 24 hours.
                     </p>
-                    <FormModalTrigger formType="care-finder" className="w-full h-14 rounded-2xl gap-2 font-bold shadow-lg shadow-primary/10">
+                    <FormModalTrigger formType="contact" className="w-full h-14 rounded-2xl gap-2 font-bold shadow-lg shadow-primary/10">
                       Start Care Journey
                       <ArrowRight className="h-4 w-4" />
                     </FormModalTrigger>

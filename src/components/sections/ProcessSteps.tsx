@@ -45,7 +45,7 @@ export function ProcessSteps({
       onCtaClick();
     } else if (cta?.href === CTA_LINKS.requestCare.href) {
       e.preventDefault();
-      openModal("care-finder");
+      openModal("contact");
     }
   };
 

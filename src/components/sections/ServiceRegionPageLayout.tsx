@@ -177,7 +177,7 @@ export function ServiceRegionPageLayout({ data }: Props) {
             <div className="mt-14 flex flex-col sm:flex-row justify-center gap-6">
               <Magnetic>
                 <FormModalTrigger
-                  formType="care-finder"
+                  formType="contact"
                   size="xl"
                   variant="primary"
                   className="px-12 shadow-xl shadow-primary/20 rounded-2xl h-16"
@@ -296,7 +296,7 @@ export function ServiceRegionPageLayout({ data }: Props) {
                     </div>
 
                     <FormModalTrigger
-                      formType="care-finder"
+                      formType="contact"
                       className="w-full h-14 rounded-2xl gap-2 font-bold shadow-lg shadow-primary/10 mt-4"
                     >
                       Request Care in {region.region}
@@ -359,7 +359,7 @@ export function ServiceRegionPageLayout({ data }: Props) {
             <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
               <Magnetic>
                 <FormModalTrigger
-                  formType="care-finder"
+                  formType="contact"
                   size="lg"
                   variant="primary"
                   className="px-10 rounded-2xl h-14"

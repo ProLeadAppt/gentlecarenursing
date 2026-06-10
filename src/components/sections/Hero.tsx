@@ -169,7 +169,7 @@ export function Hero({
                 ) : (
                   <Magnetic>
                     <Button
-                      onClick={() => openModal("care-finder")}
+                      onClick={() => openModal("contact")}
                       size="xl"
                       variant="primary"
                       className="group px-10"

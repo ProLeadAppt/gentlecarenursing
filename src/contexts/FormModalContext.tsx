@@ -2,11 +2,11 @@
 
 import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
 
-export type FormModalType = "referral" | "contact" | "care-finder" | null;
+export type FormModalType = "referral" | "contact" | null;
 
 interface FormModalContextValue {
   activeForm: FormModalType;
-  openModal: (type: "referral" | "contact" | "care-finder") => void;
+  openModal: (type: "referral" | "contact") => void;
   closeModal: () => void;
 }
 
@@ -15,7 +15,7 @@ const FormModalContext = createContext<FormModalContextValue | null>(null);
 export function FormModalProvider({ children }: { children: ReactNode }) {
   const [activeForm, setActiveForm] = useState<FormModalType>(null);
 
-  const openModal = useCallback((type: "referral" | "contact" | "care-finder") => {
+  const openModal = useCallback((type: "referral" | "contact") => {
     setActiveForm(type);
   }, []);
 

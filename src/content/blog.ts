@@ -8,8 +8,7 @@ export type BlogCategory =
   | "ndis"
   | "aged-care"
   | "clinical"
-  | "family-carers"
-  | "guides";
+  | "family-carers";
 
 export interface BlogAuthor {
   name: string;
@@ -38,7 +37,6 @@ export const BLOG_CATEGORIES: Record<BlogCategory, { label: string; color: strin
   "aged-care": { label: "Aged Care", color: "bg-pw-teal/10 text-pw-teal" },
   clinical: { label: "Clinical", color: "bg-primary/10 text-primary" },
   "family-carers": { label: "Family Carers", color: "bg-pw-terracotta/10 text-pw-terracotta" },
-  guides: { label: "Guides", color: "bg-pw-amber/10 text-pw-amber-700" },
 };
 
 const DEFAULT_AUTHOR: BlogAuthor = {

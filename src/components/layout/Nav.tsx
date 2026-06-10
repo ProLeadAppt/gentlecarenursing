@@ -150,7 +150,7 @@ export function Nav({ links, cta, className }: NavProps) {
             variant="secondary"
             onClick={
               cta.label === CTA_LINKS.requestCare.label 
-                ? () => openModal("care-finder") 
+                ? () => openModal("contact")
                 : cta.label === CTA_LINKS.makeReferral.label 
                 ? () => openModal("referral") 
                 : undefined
@@ -254,7 +254,7 @@ export function Nav({ links, cta, className }: NavProps) {
                 className="w-full"
                 onClick={() => {
                   setMobileOpen(false);
-                  if (cta.label === CTA_LINKS.requestCare.label) openModal("care-finder");
+                  if (cta.label === CTA_LINKS.requestCare.label) openModal("contact");
                   else if (cta.label === CTA_LINKS.makeReferral.label) openModal("referral");
                 }}
               >
