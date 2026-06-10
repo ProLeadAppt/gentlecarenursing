@@ -14,13 +14,6 @@ import {
 // the same page — that's the whole point of having it on the homepage.
 const REQUEST_CARE_CTA = { href: "#get-in-touch", label: "Request Care" } as const;
 const REFERRAL_CTA = { href: "#get-in-touch", label: "Make a Referral" } as const;
-
-// Brand-coloured credential dots — small, single row, no labels repeated elsewhere
-// Brand-coloured credential dots — small, single row, no labels repeated elsewhere
-const BRAND_CREDENTIALS = [
-  { label: "NDIS Registered", color: "#6b9360" }, // sage
-  { label: "DVA Contracted", color: "#1b6b6d" }, // teal
-  { label: "Aged Care Support", color: "#c4704b" }, // terracotta
 ] as const;
 
 /**
@@ -54,7 +47,6 @@ export default function HomePageContent() {
         secondaryCta={REFERRAL_CTA}
         imageSrc={HOMEPAGE_HERO.heroImageSrc}
         imageAlt={HOMEPAGE_HERO.heroImageAlt}
-        credentials={BRAND_CREDENTIALS}
       />
 
       {/* 2. Who we support — cream tint background, serif heading, brand-coloured hover */}

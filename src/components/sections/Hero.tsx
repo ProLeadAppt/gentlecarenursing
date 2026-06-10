@@ -201,37 +201,12 @@ export function Hero({
                 )}
               </motion.div>
 
-              {/* Brand-coloured credential dots — single row, small.
-                  Restored per Tyson's character pass; complements (not
-                  duplicates) the subheadline text above by giving each
-                  item its own brand colour. */}
-              {credentials.length > 0 && (
-                <motion.div
-                  className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2"
-                  variants={HERO_VARIANTS.word}
-                >
-                  {credentials.map((cred) => (
-                    <span
-                      key={cred.label}
-                      className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground"
-                    >
-                      <span
-                        aria-hidden
-                        className="inline-block h-2 w-2 rounded-full"
-                        style={{ backgroundColor: cred.color }}
-                      />
-                      {cred.label}
-                    </span>
-                  ))}
-                </motion.div>
-              )}
-
-              {/* Trust credentials removed per Gemma's brief 2026-06-10:
-                  the subheadline already shows the same three credentials
-                  (NDIS Registered · DVA Contracted · Aged Care Support),
-                  so the dotted row below the CTAs was a duplicate.
-                  Reassurance strip also removed for the same reason —
-                  clean, not busy. */}
+              {/* Brand-coloured credential dots removed — they were
+                  duplicating the subheadline text
+                  ("NDIS Registered · DVA Contracted · Aged Care Support"),
+                  which is Gemma's verbatim copy from her brief. The
+                  character is already in the headline, divider, orbs,
+                  and burgundy CTA. */}
             </div>
           </motion.div>
 
