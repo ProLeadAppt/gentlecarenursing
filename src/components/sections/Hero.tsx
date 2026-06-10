@@ -46,8 +46,9 @@ export function Hero({
   headlineSegments,
   headline,
   subheadline,
-  eyebrow = "Personalised · Compassionate · Trusted",
+  eyebrow,
   primaryCta,
+  secondaryCta,
   reassurance = HERO_REASSURANCE,
   imageSrc = "/images/vitaly-gariev-Wk6f1CkGlEo-unsplash.webp",
   imageAlt = "Personalised in-home care delivered with warmth",
@@ -98,13 +99,15 @@ export function Hero({
             animate="visible"
           >
             <div className="max-w-2xl">
-              {/* Eyebrow */}
-              <motion.p
-                variants={HERO_VARIANTS.word}
-                className="mb-6 text-xs font-semibold tracking-[0.2em] text-pw-sage uppercase"
-              >
-                {eyebrow}
-              </motion.p>
+              {/* Eyebrow — only render if explicitly provided */}
+              {eyebrow && (
+                <motion.p
+                  variants={HERO_VARIANTS.word}
+                  className="mb-6 text-xs font-semibold tracking-[0.2em] text-pw-sage uppercase"
+                >
+                  {eyebrow}
+                </motion.p>
+              )}
 
               {/* Staggered headline */}
               <h1 id="hero-heading" className="mb-2">
@@ -142,33 +145,62 @@ export function Hero({
                 </motion.p>
               )}
 
-              {/* CTA: gradient button + inline call */}
+              {/* CTA: primary button + (secondary CTA OR inline call).
+                  If primaryCta.href is provided we render a real <a> so the
+                  link works without JS (and so #anchors scroll natively).
+                  Otherwise the button triggers the care-finder modal. */}
               <motion.div
                 variants={HERO_VARIANTS.word}
                 className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
               >
-                <Magnetic>
-                  <Button
-                    onClick={() => openModal("care-finder")}
-                    size="xl"
-                    variant="primary"
-                    className="group px-10"
-                  >
-                    {primaryCta.label}
-                    <span
-                      className="inline-block ml-2 transition-transform duration-200 group-hover:translate-x-1"
-                      aria-hidden
+                {primaryCta.href ? (
+                  <Magnetic>
+                    <a
+                      href={primaryCta.href}
+                      className="group inline-flex items-center justify-center rounded-full bg-primary px-10 py-4 text-base font-semibold text-primary-foreground shadow-sm transition-transform hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
                     >
-                      →
-                    </span>
-                  </Button>
-                </Magnetic>
-                <a
-                  href={SITE.phoneHref}
-                  className="text-primary font-medium text-base hover:underline transition-colors"
-                >
-                  or call <span className="underline">{SITE.phone}</span>
-                </a>
+                      {primaryCta.label}
+                      <span
+                        className="inline-block ml-2 transition-transform duration-200 group-hover:translate-x-1"
+                        aria-hidden
+                      >
+                        →
+                      </span>
+                    </a>
+                  </Magnetic>
+                ) : (
+                  <Magnetic>
+                    <Button
+                      onClick={() => openModal("care-finder")}
+                      size="xl"
+                      variant="primary"
+                      className="group px-10"
+                    >
+                      {primaryCta.label}
+                      <span
+                        className="inline-block ml-2 transition-transform duration-200 group-hover:translate-x-1"
+                        aria-hidden
+                      >
+                        →
+                      </span>
+                    </Button>
+                  </Magnetic>
+                )}
+                {secondaryCta ? (
+                  <a
+                    href={secondaryCta.href}
+                    className="text-primary font-medium text-base hover:underline transition-colors"
+                  >
+                    {secondaryCta.label} →
+                  </a>
+                ) : (
+                  <a
+                    href={SITE.phoneHref}
+                    className="text-primary font-medium text-base hover:underline transition-colors"
+                  >
+                    or call <span className="underline">{SITE.phone}</span>
+                  </a>
+                )}
               </motion.div>
 
               {/* Reassurance */}

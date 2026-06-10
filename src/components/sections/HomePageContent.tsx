@@ -1,179 +1,161 @@
 "use client";
 
 import { Hero } from "@/components/sections/Hero";
-import { BentoServiceGrid } from "@/components/sections/BentoServiceGrid";
-import { PhilosophyJourney } from "@/components/sections/PhilosophyJourney";
-import { WhyDifferent } from "@/components/sections/WhyDifferent";
-import { ReferralSection } from "@/components/sections/ReferralSection";
-import { CompactAreasLine } from "@/components/sections/CompactAreasLine";
-import { EvidencePanel } from "@/components/sections/EvidencePanel";
-import { CtaSection } from "@/components/sections/CtaSection";
-import { SectionDivider } from "@/components/sections/SectionDivider";
-import { SectionReveal } from "@/components/animations/SectionReveal";
-import { NewsletterSignup } from "@/components/forms/NewsletterSignup";
-import { useFormModal } from "@/contexts/FormModalContext";
-import { Button } from "@/components/ui/Button";
-import { CTA_LINKS, HERO_REASSURANCE } from "@/lib/constants";
-import { getFaqSchema, getHowToSchema } from "@/lib/schema";
+import { SimpleContactForm } from "@/components/forms/SimpleContactForm";
 import {
   HOMEPAGE_HERO,
-  WHY_DIFFERENT,
-  HOMEPAGE_EVIDENCE,
-  PROCESS_STEPS,
-  REFERRAL_PROFESSIONALS,
-  HOMEPAGE_FAQ,
-  HOMEPAGE_AREAS,
-  HOMEPAGE_INLINE_CTAS,
-  HOMEPAGE_FINAL_CTA,
+  WHO_WE_SUPPORT,
+  OUR_SERVICES,
+  WHY_CHOOSE,
 } from "@/content/homepage";
-import { ABOUT_INTRO } from "@/content/about";
+
+// Per Gemma's brief, the homepage CTAs both scroll to the simple form on
+// the same page — that's the whole point of having it on the homepage.
+const REQUEST_CARE_CTA = { href: "#get-in-touch", label: "Request Care" } as const;
+const REFERRAL_CTA = { href: "#get-in-touch", label: "Make a Referral" } as const;
 
 /**
- * Homepage flow (compaction pass — 2026-05-08):
+ * Simplified homepage — Gemma's brief, 2026-06-10.
  *
- *   1. Hero
- *   2. Personalised Care & Support (services, compact bento grid)
- *   3. Our Care Philosophy + Your Journey (two-column on desktop, stacks on mobile)
- *   4. Why Choose Gentle Care (no floating credential badges on the photo)
- *   5. Referral section (for partners/coordinators)
- *   6. Compact Areas line (one row, six region names + link to /areas)
- *   7. Evidence Panel (AEO/GEO citable facts — moved to the bottom, compact treatment)
- *   8. Newsletter
- *   9. Final CTA
+ * Five sections, in order:
+ *   1. Main message  — hero (image, not video) + CTAs
+ *   2. Who we support — NDIS, DVA, Aged Care, Private
+ *   3. Our services   — six core services
+ *   4. Why choose us  — five benefit statements
+ *   5. Contact form   — name, phone, email, service type, message
  *
- * Removed from the homepage (still live on the rest of the site):
- *   - TrustMarquee carousel
- *   - Standalone AboutUsSection + standalone ProcessTimeline (replaced by
- *     PhilosophyJourney; the standalone components remain available for
- *     other pages)
- *   - Full AreasWeServe card grid (replaced by CompactAreasLine; full grid
- *     still on /areas)
- *   - Visible FaqPreview (the same FAQ items continue to be emitted as
- *     FAQPage JSON-LD via getFaqSchema below, so AI engines and Google
- *     still see them in static HTML; users go to /faq for the visible UI)
+ * Removed (kept live in repo for SEO: suburbs/conditions/compare/guides/blog/FAQ):
+ *   - Hero video, PhilosophyJourney, WhyDifferent, ReferralSection,
+ *     CompactAreasLine, EvidencePanel, NewsletterSignup, BentoServiceGrid,
+ *     mega-badges, AEO/FAQ JSON-LD blocks, repeated stats.
  */
 
-const howToSchema = getHowToSchema(
-  "How to request care from Gentle Care Nursing Services",
-  "Tell us what you need and get immediate confirmation. We acknowledge straight away and respond within 24 hours with clear next steps, then match you with the right support.",
-  PROCESS_STEPS.steps,
-  "/"
-);
-
-// FAQ schema is still emitted in the static HTML even though the visible
-// FAQ section was removed from the homepage. This keeps the AEO signal —
-// AI engines extract from JSON-LD, not from the rendered DOM. Users who
-// want the full FAQ click through to /faq, where the visible UI lives.
-const faqSchema = getFaqSchema([...HOMEPAGE_FAQ]);
-
 export default function HomePageContent() {
-  const { openModal } = useFormModal();
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-
-      {/* 1. Hero (Immediate Clarity) */}
+      {/* 1. Main message — image-only hero, warm and professional */}
       <Hero
         headlineSegments={HOMEPAGE_HERO.headlineSegments}
         subheadline={HOMEPAGE_HERO.subheadline}
         eyebrow={HOMEPAGE_HERO.eyebrow}
-        primaryCta={CTA_LINKS.requestCare}
-        reassurance={HERO_REASSURANCE}
+        primaryCta={REQUEST_CARE_CTA}
+        secondaryCta={REFERRAL_CTA}
         imageSrc={HOMEPAGE_HERO.heroImageSrc}
         imageAlt={HOMEPAGE_HERO.heroImageAlt}
-        videoSrc={[
-          { src: "/video/hero-loop.webm", type: "video/webm" },
-          { src: "/video/hero-loop.mp4", type: "video/mp4" },
-        ]}
-        videoPoster={HOMEPAGE_HERO.heroImageSrc}
       />
 
-      {/* 2. Services — sit directly under the hero per Gemma's brief */}
-      <BentoServiceGrid />
-
-      {/* 3. Our Care Philosophy + Your Journey (combined two-column section) */}
-      <SectionReveal>
-        <PhilosophyJourney
-          title={ABOUT_INTRO.title}
-          lead={ABOUT_INTRO.lead}
-          statsLine={ABOUT_INTRO.statsLine}
-        />
-      </SectionReveal>
-
-      <SectionDivider variant="curve" color="#fcf9f9" bgColor="white" />
-
-      {/* 4. Why Choose Gentle Care */}
-      <SectionReveal>
-        <div>
-          <WhyDifferent
-            title={WHY_DIFFERENT.title}
-            subtitle={WHY_DIFFERENT.subtitle}
-            differentiators={WHY_DIFFERENT.differentiators}
-            imageSrc={WHY_DIFFERENT.imageSrc}
-            imageAlt={WHY_DIFFERENT.imageAlt}
-            sectionVariant="default"
-          />
-          <div className="border-t border-border/30 bg-muted/50 py-6">
-            <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
-              <p className="text-sm text-muted-foreground">{HOMEPAGE_INLINE_CTAS.afterWhyDifferent}</p>
-              <Button
-                onClick={() => openModal("care-finder")}
-                variant="ghost"
-                className="mt-3 text-primary hover:underline hover:bg-transparent h-auto p-0 font-medium"
+      {/* 2. Who we support */}
+      <section className="bg-white py-16 sm:py-20" aria-labelledby="who-we-support">
+        <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-10">
+          <h2
+            id="who-we-support"
+            className="text-3xl sm:text-4xl font-semibold text-foreground text-center"
+          >
+            {WHO_WE_SUPPORT.title}
+          </h2>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {WHO_WE_SUPPORT.items.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="group block rounded-2xl border border-border/60 bg-white p-6 transition-colors hover:border-primary/40 hover:bg-primary/[0.02]"
               >
-                Get in touch
-              </Button>
-            </div>
+                <h3 className="text-lg font-semibold text-foreground group-hover:text-primary">
+                  {item.label}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {item.description}
+                </p>
+              </a>
+            ))}
           </div>
         </div>
-      </SectionReveal>
+      </section>
 
-      <SectionDivider variant="wave" color="#fcf9f9" bgColor="white" flip />
+      {/* 3. Our services */}
+      <section className="bg-muted/30 py-16 sm:py-20" aria-labelledby="our-services">
+        <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-10">
+          <div className="text-center">
+            <h2
+              id="our-services"
+              className="text-3xl sm:text-4xl font-semibold text-foreground"
+            >
+              {OUR_SERVICES.title}
+            </h2>
+            {OUR_SERVICES.subtitle && (
+              <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
+                {OUR_SERVICES.subtitle}
+              </p>
+            )}
+          </div>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {OUR_SERVICES.items.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="group block rounded-2xl border border-border/60 bg-white p-6 transition-colors hover:border-primary/40 hover:bg-primary/[0.02]"
+              >
+                <h3 className="text-lg font-semibold text-foreground group-hover:text-primary">
+                  {item.label}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {item.description}
+                </p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* 5. Referral section (Professional Focus) */}
-      <SectionReveal>
-        <ReferralSection
-          headline={REFERRAL_PROFESSIONALS.headline}
-          subtitle={REFERRAL_PROFESSIONALS.subtitle}
-        />
-      </SectionReveal>
+      {/* 4. Why choose us */}
+      <section className="bg-white py-16 sm:py-20" aria-labelledby="why-choose">
+        <div className="mx-auto max-w-4xl px-6 sm:px-8 lg:px-10">
+          <h2
+            id="why-choose"
+            className="text-3xl sm:text-4xl font-semibold text-foreground text-center"
+          >
+            {WHY_CHOOSE.title}
+          </h2>
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+            {WHY_CHOOSE.items.map((bullet) => (
+              <li
+                key={bullet}
+                className="flex items-start gap-3 rounded-xl border border-border/40 bg-white p-5"
+              >
+                <span
+                  aria-hidden
+                  className="mt-1 inline-flex h-2.5 w-2.5 shrink-0 rounded-full bg-primary"
+                />
+                <span className="text-foreground">{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
-      {/* 6. Compact Areas We Serve line (local-SEO anchor without the card grid) */}
-      <CompactAreasLine areas={HOMEPAGE_AREAS} />
-
-      {/* 7. Evidence Panel (AEO/GEO) — moved to bottom, compact treatment */}
-      <EvidencePanel
-        heading={HOMEPAGE_EVIDENCE.heading}
-        intro={HOMEPAGE_EVIDENCE.intro}
-        items={HOMEPAGE_EVIDENCE.items}
-        density="compact"
-      />
-
-      {/* 8. Newsletter */}
-      <SectionReveal>
-        <section className="py-16 sm:py-20">
-          <NewsletterSignup variant="section" />
-        </section>
-      </SectionReveal>
-
-      {/* 9. Final CTA */}
-      <CtaSection
-        title={HOMEPAGE_FINAL_CTA.title}
-        primaryCta={CTA_LINKS.requestCare}
-        secondaryCta={CTA_LINKS.makeReferral}
-        onPrimaryClick={() => openModal("care-finder")}
-        onSecondaryClick={() => openModal("referral")}
-        reassurance={HOMEPAGE_FINAL_CTA.reassurance}
-        variant="primary"
-      />
+      {/* 5. Contact / referral form */}
+      <section
+        className="bg-muted/30 py-16 sm:py-20"
+        aria-labelledby="get-in-touch"
+      >
+        <div className="mx-auto max-w-2xl px-6 sm:px-8 lg:px-10">
+          <div className="text-center">
+            <h2
+              id="get-in-touch"
+              className="text-3xl sm:text-4xl font-semibold text-foreground"
+            >
+              Get in touch
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              Tell us a little about what you need. We&apos;ll respond within 24
+              hours.
+            </p>
+          </div>
+          <div className="mt-10">
+            <SimpleContactForm />
+          </div>
+        </div>
+      </section>
     </>
   );
 }

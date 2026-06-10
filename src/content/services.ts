@@ -1167,7 +1167,7 @@ export const NURSING_CARE_PAGE: ServicePageData = {
       {
         title: "Expertise You Can Trust",
         description:
-          "Led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support.",
+          "Led by a care team with strong hands-on experience in community care, aged care, disability support, and nursing services.",
       },
       {
         title: "Calm & Unrushed",

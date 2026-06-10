@@ -59,7 +59,7 @@ export default function ServicesPage() {
                 icon: ShieldCheck 
               },
               {
-                title: "Over 10 Years of Hands-On Care Experience",
+                title: "Experienced Care Team",
                 desc: "Led by a care professional with over a decade of hands-on experience across disability, aged care and in-home support.",
                 icon: UserCheck
               },

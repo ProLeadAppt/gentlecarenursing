@@ -7,7 +7,7 @@ import { ShieldCheck, Heart, Award, Star, BadgeCheck } from "lucide-react";
 const TRUST_ITEMS = [
   { label: "Registered NDIS Provider", icon: ShieldCheck },
   { label: "DVA Contracted Provider", icon: BadgeCheck },
-  { label: "10+ Yrs Hands-On Care", icon: Award },
+  { label: "Experienced Care Team", icon: Award },
   { label: "~24hr Response Window", icon: Star },
   { label: "Personalised Care", icon: Heart },
 ];

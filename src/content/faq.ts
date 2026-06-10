@@ -139,7 +139,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "different",
         question: "What makes Gentle Care Nursing Services different?",
         answer:
-          "Gentle Care Nursing Services deliberately keeps a small caseload so each client gets dedicated, personalised care from a consistent team. We are led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support. We aim to respond to enquiries within 24 hours during business hours, with urgent referrals prioritised.",
+          "Gentle Care Nursing Services deliberately keeps a small caseload so each client gets dedicated, personalised care from a consistent team. We are led by a care team with strong hands-on experience in community care, aged care, disability support, and nursing services. We aim to respond to enquiries within 24 hours during business hours, with urgent referrals prioritised.",
       },
     ],
   },

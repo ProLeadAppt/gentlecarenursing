@@ -89,7 +89,7 @@ export function Footer({
             </Link>
             <p className="text-lg leading-relaxed text-white/60 font-medium">
               Personalised in-home care and support, led by a care professional
-              with over 10 years of hands-on experience.
+              with strong hands-on experience in community care, aged care, disability support, and nursing services.
             </p>
             
             <div className="flex gap-4">
