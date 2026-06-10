@@ -14,7 +14,6 @@ import {
 // the same page — that's the whole point of having it on the homepage.
 const REQUEST_CARE_CTA = { href: "#get-in-touch", label: "Request Care" } as const;
 const REFERRAL_CTA = { href: "#get-in-touch", label: "Make a Referral" } as const;
-] as const;
 
 /**
  * Simplified homepage — Gemma's brief, 2026-06-10.
