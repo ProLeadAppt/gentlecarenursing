@@ -15,14 +15,14 @@ interface SectionHeaderProps {
 
 const titleSizeClasses: Record<SectionHeaderSize, string> = {
   sm: "text-2xl font-bold sm:text-3xl",
-  md: "font-[family-name:var(--font-dm-sans)] text-3xl font-bold tracking-tight sm:text-4xl",
-  lg: "font-[family-name:var(--font-dm-sans)] text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.5rem]",
+  md: "font-[family-name:var(--font-dm-sans)] text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem]",
+  lg: "font-[family-name:var(--font-dm-sans)] text-3xl font-bold tracking-tight sm:text-5xl lg:text-[3rem]",
 };
 
 const subtitleSizeClasses: Record<SectionHeaderSize, string> = {
-  sm: "text-base sm:text-lg leading-relaxed text-muted-foreground",
+  sm: "text-base sm:text-lg leading-relaxed text-muted-foreground font-medium",
   md: TYPOGRAPHY.lead,
-  lg: "text-lg sm:text-xl leading-relaxed text-muted-foreground",
+  lg: "text-lg sm:text-xl leading-relaxed text-muted-foreground font-medium",
 };
 
 export function SectionHeader({

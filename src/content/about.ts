@@ -16,12 +16,12 @@ export const ABOUT_INTRO = {
   // H1 keeps the full entity name. Visible nav can still use the short
   // "About" label.
   title: "About Gentle Care Nursing Services",
-  lead: "We are a personalised in-home nursing and care provider focused on delivering high-quality support with a more attentive and hands-on approach.",
+  lead: "We are a personalised in-home nursing and care team focused on delivering high-quality support, consistency, and genuine relationships.",
   /** Stats in prose for GEO / authority.
    *  Updated 2026-06-10 per Gemma's brief — dropped "over 10 years",
    *  replaced with the softer, team-led framing she requested. */
   statsLine:
-    "Led by a care team with strong hands-on experience in community care, aged care, disability support, and nursing services. We aim to respond to every enquiry within 24 hours.",
+    "Led by a care team with hands-on experience across community care, aged care, disability support, and nursing services. We aim to respond to every enquiry within 24 hours.",
 } as const;
 
 export const MISSION = {
@@ -84,7 +84,7 @@ export const PROFESSIONAL_TRUST = {
 export const FOUNDER_STORY = {
   name: "Gemma",
   title: "Founder",
-  bio: "Gentle Care was created to provide families with dependable, compassionate support that feels personal, respectful and consistent.\n\nThrough over a decade of hands-on experience across dementia care, palliative care, disability support and mental health, I saw how important it is for individuals and families to feel supported by a team that values dignity, trust and continuity of care.",
+  bio: "Gentle Care was created to provide families with dependable, compassionate support that feels personal, respectful and consistent.\n\nThrough hands-on work across dementia care, palliative care, disability support and mental health, I saw how important it is for individuals and families to feel supported by a team that values dignity, trust and continuity of care.",
   quote:
     "My favourite part of this work is being able to make a meaningful difference in people’s lives while giving families peace of mind knowing their loved one is being cared for with compassion, dignity and respect.",
   imageSrc: "/images/gemma-profile.jpg",
@@ -96,7 +96,7 @@ export const TEAM_MEMBERS = [
   {
     name: "Gemma",
     role: "Founder",
-    bio: "Care professional with over a decade of hands-on experience. Leads all care planning and quality oversight.",
+    bio: "Care professional with hands-on experience across community, disability, and in-home support. Leads all care planning and quality oversight.",
   },
   {
     name: "Sandra",
@@ -106,45 +106,7 @@ export const TEAM_MEMBERS = [
   {
     name: "Care Team",
     role: "Care Professionals & Support Workers",
-    bio: "Our small team is selected for their experience and commitment to personalised, person-centred care.",
-  },
-] as const;
-
-/**
- * Key milestones. Voice rule (binding) prohibits specific year/duration claims
- * ("since 2014", "X+ years operating"), so the badge labels are stage markers
- * rather than calendar years. Order is the journey order, not date order.
- */
-export const MILESTONES = [
-  {
-    year: "Start",
-    title: "Gentle Care Founded",
-    description:
-      "Founded to make in-home care feel personal, responsive, and led by genuine relationships.",
-  },
-  {
-    year: "NDIS",
-    title: "Registered NDIS Provider",
-    description:
-      "Registered as an NDIS provider to support participants with in-home nursing and disability support.",
-  },
-  {
-    year: "DVA",
-    title: "DVA Contracted Provider",
-    description:
-      "Contracted to provide DVA Community Nursing services for eligible Veteran Card holders.",
-  },
-  {
-    year: "Sydney",
-    title: "Coverage Across Greater Sydney",
-    description:
-      "Extended coverage across Greater Sydney, supporting families from the Inner West to the North Shore and beyond.",
-  },
-  {
-    year: "Today",
-    title: "Personalised, Quality-Focused Model",
-    description:
-      "Growing with intention: a deliberately small caseload, a dedicated team, and a clear response window.",
+    bio: "Our small team is selected for their experience, reliability, and commitment to personalised, person-centred care.",
   },
 ] as const;
 
@@ -156,15 +118,3 @@ export const TRUST_STATS = [
   { value: "Small", label: "Dedicated caseload" },
   { value: "~24hr", label: "Response window" },
 ] as const;
-
-/** Case studies — Placeholder for future detailed cases */
-export const CASE_STUDIES = {
-  title: "Coming Soon: Case Studies",
-  description: "We are currently preparing anonymised case studies to show how we support families through complex situations.",
-  topics: [
-    "Complex Home Care",
-    "Disability Support (NDIS)",
-    "Hospital-to-Home Transitions",
-    "Palliative and End of Life Care",
-  ],
-} as const;

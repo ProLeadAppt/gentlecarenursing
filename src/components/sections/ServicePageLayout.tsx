@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Grid } from "@/components/layout/Grid";
@@ -49,6 +50,12 @@ export interface ServicePageData {
   cta: {
     title: string;
     description?: string;
+  };
+  /** Optional hero image shown on the service page. */
+  image?: {
+    src: string;
+    alt: string;
+    caption?: string;
   };
   /** Optional anonymised case stories to illustrate real-world outcomes */
   caseStories?: {
@@ -203,7 +210,30 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
             </p>
           </Reveal>
 
-          <Reveal delay={0.5}>
+          {data.image && (
+            <Reveal delay={0.5}>
+              <div className="mx-auto mt-14 max-w-4xl">
+                <div className="overflow-hidden rounded-[2.5rem] border border-border/50 bg-white shadow-[0_24px_60px_-24px_rgba(132,40,51,0.18)]">
+                  <div className="relative aspect-[16/9] w-full">
+                    <Image
+                      src={data.image.src}
+                      alt={data.image.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 80vw"
+                    />
+                  </div>
+                  {data.image.caption && (
+                    <p className="px-6 py-4 text-sm font-medium text-muted-foreground">
+                      {data.image.caption}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </Reveal>
+          )}
+
+          <Reveal delay={0.6}>
             <div className="mt-14 flex flex-col sm:flex-row justify-center gap-6">
               <Magnetic>
                 <FormModalTrigger formType="contact" size="xl" variant="primary" className="px-12 shadow-xl shadow-primary/20 rounded-2xl h-16">

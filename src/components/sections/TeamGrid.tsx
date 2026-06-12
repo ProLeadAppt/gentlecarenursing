@@ -38,10 +38,10 @@ export function TeamGrid({ members }: TeamGridProps) {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-pw-sage mb-4">
             Our Team
           </p>
-          <h2 className="font-[family-name:var(--font-serif)] text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+          <h2 className="font-[family-name:var(--font-serif)] text-3xl sm:text-4xl lg:text-[2.75rem] font-bold tracking-tight text-foreground">
             The People Behind the Care
           </h2>
-          <p className="mt-4 max-w-xl mx-auto text-muted-foreground leading-relaxed">
+          <p className="mt-4 max-w-xl mx-auto text-base sm:text-lg text-muted-foreground leading-relaxed font-medium">
             A small, dedicated team of clinicians and coordinators committed to
             personalised care.
           </p>
@@ -75,7 +75,7 @@ export function TeamGrid({ members }: TeamGridProps) {
               <p className="mt-1 text-sm font-medium text-primary">
                 {member.role}
               </p>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              <p className="mt-3 text-base text-muted-foreground leading-relaxed">
                 {member.bio}
               </p>
             </motion.div>

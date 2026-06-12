@@ -67,6 +67,11 @@ export const SERVICES: ServiceDefinition[] = [
 export const NDIS_PAGE: ServicePageData = {
   title: "NDIS Services",
   href: "/ndis",
+  image: {
+    src: "/images/national-cancer-institute-BxXgTQEw1M4-unsplash.webp",
+    alt: "Hands supporting a patient in a calm clinical home-care setting",
+    caption: "Practical in-home support for NDIS participants with complex or ongoing care needs.",
+  },
   snippetAnswer:
     "NDIS in-home nursing is skilled nursing and personal care at home for NDIS participants, delivered by a registered NDIS provider like Gentle Care Nursing Services across Sydney.",
   intro:
@@ -199,6 +204,11 @@ export const NDIS_PAGE: ServicePageData = {
 export const DVA_PAGE: ServicePageData = {
   title: "DVA & Community Nursing",
   href: "/dva",
+  image: {
+    src: "/images/carer-elderly.webp",
+    alt: "A carer supporting an older adult at home",
+    caption: "Warm, respectful community nursing and personal support for eligible veterans.",
+  },
   snippetAnswer:
     "DVA Community Nursing is in-home nursing and care for eligible Veteran Card holders, funded by the Department of Veterans' Affairs and delivered by contracted providers like Gentle Care Nursing Services in Sydney.",
   intro:
@@ -331,6 +341,11 @@ export const DVA_PAGE: ServicePageData = {
 export const AGED_CARE_PAGE: ServicePageData = {
   title: "Aged Care at Home / Support at Home",
   href: "/aged-care",
+  image: {
+    src: "/images/age-cymru-2obyM4zYt3Y-unsplash.webp",
+    alt: "An aged-care worker supporting an older woman in a relaxed home setting",
+    caption: "Support that helps older Australians stay safe and comfortable at home.",
+  },
   snippetAnswer:
     "We support older Australians through Support at Home, DVA, and private care arrangements. We can also work with clients, families and care partners to deliver approved in-home nursing and personal care services.",
   intro:
@@ -463,6 +478,11 @@ export const AGED_CARE_PAGE: ServicePageData = {
 export const PRIVATE_NURSING_PAGE: ServicePageData = {
   title: "Private Nursing & Personal Care",
   href: "/private-nursing",
+  image: {
+    src: "/images/hero-hands.webp",
+    alt: "Hands held together in a caring support moment",
+    caption: "Private in-home nursing tailored around the person, the family, and the day-to-day routine.",
+  },
   snippetAnswer:
     "Private in-home nursing is nursing and personal care you pay for yourself (not NDIS, DVA, or aged care funded), with no waitlists and flexible scheduling across Sydney.",
   intro:

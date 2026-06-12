@@ -136,7 +136,7 @@ export function Nav({ links, cta, className }: NavProps) {
       <div className="ml-8 hidden items-center gap-4 xl:flex">
         {SITE.phone && (
           <a
-            href={`tel:${SITE.phone.replace(/\s/g, "")}`}
+            href={SITE.phoneHref}
             className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground/70 transition-colors hover:text-primary"
           >
             <Phone className="h-4 w-4" />
@@ -239,7 +239,7 @@ export function Nav({ links, cta, className }: NavProps) {
           <div className="mt-4 border-t border-border/40 pt-4">
             {SITE.phone && (
               <a
-                href={`tel:${SITE.phone.replace(/\s/g, "")}`}
+                href={SITE.phoneHref}
                 className="mb-3 flex items-center gap-2 rounded-lg px-3 py-2.5 text-base font-medium text-foreground transition-colors hover:bg-muted"
                 onClick={() => setMobileOpen(false)}
               >

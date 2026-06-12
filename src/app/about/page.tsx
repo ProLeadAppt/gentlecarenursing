@@ -6,7 +6,6 @@ import { CredentialsSection } from "@/components/sections/CredentialsSection";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { FounderStory } from "@/components/sections/FounderStory";
 import { TeamGrid } from "@/components/sections/TeamGrid";
-import { MilestoneTimeline } from "@/components/sections/MilestoneTimeline";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Heading } from "@/components/ui/Heading";
 import { Card } from "@/components/ui/Card";
@@ -21,9 +20,7 @@ import {
   VALUES,
   FOUNDER_STORY,
   TEAM_MEMBERS,
-  MILESTONES,
   TRUST_STATS,
-  CASE_STUDIES,
 } from "@/content/about";
 
 const founderSchema = getPersonSchema({
@@ -145,31 +142,6 @@ export default function AboutPage() {
 
       {/* Team */}
       <TeamGrid members={TEAM_MEMBERS} />
-
-      {/* Milestone Timeline */}
-      <MilestoneTimeline milestones={MILESTONES} />
-
-      {/* Case Studies Placeholder */}
-      <Section variant="muted">
-        <Container size="md" className="text-center">
-          <Heading level="h2" as="h2" className="font-[family-name:var(--font-serif)] text-3xl font-bold">
-            {CASE_STUDIES.title}
-          </Heading>
-          <p className="mt-4 text-lg text-muted-foreground">
-            {CASE_STUDIES.description}
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            {CASE_STUDIES.topics.map((topic) => (
-              <span
-                key={topic}
-                className="inline-flex items-center rounded-full bg-background px-4 py-2 text-sm font-medium text-foreground shadow-pw-sm border border-border"
-              >
-                {topic}
-              </span>
-            ))}
-          </div>
-        </Container>
-      </Section>
 
       {/* Credentials */}
       <CredentialsSection variant="default" showLinks />
