@@ -33,7 +33,7 @@ export function ReviewFunnel() {
   };
 
   const onContinue = (value: StarRatingValue) => {
-    if (value >= 4) handleHighRating(value);
+    if (value >= 4) handleHighRating();
     else handleLowRating(value);
   };
 
