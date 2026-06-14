@@ -12,7 +12,7 @@ import { GOOGLE_REVIEWS } from "@/content/reviews";
 export function getLocalBusinessSchema() {
   const sameAs = [
     ...Object.values(SITE.social).filter(Boolean),
-    ...(SITE.gbpUrl ? [SITE.gbpUrl] : []),
+    ...(SITE.gbpReviewUrl ? [SITE.gbpReviewUrl] : []),
   ] as string[];
 
   const areaServed = [
@@ -154,7 +154,7 @@ export function getWebsiteSchema() {
 export function getOrganizationSchema() {
   const sameAs = [
     ...Object.values(SITE.social).filter(Boolean),
-    ...(SITE.gbpUrl ? [SITE.gbpUrl] : []),
+    ...(SITE.gbpReviewUrl ? [SITE.gbpReviewUrl] : []),
   ] as string[];
 
   // knowsAbout strengthens entity profile for AI engines on healthcare queries.

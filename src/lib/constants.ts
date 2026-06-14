@@ -10,24 +10,27 @@
  * GBP source of truth (last confirmed 2026-04-28):
  *   Name:    Gentle Care Nursing Services
  *   Address: Level 1/5 George St, North Strathfield NSW 2137, Australia
- *   Phone:   +61 1300 004 267
+ *   Phone:   1300 004 267
  *
  * Display rules:
  *   - SITE.name           -> exact business name shown on GBP
  *   - SITE.address        -> single-line postal form for body text and schema
- *   - SITE.phone          -> human-readable display, matches GBP exactly
+ *   - SITE.phone          -> human-readable display, local format for site copy
  *   - SITE.phoneHref      -> tel: link in E.164 (international), so all
  *                            carriers route correctly (no spaces in tel:)
  */
 export const SITE = {
   name: "Gentle Care Nursing Services",
   tagline: "Personalised in-home nursing and care",
-  phone: "+61 1300 004 267",
+  phone: "1300 004 267",
   phoneHref: "tel:+611300004267",
   email: "info@gentlecarenursing.com.au",
   address: "Level 1/5 George St, North Strathfield NSW 2137, Australia",
-  /** Optional: Google Business Profile URL for entity linking and footer */
-  gbpUrl: "",
+  /** Google Business Profile URL — used in the review-funnel redirect
+   *  (4–5 star path) AND the compliance line on the feedback page.
+   *  Single source of truth so all three spots stay in sync. */
+  gbpReviewUrl:
+    "https://g.page/r/CcNAVnNOtwBgEBI/review",
   social: {
     facebook: "https://www.facebook.com/profile.php?id=61571940991169",
     instagram: "https://www.instagram.com/gentle_care",

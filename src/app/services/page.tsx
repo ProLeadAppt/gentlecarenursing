@@ -60,7 +60,7 @@ export default function ServicesPage() {
               },
               {
                 title: "Experienced Care Team",
-                desc: "Led by a care professional with over a decade of hands-on experience across disability, aged care and in-home support.",
+                desc: "Led by an experienced care professional with hands-on work across disability, aged care and in-home support.",
                 icon: UserCheck
               },
               { 
