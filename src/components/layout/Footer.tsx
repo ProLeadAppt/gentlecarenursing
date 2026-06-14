@@ -53,6 +53,7 @@ const defaultInfoLinks: FooterLink[] = [
   { href: "/guides", label: "Care Guides" },
   { href: "/faq", label: "Client FAQ" },
   { href: "/contact", label: "Contact Us" },
+  { href: "/review", label: "Share Your Feedback" },
 ];
 
 export function Footer({

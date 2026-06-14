@@ -26,8 +26,11 @@ export const SITE = {
   phoneHref: "tel:+611300004267",
   email: "info@gentlecarenursing.com.au",
   address: "Level 1/5 George St, North Strathfield NSW 2137, Australia",
-  /** Optional: Google Business Profile URL for entity linking and footer */
-  gbpUrl: "",
+  /** Google Business Profile URL — used in the review-funnel redirect
+   *  (4–5 star path) AND the compliance line on the feedback page.
+   *  Single source of truth so all three spots stay in sync. */
+  gbpReviewUrl:
+    "https://g.page/r/CcNAVnNOtwBgEBI/review",
   social: {
     facebook: "https://www.facebook.com/profile.php?id=61571940991169",
     instagram: "https://www.instagram.com/gentle_care",
