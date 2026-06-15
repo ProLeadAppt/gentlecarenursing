@@ -25,9 +25,11 @@ export const SERVICES: ServiceDefinition[] = [
   },
   {
     slug: "nursing-care",
-    title: "Nursing Care",
-    benefitLine: "Personalised in-home support focused on quality care, consistency and independence.",
-    shortDescription: "Wound care, medication management, and clinical monitoring at home.",
+    title: "Clinical Nursing",
+    benefitLine:
+      "Skilled nursing care at home, focused on safety, calm communication, and respect for your routine.",
+    shortDescription:
+      "Wound care, medication management, and clinical monitoring delivered with attention to detail.",
     href: "/services/nursing-care",
   },
   {
@@ -192,13 +194,6 @@ export const NDIS_PAGE: ServicePageData = {
     description:
       "Submit your enquiry or referral and we'll get back to you quickly.",
   },
-  caseStories: [
-    {
-      title: "Case example: Stabilising support for an NDIS participant at home",
-      summary:
-        "A participant in their 30s with complex physical needs was cycling through hospital admissions because daily care at home kept breaking down. Their support coordinator referred to Gentle Care for more consistent nursing. We worked with the participant, family, and therapy team to set up regular in-home nursing, safer manual handling routines, and clear escalation steps. Over the next few months, avoidable admissions dropped and the participant felt more in control of their week.",
-    },
-  ],
 };
 
 export const DVA_PAGE: ServicePageData = {
@@ -329,13 +324,6 @@ export const DVA_PAGE: ServicePageData = {
     description:
       "Get in touch and we'll arrange the right care for you or your loved one.",
   },
-  caseStories: [
-    {
-      title: "Case example: Supporting a veteran to remain at home",
-      summary:
-        "A veteran with chronic heart and lung disease wanted to avoid moving into residential care. Through DVA community nursing, Gentle Care provided regular visits for medication management, wound care, and monitoring of breathlessness and fluid changes. We kept their GP informed and helped the family understand when to seek extra review. With this support, they were able to stay at home comfortably for much longer than they expected.",
-    },
-  ],
 };
 
 export const AGED_CARE_PAGE: ServicePageData = {
@@ -466,13 +454,6 @@ export const AGED_CARE_PAGE: ServicePageData = {
     description:
       "Get in touch to discuss care options for your loved one.",
   },
-  caseStories: [
-    {
-      title: "Case example: Helping an older person come home safely",
-      summary:
-        "An older woman living alone was discharged from hospital after a fall. Her family lived interstate and were worried she would fall again. Gentle Care set up daily personal care, regular nursing checks, and simple home safety adjustments. Over time, visits stepped down as her strength and confidence improved, and her family were able to visit as family, not full-time carers.",
-    },
-  ],
 };
 
 export const PRIVATE_NURSING_PAGE: ServicePageData = {
@@ -589,13 +570,6 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
     description:
       "Contact us for a personalised quote and get care started quickly.",
   },
-  caseStories: [
-    {
-      title: "Case example: Short-term private support after surgery",
-      summary:
-        "A professional in their 50s arranged private nursing after day surgery so they could recover at home without relying solely on family. Gentle Care provided daily visits for wound checks, medication support, and help with showering in the first week. By the end of the fortnight, they were back to managing independently and returning to work.",
-    },
-  ],
 };
 
 export const POST_HOSPITAL_PAGE: ServicePageData = {
@@ -715,13 +689,6 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
       "Tell us about your upcoming or recent hospital stay and we'll help you plan safe, supportive care at home.",
   },
   testimonials: [],
-  caseStories: [
-    {
-      title: "Case example: From hospital to home after hip surgery",
-      summary:
-        "After a hip replacement, an older gentleman felt anxious about going home because his partner could not safely help with lifting. The hospital discharge planner referred to Gentle Care for post-hospital support. We provided daily visits at first for wound care, pain management, and transfers, then gradually reduced the schedule as he grew stronger. He avoided re-admission and felt confident walking short distances with his frame.",
-    },
-  ],
 };
 
 export const COMPLEX_CARE_PAGE: ServicePageData = {
@@ -855,13 +822,6 @@ export const COMPLEX_CARE_PAGE: ServicePageData = {
       "Share your current situation and we’ll let you know how we can safely support complex care at home.",
   },
   testimonials: [],
-  caseStories: [
-    {
-      title: "Case example: Complex care at home for a younger adult",
-      summary:
-        "A younger adult with a tracheostomy and PEG feeding wanted to live at home with their family instead of in a facility. Gentle Care put a small team of experienced nurses in place to manage airway care, feeding regimes, and complex wound dressings. We coordinated closely with their specialist team. Over time, the family reported feeling more confident and grateful that home was a safe option.",
-    },
-  ],
 };
 
 export const HOSPITAL_AT_HOME_PAGE: ServicePageData = {
@@ -1100,7 +1060,7 @@ export const PALLIATIVE_CARE_PAGE: ServicePageData = {
 
 
 export const NURSING_CARE_PAGE: ServicePageData = {
-  title: "Nursing Care at Home",
+  title: "Clinical Nursing at Home",
   href: "/services/nursing-care",
   snippetAnswer:
     "In-home nursing care is professional clinical support delivered by experienced nurses in your own home, covering wound care, medication management, and health monitoring across Sydney.",
@@ -1120,7 +1080,7 @@ export const NURSING_CARE_PAGE: ServicePageData = {
   },
 
   whoItHelps: {
-    title: "Who Nursing Care Is For",
+    title: "Who Clinical Nursing Is For",
     description:
       "Our nursing services are for anyone requiring professional clinical oversight or technical medical support at home.",
     audiences: [
@@ -1253,7 +1213,7 @@ export const PERSONAL_CARE_PAGE: ServicePageData = {
       {
         title: "Showering & Bathing",
         description:
-          "Help with showering, sponge baths, or hair washing, always prioritizing your safety and privacy.",
+          "Help with showering, sponge baths, or hair washing, always prioritising your safety and privacy.",
       },
       {
         title: "Dressing & Grooming",
@@ -1363,7 +1323,7 @@ export const DAILY_LIVING_PAGE: ServicePageData = {
       {
         title: "Light Housekeeping",
         description:
-          "Keeping your living areas clean and tidy, including vacuuming, dusting, and general home organization.",
+          "Keeping your living areas clean and tidy, including vacuuming, dusting, and general home organisation.",
       },
       {
         title: "Laundry & Linen Care",
@@ -1378,7 +1338,7 @@ export const DAILY_LIVING_PAGE: ServicePageData = {
       {
         title: "Household Admin",
         description:
-          "Assistance with simple tasks like sorting mail, following up on appointments, or organizing your week.",
+          "Assistance with simple tasks like sorting mail, following up on appointments, or organising your week.",
       },
       {
         title: "Daily Routine Support",
@@ -1582,7 +1542,7 @@ export const OVERNIGHT_SUPPORT_PAGE: ServicePageData = {
       {
         title: "Toileting & Personal Care",
         description:
-          "Gentle assistance with using the bathroom or managing continence, minimizing falls risk in the dark.",
+          "Gentle assistance with using the bathroom or managing continence, minimising falls risk in the dark.",
       },
       {
         title: "Safety & Comfort Checks",

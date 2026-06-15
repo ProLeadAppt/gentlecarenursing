@@ -144,12 +144,12 @@ export default function AboutPage() {
       <TeamGrid members={TEAM_MEMBERS} />
 
       {/* Credentials */}
-      <CredentialsSection variant="default" showLinks />
+      <CredentialsSection variant="default" />
 
       {/* CTA */}
       <CtaSection
-        title="Ready to Learn More?"
-        description="Get in touch to discuss how we can help you or your loved one."
+        title="Talk with us about care"
+        description="A short conversation is often the easiest way to work out whether we're the right fit. We'll listen first."
         primaryCta={CTA_LINKS.requestCare}
         secondaryCta={CTA_LINKS.contact}
         variant="primary"

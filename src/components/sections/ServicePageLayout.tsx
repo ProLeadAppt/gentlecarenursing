@@ -2,7 +2,6 @@ import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Grid } from "@/components/layout/Grid";
-import { TrustMarquee } from "./TrustMarquee";
 import { FaqPreview } from "./FaqPreview";
 import { ServiceCtaWithModal } from "./ServiceCtaWithModal";
 import { EvidencePanel, type EvidenceItem } from "./EvidencePanel";
@@ -57,11 +56,7 @@ export interface ServicePageData {
     alt: string;
     caption?: string;
   };
-  /** Optional anonymised case stories to illustrate real-world outcomes */
-  caseStories?: {
-    title: string;
-    summary: string;
-  }[];
+  // caseStudies removed 2026-06-15 per Gemma's brief — section intentionally omitted from all service pages.
   /** Optional service or region-specific testimonials to surface on the page */
   testimonials?: {
     quote: string;
@@ -260,8 +255,6 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
         />
       )}
 
-      <TrustMarquee />
-
       {/* Who It Helps — Personalised Grid */}
       <Section className="bg-muted/30 border-y border-border/40">
         <Container>
@@ -371,38 +364,7 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
         </Container>
       </Section>
 
-      {data.caseStories && data.caseStories.length > 0 && (
-        <Section className="bg-white">
-          <Container>
-            <Reveal>
-              <div className="text-center mb-20">
-                <span className="mb-4 inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60">Real Impact</span>
-                 <Heading level="h2" className="text-4xl sm:text-5xl font-bold font-[family-name:var(--font-serif)] mb-6">
-                  Providing Clinical Peace of Mind
-                 </Heading>
-                 <p className="mx-auto max-w-2xl text-lg text-muted-foreground font-medium">
-                   Anonymised examples of the personalised clinical support we provide daily across Sydney.
-                 </p>
-              </div>
-            </Reveal>
-            <div className="grid gap-10 md:grid-cols-2">
-              {data.caseStories.map((story, i) => (
-                <Reveal key={story.title} delay={i * 0.1}>
-                  <article className="group h-full rounded-[3rem] border border-border/40 bg-card/20 p-10 sm:p-14 text-left shadow-sm transition-all duration-700 hover:border-primary/20 hover:bg-card/40 hover:shadow-2xl">
-                    <div className="mb-8 inline-flex px-4 py-1.5 rounded-full bg-accent/5 border border-accent/15 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">Case Analysis</div>
-                    <Heading level="h3" className="text-3xl font-bold mb-6 group-hover:text-primary transition-colors leading-tight font-[family-name:var(--font-serif)]">
-                      {story.title}
-                    </Heading>
-                    <p className="text-lg leading-[1.8] text-muted-foreground font-medium italic border-l-4 border-primary/20 pl-6 group-hover:border-primary transition-all">
-                      &ldquo;{story.summary}&rdquo;
-                    </p>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
-          </Container>
-        </Section>
-      )}
+      {/* Case studies section removed 2026-06-15 per Gemma's brief */}
 
       {/* FAQ Preview */}
       {faqItems.length > 0 && (
