@@ -1,14 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "./Container";
-import { Grid } from "./Grid";
-import { FooterColumn } from "./FooterColumn";
-import { CTA_LINKS, SITE } from "@/lib/constants";
+import { SITE } from "@/lib/constants";
 import { AREAS_SERVED } from "@/content/areas-served";
-import { Heading } from "@/components/ui/Heading";
-import { ShieldCheck, BadgeCheck, Phone, MapPin, Mail, ChevronRight, Facebook, Instagram } from "lucide-react";
-// NewsletterSignup removed 2026-06-10 per Gemma's brief
-import { InstallButton } from "@/components/pwa/InstallButton";
+import { Phone, Mail, MapPin, Facebook, Instagram, Star } from "lucide-react";
 
 export interface FooterLink {
   href: string;
@@ -24,7 +19,7 @@ interface FooterProps {
 const defaultServiceLinks: FooterLink[] = [
   { href: "/ndis", label: "NDIS Nursing & Support" },
   { href: "/dva", label: "DVA Community Nursing" },
-  { href: "/services/nursing-care", label: "In-Home Nursing Care" },
+  { href: "/services/nursing-care", label: "Clinical Nursing" },
   { href: "/services/personal-care", label: "Personal Care & Daily Living" },
   { href: "/services/complex-care", label: "Complex Care Support" },
   { href: "/aged-care", label: "Aged Care at Home" },
@@ -49,11 +44,8 @@ const defaultInfoLinks: FooterLink[] = [
   { href: "/services", label: "Service Directory" },
   { href: "/contact", label: "Contact Us" },
   { href: "/referrers", label: "Referral Portal" },
-  { href: "/blog", label: "Blog" },
-  { href: "/guides", label: "Care Guides" },
   { href: "/faq", label: "Client FAQ" },
-  { href: "/contact", label: "Contact Us" },
-  { href: "/review", label: "Share Your Feedback" },
+  { href: "/review", label: "Leave a Review" },
 ];
 
 export function Footer({
@@ -64,7 +56,7 @@ export function Footer({
   return (
     <footer
       id="site-footer"
-      className="relative bg-[#3D0A11] text-white/90 pt-24 pb-12 overflow-hidden"
+      className="relative bg-[#3D0A11] text-white/90 pt-20 pb-10 overflow-hidden"
       role="contentinfo"
     >
       {/* Cinematic Background Gradient */}
@@ -74,11 +66,11 @@ export function Footer({
       </div>
 
       <Container className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 pb-16 border-b border-white/10">
-          {/* Brand & Concierge Info */}
-          <div className="lg:col-span-4 space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 pb-12 border-b border-white/10">
+          {/* Brand & Tagline */}
+          <div className="space-y-6">
             <Link href="/" className="inline-block transition-transform hover:scale-105">
-               <Image
+              <Image
                 src="/images/logo.png"
                 alt={SITE.name}
                 width={200}
@@ -88,26 +80,20 @@ export function Footer({
                 loading="lazy"
               />
             </Link>
-            <p className="text-lg leading-relaxed text-white/60 font-medium">
-              Personalised in-home care and support, led by a care professional
-              with strong hands-on experience in community care, aged care, disability support, and nursing services.
+            <p className="text-base leading-relaxed text-white/70 max-w-sm">
+              Personalised in-home nursing and support, delivered with calm,
+              clear communication and a small, attentive care team.
             </p>
-            
-            <div className="flex gap-4">
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-2xl">
-                <ShieldCheck className="h-4 w-4 text-accent" />
-                <span className="text-[10px] font-bold uppercase tracking-widest">NDIS Provider</span>
-              </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-2xl">
-                <BadgeCheck className="h-4 w-4 text-accent" />
-                <span className="text-[10px] font-bold uppercase tracking-widest">DVA Contracted Provider</span>
-              </div>
-            </div>
 
-            {/* Newsletter removed 2026-06-10 per Gemma's brief */}
-
-            {/* Social Media */}
-            <div className="flex gap-3">
+            {/* Social + Review */}
+            <div className="flex flex-wrap items-center gap-3">
+              <Link
+                href="/review"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-semibold text-white hover:bg-primary hover:border-primary transition-all"
+              >
+                <Star className="h-4 w-4 fill-accent text-accent" />
+                Leave a review
+              </Link>
               {SITE.social.facebook && (
                 <a
                   href={SITE.social.facebook}
@@ -133,109 +119,101 @@ export function Footer({
             </div>
           </div>
 
-          {/* Links Grid */}
-          <div className="lg:col-span-2">
-            <h2 className="text-[11px] font-bold uppercase tracking-[0.3em] text-accent mb-8">Specialised Care</h2>
-            <ul className="space-y-4">
-              {serviceLinks.map(link => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm font-medium hover:text-white transition-colors flex items-center group">
-                    <ChevronRight className="h-3 w-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" />
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Sitemap */}
+          <div className="grid grid-cols-2 gap-8">
+            <div>
+              <h2 className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent mb-5">
+                Care
+              </h2>
+              <ul className="space-y-3">
+                {serviceLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm font-medium text-white/75 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h2 className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent mb-5">
+                Information
+              </h2>
+              <ul className="space-y-3">
+                {infoLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm font-medium text-white/75 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          <div className="lg:col-span-2">
-            <h2 className="text-[11px] font-bold uppercase tracking-[0.3em] text-accent mb-8">Care by Region</h2>
-            <ul className="space-y-4">
-              {regionLinks.map(link => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm font-medium hover:text-white transition-colors flex items-center group">
-                    <ChevronRight className="h-3 w-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" />
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="lg:col-span-2">
-            <h2 className="text-[11px] font-bold uppercase tracking-[0.3em] text-accent mb-8">Information</h2>
-            <ul className="space-y-4">
-              {infoLinks.map(link => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm font-medium hover:text-white transition-colors flex items-center group">
-                    <ChevronRight className="h-3 w-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" />
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="lg:col-span-2">
-             <h2 className="text-[11px] font-bold uppercase tracking-[0.3em] text-accent mb-8">Concierge Contact</h2>
-             <div className="space-y-6">
-                <a href={SITE.phoneHref} className="flex items-center gap-4 group">
-                  <div className="h-10 w-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-primary transition-colors">
-                    <Phone className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] uppercase tracking-widest text-white/70">Clinical Support</p>
-                    <p className="text-sm font-bold">{SITE.phone}</p>
-                  </div>
-                </a>
-
-                <a href={`mailto:${SITE.email}`} className="flex items-center gap-4 group">
-                  <div className="h-10 w-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-primary transition-colors">
-                    <Mail className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] uppercase tracking-widest text-white/70">Email Enquiries</p>
-                    <p className="text-sm font-bold">{SITE.email}</p>
-                  </div>
-                </a>
-
-                <div className="flex items-center gap-4 group">
-                  <div className="h-10 w-10 rounded-xl bg-white/5 flex items-center justify-center">
-                    <MapPin className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] uppercase tracking-widest text-white/70">Sydney Regional HQ</p>
-                    <p className="text-sm font-bold">{SITE.address}</p>
-                  </div>
+          {/* Concierge Contact */}
+          <div>
+            <h2 className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent mb-5">
+              Get in touch
+            </h2>
+            <div className="space-y-5">
+              <a href={SITE.phoneHref} className="flex items-start gap-3 group">
+                <Phone className="h-4 w-4 mt-1 text-accent" />
+                <div>
+                  <p className="text-[10px] uppercase tracking-widest text-white/60">
+                    Phone
+                  </p>
+                  <p className="text-sm font-bold text-white group-hover:text-accent transition-colors">
+                    {SITE.phone}
+                  </p>
                 </div>
-             </div>
+              </a>
+
+              <a href={`mailto:${SITE.email}`} className="flex items-start gap-3 group">
+                <Mail className="h-4 w-4 mt-1 text-accent" />
+                <div>
+                  <p className="text-[10px] uppercase tracking-widest text-white/60">
+                    Email
+                  </p>
+                  <p className="text-sm font-bold text-white group-hover:text-accent transition-colors break-all">
+                    {SITE.email}
+                  </p>
+                </div>
+              </a>
+
+              <div className="flex items-start gap-3">
+                <MapPin className="h-4 w-4 mt-1 text-accent" />
+                <div>
+                  <p className="text-[10px] uppercase tracking-widest text-white/60">
+                    Sydney Regional HQ
+                  </p>
+                  <p className="text-sm font-bold text-white">{SITE.address}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Install app row */}
-        <div className="mt-12 flex justify-center md:justify-start">
-          <InstallButton />
-        </div>
-
-        {/* Legal & Attribution */}
-        <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] font-medium tracking-widest uppercase text-white/70">
-          <div className="flex items-center gap-6">
+        {/* Legal */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-medium tracking-wider uppercase text-white/55">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             <span>© {new Date().getFullYear()} {SITE.name}</span>
-            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/privacy" className="hover:text-white transition-colors">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-white transition-colors">
+              Terms
+            </Link>
           </div>
-          
-          <div className="flex items-center gap-2">
-            <span>Clinical infrastructure by</span>
-            <a 
-              href="https://munyal.com.au" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:text-white transition-all"
-            >
-              Munyal
-            </a>
-          </div>
+
+          <span className="text-white/40">A family-run service</span>
         </div>
       </Container>
     </footer>

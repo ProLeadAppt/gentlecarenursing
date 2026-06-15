@@ -62,9 +62,10 @@ export const OUR_SERVICES = {
     "Practical, personalised in-home care delivered with skill and warmth.",
   items: [
     {
-      label: "Clinical care",
+      label: "Clinical Nursing",
       href: "/services/nursing-care",
-      description: "AHPRA-registered nursing delivered in your home.",
+      description:
+        "Skilled nursing care at home, delivered with calm communication and attention to detail.",
     },
     {
       label: "Personal care",

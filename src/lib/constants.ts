@@ -63,6 +63,7 @@ export const NAV_LINKS: readonly NavItem[] = [
   { href: "/dva", label: "DVA" },
   { href: "/aged-care", label: "Aged Care" },
   { href: "/referral", label: "Referrals" },
+  { href: "/review", label: "Review" },
   { href: "/contact", label: "Contact" },
 ] as const;
 

@@ -8,7 +8,7 @@ const canonical = `${INTEGRATIONS.siteUrl}/services/personal-care`;
 export const metadata = createMetadata({
   title: "Personal Care & Daily Support | Respectful In-Home Help",
   description:
-    "Gentle and respectful assistance with daily living, including bathing, dressing, and grooming. Professional personal care that prioritizes your dignity and independence.",
+    "Gentle and respectful assistance with daily living, including bathing, dressing, and grooming. Professional personal care that prioritises your dignity and independence.",
   canonical,
 });
 

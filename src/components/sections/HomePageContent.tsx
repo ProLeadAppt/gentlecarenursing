@@ -81,10 +81,10 @@ export default function HomePageContent() {
                 href={item.href}
                 className="group block rounded-2xl border border-pw-border bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_20px_40px_-20px_rgba(132,40,51,0.25)]"
               >
-                <h3 className="text-lg font-semibold text-foreground group-hover:text-primary">
+                <h3 className="text-2xl font-bold text-foreground group-hover:text-primary">
                   {item.label}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground">
                   {item.description}
                 </p>
                 <span className="mt-4 inline-flex items-center text-sm font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
@@ -136,10 +136,10 @@ export default function HomePageContent() {
                 <span className="absolute top-4 right-5 font-[family-name:var(--font-serif)] text-2xl font-bold text-pw-sage/30 group-hover:text-pw-sage/60 transition-colors">
                   0{i + 1}
                 </span>
-                <h3 className="text-lg font-semibold text-foreground group-hover:text-primary pr-8">
+                <h3 className="text-2xl font-bold text-foreground group-hover:text-primary pr-8">
                   {item.label}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground">
                   {item.description}
                 </p>
                 <span className="mt-4 inline-flex items-center text-sm font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">

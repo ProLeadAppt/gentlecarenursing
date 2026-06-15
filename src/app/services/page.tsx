@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { BentoServiceGrid } from "@/components/sections/BentoServiceGrid";
-import { TrustMarquee } from "@/components/sections/TrustMarquee";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Heading } from "@/components/ui/Heading";
@@ -43,9 +42,6 @@ export default function ServicesPage() {
         </Container>
       </Section>
 
-      <TrustMarquee />
-
-      {/* Service Highlights / Bento Focus */}
       <BentoServiceGrid />
 
       {/* Trust & Methodology Section */}
