@@ -13,7 +13,7 @@ import { ArrowRight, MapPin } from "lucide-react";
 const canonical = `${INTEGRATIONS.siteUrl}/suburbs`;
 
 export const metadata = createMetadata({
-  title: "In-Home Nursing by Sydney Suburb",
+  title: "Sydney Suburbs We Serve | In-Home Nursing Near You",
   description:
     "Suburb-by-suburb in-home nursing across Sydney — local LGA, nearest hospitals, and the wider region for every suburb we serve. NDIS, DVA, aged care, and private nursing.",
   canonical,
@@ -100,7 +100,7 @@ export default function SuburbsIndexPage() {
           </Heading>
 
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-foreground">
-            Find the suburb you're looking for. Each suburb page lists the
+            Find the suburb you&apos;re looking for. Each suburb page lists the
             local LGA, the nearest hospitals we coordinate with, and the
             neighbouring suburbs we also serve — so you know exactly what
             in-home care across this part of Sydney involves.
@@ -162,7 +162,7 @@ export default function SuburbsIndexPage() {
           </Heading>
           <p className="mt-4 mx-auto max-w-2xl text-base text-muted-foreground">
             We serve every Sydney region we list — these are just the suburbs
-            with dedicated pages. If yours isn't here, get in touch and we'll
+            with dedicated pages. If yours isn&apos;t here, get in touch and we&apos;ll
             confirm we cover your area and what care could look like.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">

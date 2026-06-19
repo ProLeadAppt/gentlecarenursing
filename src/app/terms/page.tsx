@@ -6,7 +6,7 @@ import { INTEGRATIONS } from "@/config/integrations";
 import { SITE } from "@/lib/constants";
 
 export const metadata = createMetadata({
-  title: "Terms of Service",
+  title: "Terms of Service | Gentle Care Nursing Services",
   description: `Terms of service for ${SITE.name}. Conditions governing use of our website and care services.`,
   canonical: `${INTEGRATIONS.siteUrl}/terms`,
 });

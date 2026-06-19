@@ -11,7 +11,7 @@ import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
 
 export const metadata = createMetadata({
-  title: "Contact Us",
+  title: "Contact Gentle Care Nursing Services | Call or Enquire",
   description:
     "Get in touch with Gentle Care Nursing Services. Phone, email, or submit an enquiry. We acknowledge straight away and respond within 24 hours.",
   canonical: `${INTEGRATIONS.siteUrl}/contact`,

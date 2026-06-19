@@ -100,10 +100,6 @@ export function Nav({ links, cta, className }: NavProps) {
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(href + "/");
 
-  const isParentActive = (item: NavItem) =>
-    isActive(item.href) ||
-    (item.children?.some((child) => isActive(child.href)) ?? false);
-
   return (
     <div className={cn("flex items-center", className)}>
       {/* Desktop nav */}

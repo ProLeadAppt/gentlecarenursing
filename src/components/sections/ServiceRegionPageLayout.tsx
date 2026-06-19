@@ -234,7 +234,7 @@ export function ServiceRegionPageLayout({ data }: Props) {
                     level="h3"
                     className="text-2xl font-bold mb-8 font-[family-name:var(--font-serif)]"
                   >
-                    What's included
+                    What&apos;s included
                   </Heading>
                   <ul className="grid gap-5 sm:grid-cols-2">
                     {data.included.map((item) => (

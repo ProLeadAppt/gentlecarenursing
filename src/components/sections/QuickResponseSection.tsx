@@ -18,7 +18,6 @@ export interface QuickResponseSectionProps {
   subtitle?: string;
   primaryCtaLabel?: string;
   secondaryCtaLabel?: string;
-  primaryCtaHref?: string;
   secondaryCtaHref?: string;
   /** Benefit bullets (default: response time, confirmation, next steps) */
   benefits?: readonly string[];
@@ -33,7 +32,6 @@ export function QuickResponseSection({
   subtitle = "When you reach out, our team is notified straight away. You'll get a personal response within 24 hours, with clear next steps and supportive guidance. No runaround.",
   primaryCtaLabel = "Request Care",
   secondaryCtaLabel = "Contact Us",
-  primaryCtaHref = "/referral",
   secondaryCtaHref = "/contact",
   benefits,
   voiceAssistantLine = "Need guidance right now? Use our voice assistant below for immediate help.",

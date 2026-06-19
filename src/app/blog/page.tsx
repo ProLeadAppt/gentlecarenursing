@@ -5,7 +5,7 @@ import BlogIndex from "@/components/sections/BlogIndex";
 import { getAllBlogPosts, getAllBlogCategories } from "@/content/blog";
 
 export const metadata: Metadata = createMetadata({
-  title: "Blog",
+  title: "In-Home Care Blog | Sydney Nursing Tips & Advice",
   description:
     "Practical guides and reflections on in-home nursing, NDIS, DVA, aged care, and supporting loved ones at home.",
   canonical: `${INTEGRATIONS.siteUrl}/blog`,

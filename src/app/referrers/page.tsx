@@ -38,7 +38,7 @@ const REFERRER_FAQS = [
 const canonical = `${INTEGRATIONS.siteUrl}/referrers`;
 
 export const metadata = createMetadata({
-  title: "For Coordinators & Referrers",
+  title: "Referrers | Fast Intake for Coordinators & Discharge Teams",
   description:
     "Information for NDIS support coordinators, plan managers, hospital discharge planners, and healthcare professionals who want to refer to Gentle Care Nursing Services.",
   canonical,

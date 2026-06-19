@@ -146,7 +146,7 @@ export function TestimonialSection() {
                             <Quote className="w-10 h-10 text-pw-sage/20 rotate-180" />
                           </div>
                           <p className="text-pw-charcoal text-lg sm:text-xl font-medium leading-relaxed font-serif italic">
-                            "{testimonial.quote}"
+                            &ldquo;{testimonial.quote}&rdquo;
                           </p>
                         </div>
                         

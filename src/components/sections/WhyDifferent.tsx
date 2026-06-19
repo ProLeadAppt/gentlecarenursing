@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
-import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "@/components/animations/Reveal";
 import { Heading } from "@/components/ui/Heading";
 import { UserCheck, Sparkles, ShieldCheck, Heart, Award } from "lucide-react";

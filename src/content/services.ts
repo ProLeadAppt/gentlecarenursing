@@ -79,7 +79,7 @@ export const NDIS_PAGE: ServicePageData = {
   intro:
     // Updated 2026-06-10 per Gemma's brief — replaced verbose old intro
     // with her verbatim NDIS wording.
-    "Gentle Care Nursing Services is a registered NDIS provider supporting participants with in-home care, daily personal activities, community access, high intensity supports, and supported independent living needs. Our team works closely with participants, families, guardians, and support coordinators to deliver safe, consistent, and person-centred care.",
+    "Gentle Care Nursing Services is a registered NDIS provider supporting participants with in-home care, daily personal activities, community access, high intensity supports, and supported independent living needs. We work closely with participants, families, guardians, and support coordinators to deliver safe, consistent, person-centred care that actually fits the plan and the person.",
   evidence: {
     heading: "Quick facts: NDIS in-home nursing with Gentle Care",
     intro: "Citable facts for NDIS participants, support coordinators, plan managers, and families looking at providers in Sydney.",
@@ -153,17 +153,17 @@ export const NDIS_PAGE: ServicePageData = {
       {
         title: "Registered NDIS Provider",
         description:
-          "Fully registered, compliant, and audited. Coordinators and plan managers can refer with confidence.",
+          "Fully registered, compliant, and audited, so support coordinators and plan managers can refer with confidence.",
       },
       {
         title: "Smaller Client Load",
         description:
-          "We take on fewer clients so every participant gets more dedicated, attentive care, not a rushed service.",
+          "We deliberately keep caseloads smaller so every participant gets more attentive, consistent support, not a rushed service.",
       },
       {
         title: "Fast and simple care setup",
         description:
-          "We focus on keeping things simple. We respond to your call or message quickly, usually within 24 to 48 hours, so you're not left waiting.",
+          "We keep setup simple and respond quickly, usually within 24 to 48 hours, so urgent support isn’t left hanging.",
       },
     ],
   },
@@ -194,6 +194,23 @@ export const NDIS_PAGE: ServicePageData = {
     description:
       "Submit your enquiry or referral and we'll get back to you quickly.",
   },
+  relatedLinks: [
+    {
+      title: "NDIS in-home nursing guide",
+      href: "/blog/understanding-ndis-in-home-nursing",
+      description: "A plain-English guide to what NDIS nursing can cover and how to access it.",
+    },
+    {
+      title: "Complex Care Support",
+      href: "/services/complex-care",
+      description: "Higher-acuity support such as PEG feeding, tracheostomy care, and catheter management.",
+    },
+    {
+      title: "Request Care / Referral",
+      href: "/referral",
+      description: "Fast intake for participants, families, plan managers, and support coordinators.",
+    },
+  ],
 };
 
 export const DVA_PAGE: ServicePageData = {
@@ -209,7 +226,7 @@ export const DVA_PAGE: ServicePageData = {
   intro:
     // Updated 2026-06-10 per Gemma's brief — replaced verbose old intro
     // with her verbatim DVA wording.
-    "Gentle Care Nursing Services provides community nursing and in-home support for eligible DVA clients. We assist veterans and their families with nursing care, personal care, post-hospital support, and ongoing care needs at home, subject to DVA eligibility and clinical assessment.",
+    "Gentle Care Nursing Services provides community nursing and in-home support for eligible DVA clients. We assist veterans and their families with nursing care, personal care, post-hospital support, and ongoing care needs at home, subject to DVA eligibility and clinical assessment. For eligible veterans, care is clinically necessary, directly claimed through DVA, and delivered with respect and no unnecessary fuss.",
   evidence: {
     heading: "Quick facts: DVA Community Nursing with Gentle Care",
     intro: "Citable facts for veterans, war widows and widowers, families, GPs, and hospital discharge planners arranging DVA-funded nursing at home.",
@@ -283,12 +300,12 @@ export const DVA_PAGE: ServicePageData = {
       {
         title: "DVA Contracted Community Nursing Provider",
         description:
-          "We are a DVA Contracted Community Nursing provider, supporting eligible Veteran Card holders with clinically required nursing and personal care at home. Claims are handled directly with no out-of-pocket costs for eligible veterans.",
+          "We are a DVA Contracted Community Nursing provider, supporting eligible Veteran Card holders with clinically required nursing and personal care at home. Claims are handled directly and eligible care has no out-of-pocket cost.",
       },
       {
         title: "Personalised, Respectful Care",
         description:
-          "We take time to understand each veteran's needs and preferences. Smaller client load means more dedicated support.",
+          "We take time to understand each veteran's needs and preferences. A smaller client load means more dedicated support and less repetition.",
       },
       {
         title: "Quick Response Times",
@@ -324,6 +341,23 @@ export const DVA_PAGE: ServicePageData = {
     description:
       "Get in touch and we'll arrange the right care for you or your loved one.",
   },
+  relatedLinks: [
+    {
+      title: "Post-hospital care after discharge",
+      href: "/services/post-hospital-care",
+      description: "Support for veterans transitioning safely from hospital to home.",
+    },
+    {
+      title: "Aged care at home",
+      href: "/aged-care",
+      description: "Older adult support that often overlaps with veteran care needs.",
+    },
+    {
+      title: "Request Care / Referral",
+      href: "/referral",
+      description: "Fast referral pathway for families, veterans, and discharge planners.",
+    },
+  ],
 };
 
 export const AGED_CARE_PAGE: ServicePageData = {
@@ -454,6 +488,23 @@ export const AGED_CARE_PAGE: ServicePageData = {
     description:
       "Get in touch to discuss care options for your loved one.",
   },
+  relatedLinks: [
+    {
+      title: "What Families Should Know About Aged Care",
+      href: "/blog/what-families-should-know-about-aged-care",
+      description: "A practical guide for families comparing home care options.",
+    },
+    {
+      title: "Post-hospital nursing & care",
+      href: "/services/post-hospital-care",
+      description: "Short-term support that helps older adults recover safely at home.",
+    },
+    {
+      title: "Clinical Nursing at Home",
+      href: "/services/nursing-care",
+      description: "Clinical support for medication, wound care, and routine observations.",
+    },
+  ],
 };
 
 export const PRIVATE_NURSING_PAGE: ServicePageData = {
@@ -467,7 +518,19 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
   snippetAnswer:
     "Private in-home nursing is nursing and personal care you pay for yourself (not NDIS, DVA, or aged care funded), with no waitlists and flexible scheduling across Sydney.",
   intro:
-    "When you need nursing or personal care outside of funded programs, Gentle Care Nursing Services provides private in-home services tailored to your needs. No waitlists, no complex applications. Just quality care when you need it.",
+    "When you need nursing or personal care outside of funded programs, Gentle Care Nursing Services provides private in-home services tailored to your needs. No waitlists, no complex applications, and no hoops to jump through. Just quality care when you need it, on your timetable.",
+
+  evidence: {
+    heading: "Quick facts: private nursing with Gentle Care",
+    intro: "Citable facts for people wanting fee-for-service nursing or personal care at home across Sydney.",
+    items: [
+      { label: "Service area", value: "Sydney and surrounds, with visits scheduled around your preferred time and short notice where possible.", icon: "area" },
+      { label: "Wait times", value: "No program waitlists or package approvals — private care can often start much faster than funded options.", icon: "response" },
+      { label: "Funding model", value: "Fee-for-service private care, with optional support to supplement funded services.", icon: "funding" },
+      { label: "Scope of support", value: "Nursing, personal care, post-surgical recovery, respite, and short-term or ongoing support.", icon: "scope" },
+      { label: "Care style", value: "Flexible scheduling, transparent quoting, and care tailored around the person and family routine.", icon: "credential" },
+    ],
+  },
 
   whoItHelps: {
     title: "Who This Is For",
@@ -570,6 +633,23 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
     description:
       "Contact us for a personalised quote and get care started quickly.",
   },
+  relatedLinks: [
+    {
+      title: "Clinical Nursing at Home",
+      href: "/services/nursing-care",
+      description: "Professional nursing support for wounds, medication, and health monitoring.",
+    },
+    {
+      title: "Post-hospital care at home",
+      href: "/services/post-hospital-care",
+      description: "One-off or short-term recovery support without waitlists.",
+    },
+    {
+      title: "Choosing the right home care provider",
+      href: "/blog/choosing-the-right-home-care-provider",
+      description: "A guide to comparing providers and asking the right questions.",
+    },
+  ],
 };
 
 export const POST_HOSPITAL_PAGE: ServicePageData = {
@@ -688,6 +768,23 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
     description:
       "Tell us about your upcoming or recent hospital stay and we'll help you plan safe, supportive care at home.",
   },
+  relatedLinks: [
+    {
+      title: "Hospital-at-Home & Step-Down Care",
+      href: "/services/hospital-at-home",
+      description: "Structured step-down support when you still need close nursing after discharge.",
+    },
+    {
+      title: "Clinical Nursing at Home",
+      href: "/services/nursing-care",
+      description: "Ongoing clinical support for wound care, medication, and monitoring.",
+    },
+    {
+      title: "DVA Community Nursing",
+      href: "/dva",
+      description: "A common funding pathway for eligible veterans after hospital discharge.",
+    },
+  ],
   testimonials: [],
 };
 
@@ -821,6 +918,23 @@ export const COMPLEX_CARE_PAGE: ServicePageData = {
     description:
       "Share your current situation and we’ll let you know how we can safely support complex care at home.",
   },
+  relatedLinks: [
+    {
+      title: "Clinical Nursing at Home",
+      href: "/services/nursing-care",
+      description: "Baseline nursing support for ongoing health monitoring and care coordination.",
+    },
+    {
+      title: "Hospital-at-Home & Step-Down Care",
+      href: "/services/hospital-at-home",
+      description: "Step-down recovery support after an admission or health event.",
+    },
+    {
+      title: "Palliative & End-of-Life Support",
+      href: "/services/palliative-care",
+      description: "Complex symptoms and comfort-focused care can overlap later in the journey.",
+    },
+  ],
   testimonials: [],
 };
 
@@ -939,6 +1053,23 @@ export const HOSPITAL_AT_HOME_PAGE: ServicePageData = {
     description:
       "Tell us about your hospital stay and discharge plans so we can help you arrange safe, supported recovery at home.",
   },
+  relatedLinks: [
+    {
+      title: "Post-hospital nursing & care",
+      href: "/services/post-hospital-care",
+      description: "Short-term recovery support that bridges discharge and home.",
+    },
+    {
+      title: "Clinical Nursing at Home",
+      href: "/services/nursing-care",
+      description: "Clinical observations, wound care, and medication support at home.",
+    },
+    {
+      title: "Aged Care at Home",
+      href: "/aged-care",
+      description: "Longer-term support for older adults after acute hospital care.",
+    },
+  ],
 };
 
 export const PALLIATIVE_CARE_PAGE: ServicePageData = {
@@ -1056,6 +1187,23 @@ export const PALLIATIVE_CARE_PAGE: ServicePageData = {
     description:
       "If you’re considering palliative or end-of-life care at home, contact us so we can explore what support is possible for you and your family.",
   },
+  relatedLinks: [
+    {
+      title: "Aged Care at Home",
+      href: "/aged-care",
+      description: "Support for older adults whose care needs are changing over time.",
+    },
+    {
+      title: "Post-hospital nursing & care",
+      href: "/services/post-hospital-care",
+      description: "Transition support when discharge planning and palliative needs overlap.",
+    },
+    {
+      title: "Request Care / Referral",
+      href: "/referral",
+      description: "Fast referral pathway for families, GPs, and discharge planners.",
+    },
+  ],
 };
 
 
@@ -1180,6 +1328,23 @@ export const NURSING_CARE_PAGE: ServicePageData = {
     description:
       "Speak with our clinical lead about how our nursing team can support your health at home.",
   },
+  relatedLinks: [
+    {
+      title: "Complex Clinical Care at Home",
+      href: "/services/complex-care",
+      description: "Advanced support for PEG, tracheostomy, catheter, and complex wound care.",
+    },
+    {
+      title: "Hospital-at-Home & Step-Down Care",
+      href: "/services/hospital-at-home",
+      description: "The best next page when recovery needs to continue after discharge.",
+    },
+    {
+      title: "Palliative & End-of-Life Support",
+      href: "/services/palliative-care",
+      description: "Comfort-focused care when clinical oversight and family support matter most.",
+    },
+  ],
   testimonials: [],
 };
 
@@ -1190,6 +1355,18 @@ export const PERSONAL_CARE_PAGE: ServicePageData = {
     "Personal care is help with the private tasks of daily living, such as bathing, dressing, and grooming, delivered with respect, dignity, and a focus on your choice.",
   intro:
     "Independence starts with feeling good in yourself. Our personal care services provide gentle, respectful assistance with daily routines, ensuring you feel comfortable, confident, and in control of your day.",
+  evidence: {
+    heading: "Quick facts: personal care with Gentle Care",
+    intro: "Citable facts for families, coordinators, and referrers looking for respectful personal care at home in Sydney.",
+    items: [
+      { label: "Service area", value: "Sydney and surrounds — visits coordinated around your suburb, routine, and preferred timing.", icon: "area" },
+      { label: "Visit style", value: "Consistent carers wherever possible, so private routines don’t need to be re-explained every visit.", icon: "credential" },
+      { label: "Privacy", value: "Support is delivered with discretion, dignity, and minimal intrusion into your home life.", icon: "scope" },
+      { label: "Funding accepted", value: "NDIS, DVA, aged care packages, and private fee-for-service depending on your situation.", icon: "funding" },
+      { label: "Response window", value: "Enquiries are usually acknowledged within 24 hours during business hours.", icon: "response" },
+      { label: "Scope of support", value: "Bathing, dressing, grooming, mobility, hygiene, meal assistance, and gentle skin checks.", icon: "scope" },
+    ],
+  },
 
   whoItHelps: {
     title: "Who Personal Care Is For",
@@ -1286,6 +1463,23 @@ export const PERSONAL_CARE_PAGE: ServicePageData = {
     description:
       "Contact us to discuss how we can help you or your loved one stay independent and well-supported at home.",
   },
+  relatedLinks: [
+    {
+      title: "Assistance with Daily Living",
+      href: "/services/assistance-with-daily-living",
+      description: "Practical help with meals, laundry, shopping, and household routines.",
+    },
+    {
+      title: "Overnight Support",
+      href: "/services/overnight-support",
+      description: "Night-time care and reassurance for people who need an extra layer of safety.",
+    },
+    {
+      title: "Aged Care at Home",
+      href: "/aged-care",
+      description: "Longer-term support options for older adults who want to stay at home.",
+    },
+  ],
 };
 
 export const DAILY_LIVING_PAGE: ServicePageData = {
@@ -1295,6 +1489,17 @@ export const DAILY_LIVING_PAGE: ServicePageData = {
     "Assistance with daily living provides practical help with household tasks, meal preparation, and routines, helping NDIS and aged care participants live more independently at home.",
   intro:
     "A well-supported home is the foundation of independence. We provide practical, reliable help with the domestic tasks that keep your life running smoothly, delivered by a team that respects your home and your preferences.",
+  evidence: {
+    heading: "Quick facts: daily living support with Gentle Care",
+    intro: "Citable facts for NDIS participants, older adults, and families who need practical help at home.",
+    items: [
+      { label: "Service area", value: "Sydney and surrounds, with support scheduled around your weekly routine and household needs.", icon: "area" },
+      { label: "Funding accepted", value: "NDIS Core Supports, aged care packages, and private fee-for-service depending on the care plan.", icon: "funding" },
+      { label: "Response window", value: "Most enquiries are acknowledged within 24 hours during business hours.", icon: "response" },
+      { label: "Practical scope", value: "Meal prep, light housekeeping, laundry, grocery support, household admin, and routine help.", icon: "scope" },
+      { label: "Independence focus", value: "Support is delivered with you, not just for you, to help maintain skills and confidence.", icon: "credential" },
+    ],
+  },
 
   whoItHelps: {
     title: "Who This Support Is For",
@@ -1391,6 +1596,23 @@ export const DAILY_LIVING_PAGE: ServicePageData = {
     description:
       "Contact us to see how our team can help take the stress out of managing your home.",
   },
+  relatedLinks: [
+    {
+      title: "Personal Care & Daily Support",
+      href: "/services/personal-care",
+      description: "Daily routines and personal support delivered with dignity.",
+    },
+    {
+      title: "Community Participation",
+      href: "/services/community-participation",
+      description: "Support to get out, stay connected, and build confidence in the community.",
+    },
+    {
+      title: "Aged Care at Home",
+      href: "/aged-care",
+      description: "Support options for older adults who need domestic help at home.",
+    },
+  ],
 };
 
 export const COMMUNITY_PARTICIPATION_PAGE: ServicePageData = {
@@ -1400,6 +1622,17 @@ export const COMMUNITY_PARTICIPATION_PAGE: ServicePageData = {
     "Community participation support helps individuals with disability or age-related needs engage in social activities, attend appointments, and build connections within their local community.",
   intro:
     "Life happens outside the home. We support you to stay connected with your community, achieve your social goals, and enjoy the activities you love, with a capable and enthusiastic support team by your side.",
+  evidence: {
+    heading: "Quick facts: community participation support with Gentle Care",
+    intro: "Citable facts for participants, families, and coordinators looking for reliable community access support in Sydney.",
+    items: [
+      { label: "Service area", value: "Sydney and surrounds, with transport and outing support planned around your destination and timing.", icon: "area" },
+      { label: "Support style", value: "Companion-led support that helps you build confidence, independence, and social participation.", icon: "credential" },
+      { label: "Transport", value: "We can support trips in our own insured vehicle, your vehicle, or via public transport where appropriate.", icon: "scope" },
+      { label: "Response window", value: "Most enquiries are acknowledged within 24 hours during business hours.", icon: "response" },
+      { label: "Scope of support", value: "Appointments, social outings, hobby access, community groups, work and volunteer support.", icon: "scope" },
+    ],
+  },
 
   whoItHelps: {
     title: "Who This Support Is For",
@@ -1495,6 +1728,23 @@ export const COMMUNITY_PARTICIPATION_PAGE: ServicePageData = {
     description:
       "Tell us what you want to achieve outside the home, and we'll help you find the right support to make it happen.",
   },
+  relatedLinks: [
+    {
+      title: "NDIS Services",
+      href: "/ndis",
+      description: "The main page for participants, coordinators, and plan managers.",
+    },
+    {
+      title: "Choosing the right home care provider",
+      href: "/blog/choosing-the-right-home-care-provider",
+      description: "How to compare community support options with confidence.",
+    },
+    {
+      title: "Request Care / Referral",
+      href: "/referral",
+      description: "Fast referral pathway for families, coordinators, and professionals.",
+    },
+  ],
 };
 
 export const OVERNIGHT_SUPPORT_PAGE: ServicePageData = {
@@ -1504,6 +1754,17 @@ export const OVERNIGHT_SUPPORT_PAGE: ServicePageData = {
     "Overnight support provides safety and care throughout the night, with options for active overnight nursing or sleepover support to ensure NDIS and aged care participants are well-monitored while they sleep.",
   intro:
     "Peace of mind shouldn't stop when the sun goes down. Our overnight support ensures you or your loved one are safe, monitored, and comfortable throughout the night, delivered by a team trained in nocturnal care and clinical safety.",
+  evidence: {
+    heading: "Quick facts: overnight support with Gentle Care",
+    intro: "Citable facts for families, participants, and referrers planning overnight care in Sydney.",
+    items: [
+      { label: "Service area", value: "Sydney and surrounds, with overnight visits planned around your home, routine, and safety needs.", icon: "area" },
+      { label: "Support models", value: "Active overnight care or sleepover support depending on the level of overnight supervision required.", icon: "credential" },
+      { label: "Safety focus", value: "Comfort checks, medication support, toileting help, and calm, minimally disruptive monitoring.", icon: "scope" },
+      { label: "Response window", value: "Most enquiries are acknowledged within 24 hours during business hours.", icon: "response" },
+      { label: "Scope of support", value: "Repositioning, hydration, personal care, morning routines, and night-time reassurance.", icon: "scope" },
+    ],
+  },
 
   whoItHelps: {
     title: "Who Overnight Support Is For",
@@ -1600,4 +1861,21 @@ export const OVERNIGHT_SUPPORT_PAGE: ServicePageData = {
     description:
       "Contact us to discuss which model of overnight support is right for you or your loved one.",
   },
+  relatedLinks: [
+    {
+      title: "Hospital-at-Home & Step-Down Care",
+      href: "/services/hospital-at-home",
+      description: "Useful if night support is part of a post-discharge recovery plan.",
+    },
+    {
+      title: "Personal Care & Daily Support",
+      href: "/services/personal-care",
+      description: "Morning and evening routines that often pair with overnight care.",
+    },
+    {
+      title: "Palliative & End-of-Life Support",
+      href: "/services/palliative-care",
+      description: "Comfort-focused night care when families need extra support.",
+    },
+  ],
 };

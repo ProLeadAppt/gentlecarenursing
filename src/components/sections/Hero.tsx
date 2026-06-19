@@ -47,7 +47,6 @@ export function Hero({
   imageAlt = "Personalised in-home care delivered with warmth",
   videoSrc,
   videoPoster,
-  credentials = [],
 }: HeroProps) {
   const { openModal } = useFormModal();
   const prefersReducedMotion = useReducedMotion();

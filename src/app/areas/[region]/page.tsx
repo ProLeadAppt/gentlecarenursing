@@ -46,7 +46,7 @@ export default async function AreaRegionPage({ params }: Props) {
     href: i < arr.length - 1 ? item.path : undefined,
   }));
   const breadcrumbSchema = getBreadcrumbListSchema(
-    getBreadcrumbPaths(path, area.region).map((item, i) => ({
+    getBreadcrumbPaths(path, area.region).map((item) => ({
       name: item.label,
       item: INTEGRATIONS.siteUrl + item.path,
     }))

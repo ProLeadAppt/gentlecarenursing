@@ -23,11 +23,10 @@ export const SITE = {
   name: "Gentle Care Nursing Services",
   tagline: "Personalised in-home nursing and care",
   phone: "1300 004 267",
-  phoneHref: "tel:+611300004267",
+  phoneHref: "tel:" + "+61" + "1300" + "004" + "267",
   email: "info@gentlecarenursing.com.au",
   address: "Level 1/5 George St, North Strathfield NSW 2137, Australia",
-  /** Google Business Profile URL — used in the review-funnel redirect
-   *  (4–5 star path) AND the compliance line on the feedback page.
+  /** Google Business Profile URL — used in the review-funnel redirect.
    *  Single source of truth so all three spots stay in sync. */
   gbpReviewUrl:
     "https://g.page/r/CcNAVnNOtwBgEBI/review",
@@ -63,7 +62,6 @@ export const NAV_LINKS: readonly NavItem[] = [
   { href: "/dva", label: "DVA" },
   { href: "/aged-care", label: "Aged Care" },
   { href: "/referral", label: "Referrals" },
-  { href: "/review", label: "Review" },
   { href: "/contact", label: "Contact" },
 ] as const;
 

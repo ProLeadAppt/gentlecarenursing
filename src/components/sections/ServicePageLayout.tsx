@@ -1,12 +1,10 @@
 import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
-import { Grid } from "@/components/layout/Grid";
 import { FaqPreview } from "./FaqPreview";
 import { ServiceCtaWithModal } from "./ServiceCtaWithModal";
 import { EvidencePanel, type EvidenceItem } from "./EvidencePanel";
 import { Heading } from "@/components/ui/Heading";
-import { Card } from "@/components/ui/Card";
 import { FormModalTrigger } from "@/components/ui/FormModalTrigger";
 import { CTA_LINKS } from "@/lib/constants";
 import { getServiceSchema, getFaqSchema, getMedicalProcedureSchema } from "@/lib/schema";
@@ -111,6 +109,11 @@ export interface ServicePageData {
   procedures?: readonly {
     name: string;
     alternateName?: string;
+    description?: string;
+  }[];
+  relatedLinks?: readonly {
+    title: string;
+    href: string;
     description?: string;
   }[];
 }
@@ -255,6 +258,60 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
         />
       )}
 
+      {/* How It Works — Conversion-first process section */}
+      <Section className="bg-white border-y border-border/40">
+        <Container>
+          <Reveal>
+            <div className="text-center mb-16">
+              <span className="mb-4 inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60">How it works</span>
+              <Heading level="h2" className="text-4xl sm:text-5xl font-bold font-[family-name:var(--font-serif)] mb-6">
+                Three calm steps to getting support started
+              </Heading>
+              <p className="mx-auto max-w-2xl text-lg text-muted-foreground font-medium">
+                We keep the setup process simple, clear, and human — so you know exactly what happens next.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 xl:gap-8">
+            {[
+              {
+                step: "01",
+                title: "Send an enquiry or referral",
+                description:
+                  "Tell us what support is needed, where the person lives, what funding is involved, and whether the matter is urgent. We usually respond within 24 hours during business hours.",
+              },
+              {
+                step: "02",
+                title: "Clinical review and care match",
+                description:
+                  "Our team reviews the request, confirms we’re the right fit, and identifies the right support model, frequency, and team for the job.",
+              },
+              {
+                step: "03",
+                title: "Care starts at home",
+                description:
+                  "We confirm the plan, communication preferences, and start date, then begin support with a clear, person-centred routine.",
+              },
+            ].map((item, i) => (
+              <Reveal key={item.step} delay={i * 0.12}>
+                <div className="h-full rounded-[2.5rem] border border-border/60 bg-muted/20 p-8 sm:p-10 shadow-sm">
+                  <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/5 text-sm font-bold tracking-wider text-primary ring-1 ring-primary/15">
+                    {item.step}
+                  </div>
+                  <Heading level="h3" className="mb-4 text-2xl font-bold tracking-tight font-[family-name:var(--font-serif)]">
+                    {item.title}
+                  </Heading>
+                  <p className="text-lg leading-relaxed text-muted-foreground font-medium">
+                    {item.description}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
       {/* Who It Helps — Personalised Grid */}
       <Section className="bg-muted/30 border-y border-border/40">
         <Container>
@@ -325,6 +382,75 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
         </Container>
       </Section>
 
+      {(data.relatedLinks?.length ?? 0) > 0 && (
+        <Section className="bg-muted/30 border-y border-border/40">
+          <Container>
+            <Reveal>
+              <div className="text-center mb-12">
+                <Heading level="h2" className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-serif)]">
+                  Related pages that help families move faster
+                </Heading>
+                <p className="mt-4 text-muted-foreground font-medium">
+                  Useful next steps, reading, and referral paths for people comparing options.
+                </p>
+              </div>
+            </Reveal>
+
+            <div className="grid gap-6 lg:grid-cols-3">
+              {data.relatedLinks!.map((link, i) => (
+                <Reveal key={link.href} delay={i * 0.08}>
+                  <Link
+                    href={link.href}
+                    className="group block h-full rounded-[2rem] border border-border/60 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-primary/25 hover:shadow-xl"
+                  >
+                    <Heading level="h3" className="text-2xl font-bold font-[family-name:var(--font-serif)] group-hover:text-primary transition-colors">
+                      {link.title}
+                    </Heading>
+                    {link.description && (
+                      <p className="mt-3 text-base leading-relaxed text-muted-foreground font-medium">
+                        {link.description}
+                      </p>
+                    )}
+                    <div className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-primary">
+                      Explore page
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </Container>
+        </Section>
+      )}
+
+      {!data.relatedLinks?.length && (
+        <Section className="bg-muted/30 border-t border-border/40">
+          <Container>
+            <Reveal>
+              <div className="text-center mb-16">
+                 <Heading level="h2" className="text-3xl font-bold font-[family-name:var(--font-serif)]">Explore Related Services</Heading>
+                 <p className="mt-4 text-muted-foreground font-medium">Personalised clinical care tailored to your unique required outcomes.</p>
+              </div>
+            </Reveal>
+            <div className="flex flex-wrap justify-center gap-6">
+              {SERVICES.filter((s) => s.href !== data.href)
+                .slice(0, 3)
+                .map((service, i) => (
+                  <Reveal key={service.href} delay={i * 0.1}>
+                    <Link
+                      href={service.href}
+                      className="group inline-flex items-center gap-3 rounded-2xl border border-border/60 bg-white px-10 py-5 text-lg font-bold text-foreground shadow-sm transition-all duration-500 hover:border-primary/30 hover:text-primary hover:shadow-xl hover:-translate-y-1"
+                    >
+                      {service.title}
+                      <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </Reveal>
+                ))}
+            </div>
+          </Container>
+        </Section>
+      )}
+
       {/* Why Choose Gentle Care — Clinical Focus */}
       <Section className="bg-primary/[0.02] border-y border-primary/10">
         <Container>
@@ -375,33 +501,6 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
           viewAllLabel="View all FAQs"
         />
       )}
-
-      {/* Premium Internal Linking */}
-      <Section className="bg-muted/30 border-t border-border/40">
-        <Container>
-          <Reveal>
-            <div className="text-center mb-16">
-               <Heading level="h2" className="text-3xl font-bold font-[family-name:var(--font-serif)]">Explore Related Services</Heading>
-               <p className="mt-4 text-muted-foreground font-medium">Personalised clinical care tailored to your unique required outcomes.</p>
-            </div>
-          </Reveal>
-          <div className="flex flex-wrap justify-center gap-6">
-            {SERVICES.filter((s) => s.href !== data.href)
-              .slice(0, 3)
-              .map((service, i) => (
-                <Reveal key={service.href} delay={i * 0.1}>
-                  <Link
-                    href={service.href}
-                    className="group inline-flex items-center gap-3 rounded-2xl border border-border/60 bg-white px-10 py-5 text-lg font-bold text-foreground shadow-sm transition-all duration-500 hover:border-primary/30 hover:text-primary hover:shadow-xl hover:-translate-y-1"
-                  >
-                    {service.title}
-                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Reveal>
-              ))}
-          </div>
-        </Container>
-      </Section>
 
       {/* Related guides & compare sections removed 2026-06-10 — the
           /guides and /compare pages were deleted per Gemma's brief. */}
