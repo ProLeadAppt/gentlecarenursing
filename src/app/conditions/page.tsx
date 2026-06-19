@@ -13,7 +13,7 @@ import { ArrowRight, HeartPulse } from "lucide-react";
 const canonical = `${INTEGRATIONS.siteUrl}/conditions`;
 
 export const metadata = createMetadata({
-  title: "In-Home Nursing by Condition",
+  title: "In-Home Nursing by Condition | Sydney",
   description:
     "Condition-specific in-home nursing and care across Sydney — MS, MND, Parkinson's, spinal cord injury, ABI, and cerebral palsy. Each page covers Sydney specialist coordination, funding, and what we deliver.",
   canonical,
@@ -91,7 +91,7 @@ export default function ConditionsIndexPage() {
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-foreground">
             We provide condition-specific in-home nursing and personal care
             across Sydney for people living with specific clinical conditions.
-            Each page sets out what care looks like, who it's for, the Sydney
+            Each page sets out what care looks like, who it&apos;s for, the Sydney
             specialist services we coordinate with, and how funding usually
             works.
           </p>
@@ -138,7 +138,7 @@ export default function ConditionsIndexPage() {
           <p className="mt-4 mx-auto max-w-2xl text-base text-muted-foreground">
             We support people with a wide range of clinical conditions at home,
             not only the ones listed here. Tell us about your situation and
-            we'll let you know how we can help.
+            we&apos;ll let you know how we can help.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link

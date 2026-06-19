@@ -49,7 +49,7 @@ export function getLocalBusinessSchema() {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Services offered",
-      itemListElement: GMB_SERVICES.map((service, index) => ({
+      itemListElement: GMB_SERVICES.map((service) => ({
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
@@ -397,6 +397,10 @@ export function getHowToSchema(
 }
 
 export function getAggregateRatingSchema() {
+  if (GOOGLE_REVIEWS.averageRating == null || GOOGLE_REVIEWS.reviewCount == null) {
+    return null;
+  }
+
   return {
     "@context": "https://schema.org",
     "@type": "AggregateRating",

@@ -13,7 +13,7 @@ import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
 
 export const metadata = createMetadata({
-  title: "Request Care",
+  title: "Request Care | Start an NDIS, DVA or Private Referral",
   description:
     "Request care or make a referral. You'll get immediate confirmation and a personal response within 24 hours with clear next steps.",
   canonical: `${INTEGRATIONS.siteUrl}/referral`,

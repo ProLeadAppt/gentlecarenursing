@@ -11,7 +11,7 @@ import { FAQ_CATEGORIES, ALL_FAQ_ITEMS } from "@/content/faq";
 import { getFaqSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
-  title: "Frequently Asked Questions",
+  title: "FAQs | NDIS, DVA & Home Care Questions",
   description:
     "Common questions about Gentle Care Nursing Services services, referrals, funding, and how to get started.",
   canonical: `${INTEGRATIONS.siteUrl}/faq`,

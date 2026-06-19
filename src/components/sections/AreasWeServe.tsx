@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
-import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Heading } from "@/components/ui/Heading";
 import { MapPin } from "lucide-react";

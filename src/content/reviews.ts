@@ -1,11 +1,18 @@
 /**
- * Google Reviews data — placeholder until Gemma provides real GBP data.
- * Update these values with actual Google Business Profile stats.
+ * Google Reviews data.
+ * Leave empty until confirmed GBP review metadata is available.
+ * Avoids showing placeholder counts or fabricated social proof.
  */
 
-export const GOOGLE_REVIEWS = {
-  averageRating: 5.0,
-  reviewCount: 12,
+export interface GoogleReviewsData {
+  averageRating: number | null;
+  reviewCount: number | null;
   /** Google Business Profile URL — leave empty until confirmed */
+  googleUrl: string;
+}
+
+export const GOOGLE_REVIEWS: GoogleReviewsData = {
+  averageRating: null,
+  reviewCount: null,
   googleUrl: "",
-} as const;
+};

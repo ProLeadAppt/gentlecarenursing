@@ -1,8 +1,11 @@
 "use client";
 
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Hero } from "@/components/sections/Hero";
 import { SimpleContactForm } from "@/components/forms/SimpleContactForm";
 import { Container } from "@/components/layout/Container";
+import { CredentialsSection } from "@/components/sections/CredentialsSection";
 import {
   HOMEPAGE_HERO,
   WHO_WE_SUPPORT,
@@ -18,12 +21,13 @@ const REFERRAL_CTA = { href: "#get-in-touch", label: "Make a Referral" } as cons
 /**
  * Simplified homepage — Gemma's brief, 2026-06-10.
  *
- * Five sections, in order:
+ * Six sections, in order:
  *   1. Main message  — hero (image, not video) + CTAs
- *   2. Who we support — NDIS, DVA, Aged Care, Private
- *   3. Our services   — six core services
- *   4. Why choose us  — five benefit statements
- *   5. Contact form   — name, phone, email, service type, message
+ *   2. Trust proof    — credentials and quick-response reassurance
+ *   3. Who we support — NDIS, DVA, Aged Care, Private
+ *   4. Our services   — six core services
+ *   5. Why choose us  — five benefit statements
+ *   6. Contact form   — name, phone, email, service type, message
  *
  * Brand character (added after Gemma's review of the barebones v1):
  *   - Subtle sage + teal ambient orbs behind the hero
@@ -47,6 +51,62 @@ export default function HomePageContent() {
         imageSrc={HOMEPAGE_HERO.heroImageSrc}
         imageAlt={HOMEPAGE_HERO.heroImageAlt}
       />
+
+      {/* Proof / trust block — real credentials before the conversion journey */}
+      <CredentialsSection variant="default" />
+
+      {/* Fast route-finder — helps people choose the right starting point */}
+      <section className="py-14 sm:py-16 bg-muted/20 border-y border-border/40" aria-labelledby="start-here-title">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs font-semibold tracking-[0.25em] text-primary uppercase mb-4">
+              Start here
+            </p>
+            <h2 id="start-here-title" className="font-[family-name:var(--font-serif)] text-3xl sm:text-4xl font-bold text-foreground">
+              Not sure which page fits your situation?
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              Pick the route that matches the care you need most, then we’ll take it from there.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {[
+              {
+                title: "Need funded support?",
+                href: "/ndis",
+                body: "Use this if the person you’re supporting has an NDIS plan and needs in-home care, daily support, or complex nursing.",
+              },
+              {
+                title: "Veteran care?",
+                href: "/dva",
+                body: "Use this if the person is an eligible veteran or war widow/widower and needs DVA community nursing at home.",
+              },
+              {
+                title: "Aged care at home?",
+                href: "/aged-care",
+                body: "Use this if an older person needs personal care, nursing, respite, or post-hospital support at home.",
+              },
+              {
+                title: "Private care?",
+                href: "/private-nursing",
+                body: "Use this if you want fee-for-service support without waiting for funding approvals or package admin.",
+              },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="group rounded-[1.75rem] border border-border/60 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl"
+              >
+                <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground font-medium">{item.body}</p>
+                <div className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary">
+                  Open page <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
 
       {/* 2. Who we support — cream tint background, serif heading, brand-coloured hover */}
       <section
@@ -76,7 +136,7 @@ export default function HomePageContent() {
           </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {WHO_WE_SUPPORT.items.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 className="group block rounded-2xl border border-pw-border bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_20px_40px_-20px_rgba(132,40,51,0.25)]"
@@ -90,8 +150,27 @@ export default function HomePageContent() {
                 <span className="mt-4 inline-flex items-center text-sm font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
                   Learn more →
                 </span>
-              </a>
+              </Link>
             ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-12 sm:py-14 bg-white border-b border-border/40">
+        <Container>
+          <div className="mx-auto max-w-3xl rounded-[2rem] border border-border/60 bg-muted/20 p-6 sm:p-8">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-2">Need help choosing?</p>
+                <h2 className="font-[family-name:var(--font-serif)] text-2xl sm:text-3xl font-bold text-foreground">Go straight to the page that fits best</h2>
+                <p className="mt-2 text-sm sm:text-base text-muted-foreground">These are the most common next clicks when families want to compare options quickly.</p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/services" className="rounded-full border border-border/60 bg-white px-4 py-2 text-sm font-semibold text-foreground hover:border-primary/30 hover:text-primary transition-colors">Services hub</Link>
+                <Link href="/referrers" className="rounded-full border border-border/60 bg-white px-4 py-2 text-sm font-semibold text-foreground hover:border-primary/30 hover:text-primary transition-colors">For referrers</Link>
+                <Link href="/blog/choosing-the-right-home-care-provider" className="rounded-full border border-border/60 bg-white px-4 py-2 text-sm font-semibold text-foreground hover:border-primary/30 hover:text-primary transition-colors">How to choose a provider</Link>
+              </div>
+            </div>
           </div>
         </Container>
       </section>
@@ -127,7 +206,7 @@ export default function HomePageContent() {
           </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 relative">
             {OUR_SERVICES.items.map((item, i) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 className="group relative block rounded-2xl border border-pw-border bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_20px_40px_-20px_rgba(132,40,51,0.20)]"
@@ -145,7 +224,7 @@ export default function HomePageContent() {
                 <span className="mt-4 inline-flex items-center text-sm font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
                   Read more →
                 </span>
-              </a>
+              </Link>
             ))}
           </div>
         </Container>

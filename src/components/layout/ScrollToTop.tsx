@@ -7,23 +7,25 @@ const SCROLL_THRESHOLD = 200;
 const DESKTOP_MEDIA = "(min-width: 1024px)";
 
 export function ScrollToTop() {
-  const [showDesktop, setShowDesktop] = useState(false);
+  const [showDesktop, setShowDesktop] = useState(() =>
+    typeof window === "undefined" ? false : window.scrollY > SCROLL_THRESHOLD
+  );
   const [showMobile, setShowMobile] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(() =>
+    typeof window === "undefined" ? false : window.matchMedia(DESKTOP_MEDIA).matches
+  );
   /** When true, button is over footer (dark bg) — use light button variant */
   const [isOverDarkBackground, setIsOverDarkBackground] = useState(false);
 
   useEffect(() => {
     const mql = window.matchMedia(DESKTOP_MEDIA);
     const handleMediaChange = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    setIsDesktop(mql.matches);
     mql.addEventListener("change", handleMediaChange);
     return () => mql.removeEventListener("change", handleMediaChange);
   }, []);
 
   useEffect(() => {
     const handleScroll = () => setShowDesktop(window.scrollY > SCROLL_THRESHOLD);
-    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);

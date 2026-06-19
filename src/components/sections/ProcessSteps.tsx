@@ -10,7 +10,6 @@ import { useFormModal } from "@/contexts/FormModalContext";
 import { ClipboardList, MailCheck, Users, HouseHeart, ArrowRight } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { CTA_LINKS } from "@/lib/constants";
-import { cn } from "@/lib/utils";
 
 export interface ProcessStep {
   number: number;
@@ -124,7 +123,7 @@ export function ProcessSteps({
             <Reveal delay={0.6}>
               <div className="mt-24 pt-16 border-t border-border/40 text-center">
                 <p className="max-w-2xl mx-auto text-lg text-foreground/85 font-medium mb-12 italic">
-                  "No pressure to decide on the spot. Reach out and we&apos;ll guide you through the next steps with zero obligation."
+                  &ldquo;No pressure to decide on the spot. Reach out and we&apos;ll guide you through the next steps with zero obligation.&rdquo;
                 </p>
                 <div className="flex justify-center">
                   <Magnetic>

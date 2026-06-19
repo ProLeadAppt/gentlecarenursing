@@ -10,7 +10,6 @@ import { getBreadcrumbListSchema } from "@/lib/schema";
 import {
   getAllSuburbSlugs,
   getSuburbBySlug,
-  type SuburbEntry,
 } from "@/content/suburbs";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -192,7 +191,7 @@ export default async function SuburbPage({ params }: Props) {
             What we cover in {entry.name}
           </Heading>
           <p className="mb-8 max-w-3xl text-base leading-relaxed text-muted-foreground">
-            Whether you're an {entry.name} resident, a family member organising
+            Whether you&apos;re an {entry.name} resident, a family member organising
             care, a support coordinator, or a discharge planner referring
             from one of the local hospitals, we deliver the same scope of care
             across every Sydney suburb we serve.

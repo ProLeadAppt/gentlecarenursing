@@ -14,7 +14,7 @@ export const HOMEPAGE_HERO = {
   /** Segmented headline for staggered cinematic reveal. */
   headlineSegments: [
     "Personalised in-home nursing",
-    "and support across Sydney",
+    " and support across Sydney",
   ] as const,
   subheadline:
     "NDIS Registered · DVA Contracted · Aged Care Support",

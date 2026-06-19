@@ -12,7 +12,10 @@ export const INTEGRATIONS = {
   },
   analytics: {
     gaId: process.env.NEXT_PUBLIC_GA_ID ?? "",
-    gscVerification: process.env.NEXT_PUBLIC_GSC_VERIFICATION ?? "",
+    gscVerification:
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ??
+      process.env.NEXT_PUBLIC_GSC_VERIFICATION ??
+      "",
   },
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://gentlecarenursing.com.au",
 } as const;

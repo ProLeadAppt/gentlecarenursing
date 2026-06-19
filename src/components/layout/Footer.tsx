@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "./Container";
 import { SITE } from "@/lib/constants";
-import { AREAS_SERVED } from "@/content/areas-served";
 import { Phone, Mail, MapPin, Facebook, Instagram, Star } from "lucide-react";
 
 export interface FooterLink {
@@ -13,7 +12,6 @@ export interface FooterLink {
 interface FooterProps {
   serviceLinks?: FooterLink[];
   infoLinks?: FooterLink[];
-  regionLinks?: FooterLink[];
 }
 
 const defaultServiceLinks: FooterLink[] = [
@@ -25,33 +23,17 @@ const defaultServiceLinks: FooterLink[] = [
   { href: "/aged-care", label: "Aged Care at Home" },
   { href: "/private-nursing", label: "Private Clinical Care" },
 ];
-
-function regionSlug(region: string): string {
-  return region
-    .toLowerCase()
-    .replace(/\s*&\s*/g, " ")
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-]/g, "");
-}
-
-const defaultRegionLinks: FooterLink[] = AREAS_SERVED.map((a) => ({
-  href: `/areas/${regionSlug(a.region)}`,
-  label: a.region,
-}));
-
 const defaultInfoLinks: FooterLink[] = [
   { href: "/about", label: "Our Story" },
   { href: "/services", label: "Service Directory" },
   { href: "/contact", label: "Contact Us" },
   { href: "/referrers", label: "Referral Portal" },
   { href: "/faq", label: "Client FAQ" },
-  { href: "/review", label: "Leave a Review" },
 ];
 
 export function Footer({
   serviceLinks = defaultServiceLinks,
   infoLinks = defaultInfoLinks,
-  regionLinks = defaultRegionLinks,
 }: FooterProps) {
   return (
     <footer
@@ -85,14 +67,14 @@ export function Footer({
               clear communication and a small, attentive care team.
             </p>
 
-            {/* Social + Review */}
+            {/* Social + care CTA */}
             <div className="flex flex-wrap items-center gap-3">
               <Link
-                href="/review"
+                href="/referral"
                 className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-semibold text-white hover:bg-primary hover:border-primary transition-all"
               >
                 <Star className="h-4 w-4 fill-accent text-accent" />
-                Leave a review
+                Request care
               </Link>
               {SITE.social.facebook && (
                 <a

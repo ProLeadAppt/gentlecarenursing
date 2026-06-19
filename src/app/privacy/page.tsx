@@ -6,7 +6,7 @@ import { INTEGRATIONS } from "@/config/integrations";
 import { SITE } from "@/lib/constants";
 
 export const metadata = createMetadata({
-  title: "Privacy Policy",
+  title: "Privacy Policy | Gentle Care Nursing Services",
   description: `Privacy policy for ${SITE.name}. How we collect, use, and protect your personal information.`,
   canonical: `${INTEGRATIONS.siteUrl}/privacy`,
 });

@@ -74,7 +74,8 @@ A: We take on fewer clients so each person receives more dedicated, attentive ca
 - Request Care: /referral
 - About: /about
 - Blog: /blog
-- Guides: /guides
+- Conditions: /conditions
+- Suburbs: /suburbs
 - Areas: /areas
 - Contact: /contact
 - FAQ: /faq

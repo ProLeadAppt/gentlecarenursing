@@ -9,6 +9,11 @@ interface GoogleReviewsBadgeProps {
 export function GoogleReviewsBadge({ className }: GoogleReviewsBadgeProps) {
   const { averageRating, reviewCount, googleUrl } = GOOGLE_REVIEWS;
 
+  // Hide the badge until we have real GBP data.
+  if (averageRating == null || reviewCount == null) {
+    return null;
+  }
+
   const content = (
     <div
       className={cn(
@@ -37,7 +42,7 @@ export function GoogleReviewsBadge({ className }: GoogleReviewsBadgeProps) {
       <div className="text-sm">
         <span className="font-bold text-foreground">{averageRating.toFixed(1)}</span>
         <span className="text-muted-foreground ml-1">
-          ({reviewCount} review{(reviewCount as number) !== 1 ? "s" : ""})
+          ({reviewCount} review{reviewCount !== 1 ? "s" : ""})
         </span>
       </div>
     </div>

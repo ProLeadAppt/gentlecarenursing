@@ -19,24 +19,22 @@ interface BeforeInstallPromptEvent extends Event {
 export function InstallButton({ className = "" }: { className?: string }) {
   const [deferredPrompt, setDeferredPrompt] =
     useState<BeforeInstallPromptEvent | null>(null);
-  const [isIOS, setIsIOS] = useState(false);
-  const [isStandalone, setIsStandalone] = useState(false);
+  const isIOS = (() => {
+    if (typeof window === "undefined") return false;
+    const ua = window.navigator.userAgent;
+    return /iPad|iPhone|iPod/.test(ua) && !/CriOS|FxiOS|EdgiOS/.test(ua);
+  })();
+  const [isStandalone, setIsStandalone] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return (
+      window.matchMedia?.("(display-mode: standalone)").matches ||
+      (window.navigator as Navigator & { standalone?: boolean }).standalone === true
+    );
+  });
   const [showIOSHelp, setShowIOSHelp] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-
-    const standalone =
-      window.matchMedia?.("(display-mode: standalone)").matches ||
-      // iOS Safari sets navigator.standalone when launched from home screen
-      (navigator as Navigator & { standalone?: boolean }).standalone === true;
-    setIsStandalone(standalone);
-
-    const ua = navigator.userAgent;
-    const ios =
-      /iPad|iPhone|iPod/.test(ua) &&
-      !/CriOS|FxiOS|EdgiOS/.test(ua); // exclude in-app browsers
-    setIsIOS(ios);
 
     const onBeforeInstall = (e: Event) => {
       e.preventDefault();
@@ -113,11 +111,11 @@ export function InstallButton({ className = "" }: { className?: string }) {
             </li>
             <li className="flex items-start gap-2">
               <span className="text-white/50">2.</span>
-              <span>Scroll and tap "Add to Home Screen"</span>
+              <span>Scroll and tap &quot;Add to Home Screen&quot;</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-white/50">3.</span>
-              <span>Tap "Add" — the app appears on your home screen</span>
+              <span>Tap &quot;Add&quot; — the app appears on your home screen</span>
             </li>
           </ol>
         </div>
