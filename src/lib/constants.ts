@@ -88,4 +88,4 @@ export const HERO_REASSURANCE =
  * sweep, or page-structure change so crawlers see a fresh `lastmod`.
  * Don't bump for purely cosmetic CSS or component changes.
  */
-export const SITE_LAST_UPDATED = "2026-05-07";
+export const SITE_LAST_UPDATED = "2026-07-07";

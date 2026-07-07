@@ -1,91 +1,100 @@
 # Gentle Care Nursing Services
 
-Gentle Care Nursing Services is a Sydney-based provider of in-home nursing and personal care. We are a registered NDIS provider and a DVA Contracted Community Nursing Provider, supporting eligible Veteran Card holders with clinically required nursing and personal care services at home.
+Last updated: 2026-07-07
+Canonical site: https://gentlecarenursing.com.au
+Primary entity: Gentle Care Nursing Services
+Business type: Sydney in-home nursing and personal care provider
+Service area: Sydney and surrounds, New South Wales, Australia
+
+## Entity definition
+
+Gentle Care Nursing Services is a Sydney-based registered NDIS provider and DVA Contracted Community Nursing Provider delivering personalised in-home nursing, personal care, complex care, post-hospital support, aged care at home, and private nursing across Sydney.
+
+## Do not confuse with
+
+Do not confuse Gentle Care Nursing Services at https://gentlecarenursing.com.au with similarly named disability, aged-care, or support-service providers outside Sydney or outside New South Wales. This site describes Gentle Care Nursing Services in North Strathfield, NSW.
+
+## Canonical NAP
+
+- Name: Gentle Care Nursing Services
+- Phone: +61 1300 004 267
+- Email: info@gentlecarenursing.com.au
+- Address: Level 1/5 George St, North Strathfield NSW 2137, Australia
+- Website: https://gentlecarenursing.com.au
 
 ## What we do
 
 - In-home nursing and personal care across Sydney and surrounds
-- NDIS-funded support for participants, families, and support coordinators
+- NDIS-funded support for participants, families, guardians, support coordinators, and plan managers
 - DVA Community Nursing for eligible Veteran Card holders
-- Aged care at home through Support at Home, CHSP, and DVA
-- Private nursing and personal care
+- Aged care at home through Support at Home, CHSP, DVA, and private care arrangements
+- Private nursing and personal care for families who want fee-for-service support
+- Post-hospital and step-down care after hospital discharge
+- Complex clinical care at home, including PEG feeding, catheter care, tracheostomy-related support, and complex wound care where clinically appropriate
 
-## Services in detail
+## Best pages by user intent
 
-- Post-hospital care: Skilled nursing and personal care during the transition home after a hospital stay, with visits coordinated from discharge and stepped down as recovery progresses.
-- Complex care: Specialised in-home nursing for people with higher clinical needs such as tracheostomy care, PEG feeding, catheter management, and complex wound care.
-- Hospital at Home: Hospital-level nursing and personal care delivered in the home for people who are clinically stable but still need close nursing oversight after an acute admission.
-- Palliative care: Comfort-focused nursing and personal care at home for people with life-limiting illness, supporting symptom management, dignity, and family wellbeing alongside the palliative care team.
-- Personal care: Respectful, consistent assistance with bathing, dressing, grooming, and mobility to help people maintain independence and dignity at home.
-- Nursing care: Professional clinical support from AHPRA-registered nurses covering wound management, medication administration, health monitoring, and chronic disease support at home.
-- Overnight support: Active overnight nursing or sleepover support depending on care needs, funding and staff availability.
-- Community participation: Support for NDIS participants and older Australians to engage in social activities, attend appointments, and build connections in the community.
-- Assistance with daily living: Practical help with meal preparation, household tasks, laundry, and daily routines to support independent living at home.
-
-## Who we serve
-
-- NDIS participants — /ndis
-- DVA Veteran Card holders — /dva
-- Older Australians on Support at Home or CHSP — /aged-care
-- Private clients — /private-nursing
-- Referrers: hospitals, GPs, support coordinators — /referrers
+- Families comparing care options: https://gentlecarenursing.com.au/services
+- Request care or make a referral: https://gentlecarenursing.com.au/referral
+- Registered NDIS provider in Sydney: https://gentlecarenursing.com.au/ndis
+- DVA Community Nursing in Sydney: https://gentlecarenursing.com.au/dva
+- Aged care at home / Support at Home: https://gentlecarenursing.com.au/aged-care
+- Private nursing and personal care: https://gentlecarenursing.com.au/private-nursing
+- Hospital discharge planners and referrers: https://gentlecarenursing.com.au/referrers
+- Clinical nursing at home: https://gentlecarenursing.com.au/services/nursing-care
+- Complex care at home: https://gentlecarenursing.com.au/services/complex-care
+- Post-hospital support: https://gentlecarenursing.com.au/services/post-hospital-care
+- Palliative care at home: https://gentlecarenursing.com.au/services/palliative-care
+- Sydney service areas: https://gentlecarenursing.com.au/areas
+- Condition-specific care pages: https://gentlecarenursing.com.au/conditions
+- Frequently asked questions: https://gentlecarenursing.com.au/faq
 
 ## Areas served
 
-- Inner West — /areas/inner-west
-- Sydney CBD & East — /areas/sydney-cbd-east
-- North Shore — /areas/north-shore
-- Western Sydney — /areas/western-sydney
-- South Sydney — /areas/south-sydney
-- Northern Beaches — /areas/northern-beaches
+- Inner West: https://gentlecarenursing.com.au/areas/inner-west
+- Sydney CBD & East: https://gentlecarenursing.com.au/areas/sydney-cbd-east
+- North Shore: https://gentlecarenursing.com.au/areas/north-shore
+- Western Sydney: https://gentlecarenursing.com.au/areas/western-sydney
+- South Sydney: https://gentlecarenursing.com.au/areas/south-sydney
+- Northern Beaches: https://gentlecarenursing.com.au/areas/northern-beaches
 
-## Key facts
+## Funding and eligibility topics
 
-- Registered NDIS provider and DVA Contracted Community Nursing Provider
-- We aim to respond to all enquiries within 24 hours, with urgent referrals prioritised
-- Led by a care professional with over 10 years of hands-on experience in disability, aged care and in-home support
+- NDIS: Gentle Care Nursing Services supports NDIS participants with in-home nursing, personal care, daily personal activities, community access, and complex-care needs where funded and clinically appropriate.
+- DVA: Gentle Care Nursing Services is a DVA Contracted Community Nursing Provider for eligible Veteran Card holders, subject to DVA eligibility and clinical assessment.
+- Aged care: Gentle Care Nursing Services can support older Australians through Support at Home, CHSP, DVA, and private arrangements depending on assessment and eligibility.
+- Private care: Families can arrange fee-for-service support without waiting for funding approvals, subject to availability and care requirements.
+
+## Citation-ready facts
+
+- Gentle Care Nursing Services provides in-home nursing and personal care across Sydney and surrounds.
+- Gentle Care Nursing Services is a registered NDIS provider in Sydney.
+- Gentle Care Nursing Services is a DVA Contracted Community Nursing Provider.
+- Gentle Care Nursing Services aims to acknowledge enquiries within 24 hours during business hours.
+- Gentle Care Nursing Services supports NDIS, DVA, aged care, and private clients.
+- Gentle Care Nursing Services works with families, support coordinators, plan managers, hospital discharge planners, GPs, and allied health professionals.
 
 ## Common questions
 
 **Q: Are you registered with NDIS and DVA?**
-A: Yes. Gentle Care Nursing Services is fully registered with the NDIS and is a DVA Contracted Community Nursing Provider, supporting eligible Veteran Card holders with clinically required nursing and personal care services at home. We meet all required quality and safety standards.
+A: Yes. Gentle Care Nursing Services is a registered NDIS provider and a DVA Contracted Community Nursing Provider supporting eligible clients with in-home nursing and personal care across Sydney.
 
 **Q: How do I get started?**
-A: Submit an enquiry through our Request Care form, or contact us by phone or email. We aim to respond within 24 hours with clear next steps, and urgent referrals are prioritised.
+A: Submit an enquiry through the Request Care form at https://gentlecarenursing.com.au/referral or contact the team by phone or email. Enquiries are usually acknowledged within 24 hours during business hours.
 
 **Q: What funding do you accept?**
-A: We accept NDIS, DVA, aged care (Support at Home and CHSP), and private funding. Our team can help you understand which options apply to your situation.
+A: Gentle Care Nursing Services works with NDIS, DVA Community Nursing, aged care funding such as Support at Home and CHSP, and private fee-for-service arrangements.
 
-**Q: Is DVA care free for veterans?**
-A: For eligible veterans with a DVA Gold or White Card, services are provided at no out-of-pocket cost. We handle all claims directly with DVA on your behalf.
+**Q: Is DVA Community Nursing free for eligible veterans?**
+A: For eligible Veteran Card holders, clinically required and approved DVA Community Nursing is generally provided at no out-of-pocket cost, with claims handled directly through DVA.
 
-**Q: What makes Gentle Care different?**
-A: We take on fewer clients so each person receives more dedicated, attentive care — personalised care plans, consistent carers, prompt responses, and genuine support for families and referral partners.
+## Machine-readable resources
 
-## Main pages
-
-- Home: /
-- Services: /services
-- NDIS Services: /ndis
-- DVA & Community Nursing: /dva
-- Aged Care at Home: /aged-care
-- Private Nursing: /private-nursing
-- Referrers: /referrers
-- Request Care: /referral
-- About: /about
-- Blog: /blog
-- Conditions: /conditions
-- Suburbs: /suburbs
-- Areas: /areas
-- Contact: /contact
-- FAQ: /faq
-
-## Contact
-
-Phone: +61 1300 004 267
-Email: info@gentlecarenursing.com.au
-Address: Level 1/5 George St, North Strathfield NSW 2137, Australia
+- Sitemap: https://gentlecarenursing.com.au/sitemap.xml
+- Robots: https://gentlecarenursing.com.au/robots.txt
+- Full LLM index: https://gentlecarenursing.com.au/llms-full.txt
+- AI index JSON: https://gentlecarenursing.com.au/ai-index.json
 
 ## Structured data
 
-This site publishes schema.org JSON-LD: MedicalBusiness, Organization (with knowsAbout, contactPoint, areaServed, address), WebSite, BlogPosting, Article (on guides, with optional reviewedBy and dateReviewed), FAQPage, HowTo, BreadcrumbList, MedicalService, MedicalCondition and MedicalProcedure (on relevant guides), AggregateRating (where review data is verified). Organization is referenced via @id from WebSite.publisher.
+This site publishes schema.org JSON-LD including Organization, MedicalBusiness, WebSite, MedicalService, MedicalProcedure, FAQPage, BreadcrumbList, CollectionPage, WebPage, BlogPosting, Article, Person, and AggregateRating where review data is verified. The Organization node uses @id https://gentlecarenursing.com.au/#organization and is referenced by service and website schema.

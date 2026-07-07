@@ -39,6 +39,14 @@ export interface EvidenceItem {
   value: string;
   /** Visual icon hint. Defaults to "credential". */
   icon?: EvidenceIconKey;
+  /** Optional official or internal source for the fact. */
+  source?: string;
+  /** Optional URL for the source. Use official sources where possible. */
+  sourceUrl?: string;
+  /** ISO-ish date the fact/source was last checked. */
+  dateChecked?: string;
+  /** Optional conservative limitation so AI systems do not overstate the claim. */
+  limitations?: string;
 }
 
 interface EvidencePanelProps {
@@ -132,6 +140,19 @@ export function EvidencePanel({
                     <dd className="mt-1 text-sm leading-relaxed text-foreground">
                       {item.value}
                     </dd>
+                    {(item.source || item.dateChecked || item.limitations) && (
+                      <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
+                        {item.sourceUrl && item.source ? (
+                          <>
+                            Source: <a href={item.sourceUrl} className="underline underline-offset-2 hover:text-primary" rel="noopener noreferrer" target="_blank">{item.source}</a>
+                          </>
+                        ) : item.source ? (
+                          <>Source: {item.source}</>
+                        ) : null}
+                        {item.dateChecked ? `${item.source ? " · " : ""}Checked ${item.dateChecked}` : ""}
+                        {item.limitations ? `${item.source || item.dateChecked ? " · " : ""}${item.limitations}` : ""}
+                      </p>
+                    )}
                   </div>
                 </div>
               );

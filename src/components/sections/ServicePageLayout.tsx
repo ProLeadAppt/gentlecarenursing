@@ -6,7 +6,7 @@ import { ServiceCtaWithModal } from "./ServiceCtaWithModal";
 import { EvidencePanel, type EvidenceItem } from "./EvidencePanel";
 import { Heading } from "@/components/ui/Heading";
 import { FormModalTrigger } from "@/components/ui/FormModalTrigger";
-import { CTA_LINKS } from "@/lib/constants";
+import { CTA_LINKS, SITE_LAST_UPDATED } from "@/lib/constants";
 import { getServiceSchema, getFaqSchema, getMedicalProcedureSchema } from "@/lib/schema";
 import { SERVICES } from "@/content/services";
 // ALL_GUIDES + ALL_COMPARES imports removed 2026-06-10 — /guides and /compare pages deleted
@@ -147,9 +147,16 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
       name: data.title,
       description: data.intro,
       url: data.href ?? "",
+      dateModified: data.reviewedAt ?? SITE_LAST_UPDATED,
+      reviewedBy: data.reviewer,
+      areaServed: [
+        { "@type": "City", name: "Sydney", containedInPlace: { "@type": "State", name: "New South Wales" } },
+        { "@type": "State", name: "New South Wales" },
+        { "@type": "Country", name: "Australia" },
+      ],
     }),
     ...procedureSchemas,
-    ...(faqItems.length > 0 ? [getFaqSchema(data.faqs)] : []),
+    ...(faqItems.length > 0 ? [getFaqSchema(data.faqs, { dateModified: data.reviewedAt ?? SITE_LAST_UPDATED })] : []),
   ];
 
   return (
@@ -205,6 +212,10 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
           <Reveal delay={0.4}>
             <p className="mx-auto max-w-2xl text-center text-xl leading-relaxed text-muted-foreground font-medium">
               {data.intro}
+            </p>
+            <p className="mx-auto mt-5 max-w-2xl text-center text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground/80">
+              Last updated {data.reviewedAt ?? SITE_LAST_UPDATED}
+              {data.reviewer ? ` · Reviewed by ${data.reviewer.name}${data.reviewer.role ? `, ${data.reviewer.role}` : ""}` : ""}
             </p>
           </Reveal>
 

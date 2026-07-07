@@ -6,7 +6,7 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Heading } from "@/components/ui/Heading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Magnetic } from "@/components/animations/Magnetic";
-import { CTA_LINKS } from "@/lib/constants";
+import { CTA_LINKS, SITE_LAST_UPDATED } from "@/lib/constants";
 import { createMetadata } from "@/lib/metadata";
 import { getAreaContentBySlug, getAllAreaSlugs } from "@/content/areas-content";
 import { getAreaPageSchema, getBreadcrumbListSchema } from "@/lib/schema";
@@ -14,6 +14,7 @@ import { INTEGRATIONS } from "@/config/integrations";
 import { getBreadcrumbPaths } from "@/content/topical-map";
 import { MapPin, ArrowRight, CheckCircle2, PhoneCall } from "lucide-react";
 import { FormModalTrigger } from "@/components/ui/FormModalTrigger";
+import { EvidencePanel } from "@/components/sections/EvidencePanel";
 
 type Props = { params: Promise<{ region: string }> };
 
@@ -51,7 +52,7 @@ export default async function AreaRegionPage({ params }: Props) {
       item: INTEGRATIONS.siteUrl + item.path,
     }))
   );
-  const areaPageSchema = getAreaPageSchema(area.region, path, area.description);
+  const areaPageSchema = getAreaPageSchema(area.region, path, area.description, SITE_LAST_UPDATED);
 
   return (
     <>
@@ -109,6 +110,46 @@ export default async function AreaRegionPage({ params }: Props) {
           </Reveal>
         </Container>
       </section>
+
+      <EvidencePanel
+        eyebrow="Local quick facts"
+        heading={`In-home nursing facts for ${area.region}`}
+        intro={`Citable local details for families, NDIS support coordinators, DVA referrers, GPs, and discharge planners arranging care in ${area.region}.`}
+        items={[
+          {
+            label: "Region covered",
+            value: `Gentle Care Nursing Services provides in-home nursing and personal care across ${area.region}, including ${area.suburbs.slice(0, 5).join(", ")}${area.suburbs.length > 5 ? " and nearby suburbs" : ""}.`,
+            icon: "area",
+            source: "Gentle Care Nursing Services service-area information",
+            sourceUrl: `${INTEGRATIONS.siteUrl}/areas/${area.slug}`,
+            dateChecked: "2026-07-07",
+          },
+          {
+            label: "Funding types",
+            value: "Care may be arranged through NDIS, DVA Community Nursing, aged care funding, or private fee-for-service depending on eligibility and needs.",
+            icon: "funding",
+            source: "Gentle Care Nursing Services intake information",
+            sourceUrl: `${INTEGRATIONS.siteUrl}/contact`,
+            dateChecked: "2026-07-07",
+          },
+          {
+            label: "Response window",
+            value: "Enquiries and referrals are usually acknowledged within 24 hours during business hours, with urgent referrals prioritised.",
+            icon: "response",
+            source: "Gentle Care Nursing Services intake information",
+            sourceUrl: `${INTEGRATIONS.siteUrl}/referral`,
+            dateChecked: "2026-07-07",
+          },
+          {
+            label: "Referrer support",
+            value: "Gentle Care works with support coordinators, hospital discharge planners, GPs, families, and representatives across Sydney.",
+            icon: "credential",
+            source: "Gentle Care Nursing Services referrer information",
+            sourceUrl: `${INTEGRATIONS.siteUrl}/referrers`,
+            dateChecked: "2026-07-07",
+          },
+        ]}
+      />
 
       {/* Main Content Area */}
       <Section className="bg-muted/30 border-y border-border/40">

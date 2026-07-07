@@ -74,6 +74,9 @@ export function getServiceSchema(service: {
   name: string;
   description: string;
   url: string;
+  dateModified?: string;
+  reviewedBy?: { name: string; role?: string };
+  areaServed?: unknown;
 }) {
   return {
     "@context": "https://schema.org",
@@ -81,10 +84,19 @@ export function getServiceSchema(service: {
     name: service.name,
     description: service.description,
     url: `${INTEGRATIONS.siteUrl}${service.url}`,
-    provider: {
-      "@type": "MedicalBusiness",
-      name: SITE.name,
-    },
+    provider: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
+    ...(service.dateModified ? { dateModified: service.dateModified } : {}),
+    ...(service.reviewedBy
+      ? {
+          reviewedBy: {
+            "@type": "Person",
+            name: service.reviewedBy.name,
+            ...(service.reviewedBy.role ? { jobTitle: service.reviewedBy.role } : {}),
+            worksFor: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
+          },
+        }
+      : {}),
+    ...(service.areaServed ? { areaServed: service.areaServed } : {}),
   };
 }
 
@@ -124,11 +136,13 @@ export function getMedicalProcedureSchema(args: {
 }
 
 export function getFaqSchema(
-  items: { question: string; answer: string }[]
+  items: { question: string; answer: string }[],
+  options?: { dateModified?: string }
 ) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    ...(options?.dateModified ? { dateModified: options.dateModified } : {}),
     mainEntity: items.map((item) => ({
       "@type": "Question",
       name: item.question,
@@ -351,13 +365,14 @@ export function getServiceRegionSchemas(args: {
 }
 
 /** WebPage + areaServed for area/region landing pages (local SEO + GEO). */
-export function getAreaPageSchema(region: string, path: string, description: string) {
+export function getAreaPageSchema(region: string, path: string, description: string, dateModified?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: `In-Home Nursing ${region} | ${SITE.name}`,
     description,
     url: `${INTEGRATIONS.siteUrl}${path}`,
+    ...(dateModified ? { dateModified } : {}),
     about: {
       "@type": "MedicalBusiness",
       name: SITE.name,

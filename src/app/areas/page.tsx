@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
-import { SectionHeader } from "@/components/sections/SectionHeader";
+import { Heading } from "@/components/ui/Heading";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { CTA_LINKS } from "@/lib/constants";
 import { createMetadata } from "@/lib/metadata";
@@ -37,11 +37,14 @@ export default function AreasIndexPage() {
       <Section size="lg" variant="default">
         <Container>
           <Breadcrumbs items={breadcrumbItems} className="mb-6" />
-          <SectionHeader
-            title="Areas We Serve"
-            subtitle="We provide in-home nursing and personal care across Sydney and surrounds. Choose your region to find out how we can help you or your loved one."
-            size="lg"
-          />
+          <div className="mx-auto max-w-3xl text-center">
+            <Heading level="h1" as="h1" className="text-4xl sm:text-5xl">
+              Areas We Serve in Sydney
+            </Heading>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              We provide in-home nursing and personal care across Sydney and surrounds. Choose your region to find out how we can help you or your loved one.
+            </p>
+          </div>
           <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {AREAS_CONTENT.map((area) => (
               <li key={area.slug}>

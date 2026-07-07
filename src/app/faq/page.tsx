@@ -4,7 +4,7 @@ import { FaqAccordion } from "@/components/sections/FaqAccordion";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Heading } from "@/components/ui/Heading";
-import { CTA_LINKS } from "@/lib/constants";
+import { CTA_LINKS, SITE_LAST_UPDATED } from "@/lib/constants";
 import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
 import { FAQ_CATEGORIES, ALL_FAQ_ITEMS } from "@/content/faq";
@@ -23,7 +23,7 @@ export default function FAQPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(getFaqSchema(ALL_FAQ_ITEMS)),
+          __html: JSON.stringify(getFaqSchema(ALL_FAQ_ITEMS, { dateModified: SITE_LAST_UPDATED })),
         }}
       />
       <Section size="lg" variant="card">

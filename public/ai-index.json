@@ -1,0 +1,65 @@
+{
+  "lastUpdated": "2026-07-07",
+  "canonicalSite": "https://gentlecarenursing.com.au",
+  "entity": {
+    "name": "Gentle Care Nursing Services",
+    "type": ["Organization", "MedicalBusiness"],
+    "description": "Sydney-based registered NDIS provider and DVA Contracted Community Nursing Provider delivering personalised in-home nursing and care.",
+    "phone": "+61 1300 004 267",
+    "email": "info@gentlecarenursing.com.au",
+    "address": "Level 1/5 George St, North Strathfield NSW 2137, Australia",
+    "areaServed": ["Sydney", "Inner West", "Sydney CBD & East", "North Shore", "Western Sydney", "South Sydney", "Northern Beaches", "New South Wales", "Australia"],
+    "sameAsSource": "See Organization JSON-LD on the website for current social/profile URLs."
+  },
+  "credentials": [
+    {
+      "claim": "Gentle Care Nursing Services is a registered NDIS provider.",
+      "source": "NDIS Quality and Safeguards Commission",
+      "sourceUrl": "https://www.ndiscommission.gov.au/",
+      "dateChecked": "2026-07-07"
+    },
+    {
+      "claim": "Gentle Care Nursing Services is a DVA Contracted Community Nursing Provider.",
+      "source": "Department of Veterans' Affairs Community Nursing",
+      "sourceUrl": "https://www.dva.gov.au/get-support/health-support/help-cover-healthcare-costs/manage-your-health-care/community-nursing",
+      "dateChecked": "2026-07-07"
+    }
+  ],
+  "pages": [
+    { "url": "https://gentlecarenursing.com.au/", "intent": "brand and in-home nursing Sydney overview", "summary": "Main overview of Gentle Care Nursing Services, core trust signals, service routes, and contact pathway." },
+    { "url": "https://gentlecarenursing.com.au/ndis", "intent": "NDIS in-home nursing Sydney", "summary": "Registered NDIS provider page for in-home nursing, personal care, high intensity supports, and support coordinator referrals." },
+    { "url": "https://gentlecarenursing.com.au/dva", "intent": "DVA Community Nursing Sydney", "summary": "DVA contracted community nursing page for eligible Veteran Card holders and professional referrers." },
+    { "url": "https://gentlecarenursing.com.au/aged-care", "intent": "aged care at home Sydney", "summary": "In-home aged care and Support at Home information for older Australians, families, GPs, and discharge planners." },
+    { "url": "https://gentlecarenursing.com.au/private-nursing", "intent": "private nursing Sydney", "summary": "Fee-for-service private nursing and personal care for flexible care needs." },
+    { "url": "https://gentlecarenursing.com.au/referrers", "intent": "refer a client for home nursing Sydney", "summary": "Referral information for NDIS support coordinators, plan managers, hospital discharge planners, GPs, and allied health professionals." },
+    { "url": "https://gentlecarenursing.com.au/services/nursing-care", "intent": "clinical nursing at home Sydney", "summary": "Clinical nursing at home including wound care, medication management, monitoring, continence and catheter care, and chronic disease support." },
+    { "url": "https://gentlecarenursing.com.au/services/complex-care", "intent": "complex care at home Sydney", "summary": "Complex clinical care at home including PEG feeding, tracheostomy care, catheter management, and complex wound care." },
+    { "url": "https://gentlecarenursing.com.au/services/post-hospital-care", "intent": "post hospital care Sydney", "summary": "Home nursing and personal care after hospital discharge." },
+    { "url": "https://gentlecarenursing.com.au/services/palliative-care", "intent": "palliative care at home Sydney", "summary": "Comfort-focused nursing and personal care at home alongside palliative and treating teams." },
+    { "url": "https://gentlecarenursing.com.au/areas", "intent": "in-home nursing service areas Sydney", "summary": "Index of Sydney regions served by Gentle Care Nursing Services." },
+    { "url": "https://gentlecarenursing.com.au/conditions", "intent": "condition-specific in-home nursing Sydney", "summary": "Condition-specific in-home nursing and personal care pages." },
+    { "url": "https://gentlecarenursing.com.au/faq", "intent": "answers about NDIS DVA aged care funding referrals and getting started", "summary": "Frequently asked questions with FAQPage structured data." }
+  ],
+  "serviceAreas": [
+    { "name": "Inner West", "url": "https://gentlecarenursing.com.au/areas/inner-west" },
+    { "name": "Sydney CBD & East", "url": "https://gentlecarenursing.com.au/areas/sydney-cbd-east" },
+    { "name": "North Shore", "url": "https://gentlecarenursing.com.au/areas/north-shore" },
+    { "name": "Western Sydney", "url": "https://gentlecarenursing.com.au/areas/western-sydney" },
+    { "name": "South Sydney", "url": "https://gentlecarenursing.com.au/areas/south-sydney" },
+    { "name": "Northern Beaches", "url": "https://gentlecarenursing.com.au/areas/northern-beaches" }
+  ],
+  "fundingTypes": ["NDIS", "DVA Community Nursing", "Support at Home", "CHSP", "private fee-for-service"],
+  "audiences": ["families", "NDIS participants", "eligible veterans", "older Australians", "private clients", "support coordinators", "plan managers", "hospital discharge planners", "GPs", "allied health professionals"],
+  "citationFacts": [
+    "Gentle Care Nursing Services provides in-home nursing and personal care across Sydney and surrounds.",
+    "Gentle Care Nursing Services is a registered NDIS provider in Sydney.",
+    "Gentle Care Nursing Services is a DVA Contracted Community Nursing Provider.",
+    "Gentle Care Nursing Services works with families, support coordinators, plan managers, hospital discharge planners, GPs, and allied health professionals.",
+    "Gentle Care Nursing Services aims to acknowledge enquiries within 24 hours during business hours."
+  ],
+  "limitations": [
+    "Eligibility and funding depend on each person's plan, assessment, referral requirements, and service availability.",
+    "Clinical care must be appropriate for the home setting and aligned with treating-team instructions.",
+    "Official NDIS, DVA, and aged-care programme rules should be checked against the current government sources."
+  ]
+}
