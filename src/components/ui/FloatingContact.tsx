@@ -73,7 +73,7 @@ export function FloatingContact() {
 
   const handleMessageClick = () => {
     setIsExpanded(false);
-    openModal("contact");
+    openModal("contact", "floating_contact");
   };
 
   return (
@@ -104,6 +104,7 @@ export function FloatingContact() {
                   label="Call us"
                   sublabel={SITE.phone}
                   ariaLabel={`Call ${SITE.phone}`}
+                  analyticsLocation="floating_contact"
                   delay={0}
                 />
                 <ActionChip
@@ -180,10 +181,11 @@ interface ActionChipProps {
   label: string;
   sublabel?: string;
   ariaLabel: string;
+  analyticsLocation?: string;
   delay?: number;
 }
 
-function ActionChip({ variant, href, onClick, icon, label, sublabel, ariaLabel, delay = 0 }: ActionChipProps) {
+function ActionChip({ variant, href, onClick, icon, label, sublabel, ariaLabel, analyticsLocation, delay = 0 }: ActionChipProps) {
   const className = cn(
     "flex items-center gap-3 rounded-full px-4 py-2.5 shadow-pw-lg ring-2 transition-all duration-200",
     "hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2",
@@ -216,6 +218,7 @@ function ActionChip({ variant, href, onClick, icon, label, sublabel, ariaLabel, 
     return (
       <motion.a
         href={href}
+        data-analytics-location={analyticsLocation}
         onClick={onClick}
         aria-label={ariaLabel}
         initial={{ opacity: 0, x: 16 }}

@@ -1,0 +1,8 @@
+date,month,category,change,status,evidence,owner,notes
+2026-07-25,2026-07,measurement,Defined privacy-safe GA4 event and parameter specification,implemented-local,tests/analytics.test.ts,Munyal,Pending deployment
+2026-07-25,2026-07,conversion-tracking,Added confirmed contact and referral conversion events after successful GHL delivery,implemented-local,src/components/forms,Munyal,Pending deployment and GA4 Admin key-event configuration
+2026-07-25,2026-07,lead-reconciliation,Added non-personal websiteSubmissionId to GHL webhook and GA4 event,implemented-local,src/lib/submission.ts,Munyal,Pending deployment
+2026-07-25,2026-07,security,Removed hard-coded GoHighLevel webhook URLs from application source,implemented-local,src/app/api/submit/route.ts,Munyal,Production environment variables must be verified before deployment
+2026-07-25,2026-07,structured-data,Consolidated duplicate organization and MedicalBusiness entities around a canonical organization ID,implemented-local,src/lib/schema.ts,Munyal,Pending deployment and rendered validation
+2026-07-25,2026-07,technical-seo,Added deterministic sitemap metadata canonical schema phone and 404 audit,implemented-local,tools/audit-seo-production.ts,Munyal,Live baseline passed 83 URLs after audit false-positive fixes
+2026-07-25,2026-07,baseline,Audited live sitemap URLs and AI discovery resources,complete,docs/seo/technical-audit-live-before.json,Munyal,83 sitemap URLs; resources 200; unknown URL 404; zero verified audit issues

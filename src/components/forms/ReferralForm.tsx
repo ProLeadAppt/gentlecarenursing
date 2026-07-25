@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
 import { Textarea } from "@/components/ui/Textarea";
 import { Button } from "@/components/ui/Button";
+import { dispatchAnalyticsEvent } from "@/lib/analytics";
+import { submitWebsiteForm } from "@/lib/form-client";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -34,26 +36,32 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
     const form = e.currentTarget;
     const data = new FormData(form);
     const payload = {
-      type: "referral",
-      referrerName: data.get("referrerName"),
-      referrerEmail: data.get("referrerEmail"),
-      referrerPhone: data.get("referrerPhone"),
-      referrerRole: data.get("referrerRole"),
-      clientName: data.get("clientName"),
-      serviceType: data.get("serviceType"),
-      notes: data.get("notes"),
+      type: "referral" as const,
+      referrerName: String(data.get("referrerName") ?? ""),
+      referrerEmail: String(data.get("referrerEmail") ?? ""),
+      referrerPhone: String(data.get("referrerPhone") ?? ""),
+      referrerRole: String(data.get("referrerRole") ?? ""),
+      clientName: String(data.get("clientName") ?? ""),
+      serviceType: String(data.get("serviceType") ?? ""),
+      notes: String(data.get("notes") ?? ""),
     };
 
     try {
-      const res = await fetch("/api/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+      const { submissionId } = await submitWebsiteForm(payload);
+      dispatchAnalyticsEvent("referral_submit", {
+        form_type: "referral",
+        service_type: payload.serviceType,
+        cta_location: compact ? "compact_referral_form" : "referral_form",
+        submission_id: submissionId,
       });
-      if (!res.ok) throw new Error("Submission failed");
       setStatus("success");
       form.reset();
     } catch {
+      dispatchAnalyticsEvent("form_error", {
+        form_type: "referral",
+        cta_location: compact ? "compact_referral_form" : "referral_form",
+        error_type: "delivery",
+      });
       setStatus("error");
       setErrorMessage("Something went wrong. Please try again or contact us directly.");
     }

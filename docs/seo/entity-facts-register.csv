@@ -1,0 +1,13 @@
+fact_id,entity,claim,current_public_state,verification_status,source_owner,last_verified,review_frequency,notes
+F-001,Business,Public name is Gentle Care Nursing Services,published,confirm-with-client,Gemma,,annual,Keep exact across profiles
+F-002,Business,Address is Level 1/5 George St North Strathfield NSW 2137,published,confirm-display-policy,Gemma,,annual,Confirm clients are served there before GBP display
+F-003,Business,Phone is 1300 004 267,published,confirm-current,Gemma,,quarterly,Keep NAP consistent
+F-004,Business,Provides services across Sydney,published,confirm-boundaries,Gemma,,quarterly,Replace broad claim with precise operating boundaries if needed
+F-005,NDIS,Registered NDIS provider,published,confirm-current-registration,Gemma,,quarterly,Record registration evidence and approved wording privately
+F-006,DVA,DVA contracted Community Nursing provider,published,confirm-current-contract,Gemma,,quarterly,Record contract evidence and approved wording privately
+F-007,Aged Care,Provides aged-care-related in-home support,published,confirm-programme-and-provider-wording,Gemma,,quarterly,Avoid implying funding approval not held
+F-008,Clinical,Provides in-home nursing,published,confirm-current-scope,Clinical lead,,quarterly,Maintain capability and exclusion list
+F-009,Clinical,Provides complex care support,published,confirm-current-capabilities,Clinical lead,,quarterly,Validate staffing training and escalation claims
+F-010,Operations,Response and care-start timing,not standardised,needs-approved-sla,Operations,,quarterly,Do not publish a guarantee
+F-011,Commercial,Private nursing pricing approach,not published,needs-approved-position,Gemma,,quarterly,Decide whether to publish ranges or quote factors
+F-012,Privacy,Uses Google Analytics Microsoft Clarity SearchAtlas and GoHighLevel,partially described,needs-policy-review,Privacy owner,,annual,Privacy policy names GHL but not all tools

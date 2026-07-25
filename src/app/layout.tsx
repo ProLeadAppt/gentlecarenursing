@@ -8,7 +8,7 @@ import { MobileCta } from "@/components/layout/MobileCta";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { FormModalProvider } from "@/contexts/FormModalContext";
 import { FormModal } from "@/components/ui/FormModal";
-import { getLocalBusinessSchema, getWebsiteSchema, getOrganizationSchema } from "@/lib/schema";
+import { getLocalBusinessSchema, getWebsiteSchema } from "@/lib/schema";
 import { ServiceWorkerRegister } from "@/components/pwa/ServiceWorkerRegister";
 import { FloatingContact } from "@/components/ui/FloatingContact";
 
@@ -103,9 +103,9 @@ export default function RootLayout({
           <>
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-              strategy="beforeInteractive"
+              strategy="afterInteractive"
             />
-            <Script id="google-analytics" strategy="beforeInteractive">
+            <Script id="google-analytics" strategy="afterInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
@@ -120,7 +120,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify([
-              getOrganizationSchema(),
               getLocalBusinessSchema(),
               getWebsiteSchema(),
             ]),
@@ -156,22 +155,22 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col antialiased" suppressHydrationWarning>
         <FormModalProvider>
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-        >
-          Skip to main content
-        </a>
-        <Header />
-        <main id="main-content" className="flex-1" tabIndex={-1}>
-          {children}
-        </main>
-        <Footer />
-        <MobileCta />
-        <ScrollToTop />
-        <FormModal />
-        <FloatingContact />
-        <ServiceWorkerRegister />
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+          >
+            Skip to main content
+          </a>
+          <Header />
+          <main id="main-content" className="flex-1" tabIndex={-1}>
+            {children}
+          </main>
+          <Footer />
+          <MobileCta />
+          <ScrollToTop />
+          <FormModal />
+          <FloatingContact />
+          <ServiceWorkerRegister />
         </FormModalProvider>
       </body>
     </html>

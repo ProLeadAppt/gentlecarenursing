@@ -24,10 +24,13 @@ export function getLocalBusinessSchema() {
 
   return {
     "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
+    "@type": ["Organization", "MedicalBusiness"],
+    "@id": `${INTEGRATIONS.siteUrl}/#organization`,
     name: SITE.name,
+    legalName: SITE.name,
     description: ELEVATOR_PITCH,
     url: INTEGRATIONS.siteUrl,
+    logo: `${INTEGRATIONS.siteUrl}/images/logo.png`,
     telephone: SITE.phone || undefined,
     email: SITE.email || undefined,
     address: {
@@ -158,13 +161,18 @@ export function getWebsiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${INTEGRATIONS.siteUrl}/#website`,
     name: SITE.name,
     url: INTEGRATIONS.siteUrl,
     publisher: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
   };
 }
 
-/** Organization schema for entity clarity (GEO/AEO). Use @id so WebSite can reference publisher. */
+/**
+ * Standalone organization projection for consumers that cannot use the richer
+ * MedicalBusiness graph. Do not render this beside getLocalBusinessSchema(),
+ * because both intentionally identify the same canonical organization node.
+ */
 export function getOrganizationSchema() {
   const sameAs = [
     ...Object.values(SITE.social).filter(Boolean),
@@ -308,19 +316,7 @@ export function getServiceRegionSchemas(args: {
     name: `${args.serviceName} in ${args.region}, Sydney`,
     description: args.serviceDescription,
     url,
-    provider: {
-      "@type": "MedicalBusiness",
-      name: SITE.name,
-      url: INTEGRATIONS.siteUrl,
-      telephone: SITE.phone,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: SITE.address,
-        addressLocality: "North Strathfield",
-        addressRegion: "NSW",
-        addressCountry: "AU",
-      },
-    },
+    provider: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
     areaServed: [
       {
         "@type": "AdministrativeArea",
@@ -350,15 +346,13 @@ export function getServiceRegionSchemas(args: {
     name: args.pageTitle,
     description: args.pageDescription,
     url,
-    about: {
-      "@type": "MedicalBusiness",
+    about: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": `${INTEGRATIONS.siteUrl}/#website`,
+      url: INTEGRATIONS.siteUrl,
       name: SITE.name,
-      areaServed: {
-        "@type": "AdministrativeArea",
-        name: `${args.region}, Sydney`,
-      },
     },
-    isPartOf: { "@type": "WebSite", url: INTEGRATIONS.siteUrl, name: SITE.name },
   };
 
   return [medicalService, webPage];

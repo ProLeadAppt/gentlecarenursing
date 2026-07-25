@@ -50,3 +50,6 @@ coverage/
 
 # Git worktrees
 .worktrees/
+
+# Local Netlify folder
+.netlify

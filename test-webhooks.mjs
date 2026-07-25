@@ -1,9 +1,7 @@
-
-
 const webhooks = {
-  contact: "https://services.leadconnectorhq.com/hooks/7UPJe3L1GjcRcKMn1ONh/webhook-trigger/f85cdd65-ecf1-4d35-bf4d-4443a28c2bbc",
-  referral: "https://services.leadconnectorhq.com/hooks/7UPJe3L1GjcRcKMn1ONh/webhook-trigger/c4f328f9-7528-4c6a-8fa9-7346433cd9df",
-  carefinder: "https://services.leadconnectorhq.com/hooks/7UPJe3L1GjcRcKMn1ONh/webhook-trigger/51e4eb16-5111-4d22-8e9c-e62be73961e1"
+  contact: process.env.GHL_CONTACT_WEBHOOK_URL,
+  referral: process.env.GHL_REFERRAL_WEBHOOK_URL,
+  carefinder: process.env.GHL_CAREFINDER_WEBHOOK_URL,
 };
 
 const payloads = {
@@ -14,6 +12,10 @@ const payloads = {
 
 async function testWebhooks() {
   for (const [name, url] of Object.entries(webhooks)) {
+    if (!url) {
+      console.log(`Skipping ${name}: webhook environment variable is not configured.`);
+      continue;
+    }
     console.log(`Testing ${name}...`);
     try {
       const response = await fetch(url, {
