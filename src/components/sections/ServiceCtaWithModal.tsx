@@ -18,8 +18,8 @@ export function ServiceCtaWithModal({ title, description }: ServiceCtaWithModalP
       description={description}
       primaryCta={CTA_LINKS.requestCare}
       secondaryCta={CTA_LINKS.contact}
-      onPrimaryClick={() => openModal("contact")}
-      onSecondaryClick={() => openModal("contact")}
+      onPrimaryClick={() => openModal("contact", "service_cta_primary")}
+      onSecondaryClick={() => openModal("contact", "service_cta_secondary")}
       reassurance={CTA_REASSURANCE}
       variant="primary"
     />

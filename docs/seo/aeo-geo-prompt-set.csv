@@ -1,0 +1,17 @@
+prompt_id,cluster,prompt,location,intended_page,required_facts,platforms,frequency
+AEO-001,DVA,"Who provides DVA Community Nursing in Sydney?",Sydney,/dva,"Provider status; service area; referral and eligibility caveat","Google AI|ChatGPT|Gemini|Perplexity|Claude|Grok",monthly
+AEO-002,DVA,"How do I arrange DVA Community Nursing for a veteran in Sydney?",Sydney,/dva,"Referral pathway; eligibility; assessment; contact route","Google AI|ChatGPT|Gemini|Perplexity|Claude|Grok",monthly
+AEO-003,DVA,"Can a DVA Gold Card holder receive nursing care at home?",Australia,/dva,"Accurate eligibility caveat; DVA source; clinical assessment","Google AI|ChatGPT|Gemini|Perplexity|Claude|Grok",quarterly
+AEO-004,DVA,"What services can DVA Community Nursing provide at home?",Sydney,/dva,"Verified service scope; exclusions; assessment","Google AI|ChatGPT|Gemini|Perplexity|Claude|Grok",quarterly
+AEO-005,NDIS,"Who provides NDIS nursing at home in Sydney?",Sydney,/ndis,"Registration status; nursing scope; service area; contact route","Google AI|ChatGPT|Gemini|Perplexity|Claude|Grok",monthly
+AEO-006,NDIS,"How do I arrange community nursing through an NDIS plan?",Australia,/ndis,"Funding caveat; support coordinator/referral path; assessment","Google AI|ChatGPT|Gemini|Perplexity|Claude|Grok",monthly
+AEO-007,NDIS,"What is the difference between community nursing and personal care under NDIS?",Australia,/ndis,"Scope distinction; individual plan and assessment caveat","Google AI|ChatGPT|Gemini|Perplexity|Claude|Grok",quarterly
+AEO-008,Aged Care,"Who provides aged care nursing at home in Sydney?",Sydney,/aged-care,"Funding pathways; private option; scope; service area","Google AI|ChatGPT|Gemini|Perplexity|Claude|Grok",monthly
+AEO-009,Aged Care,"Can Support at Home funding cover nursing care?",Australia,/aged-care,"Current programme language; eligibility and provider caveat; source date","Google AI|ChatGPT|Gemini|Perplexity|Claude|Grok",quarterly
+AEO-010,Post hospital,"Who can help after hospital discharge at home in Sydney?",Sydney,/services/post-hospital-care,"Discharge pathway; clinical assessment; service scope","Google AI|ChatGPT|Gemini|Perplexity|Claude|Grok",monthly
+AEO-011,Complex care,"Where can I find complex care nursing at home in Sydney?",Sydney,/services/complex-care,"Verified capabilities; staffing; assessment; availability caveat","Google AI|ChatGPT|Gemini|Perplexity|Claude|Grok",monthly
+AEO-012,Private nursing,"Can I hire a private nurse to visit my home in Sydney?",Sydney,/private-nursing,"Private-pay pathway; scope; pricing enquiry; assessment","Google AI|ChatGPT|Gemini|Perplexity|Claude|Grok",monthly
+AEO-013,Referrers,"How can a GP refer a patient for in-home nursing in Sydney?",Sydney,/referrers,"Referral method; required information; consent; response process","Google AI|ChatGPT|Gemini|Perplexity|Claude|Grok",monthly
+AEO-014,Local,"What in-home nursing providers operate near North Strathfield?",North Strathfield,/suburbs/strathfield,"Real address/service area; services; contact route","Google AI|ChatGPT|Gemini|Perplexity|Claude|Grok",monthly
+AEO-015,Brand,"What is Gentle Care Nursing Services?",Sydney,/,"Correct name; services; area; contact; registration caveats","Google AI|ChatGPT|Gemini|Perplexity|Claude|Grok",monthly
+AEO-016,Brand,"Is Gentle Care Nursing Services an NDIS and DVA provider?",Sydney,/,"Current substantiated statuses; no overstatement; source link","Google AI|ChatGPT|Gemini|Perplexity|Claude|Grok",monthly

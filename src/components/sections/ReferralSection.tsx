@@ -76,7 +76,7 @@ export function ReferralSection({ headline, subtitle }: ReferralSectionProps) {
             <Button
               size="xl"
               variant="primary"
-              onClick={() => openModal("referral")}
+              onClick={() => openModal("referral", "referral_section")}
               className="group h-16 px-12 rounded-[1.25rem] shadow-xl hover:shadow-primary/20"
             >
               Start Referral Process

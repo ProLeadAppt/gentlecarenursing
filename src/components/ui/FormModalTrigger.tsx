@@ -13,6 +13,7 @@ interface FormModalTriggerProps {
   size?: ButtonSize;
   children: React.ReactNode;
   className?: string;
+  analyticsLocation?: string;
 }
 
 export function FormModalTrigger({
@@ -21,6 +22,7 @@ export function FormModalTrigger({
   size = "md",
   children,
   className,
+  analyticsLocation = "form_modal_trigger",
 }: FormModalTriggerProps) {
   const { openModal } = useFormModal();
 
@@ -30,7 +32,7 @@ export function FormModalTrigger({
   return (
     <button
       type="button"
-      onClick={() => openModal(formType)}
+      onClick={() => openModal(formType, analyticsLocation)}
       className={cn(base, BUTTON_VARIANTS[variant], BUTTON_SIZES[size], className)}
     >
       {children}

@@ -8,6 +8,8 @@ import { FormField } from "@/components/ui/FormField";
 import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
 import { Textarea } from "@/components/ui/Textarea";
+import { dispatchAnalyticsEvent } from "@/lib/analytics";
+import { submitWebsiteForm } from "@/lib/form-client";
 
 type Step = 1 | 2 | 3 | 4;
 
@@ -48,14 +50,20 @@ export function ReferralConcierge() {
     setIsSubmitting(true);
     
     try {
-      const res = await fetch("/api/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "referral", ...formData }),
+      const { submissionId } = await submitWebsiteForm({ type: "referral", ...formData });
+      dispatchAnalyticsEvent("referral_submit", {
+        form_type: "referral",
+        service_type: formData.serviceType,
+        cta_location: "referral_concierge",
+        submission_id: submissionId,
       });
-      if (!res.ok) throw new Error("Submission failed");
       setIsSuccess(true);
     } catch (error) {
+      dispatchAnalyticsEvent("form_error", {
+        form_type: "referral",
+        cta_location: "referral_concierge",
+        error_type: "delivery",
+      });
       console.error(error);
       alert("Something went wrong. Please try again.");
     } finally {

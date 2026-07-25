@@ -154,6 +154,8 @@ export function Hero({
                   <Magnetic>
                     <a
                       href={primaryCta.href}
+                      data-analytics-action="request_care"
+                      data-analytics-location="hero"
                       className="group inline-flex items-center justify-center rounded-full bg-primary px-10 py-4 text-base font-semibold text-primary-foreground shadow-sm transition-transform hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
                     >
                       {primaryCta.label}
@@ -168,7 +170,9 @@ export function Hero({
                 ) : (
                   <Magnetic>
                     <Button
-                      onClick={() => openModal("contact")}
+                      onClick={() => openModal("contact", "hero")}
+                      data-analytics-action="request_care"
+                      data-analytics-location="hero"
                       size="xl"
                       variant="primary"
                       className="group px-10"
@@ -186,6 +190,8 @@ export function Hero({
                 {secondaryCta ? (
                   <a
                     href={secondaryCta.href}
+                    data-analytics-action="make_referral"
+                    data-analytics-location="hero"
                     className="text-primary font-medium text-base hover:underline transition-colors"
                   >
                     {secondaryCta.label} →

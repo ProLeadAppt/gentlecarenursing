@@ -44,7 +44,7 @@ export function ProcessSteps({
       onCtaClick();
     } else if (cta?.href === CTA_LINKS.requestCare.href) {
       e.preventDefault();
-      openModal("contact");
+      openModal("contact", "process_steps");
     }
   };
 

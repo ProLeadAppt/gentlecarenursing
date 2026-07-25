@@ -1,92 +1,43 @@
+import { randomUUID } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
+import { deliverSubmission, validateFormPayload } from "@/lib/submission";
 
-interface ContactPayload {
-  type: "contact";
-  name: string;
-  email: string;
-  phone?: string;
-  message: string;
-}
-
-interface ReferralPayload {
-  type: "referral";
-  referrerName: string;
-  referrerEmail: string;
-  referrerPhone?: string;
-  referrerRole?: string;
-  clientName?: string;
-  serviceType?: string;
-  notes?: string;
-}
-
-type FormPayload = ContactPayload | ReferralPayload;
-
-function validatePayload(body: unknown): body is FormPayload {
-  if (!body || typeof body !== "object") return false;
-  const obj = body as Record<string, unknown>;
-
-  if (obj.type === "contact") {
-    return (
-      typeof obj.name === "string" &&
-      obj.name.trim().length > 0 &&
-      typeof obj.email === "string" &&
-      obj.email.includes("@") &&
-      typeof obj.message === "string" &&
-      obj.message.trim().length > 0
-    );
+function webhookFor(type: "contact" | "referral"): string {
+  if (type === "contact") {
+    return process.env.GHL_CONTACT_WEBHOOK_URL || process.env.GHL_WEBHOOK_URL || "";
   }
-
-  if (obj.type === "referral") {
-    return (
-      typeof obj.referrerName === "string" &&
-      obj.referrerName.trim().length > 0 &&
-      (!obj.referrerEmail || (typeof obj.referrerEmail === "string" && obj.referrerEmail.includes("@")))
-    );
-  }
-
-  return false;
+  return process.env.GHL_REFERRAL_WEBHOOK_URL || process.env.GHL_WEBHOOK_URL || "";
 }
 
 /**
- * Form submission handler.
- * Validates payload and proxies to GoHighLevel when configured.
+ * Validates a website form submission and confirms GoHighLevel accepted it.
+ * The returned submissionId is safe to send to GA4 for aggregate reconciliation.
  */
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
-    if (!validatePayload(body)) {
+    if (!validateFormPayload(body)) {
       return NextResponse.json(
         { success: false, error: "Invalid form data. Please check required fields." },
         { status: 400 }
       );
     }
 
-    let ghlWebhookUrl = process.env.GHL_WEBHOOK_URL;
-    if (body.type === "contact") {
-      ghlWebhookUrl = process.env.GHL_CONTACT_WEBHOOK_URL || "https://services.leadconnectorhq.com/hooks/7UPJe3L1GjcRcKMn1ONh/webhook-trigger/f85cdd65-ecf1-4d35-bf4d-4443a28c2bbc";
-    } else if (body.type === "referral") {
-      ghlWebhookUrl = process.env.GHL_REFERRAL_WEBHOOK_URL || "https://services.leadconnectorhq.com/hooks/7UPJe3L1GjcRcKMn1ONh/webhook-trigger/c4f328f9-7528-4c6a-8fa9-7346433cd9df";
-    }
+    const result = await deliverSubmission(body, {
+      webhookUrl: webhookFor(body.type),
+      submissionId: randomUUID(),
+    });
 
-    if (ghlWebhookUrl) {
-      const ghlResponse = await fetch(ghlWebhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-
-      if (!ghlResponse.ok) {
-        console.error("GoHighLevel webhook failed:", ghlResponse.status);
-      }
-    }
-
-    return NextResponse.json({ success: true });
-  } catch (err) {
-    console.error("Form submission error:", err);
+    return NextResponse.json(result);
+  } catch (error) {
+    console.error(
+      "Form submission delivery failed:",
+      error instanceof Error ? error.message : "Unknown error"
+    );
     return NextResponse.json(
       { success: false, error: "Submission failed. Please try again." },
-      { status: 500 }
+      { status: 502 }
     );
   }
 }

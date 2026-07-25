@@ -1,0 +1,25 @@
+keyword,cluster,intent,landing_page,location,device,source,priority,notes
+DVA community nursing Sydney,DVA,service,/dva,Sydney,mobile,GSC+rank-tracker,1,Core service term
+DVA nursing provider Sydney,DVA,provider,/dva,Sydney,mobile,GSC+rank-tracker,1,Provider discovery
+DVA home nursing Sydney,DVA,service,/dva,Sydney,mobile,GSC+rank-tracker,1,Home-based care
+DVA community nursing Inner West,DVA local,local service,/services/dva-community-nursing/inner-west,Inner West,mobile,rank-tracker+maps,2,Local service-region term
+DVA community nursing Western Sydney,DVA local,local service,/services/dva-community-nursing/western-sydney,Western Sydney,mobile,rank-tracker+maps,2,Local service-region term
+NDIS nursing Sydney,NDIS,service,/ndis,Sydney,mobile,GSC+rank-tracker,1,Core service term
+registered NDIS nursing provider Sydney,NDIS,provider,/ndis,Sydney,mobile,GSC+rank-tracker,1,Provider discovery
+NDIS in-home nursing Sydney,NDIS,service,/ndis,Sydney,mobile,GSC+rank-tracker,1,Home-based care
+NDIS nursing Inner West,NDIS local,local service,/services/ndis-services/inner-west,Inner West,mobile,rank-tracker+maps,2,Local service-region term
+NDIS nursing Western Sydney,NDIS local,local service,/services/ndis-services/western-sydney,Western Sydney,mobile,rank-tracker+maps,2,Local service-region term
+in-home nursing Sydney,Home nursing,service,/services,Sydney,mobile,GSC+rank-tracker,1,Broad category term
+home nursing care Sydney,Home nursing,service,/services,Sydney,mobile,GSC+rank-tracker,1,Broad category term
+aged care at home Sydney,Aged care,service,/aged-care,Sydney,mobile,GSC+rank-tracker,1,Core service term
+private nursing Sydney,Private nursing,service,/private-nursing,Sydney,mobile,GSC+rank-tracker,1,Core service term
+private nurse at home Sydney,Private nursing,service,/private-nursing,Sydney,mobile,GSC+rank-tracker,2,Commercial variant
+complex care at home Sydney,Complex care,service,/services/complex-care,Sydney,mobile,GSC+rank-tracker,1,High-acuity intent
+post hospital care Sydney,Post hospital,service,/services/post-hospital-care,Sydney,mobile,GSC+rank-tracker,1,Transition-of-care intent
+hospital at home Sydney,Hospital at home,service,/services/hospital-at-home,Sydney,mobile,GSC+rank-tracker,1,Core service term
+palliative care at home Sydney,Palliative,service,/services/palliative-care,Sydney,mobile,GSC+rank-tracker,2,Sensitive YMYL term
+nursing care at home Strathfield,Suburb local,local service,/suburbs/strathfield,Strathfield,mobile,rank-tracker+maps,2,Near business location
+home nursing North Strathfield,Suburb local,local service,/suburbs/strathfield,North Strathfield,mobile,rank-tracker+maps,2,Near business location
+home care provider Sydney,Provider discovery,provider,/services,Sydney,mobile,GSC+rank-tracker,2,Broad competitive term
+refer a patient for home nursing Sydney,Referrer,referral,/referrers,Sydney,desktop,GSC+rank-tracker,2,Referrer intent
+community nursing referral Sydney,Referrer,referral,/referral,Sydney,desktop,GSC+rank-tracker,2,Referrer intent

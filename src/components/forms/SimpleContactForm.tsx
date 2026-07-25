@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
 import { Textarea } from "@/components/ui/Textarea";
 import { Button } from "@/components/ui/Button";
+import { dispatchAnalyticsEvent } from "@/lib/analytics";
+import { submitWebsiteForm } from "@/lib/form-client";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -27,24 +29,30 @@ export function SimpleContactForm() {
     const form = e.currentTarget;
     const data = new FormData(form);
     const payload = {
-      type: "contact",
-      name: data.get("name"),
-      email: data.get("email"),
-      phone: data.get("phone"),
-      serviceType: data.get("serviceType"),
-      message: data.get("message"),
+      type: "contact" as const,
+      name: String(data.get("name") ?? ""),
+      email: String(data.get("email") ?? ""),
+      phone: String(data.get("phone") ?? ""),
+      serviceType: String(data.get("serviceType") ?? ""),
+      message: String(data.get("message") ?? ""),
     };
 
     try {
-      const res = await fetch("/api/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+      const { submissionId } = await submitWebsiteForm(payload);
+      dispatchAnalyticsEvent("generate_lead", {
+        form_type: "contact",
+        service_type: payload.serviceType,
+        cta_location: "homepage",
+        submission_id: submissionId,
       });
-      if (!res.ok) throw new Error("Submission failed");
       setStatus("success");
       form.reset();
     } catch {
+      dispatchAnalyticsEvent("form_error", {
+        form_type: "contact",
+        cta_location: "homepage",
+        error_type: "delivery",
+      });
       setStatus("error");
       setErrorMessage(
         "Something went wrong. Please try again or call us on 1300 004 267."
