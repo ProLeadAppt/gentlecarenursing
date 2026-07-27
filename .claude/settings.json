@@ -9,5 +9,16 @@
       "Bash(grep -r \"Newsletter\\\\|subscribe\\\\|email.*signup\\\\|lead.*magnet\\\\|free.*download\" 'd:\\\\Dev\\\\Gentle Care Nursing\\\\src' --include=*.tsx --include=*.ts)",
       "Bash(grep -E \"\\\\.tsx$|error|sitemap|robots\")"
     ]
+  },
+  "extraKnownMarketplaces": {
+    "agricidaniel-claude-seo": {
+      "source": {
+        "source": "github",
+        "repo": "AgriciDaniel/claude-seo"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "claude-seo@agricidaniel-claude-seo": true
   }
 }
