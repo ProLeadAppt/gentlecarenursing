@@ -375,35 +375,12 @@ export function getAreaPageSchema(region: string, path: string, description: str
   };
 }
 
-export interface HowToStep {
-  number: number;
-  headline: string;
-  description: string;
-}
-
-/**
- * HowTo schema for "How to request care". Supports AEO / featured snippets.
- */
-export function getHowToSchema(
-  name: string,
-  description: string,
-  steps: readonly HowToStep[],
-  url: string
-) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    name,
-    description,
-    url: `${INTEGRATIONS.siteUrl}${url}`,
-    step: steps.map((s) => ({
-      "@type": "HowToStep",
-      position: s.number,
-      name: s.headline,
-      text: s.description,
-    })),
-  };
-}
+// HowTo schema was removed on 2026-07-28. Google withdrew HowTo rich results
+// for all surfaces in September 2023 and retired the Search Console reporting
+// in 2025, so the markup produced nothing while still needing to be kept in
+// lockstep with the visible steps. The visible step content is the asset now:
+// keep it as a numbered list with a question-shaped heading, which is what
+// featured snippets and AI answer engines actually extract.
 
 export function getAggregateRatingSchema() {
   if (GOOGLE_REVIEWS.averageRating == null || GOOGLE_REVIEWS.reviewCount == null) {
