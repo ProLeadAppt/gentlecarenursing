@@ -7,6 +7,8 @@ const eslintConfig = defineConfig([
   ...nextTs,
   // Override default ignores of eslint-config-next.
   globalIgnores([
+    // Vendored claude-seo plugin. Third-party source, not ours to lint.
+    ".claude/**",
     // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",
