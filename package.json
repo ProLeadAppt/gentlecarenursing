@@ -2,6 +2,9 @@
   "name": "gentle-care-nursing",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20.9.0 <25"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -14,7 +17,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.37.0",
     "lucide-react": "^0.577.0",
-    "next": "^16.1.7",
+    "next": "16.2.12",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "resend": "^6.12.4"
@@ -26,7 +29,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.1.6",
+    "eslint-config-next": "16.2.12",
     "tailwind-merge": "^2.6.0",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
@@ -41,5 +44,9 @@
     "samsung >= 16",
     "not dead",
     "not op_mini all"
-  ]
+  ],
+  "overrides": {
+    "postcss": "8.5.25",
+    "sharp": "0.35.3"
+  }
 }
