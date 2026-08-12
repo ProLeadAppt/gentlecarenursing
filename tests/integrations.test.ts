@@ -1,21 +1,15 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import {
+  REGISTERED_GA_ID,
+  resolveGaId,
+} from "../src/config/integrations.ts";
 
-test("analytics uses the registered Gentle Care GA4 measurement ID by default", async () => {
-  const previousGaId = process.env.NEXT_PUBLIC_GA_ID;
-  delete process.env.NEXT_PUBLIC_GA_ID;
+test("analytics uses the registered Gentle Care GA4 measurement ID by default", () => {
+  assert.equal(REGISTERED_GA_ID, "G-SZ2588QL1J");
+  assert.equal(resolveGaId(undefined), REGISTERED_GA_ID);
+});
 
-  try {
-    const { INTEGRATIONS } = await import(
-      `../src/config/integrations.ts?default-ga-id=${Date.now()}`
-    );
-
-    assert.equal(INTEGRATIONS.analytics.gaId, "G-SZ2588QL1J");
-  } finally {
-    if (previousGaId === undefined) {
-      delete process.env.NEXT_PUBLIC_GA_ID;
-    } else {
-      process.env.NEXT_PUBLIC_GA_ID = previousGaId;
-    }
-  }
+test("analytics honours an explicit GA4 measurement ID override", () => {
+  assert.equal(resolveGaId("G-OVERRIDE123"), "G-OVERRIDE123");
 });
