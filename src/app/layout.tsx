@@ -11,6 +11,7 @@ import { FormModal } from "@/components/ui/FormModal";
 import { getLocalBusinessSchema, getWebsiteSchema } from "@/lib/schema";
 import { ServiceWorkerRegister } from "@/components/pwa/ServiceWorkerRegister";
 import { FloatingContact } from "@/components/ui/FloatingContact";
+import { INTEGRATIONS } from "@/config/integrations";
 
 const sourceSans = Source_Sans_3({
   variable: "--font-source-sans",
@@ -88,7 +89,7 @@ export const viewport: Viewport = {
   themeColor: "#3D0A11",
 };
 
-const gaId = process.env.NEXT_PUBLIC_GA_ID;
+const gaId = INTEGRATIONS.analytics.gaId;
 
 export default function RootLayout({
   children,

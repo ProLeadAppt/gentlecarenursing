@@ -11,7 +11,7 @@ export const INTEGRATIONS = {
     voiceEmbedId: process.env.NEXT_PUBLIC_GHL_EMBED_VOICE_ID ?? "",
   },
   analytics: {
-    gaId: process.env.NEXT_PUBLIC_GA_ID ?? "",
+    gaId: process.env.NEXT_PUBLIC_GA_ID ?? "G-SZ2588QL1J",
     gscVerification:
       process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ??
       process.env.NEXT_PUBLIC_GSC_VERIFICATION ??
