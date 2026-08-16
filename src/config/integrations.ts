@@ -3,6 +3,14 @@
  * All values are sourced from environment variables.
  */
 
+export const REGISTERED_GA_ID = "G-SZ2588QL1J";
+
+export function resolveGaId(
+  configuredGaId: string | undefined = process.env.NEXT_PUBLIC_GA_ID
+): string {
+  return configuredGaId ?? REGISTERED_GA_ID;
+}
+
 export const INTEGRATIONS = {
   ghl: {
     webhookUrl: process.env.GHL_WEBHOOK_URL ?? "",
@@ -11,7 +19,7 @@ export const INTEGRATIONS = {
     voiceEmbedId: process.env.NEXT_PUBLIC_GHL_EMBED_VOICE_ID ?? "",
   },
   analytics: {
-    gaId: process.env.NEXT_PUBLIC_GA_ID ?? "",
+    gaId: resolveGaId(),
     gscVerification:
       process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ??
       process.env.NEXT_PUBLIC_GSC_VERIFICATION ??
