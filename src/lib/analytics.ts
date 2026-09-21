@@ -83,39 +83,44 @@ export function dispatchAnalyticsEvent(
   parameters: AnalyticsParameters = {},
   runtime?: AnalyticsRuntime
 ): void {
-  const browserRuntime: AnalyticsRuntime | undefined =
-    runtime ??
-    (typeof window !== "undefined"
-      ? {
-          pathname: window.location.pathname,
-          gtag: window.gtag,
-          dataLayer: window.dataLayer,
-        }
-      : undefined);
+  try {
+    const browserRuntime: AnalyticsRuntime | undefined =
+      runtime ??
+      (typeof window !== "undefined"
+        ? {
+            pathname: window.location.pathname,
+            gtag: window.gtag,
+            dataLayer: window.dataLayer,
+          }
+        : undefined);
 
-  if (!browserRuntime) return;
+    if (!browserRuntime) return;
 
-  const payload = buildAnalyticsPayload(parameters, browserRuntime.pathname);
-  const eventArguments: ["event", AnalyticsEventName, typeof payload] = [
-    "event",
-    eventName,
-    payload,
-  ];
+    const payload = buildAnalyticsPayload(parameters, browserRuntime.pathname);
+    const eventArguments: ["event", AnalyticsEventName, typeof payload] = [
+      "event",
+      eventName,
+      payload,
+    ];
 
-  if (typeof browserRuntime.gtag === "function") {
-    browserRuntime.gtag(...eventArguments);
-    return;
-  }
+    if (typeof browserRuntime.gtag === "function") {
+      browserRuntime.gtag(...eventArguments);
+      return;
+    }
 
-  if (runtime) {
-    runtime.dataLayer ??= [];
-    runtime.dataLayer.push(eventArguments);
-    return;
-  }
+    if (runtime) {
+      runtime.dataLayer ??= [];
+      runtime.dataLayer.push(eventArguments);
+      return;
+    }
 
-  if (typeof window !== "undefined") {
-    window.dataLayer ??= [];
-    window.dataLayer.push(eventArguments);
+    if (typeof window !== "undefined") {
+      window.dataLayer ??= [];
+      window.dataLayer.push(eventArguments);
+    }
+  } catch {
+    // Tracking is optional: an accepted enquiry must stay successful when analytics fails.
+    // Do not retry here; the provider may have accepted the event before throwing.
   }
 }
 

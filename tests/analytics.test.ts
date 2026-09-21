@@ -130,3 +130,18 @@ test("getLinkAnalyticsEvent classifies phone, email and explicit care CTAs", () 
   });
   assert.equal(getLinkAnalyticsEvent("/services", undefined), null);
 });
+
+test("tracking failure cannot turn an accepted enquiry into a failed form", () => {
+  const runtime = {
+    pathname: "/referral",
+    gtag: () => { throw new Error("Analytics blocked"); },
+    dataLayer: [] as unknown[],
+  };
+  assert.doesNotThrow(() => dispatchAnalyticsEvent("referral_submit", { form_type: "referral" }, runtime));
+  assert.equal(runtime.dataLayer.length, 0, "do not retry a potentially accepted event");
+});
+
+test("an unavailable analytics queue cannot interrupt the user journey", () => {
+  const runtime = { pathname: "/contact", dataLayer: Object.freeze([]) as unknown as unknown[] };
+  assert.doesNotThrow(() => dispatchAnalyticsEvent("generate_lead", {}, runtime));
+});
