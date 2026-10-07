@@ -26,6 +26,8 @@ test("service-region schema references the canonical organization instead of dup
     pageDescription: "NDIS nursing in the Inner West.",
   });
 
+  assert.ok("provider" in service);
+  assert.ok("about" in page && "isPartOf" in page);
   assert.deepEqual(service.provider, { "@id": canonicalEntityId });
   assert.deepEqual(page.about, { "@id": canonicalEntityId });
   assert.deepEqual(page.isPartOf, {

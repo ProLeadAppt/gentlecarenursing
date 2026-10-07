@@ -14,8 +14,7 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 /**
  * Simple contact / referral form for the homepage — per Gemma's brief 2026-06-10.
  * Fields: name, phone, service type, email (for follow-up), message.
- * Submits to /api/submit (type: "contact"), which forwards to the LeadConnector
- * contact webhook (services.leadconnectorhq.com/hooks/...).
+ * Submits to /api/submit (type: "contact"), which emails the verified enquiry recipient.
  */
 export function SimpleContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");

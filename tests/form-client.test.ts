@@ -43,6 +43,7 @@ test("submitWebsiteForm rejects success responses without a valid reconciliation
       {
         type: "referral",
         referrerName: "Test Referrer",
+        referrerPhone: "Synthetic test value",
       },
       async () => Response.json({ success: true })
     ),

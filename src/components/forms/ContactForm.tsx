@@ -61,7 +61,7 @@ export function ContactForm() {
       <div className="rounded-lg border border-accent/30 bg-accent/5 p-6 text-center" role="alert">
         <p className="text-lg font-semibold text-foreground">Thank you!</p>
         <p className="mt-2 text-muted-foreground">
-          We&apos;ve received your message. You&apos;ll hear from us within minutes.
+          Your enquiry has been accepted for delivery to our team. If it is urgent, please call 1300 004 267.
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
           Need to talk? Call us or send another message.
