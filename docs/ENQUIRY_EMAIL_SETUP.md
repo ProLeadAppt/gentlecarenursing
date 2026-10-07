@@ -8,8 +8,12 @@ The recipient is fixed server-side. This is separate from sender authentication.
 
 - Owner confirms `RESEND_API_KEY` is missing; no key value has been accessed.
 - Resend is installed and referenced by the feedback route, which proves only code
-  integration. Existing Resend account/team, domain verification and sending
-  permissions remain unknown: browser redirects to `https://resend.com/login`.
+  integration. The parent has now connected the existing Resend account and reports
+  its domain list contains only `aussieloanoffice.com.au`; Gentle Care's sending
+  domain is missing. Browser access in this task still redirects to login.
+- The parent owns provider setup and has requested specific owner approval to add
+  `gentlecarenursing.com.au` for sending and prepare its authentication DNS. That
+  approval is pending. Do not duplicate parent domain/key actions.
 - Netlify site: `bf77fef2-8e33-4a5e-a92b-34e10d287699`, gentlecarenursing,
   team `68664a7a3810939dcecac81c`. Existing CLI is authenticated; browser environment
   settings are login-gated. No denied credential-bearing API inspection is retried.
@@ -49,11 +53,14 @@ Resend inbound mail, or change DMARC/security policy as part of sending setup.
 
 ## Secure owner handoff
 
-The smallest next step is for the owner to sign in to the **existing Resend account**
-at https://resend.com/domains and report only its account/team identifier, whether
-`gentlecarenursing.com.au` is verified with sending enabled, and the generated
-public DNS rows if setup is missing. No API key should be sent in chat or screenshots.
-If no existing account can be accessed, stop for a specific account/setup decision.
+The smallest next step is for the owner to respond to the parent's pending,
+specific approval request to add `gentlecarenursing.com.au` for sending and prepare
+its authentication DNS. The parent uses the existing connected account; this task
+must not duplicate those actions. The provider's generated public DNS rows will
+make the DNS proposal exact and reviewable before approval to change DNS.
+No API key should be sent in chat or screenshots. No new account or plan is needed
+by this proposal. Domain approval does not itself approve credential creation,
+DNS writes or deployment.
 
 After the correct verified sending domain and scoped key action are approved,
 the owner creates the key personally at https://resend.com/api-keys. Proposed
