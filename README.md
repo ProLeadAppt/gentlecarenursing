@@ -47,9 +47,11 @@ See `docs/FOLDER_STRUCTURE.md` for the component and folder architecture.
 
 ## Direct enquiry email delivery
 
+See [secure setup proposal](docs/ENQUIRY_EMAIL_SETUP.md).
+
 Homepage, contact, primary referral and referral concierge submit to `/api/submit`.
-Enquiries go only to `gemma@gentlecarenursing.com.au` using the existing Resend provider.
-Server-only `RESEND_API_KEY` and the existing verified `REVIEW_FEEDBACK_FROM_EMAIL`
+Enquiries go only to `info@gentlecarenursing.com.au` using Resend. The library is installed; provider readiness must be verified.
+Server-only `RESEND_API_KEY` and the configured `REVIEW_FEEDBACK_FROM_EMAIL`
 (default `noreply@gentlecarenursing.com.au`) must be confirmed in the Netlify site's
 production function environment before approval to deploy. No GoHighLevel fallback.
 No credentials, provider accounts or environment settings are changed by this PR.
@@ -63,7 +65,7 @@ share the provider receipt. Changing any enquiry detail allows a new enquiry.
 Existing hosting spam controls must be retained; application checks bound input
 and reject invalid values/cross-origin browser submissions but are not a full
 bot-protection service. Do not deploy until sender/key and provider acceptance
-are verified, and the owner approves. Gemma must confirm inbox receipt.
+are verified, and the owner approves. The inbox owner must confirm receipt.
 
 Rollback: revert this PR; this restores the legacy webhook requirement and does
 not restore access to the retired GoHighLevel account.

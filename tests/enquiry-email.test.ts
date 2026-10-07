@@ -5,7 +5,7 @@ import { deliverSubmission, validateFormPayload, type FormPayload } from "../src
 const payload = { type: "contact" as const, name: "Synthetic", email: "owner@example.com", message: "Test only" };
 const id = "d836e511-cd92-4872-bbd1-18ed349e30af";
 
-test("enquiries go directly to Gemma; receipt requires provider acceptance", async () => {
+test("enquiries go directly to the enquiry inbox; receipt requires provider acceptance", async () => {
   let request: Record<string, unknown> = {};
   const result = await deliverSubmission(payload, {
     apiKey: "dummy", fromEmail: "noreply@gentlecarenursing.com.au",
@@ -15,7 +15,7 @@ test("enquiries go directly to Gemma; receipt requires provider acceptance", asy
       return Response.json({ id });
     },
   });
-  assert.deepEqual(request.to, ["gemma@gentlecarenursing.com.au"]);
+  assert.deepEqual(request.to, ["info@gentlecarenursing.com.au"]);
   assert.equal(request.reply_to, payload.email);
   assert.deepEqual(result, { success: true, submissionId: id });
 });
@@ -27,7 +27,7 @@ test("HTTP success without a provider receipt fails closed", async () => {
   }));
 });
 
-test("contact/homepage and both referral shapes email Gemma with readable labels", async () => {
+test("contact/homepage and both referral shapes email the enquiry inbox with readable labels", async () => {
   const cases: FormPayload[] = [
     payload, { ...payload, phone: "", serviceType: "Clinical Nursing" },
     { type: "referral", referrerName: "Synthetic", referrerPhone: "verified-number" },
@@ -36,7 +36,7 @@ test("contact/homepage and both referral shapes email Gemma with readable labels
   for (const body of cases) {
     await deliverSubmission(body, { apiKey: "dummy", fromEmail: "noreply@gentlecarenursing.com.au", fetcher: async (_url, init) => {
       const email = JSON.parse(String(init?.body));
-      assert.deepEqual(email.to, ["gemma@gentlecarenursing.com.au"]);
+      assert.deepEqual(email.to, ["info@gentlecarenursing.com.au"]);
       assert.equal(email.html, undefined);
       assert.equal(email.subject.includes("Synthetic"), false);
       if (body.type === "referral" && body.referrerRole) assert.match(email.text, /Support Coordinator/);

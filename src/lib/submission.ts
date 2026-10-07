@@ -134,7 +134,7 @@ export async function deliverSubmission(
   const replyTo = payload.type === "contact" ? payload.email.trim() : payload.referrerEmail?.trim();
   const email = {
     from: `Gentle Care Nursing <${options.fromEmail}>`,
-    to: ["gemma@gentlecarenursing.com.au"],
+    to: ["info@gentlecarenursing.com.au"],
     ...(replyTo ? { reply_to: replyTo } : {}),
     subject: payload.type === "contact" ? "Website enquiry — Gentle Care Nursing" : "Website referral — Gentle Care Nursing",
     // Plain text avoids interpreting enquiry content as HTML. No patient names in subject.
