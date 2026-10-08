@@ -1,3 +1,5 @@
+import { createHmac } from "node:crypto";
+
 export interface ContactPayload {
   type: "contact";
   name: string;
@@ -22,8 +24,8 @@ export interface ReferralPayload {
 export type FormPayload = ContactPayload | ReferralPayload;
 
 interface DeliveryOptions {
-  webhookUrl: string;
-  submissionId: string;
+  apiKey: string;
+  fromEmail: string;
   fetcher?: typeof fetch;
 }
 
@@ -59,13 +61,19 @@ const REFERRAL_SERVICE_LABELS: Record<string, string> = {
 export function validateFormPayload(body: unknown): body is FormPayload {
   if (!body || typeof body !== "object") return false;
   const obj = body as Record<string, unknown>;
+  // Bound input and reject non-string optional fields before rendering email.
+  const fields = obj.type === "contact"
+    ? ["type", "name", "email", "phone", "serviceType", "message"]
+    : ["type", "referrerName", "referrerEmail", "referrerPhone", "referrerRole", "organization", "clientName", "serviceType", "notes"];
+  if (Object.keys(obj).some(key => !fields.includes(key))) return false;
+  if (Object.entries(obj).some(([key, value]) => typeof value !== "string" || value.length > (["message", "notes"].includes(key) ? 5000 : 254))) return false;
 
   if (obj.type === "contact") {
     return (
       typeof obj.name === "string" &&
       obj.name.trim().length > 0 &&
       typeof obj.email === "string" &&
-      obj.email.includes("@") &&
+      isEmail(obj.email) &&
       typeof obj.message === "string" &&
       obj.message.trim().length > 0
     );
@@ -75,7 +83,7 @@ export function validateFormPayload(body: unknown): body is FormPayload {
     const emailIsValid =
       obj.referrerEmail === undefined ||
       obj.referrerEmail === "" ||
-      (typeof obj.referrerEmail === "string" && obj.referrerEmail.includes("@"));
+      (typeof obj.referrerEmail === "string" && isEmail(obj.referrerEmail));
     const roleIsValid =
       obj.referrerRole === undefined ||
       obj.referrerRole === "" ||
@@ -101,56 +109,48 @@ export function validateFormPayload(body: unknown): body is FormPayload {
   return false;
 }
 
-function assertValidWebhookUrl(webhookUrl: string): void {
-  if (!webhookUrl) throw new Error("GoHighLevel webhook is not configured");
-
-  const parsed = new URL(webhookUrl);
-  if (parsed.protocol !== "https:" || parsed.hostname !== "services.leadconnectorhq.com") {
-    throw new Error("GoHighLevel webhook URL is invalid");
-  }
+const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+function isEmail(value: string): boolean {
+  return /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(value) && !/[\r\n]/.test(value);
 }
 
+/** Acceptance by Resend is not proof of delivery to the recipient's inbox. */
 export async function deliverSubmission(
   payload: FormPayload,
   options: DeliveryOptions
 ): Promise<{ success: true; submissionId: string }> {
   if (!validateFormPayload(payload)) throw new Error("Invalid form payload");
-  assertValidWebhookUrl(options.webhookUrl);
-  const fetcher = options.fetcher ?? fetch;
-  const webhookPayload =
-    payload.type === "referral"
-      ? (() => {
-          const { referrerEmail, referrerRole, serviceType, ...referral } = payload;
-          return {
-            ...referral,
-            name: payload.referrerName.trim(),
-            phone: payload.referrerPhone.trim(),
-            ...(referrerEmail?.trim()
-              ? { referrerEmail: referrerEmail.trim(), email: referrerEmail.trim() }
-              : {}),
-            ...(referrerRole
-              ? { referrerRole: REFERRER_ROLE_LABELS[referrerRole] }
-              : {}),
-            ...(serviceType
-              ? { serviceType: REFERRAL_SERVICE_LABELS[serviceType] }
-              : {}),
-          };
-        })()
-      : payload;
-
-  const response = await fetcher(options.webhookUrl, {
+  if (!options.apiKey || !isEmail(options.fromEmail)) throw new Error("Email delivery not configured");
+  const fields = payload.type === "contact"
+    ? ["name", "email", "phone", "serviceType", "message"]
+    : ["referrerName", "referrerEmail", "referrerPhone", "referrerRole", "organization", "clientName", "serviceType", "notes"];
+  const values = payload as unknown as Record<string, string>;
+  const details = fields.filter(key => values[key]?.trim()).map(key => {
+    let value = values[key].trim();
+    if (key === "referrerRole") value = REFERRER_ROLE_LABELS[value] ?? value;
+    if (payload.type === "referral" && key === "serviceType") value = REFERRAL_SERVICE_LABELS[value] ?? value;
+    return `${key}: ${value}`;
+  }).join("\n\n");
+  const replyTo = payload.type === "contact" ? payload.email.trim() : payload.referrerEmail?.trim();
+  const email = {
+    from: `Gentle Care Nursing <${options.fromEmail}>`,
+    to: ["info@gentlecarenursing.com.au"],
+    ...(replyTo ? { reply_to: replyTo } : {}),
+    subject: payload.type === "contact" ? "Website enquiry — Gentle Care Nursing" : "Website referral — Gentle Care Nursing",
+    // Plain text avoids interpreting enquiry content as HTML. No patient names in subject.
+    text: `Website ${payload.type}\n\n${details}`,
+  };
+  // HMAC conceals enquiry contents. Resend deduplicates identical requests for 24h,
+  // including retries after a timeout; no patient payload is stored or logged here.
+  const key = createHmac("sha256", options.apiKey).update(JSON.stringify(email)).digest("hex");
+  const response = await (options.fetcher ?? fetch)("https://api.resend.com/emails", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      ...webhookPayload,
-      websiteSubmissionId: options.submissionId,
-      source: "website",
-    }),
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${options.apiKey}`, "Idempotency-Key": `website-enquiry/${key}` },
+    body: JSON.stringify(email),
+    signal: AbortSignal.timeout(10000),
   });
-
-  if (!response.ok) {
-    throw new Error(`GoHighLevel webhook failed with status ${response.status}`);
-  }
-
-  return { success: true, submissionId: options.submissionId };
+  if (!response.ok) throw new Error("Email provider rejected submission");
+  const receipt = await response.json() as { id?: unknown };
+  if (typeof receipt.id !== "string" || !UUID_PATTERN.test(receipt.id)) throw new Error("Email provider receipt missing");
+  return { success: true, submissionId: receipt.id };
 }
