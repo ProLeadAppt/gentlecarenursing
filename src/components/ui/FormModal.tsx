@@ -7,19 +7,15 @@ import { ContactForm } from "@/components/forms/ContactForm";
 import { ReferralConcierge } from "@/components/forms/ReferralConcierge";
 
 export function FormModal() {
-  const { activeForm, closeModal } = useFormModal();
+  const { activeForm, closeModal, returnFocusRef } = useFormModal();
   const dialogRef = useRef<HTMLDialogElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-
-  const triggerRef = useRef<Element | null>(null);
 
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
 
     if (activeForm) {
-      // Save the element that triggered the modal for focus return
-      triggerRef.current = document.activeElement;
       dialog.showModal();
       document.body.style.overflow = "hidden";
 
@@ -35,15 +31,17 @@ export function FormModal() {
       document.body.style.overflow = "";
 
       // Return focus to the trigger element
-      if (triggerRef.current instanceof HTMLElement) {
-        triggerRef.current.focus();
+      const trigger = returnFocusRef.current;
+      if (trigger?.isConnected && !trigger.closest("[inert]")) {
+        trigger.focus();
       }
+      returnFocusRef.current = null;
     }
 
     return () => {
       document.body.style.overflow = "";
     };
-  }, [activeForm]);
+  }, [activeForm, returnFocusRef]);
 
   const handleBackdropClick = useCallback(
     (e: React.MouseEvent<HTMLDialogElement>) => {

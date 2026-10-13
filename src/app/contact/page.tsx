@@ -11,7 +11,7 @@ import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
 
 export const metadata = createMetadata({
-  title: "Contact Gentle Care Nursing Services | Call or Enquire",
+  title: "Contact Us | Call or Enquire",
   description:
     "Get in touch with Gentle Care Nursing Services. Phone, email, or submit an enquiry. We acknowledge straight away and respond within 24 hours.",
   canonical: `${INTEGRATIONS.siteUrl}/contact`,
@@ -53,7 +53,11 @@ export default function ContactPage() {
                     Phone
                   </Heading>
                   <p className="mt-1 text-muted-foreground">
-                    {SITE.phone || "Contact number coming soon"}
+                    {SITE.phone ? (
+                      <a href={SITE.phoneHref} className="underline underline-offset-4 hover:text-primary">
+                        {SITE.phone}
+                      </a>
+                    ) : "Contact number coming soon"}
                   </p>
                 </div>
                 <div>
@@ -61,7 +65,11 @@ export default function ContactPage() {
                     Email
                   </Heading>
                   <p className="mt-1 text-muted-foreground">
-                    {SITE.email || "Email address coming soon"}
+                    {SITE.email ? (
+                      <a href={`mailto:${SITE.email}`} className="underline underline-offset-4 hover:text-primary">
+                        {SITE.email}
+                      </a>
+                    ) : "Email address coming soon"}
                   </p>
                 </div>
                 <div>

@@ -67,6 +67,7 @@ function DesktopDropdown({ item }: { item: NavItem }) {
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-1 opacity-0"
         )}
+        inert={!open}
         onFocus={handleEnter}
         onBlur={(e) => {
           if (!containerRef.current?.contains(e.relatedTarget as Node)) {
@@ -93,6 +94,7 @@ function DesktopDropdown({ item }: { item: NavItem }) {
 
 export function Nav({ links, cta, className }: NavProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const mobileToggleRef = useRef<HTMLButtonElement>(null);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const { openModal } = useFormModal();
   const pathname = usePathname();
@@ -162,6 +164,7 @@ export function Nav({ links, cta, className }: NavProps) {
         type="button"
         className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground/70 transition-colors hover:bg-muted xl:hidden"
         aria-expanded={mobileOpen}
+        ref={mobileToggleRef}
         aria-controls="mobile-nav"
         onClick={() => setMobileOpen(!mobileOpen)}
       >
@@ -200,6 +203,7 @@ export function Nav({ links, cta, className }: NavProps) {
                     />
                   </button>
                   <div
+                    inert={!mobileServicesOpen}
                     className={cn(
                       "overflow-hidden transition-all duration-200",
                       mobileServicesOpen ? "max-h-96" : "max-h-0"
@@ -250,8 +254,8 @@ export function Nav({ links, cta, className }: NavProps) {
                 className="w-full"
                 onClick={() => {
                   setMobileOpen(false);
-                  if (cta.label === CTA_LINKS.requestCare.label) openModal("contact", "mobile_navigation");
-                  else if (cta.label === CTA_LINKS.makeReferral.label) openModal("referral", "mobile_navigation");
+                  if (cta.label === CTA_LINKS.requestCare.label) openModal("contact", "mobile_navigation", mobileToggleRef.current);
+                  else if (cta.label === CTA_LINKS.makeReferral.label) openModal("referral", "mobile_navigation", mobileToggleRef.current);
                 }}
               >
                 {cta.label}

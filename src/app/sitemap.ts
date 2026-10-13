@@ -4,21 +4,11 @@ import { getAllBlogPosts } from "@/content/blog";
 import { SERVICE_REGION_PAGES } from "@/content/service-regions";
 import { SUBURBS } from "@/content/suburbs";
 import { CONDITIONS } from "@/content/conditions";
-import { SITE_LAST_UPDATED } from "@/lib/constants";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gentlecarenursing.com.au";
 
-/**
- * Returns a Date for the static-page lastmod. Falls back to "now" if the
- * SITE_LAST_UPDATED constant is malformed (defensive — should never happen).
- */
-function staticPageLastModified(): Date {
-  const d = new Date(SITE_LAST_UPDATED);
-  return Number.isNaN(d.getTime()) ? new Date() : d;
-}
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticLastMod = staticPageLastModified();
+  // Omit static-page lastmod until individual content changes have verified dates.
 
   // 2026-06-10: removed /compare, /compare/*, /guides, /guides/*, /glossary,
   // /care-finder from sitemap — those pages were deleted per Gemma's brief.
@@ -28,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/services", priority: 0.9, changeFrequency: "monthly" },
     { path: "/services/nursing-care", priority: 0.8, changeFrequency: "monthly" },
     { path: "/services/personal-care", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/services/assistance-with-daily-living", priority: 0.8, changeFrequency: "monthly" },
     { path: "/services/overnight-support", priority: 0.8, changeFrequency: "monthly" },
     { path: "/services/community-participation", priority: 0.8, changeFrequency: "monthly" },
     { path: "/ndis", priority: 0.9, changeFrequency: "monthly" },
@@ -55,7 +46,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const entries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
     url: `${BASE_URL}${route.path}`,
-    lastModified: staticLastMod,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }));
@@ -63,7 +53,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const slug of getAllAreaSlugs()) {
     entries.push({
       url: `${BASE_URL}/areas/${slug}`,
-      lastModified: staticLastMod,
       changeFrequency: "monthly",
       priority: 0.8,
     });
@@ -72,7 +61,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const s of SUBURBS) {
     entries.push({
       url: `${BASE_URL}/suburbs/${s.slug}`,
-      lastModified: staticLastMod,
       changeFrequency: "monthly",
       priority: 0.7,
     });
@@ -81,7 +69,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const page of SERVICE_REGION_PAGES) {
     entries.push({
       url: `${BASE_URL}${page.path}`,
-      lastModified: staticLastMod,
       changeFrequency: "monthly",
       priority: 0.85,
     });
@@ -90,7 +77,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const c of CONDITIONS) {
     entries.push({
       url: `${BASE_URL}/conditions/${c.slug}`,
-      lastModified: staticLastMod,
       changeFrequency: "monthly",
       priority: 0.8,
     });
@@ -98,7 +84,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   entries.push({
     url: `${BASE_URL}/blog`,
-    lastModified: staticLastMod,
     changeFrequency: "weekly",
     priority: 0.8,
   });
@@ -108,7 +93,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const lastMod = new Date(dateString);
     entries.push({
       url: `${BASE_URL}/blog/${post.slug}`,
-      lastModified: Number.isNaN(lastMod.getTime()) ? staticLastMod : lastMod,
+      ...(Number.isNaN(lastMod.getTime()) ? {} : { lastModified: lastMod }),
       changeFrequency: "monthly",
       priority: 0.7,
     });

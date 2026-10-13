@@ -4,6 +4,8 @@ import {
   createContext,
   useContext,
   useState,
+  useRef,
+  type RefObject,
   useCallback,
   useEffect,
   type ReactNode,
@@ -14,7 +16,8 @@ export type FormModalType = "referral" | "contact" | null;
 
 interface FormModalContextValue {
   activeForm: FormModalType;
-  openModal: (type: "referral" | "contact", ctaLocation?: string) => void;
+  openModal: (type: "referral" | "contact", ctaLocation?: string, returnFocus?: HTMLElement | null) => void;
+  returnFocusRef: RefObject<HTMLElement | null>;
   closeModal: () => void;
 }
 
@@ -22,6 +25,7 @@ const FormModalContext = createContext<FormModalContextValue | null>(null);
 
 export function FormModalProvider({ children }: { children: ReactNode }) {
   const [activeForm, setActiveForm] = useState<FormModalType>(null);
+  const returnFocusRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
@@ -53,7 +57,9 @@ export function FormModalProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  const openModal = useCallback((type: "referral" | "contact", ctaLocation?: string) => {
+  const openModal = useCallback((type: "referral" | "contact", ctaLocation?: string, returnFocus?: HTMLElement | null) => {
+    // Capture before a trigger is hidden or removed by the same React update.
+    returnFocusRef.current = returnFocus ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     dispatchAnalyticsEvent("form_open", {
       form_type: type,
       cta_location: ctaLocation,
@@ -66,7 +72,7 @@ export function FormModalProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <FormModalContext.Provider value={{ activeForm, openModal, closeModal }}>
+    <FormModalContext.Provider value={{ activeForm, openModal, closeModal, returnFocusRef }}>
       {children}
     </FormModalContext.Provider>
   );
