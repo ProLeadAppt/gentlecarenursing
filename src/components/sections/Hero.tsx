@@ -92,7 +92,8 @@ export function Hero({
           <motion.div
             className="order-1 flex flex-col justify-start py-16 sm:py-20 lg:py-24"
             variants={prefersReducedMotion ? undefined : HERO_VARIANTS.container}
-            initial={prefersReducedMotion ? false : "hidden"}
+            // Keep the primary heading and actions visible in server-rendered HTML.
+            initial={false}
             animate="visible"
           >
             <div className="max-w-2xl">

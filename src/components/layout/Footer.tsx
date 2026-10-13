@@ -195,7 +195,7 @@ export function Footer({
             </Link>
           </div>
 
-          <span className="text-white/40">A family-run service</span>
+          <span className="text-white/70">A family-run service</span>
         </div>
       </Container>
     </footer>
