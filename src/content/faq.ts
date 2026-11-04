@@ -6,8 +6,8 @@
  * names "Gentle Care Nursing Services" explicitly, and includes at least one
  * verifiable specific (regulator, suburb region, funding category, registered
  * status). Voice rules in `.agents/product-marketing-context.md` are binding:
- * no "boutique", no "guarantee", DVA wording exact, response phrased as
- * "we aim to respond within 24 hours".
+ * no "boutique", no "guarantee", DVA wording exact, and neutral enquiry
+ * wording without response-time promises.
  */
 
 export interface FaqCategory {
@@ -52,13 +52,13 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "how-start",
         question: "How do I get started with Gentle Care Nursing Services?",
         answer:
-          "To start with Gentle Care Nursing Services, submit an enquiry through our Request Care form, or contact us by phone or email. You will receive an immediate confirmation that your enquiry has been received, and we aim to respond within 24 hours during business hours with clear next steps. Urgent referrals from hospitals and coordinators are prioritised.",
+          "To start with Gentle Care Nursing Services, submit an enquiry through our Request Care form, or contact us by phone or email. Our team will discuss your care needs and next steps with you. Urgent referrals from hospitals and coordinators are prioritised.",
       },
       {
         id: "response-time",
-        question: "How quickly do you respond to enquiries?",
+        question: "What happens after I submit an enquiry?",
         answer:
-          "Gentle Care Nursing Services aims to respond to every enquiry within 24 hours during business hours. After you submit an enquiry, our team is notified straight away and a real person follows up. Urgent referrals (for example, from hospital discharge planners or NDIS support coordinators with same-day needs) are prioritised so families and clients are not left waiting.",
+          "After you submit an enquiry to Gentle Care Nursing Services, a member of our team follows up to discuss your care needs and next steps. Urgent referrals (for example, from hospital discharge planners or NDIS support coordinators with same-day needs) are prioritised.",
       },
       {
         id: "assessment",
@@ -70,7 +70,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "immediate-help",
         question: "Can I get help right away?",
         answer:
-          "If you need help quickly, call Gentle Care Nursing Services during business hours and our team can talk through urgent options. For non-urgent enquiries, the Request Care form sends an immediate acknowledgement, and we aim to respond within 24 hours. Urgent post-hospital and community nursing referrals are prioritised, with start dates depending on care needs and staff availability.",
+          "If you need help quickly, call Gentle Care Nursing Services during business hours and our team can talk through urgent options. For non-urgent enquiries, you can use the Request Care form to tell us about your care needs. Urgent post-hospital and community nursing referrals are prioritised, with start dates depending on care needs and staff availability.",
       },
     ],
   },
@@ -104,7 +104,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "how-refer",
         question: "How do I make a referral to Gentle Care Nursing Services?",
         answer:
-          "To refer a client to Gentle Care Nursing Services, submit our Request Care form with the client’s details, care needs, and funding type, or contact us directly by phone or email. Support coordinators, hospital discharge planners, GPs, and allied health professionals can also send referrals. We aim to acknowledge referrals within 24 hours during business hours, with urgent referrals prioritised.",
+          "To refer a client to Gentle Care Nursing Services, submit our Request Care form with the client’s details, care needs, and funding type, or contact us directly by phone or email. Support coordinators, hospital discharge planners, GPs, and allied health professionals can also send referrals. Urgent referrals are prioritised.",
       },
       {
         id: "who-can-refer",
@@ -139,7 +139,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "different",
         question: "What makes Gentle Care Nursing Services different?",
         answer:
-          "Gentle Care Nursing Services deliberately keeps a small caseload so each client gets dedicated, personalised care from a consistent team. We are led by a care team with strong hands-on experience in community care, aged care, disability support, and nursing services. We aim to respond to enquiries within 24 hours during business hours, with urgent referrals prioritised.",
+          "Gentle Care Nursing Services deliberately keeps a small caseload so each client gets dedicated, personalised care from a consistent team. We are led by a care team with strong hands-on experience in community care, aged care, disability support, and nursing services. Urgent referrals are prioritised.",
       },
     ],
   },

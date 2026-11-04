@@ -75,11 +75,11 @@ export const CTA_LINKS = {
 
 /** Reassurance line below hero CTAs: calm, no pressure, quick response. */
 export const CTA_REASSURANCE =
-  "No obligation. We'll acknowledge your message quickly and get back to you within 24 hours. We're here to listen and help.";
+  "No obligation. We'll review your message and get back to you. We're here to listen and help.";
 
 /** Hero-specific reassurance under CTAs (team notified). */
 export const HERO_REASSURANCE =
-  "Submit an enquiry and our team is notified immediately so your request can be reviewed quickly.";
+  "Submit an enquiry for our team to review your request.";
 
 /**
  * Last meaningful copy/structure update across the site (ISO date).

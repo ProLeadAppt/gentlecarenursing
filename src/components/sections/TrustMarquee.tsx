@@ -8,7 +8,7 @@ const TRUST_ITEMS = [
   { label: "Registered NDIS Provider", icon: ShieldCheck },
   { label: "DVA Contracted Provider", icon: BadgeCheck },
   { label: "Experienced Care Team", icon: Award },
-  { label: "~24hr Response Window", icon: Star },
+  { label: "Enquiry Support", icon: Star },
   { label: "Personalised Care", icon: Heart },
 ];
 

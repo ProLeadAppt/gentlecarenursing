@@ -15,7 +15,7 @@ import { INTEGRATIONS } from "@/config/integrations";
 export const metadata = createMetadata({
   title: "Request Care | Start an NDIS, DVA or Private Referral",
   description:
-    "Request care or make a referral. You'll get immediate confirmation and a personal response within 24 hours with clear next steps.",
+    "Request care or make a referral. Share your details and care needs with Gentle Care Nursing Services.",
   canonical: `${INTEGRATIONS.siteUrl}/referral`,
 });
 
@@ -24,13 +24,13 @@ const REFERRAL_STEPS = [
     number: 1,
     headline: "Submit your enquiry",
     description:
-      "Fill out the form below with your details and care needs. You'll get immediate confirmation that we've received it.",
+      "Fill out the form below with your details and care needs.",
   },
   {
     number: 2,
     headline: "We acknowledge and respond",
     description:
-      "Our team is notified straight away. A real person will contact you within 24 hours with supportive guidance and clear next steps.",
+      "A member of our team will contact you to discuss your enquiry and next steps.",
   },
   {
     number: 3,
@@ -50,11 +50,11 @@ export default function ReferralPage() {
             Request Care
           </Heading>
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            {/* Updated 2026-06-10 per Gemma's brief — her verbatim referral wording. */}
+            {/* Based on Gemma's referral brief, 2026-06-10. */}
             If you are a support coordinator, case manager, health professional,
             family member, or representative, you can make a referral to Gentle
             Care Nursing Services. We will review the client&apos;s needs and
-            respond as soon as possible.
+            discuss the next steps.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
             Support coordinators and discharge planners can also visit our{" "}
@@ -68,7 +68,7 @@ export default function ReferralPage() {
 
       <ProcessSteps
         title="How It Works"
-        subtitle="Simple, fast, and transparent. From enquiry to care."
+        subtitle="From enquiry to care."
         steps={REFERRAL_STEPS}
       />
 
@@ -77,7 +77,7 @@ export default function ReferralPage() {
         <Container size="sm">
           <SectionHeader
             title="Submit Your Enquiry"
-            subtitle="You'll receive confirmation straight away. Our team will get back to you within 24 hours with clear next steps."
+            subtitle="Share your details and care needs using the form below."
           />
           <div className="mt-10">
             <Card variant="default" className="p-8">
@@ -94,16 +94,15 @@ export default function ReferralPage() {
           <Grid cols={3} gap="lg" className="mt-10">
             <div className="text-center">
               <Heading level="h3" as="h3" className="text-lg">
-                Immediate Confirmation
+                Enquiry Review
               </Heading>
               <p className="mt-2 text-sm text-muted-foreground">
-                You&apos;ll get confirmation that we&apos;ve received your enquiry
-                right away. Our team is notified immediately.
+                Our team reviews your enquiry and care needs.
               </p>
             </div>
             <div className="text-center">
               <Heading level="h3" as="h3" className="text-lg">
-                Personal Response — We Aim for 24 Hours
+                Personal Response
               </Heading>
               <p className="mt-2 text-sm text-muted-foreground">
                 A real person will contact you with supportive guidance, clear

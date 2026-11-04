@@ -290,7 +290,7 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
                 step: "01",
                 title: "Send an enquiry or referral",
                 description:
-                  "Tell us what support is needed, where the person lives, what funding is involved, and whether the matter is urgent. We usually respond within 24 hours during business hours.",
+                  "Tell us what support is needed, where the person lives, what funding is involved, and whether the matter is urgent. Our team will review your enquiry and contact you.",
               },
               {
                 step: "02",

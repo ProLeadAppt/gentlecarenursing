@@ -21,7 +21,7 @@ export const ABOUT_INTRO = {
    *  Updated 2026-06-10 per Gemma's brief — dropped "over 10 years",
    *  replaced with the softer, team-led framing she requested. */
   statsLine:
-    "Led by a care team with hands-on experience across community care, aged care, disability support, and nursing services. We aim to respond to every enquiry within 24 hours.",
+    "Led by a care team with hands-on experience across community care, aged care, disability support, and nursing services.",
 } as const;
 
 export const MISSION = {
@@ -52,9 +52,9 @@ export const VALUES = [
       "We're registered, compliant, and experienced. Registered NDIS provider and DVA Contracted provider. Families and coordinators can refer with confidence.",
   },
   {
-    title: "Responsiveness",
+    title: "Communication",
     description:
-      "We respond to enquiries quickly, usually within 24 to 48 hours. When families and coordinators need help, we move fast.",
+      "We talk with families and coordinators about their care needs and explain the next steps.",
   },
   {
     title: "Compassion",
@@ -116,5 +116,5 @@ export const TRUST_STATS = [
   { value: "Led", label: "By an experienced care team" },
   { value: "Personal", label: "Quality-focused support" },
   { value: "Small", label: "Dedicated caseload" },
-  { value: "~24hr", label: "Response window" },
+  { value: "Clear", label: "Next steps" },
 ] as const;

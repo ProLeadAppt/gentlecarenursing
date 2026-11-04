@@ -82,7 +82,7 @@ export function SimpleContactForm() {
           Thanks — we&apos;ve got your message.
         </h3>
         <p className="mt-2 text-muted-foreground">
-          Our team will be in touch within 24 hours. If your enquiry is urgent,
+          Our team will be in touch. If your enquiry is urgent,
           please call us on 1300 004 267.
         </p>
       </div>
@@ -173,7 +173,7 @@ export function SimpleContactForm() {
             {status === "submitting" ? "Sending..." : "Send enquiry"}
           </Button>
           <p className="text-xs text-muted-foreground text-center">
-            We&apos;ll respond within 24 hours. No obligation.
+            We&apos;ll discuss your enquiry with you. No obligation.
           </p>
         </div>
       </fieldset>

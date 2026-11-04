@@ -180,7 +180,7 @@ export default function ServicesPage() {
 
       <CtaSection
         title="Ready to Discuss Your Care?"
-        description="Whether you have an NDIS plan, DVA referral, or need private clinical support, our team is ready to respond within 24 hours."
+        description="Whether you have an NDIS plan, DVA referral, or need private clinical support, contact us to discuss your needs."
         primaryCta={CTA_LINKS.requestCare}
         secondaryCta={CTA_LINKS.contact}
         variant="primary"

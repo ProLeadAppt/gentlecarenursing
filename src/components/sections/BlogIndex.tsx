@@ -51,7 +51,7 @@ export default function BlogIndex({ posts, categories }: Props) {
             { label: "NDIS Services", href: "/ndis", body: "Best starting point for participants, families, and coordinators." },
             { label: "DVA Community Nursing", href: "/dva", body: "For veterans and families looking for eligible home nursing." },
             { label: "Our Services", href: "/services", body: "Browse the full service directory and choose by need or funding." },
-            { label: "For Referrers", href: "/referrers", body: "Fast referral pathways for coordinators, discharge planners, and GPs." },
+            { label: "For Referrers", href: "/referrers", body: "Referral pathways for coordinators, discharge planners, and GPs." },
           ].map((item) => (
             <Link key={item.href} href={item.href} className="group rounded-[1.5rem] border border-border/60 bg-muted/20 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:bg-white hover:shadow-lg">
               <h3 className="text-base font-bold text-foreground group-hover:text-primary">{item.label}</h3>

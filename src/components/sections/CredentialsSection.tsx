@@ -16,8 +16,8 @@ const CREDENTIALS = [
   },
   {
     icon: Clock,
-    title: "Quick response window",
-    description: "Every enquiry is acknowledged quickly. We aim to respond within 24 hours with clear next steps.",
+    title: "Enquiry support",
+    description: "Our team reviews your enquiry and contacts you with clear next steps.",
   },
   {
     icon: Users,

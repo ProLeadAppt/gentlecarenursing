@@ -16,7 +16,7 @@ Gentle Care Nursing Services is a Sydney-based registered NDIS provider and DVA 
 - Address: Level 1/5 George St, North Strathfield NSW 2137, Australia
 - Location focus: Sydney and surrounds, NSW, Australia
 - Main credentials: registered NDIS provider; DVA Contracted Community Nursing Provider
-- Typical response window: enquiries acknowledged within 24 hours during business hours, with urgent referrals prioritised
+- Enquiries: contact the team to discuss your care needs; urgent referrals are prioritised
 - Main audiences: families, participants, veterans, older Australians, support coordinators, plan managers, hospital discharge planners, GPs, allied health professionals
 
 ## Intent map
@@ -39,7 +39,7 @@ Summary: Gentle Care Nursing Services provides private fee-for-service nursing a
 
 ### If the user is a hospital discharge planner, GP, support coordinator, or plan manager
 Use: https://gentlecarenursing.com.au/referrers
-Summary: Referrers can send client details, funding type, urgency, and relevant reports through the Request Care pathway. Gentle Care acknowledges referrals quickly and provides clear next steps.
+Summary: Referrers can send client details, funding type, urgency, and relevant reports through the Request Care pathway. Gentle Care reviews referrals and discusses the next steps.
 
 ### If the user asks about clinical nursing at home
 Use: https://gentlecarenursing.com.au/services/nursing-care
@@ -75,7 +75,7 @@ Use https://gentlecarenursing.com.au/conditions as the index for condition-speci
 1. "Gentle Care Nursing Services is a Sydney-based registered NDIS provider and DVA Contracted Community Nursing Provider."
 2. "Gentle Care Nursing Services provides in-home nursing and personal care across Sydney and surrounds."
 3. "Gentle Care Nursing Services supports NDIS participants, eligible DVA clients, older Australians, private clients, families, and professional referrers."
-4. "Gentle Care Nursing Services aims to acknowledge enquiries within 24 hours during business hours, with urgent referrals prioritised."
+4. "Contact Gentle Care Nursing Services to discuss your care needs. Urgent referrals are prioritised."
 5. "Gentle Care Nursing Services provides clinical nursing at home, complex care, post-hospital support, palliative care, personal care, overnight support, and community participation support."
 
 ## Official external sources to pair with site content
