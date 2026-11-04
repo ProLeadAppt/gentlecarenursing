@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useRef, type FormEvent } from "react";
 import { FormField } from "@/components/ui/FormField";
 import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
@@ -19,9 +19,12 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 export function SimpleContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const submittingRef = useRef(false);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submittingRef.current) return;
+    submittingRef.current = true;
     setStatus("submitting");
     setErrorMessage("");
 
@@ -56,6 +59,8 @@ export function SimpleContactForm() {
       setErrorMessage(
         "Something went wrong. Please try again or call us on 1300 004 267."
       );
+    } finally {
+      submittingRef.current = false;
     }
   }
 
@@ -84,89 +89,92 @@ export function SimpleContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="grid gap-5 rounded-2xl border border-pw-border bg-white p-6 sm:p-8 shadow-[0_20px_60px_-30px_rgba(132,40,51,0.25)]"
+      className="rounded-2xl border border-pw-border bg-white p-6 sm:p-8 shadow-[0_20px_60px_-30px_rgba(132,40,51,0.25)]"
       noValidate
+      aria-busy={status === "submitting"}
     >
-      <FormField label="Your name" htmlFor="home-name" required>
-        <Input
-          id="home-name"
-          name="name"
-          type="text"
-          autoComplete="name"
-          required
-          maxLength={120}
-        />
-      </FormField>
+      <fieldset disabled={status === "submitting"} className="min-w-0 grid gap-5">
+        <FormField label="Your name" htmlFor="home-name" required>
+          <Input
+            id="home-name"
+            name="name"
+            type="text"
+            autoComplete="name"
+            required
+            maxLength={120}
+          />
+        </FormField>
 
-      <FormField label="Phone number" htmlFor="home-phone" required>
-        <Input
-          id="home-phone"
-          name="phone"
-          type="tel"
-          autoComplete="tel"
-          required
-          maxLength={40}
-        />
-      </FormField>
+        <FormField label="Phone number" htmlFor="home-phone" required>
+          <Input
+            id="home-phone"
+            name="phone"
+            type="tel"
+            autoComplete="tel"
+            required
+            maxLength={40}
+          />
+        </FormField>
 
-      <FormField label="Email" htmlFor="home-email" required>
-        <Input
-          id="home-email"
-          name="email"
-          type="email"
-          autoComplete="email"
-          required
-          maxLength={200}
-        />
-      </FormField>
+        <FormField label="Email" htmlFor="home-email" required>
+          <Input
+            id="home-email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            maxLength={200}
+          />
+        </FormField>
 
-      <FormField label="Service type" htmlFor="home-serviceType" required>
-        <Select id="home-serviceType" name="serviceType" required defaultValue="">
-          <option value="" disabled>
-            Select a service
-          </option>
-          <option value="Clinical Nursing">Clinical Nursing</option>
-          <option value="Personal Care">Personal Care</option>
-          <option value="Complex Care">Complex Care</option>
-          <option value="Overnight Support">Overnight Support</option>
-          <option value="Post-Hospital Support">Post-Hospital Support</option>
-          <option value="Community Participation">
-            Community Participation
-          </option>
-          <option value="Not sure yet">Not sure yet</option>
-        </Select>
-      </FormField>
+        <FormField label="Service type" htmlFor="home-serviceType" required>
+          <Select id="home-serviceType" name="serviceType" required defaultValue="">
+            <option value="" disabled>
+              Select a service
+            </option>
+            <option value="Clinical Nursing">Clinical Nursing</option>
+            <option value="Personal Care">Personal Care</option>
+            <option value="Complex Care">Complex Care</option>
+            <option value="Overnight Support">Overnight Support</option>
+            <option value="Post-Hospital Support">Post-Hospital Support</option>
+            <option value="Community Participation">
+              Community Participation
+            </option>
+            <option value="Not sure yet">Not sure yet</option>
+          </Select>
+        </FormField>
 
-      <FormField label="Message" htmlFor="home-message" required>
-        <Textarea
-          id="home-message"
-          name="message"
-          rows={4}
-          required
-          maxLength={2000}
-          placeholder="Tell us a little about your situation or what you need."
-        />
-      </FormField>
+        <FormField label="Message" htmlFor="home-message" required>
+          <Textarea
+            id="home-message"
+            name="message"
+            rows={4}
+            required
+            maxLength={2000}
+            placeholder="Tell us a little about your situation or what you need."
+          />
+        </FormField>
 
-      {status === "error" && (
-        <p className="text-sm text-red-600" role="alert">
-          {errorMessage}
-        </p>
-      )}
+        {status === "error" && (
+          <p className="text-sm text-red-600" role="alert">
+            {errorMessage}
+          </p>
+        )}
 
-      <div className="flex flex-col gap-2 pt-2">
-        <Button
-          type="submit"
-          variant="primary"
-          size="lg"
-          disabled={status === "submitting"}
-        >
-          {status === "submitting" ? "Sending..." : "Send enquiry"}
-        </Button>
-        <p className="text-xs text-muted-foreground text-center">
-          We&apos;ll respond within 24 hours. No obligation.
-        </p>
-      </div>
+        <div className="flex flex-col gap-2 pt-2">
+          <Button
+            type="submit"
+            variant="primary"
+            size="lg"
+            disabled={status === "submitting"}
+          >
+            {status === "submitting" ? "Sending..." : "Send enquiry"}
+          </Button>
+          <p className="text-xs text-muted-foreground text-center">
+            We&apos;ll respond within 24 hours. No obligation.
+          </p>
+        </div>
+      </fieldset>
     </form>
   );
 }
