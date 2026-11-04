@@ -7,6 +7,7 @@ export type ReferrerType =
 export interface ReferrerBlock {
   id: string;
   referrerType: ReferrerType;
+  anchorId: string;
   title: string;
   label: string;
   blurb: string;
@@ -19,6 +20,7 @@ export const REFERRER_BLOCKS: readonly ReferrerBlock[] = [
   {
     id: "ndis-support-coordinator-main",
     referrerType: "ndis-support-coordinator",
+    anchorId: "ndis-support-coordinators",
     title: "For NDIS Support Coordinators",
     label: "NDIS support coordinators",
     blurb:
@@ -34,6 +36,7 @@ export const REFERRER_BLOCKS: readonly ReferrerBlock[] = [
   {
     id: "plan-manager-main",
     referrerType: "plan-manager",
+    anchorId: "plan-managers",
     title: "For NDIS Plan Managers",
     label: "NDIS plan managers",
     blurb:
@@ -49,6 +52,7 @@ export const REFERRER_BLOCKS: readonly ReferrerBlock[] = [
   {
     id: "hospital-discharge-planner-main",
     referrerType: "hospital-discharge-planner",
+    anchorId: "hospital-discharge-planners",
     title: "For Hospital Discharge Planners",
     label: "Hospital discharge planners",
     blurb:
@@ -64,6 +68,7 @@ export const REFERRER_BLOCKS: readonly ReferrerBlock[] = [
   {
     id: "gp-primary-care-main",
     referrerType: "gp-primary-care",
+    anchorId: "gps-and-primary-care",
     title: "For GPs and Primary Care",
     label: "GPs and primary care teams",
     blurb:

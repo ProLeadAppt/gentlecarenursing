@@ -112,7 +112,7 @@ export function FloatingContact() {
                   onClick={handleMessageClick}
                   icon={<MessageCircle className="h-4 w-4" aria-hidden />}
                   label="Send a message"
-                  sublabel="We reply within 24 hrs"
+                  sublabel="Discuss your enquiry"
                   ariaLabel="Open contact form to send a message"
                   delay={0.05}
                 />

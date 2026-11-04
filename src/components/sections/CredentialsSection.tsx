@@ -7,7 +7,7 @@ const CREDENTIALS = [
   {
     icon: Shield,
     title: "Registered NDIS provider",
-    description: "We meet NDIS quality and safeguarding standards so participants and coordinators can refer with confidence.",
+    description: "Contact our team to discuss the supports you need and how they fit your plan.",
   },
   {
     icon: FileCheck,
@@ -16,8 +16,8 @@ const CREDENTIALS = [
   },
   {
     icon: Clock,
-    title: "Quick response window",
-    description: "Every enquiry is acknowledged quickly. We aim to respond within 24 hours with clear next steps.",
+    title: "Discuss your care needs",
+    description: "Our team will review your enquiry and discuss availability and next steps.",
   },
   {
     icon: Users,
@@ -29,7 +29,7 @@ const CREDENTIALS = [
 interface CredentialsSectionProps {
   /** Optional section background variant */
   variant?: "default" | "muted" | "card" | "teal";
-  /** Show links to testimonials and FAQ */
+  /** Show links to service areas and FAQ */
   showLinks?: boolean;
 }
 
@@ -66,10 +66,6 @@ export function CredentialsSection({
           <p className="mt-8 text-center text-sm text-muted-foreground">
             <Link href="/areas" className="font-medium text-primary hover:underline">
               Areas we serve
-            </Link>
-            {" · "}
-            <Link href="/#testimonials" className="font-medium text-primary hover:underline">
-              What families say
             </Link>
             {" · "}
             <Link href="/faq" className="font-medium text-primary hover:underline">

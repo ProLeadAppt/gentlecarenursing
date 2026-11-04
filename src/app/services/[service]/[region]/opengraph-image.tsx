@@ -46,7 +46,7 @@ export default async function ServiceRegionOgImage({
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 36, opacity: 0.85, marginBottom: 12 }}>
-            {serviceTitle} in
+            {`${serviceTitle} in`}
           </div>
           <div
             style={{
@@ -56,7 +56,7 @@ export default async function ServiceRegionOgImage({
               maxWidth: "92%",
             }}
           >
-            {regionName}, Sydney
+            {`${regionName}, Sydney`}
           </div>
         </div>
         <div

@@ -16,7 +16,7 @@
  * Voice rules respected:
  *   - DVA wording exact when named
  *   - No "guarantee" / "boutique"
- *   - "We aim to respond within 24 hours" phrasing
+ *   - Availability-dependent enquiry wording; no unapproved response SLA
  *   - "Experienced nurses" / "skilled nurses" outside regulatory contexts
  *
  * Factual basis:

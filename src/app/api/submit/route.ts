@@ -5,7 +5,7 @@ export async function POST(request: NextRequest) {
   const fail = (status: number, error: string) => NextResponse.json({ success: false, error }, { status });
   const origin = request.headers.get("origin");
   if (origin && origin !== request.nextUrl.origin) return fail(403, "Invalid form origin.");
-  if (!request.headers.get("content-type")?.startsWith("application/json")) return fail(415, "Invalid form format.");
+  if (request.headers.get("content-type")?.split(";")[0].trim().toLowerCase() !== "application/json") return fail(415, "Invalid form format.");
   let body: unknown;
   try {
     const reader = request.body?.getReader();

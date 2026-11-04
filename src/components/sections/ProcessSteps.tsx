@@ -30,7 +30,7 @@ const STEP_ICONS: LucideIcon[] = [ClipboardList, MailCheck, Users, HouseHeart];
 
 export function ProcessSteps({
   title = "How It Works",
-  subtitle = "From your first enquiry to care at home: clear steps, quick response, and no one left waiting.",
+  subtitle = "From your first enquiry to care at home: discuss your needs, availability and next steps.",
   steps,
   cta,
   onCtaClick,

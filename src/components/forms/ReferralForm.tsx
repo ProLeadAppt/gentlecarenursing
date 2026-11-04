@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/Textarea";
 import { Button } from "@/components/ui/Button";
 import { dispatchAnalyticsEvent } from "@/lib/analytics";
 import { submitWebsiteForm } from "@/lib/form-client";
+import { EnquiryPrivacyNotice } from "./EnquiryPrivacyNotice";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -19,6 +20,7 @@ interface ReferralFormProps {
 export function ReferralForm({ compact = false }: ReferralFormProps) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const submittingRef = useRef(false);
   const [expanded, setExpanded] = useState(!compact);
   const firstFieldRef = useRef<HTMLInputElement>(null);
 
@@ -30,6 +32,8 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submittingRef.current || !e.currentTarget.reportValidity()) return;
+    submittingRef.current = true;
     setStatus("submitting");
     setErrorMessage("");
 
@@ -64,15 +68,17 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
       });
       setStatus("error");
       setErrorMessage("Something went wrong. Please try again or contact us directly.");
+    } finally {
+      submittingRef.current = false;
     }
   }
 
   if (status === "success") {
     return (
-      <div className="rounded-lg border border-accent/30 bg-accent/5 p-6 text-center" role="alert">
+      <div className="rounded-lg border border-accent/30 bg-accent/5 p-6 text-center" role="status">
         <p className="text-lg font-semibold text-foreground">Enquiry Submitted</p>
         <p className="mt-2 text-muted-foreground">
-          Thank you. We&apos;ve received your enquiry. You&apos;ll hear from us within minutes.
+          Your enquiry has been accepted for delivery. Our team will review it and contact you about next steps.
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
           Need to talk? Call us or send another message.
@@ -89,7 +95,7 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
   }
 
   return (
-    <form className="space-y-5" onSubmit={handleSubmit} noValidate>
+    <form className="space-y-5" onSubmit={handleSubmit} data-clarity-mask="true">
       <FormField label="Your name" htmlFor="referrer-name" required>
         <Input
           ref={firstFieldRef}
@@ -98,11 +104,12 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
           type="text"
           placeholder="Name"
           required
-          aria-invalid={status === "error"}
+          autoComplete="name"
+          maxLength={120}
         />
       </FormField>
       <FormField label="Your phone" htmlFor="referrer-phone" required>
-        <Input id="referrer-phone" name="referrerPhone" type="tel" placeholder="Phone number" required />
+        <Input id="referrer-phone" name="referrerPhone" type="tel" autoComplete="tel" maxLength={40} placeholder="Phone number" required />
       </FormField>
       <FormField label="Service type" htmlFor="service-type">
         <Select id="service-type" name="serviceType">
@@ -128,7 +135,7 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
       {expanded && (
         <>
           <FormField label="Your email" htmlFor="referrer-email">
-            <Input id="referrer-email" name="referrerEmail" type="email" placeholder="your@email.com" />
+            <Input id="referrer-email" name="referrerEmail" type="email" autoComplete="email" maxLength={200} placeholder="your@email.com" />
           </FormField>
           <FormField label="Your role" htmlFor="referrer-role">
             <Select id="referrer-role" name="referrerRole">
@@ -141,19 +148,22 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
               <option value="other">Other</option>
             </Select>
           </FormField>
-          <FormField label="Client / participant name" htmlFor="client-name">
-            <Input id="client-name" name="clientName" type="text" placeholder="Client name" />
+          <FormField label="Client / participant initials (optional)" htmlFor="client-name">
+            <Input id="client-name" name="clientName" type="text" placeholder="Initials are enough" maxLength={120} />
           </FormField>
-          <FormField label="Notes" htmlFor="referral-notes" hint="Tell us about the care needed.">
+          <FormField label="Notes" htmlFor="referral-notes" hint="A brief enquiry only. Please leave out detailed medical information.">
             <Textarea
               id="referral-notes"
               name="notes"
               rows={3}
-              placeholder="Describe the care needs..."
+              placeholder="What would you like us to contact you about?"
+              maxLength={2000}
             />
           </FormField>
         </>
       )}
+
+      <EnquiryPrivacyNotice referral />
 
       {status === "error" && (
         <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive" role="alert">

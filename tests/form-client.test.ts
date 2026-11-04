@@ -50,3 +50,11 @@ test("submitWebsiteForm rejects success responses without a valid reconciliation
     /confirmation/i
   );
 });
+
+test("both form paths share strict confirmation validation", async () => {
+  const { isSubmissionConfirmation } = await import("../src/lib/form-client");
+  for (const value of [null, undefined, true, "success", {}, { success: true, submissionId: "" }, { success: true, submissionId: "not-a-uuid" }, { success: false, submissionId: "8dd9d328-72ca-4a29-8022-735693bd84f7" }]) {
+    assert.equal(isSubmissionConfirmation(value), false);
+  }
+  assert.equal(isSubmissionConfirmation({ success: true, submissionId: "8dd9d328-72ca-4a29-8022-735693bd84f7" }), true);
+});

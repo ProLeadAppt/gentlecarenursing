@@ -50,22 +50,18 @@ export default function SuburbsIndexPage() {
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
+      "@id": `${canonical}#webpage`,
       name: "In-Home Nursing by Sydney Suburb",
       url: canonical,
       description:
         "Suburb-level in-home nursing and care across Sydney — listed by suburb with local hospitals, LGA, and neighbouring suburbs.",
-      isPartOf: { "@type": "WebSite", url: INTEGRATIONS.siteUrl },
+      isPartOf: { "@id": `${INTEGRATIONS.siteUrl}/#website` },
       hasPart: SUBURBS.map((s) => ({
-        "@type": "Place",
-        name: s.name,
+        "@type": "WebPage",
+        "@id": `${INTEGRATIONS.siteUrl}/suburbs/${s.slug}#webpage`,
+        name: `In-home nursing in ${s.name}`,
         url: `${INTEGRATIONS.siteUrl}/suburbs/${s.slug}`,
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: s.name,
-          addressRegion: "NSW",
-          postalCode: s.postcode,
-          addressCountry: "AU",
-        },
+        about: { "@id": `${INTEGRATIONS.siteUrl}/suburbs/${s.slug}#place` },
       })),
     },
   ];

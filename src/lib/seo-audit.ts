@@ -32,21 +32,31 @@ export function normaliseAustralianPhone(value: string): string {
 }
 
 export function isCanonicalMatch(requestedUrl: string, canonicalUrl: string): boolean {
-  if (requestedUrl === canonicalUrl) return true;
-  const requested = new URL(requestedUrl);
-  const canonical = new URL(canonicalUrl);
-  return (
-    requested.origin === canonical.origin &&
-    requested.pathname === "/" &&
-    canonical.pathname === "/" &&
-    requested.search === canonical.search
-  );
+  try {
+    const requested = new URL(requestedUrl);
+    const canonical = new URL(canonicalUrl);
+    if (![requested, canonical].every((url) => ["http:", "https:"].includes(url.protocol))) return false;
+    if (canonical.hash || canonical.username || canonical.password) return false;
+    if (requestedUrl === canonicalUrl) return true;
+    return (
+      requested.origin === canonical.origin &&
+      requested.pathname === "/" &&
+      canonical.pathname === "/" &&
+      requested.search === canonical.search
+    );
+  } catch {
+    return false;
+  }
 }
 
 export function rebaseUrlForAudit(url: string, baseUrl: string): string {
   const source = new URL(url);
   const base = new URL(baseUrl);
-  return new URL(`${source.pathname}${source.search}`, base).toString();
+  // Assign path components directly: a path beginning // must not become a host.
+  base.pathname = source.pathname;
+  base.search = source.search;
+  base.hash = "";
+  return base.toString();
 }
 
 function matchTagContent(html: string, tag: string): string {

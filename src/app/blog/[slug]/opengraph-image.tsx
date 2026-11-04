@@ -36,7 +36,7 @@ export default async function BlogOgImage({ params }: { params: Promise<{ slug: 
           {category && (
             <div
               style={{
-                display: "inline-flex",
+                display: "flex",
                 alignSelf: "flex-start",
                 fontSize: 22,
                 padding: "8px 20px",

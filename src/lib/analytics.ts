@@ -1,3 +1,6 @@
+import { INTEGRATIONS } from "../config/integrations";
+import { ANALYTICS_PUBLIC_PATHS } from "./analytics-routes";
+
 export type AnalyticsEventName =
   | "generate_lead"
   | "referral_submit"
@@ -37,28 +40,37 @@ interface AnalyticsRuntime {
 
 const APPROVED_PARAMETER_KEYS = new Set<string>([
   "form_type",
-  "service_type",
   "cta_location",
-  "submission_id",
   "page_path",
   "error_type",
 ]);
-const UUID_PATTERN =
-  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const PUBLIC_PATHS = new Set(ANALYTICS_PUBLIC_PATHS);
+// An approved key is not enough: a free-text value could still contain personal data.
+const CATEGORICAL_VALUES: Record<string, ReadonlySet<string>> = {
+  form_type: new Set(["contact", "referral"]),
+  cta_location: new Set([
+    "homepage", "contact_form", "referral_form", "compact_referral_form",
+    "referral_concierge", "desktop_navigation", "mobile_navigation",
+    "mobile_sticky_cta", "floating_contact", "hero", "process_steps",
+    "process_timeline", "homepage_cta_primary", "homepage_cta_secondary",
+    "service_cta_primary", "service_cta_secondary", "quick_response", "referral_section",
+  ]),
+  error_type: new Set(["delivery", "validation"]),
+};
 
 function normalisePagePath(value: unknown, fallbackPath: string): string {
   const candidate = typeof value === "string" && value.startsWith("/") ? value : fallbackPath;
-  if (!candidate.startsWith("/")) return "/";
-  return candidate.split(/[?#]/, 1)[0] || "/";
+  const path = candidate.split(/[?#]/, 1)[0] || "/";
+  // Public pages are finite. Unknown paths may contain names or other user input.
+  return PUBLIC_PATHS.has(path) ? path : "/unmatched";
 }
 
 function normaliseParameter(key: string, value: unknown): string | number | boolean | undefined {
-  if (typeof value === "number" || typeof value === "boolean") return value;
   if (typeof value !== "string") return undefined;
 
   const trimmed = value.trim();
   if (!trimmed || trimmed.length > 100) return undefined;
-  if (key === "submission_id" && !UUID_PATTERN.test(trimmed)) return undefined;
+  if (!CATEGORICAL_VALUES[key]?.has(trimmed)) return undefined;
   return trimmed;
 }
 
@@ -84,6 +96,7 @@ export function dispatchAnalyticsEvent(
   runtime?: AnalyticsRuntime
 ): void {
   try {
+    if (!runtime && !INTEGRATIONS.analytics.enabled) return;
     const browserRuntime: AnalyticsRuntime | undefined =
       runtime ??
       (typeof window !== "undefined"

@@ -6,7 +6,7 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Heading } from "@/components/ui/Heading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Magnetic } from "@/components/animations/Magnetic";
-import { CTA_LINKS, SITE_LAST_UPDATED } from "@/lib/constants";
+import { CTA_LINKS } from "@/lib/constants";
 import { createMetadata } from "@/lib/metadata";
 import { getAreaContentBySlug, getAllAreaSlugs } from "@/content/areas-content";
 import { getAreaPageSchema, getBreadcrumbListSchema } from "@/lib/schema";
@@ -52,7 +52,7 @@ export default async function AreaRegionPage({ params }: Props) {
       item: INTEGRATIONS.siteUrl + item.path,
     }))
   );
-  const areaPageSchema = getAreaPageSchema(area.region, path, area.description, SITE_LAST_UPDATED);
+  const areaPageSchema = getAreaPageSchema(area.region, path, area.description);
 
   return (
     <>
@@ -133,8 +133,8 @@ export default async function AreaRegionPage({ params }: Props) {
             dateChecked: "2026-07-07",
           },
           {
-            label: "Response window",
-            value: "Enquiries and referrals are usually acknowledged within 24 hours during business hours, with urgent referrals prioritised.",
+            label: "Enquiry process",
+            value: "Our team will review your enquiry and discuss availability and next steps.",
             icon: "response",
             source: "Gentle Care Nursing Services intake information",
             sourceUrl: `${INTEGRATIONS.siteUrl}/referral`,
@@ -211,7 +211,7 @@ export default async function AreaRegionPage({ params }: Props) {
 
                   <div className="mt-10 pt-8 border-t border-border/60 relative z-10">
                     <p className="text-base text-muted-foreground leading-relaxed mb-8">
-                      We work with support coordinators, discharge planners, and families across Sydney. Submit an enquiry for a clinical response within 24 hours.
+                      We work with support coordinators, discharge planners, and families across Sydney. Submit an enquiry to discuss availability and next steps.
                     </p>
                     <FormModalTrigger formType="contact" className="w-full h-14 rounded-2xl gap-2 font-bold shadow-lg shadow-primary/10">
                       Start Care Journey

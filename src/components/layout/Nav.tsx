@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback, useId } from "react";
 import { Button } from "@/components/ui/Button";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -16,10 +16,48 @@ interface NavProps {
   className?: string;
 }
 
+/** A disclosure, not a modal: normal Tab order remains available outside it. */
+function useNavigationDisclosure(open: boolean, close: () => void) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      close();
+      if (containerRef.current?.contains(document.activeElement)) {
+        toggleRef.current?.focus();
+      }
+    };
+    const onPointerDown = (event: PointerEvent) => {
+      if (!containerRef.current?.contains(event.target as Node)) close();
+    };
+    // Closing on breakpoint changes prevents a hidden panel reopening on resize.
+    const desktop = window.matchMedia("(min-width: 1280px)");
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("pointerdown", onPointerDown);
+    desktop.addEventListener("change", close);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("pointerdown", onPointerDown);
+      desktop.removeEventListener("change", close);
+    };
+  }, [open, close]);
+
+  return { containerRef, toggleRef };
+}
+
 function DesktopDropdown({ item }: { item: NavItem }) {
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const close = useCallback(() => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setOpen(false);
+  }, []);
+  const { containerRef, toggleRef } = useNavigationDisclosure(open, close);
+  const panelId = useId();
 
   function handleEnter() {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -27,7 +65,9 @@ function DesktopDropdown({ item }: { item: NavItem }) {
   }
 
   function handleLeave() {
-    timeoutRef.current = setTimeout(() => setOpen(false), 150);
+    timeoutRef.current = setTimeout(() => {
+      if (!containerRef.current?.contains(document.activeElement)) close();
+    }, 150);
   }
 
   useEffect(() => {
@@ -42,14 +82,17 @@ function DesktopDropdown({ item }: { item: NavItem }) {
       className="relative"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node)) close();
+      }}
     >
       <button
         type="button"
         className="inline-flex items-center gap-1 text-sm font-medium text-foreground/70 transition-colors hover:text-primary"
-        aria-haspopup="true"
+        ref={toggleRef}
+        aria-controls={panelId}
         aria-expanded={open}
         onClick={() => setOpen(!open)}
-        onFocus={handleEnter}
       >
         {item.label}
         <ChevronDown
@@ -61,6 +104,7 @@ function DesktopDropdown({ item }: { item: NavItem }) {
       </button>
 
       <div
+        id={panelId}
         className={cn(
           "absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 transition-all duration-150",
           open
@@ -92,18 +136,35 @@ function DesktopDropdown({ item }: { item: NavItem }) {
   );
 }
 
-export function Nav({ links, cta, className }: NavProps) {
+export function Nav(props: NavProps) {
+  const pathname = usePathname();
+  // Route changes, including Back/Forward, reset all disclosures without stealing focus.
+  return <Navigation key={pathname} {...props} pathname={pathname} />;
+}
+
+function Navigation({ links, cta, className, pathname }: NavProps & { pathname: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const mobileToggleRef = useRef<HTMLButtonElement>(null);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const { openModal } = useFormModal();
-  const pathname = usePathname();
+  const closeMobile = useCallback(() => {
+    setMobileOpen(false);
+    setMobileServicesOpen(false);
+  }, []);
+  const { containerRef, toggleRef: mobileToggleRef } = useNavigationDisclosure(mobileOpen, closeMobile);
+  const mobilePanelId = useId();
+  const mobileServicesId = useId();
 
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(href + "/");
 
   return (
-    <div className={cn("flex items-center", className)}>
+    <div
+      ref={containerRef}
+      className={cn("flex items-center", className)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node)) closeMobile();
+      }}
+    >
       {/* Desktop nav */}
       <nav
         className="hidden items-center gap-8 xl:flex"
@@ -165,16 +226,16 @@ export function Nav({ links, cta, className }: NavProps) {
         className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground/70 transition-colors hover:bg-muted xl:hidden"
         aria-expanded={mobileOpen}
         ref={mobileToggleRef}
-        aria-controls="mobile-nav"
-        onClick={() => setMobileOpen(!mobileOpen)}
+        aria-controls={mobilePanelId}
+        onClick={() => mobileOpen ? closeMobile() : setMobileOpen(true)}
       >
-        <span className="sr-only">Toggle menu</span>
+        <span className="sr-only">{mobileOpen ? "Close menu" : "Open menu"}</span>
         {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
       </button>
 
       {/* Mobile panel */}
       <div
-        id="mobile-nav"
+        id={mobilePanelId}
         className={cn(
           "fixed inset-x-0 top-[64px] z-40 overflow-y-auto border-t border-border/40 bg-white transition-all duration-200 xl:hidden",
           mobileOpen
@@ -191,6 +252,7 @@ export function Nav({ links, cta, className }: NavProps) {
                   <button
                     type="button"
                     className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-base font-medium text-foreground transition-colors hover:bg-muted"
+                    aria-controls={`${mobileServicesId}-${item.href}`}
                     aria-expanded={mobileServicesOpen}
                     onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                   >
@@ -203,6 +265,7 @@ export function Nav({ links, cta, className }: NavProps) {
                     />
                   </button>
                   <div
+                    id={`${mobileServicesId}-${item.href}`}
                     inert={!mobileServicesOpen}
                     className={cn(
                       "overflow-hidden transition-all duration-200",
@@ -215,7 +278,7 @@ export function Nav({ links, cta, className }: NavProps) {
                           key={child.href}
                           href={child.href}
                           className="block rounded-lg px-3 py-2.5 text-sm font-medium text-foreground/70 transition-colors hover:bg-muted hover:text-primary"
-                          onClick={() => setMobileOpen(false)}
+                          onClick={closeMobile}
                         >
                           {child.label}
                         </Link>
@@ -228,7 +291,7 @@ export function Nav({ links, cta, className }: NavProps) {
                   key={item.href}
                   href={item.href}
                   className="rounded-lg px-3 py-3 text-base font-medium text-foreground transition-colors hover:bg-muted"
-                  onClick={() => setMobileOpen(false)}
+                  onClick={closeMobile}
                 >
                   {item.label}
                 </Link>
@@ -241,7 +304,7 @@ export function Nav({ links, cta, className }: NavProps) {
               <a
                 href={SITE.phoneHref}
                 className="mb-3 flex items-center gap-2 rounded-lg px-3 py-2.5 text-base font-medium text-foreground transition-colors hover:bg-muted"
-                onClick={() => setMobileOpen(false)}
+                onClick={closeMobile}
               >
                 <Phone className="h-5 w-5 text-primary" />
                 {SITE.phone}
@@ -253,7 +316,7 @@ export function Nav({ links, cta, className }: NavProps) {
                 size="md"
                 className="w-full"
                 onClick={() => {
-                  setMobileOpen(false);
+                  closeMobile();
                   if (cta.label === CTA_LINKS.requestCare.label) openModal("contact", "mobile_navigation", mobileToggleRef.current);
                   else if (cta.label === CTA_LINKS.makeReferral.label) openModal("referral", "mobile_navigation", mobileToggleRef.current);
                 }}

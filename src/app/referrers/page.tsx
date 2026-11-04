@@ -16,17 +16,17 @@ const REFERRER_FAQS = [
   {
     question: "How do I refer a client to Gentle Care Nursing Services?",
     answer:
-      "You can use our Request Care form with the client’s details, care needs, and funding type, or contact us directly by phone or email. We’ll acknowledge your referral straight away and respond personally within 24 hours.",
+      "You can use our referral form with basic contact details, a brief non-sensitive enquiry, and funding type, or contact us directly to discuss the referral. Our team will review your enquiry and discuss availability and next steps.",
   },
   {
     question: "What information should I include in a referral?",
     answer:
-      "Include the client’s contact details, primary diagnosis or needs, funding source (NDIS, DVA, aged care, private), urgency, and any relevant reports or discharge summaries. If something is missing, we’ll work with you to complete the picture.",
+      "Include only the basic contact and funding information needed for an initial enquiry, with the client’s permission or other appropriate authority. Do not include diagnoses, medical reports, or discharge summaries in this form. Ask our care team how to provide clinical information through an appropriate channel.",
   },
   {
     question: "How quickly can services start after I refer?",
     answer:
-      "Timeframes depend on location, funding, and the type of care required, but we always respond within 24 hours. For urgent referrals, we prioritise assessment and will let you know realistic start dates up front.",
+      "Our team will review your enquiry and discuss availability and next steps. Start dates depend on assessment, location, funding, care needs and staff availability.",
   },
   {
     question: "Will I receive updates after care begins?",
@@ -38,7 +38,7 @@ const REFERRER_FAQS = [
 const canonical = `${INTEGRATIONS.siteUrl}/referrers`;
 
 export const metadata = createMetadata({
-  title: "Referrers | Fast Intake for Coordinators & Discharge Teams",
+  title: "Referrers | Enquiries for Coordinators & Discharge Teams",
   description:
     "Information for NDIS support coordinators, plan managers, hospital discharge planners, and healthcare professionals who want to refer to Gentle Care Nursing Services.",
   canonical,
@@ -105,9 +105,9 @@ export default function ReferrersPage() {
                 1. Share the Client’s Details
               </Heading>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Submit our Request Care form or contact us directly with the client’s
-                details, funding type, key needs, and any relevant reports or discharge
-                summaries. You’ll receive immediate confirmation that we’ve received it.
+                Use our referral form for basic contact details and funding information.
+                Do not include diagnoses, medical reports, or discharge summaries.
+                Ask our care team how to provide clinical information through an appropriate channel.
               </p>
             </Card>
             <Card variant="default">
@@ -115,9 +115,8 @@ export default function ReferrersPage() {
                 2. We Acknowledge and Assess
               </Heading>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Our team is notified straight away. Within 24 hours, a real person will
-                respond to you or the client with supportive guidance, next steps, and
-                proposed timeframes for assessment and care commencement.
+                Our team reviews the enquiry and discusses availability, next steps,
+                and proposed timeframes for assessment and care commencement.
               </p>
             </Card>
             <Card variant="default">
@@ -133,10 +132,10 @@ export default function ReferrersPage() {
           </Grid>
           <div className="mt-10 text-center">
             <a
-              href={CTA_LINKS.requestCare.href}
+              href={CTA_LINKS.makeReferral.href}
               className="inline-flex h-12 items-center justify-center rounded-xl bg-primary px-8 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
             >
-              Use the Request Care Form
+              Use the Referral Form
             </a>
           </div>
         </Container>
@@ -144,6 +143,7 @@ export default function ReferrersPage() {
 
       {/* Referrer-specific information */}
       <ReferrerBlocksSection
+        isReferrersPage
         referrerTypes={[
           "ndis-support-coordinator",
           "plan-manager",
@@ -165,7 +165,7 @@ export default function ReferrersPage() {
                 Clear, Timely Communication
               </Heading>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                We acknowledge referrals quickly, outline realistic timeframes, and provide
+                We review referrals, discuss availability, and provide
                 updates at agreed points so you never have to chase us for information.
               </p>
             </Card>
@@ -248,8 +248,8 @@ export default function ReferrersPage() {
       {/* Final CTA to request care or contact */}
       <CtaSection
         title="Ready to Refer or Talk Through a Case?"
-        description="Submit the Request Care form or contact us directly. We’ll help you work out the safest, most practical next step for your client."
-        primaryCta={CTA_LINKS.requestCare}
+        description="Use the referral form for an initial enquiry or contact us directly. We’ll help you work out the safest, most practical next step for your client."
+        primaryCta={CTA_LINKS.makeReferral}
         secondaryCta={CTA_LINKS.contact}
         variant="primary"
       />

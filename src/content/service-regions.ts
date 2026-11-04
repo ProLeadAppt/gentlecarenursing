@@ -32,7 +32,7 @@ export interface ServiceDefinition {
   shortTitle: string;
   /** One-line snippet answer for AEO. Plain text, no quotes. */
   snippetAnswer: string;
-  /** Single sentence used in MedicalService schema description. */
+  /** Single sentence used in Service schema description. */
   schemaDescription: string;
   /** Service overview paragraph (300-400 words). Region token: {region}. */
   serviceOverview: string;
@@ -175,7 +175,7 @@ const NDIS_SERVICE: ServiceDefinition = {
   serviceOverview:
     "Gentle Care Nursing is a registered NDIS provider delivering personalised in-home nursing and support to NDIS participants across {region}. We work with participants, families, plan managers and support coordinators to deliver care that is relationship-based, person-centred and experienced. Because we keep our caseload small, we can match participants with a consistent care team who learn routines, communication preferences and clinical needs over time, rather than rotating new staff into a household every visit. Our NDIS supports include in-home nursing from registered nurses (wound care, medication management, continence and catheter care, health monitoring), personal care for daily living tasks like showering, dressing and meals, complex care for participants with higher clinical needs, and community participation support to help people stay connected with their community and goals. Care is planned around each participant's NDIS plan, goals and stated preferences, and is delivered with respect for cultural background, family involvement and choice. We communicate clearly with support coordinators and plan managers about scheduling, progress and any clinical concerns, so plans run smoothly and reviews are well-supported. The result is quality-focused, consistent NDIS care in {region} that families and coordinators can rely on.",
   fundingAndAccess:
-    "NDIS supports from Gentle Care can be accessed by Self-Managed, Plan-Managed and NDIA-Managed participants. You can refer yourself, or a support coordinator, plan manager, family member or healthcare professional can contact us on your behalf. Once we receive an enquiry, we aim to respond within 24 hours during business hours, with urgent referrals prioritised. The first conversation is free and focuses on understanding what you need, what your plan looks like and how we might help, with no pressure to commit. Where helpful, we can review your NDIS plan with you, discuss the line items that might apply and put a service agreement in place. We support participants in {region} across Core Supports (Assistance with Daily Life) and Capacity Building line items where appropriate. If you are in the middle of a plan review or new to the scheme, we can talk through how we typically work with coordinators so you know what to expect.",
+    "NDIS supports from Gentle Care can be accessed by Self-Managed, Plan-Managed and NDIA-Managed participants. You can refer yourself, or a support coordinator, plan manager, family member or healthcare professional can contact us on your behalf. Our team will review your enquiry and discuss availability and next steps. The first conversation is free and focuses on understanding what you need, what your plan looks like and how we might help, with no pressure to commit. Where helpful, we can review your NDIS plan with you, discuss the line items that might apply and put a service agreement in place. We support participants in {region} across Core Supports (Assistance with Daily Life) and Capacity Building line items where appropriate. If you are in the middle of a plan review or new to the scheme, we can talk through how we typically work with coordinators so you know what to expect.",
   included: [
     "In-home nursing from registered nurses",
     "Personal care and assistance with daily living",
@@ -207,7 +207,7 @@ const NDIS_SERVICE: ServiceDefinition = {
       id: "ndis-response-{slug}",
       question: "How quickly does Gentle Care respond to {region} NDIS enquiries?",
       answer:
-        "We aim to respond to all NDIS enquiries within 24 hours during business hours. Urgent referrals (for example, a participant being discharged from hospital or a coordinator needing to set up support quickly) are prioritised, and we will be honest if we cannot start within your timeframe so you can keep moving.",
+        "Our team will review your enquiry and discuss availability and next steps. Care start dates depend on assessment, care needs and staff availability.",
     },
     {
       id: "ndis-coordinators-{slug}",
@@ -249,7 +249,7 @@ const DVA_SERVICE: ServiceDefinition = {
   serviceOverview:
     "Gentle Care Nursing is a DVA Contracted Community Nursing Provider, supporting eligible Veteran Card holders across {region} with clinically required nursing and personal care services at home. Our DVA Community Nursing service is delivered by registered nurses and experienced support staff, working from a referral by your GP or treating doctor and following the assessed care plan. Typical supports include wound care, medication management, continence and catheter care, ongoing health monitoring for chronic conditions, and personal care such as showering, dressing and grooming where this is part of approved care. We take time to understand each veteran's history, preferences and routines, and we work to keep the same small team involved in care wherever possible so visits feel familiar and respectful rather than transactional. Communication with families, GPs and hospital teams is a core part of how we work: we share clear notes, raise concerns early, and make sure everyone involved in a veteran's care is on the same page. Across {region}, we support veterans living independently at home, those returning from a hospital stay, and partners caring for a loved one who needs more clinical support than they can comfortably provide on their own.",
   fundingAndAccess:
-    "DVA Community Nursing is accessed through a referral from a GP or treating doctor on the appropriate DVA referral form. For eligible Veteran Card holders, services are funded directly by the Department of Veterans' Affairs, and we manage claims with DVA on your behalf so there are no out-of-pocket costs for approved care. If you are not yet sure whether you or a loved one is eligible, contact us and we can talk through the typical pathway, or you can speak to DVA or your GP. Once a referral is received we aim to respond within 24 hours during business hours, with urgent post-hospital referrals prioritised. The first conversation is free and focuses on understanding the veteran's situation, the referral details and how care can be set up safely. We can also work alongside RSL welfare officers, advocates and family members where this helps the veteran feel more supported.",
+    "DVA Community Nursing is accessed through a referral from a GP or treating doctor on the appropriate DVA referral form. For eligible Veteran Card holders, services are funded directly by the Department of Veterans' Affairs, and we manage claims with DVA on your behalf so there are no out-of-pocket costs for approved care. If you are not yet sure whether you or a loved one is eligible, contact us and we can talk through the typical pathway, or you can speak to DVA or your GP. Our team will review your enquiry and discuss availability and next steps. The first conversation is free and focuses on understanding the veteran's situation, the referral details and how care can be set up safely. We can also work alongside RSL welfare officers, advocates and family members where this helps the veteran feel more supported.",
   included: [
     "Wound care and complex wound management",
     "Medication management and clinical monitoring",
@@ -299,7 +299,7 @@ const DVA_SERVICE: ServiceDefinition = {
       id: "dva-start-{slug}",
       question: "How quickly can I start DVA-funded care in {region}?",
       answer:
-        "Once we have your referral and DVA approval, we aim to respond within 24 hours during business hours and start care as soon as our roster allows. Urgent post-hospital referrals are prioritised. We will always be honest about timing so you can plan accordingly.",
+        "Our team will review your enquiry and discuss availability and next steps. Start dates depend on assessment and availability. We will always be honest about timing so you can plan accordingly.",
     },
     {
       id: "dva-applying-{slug}",
@@ -323,7 +323,7 @@ const NURSING_SERVICE: ServiceDefinition = {
   serviceOverview:
     "In-home nursing care from Gentle Care brings clinical expertise into the home for individuals and families across {region}. Our nurses are AHPRA-registered, with hands-on experience across hospital and community settings, and they deliver tailored nursing and support at home rather than rushed, transactional visits. Typical clinical care includes wound assessment and dressing, medication management (including injections where appropriate), catheter and continence care, ongoing health monitoring of blood pressure, blood sugar and other observations, and support for chronic conditions such as diabetes, heart failure and chronic respiratory disease. We also coordinate closely with GPs, specialists and hospital discharge teams so you don't have to chase information: we share clear visit notes, flag changes early and follow specialist plans carefully. The way we work is deliberately relationship-based: we keep the caseload small so a consistent nurse or small team can build trust with the person at the centre of care. That continuity matters clinically (subtle changes are noticed sooner) and it matters personally (people don't have to retell their story to a new face every visit). Across {region}, we support older Australians ageing at home, NDIS participants needing skilled nursing, veterans accessing DVA Community Nursing, and private clients who want professional nursing without entering a facility.",
   fundingAndAccess:
-    "In-home nursing care can be funded through NDIS, DVA Community Nursing, Support at Home (and other aged care arrangements), private health insurance in some cases, or paid privately. You don't always need a GP referral to start a conversation: contact us and we can talk through what care you are looking for and which funding stream might apply. Where DVA is involved we'll need a referral from your GP or treating doctor. Where NDIS or Support at Home is involved we'll work with your support coordinator or care partner to put a service agreement in place. Initial consultations are free and focused on listening rather than selling. We aim to respond within 24 hours during business hours, with prompt response and urgent referrals prioritised, particularly for clients being discharged from hospital in {region}.",
+    "In-home nursing care can be funded through NDIS, DVA Community Nursing, Support at Home (and other aged care arrangements), private health insurance in some cases, or paid privately. You don't always need a GP referral to start a conversation: contact us and we can talk through what care you are looking for and which funding stream might apply. Where DVA is involved we'll need a referral from your GP or treating doctor. Where NDIS or Support at Home is involved we'll work with your support coordinator or care partner to put a service agreement in place. Initial consultations are free and focused on listening rather than selling. Our team will review your enquiry and discuss availability and next steps.",
   included: [
     "Wound care and complex wound management",
     "Medication management and administration",
@@ -397,7 +397,7 @@ const PERSONAL_SERVICE: ServiceDefinition = {
   serviceOverview:
     "Personal care and daily living assistance from Gentle Care is about making everyday life at home in {region} feel safer, calmer and more dignified. We provide consistent, person-centred support with the daily tasks that matter most: showering and bathing, dressing and grooming, toileting and continence support, meal preparation and assistance, medication reminders, and gentle mobility support around the home. The way we work is deliberately relationship-based. People being supported with personal care should not be expected to retell their story to a new face every week, so we keep the caseload small and match each person with a small, regular care team that gets to know routines, preferences and the small details that protect dignity. Carers are trained to follow each person's lead: if someone likes their morning routine done a certain way, that is exactly how it is done. Family carers across {region} also tell us how much it helps to have a reliable, professional team who turn up on time, communicate clearly and treat their loved one as a whole person, not a list of tasks. Where personal care sits alongside clinical needs, our registered nurses oversee the support plan to make sure care is safe, joined-up and responsive to changes.",
   fundingAndAccess:
-    "Personal care and daily living assistance can be funded through NDIS Core Supports, DVA where part of approved care, Support at Home and other aged care arrangements, or paid privately. To get started, contact us and we'll arrange a free initial conversation to understand what you or your family member is looking for. We aim to respond within 24 hours during business hours, with urgent referrals (such as someone returning home from hospital in {region}) prioritised. From there we can put a simple service agreement in place, agree a starting schedule, and introduce the carers who will be supporting you. We can also work with support coordinators, care partners, or social workers who are already involved with a household, so the people who already know your situation stay in the loop.",
+    "Personal care and daily living assistance can be funded through NDIS Core Supports, DVA where part of approved care, Support at Home and other aged care arrangements, or paid privately. To get started, contact us and we'll arrange a free initial conversation to understand what you or your family member is looking for. Our team will review your enquiry and discuss availability and next steps. From there we can put a simple service agreement in place, agree a starting schedule, and introduce the carers who will be supporting you. We can also work with support coordinators, care partners, or social workers who are already involved with a household, so the people who already know your situation stay in the loop.",
   included: [
     "Showering, bathing and personal hygiene",
     "Dressing, grooming and skincare",
@@ -453,7 +453,7 @@ const PERSONAL_SERVICE: ServiceDefinition = {
       id: "personal-notice-{slug}",
       question: "How much notice do I need to book a carer?",
       answer:
-        "It depends on what you need and our current roster. We try to set up regular care quickly, and we aim to respond within 24 hours during business hours. We will always be honest if we can't start when you'd like, rather than overpromising.",
+        "It depends on what you need and our current roster. Our team will review your enquiry and discuss availability and next steps. We will always be honest if we can't start when you'd like, rather than overpromising.",
     },
   ],
   parentHref: "/services/personal-care",
@@ -471,7 +471,7 @@ const COMPLEX_SERVICE: ServiceDefinition = {
   serviceOverview:
     "Complex care support from Gentle Care brings specialised clinical nursing into the home for people in {region} who need more than basic personal care or simple nursing tasks. Our nurses are experienced with PEG feeding, tracheostomy care, catheter management, complex wound care and ongoing monitoring of multiple conditions. We work alongside hospitals, specialists and GPs to follow established care plans, document changes carefully and escalate appropriately if anything looks different. Many of the people we support with complex care are NDIS participants with higher clinical support needs, veterans accessing DVA Community Nursing, and older Australians transitioning home from hospital after a complex admission. Family members are often deeply involved in this kind of care, and we build that into how we work: we explain what we're doing and why, support carers to understand what to look for, and never make families feel like they're guessing. We only take on complex care that is clinically appropriate to deliver at home, with clear escalation pathways back to hospital or specialist services if needed. The aim is to give people the option of staying safely at home, surrounded by what they know, rather than spending more time than necessary in hospital or residential settings.",
   fundingAndAccess:
-    "Complex care can be funded through NDIS (where line items support skilled nursing and complex care), DVA Community Nursing, Support at Home and other aged care arrangements, or paid privately. The first step is usually a conversation: we want to understand the diagnosis, current care plan, who is already involved, and what is being asked of family carers in {region}. We aim to respond within 24 hours during business hours, with urgent referrals (particularly for people about to be discharged from hospital) prioritised. From there we'll review the care plan with the relevant clinical team, decide whether home delivery is safe and appropriate, and put a structured plan and service agreement in place. The first conversation is free and there is no pressure to commit before everyone is comfortable with the plan.",
+    "Complex care can be funded through NDIS (where line items support skilled nursing and complex care), DVA Community Nursing, Support at Home and other aged care arrangements, or paid privately. The first step is usually a conversation: we want to understand the diagnosis, current care plan, who is already involved, and what is being asked of family carers in {region}. Our team will review your enquiry and discuss availability and next steps. From there we'll review the care plan with the relevant clinical team, decide whether home delivery is safe and appropriate, and put a structured plan and service agreement in place. The first conversation is free and there is no pressure to commit before everyone is comfortable with the plan.",
   included: [
     "PEG feeding and nutrition support",
     "Tracheostomy care",
@@ -527,7 +527,7 @@ const COMPLEX_SERVICE: ServiceDefinition = {
       id: "complex-emergency-{slug}",
       question: "How quickly can you respond to complex care needs?",
       answer:
-        "For genuine emergencies, please call 000. For new complex care referrals in {region}, we aim to respond within 24 hours during business hours, with urgent referrals (such as imminent hospital discharge) prioritised so care can be set up in time.",
+        "For genuine emergencies, please call 000. Our team will review your enquiry and discuss availability and next steps.",
     },
   ],
   parentHref: "/services/complex-care",
@@ -588,7 +588,7 @@ function buildPage(
   const metaTitle = `${service.shortTitle} in ${regionPhrase} | Gentle Care`;
   // Keep meta description ≤160 chars for SERP display.
   const metaDescription =
-    `${service.title} in ${region.region}, Sydney. experienced, relationship-based care. We aim to respond within 24 hours.`;
+    `${service.title} in ${region.region}, Sydney. Contact Gentle Care to discuss care needs, availability and next steps.`;
   return {
     serviceSlug: service.slug,
     regionSlug: region.slug,
@@ -605,7 +605,7 @@ function buildPage(
     included: service.included,
     faqs: service.faqs.map((faq) => injectFaq(faq, region.region, region.slug)),
     ctaTitle: `Ready to arrange ${service.title.toLowerCase()} in ${region.region}?`,
-    ctaDescription: `Tell us a little about your situation and we'll respond within 24 hours during business hours, with urgent referrals in ${region.region} prioritised.`,
+    ctaDescription: `Our team will review your enquiry and discuss availability and next steps.`,
   };
 }
 

@@ -41,7 +41,7 @@ export const BLOG_CATEGORIES: Record<BlogCategory, { label: string; color: strin
 
 const DEFAULT_AUTHOR: BlogAuthor = {
   name: "Gentle Care Nursing Services",
-  role: "Clinical Team",
+  role: "Care information",
 };
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -76,7 +76,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>What to expect from a quality provider</h2>
       <p>A good NDIS nursing provider should:</p>
       <ul>
-        <li>Respond to your enquiry within 24 hours</li>
+        <li>Discuss your care needs, availability and next steps</li>
         <li>Conduct a thorough needs assessment before starting</li>
         <li>Match you with a consistent nurse or carer</li>
         <li>Provide regular updates to your coordinator and family</li>
@@ -124,7 +124,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Red flags to watch for</h2>
       <p>Be cautious of providers who:</p>
       <ul>
-        <li>Take more than 48 hours to respond to your initial enquiry</li>
+        <li>Do not explain their enquiry process or discuss realistic availability</li>
         <li>Can't tell you who will be providing care</li>
         <li>Don't conduct a proper needs assessment before starting</li>
         <li>Have high staff turnover or rely heavily on agency workers</li>
@@ -135,9 +135,9 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>A personalised provider like Gentle Care Nursing Services takes a different approach. We intentionally limit our client load so we can offer:</p>
       <ul>
         <li>Consistent, familiar nurses and carers</li>
-        <li>Faster response times (we aim to respond within 24 hours)</li>
+        <li>A conversation about care needs, availability and next steps</li>
         <li>Personalised care plans tailored to individual needs</li>
-        <li>Direct access to our clinical director</li>
+        <li>A contact point to discuss care arrangements</li>
       </ul>
       <p>When you choose personalised, relationship-based care, you're choosing a team that knows your loved one by name, not by file number.</p>
     `,
@@ -234,7 +234,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>How Gentle Care Nursing Services helps</h2>
-      <p>We work closely with hospital discharge teams to ensure a seamless transition from hospital to home. Our registered nurses can be in your loved one's home within 24 hours of referral, providing clinical oversight, personal care, and the peace of mind that comes from knowing a qualified professional is looking after things.</p>
+      <p>We work closely with hospital discharge teams to ensure a seamless transition from hospital to home. Care start dates depend on assessment, care needs, location and staff availability. Contact our team to discuss the available options before planning a discharge.</p>
     `,
     category: "clinical",
     author: DEFAULT_AUTHOR,

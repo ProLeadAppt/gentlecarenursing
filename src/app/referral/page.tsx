@@ -15,7 +15,7 @@ import { INTEGRATIONS } from "@/config/integrations";
 export const metadata = createMetadata({
   title: "Request Care | Start an NDIS, DVA or Private Referral",
   description:
-    "Request care or make a referral. You'll get immediate confirmation and a personal response within 24 hours with clear next steps.",
+    "Request care or make a referral to Gentle Care Nursing Services. Share your contact details so our team can discuss availability and next steps.",
   canonical: `${INTEGRATIONS.siteUrl}/referral`,
 });
 
@@ -24,13 +24,13 @@ const REFERRAL_STEPS = [
     number: 1,
     headline: "Submit your enquiry",
     description:
-      "Fill out the form below with your details and care needs. You'll get immediate confirmation that we've received it.",
+      "Share your contact details and a brief enquiry below. The form confirms when your message has been accepted for delivery.",
   },
   {
     number: 2,
     headline: "We acknowledge and respond",
     description:
-      "Our team is notified straight away. A real person will contact you within 24 hours with supportive guidance and clear next steps.",
+      "Our team will review your enquiry and contact you to discuss availability and next steps.",
   },
   {
     number: 3,
@@ -77,7 +77,7 @@ export default function ReferralPage() {
         <Container size="sm">
           <SectionHeader
             title="Submit Your Enquiry"
-            subtitle="You'll receive confirmation straight away. Our team will get back to you within 24 hours with clear next steps."
+            subtitle="Share only the details needed for an initial enquiry. Our team will discuss availability and next steps with you."
           />
           <div className="mt-10">
             <Card variant="default" className="p-8">
@@ -94,16 +94,16 @@ export default function ReferralPage() {
           <Grid cols={3} gap="lg" className="mt-10">
             <div className="text-center">
               <Heading level="h3" as="h3" className="text-lg">
-                Immediate Confirmation
+                Submission Confirmation
               </Heading>
               <p className="mt-2 text-sm text-muted-foreground">
-                You&apos;ll get confirmation that we&apos;ve received your enquiry
-                right away. Our team is notified immediately.
+                The form confirms when your enquiry has been accepted for delivery.
+                This does not confirm a booking or care-start date.
               </p>
             </div>
             <div className="text-center">
               <Heading level="h3" as="h3" className="text-lg">
-                Personal Response — We Aim for 24 Hours
+                Personal Response
               </Heading>
               <p className="mt-2 text-sm text-muted-foreground">
                 A real person will contact you with supportive guidance, clear
@@ -116,7 +116,7 @@ export default function ReferralPage() {
               </Heading>
               <p className="mt-2 text-sm text-muted-foreground">
                 Once a care plan is agreed, we match you with the right carer
-                and start support as soon as possible.
+                and confirm a start date based on care needs and availability.
               </p>
             </div>
           </Grid>

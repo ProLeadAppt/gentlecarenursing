@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { Check, ArrowRight, ArrowLeft, Loader2, UserPlus, Building2, ClipboardCheck } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { FormField } from "@/components/ui/FormField";
@@ -10,6 +10,7 @@ import { Select } from "@/components/ui/Select";
 import { Textarea } from "@/components/ui/Textarea";
 import { dispatchAnalyticsEvent } from "@/lib/analytics";
 import { submitWebsiteForm } from "@/lib/form-client";
+import { EnquiryPrivacyNotice } from "./EnquiryPrivacyNotice";
 
 type Step = 1 | 2 | 3 | 4;
 
@@ -18,6 +19,15 @@ export function ReferralConcierge() {
   const [direction, setDirection] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const submittingRef = useRef(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    // New fields must replace old ones immediately so rapid clicks validate the
+    // current step, and keyboard users land on the newly displayed controls.
+    formRef.current?.querySelector<HTMLElement>("input, select, textarea")?.focus();
+  }, [step]);
 
   const [formData, setFormData] = useState({
     referrerName: "",
@@ -31,13 +41,17 @@ export function ReferralConcierge() {
   });
 
   const nextStep = () => {
+    if (!formRef.current?.reportValidity()) return;
     setDirection(1);
-    setStep((prev) => (prev + 1) as Step);
+    // Repeated clicks from the same render must not skip a step.
+    setStep((prev) => prev === step ? Math.min(prev + 1, 4) as Step : prev);
   };
 
   const prevStep = () => {
+    if (submittingRef.current) return;
+    setErrorMessage("");
     setDirection(-1);
-    setStep((prev) => (prev - 1) as Step);
+    setStep((prev) => prev === step ? Math.max(prev - 1, 1) as Step : prev);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -47,6 +61,14 @@ export function ReferralConcierge() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Enter on an earlier step should advance, never submit a partial referral.
+    if (step < 4) {
+      nextStep();
+      return;
+    }
+    if (submittingRef.current || !formRef.current?.reportValidity()) return;
+    submittingRef.current = true;
+    setErrorMessage("");
     setIsSubmitting(true);
     
     try {
@@ -58,15 +80,15 @@ export function ReferralConcierge() {
         submission_id: submissionId,
       });
       setIsSuccess(true);
-    } catch (error) {
+    } catch {
       dispatchAnalyticsEvent("form_error", {
         form_type: "referral",
         cta_location: "referral_concierge",
         error_type: "delivery",
       });
-      console.error(error);
-      alert("Something went wrong. Please try again.");
+      setErrorMessage("We could not confirm your referral was sent. Please try again or call 1300 004 267.");
     } finally {
+      submittingRef.current = false;
       setIsSubmitting(false);
     }
   };
@@ -88,7 +110,7 @@ export function ReferralConcierge() {
 
   if (isSuccess) {
     return (
-      <div className="flex flex-col items-center justify-center py-12 text-center px-4">
+      <div className="flex flex-col items-center justify-center py-12 text-center px-4" role="status">
         <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-accent/20 text-accent ring-4 ring-accent/5">
           <Check className="h-8 w-8" strokeWidth={3} />
         </div>
@@ -96,7 +118,7 @@ export function ReferralConcierge() {
           Referral Submitted
         </h3>
         <p className="mt-4 max-w-sm text-lg text-muted-foreground leading-relaxed">
-          Thank you for trusting us with your client. Our nursing leads will review the details and contact you within 24 hours to confirm the next steps.
+          Your referral has been accepted for delivery. Our team will review it and contact you about next steps.
         </p>
       </div>
     );
@@ -124,8 +146,9 @@ export function ReferralConcierge() {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit}>
-        <AnimatePresence mode="wait" custom={direction}>
+      <form ref={formRef} onSubmit={handleSubmit} data-clarity-mask="true">
+        <div className="mb-6"><EnquiryPrivacyNotice referral /></div>
+        {/* Do not retain outgoing required fields during step transitions. */}
           <motion.div
             key={step}
             custom={direction}
@@ -147,10 +170,10 @@ export function ReferralConcierge() {
                 </div>
                 <div className="grid gap-5">
                   <FormField label="Full Name" htmlFor="ref-name" required>
-                    <Input id="ref-name" name="referrerName" value={formData.referrerName} onChange={handleInputChange} placeholder="e.g. Sarah Jennings" required />
+                    <Input id="ref-name" name="referrerName" autoComplete="name" maxLength={120} value={formData.referrerName} onChange={handleInputChange} placeholder="Your name" required />
                   </FormField>
                   <div className="grid grid-cols-2 gap-4">
-                    <FormField label="Professional Role" htmlFor="ref-role" required>
+                    <FormField label="Your role" htmlFor="ref-role" required>
                       <Select id="ref-role" name="referrerRole" value={formData.referrerRole} onChange={handleInputChange} required>
                         <option value="">Select Role...</option>
                         <option value="SC">Support Coordinator</option>
@@ -162,7 +185,7 @@ export function ReferralConcierge() {
                       </Select>
                     </FormField>
                     <FormField label="Organisation" htmlFor="ref-org">
-                      <Input id="ref-org" name="organization" value={formData.organization} onChange={handleInputChange} placeholder="e.g. Royal Prince Alfred" />
+                      <Input id="ref-org" name="organization" autoComplete="organization" maxLength={200} value={formData.organization} onChange={handleInputChange} placeholder="Your organisation (optional)" />
                     </FormField>
                   </div>
                 </div>
@@ -180,10 +203,10 @@ export function ReferralConcierge() {
                 </div>
                 <div className="grid gap-5">
                   <FormField label="Email Address" htmlFor="ref-email" required>
-                    <Input id="ref-email" name="referrerEmail" type="email" value={formData.referrerEmail} onChange={handleInputChange} placeholder="professional@email.com" required />
+                    <Input id="ref-email" name="referrerEmail" type="email" autoComplete="email" maxLength={200} value={formData.referrerEmail} onChange={handleInputChange} placeholder="professional@email.com" required />
                   </FormField>
                   <FormField label="Phone Number" htmlFor="ref-phone" required>
-                    <Input id="ref-phone" name="referrerPhone" type="tel" value={formData.referrerPhone} onChange={handleInputChange} placeholder="Best contact number" required />
+                    <Input id="ref-phone" name="referrerPhone" type="tel" autoComplete="tel" maxLength={40} value={formData.referrerPhone} onChange={handleInputChange} placeholder="Best contact number" required />
                   </FormField>
                 </div>
               </div>
@@ -199,8 +222,8 @@ export function ReferralConcierge() {
                   <p className="text-muted-foreground">Basic details about the person needing care.</p>
                 </div>
                 <div className="grid gap-5">
-                  <FormField label="Client Full Name (or Initials)" htmlFor="client-name" required>
-                    <Input id="client-name" name="clientName" value={formData.clientName} onChange={handleInputChange} placeholder="For privacy, initials are fine" required />
+                  <FormField label="Client initials (optional)" htmlFor="ref-client-initials">
+                    <Input id="ref-client-initials" name="clientName" maxLength={120} value={formData.clientName} onChange={handleInputChange} placeholder="Initials are enough" />
                   </FormField>
                   <FormField label="Required Service" htmlFor="ref-service" required>
                     <Select id="ref-service" name="serviceType" value={formData.serviceType} onChange={handleInputChange} required>
@@ -223,8 +246,8 @@ export function ReferralConcierge() {
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/5 text-primary mb-2">
                     <ClipboardCheck className="h-5 w-5" />
                   </div>
-                  <h3 className="font-[family-name:var(--font-serif)] text-2xl font-bold">Nursing Notes</h3>
-                  <p className="text-muted-foreground">Any specific clinical requirements or urgency we should know about?</p>
+                  <h3 className="font-[family-name:var(--font-serif)] text-2xl font-bold">Your Enquiry</h3>
+                  <p className="text-muted-foreground">What would you like our team to contact you about? Please leave out detailed medical information.</p>
                 </div>
                 <FormField label="Additional Notes" htmlFor="ref-notes">
                   <Textarea 
@@ -232,21 +255,24 @@ export function ReferralConcierge() {
                     name="notes" 
                     value={formData.notes} 
                     onChange={handleInputChange} 
-                    placeholder="Briefly describe the clinical situation or specific goals..."
+                    placeholder="A brief enquiry is enough to start the conversation."
+                    maxLength={2000}
                     rows={6}
                   />
                 </FormField>
                 <p className="text-xs text-muted-foreground italic">
-                  Note: A nursing lead will follow up for more details soon.
+                  Ask our team how to provide any further information needed for care.
                 </p>
               </div>
             )}
           </motion.div>
-        </AnimatePresence>
+
+
+        {errorMessage && <p className="mt-6 text-sm text-destructive" role="alert">{errorMessage}</p>}
 
         <div className="mt-12 flex items-center justify-between border-t border-border/60 pt-8">
           {step > 1 ? (
-            <Button type="button" variant="ghost" onClick={prevStep} className="gap-2 px-6">
+            <Button type="button" variant="ghost" onClick={prevStep} disabled={isSubmitting} className="gap-2 px-6">
               <ArrowLeft className="h-4 w-4" />
               Previous
             </Button>
@@ -256,13 +282,7 @@ export function ReferralConcierge() {
 
           {step < 4 ? (
             <Button 
-              type="button" 
-              onClick={nextStep} 
-              disabled={
-                (step === 1 && (!formData.referrerName || !formData.referrerRole)) || 
-                (step === 2 && (!formData.referrerEmail || !formData.referrerPhone)) ||
-                (step === 3 && (!formData.clientName || !formData.serviceType))
-              }
+              type="submit"
               className="gap-2 px-8"
             >
               Next Step

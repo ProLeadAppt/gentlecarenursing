@@ -89,9 +89,9 @@ function buildRegionEvidence(data: ServiceRegionPageData): readonly EvidenceItem
       icon: "area",
     },
     {
-      label: "Response window",
+      label: "Enquiry process",
       value:
-        "Enquiries acknowledged immediately; we aim to respond within 24 hours during business hours, with urgent referrals prioritised.",
+        "Our team will review your enquiry and discuss availability and next steps.",
       icon: "response",
     },
     {
@@ -290,8 +290,8 @@ export function ServiceRegionPageLayout({ data }: Props) {
                     <div className="flex items-start gap-3">
                       <PhoneCall className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                       <p className="text-sm text-muted-foreground leading-relaxed">
-                        Prompt response within business hours, with urgent
-                        referrals prioritised.
+                        Our team reviews enquiries and discusses availability
+                        and next steps.
                       </p>
                     </div>
 

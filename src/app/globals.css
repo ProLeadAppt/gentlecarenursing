@@ -1,4 +1,5 @@
-@import "tailwindcss";
+/* Scan only application source, not archived tools, docs or agent examples. */
+@import "tailwindcss" source("../");
 
 /* ---------------------------------------------------------------------------
    Gentle Care Nursing Services — Design System

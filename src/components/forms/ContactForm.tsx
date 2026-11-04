@@ -1,22 +1,27 @@
 "use client";
 
-import { useState, useRef, useEffect, type FormEvent } from "react";
+import { useState, useRef, useEffect, useId, type FormEvent } from "react";
 import { FormField } from "@/components/ui/FormField";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { Button } from "@/components/ui/Button";
 import { dispatchAnalyticsEvent } from "@/lib/analytics";
 import { submitWebsiteForm } from "@/lib/form-client";
+import { EnquiryPrivacyNotice } from "./EnquiryPrivacyNotice";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
 export function ContactForm() {
+  const formId = useId();
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const submittingRef = useRef(false);
   const firstFieldRef = useRef<HTMLInputElement>(null);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submittingRef.current || !e.currentTarget.reportValidity()) return;
+    submittingRef.current = true;
     setStatus("submitting");
     setErrorMessage("");
 
@@ -47,6 +52,8 @@ export function ContactForm() {
       });
       setStatus("error");
       setErrorMessage("Something went wrong. Please try again or contact us directly.");
+    } finally {
+      submittingRef.current = false;
     }
   }
 
@@ -58,10 +65,10 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-lg border border-accent/30 bg-accent/5 p-6 text-center" role="alert">
+      <div className="rounded-lg border border-accent/30 bg-accent/5 p-6 text-center" role="status">
         <p className="text-lg font-semibold text-foreground">Thank you!</p>
         <p className="mt-2 text-muted-foreground">
-          Your enquiry has been accepted for delivery to our team. If it is urgent, please call 1300 004 267.
+          Your enquiry has been accepted for delivery. Our team will review it and contact you about next steps.
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
           Need to talk? Call us or send another message.
@@ -78,33 +85,37 @@ export function ContactForm() {
   }
 
   return (
-    <form className="space-y-6" onSubmit={handleSubmit} noValidate>
-      <FormField label="Name" htmlFor="contact-name" required>
+    <form className="space-y-6" onSubmit={handleSubmit} data-clarity-mask="true">
+      <FormField label="Name" htmlFor={`${formId}-contact-name`} required>
         <Input
           ref={firstFieldRef}
-          id="contact-name"
+          id={`${formId}-contact-name`}
           name="name"
           type="text"
           placeholder="Your name"
           required
-          aria-invalid={status === "error"}
+          autoComplete="name"
+          maxLength={120}
         />
       </FormField>
-      <FormField label="Email" htmlFor="contact-email" required>
-        <Input id="contact-email" name="email" type="email" placeholder="your@email.com" required />
+      <FormField label="Email" htmlFor={`${formId}-contact-email`} required>
+        <Input id={`${formId}-contact-email`} name="email" type="email" autoComplete="email" maxLength={200} placeholder="your@email.com" required />
       </FormField>
-      <FormField label="Phone" htmlFor="contact-phone">
-        <Input id="contact-phone" name="phone" type="tel" placeholder="Phone number (optional)" />
+      <FormField label="Phone" htmlFor={`${formId}-contact-phone`}>
+        <Input id={`${formId}-contact-phone`} name="phone" type="tel" autoComplete="tel" maxLength={40} placeholder="Phone number (optional)" />
       </FormField>
-      <FormField label="Message" htmlFor="contact-message" required>
+      <FormField label="Message" htmlFor={`${formId}-contact-message`} required>
         <Textarea
-          id="contact-message"
+          id={`${formId}-contact-message`}
           name="message"
           rows={4}
-          placeholder="How can we help?"
+          placeholder="What would you like us to contact you about?"
+          maxLength={2000}
           required
         />
       </FormField>
+      <EnquiryPrivacyNotice />
+
       {status === "error" && (
         <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive" role="alert">
           {errorMessage}

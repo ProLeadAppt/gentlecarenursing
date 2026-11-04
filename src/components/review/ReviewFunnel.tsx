@@ -1,104 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { StarRating, type StarRatingValue } from "./StarRating";
 import { SITE } from "@/lib/constants";
-import { motion, AnimatePresence } from "framer-motion";
+import { isSubmissionConfirmation } from "@/lib/form-client";
 import { ArrowRight, Mail, ExternalLink } from "lucide-react";
 
-/**
- * /review — Gemma's private review funnel.
- *
- * 4–5 stars  → redirect to GBP (public, helps other families)
- * 1–3 stars  → inline slide-down to private feedback form
- *             (email to Gemma, no public airing)
- *
- * Compliance line ("If you'd still like to leave a Google review, you
- * can click here.") is always visible so users retain a public-review
- * path even on the low-rating branch — keeps the funnel Google's
- * policy-safe.
- */
+/** Public reviews and private feedback are equally available, independent of sentiment. */
 export function ReviewFunnel() {
+  const [showPrivate, setShowPrivate] = useState(false);
   const [rating, setRating] = useState<StarRatingValue | null>(null);
-
-  // 4–5 star branch: smooth client-side redirect to GBP
-  const handleHighRating = () => {
-    // open in same tab so the user doesn't lose momentum
-    window.location.href = SITE.gbpReviewUrl;
-  };
-
-  // 1–3 star branch: keep on page, reveal the form
-  const handleLowRating = (value: StarRatingValue) => {
-    setRating(value);
-  };
-
-  const onContinue = (value: StarRatingValue) => {
-    if (value >= 4) handleHighRating();
-    else handleLowRating(value);
-  };
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <AnimatePresence mode="wait">
-        {rating === null || rating >= 4 ? (
-          <motion.div
-            key="stars"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25 }}
-          >
-            <StarRating onContinue={onContinue} />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="feedback"
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -14 }}
-            transition={{ duration: 0.3 }}
-            className="text-left"
-          >
-            <FeedbackFormInline rating={rating} onReset={() => setRating(null)} />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Always-visible compliance line, small + muted */}
-      <div className="mt-12 text-center">
-        <p className="text-xs text-muted-foreground/80">
-          {rating === null || rating >= 4 ? (
-            <>
-              Prefer to email us instead?{" "}
-              <a
-                href={`mailto:${SITE.email}`}
-                className="underline underline-offset-2 hover:text-foreground transition-colors"
-              >
-                {SITE.email}
-              </a>
-            </>
-          ) : (
-            <>
-              If you&apos;d still like to leave a Google review,{" "}
-              <a
-                href={SITE.gbpReviewUrl}
-                className="underline underline-offset-2 hover:text-foreground transition-colors inline-flex items-center gap-1"
-              >
-                click here
-                <ExternalLink className="h-3 w-3" aria-hidden />
-              </a>
-              .
-            </>
-          )}
-        </p>
+      <p className="text-center text-muted-foreground mb-6">
+        All experiences are welcome. Choose a public Google review or private feedback to our team.
+      </p>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <a href={SITE.gbpReviewUrl} className="inline-flex items-center justify-center gap-2 rounded-xl border border-primary px-6 py-4 text-base font-semibold text-primary hover:bg-primary/5 focus-visible:outline-2 focus-visible:outline-offset-4">
+          Leave a Google review <ExternalLink className="h-4 w-4" aria-hidden />
+        </a>
+        <button type="button" aria-expanded={showPrivate} aria-controls="private-feedback" onClick={() => setShowPrivate(true)} className="inline-flex items-center justify-center gap-2 rounded-xl border border-primary px-6 py-4 text-base font-semibold text-primary hover:bg-primary/5 focus-visible:outline-2 focus-visible:outline-offset-4">
+          Share private feedback <Mail className="h-4 w-4" aria-hidden />
+        </button>
       </div>
+      <p className="mt-3 text-sm text-center text-muted-foreground">Google reviews are public. Private feedback is not posted publicly.</p>
+      {showPrivate && (
+        <div id="private-feedback" className="mt-8" data-clarity-mask="true">
+          {rating === null ? (
+            <StarRating onContinue={setRating} continueLabel="Continue with private feedback" />
+          ) : (
+            <FeedbackFormInline rating={rating} onReset={() => setRating(null)} />
+          )}
+        </div>
+      )}
     </div>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/* Inline low-rating feedback form (1–3 stars)                        */
-/* ------------------------------------------------------------------ */
 
 interface FeedbackFormInlineProps {
   rating: StarRatingValue;
@@ -109,10 +47,13 @@ function FeedbackFormInline({ rating, onReset }: FeedbackFormInlineProps) {
   const [status, setStatus] = useState<
     "idle" | "submitting" | "sent" | "error"
   >("idle");
+  const submitting = useRef(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submitting.current) return;
+    submitting.current = true;
     setStatus("submitting");
     setErrorMessage("");
 
@@ -133,31 +74,34 @@ function FeedbackFormInline({ rating, onReset }: FeedbackFormInlineProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      const json = await res.json().catch(() => ({}));
-      if (!res.ok || !json.success) {
-        throw new Error(json.error ?? "Unable to send right now.");
+      if (res.status === 400) {
+        setErrorMessage("Please check your feedback and enter a valid email address or phone number if you want us to follow up.");
+        setStatus("error");
+        return;
+      }
+      const json: unknown = await res.json();
+      if (!res.ok || !isSubmissionConfirmation(json)) {
+        throw new Error("Unable to send right now.");
       }
       setStatus("sent");
-    } catch (err) {
-      setErrorMessage(
-        err instanceof Error
-          ? err.message
-          : "Something went wrong. Please email us directly."
-      );
+    } catch {
+      setErrorMessage("Unable to confirm delivery. Please try again or email us directly.");
       setStatus("error");
+    } finally {
+      submitting.current = false;
     }
   }
 
   if (status === "sent") {
     return (
-      <div className="rounded-2xl border border-accent/20 bg-accent/[0.04] p-8 text-center">
+      <div role="status" className="rounded-2xl border border-accent/20 bg-accent/[0.04] p-8 text-center">
         <Mail className="mx-auto h-10 w-10 text-primary" aria-hidden />
         <h3 className="mt-4 font-[family-name:var(--font-serif)] text-2xl text-foreground">
           Thank you for telling us
         </h3>
         <p className="mt-2 text-base text-muted-foreground max-w-md mx-auto">
-          Your feedback has been sent privately. We read every response and
-          will use it to improve.
+          Our email service has accepted your private feedback for delivery.
+          Thank you for sharing your experience.
         </p>
         <button
           type="button"
@@ -174,14 +118,15 @@ function FeedbackFormInline({ rating, onReset }: FeedbackFormInlineProps) {
     <form
       onSubmit={handleSubmit}
       className="rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-sm space-y-5"
-      noValidate
+      data-clarity-mask="true"
+      aria-busy={status === "submitting"}
     >
       <div>
         <h3 className="font-[family-name:var(--font-serif)] text-2xl text-foreground">
-          Help us understand
+          Share your experience
         </h3>
         <p className="mt-1.5 text-sm text-muted-foreground">
-          A few quick questions. Everything you share goes only to our team.
+          Tell us what worked well or what we could improve. Your feedback is sent to our team through our email service.
         </p>
       </div>
 
@@ -227,13 +172,14 @@ function FeedbackFormInline({ rating, onReset }: FeedbackFormInlineProps) {
           htmlFor="improvements"
           className="block text-sm font-medium text-foreground mb-1.5"
         >
-          What could we have done better?
+          What would you like us to know?
         </label>
         <textarea
           id="improvements"
           name="improvements"
           rows={4}
-          placeholder="Take your time. Specifics help us improve."
+          maxLength={5000}
+          placeholder="Tell us about your experience. Please avoid sensitive personal details."
           className="block w-full rounded-xl border border-border bg-card px-4 py-3 text-foreground placeholder:text-muted-foreground/70 focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/15 transition-all resize-y"
         />
       </div>
@@ -246,6 +192,13 @@ function FeedbackFormInline({ rating, onReset }: FeedbackFormInlineProps) {
         />
         <span>It&apos;s okay to follow up with me about this feedback.</span>
       </label>
+
+      <p className="text-sm leading-relaxed text-muted-foreground">
+        Include only what we need to understand your feedback. Please do not include medical records,
+        detailed health information, identity document numbers or someone else&apos;s personal details.
+        Read our <a href="/privacy" className="text-primary underline underline-offset-2">privacy policy</a>.
+        {" "}This form is not for urgent care. For a medical emergency, call <a href="tel:000" className="text-primary underline">000</a>.
+      </p>
 
       {status === "error" && (
         <p
@@ -260,6 +213,7 @@ function FeedbackFormInline({ rating, onReset }: FeedbackFormInlineProps) {
         <button
           type="button"
           onClick={onReset}
+          disabled={status === "submitting"}
           className="text-sm text-muted-foreground hover:text-foreground transition-colors"
         >
           ← Back
@@ -294,6 +248,7 @@ function Field({ id, label, name, type }: FieldProps) {
         id={id}
         name={name}
         type={type}
+        maxLength={254}
         className="block w-full rounded-xl border border-border bg-card px-4 py-3 text-foreground placeholder:text-muted-foreground/70 focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/15 transition-all"
       />
     </div>

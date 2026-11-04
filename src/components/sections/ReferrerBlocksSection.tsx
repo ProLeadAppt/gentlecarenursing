@@ -7,12 +7,15 @@ import Link from "next/link";
 interface ReferrerBlocksSectionProps {
   referrerTypes: ReferrerType[];
   title?: string;
+  /** On the audience information page, link onward rather than back to the same card. */
+  isReferrersPage?: boolean;
   subtitle?: string;
   variant?: "default" | "muted" | "card";
 }
 
 export function ReferrerBlocksSection({
   referrerTypes,
+  isReferrersPage = false,
   title = "How We Work With Referrers",
   subtitle = "Clear processes and fast communication for professionals who trust us with their clients.",
   variant = "card",
@@ -31,7 +34,9 @@ export function ReferrerBlocksSection({
           {blocks.map((block) => (
             <article
               key={block.id}
-              className="h-full rounded-2xl border border-border bg-card p-6 shadow-sm"
+              id={isReferrersPage ? block.anchorId : undefined}
+              tabIndex={isReferrersPage ? -1 : undefined}
+              className="scroll-mt-24 h-full rounded-2xl border border-border bg-card p-6 shadow-sm"
               aria-label={block.title}
             >
               <h3 className="font-[family-name:var(--font-dm-sans)] text-lg font-semibold text-foreground">
@@ -47,10 +52,10 @@ export function ReferrerBlocksSection({
               </ul>
               <div className="mt-4">
                 <Link
-                  href={block.primaryCtaHref}
+                  href={isReferrersPage ? "/referral" : block.primaryCtaHref}
                   className="text-sm font-medium text-primary hover:underline"
                 >
-                  {block.primaryCtaLabel}
+                  {isReferrersPage ? "Make a referral" : block.primaryCtaLabel}
                 </Link>
               </div>
             </article>

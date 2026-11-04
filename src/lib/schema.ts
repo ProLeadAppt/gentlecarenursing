@@ -12,14 +12,11 @@ import { GOOGLE_REVIEWS } from "@/content/reviews";
 export function getLocalBusinessSchema() {
   const sameAs = [
     ...Object.values(SITE.social).filter(Boolean),
-    ...(SITE.gbpReviewUrl ? [SITE.gbpReviewUrl] : []),
   ] as string[];
 
   const areaServed = [
     { "@type": "City" as const, name: "Sydney", containedInPlace: { "@type": "State", name: "New South Wales" } },
     ...AREAS_SERVED.map((area) => ({ "@type": "Place" as const, name: area.region })),
-    { "@type": "State" as const, name: "New South Wales" },
-    { "@type": "Country" as const, name: "Australia" },
   ];
 
   return {
@@ -41,13 +38,6 @@ export function getLocalBusinessSchema() {
       postalCode: "2137",
       addressCountry: "AU",
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: -33.864,
-      longitude: 151.093,
-      addressLocality: "North Strathfield",
-      addressRegion: "NSW",
-    },
     areaServed,
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -63,13 +53,6 @@ export function getLocalBusinessSchema() {
       })),
     },
     ...(sameAs.length > 0 ? { sameAs } : {}),
-    priceRange: "$$",
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "08:00",
-      closes: "17:00",
-    },
   };
 }
 
@@ -81,44 +64,44 @@ export function getServiceSchema(service: {
   reviewedBy?: { name: string; role?: string };
   areaServed?: unknown;
 }) {
+  const url = new URL(service.url, `${INTEGRATIONS.siteUrl}/`).href;
   return {
     "@context": "https://schema.org",
-    "@type": "MedicalService" as const,
+    "@type": "Service" as const,
+    "@id": `${url}#service`,
     name: service.name,
     description: service.description,
-    url: `${INTEGRATIONS.siteUrl}${service.url}`,
+    url,
     provider: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
-    ...(service.dateModified ? { dateModified: service.dateModified } : {}),
-    ...(service.reviewedBy
-      ? {
-          reviewedBy: {
-            "@type": "Person",
-            name: service.reviewedBy.name,
-            ...(service.reviewedBy.role ? { jobTitle: service.reviewedBy.role } : {}),
-            worksFor: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
-          },
-        }
-      : {}),
     ...(service.areaServed ? { areaServed: service.areaServed } : {}),
+    // Review and modification describe the page, not the service itself.
+    mainEntityOfPage: {
+      "@type": "WebPage" as const,
+      "@id": `${url}#webpage`,
+      url,
+      name: service.name,
+      description: service.description,
+      mainEntity: { "@id": `${url}#service` },
+      isPartOf: { "@id": `${INTEGRATIONS.siteUrl}/#website` },
+      ...(service.dateModified ? { dateModified: service.dateModified } : {}),
+      ...(service.reviewedBy
+        ? {
+            reviewedBy: {
+              "@type": "Person",
+              name: service.reviewedBy.name,
+              ...(service.reviewedBy.role ? { jobTitle: service.reviewedBy.role } : {}),
+              worksFor: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
+            },
+          }
+        : {}),
+    },
   };
 }
 
 /**
- * MedicalProcedure schema for clinical procedures a service page describes.
- *
- * Used to bind a service page (e.g. /services/complex-care) to specific
- * procedures Google's clinical-content classifier and AI engines can
- * recognise — tracheostomy care, PEG feeding, catheter management, etc.
- *
- * Each procedure links back to the page's MedicalService via `relevantSpecialty`
- * so the entity graph stays connected. Keep `description` short and factual —
- * AI engines extract these descriptions when answering procedure-specific
- * queries (e.g. "PEG feeding home care Sydney").
- *
- * Only populate this with procedures we genuinely deliver. Do not list
- * a procedure here unless the service page also references it in body
- * content; mismatches between schema and page content can hurt rather
- * than help on Google's quality systems.
+ * A procedure described by visible service-page content. MedicalProcedure does
+ * not support provider; link it to the describing page using subjectOf instead.
+ * Only include procedures actually described on that page.
  */
 export function getMedicalProcedureSchema(args: {
   name: string;
@@ -134,7 +117,7 @@ export function getMedicalProcedureSchema(args: {
     ...(args.alternateName ? { alternateName: args.alternateName } : {}),
     ...(args.description ? { description: args.description } : {}),
     url: `${INTEGRATIONS.siteUrl}${args.pageUrl}`,
-    provider: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
+    subjectOf: { "@type": "WebPage", "@id": `${INTEGRATIONS.siteUrl}${args.pageUrl}#webpage`, url: `${INTEGRATIONS.siteUrl}${args.pageUrl}` },
   };
 }
 
@@ -176,7 +159,6 @@ export function getWebsiteSchema() {
 export function getOrganizationSchema() {
   const sameAs = [
     ...Object.values(SITE.social).filter(Boolean),
-    ...(SITE.gbpReviewUrl ? [SITE.gbpReviewUrl] : []),
   ] as string[];
 
   // knowsAbout strengthens entity profile for AI engines on healthcare queries.
@@ -211,7 +193,7 @@ export function getOrganizationSchema() {
     description: ELEVATOR_PITCH,
     url: INTEGRATIONS.siteUrl,
     logo: `${INTEGRATIONS.siteUrl}/images/logo.png`,
-    slogan: "Personalised, clinician-led in-home nursing and care",
+    slogan: SITE.tagline,
     telephone: SITE.phone,
     email: SITE.email,
     address: {
@@ -224,8 +206,6 @@ export function getOrganizationSchema() {
     },
     areaServed: [
       { "@type": "City", name: "Sydney", containedInPlace: { "@type": "State", name: "New South Wales" } },
-      { "@type": "State", name: "New South Wales" },
-      { "@type": "Country", name: "Australia" },
     ],
     contactPoint: [
       {
@@ -233,14 +213,8 @@ export function getOrganizationSchema() {
         telephone: SITE.phone,
         email: SITE.email,
         contactType: "customer service",
-        areaServed: "AU",
+        areaServed: { "@type": "City", name: "Sydney" },
         availableLanguage: ["English"],
-        hoursAvailable: {
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          opens: "08:00",
-          closes: "17:00",
-        },
       },
     ],
     knowsAbout,
@@ -297,8 +271,8 @@ export function getBreadcrumbListSchema(items: { name: string; item: string }[])
 
 /**
  * Service + region landing page schema bundle.
- * Returns an array combining MedicalService, WebPage with areaServed (GeoShape),
- * and a localised provider reference. Use alongside breadcrumb + FAQ schemas.
+ * Returns linked Service and WebPage nodes with a canonical provider reference.
+ * Geographic coverage belongs on the Service, not on the WebPage.
  */
 export function getServiceRegionSchemas(args: {
   serviceName: string;
@@ -310,9 +284,11 @@ export function getServiceRegionSchemas(args: {
   pageDescription: string;
 }) {
   const url = `${INTEGRATIONS.siteUrl}${args.path}`;
-  const medicalService = {
+  const service = {
     "@context": "https://schema.org",
-    "@type": "MedicalService" as const,
+    "@type": "Service" as const,
+    "@id": `${url}#service`,
+    mainEntityOfPage: { "@id": `${url}#webpage` },
     name: `${args.serviceName} in ${args.region}, Sydney`,
     description: args.serviceDescription,
     url,
@@ -335,7 +311,7 @@ export function getServiceRegionSchemas(args: {
     availableChannel: {
       "@type": "ServiceChannel",
       serviceUrl: url,
-      servicePhone: SITE.phone,
+      servicePhone: { "@type": "ContactPoint", telephone: SITE.phone },
       availableLanguage: { "@type": "Language", name: "English" },
     },
   };
@@ -343,6 +319,8 @@ export function getServiceRegionSchemas(args: {
   const webPage = {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    mainEntity: { "@id": `${url}#service` },
     name: args.pageTitle,
     description: args.pageDescription,
     url,
@@ -355,23 +333,22 @@ export function getServiceRegionSchemas(args: {
     },
   };
 
-  return [medicalService, webPage];
+  return [service, webPage] as const;
 }
 
-/** WebPage + areaServed for area/region landing pages (local SEO + GEO). */
+/** WebPage describing a region; reuse the canonical business identity. */
 export function getAreaPageSchema(region: string, path: string, description: string, dateModified?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": `${INTEGRATIONS.siteUrl}${path}#webpage`,
+    isPartOf: { "@id": `${INTEGRATIONS.siteUrl}/#website` },
     name: `In-Home Nursing ${region} | ${SITE.name}`,
     description,
     url: `${INTEGRATIONS.siteUrl}${path}`,
     ...(dateModified ? { dateModified } : {}),
-    about: {
-      "@type": "MedicalBusiness",
-      name: SITE.name,
-      areaServed: { "@type": "Place", name: region },
-    },
+    about: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
+    spatialCoverage: { "@type": "Place", name: region },
   };
 }
 
@@ -390,10 +367,7 @@ export function getAggregateRatingSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "AggregateRating",
-    itemReviewed: {
-      "@type": "MedicalBusiness",
-      name: SITE.name,
-    },
+    itemReviewed: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
     ratingValue: GOOGLE_REVIEWS.averageRating.toString(),
     bestRating: "5",
     worstRating: "1",
@@ -418,16 +392,14 @@ export function getArticleSchema(post: {
     description: post.excerpt,
     datePublished: post.publishedAt,
     dateModified: post.updatedAt ?? post.publishedAt,
-    author: {
-      "@type": "Person",
-      name: post.author.name,
-      ...(post.author.role ? { jobTitle: post.author.role } : {}),
-    },
-    publisher: {
-      "@type": "Organization",
-      name: SITE.name,
-      url: INTEGRATIONS.siteUrl,
-    },
+    author: post.author.name === SITE.name
+      ? { "@id": `${INTEGRATIONS.siteUrl}/#organization` }
+      : {
+          "@type": "Person",
+          name: post.author.name,
+          ...(post.author.role ? { jobTitle: post.author.role } : {}),
+        },
+    publisher: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
     ...(post.featuredImageSrc
       ? { image: `${INTEGRATIONS.siteUrl}${post.featuredImageSrc}` }
       : {}),
