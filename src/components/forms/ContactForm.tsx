@@ -14,9 +14,13 @@ export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const firstFieldRef = useRef<HTMLInputElement>(null);
+  const restartFocusRef = useRef(false);
+  const submittingRef = useRef(false);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submittingRef.current) return;
+    submittingRef.current = true;
     setStatus("submitting");
     setErrorMessage("");
 
@@ -47,11 +51,14 @@ export function ContactForm() {
       });
       setStatus("error");
       setErrorMessage("Something went wrong. Please try again or contact us directly.");
+    } finally {
+      submittingRef.current = false;
     }
   }
 
   useEffect(() => {
-    if (status === "error") {
+    if (status === "error" || (status === "idle" && restartFocusRef.current)) {
+      restartFocusRef.current = false;
       firstFieldRef.current?.focus();
     }
   }, [status]);
@@ -68,7 +75,10 @@ export function ContactForm() {
         </p>
         <button
           type="button"
-          onClick={() => setStatus("idle")}
+          onClick={() => {
+            restartFocusRef.current = true;
+            setStatus("idle");
+          }}
           className="mt-4 text-sm font-medium text-primary hover:underline"
         >
           Send another message
@@ -78,41 +88,43 @@ export function ContactForm() {
   }
 
   return (
-    <form className="space-y-6" onSubmit={handleSubmit} noValidate>
-      <FormField label="Name" htmlFor="contact-name" required>
-        <Input
-          ref={firstFieldRef}
-          id="contact-name"
-          name="name"
-          type="text"
-          placeholder="Your name"
-          required
-          aria-invalid={status === "error"}
-        />
-      </FormField>
-      <FormField label="Email" htmlFor="contact-email" required>
-        <Input id="contact-email" name="email" type="email" placeholder="your@email.com" required />
-      </FormField>
-      <FormField label="Phone" htmlFor="contact-phone">
-        <Input id="contact-phone" name="phone" type="tel" placeholder="Phone number (optional)" />
-      </FormField>
-      <FormField label="Message" htmlFor="contact-message" required>
-        <Textarea
-          id="contact-message"
-          name="message"
-          rows={4}
-          placeholder="How can we help?"
-          required
-        />
-      </FormField>
-      {status === "error" && (
-        <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive" role="alert">
-          {errorMessage}
-        </div>
-      )}
-      <Button type="submit" className="w-full" disabled={status === "submitting"}>
-        {status === "submitting" ? "Sending..." : "Send Message"}
-      </Button>
+    <form onSubmit={handleSubmit} noValidate aria-busy={status === "submitting"}>
+      <fieldset disabled={status === "submitting"} className="min-w-0 space-y-6">
+        <FormField label="Name" htmlFor="contact-name" required>
+          <Input
+            ref={firstFieldRef}
+            id="contact-name"
+            name="name"
+            type="text"
+            placeholder="Your name"
+            required
+            aria-invalid={status === "error"}
+          />
+        </FormField>
+        <FormField label="Email" htmlFor="contact-email" required>
+          <Input id="contact-email" name="email" type="email" placeholder="your@email.com" required />
+        </FormField>
+        <FormField label="Phone" htmlFor="contact-phone">
+          <Input id="contact-phone" name="phone" type="tel" placeholder="Phone number (optional)" />
+        </FormField>
+        <FormField label="Message" htmlFor="contact-message" required>
+          <Textarea
+            id="contact-message"
+            name="message"
+            rows={4}
+            placeholder="How can we help?"
+            required
+          />
+        </FormField>
+        {status === "error" && (
+          <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive" role="alert">
+            {errorMessage}
+          </div>
+        )}
+        <Button type="submit" className="w-full" disabled={status === "submitting"}>
+          {status === "submitting" ? "Sending..." : "Send Message"}
+        </Button>
+      </fieldset>
     </form>
   );
 }
