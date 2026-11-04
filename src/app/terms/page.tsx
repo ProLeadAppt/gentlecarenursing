@@ -48,9 +48,8 @@ export default function TermsPage() {
             families, hospital discharge planners, or the individuals themselves.
           </p>
 
-          <h2>Enquiries and Response Times</h2>
+          <h2>Enquiries</h2>
           <p>
-            We aim to respond to all enquiries within 24 hours on business days.
             Submitting an enquiry through our website does not constitute a
             binding agreement for services. A care plan will be developed and
             agreed upon before services commence.

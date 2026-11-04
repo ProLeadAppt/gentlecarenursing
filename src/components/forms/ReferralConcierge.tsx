@@ -172,7 +172,7 @@ export function ReferralConcierge() {
           Referral Submitted
         </h3>
         <p className="mt-4 max-w-sm text-lg text-muted-foreground leading-relaxed">
-          Thank you for trusting us with your client. Our nursing leads will review the details and contact you within 24 hours to confirm the next steps.
+          Thank you for trusting us with your client. Our nursing leads will review the details and contact you to confirm the next steps.
         </p>
       </div>
     );
@@ -316,7 +316,7 @@ export function ReferralConcierge() {
                     />
                   </FormField>
                   <p className="text-xs text-muted-foreground italic">
-                    Note: A nursing lead will follow up for more details soon.
+                    Note: A nursing lead will follow up for more details.
                   </p>
                 </div>
               )}

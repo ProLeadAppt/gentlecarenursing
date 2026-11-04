@@ -29,7 +29,7 @@ const RELATED_SERVICE_LINKS: Record<BlogPost["category"], { title: string; href:
   "family-carers": [
     { title: "Support for Family Carers", href: "/blog/tips-for-family-carers-avoiding-burnout", description: "Practical strategies for carers carrying a lot at home." },
     { title: "Choosing the Right Home Care Provider", href: "/blog/choosing-the-right-home-care-provider", description: "How to compare providers without getting lost in jargon." },
-    { title: "Referral Portal", href: "/referrers", description: "Fast, clear referral pathways for coordinators and professionals." },
+    { title: "Referral Portal", href: "/referrers", description: "Clear referral pathways for coordinators and professionals." },
   ],
 };
 

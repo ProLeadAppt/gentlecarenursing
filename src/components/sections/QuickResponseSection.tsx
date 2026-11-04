@@ -8,9 +8,9 @@ import { Phone, MessageCircle, HelpCircle } from "lucide-react";
 import { useFormModal } from "@/contexts/FormModalContext";
 
 const DEFAULT_BENEFITS = [
-  { icon: Phone, text: "You'll hear from us within 24 hours" },
-  { icon: MessageCircle, text: "Immediate confirmation when you enquire" },
-  { icon: HelpCircle, text: "Clear next steps. No waiting in the dark." },
+  { icon: Phone, text: "Our team will contact you" },
+  { icon: MessageCircle, text: "Your enquiry goes to our team" },
+  { icon: HelpCircle, text: "Clear next steps and supportive guidance." },
 ] as const;
 
 export interface QuickResponseSectionProps {
@@ -28,13 +28,13 @@ export interface QuickResponseSectionProps {
 }
 
 export function QuickResponseSection({
-  title = "Get Help Quickly. You're Not Left Waiting.",
-  subtitle = "When you reach out, our team is notified straight away. You'll get a personal response within 24 hours, with clear next steps and supportive guidance. No runaround.",
+  title = "Talk to Us About Your Care Needs.",
+  subtitle = "When you reach out, our team reviews your enquiry. You'll get a personal response with clear next steps and supportive guidance. No runaround.",
   primaryCtaLabel = "Request Care",
   secondaryCtaLabel = "Contact Us",
   secondaryCtaHref = "/contact",
   benefits,
-  voiceAssistantLine = "Need guidance right now? Use our voice assistant below for immediate help.",
+  voiceAssistantLine = "Need guidance? Use our voice assistant below.",
   sectionVariant = "accent",
 }: QuickResponseSectionProps) {
   const { openModal } = useFormModal();
@@ -84,7 +84,7 @@ export function QuickResponseSection({
                     What happens after I submit?
                   </div>
                   <div className="ml-8 mr-0 rounded-2xl rounded-tr-sm bg-accent/15 px-3 py-2 text-sm text-foreground">
-                    We confirm straight away and get back to you within 24 hours.
+                    Our team reviews your enquiry and contacts you about the next steps.
                   </div>
                   <div className="ml-0 mr-8 rounded-2xl rounded-tl-sm bg-muted px-3 py-2 text-sm text-muted-foreground">
                     Who will I speak to?

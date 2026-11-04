@@ -133,8 +133,8 @@ export default async function AreaRegionPage({ params }: Props) {
             dateChecked: "2026-07-07",
           },
           {
-            label: "Response window",
-            value: "Enquiries and referrals are usually acknowledged within 24 hours during business hours, with urgent referrals prioritised.",
+            label: "Enquiries",
+            value: "Contact us to discuss your enquiry or referral. Urgent referrals are prioritised.",
             icon: "response",
             source: "Gentle Care Nursing Services intake information",
             sourceUrl: `${INTEGRATIONS.siteUrl}/referral`,
@@ -211,7 +211,7 @@ export default async function AreaRegionPage({ params }: Props) {
 
                   <div className="mt-10 pt-8 border-t border-border/60 relative z-10">
                     <p className="text-base text-muted-foreground leading-relaxed mb-8">
-                      We work with support coordinators, discharge planners, and families across Sydney. Submit an enquiry for a clinical response within 24 hours.
+                      We work with support coordinators, discharge planners, and families across Sydney. Submit an enquiry to discuss your care needs.
                     </p>
                     <FormModalTrigger formType="contact" className="w-full h-14 rounded-2xl gap-2 font-bold shadow-lg shadow-primary/10">
                       Start Care Journey

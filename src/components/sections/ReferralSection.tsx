@@ -84,7 +84,7 @@ export function ReferralSection({ headline, subtitle }: ReferralSectionProps) {
             </Button>
             
             <p className="mt-6 text-sm text-muted-foreground italic font-medium">
-              Immediate nursing response: we respect your professional urgency.
+              Our nursing team reviews your referral and discusses the next steps.
             </p>
           </div>
         </Reveal>

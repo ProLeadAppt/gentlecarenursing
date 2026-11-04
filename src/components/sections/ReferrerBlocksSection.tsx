@@ -14,7 +14,7 @@ interface ReferrerBlocksSectionProps {
 export function ReferrerBlocksSection({
   referrerTypes,
   title = "How We Work With Referrers",
-  subtitle = "Clear processes and fast communication for professionals who trust us with their clients.",
+  subtitle = "Clear processes and communication for professionals who trust us with their clients.",
   variant = "card",
 }: ReferrerBlocksSectionProps) {
   const blocks = REFERRER_BLOCKS.filter((block) =>

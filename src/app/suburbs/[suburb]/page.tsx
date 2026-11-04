@@ -237,9 +237,8 @@ export default async function SuburbPage({ params }: Props) {
             <a href={SITE.phoneHref} className="font-semibold text-primary hover:underline">
               {SITE.phone}
             </a>
-            . We aim to respond within 24 hours during business hours, with
-            urgent referrals — particularly from {entry.nearestHospitals[0]} —
-            prioritised.
+            . Urgent referrals — particularly from {entry.nearestHospitals[0]} —
+            are prioritised.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link

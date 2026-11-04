@@ -16,7 +16,7 @@ const REFERRER_FAQS = [
   {
     question: "How do I refer a client to Gentle Care Nursing Services?",
     answer:
-      "You can use our Request Care form with the client’s details, care needs, and funding type, or contact us directly by phone or email. We’ll acknowledge your referral straight away and respond personally within 24 hours.",
+      "You can use our Request Care form with the client’s details, care needs, and funding type, or contact us directly by phone or email.",
   },
   {
     question: "What information should I include in a referral?",
@@ -26,7 +26,7 @@ const REFERRER_FAQS = [
   {
     question: "How quickly can services start after I refer?",
     answer:
-      "Timeframes depend on location, funding, and the type of care required, but we always respond within 24 hours. For urgent referrals, we prioritise assessment and will let you know realistic start dates up front.",
+      "Timeframes depend on location, funding, and the type of care required. For urgent referrals, we prioritise assessment and will let you know realistic start dates up front.",
   },
   {
     question: "Will I receive updates after care begins?",
@@ -38,7 +38,7 @@ const REFERRER_FAQS = [
 const canonical = `${INTEGRATIONS.siteUrl}/referrers`;
 
 export const metadata = createMetadata({
-  title: "Referrers | Fast Intake for Coordinators & Discharge Teams",
+  title: "Referrers | Coordinators & Discharge Teams",
   description:
     "Information for NDIS support coordinators, plan managers, hospital discharge planners, and healthcare professionals who want to refer to Gentle Care Nursing Services.",
   canonical,
@@ -107,7 +107,7 @@ export default function ReferrersPage() {
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 Submit our Request Care form or contact us directly with the client’s
                 details, funding type, key needs, and any relevant reports or discharge
-                summaries. You’ll receive immediate confirmation that we’ve received it.
+                summaries.
               </p>
             </Card>
             <Card variant="default">
@@ -115,8 +115,8 @@ export default function ReferrersPage() {
                 2. We Acknowledge and Assess
               </Heading>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Our team is notified straight away. Within 24 hours, a real person will
-                respond to you or the client with supportive guidance, next steps, and
+                A member of our team will respond to you or the client with supportive
+                guidance, next steps, and
                 proposed timeframes for assessment and care commencement.
               </p>
             </Card>
@@ -162,11 +162,11 @@ export default function ReferrersPage() {
           <Grid cols={3} gap="lg" className="mt-10">
             <Card variant="default">
               <Heading level="h3" as="h3" className="text-lg">
-                Clear, Timely Communication
+                Clear Communication
               </Heading>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                We acknowledge referrals quickly, outline realistic timeframes, and provide
-                updates at agreed points so you never have to chase us for information.
+                We review referrals, outline realistic timeframes, and provide
+                updates at agreed points.
               </p>
             </Card>
             <Card variant="default">

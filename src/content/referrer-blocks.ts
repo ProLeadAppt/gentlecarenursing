@@ -24,7 +24,7 @@ export const REFERRER_BLOCKS: readonly ReferrerBlock[] = [
     blurb:
       "We know your reputation depends on the providers you recommend. Our smaller client load and clear communication mean you can refer with confidence.",
     bullets: [
-      "Fast acknowledgement of referrals and realistic start dates",
+      "Referral review and realistic start dates",
       "Clear documentation and updates at agreed points",
       "Experience with participants who have complex clinical needs",
     ],
@@ -40,7 +40,7 @@ export const REFERRER_BLOCKS: readonly ReferrerBlock[] = [
       "We make billing predictable and transparent so you can focus on outcomes, not chasing paperwork.",
     bullets: [
       "Invoices aligned with plan budgets and line items",
-      "Prompt responses to queries about services delivered",
+      "Responses to queries about services delivered",
       "Registered provider with clear service descriptions",
     ],
     primaryCtaLabel: "See information for plan managers",
@@ -52,9 +52,9 @@ export const REFERRER_BLOCKS: readonly ReferrerBlock[] = [
     title: "For Hospital Discharge Planners",
     label: "Hospital discharge planners",
     blurb:
-      "Safe hospital-to-home transitions matter. We act quickly on referrals so patients can leave hospital sooner, with clear plans for care at home.",
+      "Safe hospital-to-home transitions matter. We act on referrals so patients can leave hospital sooner, with clear plans for care at home.",
     bullets: [
-      "Rapid triage of new referrals and clear communication back to your team",
+      "Triage of new referrals and clear communication back to your team",
       "Experience with post-surgical, complex medical, and step-down care",
       "Coordination with GPs and community teams once the patient is home",
     ],

@@ -297,8 +297,8 @@ export default function HomePageContent() {
               Let&apos;s talk about care
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              Tell us a little about what you need. We&apos;ll respond within 24
-              hours. No obligation.
+              Tell us a little about what you need. We&apos;ll discuss your enquiry
+              with you. No obligation.
             </p>
           </div>
           <div className="mt-12">

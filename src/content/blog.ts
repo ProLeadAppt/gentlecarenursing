@@ -135,7 +135,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>A personalised provider like Gentle Care Nursing Services takes a different approach. We intentionally limit our client load so we can offer:</p>
       <ul>
         <li>Consistent, familiar nurses and carers</li>
-        <li>Faster response times (we aim to respond within 24 hours)</li>
+        <li>Clear communication about your enquiry and next steps</li>
         <li>Personalised care plans tailored to individual needs</li>
         <li>Direct access to our clinical director</li>
       </ul>

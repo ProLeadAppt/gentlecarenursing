@@ -39,7 +39,7 @@ const JOURNEY_STEPS: readonly {
     color: "#6b9360",
   },
   {
-    title: "We Aim to Respond Within 24 Hours",
+    title: "We Review Your Enquiry",
     description: "Our team personally reviews your needs and contacts you.",
     icon: PhoneCall,
     color: "#1b6b6d",
