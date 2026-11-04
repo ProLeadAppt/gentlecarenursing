@@ -1,26 +1,33 @@
 "use client";
 
-import { useState, useRef, useEffect, type FormEvent } from "react";
+import { useState, useRef, useId, useEffect, type FormEvent } from "react";
 import { FormField } from "@/components/ui/FormField";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { Button } from "@/components/ui/Button";
 import { dispatchAnalyticsEvent } from "@/lib/analytics";
 import { submitWebsiteForm } from "@/lib/form-client";
+import { clearFieldValidation, reportFormValidity } from "@/lib/form-validation";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
 export function ContactForm() {
+  const idPrefix = useId();
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const firstFieldRef = useRef<HTMLInputElement>(null);
+  const restartFocusRef = useRef(false);
+  const submittingRef = useRef(false);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submittingRef.current) return;
+    const form = e.currentTarget;
+    if (!reportFormValidity(form)) return;
+    submittingRef.current = true;
     setStatus("submitting");
     setErrorMessage("");
 
-    const form = e.currentTarget;
     const data = new FormData(form);
     const payload = {
       type: "contact" as const,
@@ -47,11 +54,14 @@ export function ContactForm() {
       });
       setStatus("error");
       setErrorMessage("Something went wrong. Please try again or contact us directly.");
+    } finally {
+      submittingRef.current = false;
     }
   }
 
   useEffect(() => {
-    if (status === "error") {
+    if (status === "error" || (status === "idle" && restartFocusRef.current)) {
+      restartFocusRef.current = false;
       firstFieldRef.current?.focus();
     }
   }, [status]);
@@ -68,7 +78,10 @@ export function ContactForm() {
         </p>
         <button
           type="button"
-          onClick={() => setStatus("idle")}
+          onClick={() => {
+            restartFocusRef.current = true;
+            setStatus("idle");
+          }}
           className="mt-4 text-sm font-medium text-primary hover:underline"
         >
           Send another message
@@ -78,41 +91,42 @@ export function ContactForm() {
   }
 
   return (
-    <form className="space-y-6" onSubmit={handleSubmit} noValidate>
-      <FormField label="Name" htmlFor="contact-name" required>
-        <Input
-          ref={firstFieldRef}
-          id="contact-name"
-          name="name"
-          type="text"
-          placeholder="Your name"
-          required
-          aria-invalid={status === "error"}
-        />
-      </FormField>
-      <FormField label="Email" htmlFor="contact-email" required>
-        <Input id="contact-email" name="email" type="email" placeholder="your@email.com" required />
-      </FormField>
-      <FormField label="Phone" htmlFor="contact-phone">
-        <Input id="contact-phone" name="phone" type="tel" placeholder="Phone number (optional)" />
-      </FormField>
-      <FormField label="Message" htmlFor="contact-message" required>
-        <Textarea
-          id="contact-message"
-          name="message"
-          rows={4}
-          placeholder="How can we help?"
-          required
-        />
-      </FormField>
-      {status === "error" && (
-        <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive" role="alert">
-          {errorMessage}
-        </div>
-      )}
-      <Button type="submit" className="w-full" disabled={status === "submitting"}>
-        {status === "submitting" ? "Sending..." : "Send Message"}
-      </Button>
+    <form onSubmit={handleSubmit} onInput={clearFieldValidation} aria-busy={status === "submitting"}>
+      <fieldset disabled={status === "submitting"} className="min-w-0 space-y-6">
+        <FormField label="Name" htmlFor={`contact-name-${idPrefix}`} required>
+          <Input
+            ref={firstFieldRef}
+            id={`contact-name-${idPrefix}`}
+            name="name"
+            type="text"
+            placeholder="Your name"
+            required
+          />
+        </FormField>
+        <FormField label="Email" htmlFor={`contact-email-${idPrefix}`} required>
+          <Input id={`contact-email-${idPrefix}`} name="email" type="email" placeholder="your@email.com" required />
+        </FormField>
+        <FormField label="Phone" htmlFor={`contact-phone-${idPrefix}`}>
+          <Input id={`contact-phone-${idPrefix}`} name="phone" type="tel" placeholder="Phone number (optional)" />
+        </FormField>
+        <FormField label="Message" htmlFor={`contact-message-${idPrefix}`} required>
+          <Textarea
+            id={`contact-message-${idPrefix}`}
+            name="message"
+            rows={4}
+            placeholder="How can we help?"
+            required
+          />
+        </FormField>
+        {status === "error" && (
+          <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive" role="alert">
+            {errorMessage}
+          </div>
+        )}
+        <Button type="submit" className="w-full" disabled={status === "submitting"}>
+          {status === "submitting" ? "Sending..." : "Send Message"}
+        </Button>
+      </fieldset>
     </form>
   );
 }
