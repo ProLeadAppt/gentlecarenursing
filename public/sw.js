@@ -3,7 +3,8 @@
 // Does NOT cache dynamic content — Next.js handles its own caching, and
 // caching pages here would mask deploys.
 
-const CACHE_NAME = "gcn-shell-v1";
+const CACHE_PREFIX = "gcn-shell-";
+const CACHE_NAME = `${CACHE_PREFIX}v2`;
 const OFFLINE_URL = "/offline.html";
 
 self.addEventListener("install", (event) => {
@@ -22,7 +23,7 @@ self.addEventListener("activate", (event) => {
       .then((keys) =>
         Promise.all(
           keys
-            .filter((k) => k !== CACHE_NAME)
+            .filter((k) => k.startsWith(CACHE_PREFIX) && k !== CACHE_NAME)
             .map((k) => caches.delete(k))
         )
       )
@@ -32,11 +33,17 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   const { request } = event;
-  if (request.mode !== "navigate") return;
+  if (request.method !== "GET" || request.mode !== "navigate") return;
 
   event.respondWith(
     fetch(request).catch(() =>
-      caches.open(CACHE_NAME).then((cache) => cache.match(OFFLINE_URL))
+      caches.open(CACHE_NAME).then(async (cache) =>
+        (await cache.match(OFFLINE_URL)) ??
+        new Response("You are offline. For a medical emergency in Australia, call 000.", {
+          status: 503,
+          headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" },
+        })
+      )
     )
   );
 });

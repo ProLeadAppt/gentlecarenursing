@@ -44,7 +44,7 @@ export default async function AreaOgImage({ params }: { params: Promise<{ region
           </div>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 24, opacity: 0.85 }}>
-          <span>Registered NDIS & DVA provider</span>
+          <span>NDIS Registered · DVA Contracted</span>
           <span>gentlecarenursing.com.au</span>
         </div>
       </div>

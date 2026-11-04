@@ -48,7 +48,7 @@ export const WHO_WE_SUPPORT = {
     },
     {
       label: "Private clients",
-      href: "/services",
+      href: "/private-nursing",
       description:
         "Self-funded, personalised in-home nursing and care tailored to your needs and circumstances.",
     },

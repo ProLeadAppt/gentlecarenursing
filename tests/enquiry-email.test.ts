@@ -65,6 +65,26 @@ test("identical retries share opaque provider idempotency key across instances",
   assert.match(keys[0], /^website-enquiry\/[a-f0-9]{64}$/);
 });
 
+test("referral email preserves self-referral and selected funding pathways", async () => {
+  for (const [role, roleLabel] of [["self", "Self-referral"], ["healthcare", "Healthcare professional"], ["other", "Other"]]) {
+    for (const [service, serviceLabel] of [["dva", "DVA / Community Nursing"], ["private", "Private"], ["unsure", "Not sure yet"]]) {
+      await deliverSubmission({
+        type: "referral", referrerName: "Synthetic", referrerPhone: "test-only",
+        referrerRole: role, serviceType: service,
+      }, {
+        apiKey: "dummy", fromEmail: "noreply@gentlecarenursing.com.au",
+        fetcher: async (_url, init) => {
+          const email = JSON.parse(String(init?.body));
+          assert.ok(email.text.includes(`referrerRole: ${roleLabel}`));
+          assert.ok(email.text.includes(`serviceType: ${serviceLabel}`));
+          assert.doesNotMatch(email.text, /Other Professional|General Nursing|Other Inquiry/);
+          return Response.json({ id });
+        },
+      });
+    }
+  }
+});
+
 test("missing config, rejection, timeout and malformed receipts never confirm", async () => {
   let calls = 0;
   await assert.rejects(deliverSubmission(payload, { apiKey: "", fromEmail: "noreply@gentlecarenursing.com.au", fetcher: async () => { calls++; return Response.json({ id }); } }));

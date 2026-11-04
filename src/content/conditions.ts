@@ -17,7 +17,7 @@
  *   - "AHPRA-registered nurse" only inside clinical scope claims
  *   - DVA wording exact when named
  *   - No "guarantee", no "boutique", no "premium"
- *   - "We aim to respond within 24 hours" / "prioritised"
+ *   - "Discuss availability and next steps"
  *   - No specific years/duration claims
  *
  * Factual-basis guardrails (every clinical claim has to anchor here):
@@ -58,7 +58,7 @@ export const CONDITIONS: readonly ConditionEntry[] = [
         items: [
           { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area" },
           { label: "Specialist coordination", value: "We work alongside Sydney MS clinics and neurology teams at RPA, Royal North Shore, Concord, and other tertiary services.", icon: "credential" },
-          { label: "Response window", value: "Enquiries acknowledged within 24 hours during business hours, with relapse-period referrals prioritised.", icon: "response" },
+          { label: "Enquiry process", value: "Our team will review your enquiry and discuss availability and next steps.", icon: "response" },
           { label: "Funding accepted", value: "NDIS (participants under 65 at first plan), aged care (Support at Home, CHSP for 65+), DVA Community Nursing, and private fee-for-service.", icon: "funding" },
           { label: "Scope of support", value: "Medication management (including disease-modifying therapies), continence and catheter care, fatigue and mobility support, pressure care, and family education.", icon: "scope" },
           { label: "Caseload model", value: "Small caseload so the same experienced nurses get to know each person's MS pattern — what's a bad day versus what warrants escalation.", icon: "credential" },
@@ -127,7 +127,7 @@ export const CONDITIONS: readonly ConditionEntry[] = [
           {
             title: "Prompt Response",
             description:
-              "We aim to respond within 24 hours during business hours, with relapse-period referrals prioritised.",
+              "Our team will review your enquiry and discuss availability and next steps.",
           },
         ],
       },
@@ -178,7 +178,7 @@ export const CONDITIONS: readonly ConditionEntry[] = [
         items: [
           { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area" },
           { label: "Specialist coordination", value: "We work alongside Sydney MND specialist clinics, hospital neurology teams (RPA, RNSH, Westmead), and specialist palliative care services.", icon: "credential" },
-          { label: "Response window", value: "MND referrals prioritised, with visits often starting within 24 to 48 hours of referral given the pace of progression.", icon: "response" },
+          { label: "Enquiry process", value: "Our team will review your enquiry and discuss availability and next steps.", icon: "response" },
           { label: "Funding accepted", value: "NDIS (under 65 at first plan), aged care (65+, Support at Home / CHSP), DVA Community Nursing, and private fee-for-service.", icon: "funding" },
           { label: "Scope of support", value: "PEG feeding, tracheostomy and suctioning support, non-invasive ventilation (BiPAP) management, symptom relief, personal care with dignity, and family education.", icon: "scope" },
           { label: "Care model", value: "Small, consistent team across the disease course — including the final stages when family support matters most.", icon: "credential" },
@@ -298,7 +298,7 @@ export const CONDITIONS: readonly ConditionEntry[] = [
         items: [
           { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area" },
           { label: "Specialist coordination", value: "We work alongside Sydney movement disorder clinics at RPA, Royal North Shore, St Vincent's, and other tertiary neurology services.", icon: "credential" },
-          { label: "Response window", value: "Enquiries acknowledged within 24 hours during business hours, with post-fall and post-hospital referrals prioritised.", icon: "response" },
+          { label: "Enquiry process", value: "Our team will review your enquiry and discuss availability and next steps.", icon: "response" },
           { label: "Funding accepted", value: "Aged care (Support at Home / CHSP for most people 65+), DVA Community Nursing, NDIS (for people under 65 with significant disability), and private fee-for-service.", icon: "funding" },
           { label: "Scope of support", value: "Precise medication timing, falls prevention, swallowing safety, mobility and transfer support, personal care, and non-motor symptom monitoring (sleep, mood, cognition).", icon: "scope" },
           { label: "Caseload model", value: "Small caseload so the same nurses learn each person's 'on' and 'off' patterns — vital for safe care planning around medication windows.", icon: "credential" },
@@ -418,7 +418,7 @@ export const CONDITIONS: readonly ConditionEntry[] = [
         items: [
           { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area" },
           { label: "Specialist coordination", value: "We work alongside Royal Rehab (Ryde), the POW Spinal Cord Injury Service, and community SCI teams across Sydney.", icon: "credential" },
-          { label: "Response window", value: "Discharge-from-rehab referrals prioritised, with structured visit schedules confirmed before discharge wherever possible.", icon: "response" },
+          { label: "Enquiry process", value: "Our team will review your enquiry and discuss availability and next steps.", icon: "response" },
           { label: "Funding accepted", value: "NDIS (most SCI participants), DVA Community Nursing, aged care (for older participants), private fee-for-service, and ILC funding where applicable.", icon: "funding" },
           { label: "Scope of support", value: "Bowel and bladder management, indwelling and intermittent catheter care, pressure injury monitoring and prevention, autonomic dysreflexia awareness, respiratory support including suctioning where indicated, and personal care.", icon: "scope" },
           { label: "Care model", value: "Routines protect long-term SCI health — the same nurses, doing the same checks, on schedule. Small caseload makes that possible.", icon: "credential" },
@@ -538,7 +538,7 @@ export const CONDITIONS: readonly ConditionEntry[] = [
         items: [
           { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area" },
           { label: "Specialist coordination", value: "We work alongside Royal Rehab (Ryde), the POW Brain Injury Rehabilitation Service, Westmead rehabilitation, and community ABI teams.", icon: "credential" },
-          { label: "Response window", value: "Discharge-from-rehab referrals prioritised, with visits often starting within 24 to 48 hours.", icon: "response" },
+          { label: "Enquiry process", value: "Our team will review your enquiry and discuss availability and next steps.", icon: "response" },
           { label: "Funding accepted", value: "NDIS (most ABI participants under 65), aged care (for older participants), DVA Community Nursing, icare Lifetime Care (for catastrophic motor injuries), and private fee-for-service.", icon: "funding" },
           { label: "Scope of support", value: "Medication management, falls prevention, swallowing safety, fatigue management, behavioural-support coordination with treating teams, and family education on safe support strategies.", icon: "scope" },
           { label: "Care model", value: "Small caseload — the same nurses recognise gradual recovery patterns and watch for the secondary changes (mood, fatigue, behaviour) families often spot last.", icon: "credential" },
@@ -658,7 +658,7 @@ export const CONDITIONS: readonly ConditionEntry[] = [
         items: [
           { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area" },
           { label: "Specialist coordination", value: "We work alongside the Sydney Children's Hospitals Network (Westmead, Randwick), Royal Rehab transition clinics, and Cerebral Palsy Alliance.", icon: "credential" },
-          { label: "Response window", value: "Enquiries acknowledged within 24 hours during business hours, with hospital-discharge and transition referrals prioritised.", icon: "response" },
+          { label: "Enquiry process", value: "Our team will review your enquiry and discuss availability and next steps.", icon: "response" },
           { label: "Funding accepted", value: "NDIS (primary funding for most CP participants), DVA Community Nursing where eligible, aged care (for older participants), and private fee-for-service.", icon: "funding" },
           { label: "Scope of support", value: "Personal care and daily routines, complex care (PEG feeding, catheter management, bowel program, pressure care), seizure-aware support where relevant, school and community participation, and family education.", icon: "scope" },
           { label: "Care model", value: "Small caseload so the same nurses learn each person's communication style, routines, and clinical baseline — continuity matters more here than almost anywhere.", icon: "credential" },

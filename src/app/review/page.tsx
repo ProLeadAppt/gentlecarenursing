@@ -4,9 +4,7 @@ import { Section } from "@/components/layout/Section";
 import { ReviewFunnel } from "@/components/review/ReviewFunnel";
 import { INTEGRATIONS } from "@/config/integrations";
 
-// /review is a private, noindex page — Gemma sends the link directly
-// to clients she has worked with. It is NOT in the main nav, sitemap,
-// or robots crawl surface.
+// This unlisted feedback page is noindex, not access-controlled.
 export const metadata: Metadata = {
   title: "Share Your Experience",
   description:
@@ -27,7 +25,7 @@ export const metadata: Metadata = {
 
 export default function ReviewPage() {
   return (
-    <main id="main-content" className="bg-background">
+    <div className="bg-background">
       <Section size="xl" variant="clinical-white">
         <Container size="md">
           <div className="text-center max-w-2xl mx-auto">
@@ -49,6 +47,6 @@ export default function ReviewPage() {
           </div>
         </Container>
       </Section>
-    </main>
+    </div>
   );
 }

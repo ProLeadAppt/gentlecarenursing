@@ -13,7 +13,7 @@ import { INTEGRATIONS } from "@/config/integrations";
 export const metadata = createMetadata({
   title: "Contact Us | Call or Enquire",
   description:
-    "Get in touch with Gentle Care Nursing Services. Phone, email, or submit an enquiry. We acknowledge straight away and respond within 24 hours.",
+    "Get in touch with Gentle Care Nursing Services. Phone, email, or submit an enquiry. Our team will review your enquiry and discuss availability and next steps.",
   canonical: `${INTEGRATIONS.siteUrl}/contact`,
 });
 
@@ -28,7 +28,7 @@ export default function ContactPage() {
           </Heading>
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground sm:text-xl">
             Have a question, need information, or want to discuss care options?
-            We&apos;re here to help. You&apos;ll get an immediate confirmation and a personal response within 24 hours.
+            Our team will review your enquiry and discuss availability and next steps.
           </p>
         </Container>
       </Section>
@@ -77,7 +77,7 @@ export default function ContactPage() {
                     Response Time
                   </Heading>
                   <p className="mt-1 text-muted-foreground">
-                    We acknowledge your message straight away and get back to you within 24 hours. Urgent enquiries are prioritised for same-day response.
+                    Our team will review your enquiry and discuss availability and next steps. Care start dates depend on assessment, care needs and staff availability.
                   </p>
                 </div>
                 <div>
@@ -97,7 +97,7 @@ export default function ContactPage() {
                 Send Us a Message
               </Heading>
               <p className="mb-6 text-muted-foreground">
-                We&apos;ll respond within 24–48 hours.
+                Contact our team to discuss your care needs and availability.
               </p>
               <ContactForm />
             </Card>

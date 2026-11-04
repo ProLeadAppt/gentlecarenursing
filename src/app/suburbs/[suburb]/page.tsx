@@ -6,7 +6,7 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { CTA_LINKS, SITE } from "@/lib/constants";
 import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
-import { getBreadcrumbListSchema } from "@/lib/schema";
+import { getBreadcrumbListSchema, getServiceSchema } from "@/lib/schema";
 import {
   getAllSuburbSlugs,
   getSuburbBySlug,
@@ -79,22 +79,12 @@ export default async function SuburbPage({ params }: Props) {
         name: entry.lga,
       },
     },
-    // MedicalService scoped to this suburb — the actual citable claim that
-    // GCN serves this specific suburb, with the provider linked back to the
-    // Organization @id so the entity graph stays connected.
-    {
-      "@context": "https://schema.org",
-      "@type": "MedicalService",
+    getServiceSchema({
       name: `In-home nursing in ${entry.name}, Sydney`,
       description: `In-home nursing and personal care across ${entry.name} (${entry.postcode}, ${entry.lga}). Funded by NDIS, DVA Community Nursing, Support at Home, CHSP, or private fee-for-service.`,
       url: canonical,
-      areaServed: {
-        "@id": `${canonical}#place`,
-      },
-      provider: {
-        "@id": `${INTEGRATIONS.siteUrl}/#organization`,
-      },
-    },
+      areaServed: { "@id": `${canonical}#place` },
+    }),
   ];
 
   return (
@@ -237,9 +227,8 @@ export default async function SuburbPage({ params }: Props) {
             <a href={SITE.phoneHref} className="font-semibold text-primary hover:underline">
               {SITE.phone}
             </a>
-            . We aim to respond within 24 hours during business hours, with
-            urgent referrals — particularly from {entry.nearestHospitals[0]} —
-            prioritised.
+            . Our team will review your enquiry and discuss availability and
+            next steps. Care start dates depend on assessment and staff availability.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link

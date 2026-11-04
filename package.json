@@ -9,15 +9,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "test": "tsx --test tests/*.test.ts",
-    "audit:seo": "tsx tools/audit-seo-production.ts"
+    "lint": "node --max-old-space-size=256 node_modules/eslint/bin/eslint.js src tests tools public/*.js *.mjs next.config.ts tailwind.config.ts",
+    "test": "node --import tsx --test --test-concurrency=1 tests/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "audit:seo": "node --import tsx tools/audit-seo-production.ts",
+    "build:constrained": "node tools/build-constrained.mjs",
+    "check:analytics-release": "node --import tsx tools/check-analytics-release.ts",
+    "build:release": "npm run check:analytics-release && npm run build"
   },
   "dependencies": {
     "clsx": "^2.1.1",
     "framer-motion": "^12.37.0",
     "lucide-react": "^0.577.0",
-    "next": "16.2.12",
+    "next": "16.4.5",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "resend": "^6.12.4"
@@ -25,11 +29,13 @@
   "devDependencies": {
     "@netlify/plugin-nextjs": "^5.15.9",
     "@tailwindcss/postcss": "^4",
+    "@types/jsdom": "^21.1.7",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.12",
+    "eslint-config-next": "16.4.5",
+    "jsdom": "^26.1.0",
     "tailwind-merge": "^2.6.0",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
@@ -44,9 +50,5 @@
     "samsung >= 16",
     "not dead",
     "not op_mini all"
-  ],
-  "overrides": {
-    "postcss": "8.5.25",
-    "sharp": "0.35.3"
-  }
+  ]
 }

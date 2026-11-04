@@ -30,9 +30,9 @@ export default function TermsPage() {
           <h2>Service Agreement</h2>
           <p>
             {SITE.name} provides in-home nursing, personal care, and disability
-            support services across Sydney and surrounding regions. All services
-            are delivered by qualified, registered professionals in accordance
-            with applicable Australian healthcare standards.
+            support services across Sydney and surrounding regions. The suitability,
+            scope and staffing of care are discussed during assessment and set
+            out in the individual service agreement.
           </p>
           <p>
             A formal service agreement will be established before care begins,
@@ -42,15 +42,17 @@ export default function TermsPage() {
 
           <h2>Eligibility and Referrals</h2>
           <p>
-            Our services are available to individuals with an active NDIS plan,
-            DVA entitlements, aged care funding (Support at Home or CHSP), or private funding
-            arrangements. Referrals may be submitted by support coordinators,
+            We welcome enquiries about NDIS, DVA, aged-care and privately funded
+            support. Eligibility, available funding, service suitability and
+            provider arrangements must be checked before care is agreed. Referrals may be submitted by support coordinators,
             families, hospital discharge planners, or the individuals themselves.
           </p>
 
           <h2>Enquiries and Response Times</h2>
           <p>
-            We aim to respond to all enquiries within 24 hours on business days.
+            Our team will review your enquiry and discuss availability and next steps.
+            Response and care-start times depend on the support needed and current
+            availability.
             Submitting an enquiry through our website does not constitute a
             binding agreement for services. A care plan will be developed and
             agreed upon before services commence.

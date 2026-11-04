@@ -30,7 +30,7 @@ export const metadata = createMetadata({
  *      (Home → Conditions → [condition])
  *   2. Surfaces the full list to humans navigating the site
  *   3. Emits CollectionPage schema with each condition as a hasPart
- *      Article node — strong AI entity-graph signal binding the
+ *      WebPage node, linking the
  *      conditions together.
  */
 
@@ -45,14 +45,16 @@ export default function ConditionsIndexPage() {
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
+      "@id": `${canonical}#webpage`,
       name: "In-Home Nursing by Condition",
       url: canonical,
       description:
         "Condition-specific in-home nursing and care across Sydney for specific clinical conditions.",
-      isPartOf: { "@type": "WebSite", url: INTEGRATIONS.siteUrl },
+      isPartOf: { "@id": `${INTEGRATIONS.siteUrl}/#website` },
       hasPart: CONDITIONS.map((c) => ({
-        "@type": "Article",
-        headline: c.data.title,
+        "@type": "WebPage",
+        "@id": `${INTEGRATIONS.siteUrl}/conditions/${c.slug}#webpage`,
+        name: c.data.title,
         url: `${INTEGRATIONS.siteUrl}/conditions/${c.slug}`,
         description: c.data.snippetAnswer,
       })),

@@ -21,7 +21,12 @@ export function ServiceWorkerRegister() {
         });
     };
 
-    window.addEventListener("load", onLoad);
+    if (document.readyState === "complete") {
+      onLoad();
+      return;
+    }
+
+    window.addEventListener("load", onLoad, { once: true });
     return () => window.removeEventListener("load", onLoad);
   }, []);
 

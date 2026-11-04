@@ -1,5 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import sitemap from "../src/app/sitemap";
+import { ANALYTICS_PUBLIC_PATHS } from "../src/lib/analytics-routes";
 import {
   buildAnalyticsPayload,
   dispatchAnalyticsEvent,
@@ -7,14 +9,12 @@ import {
   type AnalyticsEventName,
 } from "../src/lib/analytics";
 
-test("buildAnalyticsPayload keeps only approved non-sensitive fields", () => {
+test("buildAnalyticsPayload keeps only allowed interaction fields", () => {
   const payload = buildAnalyticsPayload(
     {
       form_type: "contact",
-      service_type: "Clinical Nursing",
-      cta_location: "homepage",
-      submission_id: "8dd9d328-72ca-4a29-8022-735693bd84f7",
-      page_path: "/ndis",
+        cta_location: "homepage",
+        page_path: "/ndis",
       email: "private@example.com",
       phone: "0400000000",
       name: "Private Person",
@@ -27,9 +27,7 @@ test("buildAnalyticsPayload keeps only approved non-sensitive fields", () => {
 
   assert.deepEqual(payload, {
     form_type: "contact",
-    service_type: "Clinical Nursing",
     cta_location: "homepage",
-    submission_id: "8dd9d328-72ca-4a29-8022-735693bd84f7",
     page_path: "/ndis",
   });
 });
@@ -70,7 +68,7 @@ test("dispatchAnalyticsEvent sends one event through gtag when available", () =>
     [
       "event",
       "generate_lead",
-      { form_type: "contact", service_type: "DVA", page_path: "/dva" },
+      { form_type: "contact", page_path: "/dva" },
     ],
   ]);
   assert.equal(runtime.dataLayer.length, 0);
@@ -92,7 +90,7 @@ test("dispatchAnalyticsEvent queues one event when gtag is not ready", () => {
     [
       "event",
       "referral_submit",
-      { form_type: "referral", service_type: "ndis", page_path: "/referral" },
+      { form_type: "referral", page_path: "/referral" },
     ],
   ]);
 });
@@ -144,4 +142,29 @@ test("tracking failure cannot turn an accepted enquiry into a failed form", () =
 test("an unavailable analytics queue cannot interrupt the user journey", () => {
   const runtime = { pathname: "/contact", dataLayer: Object.freeze([]) as unknown as unknown[] };
   assert.doesNotThrow(() => dispatchAnalyticsEvent("generate_lead", {}, runtime));
+});
+
+test("allowed analytics keys cannot carry arbitrary personal data or non-string values", () => {
+  assert.deepEqual(buildAnalyticsPayload({
+    form_type: "Private Person",
+    service_type: "private@example.com",
+    cta_location: "0400000000",
+    error_type: "Sensitive clinical information",
+    submission_id: 123,
+    page_path: "/private-person",
+  }), { page_path: "/unmatched" });
+});
+
+test("analytics strips query strings and rejects unlisted or encoded path data", () => {
+  for (const path of ["/contact?email=private@example.com#notes", "/contact#private"]) {
+    assert.deepEqual(buildAnalyticsPayload({ page_path: path }), { page_path: "/contact" });
+  }
+  for (const path of ["/private@example.com", "/%70rivate-person", "/review/private-person"]) {
+    assert.deepEqual(buildAnalyticsPayload({ page_path: path }), { page_path: "/unmatched" });
+  }
+});
+
+test("analytics public path inventory stays aligned with the public sitemap", () => {
+  const paths = sitemap().map(entry => new URL(entry.url).pathname).sort();
+  assert.deepEqual([...ANALYTICS_PUBLIC_PATHS].sort(), paths);
 });

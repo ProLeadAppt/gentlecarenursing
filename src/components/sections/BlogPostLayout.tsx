@@ -89,6 +89,14 @@ export function BlogPostLayout({ post }: BlogPostLayoutProps) {
             </span>
           </div>
 
+          <aside className="mt-6 rounded-xl bg-muted p-5 text-sm text-muted-foreground" aria-label="About this information">
+            This article provides general information, not individual medical or
+            funding advice. It reflects the publication date shown above; service
+            options and funding rules can change. Confirm current arrangements
+            with the relevant provider or funding body, and speak with a qualified
+            healthcare professional about your care needs. In an emergency, call 000.
+          </aside>
+
           {/* Prose content */}
           <div
             className="mt-10 prose prose-lg max-w-none

@@ -1,6 +1,6 @@
 /**
  * Site-wide constants for Gentle Care Nursing Services.
- * Update these to reflect final content and GoHighLevel integration.
+ * Keep contact details aligned with approved business information.
  */
 
 /**
@@ -75,17 +75,8 @@ export const CTA_LINKS = {
 
 /** Reassurance line below hero CTAs: calm, no pressure, quick response. */
 export const CTA_REASSURANCE =
-  "No obligation. We'll acknowledge your message quickly and get back to you within 24 hours. We're here to listen and help.";
+  "No obligation. Our team will review your enquiry and discuss availability and next steps. We're here to listen and help.";
 
 /** Hero-specific reassurance under CTAs (team notified). */
 export const HERO_REASSURANCE =
-  "Submit an enquiry and our team is notified immediately so your request can be reviewed quickly.";
-
-/**
- * Last meaningful copy/structure update across the site (ISO date).
- * Used as the sitemap `lastModified` for static pages that don't have
- * their own date field. Bump this when you ship a copy refresh, voice
- * sweep, or page-structure change so crawlers see a fresh `lastmod`.
- * Don't bump for purely cosmetic CSS or component changes.
- */
-export const SITE_LAST_UPDATED = "2026-07-07";
+  "Submit an enquiry for our team to review and discuss the next steps.";

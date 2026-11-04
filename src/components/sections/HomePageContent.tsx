@@ -11,10 +11,9 @@ import {
   WHY_CHOOSE,
 } from "@/content/homepage";
 
-// Per Gemma's brief, the homepage CTAs both scroll to the simple form on
-// the same page — that's the whole point of having it on the homepage.
+// General enquiries stay on the homepage; referrals have a dedicated intake route.
 const REQUEST_CARE_CTA = { href: "#get-in-touch", label: "Request Care" } as const;
-const REFERRAL_CTA = { href: "#get-in-touch", label: "Make a Referral" } as const;
+const REFERRAL_CTA = { href: "/referral", label: "Make a Referral" } as const;
 
 /**
  * Simplified homepage — Gemma's brief, 2026-06-10.
@@ -297,8 +296,8 @@ export default function HomePageContent() {
               Let&apos;s talk about care
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              Tell us a little about what you need. We&apos;ll respond within 24
-              hours. No obligation.
+              Tell us a little about what you need. Our team will review your
+              enquiry and discuss availability and next steps. No obligation.
             </p>
           </div>
           <div className="mt-12">

@@ -76,4 +76,8 @@ test("rebaseUrlForAudit points production sitemap URLs at a local build", () => 
     ),
     "http://127.0.0.1:3100/services?x=1"
   );
+  assert.equal(
+    rebaseUrlForAudit("https://gentlecarenursing.com.au//outside.example/path", "http://127.0.0.1:3100"),
+    "http://127.0.0.1:3100//outside.example/path"
+  );
 });

@@ -16,12 +16,12 @@ export const ABOUT_INTRO = {
   // H1 keeps the full entity name. Visible nav can still use the short
   // "About" label.
   title: "About Gentle Care Nursing Services",
-  lead: "We are a personalised in-home nursing and care team focused on delivering high-quality support, consistency, and genuine relationships.",
+  lead: "At Gentle Care Nursing Services, we believe care should feel personal, consistent, and easy to understand. We work closely with clients, families, support coordinators, plan managers, case managers, and health professionals to provide safe and compassionate support at home.",
   /** Stats in prose for GEO / authority.
    *  Updated 2026-06-10 per Gemma's brief — dropped "over 10 years",
    *  replaced with the softer, team-led framing she requested. */
   statsLine:
-    "Led by a care team with hands-on experience across community care, aged care, disability support, and nursing services. We aim to respond to every enquiry within 24 hours.",
+    "Led by a care team with strong hands-on experience in community care, aged care, disability support, and nursing services.",
 } as const;
 
 export const MISSION = {
@@ -49,12 +49,12 @@ export const VALUES = [
   {
     title: "Professionalism",
     description:
-      "We're registered, compliant, and experienced. Registered NDIS provider and DVA Contracted provider. Families and coordinators can refer with confidence.",
+      "We discuss care needs, staff roles and service arrangements with families and referral partners before care begins.",
   },
   {
     title: "Responsiveness",
     description:
-      "We respond to enquiries quickly, usually within 24 to 48 hours. When families and coordinators need help, we move fast.",
+      "Our team will review your enquiry and discuss availability and next steps. Care start dates depend on assessment and availability.",
   },
   {
     title: "Compassion",
@@ -75,7 +75,7 @@ export const PROFESSIONAL_TRUST = {
     "Registered NDIS provider",
     "DVA Contracted provider",
     "Experienced care professionals and support workers",
-    "Compliant with all relevant industry standards",
+    "Care arrangements discussed before services begin",
     "Trusted by families, support coordinators, and healthcare professionals",
   ],
 } as const;
@@ -84,37 +84,18 @@ export const PROFESSIONAL_TRUST = {
 export const FOUNDER_STORY = {
   name: "Gemma",
   title: "Founder",
-  bio: "Gentle Care was created to provide families with dependable, compassionate support that feels personal, respectful and consistent.\n\nThrough hands-on work across dementia care, palliative care, disability support and mental health, I saw how important it is for individuals and families to feel supported by a team that values dignity, trust and continuity of care.",
+  bio: "At Gentle Care Nursing Services, we believe care should feel personal, consistent, and easy to understand.\n\nWe work closely with clients, families, support coordinators, plan managers, case managers, and health professionals to provide safe and compassionate support at home.",
   quote:
     "My favourite part of this work is being able to make a meaningful difference in people’s lives while giving families peace of mind knowing their loved one is being cared for with compassion, dignity and respect.",
   imageSrc: "/images/gemma-profile.jpg",
   imageAlt: "Gemma, Founder of Gentle Care",
 } as const;
 
-/** Team members — placeholder data until Gemma provides real team info */
-export const TEAM_MEMBERS = [
-  {
-    name: "Gemma",
-    role: "Founder",
-    bio: "Care professional with hands-on experience across community, disability, and in-home support. Leads all care planning and quality oversight.",
-  },
-  {
-    name: "Sandra",
-    role: "Care Coordinator",
-    bio: "Ensures every client is matched with the right carer and manages scheduling across all regions.",
-  },
-  {
-    name: "Care Team",
-    role: "Care Professionals & Support Workers",
-    bio: "Our small team is selected for their experience, reliability, and commitment to personalised, person-centred care.",
-  },
-] as const;
-
-/** Trust statistics bar — Verified, conservative figures.
+/** Care approach summary.
  *  Updated 2026-06-10 per Gemma's brief — drop the "10+" stat. */
 export const TRUST_STATS = [
   { value: "Led", label: "By an experienced care team" },
   { value: "Personal", label: "Quality-focused support" },
   { value: "Small", label: "Dedicated caseload" },
-  { value: "~24hr", label: "Response window" },
+  { value: "Discuss", label: "Your care needs" },
 ] as const;

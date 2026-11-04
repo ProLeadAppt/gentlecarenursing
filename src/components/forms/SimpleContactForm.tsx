@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useRef, type FormEvent } from "react";
 import { FormField } from "@/components/ui/FormField";
 import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/Textarea";
 import { Button } from "@/components/ui/Button";
 import { dispatchAnalyticsEvent } from "@/lib/analytics";
 import { submitWebsiteForm } from "@/lib/form-client";
+import { EnquiryPrivacyNotice } from "./EnquiryPrivacyNotice";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -19,9 +20,12 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 export function SimpleContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const submittingRef = useRef(false);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submittingRef.current || !e.currentTarget.reportValidity()) return;
+    submittingRef.current = true;
     setStatus("submitting");
     setErrorMessage("");
 
@@ -56,12 +60,14 @@ export function SimpleContactForm() {
       setErrorMessage(
         "Something went wrong. Please try again or call us on 1300 004 267."
       );
+    } finally {
+      submittingRef.current = false;
     }
   }
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-pw-border bg-white p-8 text-center shadow-sm">
+      <div className="rounded-2xl border border-pw-border bg-white p-8 text-center shadow-sm" role="status">
         <div
           className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full"
           style={{ background: "rgba(107,147,96,0.12)" }}
@@ -71,11 +77,11 @@ export function SimpleContactForm() {
           </span>
         </div>
         <h3 className="text-xl font-semibold text-foreground font-[family-name:var(--font-serif)]">
-          Thanks — we&apos;ve got your message.
+          Thank you for your enquiry.
         </h3>
         <p className="mt-2 text-muted-foreground">
-          Our team will be in touch within 24 hours. If your enquiry is urgent,
-          please call us on 1300 004 267.
+          Your enquiry has been accepted for delivery. Our team will review it
+          and contact you about next steps.
         </p>
       </div>
     );
@@ -85,7 +91,7 @@ export function SimpleContactForm() {
     <form
       onSubmit={handleSubmit}
       className="grid gap-5 rounded-2xl border border-pw-border bg-white p-6 sm:p-8 shadow-[0_20px_60px_-30px_rgba(132,40,51,0.25)]"
-      noValidate
+      data-clarity-mask="true"
     >
       <FormField label="Your name" htmlFor="home-name" required>
         <Input
@@ -144,9 +150,11 @@ export function SimpleContactForm() {
           rows={4}
           required
           maxLength={2000}
-          placeholder="Tell us a little about your situation or what you need."
+          placeholder="What would you like us to contact you about?"
         />
       </FormField>
+
+      <EnquiryPrivacyNotice />
 
       {status === "error" && (
         <p className="text-sm text-red-600" role="alert">
@@ -164,7 +172,7 @@ export function SimpleContactForm() {
           {status === "submitting" ? "Sending..." : "Send enquiry"}
         </Button>
         <p className="text-xs text-muted-foreground text-center">
-          We&apos;ll respond within 24 hours. No obligation.
+          No obligation. We will discuss next steps with you.
         </p>
       </div>
     </form>

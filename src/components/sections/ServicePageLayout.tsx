@@ -6,7 +6,7 @@ import { ServiceCtaWithModal } from "./ServiceCtaWithModal";
 import { EvidencePanel, type EvidenceItem } from "./EvidencePanel";
 import { Heading } from "@/components/ui/Heading";
 import { FormModalTrigger } from "@/components/ui/FormModalTrigger";
-import { CTA_LINKS, SITE_LAST_UPDATED } from "@/lib/constants";
+import { CTA_LINKS } from "@/lib/constants";
 import { getServiceSchema, getFaqSchema, getMedicalProcedureSchema } from "@/lib/schema";
 import { SERVICES } from "@/content/services";
 // ALL_GUIDES + ALL_COMPARES imports removed 2026-06-10 — /guides and /compare pages deleted
@@ -98,7 +98,7 @@ export interface ServicePageData {
    * Optional list of clinical procedures this service page describes.
    *
    * Each entry is emitted as a MedicalProcedure schema node alongside the
-   * page's MedicalService schema, so AI engines and Google's clinical
+   * page's Service schema, so AI engines and Google's clinical
    * content classifier can resolve the page to specific procedure-level
    * intents — e.g. "PEG feeding home care Sydney", "tracheostomy care at
    * home", "catheter management Sydney".
@@ -130,7 +130,7 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
   }));
 
   // Only emit MedicalProcedure schema when we have a stable page URL to
-  // bind each procedure to — `provider` and `url` both depend on it.
+  // bind each procedure to through its describing WebPage.
   const procedureSchemas = data.procedures && data.href
     ? data.procedures.map((p) =>
         getMedicalProcedureSchema({
@@ -147,16 +147,14 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
       name: data.title,
       description: data.intro,
       url: data.href ?? "",
-      dateModified: data.reviewedAt ?? SITE_LAST_UPDATED,
-      reviewedBy: data.reviewer,
+      dateModified: data.reviewer ? data.reviewedAt : undefined,
+      reviewedBy: data.reviewedAt ? data.reviewer : undefined,
       areaServed: [
         { "@type": "City", name: "Sydney", containedInPlace: { "@type": "State", name: "New South Wales" } },
-        { "@type": "State", name: "New South Wales" },
-        { "@type": "Country", name: "Australia" },
       ],
     }),
     ...procedureSchemas,
-    ...(faqItems.length > 0 ? [getFaqSchema(data.faqs, { dateModified: data.reviewedAt ?? SITE_LAST_UPDATED })] : []),
+    ...(faqItems.length > 0 ? [getFaqSchema(data.faqs, { dateModified: data.reviewer ? data.reviewedAt : undefined })] : []),
   ];
 
   return (
@@ -213,10 +211,17 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
             <p className="mx-auto max-w-2xl text-center text-xl leading-relaxed text-muted-foreground font-medium">
               {data.intro}
             </p>
-            <p className="mx-auto mt-5 max-w-2xl text-center text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground/80">
-              Last updated {data.reviewedAt ?? SITE_LAST_UPDATED}
-              {data.reviewer ? ` · Reviewed by ${data.reviewer.name}${data.reviewer.role ? `, ${data.reviewer.role}` : ""}` : ""}
+            <p className="mx-auto mt-5 max-w-2xl text-center text-sm text-muted-foreground">
+              General information only. Care suitability, funding and availability
+              are confirmed during assessment. Ask a qualified healthcare
+              professional about your individual needs. In an emergency, call 000.
             </p>
+            {data.reviewedAt && data.reviewer && (
+              <p className="mx-auto mt-3 max-w-2xl text-center text-xs text-muted-foreground">
+                Clinically reviewed {data.reviewedAt} by {data.reviewer.name}
+                {data.reviewer.role ? `, ${data.reviewer.role}` : ""}
+              </p>
+            )}
           </Reveal>
 
           {data.image && (
@@ -290,7 +295,7 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
                 step: "01",
                 title: "Send an enquiry or referral",
                 description:
-                  "Tell us what support is needed, where the person lives, what funding is involved, and whether the matter is urgent. We usually respond within 24 hours during business hours.",
+                  "Tell us what support is needed, where the person lives, what funding is involved, and whether the matter is urgent. Our team will review your enquiry and discuss availability and next steps.",
               },
               {
                 step: "02",

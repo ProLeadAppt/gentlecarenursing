@@ -15,12 +15,15 @@ export function FormModal() {
     const dialog = dialogRef.current;
     if (!dialog) return;
 
+    const previousOverflow = document.body.style.overflow;
+    let focusFrame: number | undefined;
+
     if (activeForm) {
-      dialog.showModal();
+      if (!dialog.open) dialog.showModal();
       document.body.style.overflow = "hidden";
 
       // Auto-focus first input inside the modal after render
-      requestAnimationFrame(() => {
+      focusFrame = requestAnimationFrame(() => {
         const firstInput = contentRef.current?.querySelector<HTMLElement>(
           "input, select, textarea, button:not([aria-label='Close'])"
         );
@@ -28,7 +31,6 @@ export function FormModal() {
       });
     } else {
       dialog.close();
-      document.body.style.overflow = "";
 
       // Return focus to the trigger element
       const trigger = returnFocusRef.current;
@@ -39,7 +41,8 @@ export function FormModal() {
     }
 
     return () => {
-      document.body.style.overflow = "";
+      if (focusFrame !== undefined) cancelAnimationFrame(focusFrame);
+      document.body.style.overflow = previousOverflow;
     };
   }, [activeForm, returnFocusRef]);
 

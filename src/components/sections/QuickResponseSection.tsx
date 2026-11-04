@@ -3,14 +3,13 @@ import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "@/components/sections/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
-import { GHLWidgets } from "@/components/embeds/GHLWidgets";
 import { Phone, MessageCircle, HelpCircle } from "lucide-react";
 import { useFormModal } from "@/contexts/FormModalContext";
 
 const DEFAULT_BENEFITS = [
-  { icon: Phone, text: "You'll hear from us within 24 hours" },
-  { icon: MessageCircle, text: "Immediate confirmation when you enquire" },
-  { icon: HelpCircle, text: "Clear next steps. No waiting in the dark." },
+  { icon: Phone, text: "Our team will review your enquiry and discuss availability and next steps." },
+  { icon: MessageCircle, text: "Tell us about the support you need" },
+  { icon: HelpCircle, text: "Discuss the next steps" },
 ] as const;
 
 export interface QuickResponseSectionProps {
@@ -21,20 +20,17 @@ export interface QuickResponseSectionProps {
   secondaryCtaHref?: string;
   /** Benefit bullets (default: response time, confirmation, next steps) */
   benefits?: readonly string[];
-  /** Short line above chat/voice widgets, e.g. optional voice assistant for immediate help */
-  voiceAssistantLine?: string;
   /** Optional section background variant (used by homepage for alternation) */
   sectionVariant?: "default" | "muted" | "card" | "primary" | "accent" | "gradient" | "teal";
 }
 
 export function QuickResponseSection({
-  title = "Get Help Quickly. You're Not Left Waiting.",
-  subtitle = "When you reach out, our team is notified straight away. You'll get a personal response within 24 hours, with clear next steps and supportive guidance. No runaround.",
+  title = "Talk With Us About Care",
+  subtitle = "Our team will review your enquiry and discuss availability and next steps. Care start dates depend on assessment, care needs and staff availability.",
   primaryCtaLabel = "Request Care",
   secondaryCtaLabel = "Contact Us",
   secondaryCtaHref = "/contact",
   benefits,
-  voiceAssistantLine = "Need guidance right now? Use our voice assistant below for immediate help.",
   sectionVariant = "accent",
 }: QuickResponseSectionProps) {
   const { openModal } = useFormModal();
@@ -84,7 +80,7 @@ export function QuickResponseSection({
                     What happens after I submit?
                   </div>
                   <div className="ml-8 mr-0 rounded-2xl rounded-tr-sm bg-accent/15 px-3 py-2 text-sm text-foreground">
-                    We confirm straight away and get back to you within 24 hours.
+                    Our team will review your enquiry and discuss availability and next steps.
                   </div>
                   <div className="ml-0 mr-8 rounded-2xl rounded-tl-sm bg-muted px-3 py-2 text-sm text-muted-foreground">
                     Who will I speak to?
@@ -99,12 +95,6 @@ export function QuickResponseSection({
           </div>
         </div>
 
-        <div id="quick-help" className="mt-12">
-          {voiceAssistantLine && (
-            <p className="mb-4 text-center text-sm text-muted-foreground">{voiceAssistantLine}</p>
-          )}
-          <GHLWidgets />
-        </div>
       </Container>
     </Section>
   );

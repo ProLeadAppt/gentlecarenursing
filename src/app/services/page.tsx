@@ -54,7 +54,7 @@ export default function ServicesPage() {
                 Start with the service that matches the funding and the need
               </Heading>
               <p className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground leading-relaxed">
-                Most families arrive with one of three jobs to be done: funded NDIS support, veteran care through DVA, or fast private help without waiting for approvals.
+                Most families arrive with one of three jobs to be done: funded NDIS support, veteran care through DVA, or private fee-for-service care.
               </p>
             </div>
           </Reveal>
@@ -82,8 +82,8 @@ export default function ServicesPage() {
               {
                 title: "Private nursing",
                 href: "/private-nursing",
-                body: "For people who want immediate, flexible fee-for-service care with no waitlists, no package admin, and no approval delays.",
-                kicker: "For immediate fee-for-service care",
+                body: "For people seeking fee-for-service care. Availability and start dates are discussed after assessment.",
+                kicker: "For private fee-for-service care",
               },
             ].map((item, i) => (
               <Reveal key={item.title} delay={i * 0.08}>
@@ -106,13 +106,13 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
               { 
-                title: "Registered & Verified", 
-                desc: "Fully registered NDIS and DVA provider meeting all quality and safety benchmarks.", 
+                title: "NDIS & DVA Care",
+                desc: "Registered NDIS provider and DVA Contracted Community Nursing Provider. Care is subject to eligibility and assessment.",
                 icon: ShieldCheck 
               },
               {
                 title: "Experienced Care Team",
-                desc: "Led by an experienced care professional with hands-on work across disability, aged care and in-home support.",
+                desc: "Led by a care team with strong hands-on experience in community care, aged care, disability support, and nursing services.",
                 icon: UserCheck
               },
               { 
@@ -180,7 +180,7 @@ export default function ServicesPage() {
 
       <CtaSection
         title="Ready to Discuss Your Care?"
-        description="Whether you have an NDIS plan, DVA referral, or need private clinical support, our team is ready to respond within 24 hours."
+        description="Our team will review your enquiry and discuss availability and next steps."
         primaryCta={CTA_LINKS.requestCare}
         secondaryCta={CTA_LINKS.contact}
         variant="primary"

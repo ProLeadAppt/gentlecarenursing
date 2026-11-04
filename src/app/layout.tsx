@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Source_Sans_3, DM_Sans, Cormorant_Garamond } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -11,6 +10,7 @@ import { FormModal } from "@/components/ui/FormModal";
 import { getLocalBusinessSchema, getWebsiteSchema } from "@/lib/schema";
 import { ServiceWorkerRegister } from "@/components/pwa/ServiceWorkerRegister";
 import { FloatingContact } from "@/components/ui/FloatingContact";
+import { AnalyticsPageViews } from "@/components/analytics/AnalyticsPageViews";
 import { INTEGRATIONS } from "@/config/integrations";
 
 const sourceSans = Source_Sans_3({
@@ -89,7 +89,7 @@ export const viewport: Viewport = {
   themeColor: "#3D0A11",
 };
 
-const gaId = INTEGRATIONS.analytics.gaId;
+const gaId = INTEGRATIONS.analytics.enabled ? INTEGRATIONS.analytics.gaId : "";
 
 export default function RootLayout({
   children,
@@ -99,24 +99,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sourceSans.variable} ${dmSans.variable} ${cormorant.variable}`} suppressHydrationWarning>
       <head>
-        {/* Google tag (gtag.js) */}
-        {gaId ? (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-
-                gtag('config', '${gaId}');
-              `}
-            </Script>
-          </>
-        ) : null}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -126,33 +108,8 @@ export default function RootLayout({
             ]),
           }}
         />
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "wmn8hytn79");
-            `,
-          }}
-        />
-        {/*
-          SearchAtlas OTTO dynamic-optimization loader. The data: src decodes to
-          a tiny script that appends the real https://dashboard.searchatlas.com
-          loader to <head>. The data: URI src and the dashboard.searchatlas.com
-          load both need to be permitted by Content-Security-Policy (see
-          netlify.toml) or OTTO will be blocked and silently fail to pick up
-          the page.
-        */}
-        <Script
-          id="sa-dynamic-optimization"
-          data-uuid="1ca3ea08-0eb4-40c3-9058-7ee1a1f845d9"
-          strategy="afterInteractive"
-          src="data:text/javascript;base64,dmFyIHNjcmlwdCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoInNjcmlwdCIpO3NjcmlwdC5zZXRBdHRyaWJ1dGUoIm5vd3Byb2NrZXQiLCAiIik7c2NyaXB0LnNldEF0dHJpYnV0ZSgibml0cm8tZXhjbHVkZSIsICIiKTtzY3JpcHQuc3JjID0gImh0dHBzOi8vZGFzaGJvYXJkLnNlYXJjaGF0bGFzLmNvbS9zY3JpcHRzL2R5bmFtaWNfb3B0aW1pemF0aW9uLmpzIjtzY3JpcHQuZGF0YXNldC51dWlkID0gIjFjYTNlYTA4LTBlYjQtNDBjMy05MDU4LTdlZTFhMWY4NDVkOSI7c2NyaXB0LmlkID0gInNhLWR5bmFtaWMtb3B0aW1pemF0aW9uLWxvYWRlciI7ZG9jdW1lbnQuaGVhZC5hcHBlbmRDaGlsZChzY3JpcHQpOw=="
-          {...{ nowprocket: "", "nitro-exclude": "" }}
-        />
+        {/* Metadata, headings and JSON-LD are owned by versioned native code.
+            No remote SEO rewrite or session-replay loader is installed. */}
       </head>
       <body className="min-h-screen flex flex-col antialiased" suppressHydrationWarning>
         <FormModalProvider>
@@ -172,6 +129,7 @@ export default function RootLayout({
           <FormModal />
           <FloatingContact />
           <ServiceWorkerRegister />
+          {gaId ? <AnalyticsPageViews gaId={gaId} /> : null}
         </FormModalProvider>
       </body>
     </html>

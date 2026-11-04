@@ -20,7 +20,7 @@ const STEPS = [
     shadowClass: "shadow-[0_4px_16px_rgba(107,147,96,0.12)]",
   },
   {
-    title: "We Aim to Respond Within 24 Hours",
+    title: "We Review Your Enquiry",
     description:
       "Our team personally reviews your needs and contacts you.",
     icon: PhoneCall,
