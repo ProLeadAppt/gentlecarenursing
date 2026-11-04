@@ -41,10 +41,10 @@ export function FormField({
       </div>
       {children}
       {hint && !error && (
-        <p className="text-sm text-muted-foreground">{hint}</p>
+        <p id={`${htmlFor}-hint`} className="text-sm text-muted-foreground">{hint}</p>
       )}
       {error && (
-        <p className="text-sm text-destructive" role="alert">
+        <p id={`${htmlFor}-error`} className="text-sm text-destructive" role="alert">
           {error}
         </p>
       )}
