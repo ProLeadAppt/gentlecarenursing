@@ -29,7 +29,7 @@ const CREDENTIALS = [
 interface CredentialsSectionProps {
   /** Optional section background variant */
   variant?: "default" | "muted" | "card" | "teal";
-  /** Show links to testimonials and FAQ */
+  /** Show links to the existing areas and FAQ pages */
   showLinks?: boolean;
 }
 
@@ -66,10 +66,6 @@ export function CredentialsSection({
           <p className="mt-8 text-center text-sm text-muted-foreground">
             <Link href="/areas" className="font-medium text-primary hover:underline">
               Areas we serve
-            </Link>
-            {" · "}
-            <Link href="/#testimonials" className="font-medium text-primary hover:underline">
-              What families say
             </Link>
             {" · "}
             <Link href="/faq" className="font-medium text-primary hover:underline">
