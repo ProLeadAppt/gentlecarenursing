@@ -2,7 +2,6 @@ import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "./SectionHeader";
 import { REFERRER_BLOCKS, type ReferrerType } from "@/content/referrer-blocks";
-import Link from "next/link";
 
 interface ReferrerBlocksSectionProps {
   referrerTypes: ReferrerType[];
@@ -31,7 +30,8 @@ export function ReferrerBlocksSection({
           {blocks.map((block) => (
             <article
               key={block.id}
-              className="h-full rounded-2xl border border-border bg-card p-6 shadow-sm"
+              id={block.anchorId}
+              className="h-full scroll-mt-28 rounded-2xl border border-border bg-card p-6 shadow-sm"
               aria-label={block.title}
             >
               <h3 className="font-[family-name:var(--font-dm-sans)] text-lg font-semibold text-foreground">
@@ -45,14 +45,6 @@ export function ReferrerBlocksSection({
                   <li key={item}>• {item}</li>
                 ))}
               </ul>
-              <div className="mt-4">
-                <Link
-                  href={block.primaryCtaHref}
-                  className="text-sm font-medium text-primary hover:underline"
-                >
-                  {block.primaryCtaLabel}
-                </Link>
-              </div>
             </article>
           ))}
         </div>

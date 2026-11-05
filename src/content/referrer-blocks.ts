@@ -11,8 +11,7 @@ export interface ReferrerBlock {
   label: string;
   blurb: string;
   bullets: string[];
-  primaryCtaLabel: string;
-  primaryCtaHref: string;
+  anchorId: string;
 }
 
 export const REFERRER_BLOCKS: readonly ReferrerBlock[] = [
@@ -28,8 +27,7 @@ export const REFERRER_BLOCKS: readonly ReferrerBlock[] = [
       "Clear documentation and updates at agreed points",
       "Experience with participants who have complex clinical needs",
     ],
-    primaryCtaLabel: "How we work with coordinators",
-    primaryCtaHref: "/referrers#ndis-support-coordinators",
+    anchorId: "ndis-support-coordinators",
   },
   {
     id: "plan-manager-main",
@@ -43,8 +41,7 @@ export const REFERRER_BLOCKS: readonly ReferrerBlock[] = [
       "Responses to queries about services delivered",
       "Registered provider with clear service descriptions",
     ],
-    primaryCtaLabel: "See information for plan managers",
-    primaryCtaHref: "/referrers#plan-managers",
+    anchorId: "plan-managers",
   },
   {
     id: "hospital-discharge-planner-main",
@@ -58,8 +55,7 @@ export const REFERRER_BLOCKS: readonly ReferrerBlock[] = [
       "Experience with post-surgical, complex medical, and step-down care",
       "Coordination with GPs and community teams once the patient is home",
     ],
-    primaryCtaLabel: "See information for discharge planners",
-    primaryCtaHref: "/referrers#hospital-discharge-planners",
+    anchorId: "hospital-discharge-planners",
   },
   {
     id: "gp-primary-care-main",
@@ -73,8 +69,7 @@ export const REFERRER_BLOCKS: readonly ReferrerBlock[] = [
       "Updates when there are changes in function, safety, or symptoms",
       "Respect for your ongoing relationship with the patient and family",
     ],
-    primaryCtaLabel: "See how we support your patients",
-    primaryCtaHref: "/referrers#gps-and-primary-care",
+    anchorId: "gps-and-primary-care",
   },
 ] as const;
 
