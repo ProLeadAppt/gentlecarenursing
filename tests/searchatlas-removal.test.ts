@@ -45,9 +45,10 @@ test("existing Google loader and initialization remain in the root layout", () =
   assert.ok(layout.includes("gtag('config', '${gaId}');"));
 });
 
-test("existing Clarity integration is not removed by the SearchAtlas change", () => {
-  assert.ok(layout.includes('t.src="https://www.clarity.ms/tag/"+i;'));
-  assert.ok(layout.includes('})(window, document, "clarity", "script", "wmn8hytn79");'));
+test("application and public code do not load Clarity after its approved removal", () => {
+  for (const path of [...codeFiles("src"), ...codeFiles("public")]) {
+    assert.doesNotMatch(read(path), /clarity\.ms\/tag|wmn8hytn79|window\.clarity/i, path);
+  }
 });
 
 test("native metadata and root JSON-LD retain their owners", () => {
