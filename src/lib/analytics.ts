@@ -84,15 +84,8 @@ export function dispatchAnalyticsEvent(
   runtime?: AnalyticsRuntime
 ): void {
   try {
-    const browserRuntime: AnalyticsRuntime | undefined =
-      runtime ??
-      (typeof window !== "undefined"
-        ? {
-            pathname: window.location.pathname,
-            gtag: window.gtag,
-            dataLayer: window.dataLayer,
-          }
-        : undefined);
+    // QA ONLY: no browser analytics. Explicit in-memory test runtimes still work.
+    const browserRuntime = runtime;
 
     if (!browserRuntime) return;
 
@@ -114,10 +107,6 @@ export function dispatchAnalyticsEvent(
       return;
     }
 
-    if (typeof window !== "undefined") {
-      window.dataLayer ??= [];
-      window.dataLayer.push(eventArguments);
-    }
   } catch {
     // Tracking is optional: an accepted enquiry must stay successful when analytics fails.
     // Do not retry here; the provider may have accepted the event before throwing.

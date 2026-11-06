@@ -1,5 +1,7 @@
 "use client";
 
+import { qaDisabledTransport } from "@/lib/qa-transport";
+
 import { useEffect, useRef, useState } from "react";
 import { StarRating, type StarRatingValue } from "./StarRating";
 import { SITE } from "@/lib/constants";
@@ -108,7 +110,7 @@ function FeedbackFormInline({ rating, onReset }: FeedbackFormInlineProps) {
     };
 
     try {
-      const res = await fetch("/api/feedback", {
+      const res = await qaDisabledTransport("/api/feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

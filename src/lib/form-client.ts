@@ -1,3 +1,4 @@
+import { qaTransport } from "@/lib/qa-transport";
 import type { FormPayload } from "@/lib/submission";
 
 const UUID_PATTERN =
@@ -5,7 +6,7 @@ const UUID_PATTERN =
 
 export async function submitWebsiteForm(
   payload: FormPayload,
-  fetcher: typeof fetch = fetch
+  fetcher: typeof fetch = qaTransport
 ): Promise<{ submissionId: string }> {
   const response = await fetcher("/api/submit", {
     method: "POST",
