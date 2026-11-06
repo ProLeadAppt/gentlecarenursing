@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function ReviewPage() {
   return (
-    <main id="main-content" className="bg-background">
+    <div className="bg-background">
       <Section size="xl" variant="clinical-white">
         <Container size="md">
           <div className="text-center max-w-2xl mx-auto">
@@ -49,6 +49,6 @@ export default function ReviewPage() {
           </div>
         </Container>
       </Section>
-    </main>
+    </div>
   );
 }

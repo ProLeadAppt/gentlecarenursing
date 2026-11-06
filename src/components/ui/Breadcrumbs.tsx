@@ -11,12 +11,18 @@ export interface BreadcrumbItem {
 interface BreadcrumbsProps {
   items: BreadcrumbItem[];
   className?: string;
+  /** Disable when the page already supplies its canonical breadcrumb JSON-LD. */
+  includeSchema?: boolean;
 }
 
 /**
  * Accessible breadcrumb nav. Renders JSON-LD BreadcrumbList and on-page nav.
  */
-export function Breadcrumbs({ items, className = "" }: BreadcrumbsProps) {
+export function Breadcrumbs({
+  items,
+  className = "",
+  includeSchema = true,
+}: BreadcrumbsProps) {
   const baseUrl = INTEGRATIONS.siteUrl;
 
   const breadcrumbListSchema = {
@@ -32,10 +38,12 @@ export function Breadcrumbs({ items, className = "" }: BreadcrumbsProps) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListSchema) }}
-      />
+      {includeSchema ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListSchema) }}
+        />
+      ) : null}
       <nav aria-label="Breadcrumb" className={className}>
         <ol className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
           {items.map((item, i) => (
