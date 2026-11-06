@@ -75,6 +75,7 @@ export default function ReferrersPage() {
       <Section size="lg" variant="card">
         <Container size="md">
           <Breadcrumbs
+            includeSchema={false}
             items={[
               { label: "Home", href: "/" },
               { label: "For Coordinators & Referrers" },
