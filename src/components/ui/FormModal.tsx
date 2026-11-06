@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
+import { beginModalSession } from "@/lib/modal-session";
 import { X } from "lucide-react";
 import { useFormModal } from "@/contexts/FormModalContext";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -16,19 +17,20 @@ export function FormModal() {
     if (!dialog) return;
 
     if (activeForm) {
-      dialog.showModal();
-      document.body.style.overflow = "hidden";
-
-      // Auto-focus first input inside the modal after render
-      requestAnimationFrame(() => {
-        const firstInput = contentRef.current?.querySelector<HTMLElement>(
-          "input, select, textarea, button:not([aria-label='Close'])"
-        );
-        firstInput?.focus();
+      return beginModalSession({
+        dialog,
+        bodyStyle: document.body.style,
+        focusFirst: () => {
+          const firstInput = contentRef.current?.querySelector<HTMLElement>(
+            "input:not([type='hidden']):not(:disabled), select:not(:disabled), textarea:not(:disabled), button:not(:disabled):not([aria-label='Close'])"
+          );
+          firstInput?.focus();
+        },
+        requestFrame: requestAnimationFrame,
+        cancelFrame: cancelAnimationFrame,
       });
     } else {
       dialog.close();
-      document.body.style.overflow = "";
 
       // Return focus to the trigger element
       const trigger = returnFocusRef.current;
@@ -38,9 +40,6 @@ export function FormModal() {
       returnFocusRef.current = null;
     }
 
-    return () => {
-      document.body.style.overflow = "";
-    };
   }, [activeForm, returnFocusRef]);
 
   const handleBackdropClick = useCallback(
