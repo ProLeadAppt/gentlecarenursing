@@ -1,37 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-/**
- * 5-star rating with rich hover micro-interactions.
- * Behavioural split:
- *   - 4 or 5 stars: funnel to Google (parent handles via onRate)
- *   - 1, 2 or 3 stars: funnel to private feedback (parent handles via onRate)
- *
- * Emotional labels update on hover/select so the user feels heard
- * regardless of which path they take.
- */
-
+/** A rating for private feedback only; it never selects a destination. */
 export type StarRatingValue = 1 | 2 | 3 | 4 | 5;
-
-const LABELS: Record<StarRatingValue, string> = {
-  1: "Tell us what went wrong",
-  2: "We'd like to understand",
-  3: "We can do better",
-  4: "That means a lot",
-  5: "Wonderful — thank you",
-};
-
-const SUBTITLES: Record<StarRatingValue, string> = {
-  1: "Your honest feedback goes straight to us, not to the public.",
-  2: "We read every response. Help us improve.",
-  3: "There's clearly room to grow — thank you for telling us.",
-  4: "Would you mind sharing the good on Google for other families?",
-  5: "Would you mind sharing the good on Google for other families?",
-};
 
 interface StarRatingProps {
   /** Called when the user picks a value and clicks "Continue". */
@@ -50,6 +25,7 @@ export function StarRating({
   const [hovered, setHovered] = useState<StarRatingValue | null>(null);
   const [selected, setSelected] = useState<StarRatingValue | null>(null);
 
+  const starRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const active = hovered ?? selected;
 
   const handleStarClick = (value: StarRatingValue) => {
@@ -77,10 +53,32 @@ export function StarRating({
               key={value}
               type="button"
               role="radio"
+              ref={(element) => { starRefs.current[value - 1] = element; }}
+              tabIndex={(selected ?? 1) === value ? 0 : -1}
+              onKeyDown={(event) => {
+                let next: StarRatingValue;
+                switch (event.key) {
+                  case "ArrowRight":
+                  case "ArrowDown":
+                    next = (value === 5 ? 1 : value + 1) as StarRatingValue;
+                    break;
+                  case "ArrowLeft":
+                  case "ArrowUp":
+                    next = (value === 1 ? 5 : value - 1) as StarRatingValue;
+                    break;
+                  case "Home": next = 1; break;
+                  case "End": next = 5; break;
+                  default: return;
+                }
+                event.preventDefault();
+                handleStarClick(next);
+                starRefs.current[next - 1]?.focus();
+              }}
               aria-checked={selected === value}
               aria-label={`${value} star${value === 1 ? "" : "s"}`}
               onMouseEnter={() => setHovered(value)}
               onFocus={() => setHovered(value)}
+              onBlur={() => setHovered(null)}
               onClick={() => handleStarClick(value)}
               className={cn(
                 "relative p-1 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2",
@@ -107,12 +105,12 @@ export function StarRating({
         })}
       </div>
 
-      {/* Emotional label + subtitle */}
+      {/* Neutral rating confirmation */}
       <div className="mt-6 h-16 sm:h-20 flex flex-col items-center justify-start">
         <AnimatePresence mode="wait">
-          {active !== null ? (
+          {selected !== null ? (
             <motion.div
-              key={`label-${active}`}
+              key={`label-${selected}`}
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
@@ -120,10 +118,10 @@ export function StarRating({
               className="flex flex-col items-center"
             >
               <p className="font-[family-name:var(--font-serif)] text-2xl sm:text-3xl text-foreground">
-                {LABELS[active]}
+                {selected} out of 5
               </p>
               <p className="mt-1.5 text-sm sm:text-base text-muted-foreground max-w-md">
-                {SUBTITLES[active]}
+                Your rating will be included with your private feedback.
               </p>
             </motion.div>
           ) : (

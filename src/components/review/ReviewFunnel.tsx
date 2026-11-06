@@ -1,104 +1,80 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { StarRating, type StarRatingValue } from "./StarRating";
 import { SITE } from "@/lib/constants";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Mail, ExternalLink } from "lucide-react";
 
-/**
- * /review — Gemma's private review funnel.
- *
- * 4–5 stars  → redirect to GBP (public, helps other families)
- * 1–3 stars  → inline slide-down to private feedback form
- *             (email to Gemma, no public airing)
- *
- * Compliance line ("If you'd still like to leave a Google review, you
- * can click here.") is always visible so users retain a public-review
- * path even on the low-rating branch — keeps the funnel Google's
- * policy-safe.
- */
+/** Both feedback choices are available to everyone, independent of rating. */
 export function ReviewFunnel() {
+  const feedbackButtonRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const [showFeedback, setShowFeedback] = useState(false);
   const [rating, setRating] = useState<StarRatingValue | null>(null);
-
-  // 4–5 star branch: smooth client-side redirect to GBP
-  const handleHighRating = () => {
-    // open in same tab so the user doesn't lose momentum
-    window.location.href = SITE.gbpReviewUrl;
+  const resetFeedback = () => {
+    setRating(null);
+    setShowFeedback(false);
+    feedbackButtonRef.current?.focus();
   };
-
-  // 1–3 star branch: keep on page, reveal the form
-  const handleLowRating = (value: StarRatingValue) => {
-    setRating(value);
-  };
-
-  const onContinue = (value: StarRatingValue) => {
-    if (value >= 4) handleHighRating();
-    else handleLowRating(value);
-  };
+  const choiceClass = "inline-flex items-center justify-center gap-2 rounded-xl border border-primary bg-card px-6 py-3 text-base font-semibold text-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 transition-colors";
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <AnimatePresence mode="wait">
-        {rating === null || rating >= 4 ? (
-          <motion.div
-            key="stars"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25 }}
-          >
-            <StarRating onContinue={onContinue} />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="feedback"
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -14 }}
-            transition={{ duration: 0.3 }}
-            className="text-left"
-          >
-            <FeedbackFormInline rating={rating} onReset={() => setRating(null)} />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Always-visible compliance line, small + muted */}
-      <div className="mt-12 text-center">
-        <p className="text-xs text-muted-foreground/80">
-          {rating === null || rating >= 4 ? (
-            <>
-              Prefer to email us instead?{" "}
-              <a
-                href={`mailto:${SITE.email}`}
-                className="underline underline-offset-2 hover:text-foreground transition-colors"
-              >
-                {SITE.email}
-              </a>
-            </>
-          ) : (
-            <>
-              If you&apos;d still like to leave a Google review,{" "}
-              <a
-                href={SITE.gbpReviewUrl}
-                className="underline underline-offset-2 hover:text-foreground transition-colors inline-flex items-center gap-1"
-              >
-                click here
-                <ExternalLink className="h-3 w-3" aria-hidden />
-              </a>
-              .
-            </>
-          )}
-        </p>
+      <p className="text-center text-muted-foreground">
+        Share an honest review on Google or send feedback privately to our team.
+        Both options are open to everyone, whatever your experience.
+      </p>
+      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        <a href={SITE.gbpReviewUrl} className={choiceClass}>
+          Leave a Google review
+          <ExternalLink className="h-4 w-4" aria-hidden />
+        </a>
+        <button
+          type="button"
+          className={choiceClass}
+          ref={feedbackButtonRef}
+          aria-expanded={showFeedback}
+          aria-controls="private-feedback-panel"
+          onClick={() => setShowFeedback(true)}
+        >
+          Send private feedback
+          <Mail className="h-4 w-4" aria-hidden />
+        </button>
       </div>
+      <div ref={panelRef} id="private-feedback-panel" className="mt-8">
+        <AnimatePresence mode="wait">
+          {showFeedback && (
+            <motion.div key={rating === null ? "rating" : "feedback"}
+              variants={{ initial: { opacity: 0, y: 10 }, enter: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -10 } }}
+              initial="initial" animate="enter" exit="exit" transition={{ duration: 0.25 }}
+              onAnimationComplete={(definition) => {
+                if (definition === "enter") panelRef.current?.querySelector<HTMLElement>("h2, h3")?.focus();
+              }}>
+              {rating === null ? (
+                <>
+                  <h2 tabIndex={-1} className="mb-5 text-center text-xl font-semibold">Private feedback</h2>
+                  <StarRating onContinue={setRating} continueLabel="Continue to private feedback" />
+                  <button type="button" onClick={resetFeedback}
+                    className="mt-6 text-sm text-muted-foreground underline underline-offset-2">
+                    Cancel
+                  </button>
+                </>
+              ) : (
+                <FeedbackFormInline rating={rating} onReset={resetFeedback} />
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+      <p className="mt-8 text-center text-sm text-muted-foreground">
+        Prefer email? <a href={`mailto:${SITE.email}`} className="underline underline-offset-2">{SITE.email}</a>
+      </p>
     </div>
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Inline low-rating feedback form (1–3 stars)                        */
-/* ------------------------------------------------------------------ */
+/* Private feedback accepts every rating. Google remains available above. */
 
 interface FeedbackFormInlineProps {
   rating: StarRatingValue;
@@ -110,6 +86,10 @@ function FeedbackFormInline({ rating, onReset }: FeedbackFormInlineProps) {
     "idle" | "submitting" | "sent" | "error"
   >("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const successHeadingRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    if (status === "sent") successHeadingRef.current?.focus();
+  }, [status]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -150,9 +130,9 @@ function FeedbackFormInline({ rating, onReset }: FeedbackFormInlineProps) {
 
   if (status === "sent") {
     return (
-      <div className="rounded-2xl border border-accent/20 bg-accent/[0.04] p-8 text-center">
+      <div role="status" aria-live="polite" className="rounded-2xl border border-accent/20 bg-accent/[0.04] p-8 text-center">
         <Mail className="mx-auto h-10 w-10 text-primary" aria-hidden />
-        <h3 className="mt-4 font-[family-name:var(--font-serif)] text-2xl text-foreground">
+        <h3 ref={successHeadingRef} tabIndex={-1} className="mt-4 font-[family-name:var(--font-serif)] text-2xl text-foreground">
           Thank you for telling us
         </h3>
         <p className="mt-2 text-base text-muted-foreground max-w-md mx-auto">
@@ -177,11 +157,11 @@ function FeedbackFormInline({ rating, onReset }: FeedbackFormInlineProps) {
       noValidate
     >
       <div>
-        <h3 className="font-[family-name:var(--font-serif)] text-2xl text-foreground">
+        <h3 tabIndex={-1} className="font-[family-name:var(--font-serif)] text-2xl text-foreground">
           Help us understand
         </h3>
         <p className="mt-1.5 text-sm text-muted-foreground">
-          A few quick questions. Everything you share goes only to our team.
+          Your feedback is sent privately to our team. Please do not include medical or other sensitive personal details.
         </p>
       </div>
 
@@ -227,13 +207,13 @@ function FeedbackFormInline({ rating, onReset }: FeedbackFormInlineProps) {
           htmlFor="improvements"
           className="block text-sm font-medium text-foreground mb-1.5"
         >
-          What could we have done better?
+          What would you like to share?
         </label>
         <textarea
           id="improvements"
           name="improvements"
           rows={4}
-          placeholder="Take your time. Specifics help us improve."
+          placeholder="Please avoid sharing medical or other sensitive personal details."
           className="block w-full rounded-xl border border-border bg-card px-4 py-3 text-foreground placeholder:text-muted-foreground/70 focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/15 transition-all resize-y"
         />
       </div>
