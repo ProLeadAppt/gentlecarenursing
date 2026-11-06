@@ -5,9 +5,9 @@ import { SITE } from "@/lib/constants";
 /**
  * /api/feedback
  *
- * Receives private feedback from the /review funnel (1–3 star path)
- * and emails it to Gemma's main address (SITE.email) so she can
- * respond privately, NEVER surfacing low ratings publicly.
+ * Receives private feedback for every rating and emails it to
+ * the existing team address (SITE.email). Choosing private feedback
+ * is independent of the public Google-review option.
  *
  * Falls back gracefully if RESEND_API_KEY is missing — returns 503
  * with a "please email us directly" message rather than crashing.
@@ -32,8 +32,15 @@ const SERVICE_LABELS: Record<string, string> = {
   other: "Other",
 };
 
-function isValidRating(n: unknown): n is 1 | 2 | 3 {
-  return n === 1 || n === 2 || n === 3;
+function isValidRating(n: unknown): n is 1 | 2 | 3 | 4 | 5 {
+  return n === 1 || n === 2 || n === 3 || n === 4 || n === 5;
+}
+
+function serviceLabel(service?: string): string {
+  if (!service) return "—";
+  return Object.prototype.hasOwnProperty.call(SERVICE_LABELS, service)
+    ? SERVICE_LABELS[service]
+    : service;
 }
 
 function isValidEmail(s: string): boolean {
@@ -60,7 +67,7 @@ function buildEmailBody(p: FeedbackPayload): string {
   const safe = {
     name: htmlEscape(p.name?.trim() || "Anonymous"),
     contact: htmlEscape(p.contact?.trim() || "—"),
-    service: p.service ? SERVICE_LABELS[p.service] ?? p.service : "—",
+    service: htmlEscape(serviceLabel(p.service)),
     improvements: htmlEscape(p.improvements?.trim() || "(no detail provided)"),
     followup: p.allowFollowup ? "Yes" : "No",
     rating: p.rating,
@@ -106,7 +113,7 @@ function buildEmailBody(p: FeedbackPayload): string {
         </table>
 
         <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
-          <p style="margin: 0 0 8px 0; color: #6b7280; font-size: 13px;">What could we have done better?</p>
+          <p style="margin: 0 0 8px 0; color: #6b7280; font-size: 13px;">What would you like to share?</p>
           <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; font-size: 15px; line-height: 1.6; white-space: pre-wrap;">${safe.improvements}</div>
         </div>
       </div>
@@ -122,6 +129,18 @@ export async function POST(request: NextRequest) {
   let payload: FeedbackPayload;
   try {
     const body = await request.json();
+    if (
+      body === null || typeof body !== "object" || Array.isArray(body) ||
+      ["name", "contact", "service", "improvements"].some(
+        (field) => body[field] !== undefined && typeof body[field] !== "string"
+      ) ||
+      (body.allowFollowup !== undefined && typeof body.allowFollowup !== "boolean")
+    ) {
+      return NextResponse.json(
+        { success: false, error: "Invalid request body." },
+        { status: 400 }
+      );
+    }
     payload = body as FeedbackPayload;
   } catch {
     return NextResponse.json(
@@ -136,7 +155,7 @@ export async function POST(request: NextRequest) {
       {
         success: false,
         error:
-          "This endpoint is for private feedback only (1–3 stars). For 4–5 star reviews, please use our Google page.",
+          "Please choose a rating from 1 to 5.",
       },
       { status: 400 }
     );
@@ -165,8 +184,7 @@ export async function POST(request: NextRequest) {
     // Don't crash — log and return a friendly error so the user can be
     // told to email us directly.
     console.error(
-      "[feedback] RESEND_API_KEY not set. Feedback payload (for manual follow-up):",
-      payload
+      "[feedback] RESEND_API_KEY not set. Feedback delivery unavailable."
     );
     return NextResponse.json(
       {
@@ -196,17 +214,17 @@ export async function POST(request: NextRequest) {
       text: `Rating: ${payload.rating}/5
 Name: ${payload.name?.trim() || "Anonymous"}
 Contact: ${payload.contact?.trim() || "—"}
-Service: ${payload.service ? SERVICE_LABELS[payload.service] ?? payload.service : "—"}
+Service: ${serviceLabel(payload.service)}
 Follow-up OK: ${payload.allowFollowup ? "Yes" : "No"}
 
-What could we have done better?
+What would you like to share?
 ${payload.improvements?.trim() || "(no detail provided)"}
 
 Submitted: ${new Date().toISOString()}`,
     });
 
     if (result.error) {
-      console.error("[feedback] Resend error:", result.error);
+      console.error("[feedback] Feedback provider delivery failed.");
       return NextResponse.json(
         {
           success: false,
@@ -219,8 +237,8 @@ Submitted: ${new Date().toISOString()}`,
     }
 
     return NextResponse.json({ success: true });
-  } catch (err) {
-    console.error("[feedback] Unexpected error:", err);
+  } catch {
+    console.error("[feedback] Unexpected feedback delivery failure.");
     return NextResponse.json(
       {
         success: false,
