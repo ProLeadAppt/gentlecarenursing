@@ -11,6 +11,7 @@ import { createMetadata } from "@/lib/metadata";
 import { getAreaContentBySlug, getAllAreaSlugs } from "@/content/areas-content";
 import { getAreaPageSchema, getBreadcrumbListSchema } from "@/lib/schema";
 import { INTEGRATIONS } from "@/config/integrations";
+import { SERVICE_REGION_PAGES } from "@/content/service-regions";
 import { getBreadcrumbPaths } from "@/content/topical-map";
 import { MapPin, ArrowRight, CheckCircle2, PhoneCall } from "lucide-react";
 import { FormModalTrigger } from "@/components/ui/FormModalTrigger";
@@ -222,6 +223,25 @@ export default async function AreaRegionPage({ params }: Props) {
               </Reveal>
             </aside>
           </div>
+        </Container>
+      </Section>
+
+      <Section className="border-y border-border/40 bg-muted/20">
+        <Container size="lg">
+          <Heading level="h2" className="text-2xl font-bold sm:text-3xl">
+            Service guides for {area.region}
+          </Heading>
+          <nav aria-label={`Service guides for ${area.region}`} className="mt-6">
+            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {SERVICE_REGION_PAGES.filter((page) => page.regionSlug === area.slug).map((page) => (
+                <li key={page.path}>
+                  <Link href={page.path} className="block rounded-xl border border-border bg-white p-4 font-semibold text-primary underline underline-offset-4 hover:bg-muted/40">
+                    {page.service.shortTitle}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </Container>
       </Section>
 
