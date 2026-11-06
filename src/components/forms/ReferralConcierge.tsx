@@ -3,6 +3,7 @@
 import { useState, useRef, useId, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, ArrowRight, ArrowLeft, Loader2, UserPlus, Building2, ClipboardCheck } from "lucide-react";
+import { ReferralOutcome } from "./ReferralOutcome";
 import { Button } from "@/components/ui/Button";
 import { FormField } from "@/components/ui/FormField";
 import { Input } from "@/components/ui/Input";
@@ -26,6 +27,12 @@ export function ReferralConcierge() {
   const focusStepRef = useRef(false);
   const invalidFieldRef = useRef<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [hasSubmissionError, setHasSubmissionError] = useState(false);
+  const outcomeRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isSuccess || (hasSubmissionError && !isSubmitting)) outcomeRef.current?.focus();
+  }, [isSuccess, hasSubmissionError, isSubmitting]);
 
   const [formData, setFormData] = useState({
     referrerName: "",
@@ -123,6 +130,7 @@ export function ReferralConcierge() {
     if (!reportFormValidity(e.currentTarget)) return;
     submittingRef.current = true;
     setIsSubmitting(true);
+    setHasSubmissionError(false);
     
     try {
       const { submissionId } = await submitWebsiteForm({ type: "referral", ...formData });
@@ -133,14 +141,13 @@ export function ReferralConcierge() {
         submission_id: submissionId,
       });
       setIsSuccess(true);
-    } catch (error) {
+    } catch {
       dispatchAnalyticsEvent("form_error", {
         form_type: "referral",
         cta_location: "referral_concierge",
         error_type: "delivery",
       });
-      console.error(error);
-      alert("Something went wrong. Please try again.");
+      setHasSubmissionError(true);
     } finally {
       submittingRef.current = false;
       setIsSubmitting(false);
@@ -163,19 +170,7 @@ export function ReferralConcierge() {
   };
 
   if (isSuccess) {
-    return (
-      <div className="flex flex-col items-center justify-center py-12 text-center px-4">
-        <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-accent/20 text-accent ring-4 ring-accent/5">
-          <Check className="h-8 w-8" strokeWidth={3} />
-        </div>
-        <h3 className="font-[family-name:var(--font-serif)] text-3xl font-bold text-foreground">
-          Referral Submitted
-        </h3>
-        <p className="mt-4 max-w-sm text-lg text-muted-foreground leading-relaxed">
-          Thank you for trusting us with your client. Our nursing leads will review the details and contact you to confirm the next steps.
-        </p>
-      </div>
-    );
+    return <ReferralOutcome success noticeRef={outcomeRef} />;
   }
 
   return (
@@ -322,6 +317,8 @@ export function ReferralConcierge() {
               )}
             </motion.div>
           </AnimatePresence>
+
+          {hasSubmissionError && <ReferralOutcome success={false} noticeRef={outcomeRef} />}
 
           <div className="mt-12 flex items-center justify-between border-t border-border/60 pt-8">
             {step > 1 ? (

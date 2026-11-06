@@ -22,12 +22,15 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [expanded, setExpanded] = useState(!compact);
+  const outcomeRef = useRef<HTMLDivElement>(null);
   const firstFieldRef = useRef<HTMLInputElement>(null);
   const restartFocusRef = useRef(false);
   const submittingRef = useRef(false);
 
   useEffect(() => {
-    if (status === "error" || (status === "idle" && restartFocusRef.current)) {
+    if (status === "success" || status === "error") {
+      outcomeRef.current?.focus();
+    } else if (status === "idle" && restartFocusRef.current) {
       restartFocusRef.current = false;
       firstFieldRef.current?.focus();
     }
@@ -71,7 +74,7 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
         error_type: "delivery",
       });
       setStatus("error");
-      setErrorMessage("Something went wrong. Please try again or contact us directly.");
+      setErrorMessage("We couldn’t confirm whether your referral was accepted for delivery. Your details are still here. Please contact us before submitting again to avoid a duplicate referral.");
     } finally {
       submittingRef.current = false;
     }
@@ -79,13 +82,20 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
 
   if (status === "success") {
     return (
-      <div className="rounded-lg border border-accent/30 bg-accent/5 p-6 text-center" role="alert">
-        <p className="text-lg font-semibold text-foreground">Enquiry Submitted</p>
+      <div
+        ref={outcomeRef}
+        tabIndex={-1}
+        role="status"
+        aria-atomic="true"
+        aria-labelledby={`referral-success-${idPrefix}`}
+        className="rounded-lg border border-accent/30 bg-accent/5 p-6 text-center"
+      >
+        <p id={`referral-success-${idPrefix}`} className="text-lg font-semibold text-foreground">Referral accepted for delivery</p>
         <p className="mt-2 text-muted-foreground">
-          Thank you. We&apos;ve received your enquiry. Our team will contact you.
+          Thank you. Your referral email has been accepted for delivery. This does not confirm inbox receipt, a booking or service availability.
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
-          Need to talk? Call us or send another message.
+          Need to check on your referral? Please contact us before submitting it again.
         </p>
         <button
           type="button"
@@ -170,7 +180,13 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
         )}
 
         {status === "error" && (
-          <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive" role="alert">
+          <div
+            ref={outcomeRef}
+            tabIndex={-1}
+            role="alert"
+            aria-atomic="true"
+            className="rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive"
+          >
             {errorMessage}
           </div>
         )}

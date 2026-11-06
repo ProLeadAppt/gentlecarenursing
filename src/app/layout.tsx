@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Source_Sans_3, DM_Sans, Cormorant_Garamond } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -9,9 +8,8 @@ import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { FormModalProvider } from "@/contexts/FormModalContext";
 import { FormModal } from "@/components/ui/FormModal";
 import { getLocalBusinessSchema, getWebsiteSchema } from "@/lib/schema";
-import { ServiceWorkerRegister } from "@/components/pwa/ServiceWorkerRegister";
 import { FloatingContact } from "@/components/ui/FloatingContact";
-import { INTEGRATIONS } from "@/config/integrations";
+import { QaControls } from "@/components/QaControls";
 
 const sourceSans = Source_Sans_3({
   variable: "--font-source-sans",
@@ -59,8 +57,8 @@ export const metadata: Metadata = {
     images: ["/images/og/default.png"],
   },
   robots: {
-    index: true,
-    follow: true,
+    index: false,
+    follow: false,
   },
   manifest: "/manifest.webmanifest",
   applicationName: "Gentle Care Nursing Services",
@@ -89,7 +87,6 @@ export const viewport: Viewport = {
   themeColor: "#3D0A11",
 };
 
-const gaId = INTEGRATIONS.analytics.gaId;
 
 export default function RootLayout({
   children,
@@ -99,24 +96,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sourceSans.variable} ${dmSans.variable} ${cormorant.variable}`} suppressHydrationWarning>
       <head>
-        {/* Google tag (gtag.js) */}
-        {gaId ? (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-
-                gtag('config', '${gaId}');
-              `}
-            </Script>
-          </>
-        ) : null}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -144,7 +123,7 @@ export default function RootLayout({
           <ScrollToTop />
           <FormModal />
           <FloatingContact />
-          <ServiceWorkerRegister />
+          <QaControls />
         </FormModalProvider>
       </body>
     </html>
