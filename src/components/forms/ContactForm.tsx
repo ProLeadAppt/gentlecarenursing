@@ -15,6 +15,7 @@ export function ContactForm() {
   const idPrefix = useId();
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const outcomeRef = useRef<HTMLDivElement>(null);
   const firstFieldRef = useRef<HTMLInputElement>(null);
   const restartFocusRef = useRef(false);
   const submittingRef = useRef(false);
@@ -53,14 +54,17 @@ export function ContactForm() {
         error_type: "delivery",
       });
       setStatus("error");
-      setErrorMessage("Something went wrong. Please try again or contact us directly.");
+      setErrorMessage("We couldn’t confirm whether your enquiry was accepted for delivery. Your details are still here. Please call us on 1300 004 267 before submitting again to avoid a duplicate enquiry.");
     } finally {
       submittingRef.current = false;
     }
   }
 
   useEffect(() => {
-    if (status === "error" || (status === "idle" && restartFocusRef.current)) {
+    if (status === "success" || status === "error") {
+      outcomeRef.current?.focus({ preventScroll: true });
+      outcomeRef.current?.scrollIntoView({ block: "start", behavior: "instant" });
+    } else if (status === "idle" && restartFocusRef.current) {
       restartFocusRef.current = false;
       firstFieldRef.current?.focus();
     }
@@ -68,13 +72,20 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-lg border border-accent/30 bg-accent/5 p-6 text-center" role="alert">
-        <p className="text-lg font-semibold text-foreground">Thank you!</p>
+      <div
+        ref={outcomeRef}
+        tabIndex={-1}
+        role="status"
+        aria-atomic="true"
+        aria-labelledby={`contact-success-${idPrefix}`}
+        className="scroll-mt-24 rounded-lg border border-accent/30 bg-accent/5 p-6 text-center"
+      >
+        <p id={`contact-success-${idPrefix}`} className="text-lg font-semibold text-foreground">Enquiry accepted for delivery</p>
         <p className="mt-2 text-muted-foreground">
-          Your enquiry has been accepted for delivery to our team. If it is urgent, please call 1300 004 267.
+          Thank you. Your enquiry email has been accepted for delivery. This does not confirm inbox receipt, a booking or service availability.
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
-          Need to talk? Call us or send another message.
+          For an urgent enquiry, call 1300 004 267. Please contact us before submitting the same enquiry again.
         </p>
         <button
           type="button"
@@ -119,7 +130,13 @@ export function ContactForm() {
           />
         </FormField>
         {status === "error" && (
-          <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive" role="alert">
+          <div
+            ref={outcomeRef}
+            tabIndex={-1}
+            role="alert"
+            aria-atomic="true"
+            className="scroll-mt-24 rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive"
+          >
             {errorMessage}
           </div>
         )}

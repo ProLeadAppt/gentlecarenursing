@@ -56,7 +56,7 @@ test("stubbed delivery escapes service HTML and never logs or reflects provider 
     sent.push(body);
     if (mode === "throw") throw new Error(sentinel);
     if (mode === "provider-error") return { data: null, error: { message: sentinel } };
-    return { data: { id: "local-stub" }, error: null };
+    return { data: { id: "d836e511-cd92-4872-bbd1-18ed349e30af" }, error: null };
   });
   const logs = t.mock.method(console, "error", () => {});
   t.mock.method(globalThis, "fetch", async () => {
@@ -107,4 +107,28 @@ test("private rating has roving focus and standard radio keyboard controls", () 
   assert.ok(source.includes("handleStarClick(next)"));
   assert.ok(source.includes("starRefs.current[next - 1]?.focus()"));
   assert.ok(source.includes("onClick={() => handleStarClick(value)}"));
+});
+
+
+test("feedback fails closed without a valid provider acceptance receipt", async (t) => {
+  const previousKey = process.env.RESEND_API_KEY;
+  process.env.RESEND_API_KEY = "dummy-local-only";
+  let data: unknown = null;
+  t.mock.method(Resend.prototype, "post", async () => ({ data, error: null }));
+  t.mock.method(globalThis, "fetch", async () => { throw new Error("Network forbidden"); });
+  t.mock.method(console, "error", () => {});
+  try {
+    for (data of [null, {}, { id: null }, { id: "" }, { id: "not-a-receipt" }]) {
+      const response = await POST(request({ rating: 5 }));
+      assert.equal(response.status, 502);
+      assert.equal((await response.json()).success, false);
+    }
+    data = { id: "d836e511-cd92-4872-bbd1-18ed349e30af" };
+    const response = await POST(request({ rating: 5 }));
+    assert.equal(response.status, 200);
+    assert.deepEqual(await response.json(), { success: true });
+  } finally {
+    if (previousKey === undefined) delete process.env.RESEND_API_KEY;
+    else process.env.RESEND_API_KEY = previousKey;
+  }
 });

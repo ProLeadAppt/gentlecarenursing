@@ -79,7 +79,7 @@ export default function SuburbsIndexPage() {
 
       <Section size="lg" variant="card">
         <Container size="md">
-          <Breadcrumbs
+          <Breadcrumbs includeSchema={false}
             items={[
               { label: "Home", href: "/" },
               { label: "Suburbs" },

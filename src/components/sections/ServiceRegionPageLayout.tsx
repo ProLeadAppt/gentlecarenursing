@@ -140,7 +140,7 @@ export function ServiceRegionPageLayout({ data }: Props) {
         <Container size="md" className="relative z-10">
           <Reveal delay={0.1}>
             <div className="flex justify-center mb-10">
-              <Breadcrumbs items={breadcrumbItems} />
+              <Breadcrumbs includeSchema={false} items={breadcrumbItems} />
             </div>
           </Reveal>
 

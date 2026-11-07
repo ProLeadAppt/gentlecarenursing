@@ -79,12 +79,12 @@ export default async function SuburbPage({ params }: Props) {
         name: entry.lga,
       },
     },
-    // MedicalService scoped to this suburb — the actual citable claim that
+    // Service scoped to this suburb — the actual citable claim that
     // GCN serves this specific suburb, with the provider linked back to the
     // Organization @id so the entity graph stays connected.
     {
       "@context": "https://schema.org",
-      "@type": "MedicalService",
+      "@type": "Service",
       name: `In-home nursing in ${entry.name}, Sydney`,
       description: `In-home nursing and personal care across ${entry.name} (${entry.postcode}, ${entry.lga}). Funded by NDIS, DVA Community Nursing, Support at Home, CHSP, or private fee-for-service.`,
       url: canonical,
@@ -107,6 +107,7 @@ export default async function SuburbPage({ params }: Props) {
       <Section size="lg" variant="card">
         <Container size="md">
           <Breadcrumbs
+            includeSchema={false}
             items={[
               { label: "Home", href: "/" },
               { label: "Suburbs", href: "/suburbs" },
@@ -286,3 +287,6 @@ function SuburbFactCard({
     </div>
   );
 }
+
+// Only the explicitly generated content URLs are valid in this route family.
+export const dynamicParams = false;

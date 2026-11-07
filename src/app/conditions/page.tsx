@@ -69,6 +69,7 @@ export default function ConditionsIndexPage() {
       <Section size="lg" variant="card">
         <Container size="md">
           <Breadcrumbs
+            includeSchema={false}
             items={[
               { label: "Home", href: "/" },
               { label: "Conditions" },

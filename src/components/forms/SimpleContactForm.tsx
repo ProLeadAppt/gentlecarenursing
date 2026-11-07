@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useId, type FormEvent } from "react";
+import { useState, useRef, useId, useEffect, type FormEvent } from "react";
 import { FormField } from "@/components/ui/FormField";
 import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
@@ -21,7 +21,20 @@ export function SimpleContactForm() {
   const idPrefix = useId();
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const outcomeRef = useRef<HTMLDivElement>(null);
+  const firstFieldRef = useRef<HTMLInputElement>(null);
+  const restartFocusRef = useRef(false);
   const submittingRef = useRef(false);
+
+  useEffect(() => {
+    if (status === "success" || status === "error") {
+      outcomeRef.current?.focus({ preventScroll: true });
+      outcomeRef.current?.scrollIntoView({ block: "start", behavior: "instant" });
+    } else if (status === "idle" && restartFocusRef.current) {
+      restartFocusRef.current = false;
+      firstFieldRef.current?.focus();
+    }
+  }, [status]);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -60,7 +73,7 @@ export function SimpleContactForm() {
       });
       setStatus("error");
       setErrorMessage(
-        "Something went wrong. Please try again or call us on 1300 004 267."
+        "We couldn’t confirm whether your enquiry was accepted for delivery. Your details are still here. Please call us on 1300 004 267 before submitting again to avoid a duplicate enquiry."
       );
     } finally {
       submittingRef.current = false;
@@ -69,7 +82,14 @@ export function SimpleContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-pw-border bg-white p-8 text-center shadow-sm">
+      <div
+        ref={outcomeRef}
+        tabIndex={-1}
+        role="status"
+        aria-atomic="true"
+        aria-labelledby={`home-contact-success-${idPrefix}`}
+        className="scroll-mt-24 rounded-2xl border border-pw-border bg-white p-8 text-center shadow-sm"
+      >
         <div
           className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full"
           style={{ background: "rgba(107,147,96,0.12)" }}
@@ -78,13 +98,25 @@ export function SimpleContactForm() {
             ✓
           </span>
         </div>
-        <h3 className="text-xl font-semibold text-foreground font-[family-name:var(--font-serif)]">
-          Thanks — we&apos;ve got your message.
+        <h3 id={`home-contact-success-${idPrefix}`} className="text-xl font-semibold text-foreground font-[family-name:var(--font-serif)]">
+          Enquiry accepted for delivery
         </h3>
         <p className="mt-2 text-muted-foreground">
-          Our team will be in touch. If your enquiry is urgent,
-          please call us on 1300 004 267.
+          Thank you. Your enquiry email has been accepted for delivery. This does not confirm inbox receipt, a booking or service availability.
         </p>
+        <p className="mt-2 text-sm text-muted-foreground">
+          For an urgent enquiry, call 1300 004 267. Please contact us before submitting the same enquiry again.
+        </p>
+        <button
+          type="button"
+          onClick={() => {
+            restartFocusRef.current = true;
+            setStatus("idle");
+          }}
+          className="mt-4 text-sm font-medium text-primary hover:underline"
+        >
+          Send another enquiry
+        </button>
       </div>
     );
   }
@@ -98,6 +130,7 @@ export function SimpleContactForm() {
       <fieldset disabled={status === "submitting"} className="min-w-0 grid gap-5">
         <FormField label="Your name" htmlFor={`home-name-${idPrefix}`} required>
           <Input
+            ref={firstFieldRef}
             id={`home-name-${idPrefix}`}
             name="name"
             type="text"
@@ -158,9 +191,15 @@ export function SimpleContactForm() {
         </FormField>
 
         {status === "error" && (
-          <p className="text-sm text-red-600" role="alert">
+          <div
+            ref={outcomeRef}
+            tabIndex={-1}
+            role="alert"
+            aria-atomic="true"
+            className="scroll-mt-24 text-sm text-red-600"
+          >
             {errorMessage}
-          </p>
+          </div>
         )}
 
         <div className="flex flex-col gap-2 pt-2">

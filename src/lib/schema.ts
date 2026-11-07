@@ -83,22 +83,27 @@ export function getServiceSchema(service: {
 }) {
   return {
     "@context": "https://schema.org",
-    "@type": "MedicalService" as const,
+    "@type": "Service" as const,
     name: service.name,
     description: service.description,
     url: `${INTEGRATIONS.siteUrl}${service.url}`,
     provider: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
-    ...(service.dateModified ? { dateModified: service.dateModified } : {}),
-    ...(service.reviewedBy
-      ? {
-          reviewedBy: {
-            "@type": "Person",
-            name: service.reviewedBy.name,
-            ...(service.reviewedBy.role ? { jobTitle: service.reviewedBy.role } : {}),
-            worksFor: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
-          },
-        }
-      : {}),
+    // These describe the published content, not the service itself.
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      url: `${INTEGRATIONS.siteUrl}${service.url}`,
+      ...(service.dateModified ? { dateModified: service.dateModified } : {}),
+      ...(service.reviewedBy
+        ? {
+            reviewedBy: {
+              "@type": "Person",
+              name: service.reviewedBy.name,
+              ...(service.reviewedBy.role ? { jobTitle: service.reviewedBy.role } : {}),
+              worksFor: { "@id": `${INTEGRATIONS.siteUrl}/#organization` },
+            },
+          }
+        : {}),
+    },
     ...(service.areaServed ? { areaServed: service.areaServed } : {}),
   };
 }
@@ -106,19 +111,9 @@ export function getServiceSchema(service: {
 /**
  * MedicalProcedure schema for clinical procedures a service page describes.
  *
- * Used to bind a service page (e.g. /services/complex-care) to specific
- * procedures Google's clinical-content classifier and AI engines can
- * recognise — tracheostomy care, PEG feeding, catheter management, etc.
- *
- * Each procedure links back to the page's MedicalService via `relevantSpecialty`
- * so the entity graph stays connected. Keep `description` short and factual —
- * AI engines extract these descriptions when answering procedure-specific
- * queries (e.g. "PEG feeding home care Sydney").
- *
- * Only populate this with procedures we genuinely deliver. Do not list
- * a procedure here unless the service page also references it in body
- * content; mismatches between schema and page content can hurt rather
- * than help on Google's quality systems.
+ * Emit only procedures described in visible content and confirmed as delivered.
+ * The URL identifies the source page; this markup does not establish credentials
+ * or guarantee search features or AI visibility.
  */
 export function getMedicalProcedureSchema(args: {
   name: string;
@@ -297,8 +292,8 @@ export function getBreadcrumbListSchema(items: { name: string; item: string }[])
 
 /**
  * Service + region landing page schema bundle.
- * Returns an array combining MedicalService, WebPage with areaServed (GeoShape),
- * and a localised provider reference. Use alongside breadcrumb + FAQ schemas.
+ * Returns a Service with served places and a WebPage describing the page.
+ * The provider reference points to the canonical organization entity.
  */
 export function getServiceRegionSchemas(args: {
   serviceName: string;
@@ -310,9 +305,9 @@ export function getServiceRegionSchemas(args: {
   pageDescription: string;
 }) {
   const url = `${INTEGRATIONS.siteUrl}${args.path}`;
-  const medicalService = {
+  const service = {
     "@context": "https://schema.org",
-    "@type": "MedicalService" as const,
+    "@type": "Service" as const,
     name: `${args.serviceName} in ${args.region}, Sydney`,
     description: args.serviceDescription,
     url,
@@ -335,7 +330,7 @@ export function getServiceRegionSchemas(args: {
     availableChannel: {
       "@type": "ServiceChannel",
       serviceUrl: url,
-      servicePhone: SITE.phone,
+      servicePhone: { "@type": "ContactPoint", telephone: SITE.phone },
       availableLanguage: { "@type": "Language", name: "English" },
     },
   };
@@ -355,7 +350,7 @@ export function getServiceRegionSchemas(args: {
     },
   };
 
-  return [medicalService, webPage];
+  return [service, webPage];
 }
 
 /** WebPage + areaServed for area/region landing pages (local SEO + GEO). */
@@ -407,7 +402,7 @@ export function getArticleSchema(post: {
   excerpt: string;
   publishedAt: string;
   updatedAt?: string;
-  author: { name: string; role?: string };
+  author: { name: string; role?: string; type?: "Person" | "Organization" };
   featuredImageSrc?: string;
   url: string;
 }) {
@@ -419,9 +414,11 @@ export function getArticleSchema(post: {
     datePublished: post.publishedAt,
     dateModified: post.updatedAt ?? post.publishedAt,
     author: {
-      "@type": "Person",
+      "@type": post.author.type ?? "Person",
       name: post.author.name,
-      ...(post.author.role ? { jobTitle: post.author.role } : {}),
+      ...(post.author.type !== "Organization" && post.author.role
+        ? { jobTitle: post.author.role }
+        : {}),
     },
     publisher: {
       "@type": "Organization",

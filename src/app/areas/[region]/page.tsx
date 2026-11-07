@@ -72,7 +72,7 @@ export default async function AreaRegionPage({ params }: Props) {
         <Container size="md" className="relative z-10">
           <Reveal delay={0.1}>
             <div className="flex justify-center mb-10">
-              <Breadcrumbs items={breadcrumbItems} />
+              <Breadcrumbs includeSchema={false} items={breadcrumbItems} />
             </div>
           </Reveal>
           
@@ -276,3 +276,6 @@ export default async function AreaRegionPage({ params }: Props) {
     </>
   );
 }
+
+// Only the explicitly generated content URLs are valid in this route family.
+export const dynamicParams = false;

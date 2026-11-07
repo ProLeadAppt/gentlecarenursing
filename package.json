@@ -11,7 +11,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "tsx --test tests/*.test.ts",
-    "audit:seo": "tsx tools/audit-seo-production.ts"
+    "audit:seo": "tsx tools/audit-seo-production.ts",
+    "audit:discovery": "tsx tools/audit-discovery.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",
