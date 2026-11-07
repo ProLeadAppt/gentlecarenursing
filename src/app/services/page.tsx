@@ -82,8 +82,8 @@ export default function ServicesPage() {
               {
                 title: "Private nursing",
                 href: "/private-nursing",
-                body: "For people who want immediate, flexible fee-for-service care with no waitlists, no package admin, and no approval delays.",
-                kicker: "For immediate fee-for-service care",
+                body: "For people arranging fee-for-service care. Contact the team to confirm suitable support, costs and availability.",
+                kicker: "For fee-for-service care",
               },
             ].map((item, i) => (
               <Reveal key={item.title} delay={i * 0.08}>

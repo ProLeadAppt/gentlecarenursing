@@ -8,7 +8,7 @@ const canonical = `${INTEGRATIONS.siteUrl}/services/post-hospital-care`;
 export const metadata = createMetadata({
   title: "Post-Hospital Nursing & Care at Home",
   description:
-    "Post-hospital in-home nursing across Sydney — coordinated with discharge planners at RPA, Westmead, RNSH, and St Vincent's, aligned with NSW Health Out of Hospital Care pathways.",
+    "Post-hospital nursing and care at home in Sydney. Discuss your discharge plan, care needs and availability with Gentle Care Nursing Services.",
   canonical,
 });
 

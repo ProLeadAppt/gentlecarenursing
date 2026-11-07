@@ -22,7 +22,7 @@ const CREDENTIALS = [
   {
     icon: Users,
     title: "Coordinators & discharge planners",
-    description: "We work closely with support coordinators and hospital discharge teams for seamless referrals and handover.",
+    description: "Support coordinators and discharge planners can contact us to discuss referral information, care needs and availability.",
   },
 ] as const;
 

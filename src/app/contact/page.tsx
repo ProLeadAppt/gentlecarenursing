@@ -77,7 +77,7 @@ export default function ContactPage() {
                     Enquiries
                   </Heading>
                   <p className="mt-1 text-muted-foreground">
-                    Contact us to discuss your needs and next steps. Urgent enquiries are prioritised.
+                    Contact us to discuss your needs, availability and next steps. This enquiry service is not for emergencies. For a medical emergency, call 000.
                   </p>
                 </div>
                 <div>
@@ -107,7 +107,7 @@ export default function ContactPage() {
 
       <CtaSection
         title="Ready to Request Care?"
-        description="If you already know what you need, submit a referral and we'll get started."
+        description="If you already know what you need, submit a referral so we can discuss suitability, availability and next steps."
         primaryCta={CTA_LINKS.requestCare}
         secondaryCta={CTA_LINKS.callUs}
         variant="muted"

@@ -5,7 +5,6 @@ import { SectionHeader } from "@/components/sections/SectionHeader";
 import { CredentialsSection } from "@/components/sections/CredentialsSection";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { FounderStory } from "@/components/sections/FounderStory";
-import { TeamGrid } from "@/components/sections/TeamGrid";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Heading } from "@/components/ui/Heading";
 import { Card } from "@/components/ui/Card";
@@ -19,7 +18,6 @@ import {
   MISSION,
   VALUES,
   FOUNDER_STORY,
-  TEAM_MEMBERS,
   TRUST_STATS,
 } from "@/content/about";
 
@@ -140,8 +138,7 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* Team */}
-      <TeamGrid members={TEAM_MEMBERS} />
+      {/* Team biographies are withheld until the provider verifies them. */}
 
       {/* Credentials */}
       <CredentialsSection variant="default" />
