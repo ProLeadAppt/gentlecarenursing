@@ -537,23 +537,22 @@ export const AGED_CARE_PAGE: ServicePageData = {
 export const PRIVATE_NURSING_PAGE: ServicePageData = {
   title: "Private Nursing & Personal Care",
   href: "/private-nursing",
-  reviewedAt: "2026-07-07",
   image: {
     src: "/images/hero-hands.webp",
     alt: "Hands held together in a caring support moment",
     caption: "Private in-home nursing tailored around the person, the family, and the day-to-day routine.",
   },
   snippetAnswer:
-    "Private in-home nursing is nursing and personal care you pay for yourself (not NDIS, DVA, or aged care funded), with no waitlists and flexible scheduling across Sydney.",
+    "Private in-home nursing is nursing and personal care you pay for yourself (not NDIS, DVA, or aged care funded), with suitability, availability and costs confirmed before care is arranged.",
   intro:
-    "When you need nursing or personal care outside of funded programs, Gentle Care Nursing Services provides private in-home services tailored to your needs. No waitlists, no complex applications, and no hoops to jump through. Just quality care when you need it, on your timetable.",
+    "When you need nursing or personal care outside of funded programs, Gentle Care Nursing Services provides private in-home services tailored to your needs. Contact the team to discuss your care needs, location, preferred schedule and costs. Care can be arranged only once suitability and availability are confirmed.",
 
   evidence: {
     heading: "Quick facts: private nursing with Gentle Care",
     intro: "Citable facts for people wanting fee-for-service nursing or personal care at home across Sydney.",
     items: [
-      { label: "Service area", value: "Sydney and surrounds, with visits scheduled around your preferred time and short notice where possible.", icon: "area", ...INTERNAL_SOURCE },
-      { label: "Wait times", value: "No program waitlists or package approvals — private care can often start much faster than funded options.", icon: "response" },
+      { label: "Service area", value: "Sydney and surrounds. Contact the team to confirm availability for your suburb and preferred visit times.", icon: "area", ...INTERNAL_SOURCE },
+      { label: "Enquiries and availability", value: "Tell us your care needs, suburb and preferred start date so the team can confirm suitability and availability.", icon: "response" },
       { label: "Funding model", value: "Fee-for-service private care, with optional support to supplement funded services.", icon: "funding" },
       { label: "Scope of support", value: "Nursing, personal care, post-surgical recovery, respite, and short-term or ongoing support.", icon: "scope", ...INTERNAL_SOURCE },
       { label: "Care style", value: "Flexible scheduling, transparent quoting, and care tailored around the person and family routine.", icon: "credential" },
@@ -563,14 +562,14 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
   whoItHelps: {
     title: "Who This Is For",
     description:
-      "Our private services are available to anyone who needs professional in-home nursing or personal care.",
+      "Private care may suit people seeking self-funded in-home nursing or personal care, subject to assessment and availability.",
     audiences: [
       "Individuals recovering from surgery or illness",
       "Families seeking extra support for a loved one",
       "People not yet eligible for funded care programs",
       "Clients wanting to top up existing funded services",
       "Professionals needing temporary nursing support",
-      "Anyone wanting high-quality care without waitlists",
+      "People wanting to discuss self-funded care and current availability",
     ],
   },
 
@@ -602,7 +601,7 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
       {
         title: "Flexible Scheduling",
         description:
-          "Care when you need it: one-off visits, regular weekly support, or short-term intensive care during recovery.",
+          "Discuss one-off visits, regular weekly support or short-term care during recovery. Scheduling depends on suitability and staff availability.",
       },
       {
         title: "Health Monitoring",
@@ -618,14 +617,14 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
       "When you're paying for care directly, you deserve the same quality-focused, relationship-based support we provide to every client.",
     reasons: [
       {
-        title: "No Waitlists",
+        title: "Discuss Your Start Date",
         description:
-          "Private services mean we can start care quickly, often within days of your enquiry.",
+          "Tell us your preferred start date so we can check suitability and availability.",
       },
       {
-        title: "Your Schedule, Your Terms",
+        title: "Discuss Your Schedule",
         description:
-          "Flexible care arrangements that fit your life. One-off, regular, or intensive. You choose.",
+          "Tell us your preferred visit times and frequency so we can confirm what is available and suitable.",
       },
       {
         title: "Same High Standard",
@@ -646,20 +645,20 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
       id: "private-start",
       question: "How quickly can care start?",
       answer:
-        "Private services can often begin within a few days of your enquiry. We'll work with your schedule to arrange care as soon as possible.",
+        "Timing depends on your care needs, location and current staff availability. Contact the team to confirm a suitable start date before arranging care.",
     },
     {
       id: "private-combine",
       question: "Can I combine private care with funded services?",
       answer:
-        "Yes. Many clients use private care to supplement their NDIS, DVA, or aged care funded services. We can help you understand how to get the most from both.",
+        "Private care may supplement funded services, depending on your circumstances and funding rules. Confirm which services are privately paid, which are funded and any provider arrangements before agreeing to care.",
     },
   ],
 
   cta: {
     title: "Arrange Private In-Home Care",
     description:
-      "Contact us for a personalised quote and get care started quickly.",
+      "Contact us for a personalised quote and to discuss availability.",
   },
   relatedLinks: [
     {
@@ -670,7 +669,7 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
     {
       title: "Post-hospital care at home",
       href: "/services/post-hospital-care",
-      description: "One-off or short-term recovery support without waitlists.",
+      description: "Discuss one-off or short-term recovery support and current availability.",
     },
     {
       title: "Choosing the right home care provider",
@@ -683,21 +682,20 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
 export const POST_HOSPITAL_PAGE: ServicePageData = {
   title: "Post-Hospital Nursing & Care at Home",
   href: "/services/post-hospital-care",
-  reviewedAt: "2026-07-07",
   snippetAnswer:
-    "Post-hospital in-home nursing is support from qualified nurses and carers after someone leaves hospital, so recovery continues safely at home. Gentle Care Nursing Services coordinates with discharge planners at Sydney hospitals — including RPA, Westmead, Royal North Shore, and St Vincent's — and supports recovery pathways aligned with NSW Health's Out of Hospital Care framework.",
+    "Post-hospital in-home nursing is support from qualified nurses and carers after someone leaves hospital, so recovery continues safely at home. Contact the team to discuss your discharge plan, care needs and availability before arranging support.",
   intro:
-    "Leaving hospital can feel overwhelming. Our post-hospital nursing and care at home service helps you or your loved one recover safely and comfortably, with skilled support and clear communication from day one. We work with discharge planners across major Sydney hospitals (RPA, Westmead, Royal North Shore, St Vincent's, Concord, Prince of Wales) and align with NSW Health's Out of Hospital Care pathways so the transition home is structured, not rushed.",
+    "Leaving hospital can feel overwhelming. Our post-hospital nursing and care at home service helps you or your loved one recover safely and comfortably, with skilled support and clear communication from day one. Ask your treating team what referral information and care plan are needed, then confirm suitable support and a start date with us.",
   evidence: {
     heading: "Quick facts: post-hospital care at home with Gentle Care",
     intro: "Citable facts for hospital discharge planners, GPs, families, and NDIS or DVA referrers arranging in-home recovery support across Sydney.",
     items: [
       { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area", ...INTERNAL_SOURCE },
-      { label: "Hospitals coordinated with", value: "Discharge planners at RPA, Westmead, Royal North Shore, St Vincent's, Concord, and Prince of Wales — among other Sydney metropolitan hospitals.", icon: "credential" },
-      { label: "Response window", value: "Hospital-discharge referrals prioritised, with visits often starting within 24 to 48 hours of referral, depending on location.", icon: "response", ...INTERNAL_SOURCE },
-      { label: "Funding accepted", value: "NDIS, DVA Community Nursing, aged care (Support at Home, CHSP), and private fee-for-service.", icon: "funding", ...NDIS_SOURCE, ...DVA_SOURCE, ...AGED_CARE_SOURCE },
+      { label: "Discharge planning", value: "Ask your treating team what referral information is needed. Confirm suitable support and availability before discharge.", icon: "credential" },
+      { label: "Enquiries and availability", value: "Tell us your care needs, suburb and preferred start date so the team can confirm suitability and availability.", icon: "response", ...INTERNAL_SOURCE },
+      { label: "Funding and access", value: "Confirm eligibility, provider requirements, service availability and any costs with the team and your funding body or care partner before arranging care.", icon: "funding", ...INTERNAL_SOURCE },
       { label: "Scope of support", value: "Wound care, medication management, observations, personal care, mobility and transfer support, and family education.", icon: "scope", ...INTERNAL_SOURCE },
-      { label: "Care model", value: "Aligned with NSW Health Out of Hospital Care pathways — structured step-down visits that can start more frequent and reduce as recovery progresses.", icon: "credential", ...INTERNAL_SOURCE },
+      { label: "Care model", value: "Visit frequency and support need to be agreed after assessment, based on the treating team's plan and confirmed availability.", icon: "credential", ...INTERNAL_SOURCE },
     ],
   },
 
@@ -709,7 +707,7 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
       "People coming home after surgery or a hospital stay",
       "Older adults who have become weaker or less confident after time in hospital",
       "NDIS participants needing support to stabilise at home after admission",
-      "Veterans and war widows returning home under DVA community nursing",
+      "Veterans and families exploring suitable support after hospital discharge",
       "Families who want extra help in the first few weeks after discharge",
       "Anyone needing short-term nursing and personal care at home during recovery",
     ],
@@ -766,7 +764,7 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
       {
         title: "Aligned With Your Funding",
         description:
-          "We can deliver post-hospital care under NDIS, DVA, aged care packages, or private funding, and help you understand which option applies to you.",
+          "Confirm eligibility, provider requirements and any costs with the team and your funding body or care partner before arranging support.",
       },
     ],
   },
@@ -776,7 +774,7 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
       id: "post-hospital-start",
       question: "How quickly can post-hospital care start?",
       answer:
-        "In many cases, we can begin visits within 24 to 48 hours of hearing from you, depending on your location and what care you need. We'll confirm start dates and how often we'll visit before you leave hospital whenever we can.",
+        "Tell us your suburb, care needs and proposed discharge date. Suitability, visit frequency and a start date need to be confirmed with the team before care is arranged.",
     },
     {
       id: "post-hospital-referral",
@@ -788,7 +786,7 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
       id: "post-hospital-funding",
       question: "Is post-hospital care funded by NDIS, DVA, or aged care packages?",
       answer:
-        "Yes, in many cases. Post-hospital support may be funded through NDIS, DVA community nursing, Support at Home, CHSP, or paid privately. We can talk through your situation and help you understand which funding streams may apply.",
+        "Funding depends on your eligibility, care needs and provider arrangements. Confirm the applicable funding and any out-of-pocket costs with your funding body or care partner before arranging support.",
     },
   ],
 
@@ -811,7 +809,7 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
     {
       title: "DVA Community Nursing",
       href: "/dva",
-      description: "A common funding pathway for eligible veterans after hospital discharge.",
+      description: "Information to discuss with your treating team and funding body.",
     },
   ],
   testimonials: [],
