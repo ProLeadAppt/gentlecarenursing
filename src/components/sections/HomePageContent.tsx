@@ -87,7 +87,7 @@ export default function HomePageContent() {
               {
                 title: "Private care?",
                 href: "/private-nursing",
-                body: "Use this if you want fee-for-service support without waiting for funding approvals or package admin.",
+                body: "Use this to discuss self-funded support, costs, suitability and current availability.",
               },
             ].map((item) => (
               <Link

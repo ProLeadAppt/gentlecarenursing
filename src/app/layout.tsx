@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Source_Sans_3, DM_Sans, Cormorant_Garamond } from "next/font/google";
+import "./fonts.css";
 import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
@@ -12,26 +12,6 @@ import { getLocalBusinessSchema, getWebsiteSchema } from "@/lib/schema";
 import { ServiceWorkerRegister } from "@/components/pwa/ServiceWorkerRegister";
 import { FloatingContact } from "@/components/ui/FloatingContact";
 import { INTEGRATIONS } from "@/config/integrations";
-
-const sourceSans = Source_Sans_3({
-  variable: "--font-source-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  display: "swap",
-});
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  display: "swap",
-});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gentlecarenursing.com.au";
 
@@ -97,8 +77,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sourceSans.variable} ${dmSans.variable} ${cormorant.variable}`} suppressHydrationWarning>
+    <html lang="en" className="font-source-sans font-dm-sans font-cormorant" suppressHydrationWarning>
       <head>
+        <link rel="preload" href="/fonts/13971731025ec697-s.p.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/692df4da22e71021-s.p.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/7b89a4fd5e90ede0-s.p.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         {/* Google tag (gtag.js) */}
         {gaId ? (
           <>

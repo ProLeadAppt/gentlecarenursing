@@ -4,9 +4,9 @@ import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
 
 export const metadata = createMetadata({
-  title: "Private Nursing Sydney | Fast In-Home Nursing & Personal Care",
+  title: "Private Nursing Sydney | In-Home Nursing & Personal Care",
   description:
-    "Private fee-for-service nursing and personal care across Sydney with flexible scheduling, no waitlists, and support for recovery, respite, and day-to-day care.",
+    "Private nursing and personal care in Sydney. Contact Gentle Care to discuss recovery, respite or daily care, costs and availability.",
   canonical: `${INTEGRATIONS.siteUrl}/private-nursing`,
   openGraph: {
     images: [{ url: "/images/og/private-nursing.png", width: 1200, height: 630, alt: "Private Nursing & Personal Care | Gentle Care Nursing Services" }],
