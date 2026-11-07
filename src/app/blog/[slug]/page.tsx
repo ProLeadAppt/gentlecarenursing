@@ -56,3 +56,6 @@ export default async function BlogPostPage({ params }: Props) {
     </>
   );
 }
+
+// Only the explicitly generated content URLs are valid in this route family.
+export const dynamicParams = false;

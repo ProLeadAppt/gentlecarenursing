@@ -36,7 +36,7 @@ export default function AreasIndexPage() {
       />
       <Section size="lg" variant="default">
         <Container>
-          <Breadcrumbs items={breadcrumbItems} className="mb-6" />
+          <Breadcrumbs includeSchema={false} items={breadcrumbItems} className="mb-6" />
           <div className="mx-auto max-w-3xl text-center">
             <Heading level="h1" as="h1" className="text-4xl sm:text-5xl">
               Areas We Serve in Sydney

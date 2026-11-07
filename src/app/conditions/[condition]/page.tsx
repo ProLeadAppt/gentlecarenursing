@@ -36,3 +36,6 @@ export default async function ConditionPage({ params }: Props) {
 
   return <ServicePageLayout data={entry.data} />;
 }
+
+// Only the explicitly generated content URLs are valid in this route family.
+export const dynamicParams = false;

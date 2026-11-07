@@ -223,7 +223,10 @@ ${payload.improvements?.trim() || "(no detail provided)"}
 Submitted: ${new Date().toISOString()}`,
     });
 
-    if (result.error) {
+    // A successful transport response alone does not establish provider acceptance.
+    // Keep the receipt internal; acceptance still does not prove inbox delivery.
+    if (result.error || typeof result.data?.id !== "string" ||
+      !/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(result.data.id)) {
       console.error("[feedback] Feedback provider delivery failed.");
       return NextResponse.json(
         {

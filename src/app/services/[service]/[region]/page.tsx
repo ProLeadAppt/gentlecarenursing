@@ -82,3 +82,6 @@ export default async function ServiceRegionPage({ params }: Props) {
     </>
   );
 }
+
+// Only the explicitly generated content URLs are valid in this route family.
+export const dynamicParams = false;

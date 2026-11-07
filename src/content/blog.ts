@@ -11,6 +11,7 @@ export type BlogCategory =
   | "family-carers";
 
 export interface BlogAuthor {
+  type?: "Person" | "Organization";
   name: string;
   role: string;
   avatarSrc?: string;
@@ -40,6 +41,7 @@ export const BLOG_CATEGORIES: Record<BlogCategory, { label: string; color: strin
 };
 
 const DEFAULT_AUTHOR: BlogAuthor = {
+  type: "Organization",
   name: "Gentle Care Nursing Services",
   role: "Clinical Team",
 };
