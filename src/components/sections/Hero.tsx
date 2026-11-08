@@ -26,6 +26,8 @@ interface HeroProps {
   secondaryCta?: HeroCta;
   imageSrc?: string;
   imageAlt?: string;
+  /** Source-aware responsive width, including any object-cover enlargement. */
+  imageSizes?: string;
   /** Optional looping background video. Single string for one source, or
       an array of `{ src, type }` to provide multiple formats (e.g. WebM + MP4)
       so the browser can pick the smallest one it supports. */
@@ -45,6 +47,7 @@ export function Hero({
   secondaryCta,
   imageSrc = "/images/vitaly-gariev-Wk6f1CkGlEo-unsplash.webp",
   imageAlt = "Personalised in-home care delivered with warmth",
+  imageSizes = "(max-width: 1024px) 100vw, 50vw",
   videoSrc,
   videoPoster,
 }: HeroProps) {
@@ -266,7 +269,7 @@ export function Hero({
                     className="object-cover object-center"
                     priority
                     fetchPriority="high"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes={imageSizes}
                   />
                 )}
                 {/* Subtle bottom vignette — only when no video, so we never dim copy baked into the frame */}

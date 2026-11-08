@@ -48,6 +48,7 @@ export default function HomePageContent() {
         secondaryCta={REFERRAL_CTA}
         imageSrc={HOMEPAGE_HERO.heroImageSrc}
         imageAlt={HOMEPAGE_HERO.heroImageAlt}
+        imageSizes={HOMEPAGE_HERO.heroImageSizes}
       />
 
       {/* Proof / trust block — real credentials before the conversion journey */}
