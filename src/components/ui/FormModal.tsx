@@ -34,10 +34,12 @@ export function FormModal() {
 
       // Return focus to the trigger element
       const trigger = returnFocusRef.current;
-      if (trigger?.isConnected && !trigger.closest("[inert]")) {
+      returnFocusRef.current = null;
+      if (typeof trigger === "function") {
+        trigger();
+      } else if (trigger?.isConnected && !trigger.closest("[inert]")) {
         trigger.focus();
       }
-      returnFocusRef.current = null;
     }
 
   }, [activeForm, returnFocusRef]);

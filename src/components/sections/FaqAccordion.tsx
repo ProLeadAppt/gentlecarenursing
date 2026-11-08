@@ -77,10 +77,7 @@ export function FaqAccordion({
               id={`faq-answer-${item.id}`}
               role="region"
               aria-labelledby={`faq-question-${item.id}`}
-              className={cn(
-                "overflow-hidden transition-all duration-200",
-                isOpen ? "max-h-96" : "max-h-0"
-              )}
+              hidden={!isOpen}
             >
               <p className="pb-5 text-muted-foreground">{item.answer}</p>
             </div>

@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return createMetadata({
     title: `In-Home Nursing & Care in ${entry.name}`,
-    description: `In-home nursing, NDIS, DVA Community Nursing, and aged care for ${entry.name} (${entry.postcode}, ${entry.lga}). We coordinate with ${entry.nearestHospitals[0]} and serve the wider ${entry.region}.`,
+    description: `Explore in-home nursing and care options in ${entry.name} (${entry.postcode}, ${entry.lga}). Enquire about care needs, funding and availability in the wider ${entry.region}.`,
     canonical: `${INTEGRATIONS.siteUrl}/suburbs/${entry.slug}`,
   });
 }
@@ -86,7 +86,7 @@ export default async function SuburbPage({ params }: Props) {
       "@context": "https://schema.org",
       "@type": "Service",
       name: `In-home nursing in ${entry.name}, Sydney`,
-      description: `In-home nursing and personal care across ${entry.name} (${entry.postcode}, ${entry.lga}). Funded by NDIS, DVA Community Nursing, Support at Home, CHSP, or private fee-for-service.`,
+      description: `In-home nursing and personal care enquiries for ${entry.name} (${entry.postcode}, ${entry.lga}). Discuss clinical suitability, funding arrangements, availability and referral requirements with the team.`,
       url: canonical,
       areaServed: {
         "@id": `${canonical}#place`,
@@ -131,10 +131,10 @@ export default async function SuburbPage({ params }: Props) {
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-foreground">
             Gentle Care Nursing Services provides in-home nursing and personal
             care in {entry.name} ({entry.postcode}) — a {entry.lga} suburb in
-            the {entry.region}. We work across NDIS, DVA Community Nursing,
-            Support at Home / CHSP, and private fee-for-service, and we
-            coordinate with discharge planners at the local hospitals
-            residents most often use.
+            the {entry.region}. Contact the team to discuss NDIS, DVA Community
+            Nursing, aged care or privately funded support. Care arrangements
+            depend on individual needs, funding requirements, referral
+            information and current availability.
           </p>
 
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">
@@ -164,7 +164,7 @@ export default async function SuburbPage({ params }: Props) {
             />
             <SuburbFactCard
               icon={<Hospital className="h-4 w-4" />}
-              title="Hospitals coordinated with"
+              title="Hospitals in the wider area"
               body={
                 <ul className="space-y-1">
                   {entry.nearestHospitals.map((h) => (
@@ -172,6 +172,7 @@ export default async function SuburbPage({ params }: Props) {
                   ))}
                 </ul>
               }
+              footnote="For local reference. Listing a hospital does not imply an affiliation or referral arrangement."
             />
             <SuburbFactCard
               icon={<MapPin className="h-4 w-4" />}
@@ -193,9 +194,8 @@ export default async function SuburbPage({ params }: Props) {
           </Heading>
           <p className="mb-8 max-w-3xl text-base leading-relaxed text-muted-foreground">
             Whether you&apos;re an {entry.name} resident, a family member organising
-            care, a support coordinator, or a discharge planner referring
-            from one of the local hospitals, we deliver the same scope of care
-            across every Sydney suburb we serve.
+            care, a support coordinator, or a discharge planner, contact the
+            team to discuss the care needed and any referral requirements.
           </p>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -238,8 +238,8 @@ export default async function SuburbPage({ params }: Props) {
             <a href={SITE.phoneHref} className="font-semibold text-primary hover:underline">
               {SITE.phone}
             </a>
-            . Urgent referrals — particularly from {entry.nearestHospitals[0]} —
-            are prioritised.
+            . Share your suburb, care needs and preferred timing so the team
+            can discuss whether it can assist.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link

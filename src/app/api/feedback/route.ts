@@ -126,9 +126,39 @@ function buildEmailBody(p: FeedbackPayload): string {
 }
 
 export async function POST(request: NextRequest) {
+  const fail = (status: number, error: string) =>
+    NextResponse.json({ success: false, error }, { status });
+  const origin = request.headers.get("origin");
+  if (origin !== null && origin !== request.nextUrl.origin) {
+    return fail(403, "Invalid feedback origin.");
+  }
+  const mediaType = request.headers.get("content-type")?.split(";")[0].trim().toLowerCase();
+  if (mediaType !== "application/json") {
+    return fail(415, "Invalid feedback format.");
+  }
+
   let payload: FeedbackPayload;
   try {
-    const body = await request.json();
+    const reader = request.body?.getReader();
+    if (!reader) return fail(400, "Invalid request body.");
+    const chunks: Uint8Array[] = [];
+    let size = 0;
+    try {
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        size += value.byteLength;
+        if (size > 64 * 1024) {
+          // Keep the size error even if the underlying transport cannot cancel.
+          try { await reader.cancel(); } catch { /* The request is still rejected. */ }
+          return fail(413, "Feedback is too large. Please shorten your message.");
+        }
+        chunks.push(value);
+      }
+    } finally {
+      reader.releaseLock();
+    }
+    const body = JSON.parse(Buffer.concat(chunks).toString("utf8"));
     if (
       body === null || typeof body !== "object" || Array.isArray(body) ||
       ["name", "contact", "service", "improvements"].some(
@@ -232,8 +262,8 @@ Submitted: ${new Date().toISOString()}`,
         {
           success: false,
           error:
-            "We couldn't send your feedback just now. Please email us directly at " +
-            SITE.email,
+            "We couldn't confirm whether your feedback was accepted for delivery. Please contact us at " +
+            SITE.email + " before sending it again to avoid a duplicate.",
         },
         { status: 502 }
       );
@@ -246,8 +276,8 @@ Submitted: ${new Date().toISOString()}`,
       {
         success: false,
         error:
-          "Something went wrong on our end. Please email us directly at " +
-          SITE.email,
+          "We couldn't confirm whether your feedback was accepted for delivery. Please contact us at " +
+          SITE.email + " before sending it again to avoid a duplicate.",
       },
       { status: 500 }
     );

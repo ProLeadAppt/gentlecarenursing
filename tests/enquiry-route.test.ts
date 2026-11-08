@@ -46,5 +46,5 @@ test("route rejects malformed JSON, wrong origin, format, invalid payload and ov
   assert.equal((await POST(request(JSON.stringify(payload), { origin: "https://other.example" }))).status, 403);
   assert.equal((await POST(request(JSON.stringify(payload), { "content-type": "text/plain" }))).status, 415);
   assert.equal((await POST(request("{}"))).status, 400);
-  assert.equal((await POST(request("x".repeat(16385)))).status, 413);
+  assert.equal((await POST(request("x".repeat(65537)))).status, 413);
 });

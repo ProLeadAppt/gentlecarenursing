@@ -1,23 +1,36 @@
 import { NextRequest, NextResponse } from "next/server";
 import { deliverSubmission, validateFormPayload } from "@/lib/submission";
 
+// Allow the existing bounded fields after UTF-8/JSON encoding, while still
+// limiting the raw request independently of its claimed Content-Length.
+const MAX_REQUEST_BYTES = 64 * 1024;
+
 export async function POST(request: NextRequest) {
   const fail = (status: number, error: string) => NextResponse.json({ success: false, error }, { status });
   const origin = request.headers.get("origin");
-  if (origin && origin !== request.nextUrl.origin) return fail(403, "Invalid form origin.");
-  if (!request.headers.get("content-type")?.startsWith("application/json")) return fail(415, "Invalid form format.");
+  if (origin !== null && origin !== request.nextUrl.origin) return fail(403, "Invalid form origin.");
+  const mediaType = request.headers.get("content-type")?.split(";")[0].trim().toLowerCase();
+  if (mediaType !== "application/json") return fail(415, "Invalid form format.");
   let body: unknown;
   try {
     const reader = request.body?.getReader();
     if (!reader) return fail(400, "Invalid form data.");
     const chunks: Uint8Array[] = [];
     let size = 0;
-    while (true) {
-      const { value, done } = await reader.read();
-      if (done) break;
-      size += value.byteLength;
-      if (size > 16384) { await reader.cancel(); return fail(413, "Form data is too large."); }
-      chunks.push(value);
+    try {
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        size += value.byteLength;
+        if (size > MAX_REQUEST_BYTES) {
+          // Keep the size rejection even if the transport cannot cancel.
+          try { await reader.cancel(); } catch { /* The request is still rejected. */ }
+          return fail(413, "Form data is too large.");
+        }
+        chunks.push(value);
+      }
+    } finally {
+      reader.releaseLock();
     }
     body = JSON.parse(Buffer.concat(chunks).toString("utf8"));
   } catch { return fail(400, "Invalid form data."); }

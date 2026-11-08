@@ -16,11 +16,10 @@ export function BlogCategoryFilter({
   onChange,
 }: BlogCategoryFilterProps) {
   return (
-    <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filter blog posts by category">
+    <div className="flex flex-wrap gap-2" role="group" aria-label="Filter blog posts by category">
       <button
         type="button"
-        role="tab"
-        aria-selected={activeCategory === null}
+        aria-pressed={activeCategory === null}
         onClick={() => onChange(null)}
         className={cn(
           "rounded-full px-4 py-2 text-sm font-medium transition-all",
@@ -37,8 +36,7 @@ export function BlogCategoryFilter({
           <button
             key={cat}
             type="button"
-            role="tab"
-            aria-selected={activeCategory === cat}
+            aria-pressed={activeCategory === cat}
             onClick={() => onChange(cat)}
             className={cn(
               "rounded-full px-4 py-2 text-sm font-medium transition-all",

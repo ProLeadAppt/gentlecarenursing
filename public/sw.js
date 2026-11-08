@@ -22,7 +22,7 @@ self.addEventListener("activate", (event) => {
       .then((keys) =>
         Promise.all(
           keys
-            .filter((k) => k !== CACHE_NAME)
+            .filter((k) => k.startsWith("gcn-shell-") && k !== CACHE_NAME)
             .map((k) => caches.delete(k))
         )
       )

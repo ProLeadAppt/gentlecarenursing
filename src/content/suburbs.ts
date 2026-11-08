@@ -73,7 +73,7 @@ export const SUBURBS: readonly SuburbEntry[] = [
     nearestHospitals: ["Concord Hospital", "Royal Prince Alfred Hospital (RPA)"],
     neighbouringSuburbs: ["North Strathfield", "Burwood", "Strathfield"],
     localContext:
-      "Concord sits on the Parramatta River, with Concord Hospital — a tertiary teaching hospital with strong geriatric, palliative, and respiratory services — at its centre. Many of our local referrals come direct from Concord Hospital's discharge teams.",
+      "Concord sits on the Parramatta River, with Concord Hospital — a tertiary teaching hospital with strong geriatric, palliative, and respiratory services — at its centre.",
   },
   {
     slug: "burwood",
@@ -169,7 +169,7 @@ export const SUBURBS: readonly SuburbEntry[] = [
     nearestHospitals: ["Prince of Wales Hospital (POW)", "Sydney Children's Hospital (Randwick)", "Royal Hospital for Women", "St Vincent's Hospital"],
     neighbouringSuburbs: ["Kingsford", "Coogee", "Kensington"],
     localContext:
-      "Randwick is the centre of the Randwick health precinct — the Prince of Wales Hospital, Sydney Children's Hospital, and Royal Hospital for Women all sit within a few hundred metres. Many of our local clients come direct from POW discharge planners.",
+      "Randwick is the centre of the Randwick health precinct — the Prince of Wales Hospital, Sydney Children's Hospital, and Royal Hospital for Women all sit within a few hundred metres.",
   },
   {
     slug: "sydney-cbd",
@@ -197,7 +197,7 @@ export const SUBURBS: readonly SuburbEntry[] = [
     nearestHospitals: ["Westmead Hospital", "Westmead Private Hospital", "Cumberland Hospital"],
     neighbouringSuburbs: ["Westmead", "Harris Park", "North Parramatta"],
     localContext:
-      "Parramatta is Sydney's second CBD, with one of the most multicultural older populations in Australia. Westmead Hospital is the major tertiary teaching hospital for Western Sydney; we work closely with Westmead discharge planners across all our service lines.",
+      "Parramatta is Sydney's second CBD, with one of the most multicultural older populations in Australia. Westmead Hospital is the major tertiary teaching hospital for Western Sydney.",
   },
   {
     slug: "liverpool",
@@ -225,7 +225,7 @@ export const SUBURBS: readonly SuburbEntry[] = [
     nearestHospitals: ["St George Hospital (Kogarah)", "Sutherland Hospital (Caringbah)"],
     neighbouringSuburbs: ["Kogarah", "Penshurst", "Allawah"],
     localContext:
-      "Hurstville is a major South Sydney transport and commercial hub with a strong Chinese-Australian community and dense mixed housing. St George Hospital in Kogarah is the primary local public hospital and a frequent source of post-discharge referrals.",
+      "Hurstville is a major South Sydney transport and commercial hub with a strong Chinese-Australian community and dense mixed housing. St George Hospital in Kogarah is the primary local public hospital.",
   },
   {
     slug: "sutherland",

@@ -21,7 +21,13 @@ export function ServiceWorkerRegister() {
         });
     };
 
-    window.addEventListener("load", onLoad);
+    // Hydration can finish after window.load has already fired.
+    if (document.readyState === "complete") {
+      onLoad();
+      return;
+    }
+
+    window.addEventListener("load", onLoad, { once: true });
     return () => window.removeEventListener("load", onLoad);
   }, []);
 

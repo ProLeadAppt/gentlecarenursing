@@ -4,28 +4,27 @@ import { useState, useEffect } from "react";
 import { ChevronUp } from "lucide-react";
 
 const SCROLL_THRESHOLD = 200;
-const DESKTOP_MEDIA = "(min-width: 1024px)";
+const DESKTOP_MEDIA = "(min-width: 64rem)";
 
 export function ScrollToTop() {
-  const [showDesktop, setShowDesktop] = useState(() =>
-    typeof window === "undefined" ? false : window.scrollY > SCROLL_THRESHOLD
-  );
+  // Keep the first client render consistent with the server's hidden button.
+  const [showDesktop, setShowDesktop] = useState(false);
   const [showMobile, setShowMobile] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(() =>
-    typeof window === "undefined" ? false : window.matchMedia(DESKTOP_MEDIA).matches
-  );
+  const [isDesktop, setIsDesktop] = useState(false);
   /** When true, button is over footer (dark bg) — use light button variant */
   const [isOverDarkBackground, setIsOverDarkBackground] = useState(false);
 
   useEffect(() => {
     const mql = window.matchMedia(DESKTOP_MEDIA);
-    const handleMediaChange = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    const handleMediaChange = () => setIsDesktop(mql.matches);
+    handleMediaChange();
     mql.addEventListener("change", handleMediaChange);
     return () => mql.removeEventListener("change", handleMediaChange);
   }, []);
 
   useEffect(() => {
     const handleScroll = () => setShowDesktop(window.scrollY > SCROLL_THRESHOLD);
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -48,7 +47,14 @@ export function ScrollToTop() {
   const visible = (isDesktop && showDesktop) || (!isDesktop && showMobile);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // The button can disappear as soon as scrolling moves away from the footer
+    // or crosses the desktop threshold. Give focus a persistent destination.
+    const main = document.getElementById("main-content");
+    if (main?.isConnected && !main.closest("[inert]")) {
+      main.focus({ preventScroll: true });
+    }
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
   };
 
   if (!visible) return null;
