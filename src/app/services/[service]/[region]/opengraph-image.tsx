@@ -45,11 +45,12 @@ export default async function ServiceRegionOgImage({
           GENTLE CARE NURSING
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 36, opacity: 0.85, marginBottom: 12 }}>
+          <div style={{ display: "flex", fontSize: 36, opacity: 0.85, marginBottom: 12 }}>
             {serviceTitle} in
           </div>
           <div
             style={{
+              display: "flex",
               fontSize: 96,
               fontWeight: 700,
               lineHeight: 1.05,
@@ -67,7 +68,7 @@ export default async function ServiceRegionOgImage({
             opacity: 0.85,
           }}
         >
-          <span>Registered NDIS & DVA Contracted</span>
+          <span>Personalised in-home care</span>
           <span>gentlecarenursing.com.au</span>
         </div>
       </div>
