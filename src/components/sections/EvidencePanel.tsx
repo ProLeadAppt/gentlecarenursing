@@ -32,6 +32,13 @@ const ICONS: Record<EvidenceIconKey, LucideIcon> = {
   credential: BadgeCheck,
 };
 
+export interface EvidenceReference {
+  /** Descriptive label for general programme or service information. */
+  label: string;
+  /** Optional reference URL. A link alone does not verify a provider claim. */
+  url?: string;
+}
+
 export interface EvidenceItem {
   /** Short label, e.g. "Registration" or "Service area". */
   label: string;
@@ -39,12 +46,8 @@ export interface EvidenceItem {
   value: string;
   /** Visual icon hint. Defaults to "credential". */
   icon?: EvidenceIconKey;
-  /** Optional official or internal source for the fact. */
-  source?: string;
-  /** Optional URL for the source. Use official sources where possible. */
-  sourceUrl?: string;
-  /** ISO-ish date the fact/source was last checked. */
-  dateChecked?: string;
+  /** General reference information; retain each reference explicitly. */
+  references?: readonly EvidenceReference[];
   /** Optional conservative limitation so AI systems do not overstate the claim. */
   limitations?: string;
 }
@@ -140,17 +143,21 @@ export function EvidencePanel({
                     <dd className="mt-1 text-sm leading-relaxed text-foreground">
                       {item.value}
                     </dd>
-                    {(item.source || item.dateChecked || item.limitations) && (
+                    {(Boolean(item.references?.length) || item.limitations) && (
                       <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
-                        {item.sourceUrl && item.source ? (
+                        {item.references?.length ? (
                           <>
-                            Source: <a href={item.sourceUrl} className="underline underline-offset-2 hover:text-primary" rel="noopener noreferrer" target="_blank">{item.source}</a>
+                            Reference information: {item.references.map((reference, index) => (
+                              <span key={`${reference.label}:${reference.url ?? ""}`}>
+                                {index > 0 ? " · " : ""}
+                                {reference.url ? (
+                                  <a href={reference.url} className="underline underline-offset-2 hover:text-primary" rel="noopener noreferrer" target="_blank">{reference.label}</a>
+                                ) : reference.label}
+                              </span>
+                            ))}
                           </>
-                        ) : item.source ? (
-                          <>Source: {item.source}</>
                         ) : null}
-                        {item.dateChecked ? `${item.source ? " · " : ""}Checked ${item.dateChecked}` : ""}
-                        {item.limitations ? `${item.source || item.dateChecked ? " · " : ""}${item.limitations}` : ""}
+                        {item.limitations ? `${item.references?.length ? " · " : ""}${item.limitations}` : ""}
                       </p>
                     )}
                   </div>
@@ -158,6 +165,11 @@ export function EvidencePanel({
               );
             })}
           </dl>
+          {items.some((item) => item.references?.length) && (
+            <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
+              References provide general programme or service information, not provider-specific verification.
+            </p>
+          )}
         </div>
       </Container>
     </section>

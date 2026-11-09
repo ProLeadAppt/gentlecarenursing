@@ -6,27 +6,23 @@
 import type { ServicePageData } from "@/components/sections/ServicePageLayout";
 
 const NDIS_SOURCE = {
-  source: "NDIS Quality and Safeguards Commission",
-  sourceUrl: "https://www.ndiscommission.gov.au/",
-  dateChecked: "2026-07-07",
+  label: "NDIS Quality and Safeguards Commission",
+  url: "https://www.ndiscommission.gov.au/",
 } as const;
 
 const DVA_SOURCE = {
-  source: "Department of Veterans' Affairs Community Nursing",
-  sourceUrl: "https://www.dva.gov.au/get-support/health-support/help-cover-healthcare-costs/manage-your-health-care/community-nursing",
-  dateChecked: "2026-07-07",
+  label: "Department of Veterans' Affairs Community Nursing",
+  url: "https://www.dva.gov.au/get-support/health-support/help-cover-healthcare-costs/manage-your-health-care/community-nursing",
 } as const;
 
 const AGED_CARE_SOURCE = {
-  source: "My Aged Care",
-  sourceUrl: "https://www.myagedcare.gov.au/",
-  dateChecked: "2026-07-07",
+  label: "My Aged Care",
+  url: "https://www.myagedcare.gov.au/",
 } as const;
 
 const INTERNAL_SOURCE = {
-  source: "Gentle Care Nursing Services intake and service information",
-  sourceUrl: "https://gentlecarenursing.com.au/contact",
-  dateChecked: "2026-07-07",
+  label: "Gentle Care Nursing Services intake and service information",
+  url: "https://gentlecarenursing.com.au/contact",
 } as const;
 
 export interface ServiceDefinition {
@@ -109,12 +105,12 @@ export const NDIS_PAGE: ServicePageData = {
     heading: "Quick facts: NDIS in-home nursing with Gentle Care",
     intro: "Citable facts for NDIS participants, support coordinators, plan managers, and families looking at providers in Sydney.",
     items: [
-      { label: "Registration", value: "Registered NDIS provider, compliant with the NDIS Quality and Safeguards Commission.", icon: "registration", ...NDIS_SOURCE },
-      { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area", ...INTERNAL_SOURCE },
-      { label: "Enquiries and referrals", value: "Contact us to discuss NDIS support. Urgent referrals are prioritised.", icon: "response", ...NDIS_SOURCE },
-      { label: "Plan management", value: "We work with NDIA-managed, plan-managed, and self-managed participants.", icon: "funding", ...INTERNAL_SOURCE },
-      { label: "Funding categories", value: "Core Supports (Assistance with Daily Life) and Capacity Building line items, where applicable.", icon: "funding", ...INTERNAL_SOURCE },
-      { label: "Scope of support", value: "In-home nursing, personal care, complex care (PEG, tracheostomy, catheter), and community participation.", icon: "scope", ...INTERNAL_SOURCE },
+      { label: "Registration", value: "Registered NDIS provider, compliant with the NDIS Quality and Safeguards Commission.", icon: "registration", references: [NDIS_SOURCE] },
+      { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area", references: [INTERNAL_SOURCE] },
+      { label: "Enquiries and referrals", value: "Contact us to discuss NDIS support. Urgent referrals are prioritised.", icon: "response", references: [NDIS_SOURCE] },
+      { label: "Plan management", value: "We work with NDIA-managed, plan-managed, and self-managed participants.", icon: "funding", references: [INTERNAL_SOURCE] },
+      { label: "Funding categories", value: "Core Supports (Assistance with Daily Life) and Capacity Building line items, where applicable.", icon: "funding", references: [INTERNAL_SOURCE] },
+      { label: "Scope of support", value: "In-home nursing, personal care, complex care (PEG, tracheostomy, catheter), and community participation.", icon: "scope", references: [INTERNAL_SOURCE] },
     ],
   },
 
@@ -257,12 +253,12 @@ export const DVA_PAGE: ServicePageData = {
     heading: "Quick facts: DVA Community Nursing with Gentle Care",
     intro: "Citable facts for veterans, war widows and widowers, families, GPs, and hospital discharge planners arranging DVA-funded nursing at home.",
     items: [
-      { label: "Contract status", value: "DVA Contracted Community Nursing Provider, delivering services under the DVA Community Nursing programme.", icon: "registration", ...DVA_SOURCE },
+      { label: "Contract status", value: "DVA Contracted Community Nursing Provider, delivering services under the DVA Community Nursing programme.", icon: "registration", references: [DVA_SOURCE] },
       { label: "Eligibility", value: "Eligible Veteran Card holders (Gold Card; White Card in some cases) with a referral from a GP or treating doctor.", icon: "credential" },
-      { label: "Out-of-pocket cost", value: "No out-of-pocket cost for clinically required, DVA-approved care — claims submitted directly to DVA.", icon: "funding", ...DVA_SOURCE },
-      { label: "Service area", value: "Sydney and surrounds — visits coordinated around real driving distances and household preferences.", icon: "area", ...INTERNAL_SOURCE },
-      { label: "Enquiries and referrals", value: "Contact us to discuss a referral. Post-hospital referrals are prioritised.", icon: "response", ...INTERNAL_SOURCE },
-      { label: "Scope of support", value: "Wound care, medication management, continence and catheter care, chronic disease monitoring, and personal care where part of approved care.", icon: "scope", ...INTERNAL_SOURCE },
+      { label: "Out-of-pocket cost", value: "No out-of-pocket cost for clinically required, DVA-approved care — claims submitted directly to DVA.", icon: "funding", references: [DVA_SOURCE] },
+      { label: "Service area", value: "Sydney and surrounds — visits coordinated around real driving distances and household preferences.", icon: "area", references: [INTERNAL_SOURCE] },
+      { label: "Enquiries and referrals", value: "Contact us to discuss a referral. Post-hospital referrals are prioritised.", icon: "response", references: [INTERNAL_SOURCE] },
+      { label: "Scope of support", value: "Wound care, medication management, continence and catheter care, chronic disease monitoring, and personal care where part of approved care.", icon: "scope", references: [INTERNAL_SOURCE] },
     ],
   },
 
@@ -405,11 +401,11 @@ export const AGED_CARE_PAGE: ServicePageData = {
     heading: "Quick facts: in-home aged care with Gentle Care",
     intro: "Citable facts for older Australians, families, hospital discharge planners, and GPs arranging in-home aged care across Sydney.",
     items: [
-      { label: "Funding accepted", value: "Support at Home, Commonwealth Home Support Programme (CHSP), DVA Community Nursing, and private fee-for-service.", icon: "funding", ...DVA_SOURCE, ...AGED_CARE_SOURCE },
-      { label: "Service area", value: "Sydney and surrounds, including the Inner West, North Shore, Northern Beaches, Western Sydney, and CBD and East.", icon: "area", ...INTERNAL_SOURCE },
-      { label: "Enquiries and referrals", value: "Contact us to discuss your care needs. Hospital-discharge referrals are prioritised.", icon: "response", ...INTERNAL_SOURCE },
-      { label: "Assessment pathway", value: "We can work with My Aged Care assessment outcomes (ACAT/ACAS) and existing aged care packages.", icon: "credential", ...AGED_CARE_SOURCE },
-      { label: "Scope of support", value: "In-home nursing, personal care, medication support, post-hospital recovery, and wellness checks.", icon: "scope", ...INTERNAL_SOURCE },
+      { label: "Funding accepted", value: "Support at Home, Commonwealth Home Support Programme (CHSP), DVA Community Nursing, and private fee-for-service.", icon: "funding", references: [DVA_SOURCE, AGED_CARE_SOURCE] },
+      { label: "Service area", value: "Sydney and surrounds, including the Inner West, North Shore, Northern Beaches, Western Sydney, and CBD and East.", icon: "area", references: [INTERNAL_SOURCE] },
+      { label: "Enquiries and referrals", value: "Contact us to discuss your care needs. Hospital-discharge referrals are prioritised.", icon: "response", references: [INTERNAL_SOURCE] },
+      { label: "Assessment pathway", value: "We can work with My Aged Care assessment outcomes (ACAT/ACAS) and existing aged care packages.", icon: "credential", references: [AGED_CARE_SOURCE] },
+      { label: "Scope of support", value: "In-home nursing, personal care, medication support, post-hospital recovery, and wellness checks.", icon: "scope", references: [INTERNAL_SOURCE] },
       { label: "Caseload model", value: "Deliberately small caseload for consistent staff matching and stronger continuity of care.", icon: "credential" },
     ],
   },
@@ -551,10 +547,10 @@ export const PRIVATE_NURSING_PAGE: ServicePageData = {
     heading: "Quick facts: private nursing with Gentle Care",
     intro: "Citable facts for people wanting fee-for-service nursing or personal care at home across Sydney.",
     items: [
-      { label: "Service area", value: "Sydney and surrounds. Contact the team to confirm availability for your suburb and preferred visit times.", icon: "area", ...INTERNAL_SOURCE },
+      { label: "Service area", value: "Sydney and surrounds. Contact the team to confirm availability for your suburb and preferred visit times.", icon: "area", references: [INTERNAL_SOURCE] },
       { label: "Enquiries and availability", value: "Tell us your care needs, suburb and preferred start date so the team can confirm suitability and availability.", icon: "response" },
       { label: "Funding model", value: "Fee-for-service private care, with optional support to supplement funded services.", icon: "funding" },
-      { label: "Scope of support", value: "Nursing, personal care, post-surgical recovery, respite, and short-term or ongoing support.", icon: "scope", ...INTERNAL_SOURCE },
+      { label: "Scope of support", value: "Nursing, personal care, post-surgical recovery, respite, and short-term or ongoing support.", icon: "scope", references: [INTERNAL_SOURCE] },
       { label: "Care style", value: "Flexible scheduling, transparent quoting, and care tailored around the person and family routine.", icon: "credential" },
     ],
   },
@@ -690,12 +686,12 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
     heading: "Quick facts: post-hospital care at home with Gentle Care",
     intro: "Citable facts for hospital discharge planners, GPs, families, and NDIS or DVA referrers arranging in-home recovery support across Sydney.",
     items: [
-      { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area", ...INTERNAL_SOURCE },
+      { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area", references: [INTERNAL_SOURCE] },
       { label: "Discharge planning", value: "Ask your treating team what referral information is needed. Confirm suitable support and availability before discharge.", icon: "credential" },
-      { label: "Enquiries and availability", value: "Tell us your care needs, suburb and preferred start date so the team can confirm suitability and availability.", icon: "response", ...INTERNAL_SOURCE },
-      { label: "Funding and access", value: "Confirm eligibility, provider requirements, service availability and any costs with the team and your funding body or care partner before arranging care.", icon: "funding", ...INTERNAL_SOURCE },
-      { label: "Scope of support", value: "Wound care, medication management, observations, personal care, mobility and transfer support, and family education.", icon: "scope", ...INTERNAL_SOURCE },
-      { label: "Care model", value: "Visit frequency and support need to be agreed after assessment, based on the treating team's plan and confirmed availability.", icon: "credential", ...INTERNAL_SOURCE },
+      { label: "Enquiries and availability", value: "Tell us your care needs, suburb and preferred start date so the team can confirm suitability and availability.", icon: "response", references: [INTERNAL_SOURCE] },
+      { label: "Funding and access", value: "Confirm eligibility, provider requirements, service availability and any costs with the team and your funding body or care partner before arranging care.", icon: "funding", references: [INTERNAL_SOURCE] },
+      { label: "Scope of support", value: "Wound care, medication management, observations, personal care, mobility and transfer support, and family education.", icon: "scope", references: [INTERNAL_SOURCE] },
+      { label: "Care model", value: "Visit frequency and support need to be agreed after assessment, based on the treating team's plan and confirmed availability.", icon: "credential", references: [INTERNAL_SOURCE] },
     ],
   },
 
@@ -978,12 +974,12 @@ export const HOSPITAL_AT_HOME_PAGE: ServicePageData = {
     heading: "Quick facts: hospital-at-home & step-down care with Gentle Care",
     intro: "Citable facts for hospital discharge planners, GPs, families, and case managers arranging step-down care across Sydney.",
     items: [
-      { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area", ...INTERNAL_SOURCE },
+      { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area", references: [INTERNAL_SOURCE] },
       { label: "Hospitals coordinated with", value: "Discharge planners at RPA, Westmead, Royal North Shore, St Vincent's, and Concord — among other Sydney metropolitan hospitals.", icon: "credential" },
       { label: "Care framework", value: "Step-down support that complements NSW Health Hospital in the Home (HITH) and Out of Hospital Care pathways, not a replacement for hospital-led HITH services.", icon: "credential" },
-      { label: "Response window", value: "Discharge referrals prioritised, with structured visit schedules confirmed before discharge wherever possible.", icon: "response", ...INTERNAL_SOURCE },
-      { label: "Funding accepted", value: "NDIS, DVA Community Nursing, aged care (Support at Home, CHSP), and private fee-for-service.", icon: "funding", ...NDIS_SOURCE, ...DVA_SOURCE, ...AGED_CARE_SOURCE },
-      { label: "Scope of support", value: "Observations, medication management, wound care, mobility and transfer support, personal care, and family education — with clear escalation pathways.", icon: "scope", ...INTERNAL_SOURCE },
+      { label: "Response window", value: "Discharge referrals prioritised, with structured visit schedules confirmed before discharge wherever possible.", icon: "response", references: [INTERNAL_SOURCE] },
+      { label: "Funding accepted", value: "NDIS, DVA Community Nursing, aged care (Support at Home, CHSP), and private fee-for-service.", icon: "funding", references: [NDIS_SOURCE, DVA_SOURCE, AGED_CARE_SOURCE] },
+      { label: "Scope of support", value: "Observations, medication management, wound care, mobility and transfer support, personal care, and family education — with clear escalation pathways.", icon: "scope", references: [INTERNAL_SOURCE] },
     ],
   },
 
@@ -1113,11 +1109,11 @@ export const PALLIATIVE_CARE_PAGE: ServicePageData = {
     heading: "Quick facts: palliative care at home with Gentle Care",
     intro: "Citable facts for families, GPs, specialist palliative care teams, and hospital discharge planners arranging in-home palliative support across Sydney.",
     items: [
-      { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area", ...INTERNAL_SOURCE },
+      { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area", references: [INTERNAL_SOURCE] },
       { label: "Coordination", value: "We work alongside specialist palliative care teams (e.g. Sacred Heart at St Vincent's, RPA, SLHD community palliative care) and treating GPs.", icon: "credential" },
-      { label: "Enquiries and referrals", value: "Referrals from palliative care teams and hospital discharge planners are prioritised.", icon: "response", ...INTERNAL_SOURCE },
-      { label: "Funding accepted", value: "Aged care (Support at Home, CHSP), DVA, NDIS where palliative needs are funded under the plan, and private fee-for-service.", icon: "funding", ...NDIS_SOURCE, ...DVA_SOURCE, ...AGED_CARE_SOURCE },
-      { label: "Scope of support", value: "Symptom monitoring, comfort measures, personal care with dignity, repositioning and continence support, and family education.", icon: "scope", ...INTERNAL_SOURCE },
+      { label: "Enquiries and referrals", value: "Referrals from palliative care teams and hospital discharge planners are prioritised.", icon: "response", references: [INTERNAL_SOURCE] },
+      { label: "Funding accepted", value: "Aged care (Support at Home, CHSP), DVA, NDIS where palliative needs are funded under the plan, and private fee-for-service.", icon: "funding", references: [NDIS_SOURCE, DVA_SOURCE, AGED_CARE_SOURCE] },
+      { label: "Scope of support", value: "Symptom monitoring, comfort measures, personal care with dignity, repositioning and continence support, and family education.", icon: "scope", references: [INTERNAL_SOURCE] },
       { label: "Caseload model", value: "Deliberately small caseload so the same nurses and carers are present through changing needs in the final weeks and days.", icon: "credential" },
     ],
   },
@@ -1249,11 +1245,11 @@ export const NURSING_CARE_PAGE: ServicePageData = {
     heading: "Quick facts: in-home nursing care with Gentle Care",
     intro: "Citable facts for families, GPs, support coordinators, and discharge planners considering in-home nursing in Sydney.",
     items: [
-      { label: "Clinical staffing", value: "Clinical care delivered or supervised by AHPRA-registered nurses with significant Australian healthcare experience.", icon: "credential", ...INTERNAL_SOURCE },
-      { label: "Registration", value: "Registered NDIS provider and DVA Contracted Community Nursing Provider.", icon: "registration", ...NDIS_SOURCE, ...DVA_SOURCE },
-      { label: "Service area", value: "Sydney and surrounds, with visits scheduled around real travel distances and household routines.", icon: "area", ...INTERNAL_SOURCE },
-      { label: "Enquiries and referrals", value: "Contact us to discuss nursing care. Urgent referrals are prioritised.", icon: "response", ...INTERNAL_SOURCE },
-      { label: "Funding accepted", value: "NDIS, DVA Community Nursing, aged care (Support at Home, CHSP), and private fee-for-service.", icon: "funding", ...NDIS_SOURCE, ...DVA_SOURCE, ...AGED_CARE_SOURCE },
+      { label: "Clinical staffing", value: "Clinical care delivered or supervised by AHPRA-registered nurses with significant Australian healthcare experience.", icon: "credential", references: [INTERNAL_SOURCE] },
+      { label: "Registration", value: "Registered NDIS provider and DVA Contracted Community Nursing Provider.", icon: "registration", references: [NDIS_SOURCE, DVA_SOURCE] },
+      { label: "Service area", value: "Sydney and surrounds, with visits scheduled around real travel distances and household routines.", icon: "area", references: [INTERNAL_SOURCE] },
+      { label: "Enquiries and referrals", value: "Contact us to discuss nursing care. Urgent referrals are prioritised.", icon: "response", references: [INTERNAL_SOURCE] },
+      { label: "Funding accepted", value: "NDIS, DVA Community Nursing, aged care (Support at Home, CHSP), and private fee-for-service.", icon: "funding", references: [NDIS_SOURCE, DVA_SOURCE, AGED_CARE_SOURCE] },
       { label: "Scope of nursing", value: "Wound care, medication management, chronic disease monitoring, complex care (PEG, tracheostomy, catheter), post-surgical and palliative support.", icon: "scope" },
     ],
   },
@@ -1391,12 +1387,12 @@ export const PERSONAL_CARE_PAGE: ServicePageData = {
     heading: "Quick facts: personal care with Gentle Care",
     intro: "Citable facts for families, coordinators, and referrers looking for respectful personal care at home in Sydney.",
     items: [
-      { label: "Service area", value: "Sydney and surrounds — visits coordinated around your suburb, routine, and preferred timing.", icon: "area", ...INTERNAL_SOURCE },
+      { label: "Service area", value: "Sydney and surrounds — visits coordinated around your suburb, routine, and preferred timing.", icon: "area", references: [INTERNAL_SOURCE] },
       { label: "Visit style", value: "Consistent carers wherever possible, so private routines don’t need to be re-explained every visit.", icon: "credential" },
       { label: "Privacy", value: "Support is delivered with discretion, dignity, and minimal intrusion into your home life.", icon: "scope" },
-      { label: "Funding accepted", value: "NDIS, DVA, aged care packages, and private fee-for-service depending on your situation.", icon: "funding", ...NDIS_SOURCE, ...DVA_SOURCE, ...AGED_CARE_SOURCE },
-      { label: "Enquiries and referrals", value: "Contact us to discuss your care needs and next steps.", icon: "response", ...INTERNAL_SOURCE },
-      { label: "Scope of support", value: "Bathing, dressing, grooming, mobility, hygiene, meal assistance, and gentle skin checks.", icon: "scope", ...INTERNAL_SOURCE },
+      { label: "Funding accepted", value: "NDIS, DVA, aged care packages, and private fee-for-service depending on your situation.", icon: "funding", references: [NDIS_SOURCE, DVA_SOURCE, AGED_CARE_SOURCE] },
+      { label: "Enquiries and referrals", value: "Contact us to discuss your care needs and next steps.", icon: "response", references: [INTERNAL_SOURCE] },
+      { label: "Scope of support", value: "Bathing, dressing, grooming, mobility, hygiene, meal assistance, and gentle skin checks.", icon: "scope", references: [INTERNAL_SOURCE] },
     ],
   },
 
@@ -1526,9 +1522,9 @@ export const DAILY_LIVING_PAGE: ServicePageData = {
     heading: "Quick facts: daily living support with Gentle Care",
     intro: "Citable facts for NDIS participants, older adults, and families who need practical help at home.",
     items: [
-      { label: "Service area", value: "Sydney and surrounds, with support scheduled around your weekly routine and household needs.", icon: "area", ...INTERNAL_SOURCE },
-      { label: "Funding accepted", value: "NDIS Core Supports, aged care packages, and private fee-for-service depending on the care plan.", icon: "funding", ...NDIS_SOURCE, ...AGED_CARE_SOURCE },
-      { label: "Enquiries and referrals", value: "Contact us to discuss your care needs and next steps.", icon: "response", ...INTERNAL_SOURCE },
+      { label: "Service area", value: "Sydney and surrounds, with support scheduled around your weekly routine and household needs.", icon: "area", references: [INTERNAL_SOURCE] },
+      { label: "Funding accepted", value: "NDIS Core Supports, aged care packages, and private fee-for-service depending on the care plan.", icon: "funding", references: [NDIS_SOURCE, AGED_CARE_SOURCE] },
+      { label: "Enquiries and referrals", value: "Contact us to discuss your care needs and next steps.", icon: "response", references: [INTERNAL_SOURCE] },
       { label: "Practical scope", value: "Meal prep, light housekeeping, laundry, grocery support, household admin, and routine help.", icon: "scope" },
       { label: "Independence focus", value: "Support is delivered with you, not just for you, to help maintain skills and confidence.", icon: "credential" },
     ],
@@ -1660,11 +1656,11 @@ export const COMMUNITY_PARTICIPATION_PAGE: ServicePageData = {
     heading: "Quick facts: community participation support with Gentle Care",
     intro: "Citable facts for participants, families, and coordinators looking for reliable community access support in Sydney.",
     items: [
-      { label: "Service area", value: "Sydney and surrounds, with transport and outing support planned around your destination and timing.", icon: "area", ...INTERNAL_SOURCE },
+      { label: "Service area", value: "Sydney and surrounds, with transport and outing support planned around your destination and timing.", icon: "area", references: [INTERNAL_SOURCE] },
       { label: "Support style", value: "Companion-led support that helps you build confidence, independence, and social participation.", icon: "credential" },
       { label: "Transport", value: "We can support trips in our own insured vehicle, your vehicle, or via public transport where appropriate.", icon: "scope" },
-      { label: "Enquiries and referrals", value: "Contact us to discuss your care needs and next steps.", icon: "response", ...INTERNAL_SOURCE },
-      { label: "Scope of support", value: "Appointments, social outings, hobby access, community groups, work and volunteer support.", icon: "scope", ...INTERNAL_SOURCE },
+      { label: "Enquiries and referrals", value: "Contact us to discuss your care needs and next steps.", icon: "response", references: [INTERNAL_SOURCE] },
+      { label: "Scope of support", value: "Appointments, social outings, hobby access, community groups, work and volunteer support.", icon: "scope", references: [INTERNAL_SOURCE] },
     ],
   },
 
@@ -1793,11 +1789,11 @@ export const OVERNIGHT_SUPPORT_PAGE: ServicePageData = {
     heading: "Quick facts: overnight support with Gentle Care",
     intro: "Citable facts for families, participants, and referrers planning overnight care in Sydney.",
     items: [
-      { label: "Service area", value: "Sydney and surrounds, with overnight visits planned around your home, routine, and safety needs.", icon: "area", ...INTERNAL_SOURCE },
+      { label: "Service area", value: "Sydney and surrounds, with overnight visits planned around your home, routine, and safety needs.", icon: "area", references: [INTERNAL_SOURCE] },
       { label: "Support models", value: "Active overnight care or sleepover support depending on the level of overnight supervision required.", icon: "credential" },
       { label: "Safety focus", value: "Comfort checks, medication support, toileting help, and calm, minimally disruptive monitoring.", icon: "scope" },
-      { label: "Enquiries and referrals", value: "Contact us to discuss your care needs and next steps.", icon: "response", ...INTERNAL_SOURCE },
-      { label: "Scope of support", value: "Repositioning, hydration, personal care, morning routines, and night-time reassurance.", icon: "scope", ...INTERNAL_SOURCE },
+      { label: "Enquiries and referrals", value: "Contact us to discuss your care needs and next steps.", icon: "response", references: [INTERNAL_SOURCE] },
+      { label: "Scope of support", value: "Repositioning, hydration, personal care, morning routines, and night-time reassurance.", icon: "scope", references: [INTERNAL_SOURCE] },
     ],
   },
 

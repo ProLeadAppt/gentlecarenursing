@@ -11,17 +11,20 @@
 export const HOMEPAGE_HERO = {
   // Simplified per Gemma's brief 2026-06-10 — drop eyebrow, single statement.
   eyebrow: undefined,
-  /** Segmented headline for staggered cinematic reveal. */
+  /** Two-part editorial headline. No entrance animation on the homepage. */
   headlineSegments: [
     "Personalised in-home nursing",
     " and support across Sydney",
   ] as const,
   subheadline:
     "NDIS Registered · DVA Contracted · Aged Care Support",
-  /** Hero image (right column). Warm, professional in-home care moment. */
-  heroImageSrc: "/images/age-cymru-bSXk1lOp8T0-unsplash.webp",
+  /** User-selected AI illustration. The people and setting are fictional. */
+  heroImageSrc: "/images/homepage-care-conversation-v4.webp",
+  // Premium homepage: natural aspect ratio, no object-cover crop. Keep the
+  // sizes contract aligned with homepage.css container, gaps and breakpoints.
+  heroImageSizes: "(min-width: 90rem) 39.75rem, (min-width: 62.5rem) calc(50vw - 5.25rem), (min-width: 47.5rem) calc(50vw - 3rem), (min-width: 22.5rem) calc(100vw - 2.5rem), calc(100vw - 2.25rem)",
   heroImageAlt:
-    "A care worker supporting an older woman at a kitchen table — warm, professional, in-home nursing care in Sydney",
+    "A woman in burgundy scrubs and an older woman talking together on a sofa.",
 } as const;
 
 /** Section 2 — Who we support (4-tile, Gemma's exact list) */
@@ -48,7 +51,8 @@ export const WHO_WE_SUPPORT = {
     },
     {
       label: "Private clients",
-      href: "/services",
+      // Existing self-funded service page, verified against PRIVATE_NURSING_PAGE.
+      href: "/private-nursing",
       description:
         "Self-funded, personalised in-home nursing and care tailored to your needs and circumstances.",
     },

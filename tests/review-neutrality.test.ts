@@ -47,7 +47,7 @@ test("all five ratings pass validation without sending a message when delivery i
     assert.ok(!JSON.stringify(messages).includes("PRIVATE_TEST_SENTINEL"));
     for (const rating of [0, 6, "5", null, 1.5]) {
       const response = await POST(new NextRequest("http://localhost/api/feedback", {
-        method: "POST", body: JSON.stringify({ rating }),
+        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ rating }),
       }));
       assert.equal(response.status, 400);
     }

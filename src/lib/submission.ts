@@ -39,9 +39,9 @@ const REFERRER_ROLE_LABELS: Record<string, string> = {
   family: "Family Member",
   ndis: "Support Coordinator",
   hospital: "Discharge Planner",
-  healthcare: "Other Professional",
-  self: "Other Professional",
-  other: "Other Professional",
+  healthcare: "Healthcare Professional",
+  self: "Self-referral",
+  other: "Other",
 };
 
 const REFERRAL_SERVICE_LABELS: Record<string, string> = {
@@ -52,10 +52,10 @@ const REFERRAL_SERVICE_LABELS: Record<string, string> = {
   AgedCare: "Aged Care Support",
   Other: "Other Inquiry",
   ndis: "NDIS Support",
-  dva: "General Nursing",
+  dva: "DVA / Community Nursing",
   "aged-care": "Aged Care Support",
-  private: "Other Inquiry",
-  unsure: "Other Inquiry",
+  private: "Private",
+  unsure: "Not sure yet",
 };
 
 export function validateFormPayload(body: unknown): body is FormPayload {

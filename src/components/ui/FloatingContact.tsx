@@ -31,6 +31,7 @@ export function FloatingContact() {
   const [isOverDarkBackground, setIsOverDarkBackground] = useState(false);
   const { openModal } = useFormModal();
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   // Show only after the user has scrolled past the hero band.
   useEffect(() => {
@@ -56,7 +57,10 @@ export function FloatingContact() {
   useEffect(() => {
     if (!isExpanded) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setIsExpanded(false);
+      if (e.key !== "Escape") return;
+      const focusWasInside = containerRef.current?.contains(document.activeElement);
+      setIsExpanded(false);
+      if (focusWasInside) toggleRef.current?.focus();
     };
     const onPointer = (e: MouseEvent) => {
       if (!containerRef.current?.contains(e.target as Node)) {
@@ -73,7 +77,19 @@ export function FloatingContact() {
 
   const handleMessageClick = () => {
     setIsExpanded(false);
-    openModal("contact", "floating_contact");
+    // Check at close, because scrolling or resizing can hide the toggle while
+    // the dialog is open. A renderable main landmark is a stable fallback.
+    openModal("contact", "floating_contact", () => {
+      const toggle = toggleRef.current;
+      const toggleAvailable = window.scrollY > 300
+        && window.matchMedia("(min-width: 64rem)").matches
+        && toggle?.isConnected
+        && !toggle.closest("[inert]");
+      const target = toggleAvailable ? toggle : document.getElementById("main-content");
+      if (target?.isConnected && !target.closest("[inert]")) {
+        target.focus({ preventScroll: true });
+      }
+    });
   };
 
   return (
@@ -121,6 +137,7 @@ export function FloatingContact() {
           </AnimatePresence>
 
           <button
+            ref={toggleRef}
             type="button"
             onClick={() => setIsExpanded((v) => !v)}
             aria-label={isExpanded ? "Close contact menu" : "Open contact menu"}

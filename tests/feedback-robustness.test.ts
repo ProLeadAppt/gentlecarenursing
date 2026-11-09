@@ -35,7 +35,7 @@ test("feedback rejects malformed shapes and field types before delivery", async 
       assert.equal((await response.json()).success, false);
     }
     const invalidJson = await POST(new NextRequest("http://localhost/api/feedback", {
-      method: "POST", body: "{",
+      method: "POST", headers: { "Content-Type": "application/json" }, body: "{",
     }));
     assert.equal(invalidJson.status, 400);
     assert.equal(delivery.mock.callCount(), 0);

@@ -1,3 +1,4 @@
+import "./homepage.css";
 import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";

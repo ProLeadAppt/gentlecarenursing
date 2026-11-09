@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { StarRating, type StarRatingValue } from "./StarRating";
 import { SITE } from "@/lib/constants";
+import { FeedbackSubmissionError, FEEDBACK_UNCONFIRMED_MESSAGE, submitPrivateFeedback } from "@/lib/feedback-client";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Mail, ExternalLink } from "lucide-react";
 
@@ -83,49 +84,59 @@ interface FeedbackFormInlineProps {
 
 function FeedbackFormInline({ rating, onReset }: FeedbackFormInlineProps) {
   const [status, setStatus] = useState<
-    "idle" | "submitting" | "sent" | "error"
+    "idle" | "submitting" | "sent" | "error" | "uncertain"
   >("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
   const successHeadingRef = useRef<HTMLHeadingElement>(null);
+  const submissionLockedRef = useRef(false);
+  const pendingRef = useRef(false);
+  const mountedRef = useRef(true);
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => { mountedRef.current = false; };
+  }, []);
   useEffect(() => {
     if (status === "sent") successHeadingRef.current?.focus();
   }, [status]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    // React state alone cannot prevent two submits before the next render.
+    if (submissionLockedRef.current) return;
+    submissionLockedRef.current = true;
+    pendingRef.current = true;
     setStatus("submitting");
     setErrorMessage("");
 
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    const payload = {
-      rating,
-      name: data.get("name")?.toString().trim() ?? "",
-      contact: data.get("contact")?.toString().trim() ?? "",
-      service: data.get("service")?.toString() ?? "",
-      improvements: data.get("improvements")?.toString().trim() ?? "",
-      allowFollowup: data.get("allowFollowup") === "on",
-    };
-
     try {
-      const res = await fetch("/api/feedback", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      const json = await res.json().catch(() => ({}));
-      if (!res.ok || !json.success) {
-        throw new Error(json.error ?? "Unable to send right now.");
+      const data = new FormData(e.currentTarget);
+      const payload = {
+        rating,
+        name: data.get("name")?.toString().trim() ?? "",
+        contact: data.get("contact")?.toString().trim() ?? "",
+        service: data.get("service")?.toString() ?? "",
+        improvements: data.get("improvements")?.toString().trim() ?? "",
+        allowFollowup: data.get("allowFollowup") === "on",
+      };
+      await submitPrivateFeedback(payload);
+      if (mountedRef.current) setStatus("sent");
+    } catch (error) {
+      const rejected = error instanceof FeedbackSubmissionError && error.outcome === "rejected";
+      // Only a confirmed pre-send rejection unlocks this mounted form.
+      // Unknown outcomes retain the details and require contacting the team.
+      if (rejected) submissionLockedRef.current = false;
+      if (mountedRef.current) {
+        setErrorMessage(rejected ? error.message : FEEDBACK_UNCONFIRMED_MESSAGE);
+        setStatus(rejected ? "error" : "uncertain");
       }
-      setStatus("sent");
-    } catch (err) {
-      setErrorMessage(
-        err instanceof Error
-          ? err.message
-          : "Something went wrong. Please email us directly."
-      );
-      setStatus("error");
+    } finally {
+      pendingRef.current = false;
     }
+  }
+
+  function handleBack() {
+    // Guard the handler too, including a click before disabled renders.
+    if (!pendingRef.current) onReset();
   }
 
   if (status === "sent") {
@@ -136,7 +147,7 @@ function FeedbackFormInline({ rating, onReset }: FeedbackFormInlineProps) {
           Thank you for telling us
         </h3>
         <p className="mt-2 text-base text-muted-foreground max-w-md mx-auto">
-          Your feedback has been sent privately. We read every response and
+          Your feedback has been accepted for delivery to our team. We read every response and
           will use it to improve.
         </p>
         <button
@@ -227,7 +238,7 @@ function FeedbackFormInline({ rating, onReset }: FeedbackFormInlineProps) {
         <span>It&apos;s okay to follow up with me about this feedback.</span>
       </label>
 
-      {status === "error" && (
+      {(status === "error" || status === "uncertain") && (
         <p
           role="alert"
           className="rounded-lg bg-primary/5 border border-primary/20 px-4 py-3 text-sm text-primary"
@@ -239,14 +250,15 @@ function FeedbackFormInline({ rating, onReset }: FeedbackFormInlineProps) {
       <div className="flex items-center justify-between gap-3 pt-2">
         <button
           type="button"
-          onClick={onReset}
-          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          onClick={handleBack}
+          disabled={status === "submitting"}
+          className="text-sm text-muted-foreground hover:text-foreground transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
         >
           ← Back
         </button>
         <button
           type="submit"
-          disabled={status === "submitting"}
+          disabled={status === "submitting" || status === "uncertain"}
           className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary-light focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {status === "submitting" ? "Sending…" : "Send privately"}

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { SITE } from "@/lib/constants";
+import { readBoundedRequestBody } from "@/lib/request-body";
 
 /**
  * /api/feedback
@@ -20,6 +21,27 @@ interface FeedbackPayload {
   service?: string;
   improvements?: string;
   allowFollowup?: boolean;
+}
+
+// Match the enquiry provider's 10-second wait. This bounds our wait only:
+// Resend may still accept the email after expiry, so it must never trigger retry.
+async function waitForFeedbackProvider<T>(send: () => Promise<T>): Promise<
+  { kind: "completed"; result: T } | { kind: "timed-out" }
+> {
+  let timeout: ReturnType<typeof setTimeout> | undefined;
+  try {
+    const expired = new Promise<{ kind: "timed-out" }>(resolve => {
+      timeout = setTimeout(() => resolve({ kind: "timed-out" }), 10_000);
+    });
+    // Promise.race observes a late rejection as well as a late acceptance.
+    // Neither can change the response once the deadline has won.
+    return await Promise.race([
+      send().then(result => ({ kind: "completed" as const, result })),
+      expired,
+    ]);
+  } finally {
+    if (timeout !== undefined) clearTimeout(timeout);
+  }
 }
 
 const SERVICE_LABELS: Record<string, string> = {
@@ -126,9 +148,23 @@ function buildEmailBody(p: FeedbackPayload): string {
 }
 
 export async function POST(request: NextRequest) {
+  const fail = (status: number, error: string) =>
+    NextResponse.json({ success: false, error }, { status });
+  const origin = request.headers.get("origin");
+  if (origin !== null && origin !== request.nextUrl.origin) {
+    return fail(403, "Invalid feedback origin.");
+  }
+  const mediaType = request.headers.get("content-type")?.split(";")[0].trim().toLowerCase();
+  if (mediaType !== "application/json") {
+    return fail(415, "Invalid feedback format.");
+  }
+
   let payload: FeedbackPayload;
   try {
-    const body = await request.json();
+    const result = await readBoundedRequestBody(request.body, 64 * 1024);
+    if (result.kind === "too-large") return fail(413, "Feedback is too large. Please shorten your message.");
+    if (result.kind === "timed-out") return fail(408, "Receiving your feedback timed out. Your feedback was not sent. Please try again or email " + SITE.email + ".");
+    const body = JSON.parse(Buffer.from(result.bytes).toString("utf8"));
     if (
       body === null || typeof body !== "object" || Array.isArray(body) ||
       ["name", "contact", "service", "improvements"].some(
@@ -202,7 +238,7 @@ export async function POST(request: NextRequest) {
   const subject = `Private feedback (${payload.rating}/5) from a Gentle Care client`;
 
   try {
-    const result = await resend.emails.send({
+    const delivery = await waitForFeedbackProvider(() => resend.emails.send({
       from: `Gentle Care Feedback <${fromEmail}>`,
       to: [SITE.email],
       replyTo:
@@ -221,7 +257,21 @@ What would you like to share?
 ${payload.improvements?.trim() || "(no detail provided)"}
 
 Submitted: ${new Date().toISOString()}`,
-    });
+    }));
+
+    if (delivery.kind === "timed-out") {
+      console.error("[feedback] Feedback provider confirmation timed out.");
+      return NextResponse.json(
+        {
+          success: false,
+          error:
+            "We couldn't confirm whether your feedback was accepted for delivery. Please contact us at " +
+            SITE.email + " before sending it again to avoid a duplicate.",
+        },
+        { status: 504 }
+      );
+    }
+    const result = delivery.result;
 
     // A successful transport response alone does not establish provider acceptance.
     // Keep the receipt internal; acceptance still does not prove inbox delivery.
@@ -232,8 +282,8 @@ Submitted: ${new Date().toISOString()}`,
         {
           success: false,
           error:
-            "We couldn't send your feedback just now. Please email us directly at " +
-            SITE.email,
+            "We couldn't confirm whether your feedback was accepted for delivery. Please contact us at " +
+            SITE.email + " before sending it again to avoid a duplicate.",
         },
         { status: 502 }
       );
@@ -246,8 +296,8 @@ Submitted: ${new Date().toISOString()}`,
       {
         success: false,
         error:
-          "Something went wrong on our end. Please email us directly at " +
-          SITE.email,
+          "We couldn't confirm whether your feedback was accepted for delivery. Please contact us at " +
+          SITE.email + " before sending it again to avoid a duplicate.",
       },
       { status: 500 }
     );
