@@ -127,12 +127,7 @@ test("all existing standalone service routes opt into premium presentation while
   assert.deepEqual(standaloneRoutes, [...pages.map(page => page.service), "nursing-care"].sort());
   assert.equal(standaloneRoutes.length, 9);
   for (const core of SERVICES) assert.ok(standaloneRoutes.includes(core.slug), core.slug);
-  for (const route of ["private-nursing"]) {
-    const routeSource = readFileSync(`src/app/${route}/page.tsx`, "utf8");
-    assert.match(routeSource, /ServicePageLayout/);
-    assert.doesNotMatch(routeSource, /premium-care|PremiumSupportCare/);
-  }
-  for (const route of ["ndis", "dva", "aged-care"]) {
+  for (const route of ["ndis", "dva", "aged-care", "private-nursing"]) {
     const routeSource = readFileSync(`src/app/${route}/page.tsx`, "utf8");
     assert.match(routeSource, /PremiumFundingCare/);
     assert.doesNotMatch(routeSource, /PremiumSupportCare/);

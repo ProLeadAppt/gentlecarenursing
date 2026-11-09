@@ -50,7 +50,9 @@ test("empty referrer selection renders nothing", () => {
 });
 
 test("existing referral and contact actions remain on the referrers page", () => {
-  const page = readFileSync("src/app/referrers/page.tsx", "utf8");
+  const route = readFileSync("src/app/referrers/page.tsx", "utf8");
+  assert.match(route, /return <PremiumReferrers \/>/);
+  const page = readFileSync("src/components/sections/PremiumReferrers.tsx", "utf8");
   assert.match(page, /Use the Request Care Form/);
   assert.match(page, /href=\{CTA_LINKS\.requestCare\.href\}/);
   assert.match(page, /CtaSection/);

@@ -4,7 +4,8 @@ import { readFileSync } from "node:fs";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Breadcrumbs } from "../src/components/ui/Breadcrumbs";
-import ReferrersPage from "../src/app/referrers/page";
+// The route only wires this server component and route-scoped CSS.
+import { PremiumReferrers as ReferrersPage } from "../src/components/sections/PremiumReferrers";
 import ReviewPage, { metadata as reviewMetadata } from "../src/app/review/page";
 
 function schemas(html: string) {

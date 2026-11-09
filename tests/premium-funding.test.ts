@@ -8,7 +8,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { PremiumFundingCare } from "../src/components/sections/PremiumFundingCare";
 import { ServicePageLayout } from "../src/components/sections/ServicePageLayout";
 import { FormModalProvider } from "../src/contexts/FormModalContext";
-import { NDIS_PAGE, DVA_PAGE, AGED_CARE_PAGE } from "../src/content/services";
+import { NDIS_PAGE, DVA_PAGE, AGED_CARE_PAGE, PRIVATE_NURSING_PAGE } from "../src/content/services";
 import { getBlogPostBySlug } from "../src/content/blog";
 
 // Source parity is deliberately not a claim of clinical accuracy or provider verification.
@@ -21,7 +21,7 @@ const links = (html: string) => elements(html, "a").map(match => attr(match[1], 
 const schemas = (html: string) => elements(html, "script").filter(match => attr(match[1], "type") === "application/ld+json").map(match => JSON.parse(match[2]));
 const source = readFileSync("src/components/sections/PremiumFundingCare.tsx", "utf8");
 const css = readFileSync("src/app/premium-funding.css", "utf8");
-const pages = [{ pathway: "ndis", data: NDIS_PAGE }, { pathway: "dva", data: DVA_PAGE }, { pathway: "aged-care", data: AGED_CARE_PAGE }] as const;
+const pages = [{ pathway: "ndis", data: NDIS_PAGE }, { pathway: "dva", data: DVA_PAGE }, { pathway: "aged-care", data: AGED_CARE_PAGE }, { pathway: "private-nursing", data: PRIVATE_NURSING_PAGE }] as const;
 const digest = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 
 // Immutable pre-funding baseline hashes, stored here so tests are portable.
@@ -38,10 +38,10 @@ const unchangedFiles: Record<string, string> = {
   "src/components/sections/FaqAccordion.tsx": "15e289021ac7e48f78a30a2e1be2e10f0573504f1e3e058c17314f54fef9ba16",
   "src/components/ui/FormModalTrigger.tsx": "83f2801cb11ea37795aff294a7c3711c4505b27f528be9d3529a44ba83baf85a",
   "src/contexts/FormModalContext.tsx": "f0b702cb6f88dfc6cad3ceafc58b432b11843d428bd7276e9381e9e03b5fd541",
-  "src/app/private-nursing/page.tsx": "3573202d90000a739bce6b33571525409e0d02ad5514a3fdbe5ed3e5cc601ae6",
   "src/app/services/[service]/[region]/page.tsx": "54fc58f2fcdced37944cd87dd138945d490a29b4ebbe5182ad4bb787d2293c2d"
 };
 const metadataHashes: Record<string, string> = {
+  "private-nursing": "46d9e3a31cb7a307707f3606d9e4adbd49d3801fba80fbedb9b69ab8334b4443",
   "ndis": "c18801fd4d35394644cbc933c8b06fbbcfd8b17c17fd3f0ba7a72b6aedd672dd",
   "dva": "f7a10d0766d25ff5aea6b74d2839a6cea0fdf1d6b2a042aa6b1a88df9c5d681c",
   "aged-care": "50c054892f79de5b9c15c57c946d2acfe08646fed3bce9619555d193e8c86865"
@@ -183,7 +183,7 @@ for (const { pathway, data } of pages) {
   });
 }
 
-test("funding stylesheet is wholly scoped and imported only by the three funding routes", () => {
+test("funding stylesheet is wholly scoped and imported only by four explicit care pathways", () => {
   const selectors = [...css.replace(/\/\*[\s\S]*?\*\//g, "").matchAll(/([^{}]+)\{/g)].map(match => match[1].trim());
   for (const selector of selectors.filter(value => !value.startsWith("@"))) {
     for (const branch of selector.split(",")) assert.ok(branch.trim().startsWith(".premium-care.premium-funding"), branch);

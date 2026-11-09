@@ -6,16 +6,18 @@ import { FormModalTrigger } from "@/components/ui/FormModalTrigger";
 import { EvidencePanel } from "./EvidencePanel";
 import { FaqAccordion } from "./FaqAccordion";
 import { ServiceCtaWithModal } from "./ServiceCtaWithModal";
-import { NDIS_PAGE, DVA_PAGE, AGED_CARE_PAGE } from "@/content/services";
+import { NDIS_PAGE, DVA_PAGE, AGED_CARE_PAGE, PRIVATE_NURSING_PAGE } from "@/content/services";
 import { CTA_LINKS, SITE_LAST_UPDATED } from "@/lib/constants";
 import { getServiceSchema, getFaqSchema, getMedicalProcedureSchema } from "@/lib/schema";
 
-// Explicit opt-in only. Programme wording is retained, not newly verified.
+// Explicit opt-in for existing funded and self-funded care pathways.
+// Programme and private-care wording is retained, not newly verified.
 // Keep funding qualifications with their claims and the original section order.
 const pageData = {
   ndis: NDIS_PAGE,
   dva: DVA_PAGE,
   "aged-care": AGED_CARE_PAGE,
+  "private-nursing": PRIVATE_NURSING_PAGE,
 } as const;
 
 // Original ServicePageLayout process wording, without new promises or timings.
