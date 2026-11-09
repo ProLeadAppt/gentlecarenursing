@@ -54,13 +54,13 @@ export default function HomePageContent() {
           </div>
           <figure className="premium-hero-visual">
             <div className="premium-image-rule" aria-hidden="true" />
-            {/* Existing stock placeholder: no staff, client or location identity
-                is implied. Replacement and use clearance remain review gates. */}
+            {/* Selected illustration, shown in full without cropping.
+                Image provenance is recorded in docs/SELECTED_HOMEPAGE_HERO.md. */}
             <Image
               src={HOMEPAGE_HERO.heroImageSrc}
               alt={HOMEPAGE_HERO.heroImageAlt}
-              width={4961}
-              height={3508}
+              width={1536}
+              height={1024}
               sizes={HOMEPAGE_HERO.heroImageSizes}
               priority
               fetchPriority="high"

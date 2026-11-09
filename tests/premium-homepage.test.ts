@@ -116,9 +116,9 @@ test("premium hero sizes match natural-image CSS geometry at every viewport and 
     }
   }
   for (const token of ["max-width: 83rem", "width: calc(100% - 7rem)", "gap: 3.5rem", "min-width: 47.5rem", "min-width: 62.5rem", "height: auto"]) assert.ok(css.includes(token));
-  assert.match(html, /width="4961" height="3508"/);
+  assert.match(html, /width="1536" height="1024"/);
   assert.doesNotMatch(HOMEPAGE_HERO.heroImageAlt, /Sydney|our |nurse|client/i);
-  const props = getImageProps({ src: HOMEPAGE_HERO.heroImageSrc, alt: HOMEPAGE_HERO.heroImageAlt, width: 4961, height: 3508, sizes: HOMEPAGE_HERO.heroImageSizes, priority: true, fetchPriority: "high" }).props;
+  const props = getImageProps({ src: HOMEPAGE_HERO.heroImageSrc, alt: HOMEPAGE_HERO.heroImageAlt, width: 1536, height: 1024, sizes: HOMEPAGE_HERO.heroImageSizes, priority: true, fetchPriority: "high" }).props;
   assert.equal(props.fetchPriority, "high");
   assert.notEqual(props.loading, "lazy");
   const widths = [...props.srcSet!.matchAll(/ (\d+)w/g)].map(m => Number(m[1]));

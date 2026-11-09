@@ -18,13 +18,13 @@ export const HOMEPAGE_HERO = {
   ] as const,
   subheadline:
     "NDIS Registered · DVA Contracted · Aged Care Support",
-  /** Hero image (right column). Warm, professional in-home care moment. */
-  heroImageSrc: "/images/age-cymru-bSXk1lOp8T0-unsplash.webp",
+  /** User-selected AI illustration. The people and setting are fictional. */
+  heroImageSrc: "/images/homepage-care-conversation-v4.webp",
   // Premium homepage: natural aspect ratio, no object-cover crop. Keep the
   // sizes contract aligned with homepage.css container, gaps and breakpoints.
   heroImageSizes: "(min-width: 90rem) 39.75rem, (min-width: 62.5rem) calc(50vw - 5.25rem), (min-width: 47.5rem) calc(50vw - 3rem), (min-width: 22.5rem) calc(100vw - 2.5rem), calc(100vw - 2.25rem)",
   heroImageAlt:
-    "A woman leaning toward an older woman during a colouring activity at a table, with a man seated nearby",
+    "A woman in burgundy scrubs and an older woman talking together on a sofa.",
 } as const;
 
 /** Section 2 — Who we support (4-tile, Gemma's exact list) */

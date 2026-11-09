@@ -2,13 +2,13 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { getImageProps } from "next/image";
-import { HOMEPAGE_HERO } from "../src/content/homepage";
 
 const source = readFileSync("src/components/sections/Hero.tsx", "utf8");
 // Preserve the prior shared-Hero cover geometry regression independently of
 // the new natural-ratio homepage. The premium page has its own sizing tests.
 const sizes = "(min-width: 80rem) 38.488rem, (min-width: 64rem) calc(56.6vw - 5.094rem), (min-width: 40rem) calc(106.1vw - 4.244rem), calc(106.1vw - 3.183rem)";
 const sourceWidth = 4961, sourceHeight = 3508;
+const legacyImageSrc = "/images/age-cymru-bSXk1lOp8T0-unsplash.webp";
 
 // Only evaluate this attribute's syntax. These are deterministic geometry
 // contracts, not a native browser download or Lighthouse benchmark.
@@ -38,8 +38,7 @@ function coverWidth(viewport: number, initialFont = 16): number {
 }
 
 test("legacy shared Hero sizing accounts for its source ratio and object-cover bitmap width", () => {
-  assert.equal(HOMEPAGE_HERO.heroImageSrc, "/images/age-cymru-bSXk1lOp8T0-unsplash.webp");
-  const image = readFileSync(`public${HOMEPAGE_HERO.heroImageSrc}`);
+  const image = readFileSync(`public${legacyImageSrc}`);
   // Guard the current VP8 frame dimensions. Re-evaluate the ratio and sizing
   // if this asset is replaced, including replacement with another encoding.
   assert.equal(image.subarray(0, 4).toString(), "RIFF");
@@ -75,7 +74,7 @@ test("shared Hero images and videos keep existing behavior while premium homepag
 });
 
 test("Next preserves high-priority source candidates with no undersized nominal selection", () => {
-  const { props } = getImageProps({src: HOMEPAGE_HERO.heroImageSrc, alt: "Synthetic test hero", fill: true, priority: true, fetchPriority: "high", sizes});
+  const { props } = getImageProps({src: legacyImageSrc, alt: "Synthetic test hero", fill: true, priority: true, fetchPriority: "high", sizes});
   assert.equal(props.sizes, sizes);
   assert.equal(props.fetchPriority, "high");
   assert.notEqual(props.loading, "lazy");
