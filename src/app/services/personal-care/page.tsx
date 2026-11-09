@@ -1,5 +1,5 @@
-import { ServicePageLayout } from "@/components/sections/ServicePageLayout";
-import { PERSONAL_CARE_PAGE } from "@/content/services";
+import { PremiumSupportCare } from "@/components/sections/PremiumSupportCare";
+import "../premium-care.css";
 import { INTEGRATIONS } from "@/config/integrations";
 import { createMetadata } from "@/lib/metadata";
 
@@ -13,5 +13,5 @@ export const metadata = createMetadata({
 });
 
 export default function PersonalCarePage() {
-  return <ServicePageLayout data={PERSONAL_CARE_PAGE} />;
+  return <PremiumSupportCare service="personal-care" />;
 }

@@ -1,5 +1,5 @@
-import { ServicePageLayout } from "@/components/sections/ServicePageLayout";
-import { COMMUNITY_PARTICIPATION_PAGE } from "@/content/services";
+import { PremiumSupportCare } from "@/components/sections/PremiumSupportCare";
+import "../premium-care.css";
 import { INTEGRATIONS } from "@/config/integrations";
 import { createMetadata } from "@/lib/metadata";
 
@@ -13,5 +13,5 @@ export const metadata = createMetadata({
 });
 
 export default function CommunityParticipationPage() {
-  return <ServicePageLayout data={COMMUNITY_PARTICIPATION_PAGE} />;
+  return <PremiumSupportCare service="community-participation" />;
 }

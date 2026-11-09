@@ -123,9 +123,10 @@ test("presentation uses only scoped selectors, existing palette and safe intrins
   for (const value of ["a:focus-visible", "button:focus-visible", "outline-color: var(--care-cream)", "scroll-margin-top: 8rem", "prefers-reduced-motion", "minmax(0, 1fr)", ".care-existing-cta .reveal { opacity: 1", "font-family: var(--font-serif)"]) assert.ok(css.includes(value));
 });
 
-test("only two routes opt into the new components; shared service template stays available", () => {
+test("services hub and nursing retain their components; funding and regional layouts stay separate", () => {
   assert.match(readFileSync("src/app/services/page.tsx", "utf8"), /return <PremiumServicesHub \/>/);
   assert.match(readFileSync("src/app/services/nursing-care/page.tsx", "utf8"), /return <PremiumNursingCare \/>/);
-  for (const route of ["personal-care", "complex-care", "post-hospital-care", "overnight-support", "community-participation"]) assert.match(readFileSync(`src/app/services/${route}/page.tsx`, "utf8"), /ServicePageLayout/);
+  for (const route of ["ndis", "dva", "aged-care", "private-nursing"]) assert.match(readFileSync(`src/app/${route}/page.tsx`, "utf8"), /ServicePageLayout/);
+  assert.match(readFileSync("src/app/services/[service]/[region]/page.tsx", "utf8"), /ServiceRegionPageLayout/);
   assert.doesNotMatch(readFileSync("src/app/page.tsx", "utf8"), /premium-care|PremiumServicesHub|PremiumNursingCare/);
 });

@@ -1,5 +1,5 @@
-import { ServicePageLayout } from "@/components/sections/ServicePageLayout";
-import { DAILY_LIVING_PAGE } from "@/content/services";
+import { PremiumSupportCare } from "@/components/sections/PremiumSupportCare";
+import "../premium-care.css";
 import { INTEGRATIONS } from "@/config/integrations";
 import { createMetadata } from "@/lib/metadata";
 
@@ -13,5 +13,5 @@ export const metadata = createMetadata({
 });
 
 export default function DailyLivingPage() {
-  return <ServicePageLayout data={DAILY_LIVING_PAGE} />;
+  return <PremiumSupportCare service="assistance-with-daily-living" />;
 }
