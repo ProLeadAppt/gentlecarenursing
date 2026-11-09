@@ -1,5 +1,5 @@
-import { ServicePageLayout } from "@/components/sections/ServicePageLayout";
-import { NURSING_CARE_PAGE } from "@/content/services";
+import { PremiumNursingCare } from "@/components/sections/PremiumNursingCare";
+import "../premium-care.css";
 import { INTEGRATIONS } from "@/config/integrations";
 import { createMetadata } from "@/lib/metadata";
 
@@ -13,5 +13,5 @@ export const metadata = createMetadata({
 });
 
 export default function NursingCarePage() {
-  return <ServicePageLayout data={NURSING_CARE_PAGE} />;
+  return <PremiumNursingCare />;
 }
