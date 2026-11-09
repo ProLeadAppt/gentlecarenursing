@@ -1,5 +1,6 @@
-import { ServicePageLayout } from "@/components/sections/ServicePageLayout";
-import { DVA_PAGE } from "@/content/services";
+import { PremiumFundingCare } from "@/components/sections/PremiumFundingCare";
+import "../services/premium-care.css";
+import "../premium-funding.css";
 import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
 
@@ -14,5 +15,5 @@ export const metadata = createMetadata({
 });
 
 export default function DVAPage() {
-  return <ServicePageLayout data={DVA_PAGE} />;
+  return <PremiumFundingCare pathway="dva" />;
 }

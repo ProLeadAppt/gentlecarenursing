@@ -1,0 +1,20 @@
+/* Funding-route additions only. Reuse the existing premium care tokens without
+   changing the services stylesheet, shared layout or homepage presentation. */
+.premium-care.premium-funding .funding-answer {
+  margin-top: 1.5rem;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--care-sage-ink);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  letter-spacing: -.015em;
+}
+.premium-care.premium-funding .funding-guide { min-width: 0; }
+.premium-care.premium-funding .funding-image { margin: 0 0 1.5rem; }
+.premium-care.premium-funding .funding-image-frame { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: .25rem; background: var(--care-sage); }
+.premium-care.premium-funding .funding-image figcaption { margin-top: .75rem; color: var(--care-muted); font-size: .8125rem; line-height: 1.6; overflow-wrap: break-word; }
+.premium-care.premium-funding .care-evidence[id] { scroll-margin-top: 8rem; }
+@media (min-width: 62.5rem) {
+  .premium-care.premium-funding h1 { max-width: 18ch; font-size: clamp(3.75rem, 5vw, 4.75rem); }
+  .premium-care.premium-funding .funding-answer { font-size: 1.75rem; }
+}

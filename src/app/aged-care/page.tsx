@@ -1,5 +1,6 @@
-import { ServicePageLayout } from "@/components/sections/ServicePageLayout";
-import { AGED_CARE_PAGE } from "@/content/services";
+import { PremiumFundingCare } from "@/components/sections/PremiumFundingCare";
+import "../services/premium-care.css";
+import "../premium-funding.css";
 import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
 
@@ -14,5 +15,5 @@ export const metadata = createMetadata({
 });
 
 export default function AgedCarePage() {
-  return <ServicePageLayout data={AGED_CARE_PAGE} />;
+  return <PremiumFundingCare pathway="aged-care" />;
 }

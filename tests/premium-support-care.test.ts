@@ -114,7 +114,7 @@ test("post-hospital availability, assessment and funding caveats remain explicit
   ]) assert.ok(copy.includes(caveat), caveat);
 });
 
-test("all existing standalone service routes opt into premium presentation without changing funding or regional routes", () => {
+test("all existing standalone service routes opt into premium presentation while funding opts in separately and regional routes stay unchanged", () => {
   for (const { service } of pages) {
     const route = readFileSync(`src/app/services/${service}/page.tsx`, "utf8");
     assert.ok(route.includes(`return <PremiumSupportCare service="${service}" />`));
@@ -127,10 +127,15 @@ test("all existing standalone service routes opt into premium presentation witho
   assert.deepEqual(standaloneRoutes, [...pages.map(page => page.service), "nursing-care"].sort());
   assert.equal(standaloneRoutes.length, 9);
   for (const core of SERVICES) assert.ok(standaloneRoutes.includes(core.slug), core.slug);
-  for (const route of ["ndis", "dva", "aged-care", "private-nursing"]) {
+  for (const route of ["private-nursing"]) {
     const routeSource = readFileSync(`src/app/${route}/page.tsx`, "utf8");
     assert.match(routeSource, /ServicePageLayout/);
     assert.doesNotMatch(routeSource, /premium-care|PremiumSupportCare/);
+  }
+  for (const route of ["ndis", "dva", "aged-care"]) {
+    const routeSource = readFileSync(`src/app/${route}/page.tsx`, "utf8");
+    assert.match(routeSource, /PremiumFundingCare/);
+    assert.doesNotMatch(routeSource, /PremiumSupportCare/);
   }
   assert.match(readFileSync("src/app/services/[service]/[region]/page.tsx", "utf8"), /ServiceRegionPageLayout/);
   assert.match(readFileSync("src/app/services/page.tsx", "utf8"), /PremiumServicesHub/);
