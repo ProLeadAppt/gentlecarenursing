@@ -39,7 +39,7 @@ test("route provider failures and invalid receipts say unknown, not that sending
   }
 });
 
-test("real in-process route can accept after client deadline without triggering success or retry", async (t) => {
+test("late provider acceptance after both deadlines cannot trigger client success or retry", async (t) => {
   t.mock.timers.enable({ apis: ["setTimeout"] });
   const previousKey = process.env.RESEND_API_KEY;
   process.env.RESEND_API_KEY = "synthetic_not_a_real_key";
@@ -71,7 +71,7 @@ test("real in-process route can accept after client deadline without triggering 
     assert.equal(signal?.aborted, true);
     accept({ data: { id: "d836e511-cd92-4872-bbd1-18ed349e30af" }, error: null });
     const result = await routeResult!;
-    assert.equal(result.status, 200);
+    assert.equal(result.status, 504);
     await observed;
     await Promise.resolve(); await Promise.resolve();
     assert.equal(successes, 0);

@@ -11,6 +11,7 @@ import {
   type ReactNode,
 } from "react";
 import { dispatchAnalyticsEvent, getLinkAnalyticsEvent } from "@/lib/analytics";
+import { supportsModalDialog } from "@/lib/dialog-support";
 
 export type FormModalType = "referral" | "contact" | null;
 type ReturnFocus = HTMLElement | (() => void);
@@ -59,6 +60,12 @@ export function FormModalProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const openModal = useCallback((type: "referral" | "contact", ctaLocation?: string, returnFocus?: ReturnFocus | null) => {
+    // Only an explicit modal request may navigate to the existing full form.
+    if (!supportsModalDialog(document.createElement("dialog"))) {
+      window.location.assign(type === "referral" ? "/referral" : "/contact");
+      return;
+    }
+
     // Capture before a trigger is hidden or removed by the same React update.
     returnFocusRef.current = returnFocus ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     dispatchAnalyticsEvent("form_open", {

@@ -63,7 +63,7 @@ async function requestFeedbackConfirmation(
 
     // These statuses are returned by this route before any provider send.
     // Provider errors (500/502) or an invalid response remain ambiguous.
-    if ([400, 403, 413, 415, 503].includes(response.status) &&
+    if ([400, 403, 408, 413, 415, 503].includes(response.status) &&
       confirmation.success === false && typeof confirmation.error === "string" &&
       confirmation.error.trim()) {
       throw new FeedbackSubmissionError(confirmation.error, "rejected");

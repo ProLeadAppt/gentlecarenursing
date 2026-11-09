@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useCallback } from "react";
 import { beginModalSession } from "@/lib/modal-session";
+import { supportsModalDialog } from "@/lib/dialog-support";
 import { X } from "lucide-react";
 import { useFormModal } from "@/contexts/FormModalContext";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -14,7 +15,7 @@ export function FormModal() {
 
   useEffect(() => {
     const dialog = dialogRef.current;
-    if (!dialog) return;
+    if (!dialog || !supportsModalDialog(dialog)) return;
 
     if (activeForm) {
       return beginModalSession({
@@ -88,6 +89,8 @@ export function FormModal() {
   return (
     <dialog
       ref={dialogRef}
+      // Unknown dialog elements must stay hidden even without modern CSS.
+      style={{ display: activeForm ? undefined : "none" }}
       className="fixed inset-0 z-[100] m-0 h-full w-full max-w-none max-h-none bg-transparent p-0 backdrop:bg-black/60 backdrop:backdrop-blur-md open:flex open:items-center open:justify-center"
       onClick={handleBackdropClick}
       aria-labelledby="modal-title"
