@@ -5,7 +5,9 @@ import { getImageProps } from "next/image";
 import { HOMEPAGE_HERO } from "../src/content/homepage";
 
 const source = readFileSync("src/components/sections/Hero.tsx", "utf8");
-const sizes = HOMEPAGE_HERO.heroImageSizes;
+// Preserve the prior shared-Hero cover geometry regression independently of
+// the new natural-ratio homepage. The premium page has its own sizing tests.
+const sizes = "(min-width: 80rem) 38.488rem, (min-width: 64rem) calc(56.6vw - 5.094rem), (min-width: 40rem) calc(106.1vw - 4.244rem), calc(106.1vw - 3.183rem)";
 const sourceWidth = 4961, sourceHeight = 3508;
 
 // Only evaluate this attribute's syntax. These are deterministic geometry
@@ -35,7 +37,7 @@ function coverWidth(viewport: number, initialFont = 16): number {
   return Math.max(boxWidth, boxHeight * sourceWidth / sourceHeight);
 }
 
-test("homepage sizing accounts for its source ratio and object-cover bitmap width", () => {
+test("legacy shared Hero sizing accounts for its source ratio and object-cover bitmap width", () => {
   assert.equal(HOMEPAGE_HERO.heroImageSrc, "/images/age-cymru-bSXk1lOp8T0-unsplash.webp");
   const image = readFileSync(`public${HOMEPAGE_HERO.heroImageSrc}`);
   // Guard the current VP8 frame dimensions. Re-evaluate the ratio and sizing
@@ -64,10 +66,10 @@ test("sizes remain conservative when the browser default font size changes", () 
   }
 });
 
-test("only the homepage opts in; other hero images and videos keep existing behavior", () => {
+test("shared Hero images and videos keep existing behavior while premium homepage sizes independently", () => {
   assert.match(source, /imageSizes = "\(max-width: 1024px\) 100vw, 50vw"/);
   assert.match(source, /sizes=\{imageSizes\}/);
-  assert.match(readFileSync("src/components/sections/HomePageContent.tsx", "utf8"), /imageSizes=\{HOMEPAGE_HERO.heroImageSizes\}/);
+  assert.match(readFileSync("src/components/sections/HomePageContent.tsx", "utf8"), /sizes=\{HOMEPAGE_HERO.heroImageSizes\}/);
   assert.match(source, /priority\s+fetchPriority="high"/);
   assert.match(source, /poster=\{videoPoster \?\? imageSrc\}/);
 });

@@ -11,7 +11,7 @@
 export const HOMEPAGE_HERO = {
   // Simplified per Gemma's brief 2026-06-10 — drop eyebrow, single statement.
   eyebrow: undefined,
-  /** Segmented headline for staggered cinematic reveal. */
+  /** Two-part editorial headline. No entrance animation on the homepage. */
   headlineSegments: [
     "Personalised in-home nursing",
     " and support across Sydney",
@@ -20,12 +20,11 @@ export const HOMEPAGE_HERO = {
     "NDIS Registered · DVA Contracted · Aged Care Support",
   /** Hero image (right column). Warm, professional in-home care moment. */
   heroImageSrc: "/images/age-cymru-bSXk1lOp8T0-unsplash.webp",
-  // Match Hero's padding, column gaps and 80rem cap. This 4961×3508 source
-  // needs up to 1.061× the 4:3 mobile box and 1.132× the 5:4 desktop box
-  // to retain bitmap density after object-cover cropping (rounded upwards).
-  heroImageSizes: "(min-width: 80rem) 38.488rem, (min-width: 64rem) calc(56.6vw - 5.094rem), (min-width: 40rem) calc(106.1vw - 4.244rem), calc(106.1vw - 3.183rem)",
+  // Premium homepage: natural aspect ratio, no object-cover crop. Keep the
+  // sizes contract aligned with homepage.css container, gaps and breakpoints.
+  heroImageSizes: "(min-width: 90rem) 39.75rem, (min-width: 62.5rem) calc(50vw - 5.25rem), (min-width: 47.5rem) calc(50vw - 3rem), (min-width: 22.5rem) calc(100vw - 2.5rem), calc(100vw - 2.25rem)",
   heroImageAlt:
-    "A care worker supporting an older woman at a kitchen table — warm, professional, in-home nursing care in Sydney",
+    "A woman leaning toward an older woman during a colouring activity at a table, with a man seated nearby",
 } as const;
 
 /** Section 2 — Who we support (4-tile, Gemma's exact list) */
@@ -52,7 +51,8 @@ export const WHO_WE_SUPPORT = {
     },
     {
       label: "Private clients",
-      href: "/services",
+      // Existing self-funded service page, verified against PRIVATE_NURSING_PAGE.
+      href: "/private-nursing",
       description:
         "Self-funded, personalised in-home nursing and care tailored to your needs and circumstances.",
     },
