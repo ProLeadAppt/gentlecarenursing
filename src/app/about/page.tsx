@@ -1,3 +1,4 @@
+import "../premium-information.css";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Grid } from "@/components/layout/Grid";
@@ -49,18 +50,18 @@ export const metadata = createMetadata({
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="premium-information premium-about">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(founderSchema) }}
       />
 
       {/* Hero Intro */}
-      <Section size="lg" variant="card">
+      <Section size="lg" variant="card" className="information-hero">
         <Container size="md">
           <Breadcrumbs
             items={[{ label: "Home", href: "/" }, { label: "About Us" }]}
-            className="mb-6"
+            className="information-breadcrumbs mb-6"
           />
           <Heading
             level="h1"
@@ -79,7 +80,7 @@ export default function AboutPage() {
       </Section>
 
       {/* Stats Bar */}
-      <Section size="sm" variant="muted">
+      <Section size="sm" variant="muted" className="information-stats">
         <Container>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4 text-center">
             {TRUST_STATS.map((stat) => (
@@ -97,17 +98,19 @@ export default function AboutPage() {
       </Section>
 
       {/* Founder Story */}
-      <FounderStory
-        name={FOUNDER_STORY.name}
-        title={FOUNDER_STORY.title}
-        bio={FOUNDER_STORY.bio}
-        quote={FOUNDER_STORY.quote}
-        imageSrc={FOUNDER_STORY.imageSrc}
-        imageAlt={FOUNDER_STORY.imageAlt}
-      />
+      <div className="information-founder">
+        <FounderStory
+          name={FOUNDER_STORY.name}
+          title={FOUNDER_STORY.title}
+          bio={FOUNDER_STORY.bio}
+          quote={FOUNDER_STORY.quote}
+          imageSrc={FOUNDER_STORY.imageSrc}
+          imageAlt={FOUNDER_STORY.imageAlt}
+        />
+      </div>
 
       {/* Mission */}
-      <Section variant="muted">
+      <Section variant="muted" className="information-mission">
         <Container size="md">
           <SectionHeader title={MISSION.title} />
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground">
@@ -117,15 +120,15 @@ export default function AboutPage() {
       </Section>
 
       {/* Values */}
-      <Section>
+      <Section className="information-values">
         <Container>
           <SectionHeader
             title="Our Values"
             subtitle="The principles that guide everything we do."
           />
-          <Grid cols={3} gap="lg" className="mt-12">
+          <Grid cols={3} gap="lg" className="information-value-grid mt-12">
             {VALUES.map((value) => (
-              <Card key={value.title} variant="default">
+              <Card key={value.title} variant="default" className="information-value-card">
                 <Heading level="h3" as="h3" className="text-lg">
                   {value.title}
                 </Heading>
@@ -141,7 +144,9 @@ export default function AboutPage() {
       {/* Team biographies are withheld until the provider verifies them. */}
 
       {/* Credentials */}
-      <CredentialsSection variant="default" />
+      <div className="information-credentials">
+        <CredentialsSection variant="default" />
+      </div>
 
       {/* CTA */}
       <CtaSection
@@ -150,7 +155,8 @@ export default function AboutPage() {
         primaryCta={CTA_LINKS.requestCare}
         secondaryCta={CTA_LINKS.contact}
         variant="primary"
+        className="information-cta"
       />
-    </>
+    </div>
   );
 }

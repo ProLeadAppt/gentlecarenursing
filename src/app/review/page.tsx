@@ -1,3 +1,4 @@
+import "../premium-utility.css";
 import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
@@ -27,10 +28,10 @@ export const metadata: Metadata = {
 
 export default function ReviewPage() {
   return (
-    <div className="bg-background">
+    <div className="premium-review bg-background">
       <Section size="xl" variant="clinical-white">
         <Container size="md">
-          <div className="text-center max-w-2xl mx-auto">
+          <div className="utility-review-hero text-center max-w-2xl mx-auto">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/80">
               Your Feedback
             </p>
@@ -44,7 +45,7 @@ export default function ReviewPage() {
             </p>
           </div>
 
-          <div className="mt-12 sm:mt-16">
+          <div className="utility-review-body mt-12 sm:mt-16">
             <ReviewFunnel />
           </div>
         </Container>

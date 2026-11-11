@@ -7,10 +7,10 @@ import { Select } from "@/components/ui/Select";
 import { Textarea } from "@/components/ui/Textarea";
 import { Button } from "@/components/ui/Button";
 import { dispatchAnalyticsEvent } from "@/lib/analytics";
-import { submitWebsiteForm } from "@/lib/form-client";
+import { submitWebsiteForm, WebsiteSubmissionError } from "@/lib/form-client";
 import { clearFieldValidation, reportFormValidity } from "@/lib/form-validation";
 
-type FormStatus = "idle" | "submitting" | "success" | "error";
+type FormStatus = "idle" | "submitting" | "success" | "rejected" | "uncertain";
 
 interface ReferralFormProps {
   /** When true, shows minimal fields first with an expand option */
@@ -20,15 +20,21 @@ interface ReferralFormProps {
 export function ReferralForm({ compact = false }: ReferralFormProps) {
   const idPrefix = useId();
   const [status, setStatus] = useState<FormStatus>("idle");
-  const [errorMessage, setErrorMessage] = useState("");
   const [expanded, setExpanded] = useState(!compact);
   const outcomeRef = useRef<HTMLDivElement>(null);
   const firstFieldRef = useRef<HTMLInputElement>(null);
   const restartFocusRef = useRef(false);
   const submittingRef = useRef(false);
+  const submissionLockedRef = useRef(false);
+  const mountedRef = useRef(true);
 
   useEffect(() => {
-    if (status === "success" || status === "error") {
+    mountedRef.current = true;
+    return () => { mountedRef.current = false; };
+  }, []);
+
+  useEffect(() => {
+    if (status !== "idle") {
       outcomeRef.current?.focus();
     } else if (status === "idle" && restartFocusRef.current) {
       restartFocusRef.current = false;
@@ -38,12 +44,12 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (submittingRef.current) return;
+    if (submissionLockedRef.current || submittingRef.current) return;
     const form = e.currentTarget;
     if (!reportFormValidity(form)) return;
     submittingRef.current = true;
+    submissionLockedRef.current = true;
     setStatus("submitting");
-    setErrorMessage("");
 
     const data = new FormData(form);
     const payload = {
@@ -65,16 +71,23 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
         cta_location: compact ? "compact_referral_form" : "referral_form",
         submission_id: submissionId,
       });
-      setStatus("success");
-      form.reset();
-    } catch {
+      if (mountedRef.current) {
+        setStatus("success");
+        form.reset();
+      }
+    } catch (error) {
       dispatchAnalyticsEvent("form_error", {
         form_type: "referral",
         cta_location: compact ? "compact_referral_form" : "referral_form",
         error_type: "delivery",
       });
-      setStatus("error");
-      setErrorMessage("We couldn’t confirm whether your referral was accepted for delivery. Your details are still here. Please contact us before submitting again to avoid a duplicate referral.");
+      const rejected = error instanceof WebsiteSubmissionError && error.outcome === "rejected";
+      // Only a verified pre-delivery rejection permits a revalidated retry.
+      // A timeout, lost response or invalid receipt cannot establish non-delivery.
+      submissionLockedRef.current = !rejected;
+      if (mountedRef.current) {
+        setStatus(rejected ? "rejected" : "uncertain");
+      }
     } finally {
       submittingRef.current = false;
     }
@@ -84,6 +97,7 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
     return (
       <div
         ref={outcomeRef}
+        data-form-outcome
         tabIndex={-1}
         role="status"
         aria-atomic="true"
@@ -100,6 +114,9 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
         <button
           type="button"
           onClick={() => {
+            // This explicit action starts a different enquiry after acceptance.
+            // Uncertain attempts intentionally have no in-form restart action.
+            submissionLockedRef.current = false;
             restartFocusRef.current = true;
             setStatus("idle");
           }}
@@ -113,7 +130,24 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
 
   return (
     <form onSubmit={handleSubmit} onInput={clearFieldValidation} aria-busy={status === "submitting"}>
-      <fieldset disabled={status === "submitting"} className="min-w-0 space-y-5">
+      {status === "submitting" && (
+        <div ref={outcomeRef} data-form-outcome tabIndex={-1} role="status" aria-atomic="true" className="mb-4 scroll-mt-24 rounded-lg border border-accent/30 bg-accent/5 p-4 text-sm">
+          Sending your referral. Please wait for confirmation before sending again.
+        </div>
+      )}
+      {(status === "rejected" || status === "uncertain") && (
+        <div ref={outcomeRef} data-form-outcome tabIndex={-1} role="alert" aria-atomic="true" className="mb-4 scroll-mt-24 rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive">
+          {status === "rejected" ? (
+            "Your referral was not sent. Please review your details and try again, or call us on 1300 004 267."
+          ) : (
+            <>
+              We couldn’t confirm whether your referral was accepted for delivery. Your details are still here.
+              {" "}Please call us on 1300 004 267 to check the outcome. This form is paused to avoid a duplicate referral.
+            </>
+          )}
+        </div>
+      )}
+      <fieldset disabled={status === "submitting" || status === "uncertain"} className="min-w-0 space-y-5">
         <FormField label="Your name" htmlFor={`referrer-name-${idPrefix}`} required>
           <Input
             ref={firstFieldRef}
@@ -179,18 +213,7 @@ export function ReferralForm({ compact = false }: ReferralFormProps) {
           </>
         )}
 
-        {status === "error" && (
-          <div
-            ref={outcomeRef}
-            tabIndex={-1}
-            role="alert"
-            aria-atomic="true"
-            className="rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive"
-          >
-            {errorMessage}
-          </div>
-        )}
-        <Button type="submit" className="w-full" disabled={status === "submitting"}>
+        <Button type="submit" className="w-full" disabled={status === "submitting" || status === "uncertain"}>
           {status === "submitting" ? "Submitting..." : "Submit Referral"}
         </Button>
       </fieldset>

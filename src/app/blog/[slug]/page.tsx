@@ -1,3 +1,4 @@
+import "../../premium-editorial.css";
 import { notFound } from "next/navigation";
 import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
@@ -52,7 +53,9 @@ export default async function BlogPostPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-      <BlogPostLayout post={post} />
+      <div className="premium-article">
+        <BlogPostLayout post={post} />
+      </div>
     </>
   );
 }

@@ -1,3 +1,4 @@
+import "../premium-discovery.css";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
@@ -60,13 +61,13 @@ export default function ConditionsIndexPage() {
   ];
 
   return (
-    <>
+    <div className="premium-discovery premium-conditions">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
       />
 
-      <Section size="lg" variant="card">
+      <Section size="lg" variant="card" className="discovery-hero">
         <Container size="md">
           <Breadcrumbs
             includeSchema={false}
@@ -74,10 +75,10 @@ export default function ConditionsIndexPage() {
               { label: "Home", href: "/" },
               { label: "Conditions" },
             ]}
-            className="mb-8"
+            className="discovery-breadcrumbs mb-8"
           />
 
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/5 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-primary/80">
+          <span className="discovery-eyebrow mb-4 inline-flex items-center gap-2 rounded-full bg-primary/5 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-primary/80">
             <HeartPulse className="h-3 w-3" /> Conditions
           </span>
 
@@ -99,14 +100,14 @@ export default function ConditionsIndexPage() {
         </Container>
       </Section>
 
-      <Section size="md" variant="default">
+      <Section size="md" variant="default" className="discovery-directory">
         <Container size="md">
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="discovery-condition-grid grid gap-6 md:grid-cols-2">
             {CONDITIONS.map((c) => (
               <Link
                 key={c.slug}
                 href={`/conditions/${c.slug}`}
-                className="group flex h-full flex-col rounded-2xl border border-border/60 bg-card/40 p-7 transition-all duration-500 hover:border-primary/40 hover:bg-card/70 hover:shadow-lg"
+                className="discovery-condition-card group flex h-full flex-col rounded-2xl border border-border/60 bg-card/40 p-7 transition-all duration-500 hover:border-primary/40 hover:bg-card/70 hover:shadow-lg"
               >
                 <Heading
                   level="h2"
@@ -127,7 +128,7 @@ export default function ConditionsIndexPage() {
         </Container>
       </Section>
 
-      <Section size="md" variant="muted">
+      <Section size="md" variant="muted" className="discovery-cta">
         <Container size="md" className="text-center">
           <Heading
             level="h2"
@@ -157,6 +158,6 @@ export default function ConditionsIndexPage() {
           </div>
         </Container>
       </Section>
-    </>
+    </div>
   );
 }

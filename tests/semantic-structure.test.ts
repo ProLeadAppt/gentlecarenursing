@@ -1,12 +1,17 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { createElement } from "react";
+import { createElement, type ComponentType } from "react";
+import { createRequire } from "node:module";
+import type { Metadata } from "next";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Breadcrumbs } from "../src/components/ui/Breadcrumbs";
 // The route only wires this server component and route-scoped CSS.
 import { PremiumReferrers as ReferrersPage } from "../src/components/sections/PremiumReferrers";
-import ReviewPage, { metadata as reviewMetadata } from "../src/app/review/page";
+// Node SSR tests skip route-scoped CSS; the real route and all assertions stay.
+const nativeRequire = createRequire(import.meta.url);
+nativeRequire.extensions[".css"] = () => undefined;
+const { default: ReviewPage, metadata: reviewMetadata } = nativeRequire("../src/app/review/page") as { default: ComponentType; metadata: Metadata };
 
 function schemas(html: string) {
   return [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
@@ -47,7 +52,7 @@ test("referrers retains exactly its canonical breadcrumb and existing FAQ markup
 test("review uses the root main landmark without duplicating its ID", () => {
   const html = renderToStaticMarkup(createElement(ReviewPage));
   assert.doesNotMatch(html, /<main\b|id="main-content"/);
-  assert.match(html, /^<div class="bg-background">/);
+  assert.match(html, /^<div class="premium-review bg-background">/);
   assert.match(html, /Thank you for/);
   const layout = readFileSync("src/app/layout.tsx", "utf8");
   assert.equal((layout.match(/<main id="main-content"/g) ?? []).length, 1);

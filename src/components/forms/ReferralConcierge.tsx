@@ -9,12 +9,25 @@ import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
 import { Textarea } from "@/components/ui/Textarea";
 import { dispatchAnalyticsEvent } from "@/lib/analytics";
-import { submitWebsiteForm } from "@/lib/form-client";
+import { submitWebsiteForm, WebsiteSubmissionError } from "@/lib/form-client";
 import { clearFieldValidation, reportFormValidity, fieldValidationMessage } from "@/lib/form-validation";
+
+import { SITE } from "@/lib/constants";
 
 type Step = 1 | 2 | 3 | 4;
 
-export function ReferralConcierge() {
+const EMPTY_FORM_DATA = {
+    referrerName: "",
+    referrerEmail: "",
+    referrerPhone: "",
+    referrerRole: "",
+    organization: "",
+    clientName: "",
+    serviceType: "",
+    notes: "",
+};
+
+export function ReferralConcierge({ active = true, onRetainSessionChange }: { active?: boolean; onRetainSessionChange?: (retain: boolean) => void }) {
   const idPrefix = useId();
   const [step, setStep] = useState<Step>(1);
   const [direction, setDirection] = useState(0);
@@ -25,18 +38,33 @@ export function ReferralConcierge() {
   const formRef = useRef<HTMLFormElement>(null);
   const focusStepRef = useRef(false);
   const invalidFieldRef = useRef<string | null>(null);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [outcome, setOutcome] = useState<"idle" | "success" | "rejected" | "uncertain">("idle");
+  const submissionLockedRef = useRef(false);
+  const outcomeRef = useRef<HTMLDivElement>(null);
+  const mountedRef = useRef(true);
 
-  const [formData, setFormData] = useState({
-    referrerName: "",
-    referrerEmail: "",
-    referrerPhone: "",
-    referrerRole: "",
-    organization: "",
-    clientName: "",
-    serviceType: "",
-    notes: "",
-  });
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => { mountedRef.current = false; };
+  }, []);
+
+  useEffect(() => {
+    // The modal retains this form when closed; hidden results must not steal focus.
+    if (active && (isSubmitting || outcome !== "idle")) outcomeRef.current?.focus();
+  }, [active, isSubmitting, outcome]);
+
+  const [formData, setFormData] = useState(EMPTY_FORM_DATA);
+  const [detailsCleared, setDetailsCleared] = useState(false);
+  const [wasActive, setWasActive] = useState(active);
+  // Dismissal discards patient details. Keep only the delivery status and lock
+  // so reopening cannot accidentally resend an accepted or unknown attempt.
+  if (wasActive !== active) {
+    setWasActive(active);
+    if (!active) {
+      setFormData(EMPTY_FORM_DATA);
+      setDetailsCleared(true);
+    }
+  }
 
   const nextStep = () => {
     if (submittingRef.current || transitioningRef.current || step >= 4 || !formRef.current || !reportFormValidity(formRef.current)) return;
@@ -60,6 +88,7 @@ export function ReferralConcierge() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    setDetailsCleared(false);
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -89,7 +118,7 @@ export function ReferralConcierge() {
   }
 
   useEffect(() => {
-    if (isTransitioning || !focusStepRef.current || !formRef.current) return;
+    if (!active || isTransitioning || !focusStepRef.current || !formRef.current) return;
     const panel = formRef.current.querySelector(`[data-form-step="${step}"]`);
     if (!panel) return;
     const fields = Array.from(panel.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>("input, select, textarea"));
@@ -98,11 +127,11 @@ export function ReferralConcierge() {
     target?.focus();
     invalidFieldRef.current = null;
     focusStepRef.current = false;
-  }, [step, isTransitioning]);
+  }, [active, step, isTransitioning]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (submittingRef.current || transitioningRef.current) return;
+    if (!active || submissionLockedRef.current || submittingRef.current || transitioningRef.current) return;
     if (step < 4) {
       nextStep();
       return;
@@ -122,6 +151,9 @@ export function ReferralConcierge() {
     }
     if (!reportFormValidity(e.currentTarget)) return;
     submittingRef.current = true;
+    submissionLockedRef.current = true;
+    onRetainSessionChange?.(true);
+    setOutcome("idle");
     setIsSubmitting(true);
     
     try {
@@ -132,18 +164,28 @@ export function ReferralConcierge() {
         cta_location: "referral_concierge",
         submission_id: submissionId,
       });
-      setIsSuccess(true);
+      if (mountedRef.current) {
+        // Keep the receipt outcome across dismissal, not the accepted patient details.
+        setFormData(EMPTY_FORM_DATA);
+        setOutcome("success");
+      }
     } catch (error) {
       dispatchAnalyticsEvent("form_error", {
         form_type: "referral",
         cta_location: "referral_concierge",
         error_type: "delivery",
       });
-      console.error(error);
-      alert("Something went wrong. Please try again.");
+      const rejected = error instanceof WebsiteSubmissionError && error.outcome === "rejected";
+      // Only a confirmed pre-send rejection allows a deliberate retry.
+      // Unknown outcomes keep the details and lock submission across modal closes.
+      submissionLockedRef.current = !rejected;
+      if (mountedRef.current) {
+        onRetainSessionChange?.(!rejected);
+        setOutcome(rejected ? "rejected" : "uncertain");
+      }
     } finally {
       submittingRef.current = false;
-      setIsSubmitting(false);
+      if (mountedRef.current) setIsSubmitting(false);
     }
   };
 
@@ -162,17 +204,28 @@ export function ReferralConcierge() {
     }),
   };
 
-  if (isSuccess) {
+  if (outcome === "success") {
     return (
-      <div className="flex flex-col items-center justify-center py-12 text-center px-4">
+      <div
+        ref={outcomeRef}
+        data-form-outcome
+        tabIndex={-1}
+        role="status"
+        aria-atomic="true"
+        aria-labelledby={`referral-success-${idPrefix}`}
+        className="flex flex-col items-center justify-center py-12 text-center px-4 focus-visible:outline-2 focus-visible:outline-primary"
+      >
         <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-accent/20 text-accent ring-4 ring-accent/5">
           <Check className="h-8 w-8" strokeWidth={3} />
         </div>
-        <h3 className="font-[family-name:var(--font-serif)] text-3xl font-bold text-foreground">
-          Referral Submitted
+        <h3 id={`referral-success-${idPrefix}`} className="font-[family-name:var(--font-serif)] text-3xl font-bold text-foreground">
+          Referral accepted for delivery
         </h3>
         <p className="mt-4 max-w-sm text-lg text-muted-foreground leading-relaxed">
-          Thank you for trusting us with your client. Our nursing leads will review the details and contact you to confirm the next steps.
+          Thank you. Your referral email has been accepted for delivery. This does not confirm inbox receipt, clinical acceptance, a booking or service availability.
+        </p>
+        <p className="mt-4 max-w-sm text-sm text-muted-foreground">
+          Need to check on your referral? Please <a href={SITE.phoneHref} className="underline underline-offset-2">call {SITE.phone}</a> before submitting it again.
         </p>
       </div>
     );
@@ -201,7 +254,7 @@ export function ReferralConcierge() {
       </div>
 
       <form ref={formRef} onSubmit={handleSubmit} onInput={clearFieldValidation} aria-busy={isSubmitting}>
-        <fieldset disabled={isSubmitting || isTransitioning} className="min-w-0">
+        <fieldset disabled={isSubmitting || isTransitioning || outcome === "uncertain"} className="min-w-0">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={step}
@@ -364,6 +417,28 @@ export function ReferralConcierge() {
             )}
           </div>
         </fieldset>
+        {(isSubmitting || outcome === "rejected" || outcome === "uncertain") && (
+          <div
+            ref={outcomeRef}
+            data-form-outcome
+            tabIndex={-1}
+            role={isSubmitting ? "status" : "alert"}
+            aria-atomic="true"
+            className="mt-6 rounded-xl border border-primary/30 bg-primary/5 p-5 text-sm text-foreground focus-visible:outline-2 focus-visible:outline-primary"
+          >
+            {isSubmitting ? (
+              <p>Sending your referral. Closing this window clears the entered details but does not cancel the request.</p>
+            ) : (
+              <>
+                <p>{outcome === "rejected"
+                  ? "Your referral was not sent. Please check your details and try again, or contact us."
+                  : "We couldn’t confirm whether your referral was accepted for delivery. It may already have reached our team. Please contact us before submitting again to avoid a duplicate referral."}</p>
+                <p className="mt-3">{detailsCleared ? "Your entered details have been cleared from this window." : "Your details are still here. Closing this window clears them."}</p>
+                <p className="mt-3"><a href={SITE.phoneHref} className="font-semibold underline underline-offset-2">Call {SITE.phone}</a> or <a href={`mailto:${SITE.email}`} className="underline underline-offset-2">email {SITE.email}</a>.</p>
+              </>
+            )}
+          </div>
+        )}
       </form>
     </div>
   );

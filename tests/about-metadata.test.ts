@@ -1,6 +1,11 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { metadata } from "../src/app/about/page";
+import { createRequire } from "node:module";
+
+// Node's metadata runner ignores the route's presentation-only CSS import.
+const nativeRequire = createRequire(import.meta.url);
+nativeRequire.extensions[".css"] = () => undefined;
+const { metadata } = nativeRequire("../src/app/about/page.tsx") as typeof import("../src/app/about/page");
 
 test("About metadata leaves the business-name suffix to the root layout", () => {
   assert.equal(metadata.title, "About Us | Sydney In-Home Care");

@@ -9,9 +9,9 @@ for (const component of ["ContactForm", "SimpleContactForm"]) {
   const source = readFileSync(`src/components/forms/${component}.tsx`, "utf8");
 
   test(`${component} focuses persistent, named success and error regions`, () => {
-    assert.match(source, /if \(status === "success" \|\| status === "error"\) \{\s*outcomeRef.current\?\.focus\(\{ preventScroll: true \}\)/);
-    assert.match(source, /ref=\{outcomeRef\}\s+tabIndex=\{-1\}\s+role="status"\s+aria-atomic="true"/);
-    assert.match(source, /ref=\{outcomeRef\}\s+tabIndex=\{-1\}\s+role="alert"\s+aria-atomic="true"/);
+    assert.match(source, /if \((?:active && )?status !== "idle"\) \{\s*outcomeRef.current\?\.focus\(\{ preventScroll: true \}\)/);
+    assert.match(source, /ref=\{outcomeRef\}\s+data-form-outcome\s+tabIndex=\{-1\}\s+role="status"\s+aria-atomic="true"/);
+    assert.match(source, /ref=\{outcomeRef\}\s+data-form-outcome\s+tabIndex=\{-1\}\s+role="alert"\s+aria-atomic="true"/);
     const labelledBy = source.match(/aria-labelledby=\{`([^`]+)`\}/)?.[1];
     assert.ok(labelledBy, "success region must have a unique accessible label");
     assert.ok(source.includes(`id={\`${labelledBy}\`}`));
@@ -24,32 +24,35 @@ for (const component of ["ContactForm", "SimpleContactForm"]) {
     assert.match(source, /does not confirm inbox receipt, a booking or service availability/);
     assert.match(source, /For an urgent enquiry, call 1300 004 267/);
     assert.match(source, /contact us before submitting the same enquiry again/);
-    assert.doesNotMatch(source, /we&apos;ve got your message|Our team will be in touch|Please try again/);
+    assert.doesNotMatch(source, /we&apos;ve got your message|Our team will be in touch/);
   });
 
   test(`${component} keeps entered values on uncertain delivery and warns about duplicates`, () => {
-    const failure = source.slice(source.indexOf("} catch {"), source.indexOf("} finally {"));
-    assert.match(failure, /couldn’t confirm whether your enquiry was accepted for delivery/);
-    assert.match(failure, /Your details are still here/);
-    assert.match(failure, /call us on 1300 004 267 before submitting again to avoid a duplicate enquiry/);
+    const failure = source.slice(source.indexOf("} catch (error) {"), source.indexOf("} finally {"));
+    assert.match(source, /couldn’t confirm whether your enquiry was accepted for delivery/);
+    assert.match(source, /Your details are still here/);
+    assert.match(source, /This form is paused to avoid a duplicate enquiry/);
+    assert.match(failure, /submissionLockedRef.current = !rejected/);
     assert.doesNotMatch(failure, /\.reset\(|setStatus\("idle"\)|submitWebsiteForm\(/);
     assert.equal((source.match(/form.reset\(\)/g) ?? []).length, 1);
     assert.match(source, /setStatus\("success"\);\s*form.reset\(\)/);
   });
 
   test(`${component} preserves validation, disabled controls and repeated-submit guards`, () => {
-    assert.match(source, /if \(submittingRef.current\) return/);
+    assert.match(source, /if \((?:!active \|\| )?submissionLockedRef.current \|\| submittingRef.current\) return/);
     assert.match(source, /if \(!reportFormValidity\(form\)\) return/);
     assert.match(source, /onInput=\{clearFieldValidation\}/);
     assert.match(source, /aria-busy=\{status === "submitting"\}/);
-    assert.match(source, /<fieldset disabled=\{status === "submitting"\}/);
+    assert.match(source, /<fieldset disabled=\{status === "submitting" \|\| status === "uncertain"\}/);
     assert.match(source, /finally \{\s*submittingRef.current = false/);
     assert.equal((source.match(/await submitWebsiteForm\(payload\)/g) ?? []).length, 1);
   });
 
   test(`${component} starts a fresh form only by deliberate action and focuses its name field`, () => {
-    assert.match(source, /<button\s+type="button"\s+onClick=\{\(\) => \{\s*restartFocusRef.current = true;\s*setStatus\("idle"\)/);
-    assert.match(source, /else if \(status === "idle" && restartFocusRef.current\) \{\s*restartFocusRef.current = false;\s*firstFieldRef.current\?\.focus\(\)/);
+    const success = source.slice(source.indexOf('if (status === "success")'), source.indexOf('    <form'));
+    assert.match(success, /submissionLockedRef.current = false/);
+    assert.match(success, /restartFocusRef.current = true;\s*setStatus\("idle"\)/);
+    assert.match(source, /else if \((?:active && )?status === "idle" && restartFocusRef.current\) \{\s*restartFocusRef.current = false;\s*firstFieldRef.current\?\.focus\(\)/);
     assert.match(source, /<Input\s+ref=\{firstFieldRef\}\s+id=\{`(?:contact|home)-name-\$\{idPrefix\}`\}\s+name="name"/);
   });
 }
@@ -84,6 +87,6 @@ for (const component of ["ContactForm", "SimpleContactForm"]) {
     const source = readFileSync(`src/components/forms/${component}.tsx`, "utf8");
     assert.match(source, /outcomeRef.current\?\.focus\(\{ preventScroll: true \}\)/);
     assert.match(source, /outcomeRef.current\?\.scrollIntoView\(\{ block: "start", behavior: "instant" \}\)/);
-    assert.equal((source.match(/className="scroll-mt-24 /g) ?? []).length, 2);
+    assert.equal((source.match(/scroll-mt-24 /g) ?? []).length, 3);
   });
 }

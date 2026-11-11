@@ -1,3 +1,4 @@
+import "../../../premium-service-region.css";
 import { notFound } from "next/navigation";
 import { ServiceRegionPageLayout } from "@/components/sections/ServiceRegionPageLayout";
 import { createMetadata } from "@/lib/metadata";
@@ -78,7 +79,9 @@ export default async function ServiceRegionPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
       />
-      <ServiceRegionPageLayout data={page} />
+      <div className="premium-service-region">
+        <ServiceRegionPageLayout data={page} />
+      </div>
     </>
   );
 }

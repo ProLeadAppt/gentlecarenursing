@@ -33,7 +33,8 @@ export function MobileCta() {
         "fixed bottom-0 left-0 right-0 z-40 border-t border-white/20 bg-white/80 backdrop-blur-md px-4 py-3 shadow-[0_-4px_20px_rgb(0_0_0/0.08)] transition-transform duration-300 lg:hidden",
         visible ? "translate-y-0" : "translate-y-full"
       )}
-      style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
+      hidden={!visible}
+      style={{ display: visible ? undefined : "none", paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
       inert={!visible}
     >
       <div className="flex items-center gap-3">

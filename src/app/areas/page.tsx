@@ -1,3 +1,4 @@
+import "../premium-information.css";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
@@ -29,15 +30,15 @@ export default function AreasIndexPage() {
   );
 
   return (
-    <>
+    <div className="premium-information premium-areas">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <Section size="lg" variant="default">
+      <Section size="lg" variant="default" className="information-area-section">
         <Container>
-          <Breadcrumbs includeSchema={false} items={breadcrumbItems} className="mb-6" />
-          <div className="mx-auto max-w-3xl text-center">
+          <Breadcrumbs includeSchema={false} items={breadcrumbItems} className="information-breadcrumbs mb-6" />
+          <div className="information-area-intro mx-auto max-w-3xl text-center">
             <Heading level="h1" as="h1" className="text-4xl sm:text-5xl">
               Areas We Serve in Sydney
             </Heading>
@@ -45,12 +46,12 @@ export default function AreasIndexPage() {
               We provide in-home nursing and personal care across Sydney and surrounds. Choose your region to find out how we can help you or your loved one.
             </p>
           </div>
-          <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="information-region-grid mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {AREAS_CONTENT.map((area) => (
               <li key={area.slug}>
                 <Link
                   href={`/areas/${area.slug}`}
-                  className="block rounded-2xl border border-border/80 bg-card p-6 shadow-sm transition hover:border-primary/30 hover:shadow-md"
+                  className="information-region-card block rounded-2xl border border-border/80 bg-card p-6 shadow-sm transition hover:border-primary/30 hover:shadow-md"
                 >
                   <h2 className="font-[family-name:var(--font-dm-sans)] text-xl font-semibold text-foreground">
                     {area.region}
@@ -66,7 +67,7 @@ export default function AreasIndexPage() {
               </li>
             ))}
           </ul>
-          <div className="mt-12 text-center">
+          <div className="information-area-action mt-12 text-center">
             <Link
               href={CTA_LINKS.requestCare.href}
               className="inline-flex h-12 items-center justify-center rounded-xl bg-primary px-8 font-medium text-primary-foreground transition hover:bg-primary/90"
@@ -76,6 +77,6 @@ export default function AreasIndexPage() {
           </div>
         </Container>
       </Section>
-    </>
+    </div>
   );
 }

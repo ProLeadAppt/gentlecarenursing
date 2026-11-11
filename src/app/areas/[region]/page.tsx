@@ -1,3 +1,4 @@
+import "../../premium-locality.css";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container";
@@ -57,13 +58,14 @@ export default async function AreaRegionPage({ params }: Props) {
 
   return (
     <>
+      <div className="premium-locality premium-locality-region">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, areaPageSchema]) }}
       />
       
       {/* Cinematic Area Hero */}
-      <section className="relative overflow-hidden bg-white pt-32 pb-24 lg:pt-40 lg:pb-32">
+      <section className="locality-hero relative overflow-hidden bg-white pt-32 pb-24 lg:pt-40 lg:pb-32">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-accent/[0.08] blur-[120px]" />
           <div className="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] rounded-full bg-primary/[0.04] blur-[100px]" />
@@ -71,13 +73,13 @@ export default async function AreaRegionPage({ params }: Props) {
 
         <Container size="md" className="relative z-10">
           <Reveal delay={0.1}>
-            <div className="flex justify-center mb-10">
+            <div className="locality-breadcrumbs flex justify-center mb-10">
               <Breadcrumbs includeSchema={false} items={breadcrumbItems} />
             </div>
           </Reveal>
           
           <Reveal delay={0.2}>
-            <div className="text-center">
+            <div className="locality-title text-center">
               <span className="mb-6 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-primary/70">
                 <MapPin className="h-3 w-3" />
                 Service Location
@@ -89,13 +91,13 @@ export default async function AreaRegionPage({ params }: Props) {
           </Reveal>
 
           <Reveal delay={0.3}>
-            <p className="mx-auto max-w-2xl text-center text-xl leading-relaxed text-muted-foreground font-medium">
+            <p className="locality-intro mx-auto max-w-2xl text-center text-xl leading-relaxed text-muted-foreground font-medium">
               {area.headline}
             </p>
           </Reveal>
 
           <Reveal delay={0.4}>
-            <div className="mt-14 flex flex-col sm:flex-row justify-center gap-6">
+            <div className="locality-actions mt-14 flex flex-col sm:flex-row justify-center gap-6">
               <Magnetic>
                 <FormModalTrigger formType="contact" size="xl" variant="primary" className="px-12 shadow-xl shadow-primary/20 rounded-2xl h-16">
                   Check Availability in {area.region}
@@ -112,6 +114,7 @@ export default async function AreaRegionPage({ params }: Props) {
         </Container>
       </section>
 
+      <div className="locality-evidence">
       <EvidencePanel
         eyebrow="Local quick facts"
         heading={`In-home nursing facts for ${area.region}`}
@@ -144,11 +147,13 @@ export default async function AreaRegionPage({ params }: Props) {
         ]}
       />
 
+      </div>
+
       {/* Main Content Area */}
-      <Section className="bg-muted/30 border-y border-border/40">
+      <Section className="locality-overview bg-muted/30 border-y border-border/40">
         <Container>
-          <div className="grid lg:grid-cols-12 gap-16 items-start">
-            <div className="lg:col-span-7 space-y-12">
+          <div className="locality-overview-grid grid lg:grid-cols-12 gap-16 items-start">
+            <div className="locality-overview-main lg:col-span-7 space-y-12">
               <Reveal>
                 <div className="space-y-6">
                   <Heading level="h2" className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-serif)] text-foreground">
@@ -162,7 +167,7 @@ export default async function AreaRegionPage({ params }: Props) {
 
               {area.examples && area.examples.length > 0 && (
                 <Reveal delay={0.1}>
-                  <div className="rounded-[2.5rem] border border-border/60 bg-white p-10 sm:p-12 shadow-sm transition-all duration-500 hover:shadow-xl">
+                  <div className="locality-examples rounded-[2.5rem] border border-border/60 bg-white p-10 sm:p-12 shadow-sm transition-all duration-500 hover:shadow-xl">
                     <Heading level="h3" className="text-2xl font-bold mb-8 font-[family-name:var(--font-serif)]">
                       How we help families in {area.region}
                     </Heading>
@@ -181,9 +186,9 @@ export default async function AreaRegionPage({ params }: Props) {
               )}
             </div>
 
-            <aside className="lg:col-span-5 lg:sticky lg:top-32">
+            <aside className="locality-suburbs lg:col-span-5 lg:sticky lg:top-32">
               <Reveal delay={0.2}>
-                <div className="rounded-[2.5rem] border border-border bg-white p-10 shadow-sm overflow-hidden relative">
+                <div className="locality-suburb-card rounded-[2.5rem] border border-border bg-white p-10 shadow-sm overflow-hidden relative">
                   <div className="absolute top-0 right-0 p-8 text-primary/5 pointer-events-none">
                     <MapPin className="h-32 w-32" strokeWidth={1} />
                   </div>
@@ -218,7 +223,7 @@ export default async function AreaRegionPage({ params }: Props) {
         </Container>
       </Section>
 
-      <Section className="border-y border-border/40 bg-muted/20">
+      <Section className="locality-guides border-y border-border/40 bg-muted/20">
         <Container size="lg">
           <Heading level="h2" className="text-2xl font-bold sm:text-3xl">
             Service guides for {area.region}
@@ -238,10 +243,10 @@ export default async function AreaRegionPage({ params }: Props) {
       </Section>
 
       {/* Trust Quote Section */}
-      <Section className="bg-white">
+      <Section className="locality-cta bg-white">
         <Container size="sm">
           <Reveal>
-            <div className="text-center">
+            <div className="locality-title text-center">
               <div className="mb-10 inline-flex h-16 w-16 items-center justify-center rounded-[1.5rem] bg-accent/5 text-accent">
                 <PhoneCall className="h-8 w-8" />
               </div>
@@ -251,7 +256,7 @@ export default async function AreaRegionPage({ params }: Props) {
               <p className="text-xl text-muted-foreground font-medium mb-12">
                 Our clinical lead, Gemma, is available to discuss your specific requirements and ensure a seamless start to personalised support.
               </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <div className="locality-actions flex flex-col sm:flex-row justify-center gap-6">
                 <Magnetic>
                   <Link
                     href={CTA_LINKS.contact.href}
@@ -265,6 +270,7 @@ export default async function AreaRegionPage({ params }: Props) {
           </Reveal>
         </Container>
       </Section>
+      </div>
     </>
   );
 }

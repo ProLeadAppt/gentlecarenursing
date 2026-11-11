@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { StarRating, type StarRatingValue } from "./StarRating";
 import { SITE } from "@/lib/constants";
 import { FeedbackSubmissionError, FEEDBACK_UNCONFIRMED_MESSAGE, submitPrivateFeedback } from "@/lib/feedback-client";
-import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Mail, ExternalLink } from "lucide-react";
 
 /** Both feedback choices are available to everyone, independent of rating. */
@@ -18,6 +17,10 @@ export function ReviewFunnel() {
     setShowFeedback(false);
     feedbackButtonRef.current?.focus();
   };
+  // Panel entry is an essential state change, not an animation completion.
+  useEffect(() => {
+    if (showFeedback) panelRef.current?.querySelector<HTMLElement>("h2, h3")?.focus();
+  }, [showFeedback, rating]);
   const choiceClass = "inline-flex items-center justify-center gap-2 rounded-xl border border-primary bg-card px-6 py-3 text-base font-semibold text-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 transition-colors";
 
   return (
@@ -44,29 +47,22 @@ export function ReviewFunnel() {
         </button>
       </div>
       <div ref={panelRef} id="private-feedback-panel" className="mt-8">
-        <AnimatePresence mode="wait">
-          {showFeedback && (
-            <motion.div key={rating === null ? "rating" : "feedback"}
-              variants={{ initial: { opacity: 0, y: 10 }, enter: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -10 } }}
-              initial="initial" animate="enter" exit="exit" transition={{ duration: 0.25 }}
-              onAnimationComplete={(definition) => {
-                if (definition === "enter") panelRef.current?.querySelector<HTMLElement>("h2, h3")?.focus();
-              }}>
-              {rating === null ? (
-                <>
-                  <h2 tabIndex={-1} className="mb-5 text-center text-xl font-semibold">Private feedback</h2>
-                  <StarRating onContinue={setRating} continueLabel="Continue to private feedback" />
-                  <button type="button" onClick={resetFeedback}
-                    className="mt-6 text-sm text-muted-foreground underline underline-offset-2">
-                    Cancel
-                  </button>
-                </>
-              ) : (
-                <FeedbackFormInline rating={rating} onReset={resetFeedback} />
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {showFeedback && (
+          <div key={rating === null ? "rating" : "feedback"}>
+            {rating === null ? (
+              <>
+                <h2 tabIndex={-1} className="mb-5 text-center text-xl font-semibold">Private feedback</h2>
+                <StarRating onContinue={setRating} continueLabel="Continue to private feedback" />
+                <button type="button" onClick={resetFeedback}
+                  className="mt-6 text-sm text-muted-foreground underline underline-offset-2">
+                  Cancel
+                </button>
+              </>
+            ) : (
+              <FeedbackFormInline rating={rating} onReset={resetFeedback} />
+            )}
+          </div>
+        )}
       </div>
       <p className="mt-8 text-center text-sm text-muted-foreground">
         Prefer email? <a href={`mailto:${SITE.email}`} className="underline underline-offset-2">{SITE.email}</a>

@@ -1,0 +1,148 @@
+/* Opt-in presentation for /about, /faq and the /areas index only.
+   Content, schemas, shared components and dynamic regional routes are unchanged. */
+.premium-information {
+  --information-berry: #842833;
+  --information-deep: #3d0a11;
+  --information-ink: #332e2a;
+  --information-muted: #615b54;
+  --information-cream: #fdf6ec;
+  --information-paper: #fffdf9;
+  --information-sage: #e8eee3;
+  --information-sage-ink: #486141;
+  --information-rule: #d7cfc3;
+  color: var(--information-ink);
+  background: var(--information-paper);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+.premium-information :is(h1, h2, h3, p, a, button, blockquote) { overflow-wrap: anywhere; }
+.premium-information :is(h1, h2, h3) { color: var(--information-ink); font-family: var(--font-serif), Georgia, serif; font-weight: 600; letter-spacing: -.03em; line-height: 1.15; }
+.premium-information h1 { font-size: clamp(2.75rem, 9vw, 5.25rem); text-align: left; }
+.premium-information h2 { font-size: clamp(2rem, 5vw, 3.25rem); }
+.premium-information h3 { font-size: 1.75rem; }
+.premium-information > section,
+.premium-information :is(.information-founder, .information-credentials) > section { padding-block: 3.25rem; }
+.premium-information > section > div:not(.absolute),
+.premium-information :is(.information-founder, .information-credentials) > section > div { width: calc(100% - 2.5rem); max-width: 76rem; padding-inline: 0; }
+.premium-information .information-hero { padding-block: 1.25rem 3.25rem; border-bottom: 1px solid var(--information-rule); background: var(--information-cream); }
+.premium-information .information-hero p { max-width: 62ch; margin-inline: 0; text-align: left; color: var(--information-muted); font-weight: 400; }
+.premium-information .information-hero h1 + p { margin-top: 1.5rem; font-size: 1.1875rem; line-height: 1.65; }
+.premium-information .information-breadcrumbs { margin-bottom: 2.25rem; }
+.premium-information .information-breadcrumbs :is(ol, span) { color: var(--information-muted); }
+.premium-information .information-breadcrumbs a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.premium-information a { text-decoration: underline; text-underline-offset: .25rem; }
+.premium-information a:hover { text-decoration-thickness: 2px; }
+.premium-information a:active { background-color: var(--information-sage); }
+.premium-information .information-stats { padding-block: 2rem; background: var(--information-sage); border-bottom: 1px solid var(--information-rule); }
+.premium-information .information-stats .grid { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; text-align: left; }
+.premium-information .information-stats .grid > div { min-width: 0; padding-left: 1.25rem; border-left: 2px solid #bdcbb6; }
+.premium-information .information-stats p:first-child { color: var(--information-sage-ink); font-size: clamp(2rem, 5vw, 2.75rem); font-weight: 600; line-height: 1.2; }
+.premium-information .information-stats p + p { margin-top: .5rem; color: var(--information-muted); font-size: .9375rem; line-height: 1.5; }
+.premium-information .information-founder > section { background: var(--information-paper); }
+.premium-information .information-founder .grid { grid-template-columns: minmax(0, 1fr); align-items: start; gap: 2.5rem; }
+.premium-information .information-founder .grid > div { min-width: 0; }
+.premium-information .information-founder .image-brand-overlay { max-height: 36rem; border-radius: .25rem; box-shadow: 0 3px 10px #332e2a03, 0 16px 40px #332e2a06; }
+.premium-information .information-founder .uppercase { color: var(--information-sage-ink); }
+.premium-information .information-founder .text-muted-foreground { color: var(--information-muted); line-height: 1.7; }
+.premium-information .information-founder blockquote { border-color: var(--information-berry); margin-top: 2rem; padding-block: .5rem; }
+.premium-information .information-founder blockquote p { color: var(--information-ink); font-size: 1.375rem; }
+.premium-information .information-founder cite { color: var(--information-berry); }
+/* Founder content and CTA copy stay visible before motion hydration. */
+.premium-information .information-founder [style*="opacity"] { opacity: 1 !important; transform: none !important; }
+.premium-information .information-mission { background: var(--information-sage); border-block: 1px solid var(--information-rule); }
+.premium-information .information-mission > div > div { margin-inline: 0; text-align: left; }
+.premium-information .information-mission p { max-width: 60ch; margin: 1.5rem 0 0; color: var(--information-muted); text-align: left; font-size: 1.1875rem; line-height: 1.75; }
+.premium-information .information-values { background: var(--information-paper); }
+.premium-information .information-values > div > div:first-child { margin-inline: 0; text-align: left; }
+.premium-information .information-values > div > div:first-child p { margin: 1rem 0 0; color: var(--information-muted); font-size: 1.0625rem; font-weight: 400; }
+.premium-information .information-value-grid { margin-top: 2.5rem; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+.premium-information .information-value-card { min-width: 0; padding: 1.75rem; border: 1px solid var(--information-rule); border-top: .25rem solid var(--information-sage-ink); border-radius: .25rem; background: var(--information-cream); box-shadow: none; }
+.premium-information .information-value-card p { margin-top: 1rem; color: var(--information-muted); font-size: 1rem; line-height: 1.7; }
+.premium-information .information-credentials > section { background: var(--information-cream); border-top: 1px solid var(--information-rule); }
+.premium-information .information-credentials h2 { text-align: left; }
+.premium-information .information-credentials h2 + p { margin: 1rem 0 0; color: var(--information-muted); text-align: left; font-size: 1.0625rem; }
+.premium-information .information-credentials .grid { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.premium-information .information-credentials .grid > div { min-width: 0; padding: 1.5rem; border: 1px solid var(--information-rule); border-radius: .25rem; background: var(--information-paper); box-shadow: none; }
+.premium-information .information-credentials .grid h3 { font-size: 1.5rem; line-height: 1.3; }
+.premium-information .information-credentials .grid p { margin-top: .875rem; color: var(--information-muted); font-size: 1rem; line-height: 1.65; }
+.premium-information .information-credentials .grid span { border-radius: .25rem; color: var(--information-sage-ink); background: var(--information-sage); }
+.premium-information .information-credentials a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--information-berry); }
+.premium-information .information-credentials .grid + p { color: var(--information-muted); }
+.premium-information .information-faq { background: var(--information-paper); }
+.premium-information .information-faq-category { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; padding-top: 2rem; margin-bottom: 3.5rem; border-top: 1px solid var(--information-rule); }
+.premium-information .information-faq-category:last-child { margin-bottom: 0; }
+.premium-information .information-faq-category h2 { margin-bottom: 0; font-size: clamp(1.875rem, 4vw, 2.5rem); }
+.premium-information .information-accordion { min-width: 0; border: 1px solid var(--information-rule); border-radius: .25rem; background: var(--information-cream); }
+.premium-information .information-accordion > div { padding-inline: 1.25rem; border-color: var(--information-rule); }
+.premium-information .information-accordion button { min-height: 4.5rem; padding-block: 1.25rem; color: var(--information-ink); font-size: 1.0625rem; line-height: 1.5; }
+.premium-information .information-accordion button > span:first-child { color: inherit; font-weight: 600; }
+.premium-information .information-accordion button > span[aria-hidden] { color: var(--information-sage-ink); background: var(--information-sage); }
+.premium-information .information-accordion button svg { color: inherit; }
+.premium-information .information-accordion button:hover { color: var(--information-berry); }
+.premium-information .information-accordion button:active { background: var(--information-sage); }
+.premium-information .information-accordion [role="region"] p { padding-bottom: 1.5rem; color: var(--information-muted); font-size: 1rem; line-height: 1.75; }
+/* The existing hidden attribute and multi-open accordion logic are untouched. */
+.premium-information .information-area-section { padding-top: 1.25rem; background: var(--information-cream); }
+.premium-information .information-area-intro { max-width: 66rem; margin-inline: 0; text-align: left; }
+.premium-information .information-area-intro p { max-width: 62ch; margin: 1.5rem 0 0; color: var(--information-muted); font-size: 1.1875rem; line-height: 1.65; }
+.premium-information .information-region-grid { margin-top: 3rem; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+.premium-information .information-region-grid > li { min-width: 0; }
+.premium-information .information-region-card { height: 100%; min-width: 0; padding: 1.75rem; border: 1px solid var(--information-rule); border-top: .25rem solid var(--information-sage-ink); border-radius: .25rem; background: var(--information-paper); box-shadow: 0 3px 10px #332e2a03, 0 16px 40px #332e2a06; text-decoration: none; transition: none; }
+.premium-information .information-region-card h2 { font-size: 1.875rem; line-height: 1.2; }
+.premium-information .information-region-card p { margin-top: 1rem; color: var(--information-muted); font-size: 1rem; line-height: 1.6; }
+.premium-information .information-region-card span { margin-top: 1.5rem; color: var(--information-berry); font-size: .9375rem; line-height: 1.6; text-decoration: underline; text-underline-offset: .25rem; }
+.premium-information .information-region-card:hover { background: var(--information-sage); border-color: var(--information-sage-ink); box-shadow: none; }
+.premium-information .information-region-card:hover span { text-decoration-thickness: 2px; }
+.premium-information .information-region-card:active { background: #dce5d5; }
+.premium-information .information-area-action { margin-top: 2.5rem; text-align: left; }
+.premium-information .information-area-action a { min-height: 3.375rem; height: auto; max-width: 100%; padding: .875rem 1.5rem; border: 1px solid var(--information-berry); border-radius: .25rem; background: var(--information-berry); color: #fff; line-height: 1.4; white-space: normal; text-align: center; text-decoration: none; }
+.premium-information .information-area-action a:hover { background: var(--information-deep); border-color: var(--information-deep); text-decoration: underline; }
+.premium-information .information-area-action a:active { transform: translateY(1px); }
+.premium-information .information-cta { background: var(--information-deep); color: var(--information-cream); }
+.premium-information .information-cta h2 { color: var(--information-cream); }
+.premium-information .information-cta p { color: #e9d8d0; font-size: 1.0625rem; }
+.premium-information .information-cta a { min-height: 3.375rem; height: auto; max-width: 100%; padding: .875rem 1.25rem; border: 1px solid var(--information-cream); border-radius: .25rem; background: var(--information-cream); color: var(--information-deep); line-height: 1.4; white-space: normal; text-align: center; text-decoration: none; }
+.premium-information .information-cta a + a { background: transparent; color: var(--information-cream); }
+.premium-information .information-cta a:hover { background: var(--information-sage); color: var(--information-deep); text-decoration: underline; }
+.premium-information .information-cta a:active { transform: translateY(1px); }
+.premium-information .information-cta .reveal { opacity: 1; transform: none; transition: none; }
+.premium-information a:focus-visible,
+.premium-information button:focus-visible { outline: 3px solid var(--information-berry); outline-offset: 4px; }
+.premium-information .information-cta a:focus-visible { outline-color: var(--information-cream); }
+@media (min-width: 30rem) {
+  .premium-information .information-stats .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 47.5rem) {
+  .premium-information > section,
+  .premium-information :is(.information-founder, .information-credentials) > section { padding-block: 4.5rem; }
+  .premium-information > section > div:not(.absolute),
+  .premium-information :is(.information-founder, .information-credentials) > section > div { width: calc(100% - 4rem); }
+  .premium-information .information-hero,
+  .premium-information .information-area-section { padding-top: 1.5rem; }
+  .premium-information .information-stats { padding-block: 2.5rem; }
+  .premium-information .information-value-grid,
+  .premium-information .information-credentials .grid,
+  .premium-information .information-region-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 60rem) {
+  .premium-information .information-stats .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .premium-information .information-founder .grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 4rem; }
+  .premium-information .information-faq-category { grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 3rem; }
+}
+@media (min-width: 75rem) {
+  .premium-information > section > div:not(.absolute),
+  .premium-information :is(.information-founder, .information-credentials) > section > div { width: calc(100% - 7rem); }
+  .premium-information > section:not(.information-hero):not(.information-stats),
+  .premium-information :is(.information-founder, .information-credentials) > section { padding-block: 5.5rem; }
+  .premium-information .information-value-grid,
+  .premium-information .information-region-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .premium-information .information-region-card,
+  .premium-information .information-accordion button,
+  .premium-information .information-accordion button > span,
+  .premium-information .information-area-action a,
+  .premium-information .information-cta a { transition: none; }
+  .premium-information .information-area-action a:active,
+  .premium-information .information-cta a:active { transform: none; }
+}

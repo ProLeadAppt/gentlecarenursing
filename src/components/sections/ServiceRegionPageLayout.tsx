@@ -131,7 +131,7 @@ export function ServiceRegionPageLayout({ data }: Props) {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-white pt-32 pb-24 lg:pt-40 lg:pb-32">
+      <section className="region-hero relative overflow-hidden bg-white pt-32 pb-24 lg:pt-40 lg:pb-32">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-accent/[0.08] blur-[120px]" />
           <div className="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] rounded-full bg-primary/[0.04] blur-[100px]" />
@@ -139,13 +139,13 @@ export function ServiceRegionPageLayout({ data }: Props) {
 
         <Container size="md" className="relative z-10">
           <Reveal delay={0.1}>
-            <div className="flex justify-center mb-10">
+            <div className="region-breadcrumbs flex justify-center mb-10">
               <Breadcrumbs includeSchema={false} items={breadcrumbItems} />
             </div>
           </Reveal>
 
           <Reveal delay={0.2}>
-            <div className="text-center">
+            <div className="region-title text-center">
               <span className="mb-6 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-primary/70">
                 <MapPin className="h-3 w-3" />
                 {region.region} · Sydney
@@ -160,7 +160,7 @@ export function ServiceRegionPageLayout({ data }: Props) {
           </Reveal>
 
           <Reveal delay={0.3}>
-            <div className="mx-auto mb-12 max-w-3xl rounded-[3rem] bg-accent/[0.03] border border-accent/15 p-10 shadow-sm backdrop-blur-sm">
+            <div className="region-answer mx-auto mb-12 max-w-3xl rounded-[3rem] bg-accent/[0.03] border border-accent/15 p-10 shadow-sm backdrop-blur-sm">
               <p className="text-center text-xl font-medium leading-relaxed text-foreground italic font-[family-name:var(--font-serif)]">
                 &ldquo;{service.snippetAnswer}&rdquo;
               </p>
@@ -168,13 +168,13 @@ export function ServiceRegionPageLayout({ data }: Props) {
           </Reveal>
 
           <Reveal delay={0.4}>
-            <p className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-muted-foreground font-medium">
+            <p className="region-intro mx-auto max-w-3xl text-center text-lg leading-relaxed text-muted-foreground font-medium">
               {data.hero}
             </p>
           </Reveal>
 
           <Reveal delay={0.5}>
-            <div className="mt-14 flex flex-col sm:flex-row justify-center gap-6">
+            <div className="region-actions mt-14 flex flex-col sm:flex-row justify-center gap-6">
               <Magnetic>
                 <FormModalTrigger
                   formType="contact"
@@ -200,17 +200,19 @@ export function ServiceRegionPageLayout({ data }: Props) {
         </Container>
       </section>
 
-      <EvidencePanel
-        heading={`Quick facts: ${service.title} in ${region.region}`}
-        intro={`Citable facts for families, ${service.slug === "ndis-services" ? "support coordinators, plan managers" : service.slug === "dva-community-nursing" ? "GPs and DVA contacts" : "GPs and discharge planners"} considering ${service.title.toLowerCase()} across ${region.region}.`}
-        items={evidenceItems}
-      />
+      <div className="region-evidence">
+        <EvidencePanel
+          heading={`Quick facts: ${service.title} in ${region.region}`}
+          intro={`Citable facts for families, ${service.slug === "ndis-services" ? "support coordinators, plan managers" : service.slug === "dva-community-nursing" ? "GPs and DVA contacts" : "GPs and discharge planners"} considering ${service.title.toLowerCase()} across ${region.region}.`}
+          items={evidenceItems}
+        />
+      </div>
 
       {/* Service overview + suburbs sidebar */}
-      <Section className="bg-muted/30 border-y border-border/40">
+      <Section className="region-overview bg-muted/30 border-y border-border/40">
         <Container>
-          <div className="grid lg:grid-cols-12 gap-16 items-start">
-            <div className="lg:col-span-7 space-y-12">
+          <div className="region-overview-grid grid lg:grid-cols-12 gap-16 items-start">
+            <div className="region-overview-main lg:col-span-7 space-y-12">
               <Reveal>
                 <div className="space-y-6">
                   <span className="inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60">
@@ -229,7 +231,7 @@ export function ServiceRegionPageLayout({ data }: Props) {
               </Reveal>
 
               <Reveal delay={0.1}>
-                <div className="rounded-[2.5rem] border border-border/60 bg-white p-10 sm:p-12 shadow-sm">
+                <div className="region-included rounded-[2.5rem] border border-border/60 bg-white p-10 sm:p-12 shadow-sm">
                   <Heading
                     level="h3"
                     className="text-2xl font-bold mb-8 font-[family-name:var(--font-serif)]"
@@ -252,9 +254,9 @@ export function ServiceRegionPageLayout({ data }: Props) {
               </Reveal>
             </div>
 
-            <aside className="lg:col-span-5 lg:sticky lg:top-32">
+            <aside className="region-suburbs lg:col-span-5 lg:sticky lg:top-32">
               <Reveal delay={0.2}>
-                <div className="rounded-[2.5rem] border border-border bg-white p-10 shadow-sm overflow-hidden relative">
+                <div className="region-suburb-card rounded-[2.5rem] border border-border bg-white p-10 shadow-sm overflow-hidden relative">
                   <div className="absolute top-0 right-0 p-8 text-primary/5 pointer-events-none">
                     <MapPin className="h-32 w-32" strokeWidth={1} />
                   </div>
@@ -311,7 +313,7 @@ export function ServiceRegionPageLayout({ data }: Props) {
       </Section>
 
       {/* Regional context */}
-      <Section className="bg-white">
+      <Section className="region-context bg-white">
         <Container size="md">
           <Reveal>
             <div className="text-center mb-12">
@@ -335,7 +337,7 @@ export function ServiceRegionPageLayout({ data }: Props) {
       </Section>
 
       {/* Funding & access */}
-      <Section className="bg-primary/[0.02] border-y border-primary/10">
+      <Section className="region-funding bg-primary/[0.02] border-y border-primary/10">
         <Container size="md">
           <Reveal>
             <div className="text-center mb-12">
@@ -356,7 +358,7 @@ export function ServiceRegionPageLayout({ data }: Props) {
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+            <div className="region-actions mt-10 flex flex-col sm:flex-row justify-center gap-4">
               <Magnetic>
                 <FormModalTrigger
                   formType="contact"
@@ -382,19 +384,21 @@ export function ServiceRegionPageLayout({ data }: Props) {
       </Section>
 
       {/* FAQs */}
-      <FaqPreview
-        title={`Common questions about ${service.title.toLowerCase()} in ${region.region}`}
-        items={data.faqs.map((f) => ({
-          id: f.id,
-          question: f.question,
-          answer: f.answer,
-        }))}
-        viewAllHref="/faq"
-        viewAllLabel="View all FAQs"
-      />
+      <div className="region-faq">
+        <FaqPreview
+          title={`Common questions about ${service.title.toLowerCase()} in ${region.region}`}
+          items={data.faqs.map((f) => ({
+            id: f.id,
+            question: f.question,
+            answer: f.answer,
+          }))}
+          viewAllHref="/faq"
+          viewAllLabel="View all FAQs"
+        />
+      </div>
 
       {/* Internal linking */}
-      <Section className="bg-muted/30 border-t border-border/40">
+      <Section className="region-related bg-muted/30 border-t border-border/40">
         <Container>
           <Reveal>
             <div className="text-center mb-12">
@@ -409,7 +413,7 @@ export function ServiceRegionPageLayout({ data }: Props) {
               </p>
             </div>
           </Reveal>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="region-related-links flex flex-wrap justify-center gap-4">
             <RelatedLink href={service.parentHref} label={`${service.title} (overview)`} />
             <RelatedLink href={`/areas/${region.slug}`} label={`In-home nursing in ${region.region}`} />
             {relatedServices.map((s) => (
@@ -425,10 +429,12 @@ export function ServiceRegionPageLayout({ data }: Props) {
         </Container>
       </Section>
 
-      <ServiceCtaWithModal
-        title={data.ctaTitle}
-        description={data.ctaDescription}
-      />
+      <div className="region-cta">
+        <ServiceCtaWithModal
+          title={data.ctaTitle}
+          description={data.ctaDescription}
+        />
+      </div>
     </>
   );
 }
