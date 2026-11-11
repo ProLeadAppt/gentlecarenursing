@@ -77,7 +77,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="font-source-sans font-dm-sans font-cormorant" suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" className="font-source-sans font-dm-sans font-cormorant" suppressHydrationWarning>
       <head>
         <link rel="preload" href="/fonts/13971731025ec697-s.p.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/692df4da22e71021-s.p.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />

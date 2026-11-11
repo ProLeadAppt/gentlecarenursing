@@ -95,7 +95,8 @@ test("enquiry pages: shared production is unchanged, with later presentation rou
     // These presentation-only route updates have full original DOM, metadata
     // and shared-source coverage in the information and discovery parity tests.
     if (["src/app/about/page.tsx", "src/app/faq/page.tsx", "src/app/areas/page.tsx", "src/app/conditions/page.tsx", "src/app/suburbs/page.tsx", "src/app/blog/page.tsx"].includes(path)) continue;
-    assert.equal(digest(path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : readFileSync(path)), hash, path);
+    // Remove only the Next smooth-scroll opt-in; retain the original layout hash.
+    assert.equal(digest(path === "src/app/layout.tsx" ? readFileSync(path, "utf8").replace('<html lang="en" data-scroll-behavior="smooth"', '<html lang="en"') : path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : readFileSync(path)), hash, path);
   }
 });
 

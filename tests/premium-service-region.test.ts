@@ -131,7 +131,8 @@ test("service-region: every other source, asset, configuration and dependency fi
     // Only review motion/focus changes: preservation and behavior in review-reduced-motion.test.ts.
     if (["src/components/review/ReviewFunnel.tsx", "src/components/review/StarRating.tsx"].includes(path)) continue;
     if (laterRoutes.includes(path)) continue;
-    assert.equal(digest(path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : readFileSync(path)), hash, path);
+    // Remove only the Next smooth-scroll opt-in; retain the original layout hash.
+    assert.equal(digest(path === "src/app/layout.tsx" ? readFileSync(path, "utf8").replace('<html lang="en" data-scroll-behavior="smooth"', '<html lang="en"') : path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : readFileSync(path)), hash, path);
   }
   const expected = [...Object.keys(baseline.unchangedFiles).filter(p => p.startsWith("src/") || p.startsWith("public/")), routePath, layoutPath, "src/app/premium-service-region.css", "src/app/premium-editorial.css", "src/app/premium-locality.css", "src/app/premium-utility.css"].sort();
   assert.deepEqual([...walk("src"), ...walk("public")].sort(), expected);
