@@ -1,3 +1,4 @@
+import "../premium-enquiry.css";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Grid } from "@/components/layout/Grid";
@@ -42,10 +43,10 @@ const REFERRAL_STEPS = [
 
 export default function ReferralPage() {
   return (
-    <>
-      <Section size="lg" variant="card">
+    <div className="premium-enquiry premium-referral">
+      <Section size="lg" variant="card" className="enquiry-hero">
         <Container size="md">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Request Care" }]} className="mb-6" />
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Request Care" }]} className="mb-6 enquiry-breadcrumbs" />
           <Heading level="h1" as="h1" className="text-center">
             Request Care
           </Heading>
@@ -66,21 +67,23 @@ export default function ReferralPage() {
         </Container>
       </Section>
 
-      <ProcessSteps
-        title="How It Works"
-        subtitle="From enquiry to care."
-        steps={REFERRAL_STEPS}
-      />
+      <div className="enquiry-process">
+        <ProcessSteps
+          title="How It Works"
+          subtitle="From enquiry to care."
+          steps={REFERRAL_STEPS}
+        />
+      </div>
 
       {/* Form */}
-      <Section variant="muted">
+      <Section variant="muted" className="enquiry-form-section">
         <Container size="sm">
           <SectionHeader
             title="Submit Your Enquiry"
             subtitle="Share your details and care needs using the form below."
           />
           <div className="mt-10">
-            <Card variant="default" className="p-8">
+            <Card variant="default" className="p-8 enquiry-form">
               <ReferralForm />
             </Card>
           </div>
@@ -88,10 +91,10 @@ export default function ReferralPage() {
       </Section>
 
       {/* What Happens Next */}
-      <Section>
+      <Section className="enquiry-next">
         <Container size="md">
           <SectionHeader title="What Happens Next" />
-          <Grid cols={3} gap="lg" className="mt-10">
+          <Grid cols={3} gap="lg" className="mt-10 enquiry-next-grid">
             <div className="text-center">
               <Heading level="h3" as="h3" className="text-lg">
                 Enquiry Review
@@ -128,7 +131,8 @@ export default function ReferralPage() {
         primaryCta={CTA_LINKS.contact}
         secondaryCta={CTA_LINKS.callUs}
         variant="muted"
+        className="enquiry-cta"
       />
-    </>
+    </div>
   );
 }

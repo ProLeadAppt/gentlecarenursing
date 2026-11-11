@@ -1,0 +1,163 @@
+/* Opt-in presentation for the services hub and clinical nursing route only.
+   Values match the live homepage. Shared tokens/components remain untouched. */
+.premium-care {
+  --care-berry: #842833;
+  --care-ink: #332e2a;
+  --care-muted: #615b54;
+  --care-cream: #fdf6ec;
+  --care-paper: #fffdf9;
+  --care-sage: #e8eee3;
+  --care-sage-ink: #486141;
+  --care-rule: #d7cfc3;
+  --care-deep: #3d0a11;
+  color: var(--care-ink);
+  background: var(--care-paper);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+.premium-care .care-wrap { width: calc(100% - 2.5rem); max-width: 83rem; margin-inline: auto; }
+.premium-care .care-section { padding-block: 3.25rem; }
+.premium-care :is(h1, h2, h3, p, a, button, li, dt, dd) { overflow-wrap: break-word; }
+.premium-care :is(h1, h2, h3) { font-family: var(--font-serif), Georgia, serif; font-weight: 600; letter-spacing: -.03em; line-height: 1.1; }
+.premium-care h1 { font-size: clamp(2.625rem, 9vw, 4rem); max-width: 15ch; }
+.premium-care h1 span { display: block; color: var(--care-berry); }
+.premium-care h2 { font-size: 2.5rem; max-width: 23ch; }
+.premium-care h3 { font-size: 1.75rem; }
+.premium-care .care-eyebrow { margin-bottom: 1rem; color: var(--care-berry); font-size: .75rem; font-weight: 600; line-height: 1.4; letter-spacing: .15em; text-transform: uppercase; }
+.premium-care .care-hero, .premium-care .care-cream { background: var(--care-cream); }
+.premium-care .care-sage { background: var(--care-sage); }
+.premium-care .care-hero { padding-block: 1.5rem 3rem; }
+.premium-care .care-breadcrumbs { margin-bottom: 2.5rem; }
+.premium-care .care-breadcrumbs a { display: inline-flex; align-items: center; min-height: 2.75rem; text-decoration: underline; text-underline-offset: .25rem; }
+.premium-care .care-breadcrumbs a:active { background: var(--care-sage); }
+.premium-care .care-breadcrumbs :is(ol, span) { color: var(--care-muted); }
+.premium-care .care-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; align-items: start; }
+.premium-care .care-hero-grid > div { min-width: 0; }
+.premium-care .care-lead { margin-top: 1.5rem; max-width: 56ch; color: var(--care-muted); font-size: 1.125rem; }
+.premium-care .care-updated { margin-top: 1.5rem; color: var(--care-muted); font-size: .8125rem; }
+.premium-care .care-page-guide { padding: 1.5rem; background: var(--care-sage); border-top: .25rem solid var(--care-sage-ink); }
+.premium-care .care-page-guide a { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 3.25rem; padding-block: .875rem; border-top: 1px solid #bdcbb6; color: var(--care-ink); text-decoration: underline; text-underline-offset: .3125rem; }
+.premium-care .care-page-guide a:hover { color: var(--care-berry); text-decoration-thickness: 2px; }
+.premium-care .care-page-guide a:active { background: var(--care-paper); }
+.premium-care :is(.care-page-guide, .care-text-link, .care-button) svg { width: 1.125rem; height: 1.125rem; flex: none; }
+.premium-care .care-summary { background: var(--care-sage); border-top: .25rem solid var(--care-sage-ink); padding: 1.5rem; }
+.premium-care .care-summary-answer { font-family: var(--font-serif), Georgia, serif; font-size: 1.6875rem; line-height: 1.35; letter-spacing: -.015em; }
+.premium-care .care-summary .care-page-guide { border: 0; padding: 0; margin-top: 1.5rem; font-size: 1rem; }
+.premium-care .care-section-head { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; margin-bottom: 2rem; }
+.premium-care .care-section-head > p { max-width: 48ch; color: var(--care-muted); }
+.premium-care .care-service-selection, .premium-care .care-split { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; align-items: start; }
+.premium-care .care-featured-service { display: flex; flex-direction: column; padding: 2rem; background: var(--care-berry); color: var(--care-paper); border-radius: .25rem; }
+.premium-care .care-featured-service .care-eyebrow { color: var(--care-cream); }
+.premium-care .care-featured-service h3 { font-size: 2.625rem; }
+.premium-care .care-featured-service > p:not(.care-eyebrow) { margin-top: 1.25rem; }
+.premium-care .care-featured-service .care-text-link { margin-top: 2rem; color: var(--care-paper); }
+.premium-care .care-featured-service .care-text-link:active { background: var(--care-deep); }
+.premium-care .care-service-row { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); gap: 1rem; border-top: 1px solid #bdcbb6; padding-block: 1.5rem; }
+.premium-care .care-service-row:first-child { padding-top: 1.5rem; }
+.premium-care .care-service-row p { margin-top: .75rem; color: var(--care-muted); }
+.premium-care .care-number { display: block; color: var(--care-sage-ink); font-size: .875rem; line-height: 1.4; }
+.premium-care .care-service-row .care-number { padding-top: .25rem; }
+.premium-care .care-text-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 1.25rem; min-height: 3rem; padding-block: .625rem; color: var(--care-berry); font-size: 1rem; font-weight: 600; text-decoration: underline; text-underline-offset: .3125rem; text-decoration-thickness: 1px; }
+.premium-care .care-text-link:hover { text-decoration-thickness: 2px; }
+.premium-care .care-text-link:active { background: var(--care-sage); }
+.premium-care .care-pathways, .premium-care .care-directory, .premium-care .care-feature-grid, .premium-care .care-three-columns { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+.premium-care .care-pathway { display: flex; flex-direction: column; border-top: 1px solid var(--care-rule); padding-top: 1.5rem; }
+.premium-care .care-kicker { margin-block: .75rem 1rem; color: var(--care-muted); font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+.premium-care .care-pathway > p:not(.care-kicker) { margin-block: 1rem .5rem; color: var(--care-muted); }
+.premium-care .care-pathway .care-text-link, .premium-care .care-related .care-text-link { margin-top: auto; align-self: flex-start; }
+.premium-care .care-approach { padding-left: 1.25rem; border-left: 2px solid var(--care-sage-ink); }
+.premium-care .care-approach h2 { font-size: 1.75rem; }
+.premium-care .care-approach p { margin-top: 1rem; color: var(--care-muted); }
+.premium-care .care-directory-item, .premium-care .care-feature, .premium-care .care-related { min-width: 0; border-top: 1px solid var(--care-rule); padding-top: 1.5rem; }
+.premium-care .care-directory-item > p, .premium-care .care-related > p { margin-block: .875rem .5rem; color: var(--care-muted); }
+.premium-care .care-directory-item { display: flex; flex-direction: column; }
+.premium-care .care-directory-item .care-text-link { margin-top: auto; align-self: flex-start; }
+.premium-care .care-feature { border-color: #bdcbb6; }
+.premium-care .care-feature h3 { margin-top: .75rem; }
+.premium-care .care-feature p { margin-top: .875rem; color: var(--care-muted); }
+.premium-care .care-intro { margin-top: 1.25rem; color: var(--care-muted); }
+.premium-care .care-audiences { list-style: none; padding: 0; margin: 0; }
+.premium-care .care-audiences li { display: flex; align-items: baseline; gap: 1rem; border-bottom: 1px solid var(--care-rule); padding-block: 1rem; }
+.premium-care .care-audiences li:first-child { padding-top: 0; }
+.premium-care .care-audiences li > span { color: var(--care-sage-ink); flex: none; }
+.premium-care .care-steps { padding: 0; list-style: none; }
+.premium-care .care-steps li { border-top: 1px solid var(--care-rule); padding-top: 1.5rem; }
+.premium-care .care-steps h3 { margin-top: 1rem; }
+.premium-care .care-steps p { margin-top: 1rem; color: var(--care-muted); }
+.premium-care .care-related { display: flex; flex-direction: column; }
+.premium-care .care-faq { min-width: 0; }
+.premium-care .care-faq button { font-size: 1.125rem; min-height: 3.25rem; }
+.premium-care .care-faq button:active { background: var(--care-sage); }
+.premium-care .care-faq [role="region"] p { color: var(--care-muted); }
+/* Reuse the existing evidence renderer, preserving every reference and caveat. */
+.premium-care .care-evidence > section { padding-block: 3.25rem; }
+.premium-care .care-evidence > section > div { width: calc(100% - 2.5rem); max-width: 83rem; padding-inline: 0; }
+.premium-care .care-evidence > section > div > div { padding: 0; border: 0; border-radius: 0; background: transparent; }
+.premium-care .care-evidence h2 { max-width: 30ch; font-size: 2rem; }
+.premium-care .care-evidence dt { font-size: .75rem; color: var(--care-muted); }
+.premium-care .care-evidence dd { font-size: 1rem; color: var(--care-ink); }
+.premium-care .care-evidence dl p { font-size: .8125rem; color: var(--care-muted); }
+.premium-care .care-evidence dl a { display: inline; text-decoration: underline; text-underline-offset: .2rem; }
+.premium-care .care-evidence dl a:hover { color: var(--care-berry); }
+.premium-care .care-evidence dl a:active { background: var(--care-sage); }
+.premium-care .care-contact { background: var(--care-deep); color: var(--care-cream); }
+.premium-care .care-contact-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+.premium-care .care-contact p { color: #e9d8d0; }
+.premium-care .care-actions { display: flex; flex-direction: column; gap: .75rem; margin-top: 1.75rem; }
+.premium-care .care-button { display: inline-flex; align-items: center; justify-content: space-between; gap: 1.25rem; min-height: 3.375rem; height: auto; padding: .875rem 1.25rem; border: 1px solid var(--care-berry); border-radius: .25rem; background: var(--care-berry); color: #fff; font-size: 1.0625rem; font-weight: 600; line-height: 1.35; text-decoration: none; }
+.premium-care .care-button-secondary { color: var(--care-berry); background: transparent; }
+.premium-care .care-button:hover { background: var(--care-deep); border-color: var(--care-deep); color: #fff; }
+.premium-care .care-button:active { transform: translateY(1px); }
+.premium-care .care-contact .care-button { background: var(--care-cream); color: var(--care-deep); border-color: var(--care-cream); }
+.premium-care .care-contact .care-button-secondary { background: transparent; color: var(--care-cream); }
+.premium-care .care-contact .care-button:hover { background: var(--care-sage); color: var(--care-deep); }
+/* Keep the shared CTA's contact modal handlers and analytics locations. */
+.premium-care .care-existing-cta > section { background: var(--care-deep); color: var(--care-cream); padding-block: 3.25rem; }
+.premium-care .care-existing-cta h2 { margin-inline: auto; font-family: var(--font-serif), Georgia, serif; font-weight: 600; font-size: 2.5rem; }
+.premium-care .care-existing-cta button { min-height: 3.375rem; border-radius: .25rem; }
+.premium-care .care-existing-cta button:active { transform: translateY(1px); }
+.premium-care a:focus-visible, .premium-care button:focus-visible { outline: 3px solid var(--care-berry); outline-offset: 4px; }
+.premium-care .care-featured-service a:focus-visible, .premium-care .care-contact a:focus-visible, .premium-care .care-existing-cta button:focus-visible { outline-color: var(--care-cream); }
+.premium-care section[id] { scroll-margin-top: 8rem; }
+@media (min-width: 47.5rem) {
+  .premium-care .care-wrap, .premium-care .care-evidence > section > div { width: calc(100% - 4rem); }
+  .premium-care .care-section, .premium-care .care-evidence > section, .premium-care .care-existing-cta > section { padding-block: 4.5rem; }
+  .premium-care .care-hero { padding-top: 1.5rem; }
+  .premium-care .care-hero-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 2.5rem; }
+  .premium-care h1 { font-size: 3.5rem; }
+  .premium-care h2 { font-size: 2.875rem; }
+  .premium-care .care-section-head { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: end; gap: 2.5rem; margin-bottom: 2.75rem; }
+  .premium-care .care-section-head h2 { max-width: 22ch; }
+  .premium-care .care-pathways, .premium-care .care-directory, .premium-care .care-feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; row-gap: 2.5rem; }
+  .premium-care .care-service-selection { grid-template-columns: minmax(0, .9fr) minmax(0, 1.3fr); gap: 2.5rem; }
+  .premium-care .care-split, .premium-care .care-contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; }
+  .premium-care .care-three-columns { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+  .premium-care .care-actions { flex-direction: row; flex-wrap: wrap; }
+  .premium-care .care-hero .care-actions { flex-direction: column; align-items: flex-start; }
+  .premium-care .care-evidence dl { column-gap: 3rem; row-gap: 2rem; }
+}
+@media (min-width: 62.5rem) {
+  .premium-care .care-wrap, .premium-care .care-evidence > section > div { width: calc(100% - 7rem); }
+  .premium-care .care-section, .premium-care .care-existing-cta > section { padding-block: 6rem; }
+  .premium-care .care-hero { padding-block: 1.5rem 4.5rem; }
+  .premium-care .care-breadcrumbs { margin-bottom: 3rem; }
+  .premium-care h1 { font-size: clamp(3.75rem, 5.5vw, 5.25rem); }
+  .premium-care h2 { font-size: 3.25rem; }
+  .premium-care .care-hero-grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 5rem; }
+  .premium-care .care-page-guide, .premium-care .care-summary { padding: 2rem; }
+  .premium-care .care-summary-answer { font-size: 2rem; }
+  .premium-care .care-hero .care-actions { flex-direction: row; align-items: stretch; }
+  .premium-care .care-service-selection { gap: 4rem; }
+  .premium-care .care-featured-service { padding: 2.5rem; }
+  .premium-care .care-pathways { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .premium-care .care-directory, .premium-care .care-feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .premium-care .care-split, .premium-care .care-contact-grid { gap: 5rem; }
+  .premium-care .care-three-columns { gap: 3rem; }
+  .premium-care .care-evidence h2 { font-size: 2.5rem; }
+  .premium-care .care-existing-cta h2 { font-size: 3.25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .premium-care .care-button:active, .premium-care .care-existing-cta button:active { transform: none; }
+}
+/* The final contact actions are visible without waiting for scroll observers. */
+.premium-care .care-existing-cta .reveal { opacity: 1; transform: none; transition: none; }

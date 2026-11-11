@@ -1,0 +1,160 @@
+/* Opt-in presentation for the 30 existing service-region URLs only.
+   The original content, semantic elements, data, schemas and interactions remain intact. */
+.premium-service-region {
+  --region-berry: #842833;
+  --region-deep: #3d0a11;
+  --region-ink: #332e2a;
+  --region-muted: #615b54;
+  --region-cream: #fdf6ec;
+  --region-paper: #fffdf9;
+  --region-sage: #e8eee3;
+  --region-sage-ink: #486141;
+  --region-rule: #d7cfc3;
+  background: var(--region-paper);
+  color: var(--region-ink);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+.premium-service-region :is(h1, h2, h3, p, dt, dd, li, a, button) { overflow-wrap: anywhere; }
+.premium-service-region :is(h1, h2, h3) { color: var(--region-ink); font-family: var(--font-serif), Georgia, serif; font-weight: 600; letter-spacing: -.03em; line-height: 1.15; }
+.premium-service-region h1 { max-width: 20ch; margin-bottom: 2rem; font-size: clamp(2.5rem, 7.5vw, 4.75rem); text-align: left; }
+.premium-service-region h2 { max-width: 28ch; font-size: clamp(2rem, 4.5vw, 3rem); }
+.premium-service-region h3 { font-size: 1.75rem; line-height: 1.25; }
+.premium-service-region p { color: var(--region-muted); font-weight: 400; }
+.premium-service-region .uppercase { color: var(--region-sage-ink); font-size: .75rem; letter-spacing: .12em; }
+.premium-service-region a { text-decoration: underline; text-underline-offset: .25rem; }
+.premium-service-region a:hover { text-decoration-thickness: 2px; }
+.premium-service-region a:active { background-color: var(--region-sage); }
+.premium-service-region svg { flex-shrink: 0; }
+.premium-service-region > section,
+.premium-service-region :is(.region-evidence, .region-faq, .region-cta) > section { padding-block: 3.25rem; }
+.premium-service-region > section > div:not(.absolute),
+.premium-service-region :is(.region-evidence, .region-faq, .region-cta) > section > div:not(.absolute) { width: calc(100% - 2.5rem); max-width: 76rem; padding-inline: 0; }
+/* Existing Reveal wrappers remain in the DOM, with content visible before hydration. */
+.premium-service-region [style*="opacity"] { opacity: 1 !important; transform: none !important; }
+.premium-service-region [style*="width:fit-content"] { width: 100% !important; min-width: 0; }
+.premium-service-region .reveal { opacity: 1; transform: none; transition: none; }
+.premium-service-region .region-hero { padding-top: 1.25rem; background: var(--region-cream); border-bottom: 1px solid var(--region-rule); }
+.premium-service-region .region-hero > .absolute > div { background: transparent; filter: none; }
+.premium-service-region .region-breadcrumbs { justify-content: flex-start; margin-bottom: 2rem; }
+.premium-service-region .region-breadcrumbs :is(ol, span) { color: var(--region-muted); }
+.premium-service-region .region-breadcrumbs a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.premium-service-region .region-title { text-align: left; }
+.premium-service-region .region-title > span { margin-bottom: 1.25rem; }
+.premium-service-region .region-answer { max-width: 54rem; margin: 0 0 1.75rem; padding: 1.5rem; border: 0; border-left: .25rem solid var(--region-sage-ink); border-radius: 0; background: var(--region-sage); box-shadow: none; backdrop-filter: none; }
+.premium-service-region .region-answer p { max-width: 58ch; color: var(--region-ink); font-family: var(--font-serif), Georgia, serif; font-size: clamp(1.25rem, 3vw, 1.5rem); font-style: normal; line-height: 1.5; text-align: left; }
+.premium-service-region .region-intro { max-width: 64ch; margin-inline: 0; font-size: 1.125rem; line-height: 1.75; text-align: left; }
+.premium-service-region .region-actions { align-items: stretch; justify-content: flex-start; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.premium-service-region .region-actions > div { min-width: 0; max-width: 100%; transform: none !important; }
+.premium-service-region .region-actions :is(a, button),
+.premium-service-region .region-suburb-card button,
+.premium-service-region .region-faq a,
+.premium-service-region .region-cta button { min-height: 3.375rem; height: auto; max-width: 100%; padding: .875rem 1.25rem; border: 1px solid var(--region-berry); border-radius: .25rem; background: var(--region-berry); color: #fff; box-shadow: none; font-size: 1rem; font-weight: 600; line-height: 1.5; white-space: normal; text-align: center; text-decoration: none; transition: none; }
+.premium-service-region .region-actions a { border-color: var(--region-rule); background: var(--region-paper); color: var(--region-berry); }
+.premium-service-region .region-actions :is(a, button):hover,
+.premium-service-region .region-suburb-card button:hover,
+.premium-service-region .region-faq a:hover { border-color: var(--region-deep); background: var(--region-deep); color: #fff; text-decoration: underline; transform: none; translate: none; }
+.premium-service-region .region-actions :is(a, button):active,
+.premium-service-region .region-suburb-card button:active,
+.premium-service-region .region-faq a:active,
+.premium-service-region .region-cta button:active { transform: translateY(1px); scale: none; }
+.premium-service-region .region-evidence > section { background: var(--region-paper); }
+.premium-service-region .region-evidence > section > div > div { padding: 0; border: 0; border-radius: 0; background: transparent; }
+.premium-service-region .region-evidence h2 { margin-top: .75rem; }
+.premium-service-region .region-evidence h2 + p { max-width: 66ch; margin-top: 1.25rem; line-height: 1.7; }
+.premium-service-region .region-evidence dl { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+.premium-service-region .region-evidence dl > div { min-width: 0; padding: 1.5rem; border: 1px solid var(--region-rule); border-radius: .25rem; background: var(--region-cream); }
+.premium-service-region .region-evidence dl > div > span { border-radius: .25rem; background: var(--region-sage); color: var(--region-sage-ink); box-shadow: none; }
+.premium-service-region .region-evidence dt { color: var(--region-sage-ink); font-size: .75rem; letter-spacing: .08em; line-height: 1.5; }
+.premium-service-region .region-evidence dd { margin-top: .5rem; color: var(--region-ink); font-size: 1rem; line-height: 1.65; }
+.premium-service-region .region-overview { background: var(--region-cream); border-color: var(--region-rule); }
+.premium-service-region .region-overview-grid { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+.premium-service-region .region-overview-main,
+.premium-service-region .region-suburbs { grid-column: auto; min-width: 0; }
+.premium-service-region .region-overview-main > div + div { margin-top: 2rem; }
+.premium-service-region .region-overview-main p { max-width: 65ch; font-size: 1.0625rem; line-height: 1.8; }
+.premium-service-region .region-included { padding: 1.5rem; border: 1px solid var(--region-rule); border-radius: .25rem; background: var(--region-paper); box-shadow: none; }
+.premium-service-region .region-included h3 { margin-bottom: 1.5rem; }
+.premium-service-region .region-included ul { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+.premium-service-region .region-included li { min-width: 0; gap: .75rem; }
+.premium-service-region .region-included li > div { background: var(--region-sage); color: var(--region-sage-ink); }
+.premium-service-region .region-included li > span { color: var(--region-muted); font-weight: 400; line-height: 1.7; }
+.premium-service-region .region-suburbs { position: static; }
+.premium-service-region .region-suburb-card { padding: 1.5rem; border: 1px solid var(--region-rule); border-top: .25rem solid var(--region-sage-ink); border-radius: .25rem; background: var(--region-sage); box-shadow: none; }
+.premium-service-region .region-suburb-card > .absolute { color: #bdcbb6; }
+.premium-service-region .region-suburb-card h3 { margin-bottom: 1rem; }
+.premium-service-region .region-suburb-card p { font-size: 1rem; line-height: 1.65; }
+.premium-service-region .region-suburb-card ul { gap: .625rem; }
+.premium-service-region .region-suburb-card li { min-width: 0; max-width: 100%; }
+.premium-service-region .region-suburb-card li span { max-width: 100%; padding: .375rem .75rem; border: 1px solid #bdcbb6; border-radius: .25rem; background: var(--region-paper); color: var(--region-sage-ink); box-shadow: none; font-size: .9375rem; font-weight: 500; }
+.premium-service-region .region-suburb-card > div:last-child { margin-top: 2rem; padding-top: 1.5rem; border-color: #bdcbb6; }
+.premium-service-region .region-suburb-card > div:last-child svg { color: var(--region-sage-ink); }
+.premium-service-region .region-suburb-card > div:last-child button svg { color: inherit; }
+.premium-service-region .region-context { background: var(--region-paper); }
+.premium-service-region .region-funding { border-color: var(--region-rule); background: var(--region-sage); }
+.premium-service-region :is(.region-context, .region-funding) > div { max-width: 60rem; }
+.premium-service-region :is(.region-context, .region-funding) .text-center { margin-bottom: 1.75rem; text-align: left; }
+.premium-service-region :is(.region-context, .region-funding) p { max-width: 68ch; font-size: 1.125rem; line-height: 1.85; }
+.premium-service-region .region-faq > section { background: var(--region-paper); }
+.premium-service-region .region-faq .reveal > div { margin-inline: 0; text-align: left; }
+.premium-service-region .region-faq h2 { max-width: 30ch; margin-inline: 0; }
+.premium-service-region .region-faq .reveal + div { max-width: 60rem; margin: 2rem 0 0; }
+.premium-service-region .region-faq .divide-y { border: 1px solid var(--region-rule); border-radius: .25rem; background: var(--region-cream); }
+.premium-service-region .region-faq .divide-y > div { padding-inline: 1.25rem; border-color: var(--region-rule); }
+.premium-service-region .region-faq button { min-height: 4.5rem; padding-block: 1.25rem; color: var(--region-ink); font-size: 1.0625rem; line-height: 1.5; transition: none; }
+.premium-service-region .region-faq button > span:first-child { min-width: 0; color: inherit; }
+.premium-service-region .region-faq button > span[aria-hidden] { background: var(--region-sage); color: var(--region-sage-ink); }
+.premium-service-region .region-faq button svg { color: inherit; }
+.premium-service-region .region-faq button:hover { color: var(--region-berry); }
+.premium-service-region .region-faq button:active { background: var(--region-sage); }
+/* No display/hidden override: the original single-open FAQ behavior stays intact. */
+.premium-service-region .region-faq [role="region"] p { padding-bottom: 1.5rem; color: var(--region-muted); font-size: 1rem; line-height: 1.75; }
+.premium-service-region .region-faq .divide-y + div { justify-content: flex-start; }
+.premium-service-region .region-related { border-color: var(--region-rule); background: var(--region-cream); }
+.premium-service-region .region-related .text-center { margin-bottom: 2rem; text-align: left; }
+.premium-service-region .region-related p { line-height: 1.7; }
+.premium-service-region .region-related-links { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+.premium-service-region .region-related-links a { justify-content: space-between; min-width: 0; min-height: 4.25rem; padding: 1rem 1.25rem; border: 1px solid var(--region-rule); border-radius: .25rem; background: var(--region-paper); color: var(--region-berry); box-shadow: none; font-size: 1rem; font-weight: 600; line-height: 1.5; transition: none; }
+.premium-service-region .region-related-links a:hover { border-color: var(--region-sage-ink); background: var(--region-sage); box-shadow: none; transform: none; translate: none; }
+.premium-service-region .region-related-links a:active { background: #dce5d5; }
+.premium-service-region .region-related-links svg { transition: none; transform: none; translate: none; }
+.premium-service-region .region-cta > section { background: var(--region-deep); color: var(--region-cream); }
+.premium-service-region .region-cta .reveal > div { max-width: 60rem; margin-inline: 0; text-align: left; }
+.premium-service-region .region-cta h2 { max-width: 30ch; color: var(--region-cream); }
+.premium-service-region .region-cta p { max-width: 65ch; color: #e9d8d0; font-size: 1.0625rem; line-height: 1.7; }
+.premium-service-region .region-cta .reveal > div > div { align-items: stretch; justify-content: flex-start; flex-wrap: wrap; }
+.premium-service-region .region-cta button { border-color: var(--region-cream); background: var(--region-cream); color: var(--region-deep); }
+.premium-service-region .region-cta button + button { background: transparent; color: var(--region-cream); }
+.premium-service-region .region-cta button:hover { background: var(--region-sage); color: var(--region-deep); text-decoration: underline; }
+.premium-service-region a:focus-visible,
+.premium-service-region button:focus-visible { outline: 3px solid var(--region-berry); outline-offset: 4px; }
+.premium-service-region .region-cta button:focus-visible { outline-color: var(--region-cream); }
+@media (min-width: 40rem) {
+  .premium-service-region .region-actions { flex-direction: row; }
+}
+@media (min-width: 47.5rem) {
+  .premium-service-region > section,
+  .premium-service-region :is(.region-evidence, .region-faq, .region-cta) > section { padding-block: 4.5rem; }
+  .premium-service-region > section > div:not(.absolute),
+  .premium-service-region :is(.region-evidence, .region-faq, .region-cta) > section > div:not(.absolute) { width: calc(100% - 4rem); }
+  .premium-service-region .region-hero { padding-top: 1.5rem; }
+  .premium-service-region .region-evidence dl,
+  .premium-service-region .region-related-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .premium-service-region .region-included,
+  .premium-service-region .region-suburb-card { padding: 2rem; }
+}
+@media (min-width: 75rem) {
+  .premium-service-region > section > div:not(.absolute),
+  .premium-service-region :is(.region-evidence, .region-faq, .region-cta) > section > div:not(.absolute) { width: calc(100% - 7rem); }
+  .premium-service-region > section:not(.region-hero),
+  .premium-service-region :is(.region-evidence, .region-faq, .region-cta) > section { padding-block: 5.5rem; }
+  .premium-service-region .region-overview-grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 3rem; }
+  .premium-service-region .region-evidence dl { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .premium-service-region .region-faq button > span { transition: none; }
+  .premium-service-region .region-actions :is(a, button):active,
+  .premium-service-region .region-suburb-card button:active,
+  .premium-service-region .region-faq a:active,
+  .premium-service-region .region-cta button:active { transform: none; scale: none; }
+}

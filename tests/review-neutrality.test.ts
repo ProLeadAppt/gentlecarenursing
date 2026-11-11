@@ -61,8 +61,9 @@ test("all five ratings pass validation without sending a message when delivery i
 test("private flow retains keyboard focus hooks and announces selected rather than preview rating", () => {
   const funnel = readFileSync("src/components/review/ReviewFunnel.tsx", "utf8");
   assert.match(funnel, /feedbackButtonRef\.current\?\.focus\(\)/);
-  assert.match(funnel, /onAnimationComplete=/);
-  assert.match(funnel, /definition === "enter"/);
+  assert.match(funnel, /if \(showFeedback\) panelRef\.current\?\.querySelector<HTMLElement>\("h2, h3"\)\?\.focus\(\)/);
+  assert.match(funnel, /\[showFeedback, rating\]/);
+  assert.doesNotMatch(funnel, /onAnimationComplete|AnimatePresence/);
   assert.match(funnel, /role="status" aria-live="polite"/);
   assert.match(funnel, /<h2 tabIndex=\{-1\}/);
   const stars = readFileSync("src/components/review/StarRating.tsx", "utf8");

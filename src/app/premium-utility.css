@@ -1,0 +1,136 @@
+/* Opt-in legal and private-review presentation only. Legal copy, review choices,
+   conditional panels, rating, validation and submission logic remain unchanged. */
+:is(.premium-privacy, .premium-terms, .premium-review) {
+  --utility-berry: #842833;
+  --utility-deep: #3d0a11;
+  --utility-ink: #332e2a;
+  --utility-muted: #615b54;
+  --utility-cream: #fdf6ec;
+  --utility-paper: #fffdf9;
+  --utility-sage: #e8eee3;
+  --utility-sage-ink: #486141;
+  --utility-rule: #d7cfc3;
+  color: var(--utility-ink);
+  background: var(--utility-cream);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+:is(.premium-privacy, .premium-terms, .premium-review) :is(h1, h2, h3, p, li, a, button, label) { overflow-wrap: anywhere; }
+:is(.premium-privacy, .premium-terms, .premium-review) h1 {
+  color: var(--utility-ink);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(2.75rem, 8vw, 5rem);
+  font-weight: 600;
+  letter-spacing: -.035em;
+  line-height: 1.12;
+}
+:is(.premium-privacy, .premium-terms) { padding-block: 3.25rem; }
+:is(.premium-privacy, .premium-terms) > div {
+  width: calc(100% - 2.5rem);
+  max-width: 52rem;
+  padding-inline: 0;
+}
+:is(.premium-privacy, .premium-terms) h1 {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--utility-rule);
+  text-align: left;
+}
+:is(.premium-privacy, .premium-terms) .utility-legal-prose {
+  margin-top: 2rem;
+  color: var(--utility-muted);
+}
+:is(.premium-privacy, .premium-terms) .utility-legal-prose > p { margin-block: 0 1.25rem; }
+:is(.premium-privacy, .premium-terms) .utility-legal-prose > p:first-child {
+  padding: 1.5rem;
+  border-left: .25rem solid var(--utility-sage-ink);
+  background: var(--utility-sage);
+  color: var(--utility-ink);
+  font-size: 1.125rem;
+}
+:is(.premium-privacy, .premium-terms) .utility-legal-prose > h2 {
+  margin-block: 2.5rem .875rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--utility-rule);
+  color: var(--utility-ink);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.625rem, 4vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -.02em;
+  line-height: 1.25;
+}
+:is(.premium-privacy, .premium-terms) .utility-legal-prose > ul {
+  margin-top: 1.25rem;
+  padding: 1.5rem 1.5rem 1.5rem 2.75rem;
+  border: 1px solid var(--utility-rule);
+  background: var(--utility-paper);
+  color: var(--utility-ink);
+}
+.premium-review > section { padding-block: 3.25rem; background: var(--utility-cream); }
+.premium-review > section > div { width: calc(100% - 2.5rem); max-width: 56rem; padding-inline: 0; }
+.premium-review .utility-review-hero { max-width: none; text-align: left; }
+.premium-review .utility-review-hero > p:first-child { color: var(--utility-sage-ink); font-size: .8125rem; line-height: 1.5; }
+.premium-review .utility-review-hero h1 { margin-top: 1rem; }
+.premium-review .utility-review-hero h1 span { color: var(--utility-berry); }
+.premium-review .utility-review-hero h1 + p { max-width: 58ch; margin-top: 1.5rem; color: var(--utility-muted); font-size: 1.1875rem; line-height: 1.65; }
+.premium-review .utility-review-body {
+  margin-top: 2.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--utility-rule);
+  border-top: .25rem solid var(--utility-sage-ink);
+  border-radius: .25rem;
+  background: var(--utility-paper);
+  box-shadow: 0 3px 10px #332e2a03, 0 16px 40px #332e2a06;
+}
+.premium-review .utility-review-body > div { max-width: none; }
+.premium-review .utility-review-body > div > p { color: var(--utility-muted); text-align: left; }
+.premium-review .utility-review-body > div > .grid { grid-template-columns: minmax(0, 1fr); }
+/* Keep both destinations equally prominent, independent of the rating. */
+.premium-review .utility-review-body > div > .grid > :is(a, button) {
+  min-width: 0;
+  min-height: 3.375rem;
+  padding: .875rem 1rem;
+  border-color: var(--utility-berry);
+  border-radius: .25rem;
+  background: var(--utility-paper);
+  color: var(--utility-berry);
+  line-height: 1.5;
+  white-space: normal;
+}
+.premium-review .utility-review-body > div > .grid > :is(a, button):hover { background: var(--utility-sage); }
+.premium-review .utility-review-body > div > .grid svg { flex-shrink: 0; }
+.premium-review .utility-review-body a { text-decoration: underline; text-underline-offset: .25rem; }
+.premium-review .utility-review-body a:hover { text-decoration-thickness: 2px; }
+.premium-review #private-feedback-panel :is(h2, h3) { font-family: var(--font-serif), Georgia, serif; color: var(--utility-ink); font-size: 1.75rem; line-height: 1.3; }
+.premium-review #private-feedback-panel form { min-width: 0; padding: 1.25rem; border-color: var(--utility-rule); border-radius: .25rem; background: var(--utility-cream); box-shadow: none; }
+.premium-review #private-feedback-panel form > .flex { flex-wrap: wrap; }
+.premium-review #private-feedback-panel :is(input:not([type="checkbox"]):not([type="hidden"]), select, textarea) {
+  min-width: 0;
+  max-width: 100%;
+  min-height: 3.375rem;
+  border-color: #8f8173;
+  border-radius: .25rem;
+  background-color: var(--utility-paper);
+  color: var(--utility-ink);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.premium-review #private-feedback-panel textarea::placeholder { color: var(--utility-muted); opacity: 1; }
+.premium-review #private-feedback-panel button:not([role="radio"]) { min-height: 2.75rem; max-width: 100%; height: auto; white-space: normal; line-height: 1.5; }
+.premium-review #private-feedback-panel button.bg-primary { padding: .875rem 1.25rem; border-radius: .25rem; background: var(--utility-berry); color: #fff; }
+.premium-review #private-feedback-panel button.bg-primary:hover:not(:disabled) { background: var(--utility-deep); }
+/* Permit rating controls and confirmation text to reflow at narrow widths.
+   Do not override conditional presence, opacity, errors or disabled state. */
+.premium-review #private-feedback-panel [role="radiogroup"] { flex-wrap: wrap; }
+.premium-review #private-feedback-panel .h-16 { height: auto; min-height: 4rem; margin-bottom: 1.5rem; }
+.premium-review :is(a, button, input, select, textarea):focus-visible,
+.premium-review :is(h2, h3, [role="status"], [role="alert"]):focus { outline: 3px solid var(--utility-berry); outline-offset: 4px; }
+@media (min-width: 47.5rem) {
+  :is(.premium-privacy, .premium-terms), .premium-review > section { padding-block: 4.5rem; }
+  :is(.premium-privacy, .premium-terms) > div, .premium-review > section > div { width: calc(100% - 4rem); }
+  .premium-review .utility-review-body { padding: 2.5rem; }
+  .premium-review .utility-review-body > div > .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .premium-review #private-feedback-panel form { padding: 2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .premium-review :is(a, button, input, select, textarea, svg) { transition: none; }
+}

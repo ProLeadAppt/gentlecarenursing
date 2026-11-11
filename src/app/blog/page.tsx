@@ -1,3 +1,4 @@
+import "../premium-discovery.css";
 import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
@@ -14,5 +15,9 @@ export const metadata: Metadata = createMetadata({
 export default function BlogPage() {
   const posts = getAllBlogPosts();
   const categories = getAllBlogCategories();
-  return <BlogIndex posts={posts} categories={categories} />;
+  return (
+    <div className="premium-discovery premium-blog">
+      <BlogIndex posts={posts} categories={categories} />
+    </div>
+  );
 }

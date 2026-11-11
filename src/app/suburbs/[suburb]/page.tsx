@@ -1,3 +1,4 @@
+import "../../premium-locality.css";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
@@ -99,12 +100,13 @@ export default async function SuburbPage({ params }: Props) {
 
   return (
     <>
+      <div className="premium-locality premium-locality-suburb">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
       />
 
-      <Section size="lg" variant="card">
+      <Section size="lg" variant="card" className="locality-hero">
         <Container size="md">
           <Breadcrumbs
             includeSchema={false}
@@ -113,7 +115,7 @@ export default async function SuburbPage({ params }: Props) {
               { label: "Suburbs", href: "/suburbs" },
               { label: entry.name },
             ]}
-            className="mb-8"
+            className="locality-breadcrumbs mb-8"
           />
 
           <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/5 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-primary/80">
@@ -128,7 +130,7 @@ export default async function SuburbPage({ params }: Props) {
             In-Home Nursing &amp; Care in {entry.name}
           </Heading>
 
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-foreground">
+          <p className="locality-intro mt-6 max-w-3xl text-lg leading-relaxed text-foreground">
             Gentle Care Nursing Services provides in-home nursing and personal
             care in {entry.name} ({entry.postcode}) — a {entry.lga} suburb in
             the {entry.region}. Contact the team to discuss NDIS, DVA Community
@@ -143,9 +145,9 @@ export default async function SuburbPage({ params }: Props) {
         </Container>
       </Section>
 
-      <Section size="md" variant="default">
+      <Section size="md" variant="default" className="locality-facts">
         <Container size="md">
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="locality-facts-grid grid gap-6 md:grid-cols-2">
             <SuburbFactCard
               icon={<MapPin className="h-4 w-4" />}
               title="Local government area"
@@ -183,7 +185,7 @@ export default async function SuburbPage({ params }: Props) {
         </Container>
       </Section>
 
-      <Section size="md" variant="muted">
+      <Section size="md" variant="muted" className="locality-guides">
         <Container size="md">
           <Heading
             level="h2"
@@ -198,7 +200,7 @@ export default async function SuburbPage({ params }: Props) {
             team to discuss the care needed and any referral requirements.
           </p>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="locality-guide-grid grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { href: "/ndis", label: "NDIS in-home nursing" },
               { href: "/dva", label: "DVA Community Nursing" },
@@ -224,7 +226,7 @@ export default async function SuburbPage({ params }: Props) {
         </Container>
       </Section>
 
-      <Section size="md" variant="default">
+      <Section size="md" variant="default" className="locality-cta">
         <Container size="md" className="text-center">
           <Heading
             level="h2"
@@ -241,7 +243,7 @@ export default async function SuburbPage({ params }: Props) {
             . Share your suburb, care needs and preferred timing so the team
             can discuss whether it can assist.
           </p>
-          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="locality-actions mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href={CTA_LINKS.requestCare.href}
               className="inline-flex h-11 items-center justify-center rounded-xl bg-primary px-6 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
@@ -257,6 +259,7 @@ export default async function SuburbPage({ params }: Props) {
           </div>
         </Container>
       </Section>
+      </div>
     </>
   );
 }
@@ -273,7 +276,7 @@ function SuburbFactCard({
   footnote?: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-border/60 bg-card/40 p-6">
+    <div className="locality-fact-card rounded-2xl border border-border/60 bg-card/40 p-6">
       <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70">
         <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 text-primary">
           {icon}

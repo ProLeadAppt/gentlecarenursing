@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "tailwindcss" source("../");
 
 /* ---------------------------------------------------------------------------
    Gentle Care Nursing Services — Design System

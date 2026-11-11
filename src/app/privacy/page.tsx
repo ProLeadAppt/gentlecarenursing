@@ -1,3 +1,4 @@
+import "../premium-utility.css";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Heading } from "@/components/ui/Heading";
@@ -13,13 +14,13 @@ export const metadata = createMetadata({
 
 export default function PrivacyPage() {
   return (
-    <Section size="lg">
+    <Section size="lg" className="premium-privacy">
       <Container size="md">
         <Heading level="h1" as="h1">
           Privacy Policy
         </Heading>
 
-        <div className="mt-8 space-y-8 text-muted-foreground [&_h2]:text-foreground [&_h2]:font-semibold [&_h2]:text-xl [&_h2]:mt-8 [&_h2]:mb-3">
+        <div className="utility-legal-prose mt-8 space-y-8 text-muted-foreground [&_h2]:text-foreground [&_h2]:font-semibold [&_h2]:text-xl [&_h2]:mt-8 [&_h2]:mb-3">
           <p>
             {SITE.name} is committed to protecting the privacy of our clients,
             their families, and visitors to our website. This privacy policy

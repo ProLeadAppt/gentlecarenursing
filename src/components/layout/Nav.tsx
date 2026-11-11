@@ -35,7 +35,7 @@ function useNavigationDisclosure(open: boolean, close: () => void) {
       if (!containerRef.current?.contains(event.target as Node)) close();
     };
     // Closing on breakpoint changes prevents a hidden panel reopening on resize.
-    const desktop = window.matchMedia("(min-width: 1280px)");
+    const desktop = window.matchMedia("(min-width: 80rem)");
     document.addEventListener("keydown", onKeyDown);
     document.addEventListener("pointerdown", onPointerDown);
     desktop.addEventListener("change", close);
@@ -111,6 +111,8 @@ function DesktopDropdown({ item }: { item: NavItem }) {
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-1 opacity-0"
         )}
+        hidden={!open}
+        style={{ display: open ? undefined : "none" }}
         inert={!open}
         onFocus={handleEnter}
         onBlur={(e) => {
@@ -242,6 +244,8 @@ function Navigation({ links, cta, className, pathname }: NavProps & { pathname: 
             ? "max-h-[calc(100vh-64px)] opacity-100"
             : "max-h-0 opacity-0 overflow-hidden"
         )}
+        hidden={!mobileOpen}
+        style={{ display: mobileOpen ? undefined : "none" }}
         inert={!mobileOpen}
       >
         <div className="mx-auto max-w-[72rem] px-4 py-4 sm:px-6">
@@ -266,6 +270,8 @@ function Navigation({ links, cta, className, pathname }: NavProps & { pathname: 
                   </button>
                   <div
                     id={`${mobileServicesId}-${item.href}`}
+                    hidden={!mobileServicesOpen}
+                    style={{ display: mobileServicesOpen ? undefined : "none" }}
                     inert={!mobileServicesOpen}
                     className={cn(
                       "overflow-hidden transition-all duration-200",

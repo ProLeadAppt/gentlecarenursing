@@ -6,9 +6,9 @@ import { submitWebsiteForm } from "../src/lib/form-client";
 const source = readFileSync("src/components/forms/ReferralForm.tsx", "utf8");
 
 test("public referral outcomes are persistent focusable status and alert regions", () => {
-  assert.match(source, /if \(status === "success" \|\| status === "error"\) \{\s*outcomeRef.current\?\.focus\(\)/);
-  assert.match(source, /ref=\{outcomeRef\}\s+tabIndex=\{-1\}\s+role="status"\s+aria-atomic="true"/);
-  assert.match(source, /ref=\{outcomeRef\}\s+tabIndex=\{-1\}\s+role="alert"\s+aria-atomic="true"/);
+  assert.match(source, /if \(status !== "idle"\) \{\s*outcomeRef.current\?\.focus\(\)/);
+  assert.match(source, /ref=\{outcomeRef\}\s+data-form-outcome\s+tabIndex=\{-1\}\s+role="status"\s+aria-atomic="true"/);
+  assert.match(source, /ref=\{outcomeRef\}\s+data-form-outcome\s+tabIndex=\{-1\}\s+role="alert"\s+aria-atomic="true"/);
   assert.doesNotMatch(source, /setTimeout|window.alert/);
 });
 
@@ -19,19 +19,20 @@ test("success describes provider acceptance without promising receipt or a booki
 });
 
 test("uncertain delivery keeps values and cautions against duplicate submission", () => {
-  const failure = source.slice(source.indexOf("} catch {"), source.indexOf("} finally {"));
-  assert.match(failure, /couldn’t confirm whether your referral was accepted for delivery/);
-  assert.match(failure, /Your details are still here/);
-  assert.match(failure, /contact us before submitting again to avoid a duplicate referral/);
+  const failure = source.slice(source.indexOf("} catch (error) {"), source.indexOf("} finally {"));
+  assert.match(source, /couldn’t confirm whether your referral was accepted for delivery/);
+  assert.match(source, /Your details are still here/);
+  assert.match(source, /This form is paused to avoid a duplicate referral/);
+  assert.match(failure, /submissionLockedRef.current = !rejected/);
   assert.doesNotMatch(failure, /\.reset\(|setExpanded/);
   assert.equal((source.match(/form.reset\(\)/g) ?? []).length, 1);
   assert.match(source, /setStatus\("success"\);\s*form.reset\(\)/);
 });
 
 test("validation, repeated-submit guard and intentional fresh referral focus remain", () => {
-  assert.match(source, /if \(submittingRef.current\) return/);
+  assert.match(source, /if \(submissionLockedRef.current \|\| submittingRef.current\) return/);
   assert.match(source, /if \(!reportFormValidity\(form\)\) return/);
-  assert.match(source, /<fieldset disabled=\{status === "submitting"\}/);
+  assert.match(source, /<fieldset disabled=\{status === "submitting" \|\| status === "uncertain"\}/);
   assert.match(source, /finally \{\s*submittingRef.current = false/);
   assert.match(source, /restartFocusRef.current = true;\s*setStatus\("idle"\)/);
   assert.match(source, /status === "idle" && restartFocusRef.current/);

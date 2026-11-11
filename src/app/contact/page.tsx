@@ -1,3 +1,4 @@
+import "../premium-enquiry.css";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Grid } from "@/components/layout/Grid";
@@ -19,10 +20,10 @@ export const metadata = createMetadata({
 
 export default function ContactPage() {
   return (
-    <>
-      <Section size="lg" variant="card">
+    <div className="premium-enquiry premium-contact">
+      <Section size="lg" variant="card" className="enquiry-hero">
         <Container size="md">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact Us" }]} className="mb-6" />
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact Us" }]} className="mb-6 enquiry-breadcrumbs" />
           <Heading level="h1" as="h1" className="text-center">
             Contact Us
           </Heading>
@@ -33,11 +34,11 @@ export default function ContactPage() {
         </Container>
       </Section>
 
-      <Section>
+      <Section className="enquiry-body">
         <Container>
-          <Grid cols={2} gap="lg">
+          <Grid cols={2} gap="lg" className="enquiry-contact-grid">
             {/* Contact Info */}
-            <div>
+            <div className="enquiry-contact-details">
               <Heading level="h2" as="h2" className="text-2xl">
                 Get in Touch
               </Heading>
@@ -47,7 +48,7 @@ export default function ContactPage() {
                 questions and discuss how we can help.
               </p>
 
-              <div className="mt-8 space-y-6">
+              <div className="mt-8 space-y-6 enquiry-contact-methods">
                 <div>
                   <Heading level="h3" as="h3" className="text-base">
                     Phone
@@ -92,7 +93,7 @@ export default function ContactPage() {
             </div>
 
             {/* Form */}
-            <Card variant="default" className="p-8">
+            <Card variant="default" className="p-8 enquiry-form">
               <Heading level="h2" as="h2" className="mb-2 text-2xl">
                 Send Us a Message
               </Heading>
@@ -111,7 +112,8 @@ export default function ContactPage() {
         primaryCta={CTA_LINKS.requestCare}
         secondaryCta={CTA_LINKS.callUs}
         variant="muted"
+        className="enquiry-cta"
       />
-    </>
+    </div>
   );
 }

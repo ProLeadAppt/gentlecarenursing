@@ -4,6 +4,10 @@
 **Prepared for:** Gemma, Gentle Care Nursing Services
 **Prepared by:** Munyal
 **Data coverage:** [Complete month / partial month and reason]
+**Reporting timezone:** [Verified source timezone]
+**Deployed implementation and changes:** [Exact version/period; distinguish earlier GHL from current Resend delivery]
+
+Use **unavailable**, not zero, when data cannot be accessed or verified. Source-code checks do not establish GA4 collection, inbox receipt or business outcomes. Apply [the measurement specification](measurement-specification.md); no analytics configuration changes are authorised by this template.
 
 ## Executive summary
 
@@ -36,7 +40,7 @@
 
 ### Traffic sources
 
-| Channel | Sessions | Change | Enquiries | Conversion rate | Interpretation |
+| Channel | Sessions | Change | Attributed provider-accepted events | Event/session rate | Attribution limits |
 |---|---:|---:|---:|---:|---|
 | Organic Search | | | | | |
 | Direct | | | | | |
@@ -47,7 +51,7 @@
 
 ## 2. Most visited pages
 
-| Page | Views | Organic entrances | Enquiries | Change | Recommended action |
+| Page | Views | Organic entrances | Provider-accepted events observed | Change | Recommended action |
 |---|---:|---:|---:|---:|---|
 | | | | | | |
 
@@ -89,25 +93,34 @@
 | private nursing Sydney | | | | | `/private-nursing` |
 | wound care at home Sydney | | | | | [confirm target] |
 
-## 5. Enquiries and conversions
+## 5. Enquiry acceptance and later outcomes
 
-| Conversion | Confirmed GHL total | GA4 total | Reconciliation result | Change |
-|---|---:|---:|---|---:|
-| Contact forms | | | | |
-| Referral forms | | | | |
-| Total website form leads | | | | |
-| Phone clicks | N/A | | N/A | |
-| Email clicks | N/A | | N/A | |
+| Measure | Contact | Referral | Total | Evidence and limitations |
+|---|---:|---:|---:|---|
+| Distinct provider receipt IDs | | | | Resend acceptance only; exclude feedback/unrelated mail |
+| Raw GA4 acceptance events | | | | `generate_lead` and `referral_submit`; not unique enquiries |
+| Distinct GA4 receipt IDs | | | | Only when authorised event-level data is available |
+| Matched provider/GA4 receipt IDs | | | | Unavailable when either source lacks usable IDs |
+| Inbox-confirmed enquiries | | | | Separate authorised receipt confirmation |
+| Qualified enquiries | | | | Care-team definition and aggregate intake evidence |
+| Booked assessments | | | | Verified operational outcome, not inferred from events |
 
-### Enquiry quality
+### Reconciliation notes
 
-Report only aggregate counts. Do not include names, health information or free-text referral details.
+- Count distinct receipt IDs rather than summing raw GA4 event counts. Identical email retries can share one Resend receipt within 24 hours; this is not person-level deduplication.
+- Note duplicate events, conflicting form types, provider-only receipts, GA4-only IDs and data gaps.
+- Provider acceptance does not confirm inbox receipt, a booking or service availability. A timeout or missing GA4 event does not establish non-delivery.
+- State the qualification rule and evidence owner. Use aggregate intake records; do not include names, health information, referral text or receipt IDs in this report.
+- Do not assign campaign-specific qualified outcomes without a verified attribution path. Current form payloads do not forward UTMs to Resend.
 
-| Aggregate dimension | Count | Change | Notes |
-|---|---:|---:|---|
-| Service or funding pathway | | | |
-| Qualified leads, if consistently defined in GHL | | | |
-| Booked assessments, if consistently defined in GHL | | | |
+### Supporting actions
+
+| Action | GA4 count | Interpretation |
+|---|---:|---|
+| Phone clicks | | Clicks, not connected calls |
+| Email clicks | | Clicks, not sent emails |
+| Form opens | | Opens, not accepted enquiries |
+| Form errors | | Failed confirmation, possibly uncertain provider outcome |
 
 ## 6. Local search presence
 
@@ -150,7 +163,8 @@ AI results vary by model, date, account and location. This section is a directio
 | Uptime | | ≥99.9% | | |
 | Sitemap URLs returning 200 | | 100% | | |
 | Unknown URL returns true 404 | | 404 | | |
-| Forms delivered successfully | | 100% of test submissions | | |
+| Provider acceptance on authorised tests | | Valid receipt for each expected acceptance | | |
+| Inbox receipt on authorised tests | | Separate receiving-owner confirmation | | |
 | Indexing issues | | 0 critical | | |
 
 ### Technical incidents
@@ -174,5 +188,5 @@ AI results vary by model, date, account and location. This section is a directio
 ## Data notes and limitations
 
 - [Data gap, tracking change, partial-month caveat or source limitation]
-- [Any difference between GHL and GA4]
+- [Provider/GA4 reconciliation gaps and the distinction between acceptance, receipt and qualification]
 - [Any unavailable source]

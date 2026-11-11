@@ -7,10 +7,10 @@ import { Select } from "@/components/ui/Select";
 import { Textarea } from "@/components/ui/Textarea";
 import { Button } from "@/components/ui/Button";
 import { dispatchAnalyticsEvent } from "@/lib/analytics";
-import { submitWebsiteForm } from "@/lib/form-client";
+import { submitWebsiteForm, WebsiteSubmissionError } from "@/lib/form-client";
 import { clearFieldValidation, reportFormValidity } from "@/lib/form-validation";
 
-type FormStatus = "idle" | "submitting" | "success" | "error";
+type FormStatus = "idle" | "submitting" | "success" | "rejected" | "uncertain";
 
 /**
  * Simple contact / referral form for the homepage — per Gemma's brief 2026-06-10.
@@ -20,14 +20,20 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 export function SimpleContactForm() {
   const idPrefix = useId();
   const [status, setStatus] = useState<FormStatus>("idle");
-  const [errorMessage, setErrorMessage] = useState("");
   const outcomeRef = useRef<HTMLDivElement>(null);
   const firstFieldRef = useRef<HTMLInputElement>(null);
   const restartFocusRef = useRef(false);
   const submittingRef = useRef(false);
+  const submissionLockedRef = useRef(false);
+  const mountedRef = useRef(true);
 
   useEffect(() => {
-    if (status === "success" || status === "error") {
+    mountedRef.current = true;
+    return () => { mountedRef.current = false; };
+  }, []);
+
+  useEffect(() => {
+    if (status !== "idle") {
       outcomeRef.current?.focus({ preventScroll: true });
       outcomeRef.current?.scrollIntoView({ block: "start", behavior: "instant" });
     } else if (status === "idle" && restartFocusRef.current) {
@@ -38,12 +44,12 @@ export function SimpleContactForm() {
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (submittingRef.current) return;
+    if (submissionLockedRef.current || submittingRef.current) return;
     const form = e.currentTarget;
     if (!reportFormValidity(form)) return;
     submittingRef.current = true;
+    submissionLockedRef.current = true;
     setStatus("submitting");
-    setErrorMessage("");
 
     const data = new FormData(form);
     const payload = {
@@ -63,18 +69,23 @@ export function SimpleContactForm() {
         cta_location: "homepage",
         submission_id: submissionId,
       });
-      setStatus("success");
-      form.reset();
-    } catch {
+      if (mountedRef.current) {
+        setStatus("success");
+        form.reset();
+      }
+    } catch (error) {
       dispatchAnalyticsEvent("form_error", {
         form_type: "contact",
         cta_location: "homepage",
         error_type: "delivery",
       });
-      setStatus("error");
-      setErrorMessage(
-        "We couldn’t confirm whether your enquiry was accepted for delivery. Your details are still here. Please call us on 1300 004 267 before submitting again to avoid a duplicate enquiry."
-      );
+      const rejected = error instanceof WebsiteSubmissionError && error.outcome === "rejected";
+      // Only a verified pre-delivery rejection permits a revalidated retry.
+      // A timeout, lost response or invalid receipt cannot establish non-delivery.
+      submissionLockedRef.current = !rejected;
+      if (mountedRef.current) {
+        setStatus(rejected ? "rejected" : "uncertain");
+      }
     } finally {
       submittingRef.current = false;
     }
@@ -84,6 +95,7 @@ export function SimpleContactForm() {
     return (
       <div
         ref={outcomeRef}
+        data-form-outcome
         tabIndex={-1}
         role="status"
         aria-atomic="true"
@@ -110,6 +122,9 @@ export function SimpleContactForm() {
         <button
           type="button"
           onClick={() => {
+            // This explicit action starts a different enquiry after acceptance.
+            // Uncertain attempts intentionally have no in-form restart action.
+            submissionLockedRef.current = false;
             restartFocusRef.current = true;
             setStatus("idle");
           }}
@@ -127,7 +142,24 @@ export function SimpleContactForm() {
       className="rounded-2xl border border-pw-border bg-white p-6 sm:p-8 shadow-[0_20px_60px_-30px_rgba(132,40,51,0.25)]"
       aria-busy={status === "submitting"}
     >
-      <fieldset disabled={status === "submitting"} className="min-w-0 grid gap-5">
+      {status === "submitting" && (
+        <div ref={outcomeRef} data-form-outcome tabIndex={-1} role="status" aria-atomic="true" className="mb-4 scroll-mt-24 rounded-lg border border-accent/30 bg-accent/5 p-4 text-sm">
+          Sending your enquiry. Please wait for confirmation before sending again.
+        </div>
+      )}
+      {(status === "rejected" || status === "uncertain") && (
+        <div ref={outcomeRef} data-form-outcome tabIndex={-1} role="alert" aria-atomic="true" className="mb-4 scroll-mt-24 rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive">
+          {status === "rejected" ? (
+            "Your enquiry was not sent. Please review your details and try again, or call us on 1300 004 267."
+          ) : (
+            <>
+              We couldn’t confirm whether your enquiry was accepted for delivery. Your details are still here.
+              {" "}Please call us on 1300 004 267 to check the outcome. This form is paused to avoid a duplicate enquiry.
+            </>
+          )}
+        </div>
+      )}
+      <fieldset disabled={status === "submitting" || status === "uncertain"} className="min-w-0 grid gap-5">
         <FormField label="Your name" htmlFor={`home-name-${idPrefix}`} required>
           <Input
             ref={firstFieldRef}
@@ -190,24 +222,13 @@ export function SimpleContactForm() {
           />
         </FormField>
 
-        {status === "error" && (
-          <div
-            ref={outcomeRef}
-            tabIndex={-1}
-            role="alert"
-            aria-atomic="true"
-            className="scroll-mt-24 text-sm text-red-600"
-          >
-            {errorMessage}
-          </div>
-        )}
 
         <div className="flex flex-col gap-2 pt-2">
           <Button
             type="submit"
             variant="primary"
             size="lg"
-            disabled={status === "submitting"}
+            disabled={status === "submitting" || status === "uncertain"}
           >
             {status === "submitting" ? "Sending..." : "Send enquiry"}
           </Button>

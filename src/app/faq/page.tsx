@@ -1,3 +1,4 @@
+import "../premium-information.css";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { FaqAccordion } from "@/components/sections/FaqAccordion";
@@ -19,16 +20,16 @@ export const metadata = createMetadata({
 
 export default function FAQPage() {
   return (
-    <>
+    <div className="premium-information premium-faq">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(getFaqSchema(ALL_FAQ_ITEMS, { dateModified: SITE_LAST_UPDATED })),
         }}
       />
-      <Section size="lg" variant="card">
+      <Section size="lg" variant="card" className="information-hero">
         <Container size="md">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "FAQs" }]} className="mb-6" />
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "FAQs" }]} className="information-breadcrumbs mb-6" />
           <Heading level="h1" as="h1" className="text-center">
             Frequently Asked Questions
           </Heading>
@@ -39,16 +40,17 @@ export default function FAQPage() {
         </Container>
       </Section>
 
-      <Section>
+      <Section className="information-faq">
         <Container size="md">
           {FAQ_CATEGORIES.map((category) => (
-            <div key={category.title} className="mb-12 last:mb-0">
+            <div key={category.title} className="information-faq-category mb-12 last:mb-0">
               <Heading level="h2" as="h2" className="mb-6 text-2xl">
                 {category.title}
               </Heading>
               <FaqAccordion
                 items={category.items}
                 allowMultiple
+                className="information-accordion"
               />
             </div>
           ))}
@@ -61,7 +63,8 @@ export default function FAQPage() {
         primaryCta={CTA_LINKS.contact}
         secondaryCta={CTA_LINKS.requestCare}
         variant="muted"
+        className="information-cta"
       />
-    </>
+    </div>
   );
 }

@@ -1,3 +1,4 @@
+import "../../premium-editorial.css";
 import { ServicePageLayout } from "@/components/sections/ServicePageLayout";
 import {
   getAllConditionSlugs,
@@ -34,7 +35,11 @@ export default async function ConditionPage({ params }: Props) {
     notFound();
   }
 
-  return <ServicePageLayout data={entry.data} />;
+  return (
+    <div className="premium-condition">
+      <ServicePageLayout data={entry.data} />
+    </div>
+  );
 }
 
 // Only the explicitly generated content URLs are valid in this route family.

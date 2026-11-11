@@ -1,0 +1,43 @@
+/* Referrers-only refinements. Reuse the premium care palette and typography;
+   preserve the shared professional blocks and CTA component behaviour. */
+.premium-care.premium-referrers .care-hero-grid > nav { min-width: 0; }
+.premium-care.premium-referrers h1 { max-width: 18ch; }
+.premium-care.premium-referrers .referrer-copy { margin-top: 1rem; color: var(--care-muted); }
+.premium-care.premium-referrers .referrer-professionals { scroll-margin-top: 8rem; }
+.premium-care.premium-referrers .referrer-professionals > section { padding-block: 3.25rem; background: var(--care-sage); }
+.premium-care.premium-referrers .referrer-professionals > section > div { width: calc(100% - 2.5rem); max-width: 83rem; padding-inline: 0; }
+.premium-care.premium-referrers .referrer-professionals > section > div > div:first-child { max-width: none; margin-inline: 0; text-align: left; }
+.premium-care.premium-referrers .referrer-professionals h2 { color: var(--care-ink); }
+.premium-care.premium-referrers .referrer-professionals > section > div > div:first-child > p { margin-inline: 0; color: var(--care-muted); font-size: 1.0625rem; font-weight: 400; }
+.premium-care.premium-referrers .referrer-professionals article { padding: 1.5rem 0 0; border: 0; border-top: 1px solid #bdcbb6; border-radius: 0; background: transparent; box-shadow: none; }
+.premium-care.premium-referrers .referrer-professionals article h3 { color: var(--care-ink); }
+.premium-care.premium-referrers .referrer-professionals article p,
+.premium-care.premium-referrers .referrer-professionals article ul { color: var(--care-muted); font-size: 1rem; line-height: 1.65; }
+.premium-care.premium-referrers .referrer-professionals article ul { margin-top: 1rem; }
+.premium-care.premium-referrers .referrer-fit-list { list-style: none; margin: 0; padding: 0; max-width: 72ch; }
+.premium-care.premium-referrers .referrer-fit-list li { padding-block: 1.25rem; border-top: 1px solid var(--care-rule); color: var(--care-muted); }
+.premium-care.premium-referrers .referrer-questions { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+.premium-care.premium-referrers .referrer-questions > div { min-width: 0; border-top: 1px solid #bdcbb6; padding-top: 1.5rem; }
+/* The original CTA uses links, not the contact-modal buttons used on services. */
+.premium-care.premium-referrers .care-existing-cta > section { background-image: none; }
+.premium-care.premium-referrers .care-existing-cta a { min-height: 3.375rem; height: auto; max-width: 100%; padding: .875rem 1.25rem; border-radius: .25rem; white-space: normal; text-align: center; }
+.premium-care.premium-referrers .care-existing-cta a:focus-visible { outline-color: var(--care-cream); }
+.premium-care.premium-referrers .care-existing-cta a:hover { text-decoration: underline; text-underline-offset: .25rem; }
+.premium-care.premium-referrers .care-existing-cta a:active { transform: translateY(1px); }
+@media (min-width: 47.5rem) {
+  .premium-care.premium-referrers .referrer-professionals > section { padding-block: 4.5rem; }
+  .premium-care.premium-referrers .referrer-professionals > section > div { width: calc(100% - 4rem); }
+  .premium-care.premium-referrers .referrer-professionals > section > div > div:first-child { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: end; gap: 2.5rem; }
+  .premium-care.premium-referrers .referrer-professionals > section > div > div:first-child > p { margin-top: 0; }
+  .premium-care.premium-referrers .referrer-professionals > section > div > div:last-child { gap: 2.5rem; }
+  .premium-care.premium-referrers .referrer-questions { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; }
+}
+@media (min-width: 62.5rem) {
+  .premium-care.premium-referrers h1 { font-size: clamp(3.75rem, 5vw, 4.75rem); }
+  .premium-care.premium-referrers .referrer-professionals > section { padding-block: 6rem; }
+  .premium-care.premium-referrers .referrer-professionals > section > div { width: calc(100% - 7rem); }
+  .premium-care.premium-referrers .referrer-professionals > section > div > div:last-child { column-gap: 4rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .premium-care.premium-referrers .care-existing-cta a:active { transform: none; }
+}

@@ -3,6 +3,14 @@ import type { FormPayload } from "@/lib/submission";
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
+/** Only a verified pre-send response can establish that nothing was sent. */
+export class WebsiteSubmissionError extends Error {
+  constructor(message: string, readonly outcome: "rejected" | "unknown") {
+    super(message);
+    this.name = "WebsiteSubmissionError";
+  }
+}
+
 export async function submitWebsiteForm(
   payload: FormPayload,
   fetcher: typeof fetch = fetch
@@ -39,7 +47,20 @@ async function requestSubmissionConfirmation(
     signal,
   });
 
-  if (!response.ok) throw new Error("Submission failed");
+  if (!response.ok) {
+    // Match the existing feedback client: these route statuses occur before
+    // provider delivery. A proxy, malformed body or provider failure is unknown.
+    if ([400, 403, 408, 413, 415, 503].includes(response.status)) {
+      const result: unknown = await response.json();
+      if (result !== null && typeof result === "object" && !Array.isArray(result)) {
+        const rejection = result as { success?: unknown; error?: unknown };
+        if (rejection.success === false && typeof rejection.error === "string" && rejection.error.trim()) {
+          throw new WebsiteSubmissionError("Submission failed before delivery", "rejected");
+        }
+      }
+    }
+    throw new WebsiteSubmissionError("Submission failed", "unknown");
+  }
 
   const result = (await response.json()) as {
     success?: unknown;

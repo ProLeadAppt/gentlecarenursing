@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 import { beginModalSession } from "@/lib/modal-session";
 import { supportsModalDialog } from "@/lib/dialog-support";
 import { X } from "lucide-react";
@@ -10,6 +10,8 @@ import { ReferralConcierge } from "@/components/forms/ReferralConcierge";
 
 export function FormModal() {
   const { activeForm, closeModal, returnFocusRef } = useFormModal();
+  const [retainReferralSession, setRetainReferralSession] = useState(false);
+  const [retainContactSession, setRetainContactSession] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -22,7 +24,8 @@ export function FormModal() {
         dialog,
         bodyStyle: document.body.style,
         focusFirst: () => {
-          const firstInput = contentRef.current?.querySelector<HTMLElement>(
+          const activePanel = contentRef.current?.querySelector<HTMLElement>(`[data-modal-form="${activeForm}"]`);
+          const firstInput = activePanel?.querySelector<HTMLElement>("[data-form-outcome]") ?? activePanel?.querySelector<HTMLElement>(
             "input:not([type='hidden']):not(:disabled), select:not(:disabled), textarea:not(:disabled), button:not(:disabled):not([aria-label='Close'])"
           );
           firstInput?.focus();
@@ -120,8 +123,17 @@ export function FormModal() {
 
         {/* Body */}
         <div className="flex-1 overflow-y-auto px-8 py-8 sm:px-10">
-          {activeForm === "referral" && <ReferralConcierge />}
-          {activeForm === "contact" && <ContactForm />}
+          {/* Keep pending/uncertain referral state in this page session, not storage. */}
+          <div data-modal-form="referral" hidden={activeForm !== "referral"}>
+            {(activeForm === "referral" || retainReferralSession) && (
+              <ReferralConcierge active={activeForm === "referral"} onRetainSessionChange={setRetainReferralSession} />
+            )}
+          </div>
+          <div data-modal-form="contact" hidden={activeForm !== "contact"}>
+            {(activeForm === "contact" || retainContactSession) && (
+              <ContactForm active={activeForm === "contact"} onRetainSessionChange={setRetainContactSession} />
+            )}
+          </div>
         </div>
       </div>
     </dialog>
