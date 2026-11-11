@@ -69,7 +69,8 @@ test("discovery: every prior production file outside three route wrappers remain
     // Only these two files are delegated to full original-source and all-30-route
     // semantic/metadata/schema parity in premium-service-region.test.ts.
     if (["src/app/services/[service]/[region]/page.tsx", "src/components/sections/ServiceRegionPageLayout.tsx"].includes(path)) continue;
-    assert.equal(digest(path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : readFileSync(path)), hash, path);
+    // Remove only the Next smooth-scroll opt-in; retain the original layout hash.
+    assert.equal(digest(path === "src/app/layout.tsx" ? readFileSync(path, "utf8").replace('<html lang="en" data-scroll-behavior="smooth"', '<html lang="en"') : path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : readFileSync(path)), hash, path);
   }
 });
 test("conditions: every condition, schema item and both original ordinary CTA links are retained", () => {
