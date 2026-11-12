@@ -86,6 +86,13 @@ export const LOCALITY_REVIEW_DRAFTS: readonly LocalityReview[] = [
         ]
       ],
       [
+        "If a journey uses Homebush Station",
+        [
+          "Transport for NSW identifies different accessibility arrangements across Homebush Station platforms. If a planned journey requires step-free access, check the platform for the actual service and current lift or service disruptions rather than relying on the station name alone.",
+          "A journey to an appointment and a care visit at home are separate arrangements. Explain any assistance you want considered, and confirm who will provide it before relying on a travel plan. This page does not offer transport or accompaniment."
+        ]
+      ],
+      [
         "Think through access and privacy",
         [
           "If the home has a shared entrance, stairs, a lift or an intercom, explain what a visitor needs to know. Discuss a suitable private space for the proposed care and who may be present.",
@@ -125,11 +132,12 @@ export const LOCALITY_REVIEW_DRAFTS: readonly LocalityReview[] = [
     ],
     "sourceIds": [
       "strathfield-town-centres",
-      "homebush-boundary-status"
+      "homebush-boundary-status",
+      "tfnsw-homebush-station"
     ],
     "reviewQuestions": [
       "Confirm the actual Homebush intake and service scope.",
-      "Identify a real Homebush-specific operational question that adds value beyond the regional guide.",
+      "Review the added Homebush Station journey-planning detail; it does not change the approved clinical/service wording or promise transport.",
       "Boundary consultation was discontinued in May 2026; do not reuse old proposed-boundary claims."
     ]
   },
@@ -283,6 +291,13 @@ export const LOCALITY_REVIEW_DRAFTS: readonly LocalityReview[] = [
         ]
       ],
       [
+        "Name the destination, not only the Rhodes landmark",
+        [
+          "The Connection has different venue spaces, and Council publishes visitor information for the precinct beside Bennelong Bridge and the Homebush Bay Corso. If an outing is part of your enquiry, name the particular space or activity and the meeting entrance, not only the precinct.",
+          "Check the venue’s current access information and the route appropriate to your needs. Keep the destination and timing separate from the help you are asking Gentle Care to consider. A community venue listing is not a provider partnership or an agreed outing."
+        ]
+      ],
+      [
         "Agree who is responsible for each task",
         [
           "If family members, support workers or clinicians are already involved, explain their roles and your preferences about contact and information sharing. Ask who needs to be present for a proposed handover.",
@@ -314,12 +329,13 @@ export const LOCALITY_REVIEW_DRAFTS: readonly LocalityReview[] = [
       ]
     ],
     "sourceIds": [
-      "canadabay-main-streets"
+      "canadabay-main-streets",
+      "canadabay-connection-visitor"
     ],
     "reviewQuestions": [
       "Confirm the practical process when building access or equipment access changes.",
       "Confirm which home-care and community-support requests can be considered; do not imply transport or accompaniment.",
-      "Provide a real Rhodes-specific operating detail; the peninsula fact alone does not establish unique clinical relevance."
+      "Review the added destination-specific Rhodes detail; no venue partnership, transport or accompaniment is promised."
     ]
   }
 ];
@@ -394,6 +410,22 @@ export const LOCALITY_REVIEW_SOURCES = [
     "url": "https://www.ndis.gov.au/participants/home-and-living/types-home-and-living-supports/what-supported-independent-living-sil",
     "supports": "SIL is support-worker funding, not housing.",
     "limits": "Does not establish Gentle Care SIL provision or registration scope. No SIL service offer added.",
+    "checked": "2026-11-12"
+  },
+  {
+    "id": "tfnsw-homebush-station",
+    "label": "Transport for NSW: Homebush Station accessibility",
+    "url": "https://transportnsw.info/stop?q=214010",
+    "supports": "Accessibility differs by platform; confirms why a station landmark is not an accessible-journey plan.",
+    "limits": "Check current service platform and disruptions. No Gentle Care transport, accompaniment or clinical need inferred.",
+    "checked": "2026-11-12"
+  },
+  {
+    "id": "canadabay-connection-visitor",
+    "label": "City of Canada Bay: The Connection visitor information",
+    "url": "https://www.canadabay.nsw.gov.au/community/facilities-and-venues/the-connection/visitor-information",
+    "supports": "Separate venue spaces and visitor access context beside Bennelong Bridge and the Homebush Bay Corso.",
+    "limits": "No venue partnership, care availability, universal accessible route or transport provision established.",
     "checked": "2026-11-12"
   }
 ] as const;
