@@ -1,0 +1,158 @@
+{
+  "prepared": "2026-11-12",
+  "scope": "Five review-only overview pages, adapted from individually edited Riverside drafts. Not publication-ready.",
+  "base": "33ce5b2c2fc9acbed20e4763621538d1a417449d",
+  "priorArchive": "Gentle-Care-Riverside-Locality-Drafts.zip",
+  "searchEvidence": {
+    "status": "inferred-intent-only",
+    "blocker": "GSC Wizard list_sites refused payment_required/subscription_required; current query data not fetched; no retry or billing changes.",
+    "rule": "FAQs are editorial hypotheses, not measured search queries or keyword-volume claims."
+  },
+  "sourceVerification": "Official reads reported by the coordinating source review on 12 November 2026; business address independently compared to the repository.",
+  "sources": [
+    {
+      "id": "canadabay-main-streets",
+      "label": "City of Canada Bay: main streets and local centres",
+      "url": "https://www.canadabay.nsw.gov.au/lifestyle/our-area/main-streets",
+      "supports": "North Strathfield precinct names, Concord West local-centre context and Rhodes peninsula identity.",
+      "limits": "Geography only; not care coverage, staffing, medical demand or partnerships.",
+      "checked": "2026-11-12"
+    },
+    {
+      "id": "business-address",
+      "label": "Business address in the current site source",
+      "url": null,
+      "supports": "SITE.address lists Level 1/5 George St, North Strathfield NSW 2137.",
+      "limits": "Business-supplied source, not an independent GBP or walk-in-clinic verification.",
+      "checked": "2026-11-12"
+    },
+    {
+      "id": "strathfield-town-centres",
+      "label": "Strathfield Council: town and local centres",
+      "url": "https://www.strathfield.nsw.gov.au/Council/About-Strathfield/Town-and-Local-Centres",
+      "supports": "Separate Homebush and Homebush West centre identities.",
+      "limits": "Official indexed excerpts support the naming distinction; direct index access returned 403 during the bounded check. No precise boundary, patient-demand, property-access or coverage claim.",
+      "checked": "2026-11-12"
+    },
+    {
+      "id": "strathfield-homebush-west",
+      "label": "Strathfield Council: Homebush West Town Centre",
+      "url": "https://www.strathfield.nsw.gov.au/Council/About-Strathfield/Town-and-Local-Centres/Homebush-West-Town-Centre",
+      "supports": "Town centre south of Flemington Station.",
+      "limits": "No inference about an individual home, resident or worker language.",
+      "checked": "2026-11-12"
+    },
+    {
+      "id": "homebush-boundary-status",
+      "label": "Strathfield Council: discontinued Homebush consultation",
+      "url": "https://haveyoursay.strathfield.nsw.gov.au/april-2026-proposed-homebush-south-railway-boundary-change",
+      "supports": "Consultation discontinued on 26 May 2026; no plans to progress. Review context only.",
+      "limits": "Do not describe the old proposed boundary as enacted or still pending.",
+      "checked": "2026-11-12"
+    },
+    {
+      "id": "concord-hospital",
+      "label": "Concord Hospital: emergency contact details",
+      "url": "https://www.slhd.nsw.gov.au/concord/department-emergency-contact.html",
+      "supports": "Concord Hospital is on Hospital Road.",
+      "limits": "No provider partnership, priority referral or admission/care advice.",
+      "checked": "2026-11-12"
+    },
+    {
+      "id": "healthdirect-discharge",
+      "label": "Healthdirect: going home from hospital",
+      "url": "https://www.healthdirect.gov.au/healthcare-and-services/general-health/going-home-from-hospital",
+      "supports": "Questions for the treating team about discharge summary, medicines, follow-up and support at home.",
+      "limits": "General education only; not individual clinical advice or Gentle Care availability.",
+      "checked": "2026-11-12"
+    },
+    {
+      "id": "dva-home-nursing",
+      "label": "DVA: nursing help at home",
+      "url": "https://www.dva.gov.au/what-we-help-with/care-at-home-and-aged-care-services/living-independently/nursing-help-at-home",
+      "supports": "Clinical need, eligibility and referral assessment apply.",
+      "limits": "Does not independently establish Gentle Care contracting or current capacity.",
+      "checked": "2026-11-12"
+    },
+    {
+      "id": "ndis-sil",
+      "label": "NDIS: supported independent living",
+      "url": "https://www.ndis.gov.au/participants/home-and-living/types-home-and-living-supports/what-supported-independent-living-sil",
+      "supports": "SIL is support-worker funding, not housing.",
+      "limits": "Does not establish Gentle Care SIL provision or registration scope. No SIL service offer added.",
+      "checked": "2026-11-12"
+    }
+  ],
+  "releaseGates": [
+    "Gemma review of clinical and operational wording",
+    "Confirm actual service scope, funding/referral process and locality-specific usefulness",
+    "Exact release approval and deployed checks; no search/AI guarantees"
+  ],
+  "pages": [
+    {
+      "slug": "north-strathfield",
+      "intentHypothesis": "Separate the care address from the office address and describe the support you need.",
+      "sourceIds": [
+        "canadabay-main-streets",
+        "business-address"
+      ],
+      "operationalGaps": [
+        "Confirm the office address and whether any appointments are offered there.",
+        "Confirm the actual intake, assessment, secure-information and cancellation processes.",
+        "Add a useful, substantiated North Strathfield operating detail if one exists; do not invent local staffing."
+      ]
+    },
+    {
+      "slug": "homebush",
+      "intentHypothesis": "Identify Homebush clearly and prepare for access, privacy and existing support arrangements.",
+      "sourceIds": [
+        "strathfield-town-centres",
+        "homebush-boundary-status"
+      ],
+      "operationalGaps": [
+        "Confirm the actual Homebush intake and service scope.",
+        "Identify a real Homebush-specific operational question that adds value beyond the regional guide.",
+        "Boundary consultation was discontinued in May 2026; do not reuse old proposed-boundary claims."
+      ]
+    },
+    {
+      "slug": "concord-west",
+      "intentHypothesis": "Distinguish the care location from the hospital and prepare a clear handover discussion.",
+      "sourceIds": [
+        "canadabay-main-streets",
+        "concord-hospital",
+        "healthdirect-discharge"
+      ],
+      "operationalGaps": [
+        "Gemma to review the discharge-planning wording and actual referral process.",
+        "Confirm which post-hospital tasks can be considered and how suitability and start dates are assessed.",
+        "No hospital partnership, referral priority or guaranteed discharge-day visit is asserted."
+      ]
+    },
+    {
+      "slug": "homebush-west",
+      "intentHypothesis": "Clarify Homebush West and Flemington references, then discuss the actual home and requested tasks.",
+      "sourceIds": [
+        "strathfield-homebush-west",
+        "strathfield-town-centres"
+      ],
+      "operationalGaps": [
+        "Confirm the Homebush West enquiry, access and communication arrangements.",
+        "Do not imply dedicated suburb staff, a transport service or a language guarantee.",
+        "Add first-hand local service detail only if it is substantiated and useful."
+      ]
+    },
+    {
+      "slug": "rhodes",
+      "intentHypothesis": "Think through building access and separate nursing at home from community-support requests.",
+      "sourceIds": [
+        "canadabay-main-streets"
+      ],
+      "operationalGaps": [
+        "Confirm the practical process when building access or equipment access changes.",
+        "Confirm which home-care and community-support requests can be considered; do not imply transport or accompaniment.",
+        "Provide a real Rhodes-specific operating detail; the peninsula fact alone does not establish unique clinical relevance."
+      ]
+    }
+  ]
+}

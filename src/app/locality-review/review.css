@@ -1,0 +1,45 @@
+.locality-review-shell .review-banner { padding: 1rem 1.25rem; background: #3d0a11; color: #fffdf9; }
+.locality-review-shell .review-banner > div { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; max-width: 76rem; margin: auto; }
+.locality-review-shell .review-banner span { color: #f1e4da; font-size: .9375rem; }
+.locality-review-shell .review-eyebrow { margin-bottom: 1rem; color: #486141; font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.locality-review-shell .review-breadcrumb { display: flex; flex-wrap: wrap; gap: .75rem; margin-block: .5rem 2rem; font-size: .9375rem; }
+.locality-review-shell .review-breadcrumb a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.locality-review-shell .review-breadcrumb span { align-self: center; }
+.locality-review-shell .review-index-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; margin-top: 2rem; }
+.locality-review-shell .review-index-card { display: grid; gap: 1rem; padding: 1.75rem; border: 1px solid #d7cfc3; background: #fdf6ec; text-decoration: none; min-width: 0; }
+.locality-review-shell .review-index-card:hover { border-color: #842833; }
+.locality-review-shell .review-index-card p { margin: 0; }
+.locality-review-shell .review-index-card > span:last-child { align-self: end; font-weight: 600; text-decoration: underline; text-underline-offset: .25rem; }
+.locality-review-shell .review-card-number, .locality-review-shell .review-section-number { display: block; margin-bottom: .75rem; color: #486141; font-size: .9375rem; font-weight: 700; }
+.locality-review-shell .review-reading-grid { display: grid; gap: 2.5rem; grid-template-columns: minmax(0, 1fr); align-items: start; }
+.locality-review-shell .review-sections { display: grid; gap: 3rem; min-width: 0; }
+.locality-review-shell .review-sections p { margin-top: 1.25rem; max-width: 67ch; }
+.locality-review-shell .review-preparation { padding: 1.5rem; background: #e8eee3; border-top: .25rem solid #486141; min-width: 0; scroll-margin-top: 7rem; }
+.locality-review-shell .review-preparation h2 { font-size: 2rem; }
+.locality-review-shell .review-preparation p { margin-top: 1rem; }
+.locality-review-shell .review-checklist { display: grid; gap: 1rem; padding-left: 1.25rem; margin-block: 1.5rem; list-style: disc; }
+.locality-review-shell .review-small { font-size: .9375rem; line-height: 1.65; }
+.locality-review-shell .review-faq-list { max-width: 64rem; margin-top: 2rem; }
+.locality-review-shell details { border-bottom: 1px solid #b8c7af; }
+.locality-review-shell summary { padding-block: 1.25rem; cursor: pointer; color: #332e2a; font-weight: 600; min-height: 2.75rem; }
+.locality-review-shell details p { margin-bottom: 1.25rem; max-width: 70ch; }
+.locality-review-shell summary:focus-visible { outline: 3px solid #842833; outline-offset: 4px; }
+.locality-review-shell .review-notes { background: #fdf6ec; border-top: 1px solid #d7cfc3; scroll-margin-top: 7rem; }
+.locality-review-shell .review-notes h2 + p { margin-top: 1.25rem; max-width: 75ch; }
+.locality-review-shell .review-notes-grid { display: grid; gap: 2rem; margin-block: 2rem; }
+.locality-review-shell .review-notes-grid p { margin-top: 1rem; }
+.locality-review-shell .review-source-details ul { padding-left: 1.25rem; list-style: disc; }
+.locality-review-shell .review-source-details li { margin-bottom: 1.5rem; }
+.locality-review-shell .review-source-details p { margin-block: .5rem; }
+.locality-review-shell .review-next-pages { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 2rem; }
+.locality-review-shell .review-next-pages a { padding: .65rem 1rem; border: 1px solid #d7cfc3; min-height: 2.75rem; }
+.locality-review-shell .review-next-pages [aria-current="page"] { background: #e8eee3; color: #332e2a; font-weight: 700; }
+.locality-review-shell .review-next-pages + p { margin-top: 1.5rem; }
+@media (min-width: 47.5rem) {
+  .locality-review-shell .review-index-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .locality-review-shell .review-reading-grid { grid-template-columns: minmax(0, 1.65fr) minmax(17rem, .85fr); }
+  .locality-review-shell .review-notes-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .locality-review-shell { scroll-behavior: auto; }
+}

@@ -1,3 +1,4 @@
+import { LOCALITY_REVIEW_FILES } from "./helpers/locality-review-files";
 import { restorePriorLocalContext, restorePriorLocalContextHtml } from "./helpers/local-context-review";
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -93,7 +94,7 @@ test("complete: all shared layouts, forms, states, backend, content, assets and 
     assert.equal(digest(path === "src/content/suburbs.ts" ? restorePriorLocalContext(readFileSync(path, "utf8")) : path === "src/app/layout.tsx" ? readFileSync(path, "utf8").replace('<html lang="en" data-scroll-behavior="smooth"', '<html lang="en"') : path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : readFileSync(path)),hash,path);
   }
   const original=Object.keys(baseline.unchangedFiles).filter(p=>p.startsWith("src/")||p.startsWith("public/"));
-  assert.deepEqual([...walk("src"),...walk("public")].sort(),[...original,...sourcePaths,...cssPaths].sort());
+  assert.deepEqual([...walk("src"),...walk("public")].sort(),[...original,...sourcePaths,...cssPaths,...LOCALITY_REVIEW_FILES].sort());
 });
 test("complete: /review keeps both feedback destinations, noindex and sitemap exclusion",async()=>{
   const route=moduleFor("review"); const html=await render(route,{});
@@ -106,7 +107,7 @@ test("complete: /review keeps both feedback destinations, noindex and sitemap ex
   for (const path of Object.keys(captures).filter(p=>p!=="/review")) assert.ok(sitemap.some(s=>new URL(s.url).pathname===path),path);
 });
 for (const [file,roots,importers] of [
-  ["src/app/premium-locality.css",[".premium-locality"],["src/app/areas/[region]/page.tsx","src/app/suburbs/[suburb]/page.tsx"]],
+  ["src/app/premium-locality.css",[".premium-locality"],["src/app/areas/[region]/page.tsx","src/app/locality-review/layout.tsx","src/app/suburbs/[suburb]/page.tsx"]],
   ["src/app/premium-editorial.css",[".premium-condition",".premium-article"],["src/app/blog/[slug]/page.tsx","src/app/conditions/[condition]/page.tsx"]],
   ["src/app/premium-utility.css",[".premium-privacy",".premium-terms",".premium-review"],["src/app/privacy/page.tsx","src/app/review/page.tsx","src/app/terms/page.tsx"]],
 ] as const) {
