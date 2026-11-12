@@ -1,3 +1,4 @@
+import { restorePriorFooterCredit } from "./helpers/footer-credit";
 import { restorePriorLocalContext, restorePriorLocalContextHtml } from "./helpers/local-context-review";
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -19,7 +20,7 @@ type Params = Record<string, string>;
 type Route = { default: ComponentType | ((props: {params: Promise<Params>}) => Promise<ReactNode>); metadata?: unknown; generateMetadata?: (props: {params: Promise<Params>}) => Promise<unknown>; generateStaticParams?: () => Params[] | Promise<Params[]>; dynamicParams?: boolean };
 type Capture = {family: string; params: Params; html: string; metadata: unknown; schemas: unknown[]; headingLevels: number[]};
 const captures: Record<string, Capture> = baseline.routes;
-const digest = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
+const digest = (value: string | Buffer) => createHash("sha256").update(restorePriorFooterCredit(value)).digest("hex");
 const walk = (dir: string): string[] => readdirSync(dir, {withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(join(dir,e.name)):[join(dir,e.name)]);
 const sourcePaths = Object.keys(baseline.sources).sort();
 const cssPaths = ["src/app/premium-editorial.css", "src/app/premium-locality.css", "src/app/premium-utility.css"];

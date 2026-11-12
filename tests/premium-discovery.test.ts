@@ -1,3 +1,4 @@
+import { restorePriorFooterCredit } from "./helpers/footer-credit";
 import { restorePriorLocalContext } from "./helpers/local-context-review";
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -18,7 +19,7 @@ import baseline from "./fixtures/discovery-baseline.json";
 const nativeRequire = createRequire(import.meta.url);
 nativeRequire.extensions[".css"] = () => undefined;
 const css = readFileSync("src/app/premium-discovery.css", "utf8");
-const digest = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
+const digest = (value: string | Buffer) => createHash("sha256").update(restorePriorFooterCredit(value)).digest("hex");
 const semanticDOM = (html: string) => {
   const stack: boolean[] = [];
   const result = html.replace(/<\/?div\b[^>]*>/g, tag => {

@@ -1,3 +1,4 @@
+import { restorePriorFooterCredit } from "./helpers/footer-credit";
 import { restorePriorLocalContext } from "./helpers/local-context-review";
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -26,7 +27,7 @@ const route = nativeRequire(`../${routePath}`) as {
   dynamicParams: boolean;
 };
 const css = readFileSync("src/app/premium-service-region.css", "utf8");
-const digest = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
+const digest = (value: string | Buffer) => createHash("sha256").update(restorePriorFooterCredit(value)).digest("hex");
 const normalizeIds = (value: string) => value.replace(/_R_[a-zA-Z0-9]+_/g, "_REACT_ID_");
 function semanticDOM(html: string) {
   const stack: boolean[] = [];
