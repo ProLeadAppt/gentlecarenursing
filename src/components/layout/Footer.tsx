@@ -40,7 +40,7 @@ export function Footer({
   return (
     <footer
       id="site-footer"
-      className="relative bg-[#3D0A11] text-white/90 pt-20 pb-10 overflow-hidden"
+      className="relative bg-[#3D0A11] text-white/90 pt-20 pb-10 lg:pb-24 overflow-hidden"
       role="contentinfo"
     >
       {/* Cinematic Background Gradient */}
