@@ -61,7 +61,7 @@ export const SUBURBS: readonly SuburbEntry[] = [
     nearestHospitals: ["Concord Hospital", "Royal Prince Alfred Hospital (RPA)", "Sydney Adventist Hospital"],
     neighbouringSuburbs: ["Homebush", "Burwood", "North Strathfield"],
     localContext:
-      "Strathfield is the suburb our office sits in (Level 1/5 George Street, North Strathfield). The area has a strong multicultural community — particularly Korean, Chinese, and Indian — and a mix of established residential, units, and family homes around the Strathfield Council LGA.",
+      "Gentle Care Nursing Services' office is at Level 1/5 George Street in North Strathfield, not in Strathfield. If you are arranging care in Strathfield, share the suburb where care is needed, the type of support requested and your preferred timing so the team can discuss whether it can assist.",
   },
   {
     slug: "concord",
@@ -73,7 +73,7 @@ export const SUBURBS: readonly SuburbEntry[] = [
     nearestHospitals: ["Concord Hospital", "Royal Prince Alfred Hospital (RPA)"],
     neighbouringSuburbs: ["North Strathfield", "Burwood", "Strathfield"],
     localContext:
-      "Concord sits on the Parramatta River, with Concord Hospital — a tertiary teaching hospital with strong geriatric, palliative, and respiratory services — at its centre.",
+      "If you are arranging in-home care in Concord after a hospital stay, ask the treating team what follow-up care and referral information may be needed. Concord Hospital is on Hospital Road. Mentioning the hospital here provides local context and does not imply a partnership or referral arrangement with Gentle Care Nursing Services.",
   },
   {
     slug: "burwood",
@@ -85,7 +85,7 @@ export const SUBURBS: readonly SuburbEntry[] = [
     nearestHospitals: ["Concord Hospital", "Royal Prince Alfred Hospital (RPA)"],
     neighbouringSuburbs: ["Strathfield", "Croydon", "Ashfield"],
     localContext:
-      "Burwood is a transport-hub suburb with a major rail interchange and dense mixed housing. Many older residents access Concord Hospital for clinical care and prefer in-home nursing to maintain independence in familiar surroundings.",
+      "When enquiring about in-home care in Burwood, include the suburb where care is needed and the type of support requested. For a unit or apartment, practical access details such as stairs or lift access may help the team plan a discussion. The team will need to confirm whether the requested care and timing can be accommodated.",
   },
 
   // -------------------------------------------------------------------------
@@ -197,7 +197,7 @@ export const SUBURBS: readonly SuburbEntry[] = [
     nearestHospitals: ["Westmead Hospital", "Westmead Private Hospital", "Cumberland Hospital"],
     neighbouringSuburbs: ["Westmead", "Harris Park", "North Parramatta"],
     localContext:
-      "Parramatta is Sydney's second CBD, with one of the most multicultural older populations in Australia. Westmead Hospital is the major tertiary teaching hospital for Western Sydney.",
+      "If you are arranging care at home in Parramatta after a stay at Westmead Hospital, ask the treating team about any follow-up care and referral information required. Westmead Hospital is in Westmead, on Hawkesbury Road. A hospital reference does not imply a partnership or priority referral arrangement with Gentle Care Nursing Services.",
   },
   {
     slug: "liverpool",
