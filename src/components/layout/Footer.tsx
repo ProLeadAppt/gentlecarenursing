@@ -197,7 +197,7 @@ export function Footer({
             </Link>
           </div>
 
-          <div className="flex flex-col items-start gap-3">
+          <div className="flex flex-col items-end gap-3 self-end md:items-start md:self-auto">
             <span className="text-white/70">A family-run service</span>
             <a href="https://munyal.com.au" target="_blank" rel="noopener noreferrer"
               aria-label="Built by Munyal · Personally crafted by Tyson Kaye"
