@@ -197,7 +197,10 @@ export function Footer({
             </Link>
           </div>
 
-          <span className="text-white/70">A family-run service</span>
+          <div className="flex flex-col items-center gap-2 sm:items-end">
+            <span className="text-white/70">A family-run service</span>
+            <a href="https://munyal.com.au" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-center normal-case tracking-normal text-white/70 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">Built by Munyal · Personally crafted by Tyson Kaye</a>
+          </div>
         </div>
       </Container>
     </footer>

@@ -1,3 +1,4 @@
+import { restorePriorFooterCredit } from "./helpers/footer-credit";
 import { restorePriorLocalContext } from "./helpers/local-context-review";
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -15,7 +16,7 @@ import baseline from "./fixtures/contact-referral-baseline.json";
 const nativeRequire = createRequire(import.meta.url);
 nativeRequire.extensions[".css"] = () => undefined;
 const css = readFileSync("src/app/premium-enquiry.css", "utf8");
-const digest = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
+const digest = (value: string | Buffer) => createHash("sha256").update(restorePriorFooterCredit(value)).digest("hex");
 const normalizeIds = (value: string) => value.replace(/_R_[a-zA-Z0-9]+_/g, "_FORM_ID_");
 const form = (html: string) => normalizeIds(html.match(/<form\b[\s\S]*?<\/form>/)?.[0] ?? "");
 // Remove only the two explicitly added presentation wrappers, retaining every
