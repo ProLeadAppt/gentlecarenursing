@@ -186,8 +186,8 @@ export function Footer({
         </div>
 
         {/* Legal */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-medium tracking-wider uppercase text-white/55">
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+        <div className="mt-8 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center text-[11px] font-medium tracking-wider uppercase text-white/55">
+          <div className="flex flex-wrap items-center justify-start gap-x-6 gap-y-2">
             <span>© {new Date().getFullYear()} {SITE.name}</span>
             <Link href="/privacy" className="hover:text-white transition-colors">
               Privacy
@@ -197,9 +197,17 @@ export function Footer({
             </Link>
           </div>
 
-          <div className="flex flex-col items-center gap-2 sm:items-end">
+          <div className="flex flex-col items-start gap-3">
             <span className="text-white/70">A family-run service</span>
-            <a href="https://munyal.com.au" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-center normal-case tracking-normal text-white/70 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">Built by Munyal · Personally crafted by Tyson Kaye</a>
+            <a href="https://munyal.com.au" target="_blank" rel="noopener noreferrer"
+              aria-label="Built by Munyal · Personally crafted by Tyson Kaye"
+              className="group inline-flex min-h-11 max-w-full items-center border-l border-accent/70 py-1 pl-4 text-left normal-case tracking-normal hover:border-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4">
+              <span className="min-w-0">
+                <span className="block text-sm leading-6 text-white/75">Built by <span className="font-serif text-xl text-accent group-hover:underline underline-offset-4">Munyal</span></span>
+                <span className="sr-only"> · </span>
+                <span className="block text-xs leading-5 text-white/75">Personally crafted by <span className="text-white/95">Tyson Kaye</span></span>
+              </span>
+            </a>
           </div>
         </div>
       </Container>

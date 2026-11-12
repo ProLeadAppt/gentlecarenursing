@@ -23,3 +23,13 @@ test("desktop footer credit clears the fixed contact button without changing mob
   assert.doesNotMatch(restored, /lg:pb-24/);
   assert.equal(restorePriorFooterCredit('className="unrelated lg:pb-24"'), 'className="unrelated lg:pb-24"');
 });
+
+test("maker signature keeps an accessible name, readable hierarchy and a wrapping touch target", () => {
+  assert.match(source, /aria-label="Built by Munyal · Personally crafted by Tyson Kaye"/);
+  assert.match(source, /min-h-11 max-w-full/);
+  assert.match(source, /className="min-w-0"/);
+  assert.match(source, /text-xs leading-5 text-white\/75/);
+  assert.match(source, /focus-visible:outline-2/);
+  assert.match(source, /className="sr-only"> · /);
+  assert.doesNotMatch(source, /whitespace-nowrap/);
+});
