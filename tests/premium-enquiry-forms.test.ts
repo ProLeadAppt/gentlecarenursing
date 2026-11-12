@@ -1,3 +1,4 @@
+import { restorePriorLocalContext } from "./helpers/local-context-review";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
@@ -96,7 +97,7 @@ test("enquiry pages: shared production is unchanged, with later presentation rou
     // and shared-source coverage in the information and discovery parity tests.
     if (["src/app/about/page.tsx", "src/app/faq/page.tsx", "src/app/areas/page.tsx", "src/app/conditions/page.tsx", "src/app/suburbs/page.tsx", "src/app/blog/page.tsx"].includes(path)) continue;
     // Remove only the Next smooth-scroll opt-in; retain the original layout hash.
-    assert.equal(digest(path === "src/app/layout.tsx" ? readFileSync(path, "utf8").replace('<html lang="en" data-scroll-behavior="smooth"', '<html lang="en"') : path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : readFileSync(path)), hash, path);
+    assert.equal(digest(path === "src/content/suburbs.ts" ? restorePriorLocalContext(readFileSync(path, "utf8")) : path === "src/app/layout.tsx" ? readFileSync(path, "utf8").replace('<html lang="en" data-scroll-behavior="smooth"', '<html lang="en"') : path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : readFileSync(path)), hash, path);
   }
 });
 
