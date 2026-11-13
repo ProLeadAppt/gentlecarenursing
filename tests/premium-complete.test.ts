@@ -1,4 +1,4 @@
-import { LOCALITY_REVIEW_FILES } from "./helpers/locality-review-files";
+import { LOCALITY_REVIEW_FILES, RIVERSIDE_REVIEW_FILES } from "./helpers/locality-review-files";
 import { restorePriorFooterCredit } from "./helpers/footer-credit";
 import { restorePriorLocalContext, restorePriorLocalContextHtml } from "./helpers/local-context-review";
 import test from "node:test";
@@ -95,7 +95,7 @@ test("complete: all shared layouts, forms, states, backend, content, assets and 
     assert.equal(digest(path === "src/content/suburbs.ts" ? restorePriorLocalContext(readFileSync(path, "utf8")) : path === "src/app/layout.tsx" ? readFileSync(path, "utf8").replace('<html lang="en" data-scroll-behavior="smooth"', '<html lang="en"') : path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : readFileSync(path)),hash,path);
   }
   const original=Object.keys(baseline.unchangedFiles).filter(p=>p.startsWith("src/")||p.startsWith("public/"));
-  assert.deepEqual([...walk("src"),...walk("public")].sort(),[...original,...sourcePaths,...cssPaths,...LOCALITY_REVIEW_FILES].sort());
+  assert.deepEqual([...walk("src"),...walk("public")].sort(),[...original,...sourcePaths,...cssPaths,...LOCALITY_REVIEW_FILES,...RIVERSIDE_REVIEW_FILES].sort());
 });
 test("complete: /review keeps both feedback destinations, noindex and sitemap exclusion",async()=>{
   const route=moduleFor("review"); const html=await render(route,{});
