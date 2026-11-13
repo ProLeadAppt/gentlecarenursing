@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Heading } from "@/components/ui/Heading";
-import { LOCALITY_REVIEW_DRAFTS, LOCALITY_REVIEW_SOURCES, getLocalityReview, isLocalityReviewEnabled } from "@/content/locality-review";
+import { LOCALITY_REVIEW_DRAFTS, LOCALITY_REVIEW_SOURCES, getLocalityReview, isLocalityReviewEnabled, LOCALITY_REVIEW_APPROVAL_NOTE } from "@/content/locality-review";
 
 type Props = { params: Promise<{ suburb?: string[] }> };
 export const dynamic = "force-static";
@@ -42,7 +42,7 @@ export default async function LocalityReviewPage({ params }: Props) {
       <Heading level="h1">In-home nursing &amp; care enquiries in {draft.name}</Heading>
       <p className="locality-intro">{draft.intro}</p>
       <p>{draft.local}</p>
-      <div className="locality-actions flex"><a href="#prepare-enquiry">Prepare for a care conversation</a><a href="#review-notes">Gemma’s review notes</a></div>
+      <div className="locality-actions flex"><a href="#prepare-enquiry">Prepare for a care conversation</a><a href="#review-notes">Approval and review notes</a></div>
     </Container></Section>
     <Section><Container className="review-reading-grid">
       <div className="review-sections">{draft.sections.map(([title, paragraphs], index) => <section key={title} aria-labelledby={`care-section-${index}`}>
@@ -65,9 +65,10 @@ export default async function LocalityReviewPage({ params }: Props) {
     </Container></Section>
     <Section id="review-notes" className="review-notes"><Container>
       <p className="review-eyebrow">Not part of the proposed public copy</p>
-      <Heading level="h2">For Gemma’s review</Heading>
-      <p>Clinical and operational content must be reviewed before publication. A locality page does not verify credentials, funding eligibility, hospital relationships or current capacity.</p>
-      <div className="review-notes-grid"><div><h3>Decisions still needed</h3><ul className="review-checklist">{draft.reviewQuestions.map((question) => <li key={question}>{question}</li>)}</ul></div>
+      <Heading level="h2">Approval and remaining review</Heading>
+      <p>{LOCALITY_REVIEW_APPROVAL_NOTE}</p>
+      <p>Any further clinical or service changes need review before publication. A locality page does not verify credentials, funding eligibility, hospital relationships or current capacity.</p>
+      <div className="review-notes-grid"><div><h3>Original review checklist and new local-detail notes</h3><ul className="review-checklist">{draft.reviewQuestions.map((question) => <li key={question}>{question}</li>)}</ul></div>
         <div><h3>Search intent and scope</h3><p>{draft.focus}</p><p>This is an editorial intent hypothesis, not a measured search-query finding. Current query data was unavailable. The draft questions need review against permitted search evidence and real enquiry needs.</p><p>No service/locality page multiplication, guaranteed rankings or AI citation claims are proposed. The five drafts are separate from the public sitemap and suburb coverage data.</p></div></div>
       <details className="review-source-details"><summary>Sources, checked 12 November 2026</summary><ul>{sources.map((source) => <li key={source.id}><strong>{source.url ? <a href={source.url} rel="noreferrer">{source.label}</a> : source.label}</strong><p>{source.supports}</p><p className="review-small">{source.limits}</p></li>)}</ul><p>Practical questions about a home are not claims about every resident or property in the suburb. Programme information does not establish Gentle Care’s provider status.</p></details>
       <nav className="review-next-pages" aria-label="Other locality drafts">{LOCALITY_REVIEW_DRAFTS.map((item) => <Link key={item.slug} href={`/locality-review/${item.slug}`} aria-current={item.slug === draft.slug ? "page" : undefined}>{item.name}</Link>)}</nav>

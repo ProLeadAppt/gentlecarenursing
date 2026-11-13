@@ -68,9 +68,9 @@ test("five drafts render useful questions, visible review limits and no forms or
       const html = renderToStaticMarkup(await route.default({ params: Promise.resolve({ suburb: [draft.slug] }) }));
       assert.equal((html.match(/<h1\b/g) ?? []).length, 1);
       assert.ok(html.includes(draft.name));
-      assert.ok(html.includes("For Gemma"));
+      assert.ok(html.includes("Approval and remaining review"));
       assert.ok(html.includes("editorial intent hypothesis"));
-      assert.ok(html.includes("Clinical and operational content must be reviewed before publication"));
+      assert.ok(html.includes("Any further clinical or service changes need review before publication"));
       assert.doesNotMatch(html, /<form\b|application\/ld\+json|href="\/(?:referral|contact)"|onSubmit|participant_id/);
       for (const id of ["prepare-enquiry", "review-notes"]) assert.ok(html.includes(`id="${id}"`));
       assert.equal((html.match(/<summary>/g) ?? []).length, draft.faqs.length + 1);
@@ -84,7 +84,7 @@ test("five drafts render useful questions, visible review limits and no forms or
     assert.ok(hub.includes("editorial intent hypotheses"));
     assert.ok(hub.includes("No form submissions") || hub.includes("no form submissions"));
     const shell = renderToStaticMarkup(createElement(layout.default, null, null));
-    assert.ok(shell.includes("Draft for Gemma"));
+    assert.ok(shell.includes("Unpublished review preview"));
     assert.equal(layout.metadata.robots.index, false);
   });
 });
@@ -118,4 +118,18 @@ test("draft evidence stays bounded and North Strathfield keeps the real office d
 test("historical inventory guards permit only the five exact review source files", () => {
   assert.deepEqual(LOCALITY_REVIEW_FILES, ["src/app/locality-review/[[...suburb]]/page.tsx", "src/app/locality-review/layout.tsx", "src/app/locality-review/ReviewIndex.tsx", "src/app/locality-review/review.css", "src/content/locality-review.ts"]);
   for (const file of LOCALITY_REVIEW_FILES) assert.ok(readFileSync(file, "utf8").length > 0);
+});
+
+ test("approval provenance distinguishes the original five from new copy and release permission", async () => {
+  await inEnvironment("deploy-preview", "production", async () => {
+    const pages = [renderToStaticMarkup(createElement(index.default)), renderToStaticMarkup(createElement(layout.default, null, null))];
+    for (const slug of slugs) pages.push(renderToStaticMarkup(await route.default({ params: Promise.resolve({ suburb: [slug] }) })));
+    for (const html of pages) {
+      assert.ok(html.includes("Tyson reports that Gemma approved the original five clinical and service drafts"));
+      assert.ok(html.includes("not an independently obtained sign-off from Gemma"));
+      assert.ok(html.includes("added Homebush Station and Rhodes destination sections remain for review"));
+      assert.ok(html.includes("Production publication is not approved"));
+      assert.doesNotMatch(html, /still need Gemma’s confirmation|Draft for Gemma’s review|Clinical and operational content must be reviewed before publication/);
+    }
+  });
 });

@@ -436,3 +436,6 @@ export function isLocalityReviewEnabled(env: { CONTEXT?: string; NODE_ENV?: stri
 export function getLocalityReview(slug: string): LocalityReview | undefined {
   return LOCALITY_REVIEW_DRAFTS.find((draft) => draft.slug === slug);
 }
+
+// Review provenance only: this does not grant publication or future-content approval.
+export const LOCALITY_REVIEW_APPROVAL_NOTE = "Tyson reports that Gemma approved the original five clinical and service drafts. This records Tyson’s report, not an independently obtained sign-off from Gemma. The added Homebush Station and Rhodes destination sections remain for review. Production publication is not approved.";
