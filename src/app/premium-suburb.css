@@ -161,8 +161,31 @@
   font-size: 1.1875rem;
   line-height: 1.6;
 }
+.premium-suburb .suburb-prose { margin-top: 1.15rem; }
 .premium-suburb .suburb-prose,
-.premium-suburb .suburb-faq details p { max-width: 62ch; }
+.premium-suburb .suburb-faq details p { max-width: 65ch; }
+.premium-suburb .suburb-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+.premium-suburb .suburb-story .suburb-prose { max-width: none; }
+.premium-suburb .suburb-glance {
+  padding: 1.5rem 1.35rem 1.65rem;
+  border-top: .3125rem solid var(--suburb-sage-ink);
+  background: var(--suburb-sage);
+}
+.premium-suburb .suburb-glance h2 { font-size: clamp(1.75rem, 2vw, 2.35rem); margin-bottom: .25rem; }
+.premium-suburb .suburb-pull {
+  margin-top: 1.5rem;
+  padding: .25rem 0 .25rem 1.15rem;
+  border-left: 2px solid var(--suburb-sage-ink);
+  color: var(--suburb-ink);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.35rem;
+  line-height: 1.45;
+}
 .premium-suburb .suburb-card-grid,
 .premium-suburb .suburb-support-grid {
   display: grid;
@@ -300,6 +323,7 @@
   .premium-suburb h2 { font-size: clamp(2.5rem, 3vw, 3.35rem); }
   .premium-suburb .suburb-hero { padding-block: 2.5rem 3.5rem; }
   .premium-suburb .suburb-hero-grid { grid-template-columns: minmax(0, 1.25fr) minmax(18rem, .85fr); gap: 3rem; align-items: start; }
+  .premium-suburb .suburb-story { grid-template-columns: minmax(0, 1.25fr) minmax(18rem, .8fr); gap: 3.5rem; }
   .premium-suburb .suburb-card-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 2.5rem; row-gap: 0; }
   .premium-suburb .suburb-card-grid > li { grid-column: span 3; }
   .premium-suburb .suburb-card-grid:has(> :nth-child(3):last-child) > li,

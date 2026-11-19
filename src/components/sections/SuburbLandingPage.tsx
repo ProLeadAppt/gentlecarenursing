@@ -111,9 +111,13 @@ export function SuburbLandingPage({ page }: { page: SuburbLandingPageData }) {
         </div>
       </section>
 
-      {page.sections.map((section, index) => (
-        <PageSection key={section.heading} section={section} index={index} isLast={index === page.sections.length - 1} actions={page.closingActions} />
-      ))}
+      {layoutSections(page.sections).map((item) =>
+        item.kind === "story" ? (
+          <StorySection key={item.narrative.heading} narrative={item.narrative} aside={item.aside} index={item.index} />
+        ) : (
+          <PageSection key={item.section.heading} section={item.section} index={item.index} isLast={item.isLast} actions={page.closingActions} />
+        ),
+      )}
 
       <div className="suburb-mobile-bar">
         {page.heroActions.map((action) => (
@@ -121,6 +125,61 @@ export function SuburbLandingPage({ page }: { page: SuburbLandingPageData }) {
         ))}
       </div>
     </div>
+  );
+}
+
+function isProseOnly(section: LandingSection): boolean {
+  return !section.faqs && !section.subsections && (section.blocks ?? []).every((block) => block.type === "p") && (section.blocks ?? []).length > 1;
+}
+
+function layoutSections(sections: readonly LandingSection[]) {
+  const items: Array<
+    | { kind: "story"; narrative: LandingSection; aside: LandingSection; index: number }
+    | { kind: "single"; section: LandingSection; index: number; isLast: boolean }
+  > = [];
+  for (let index = 0; index < sections.length; index += 1) {
+    const section = sections[index];
+    const next = sections[index + 1];
+    if (isProseOnly(section) && next && isProseOnly(next) && /at a glance/i.test(next.heading)) {
+      items.push({ kind: "story", narrative: section, aside: next, index });
+      index += 1;
+      continue;
+    }
+    items.push({ kind: "single", section, index, isLast: index === sections.length - 1 });
+  }
+  return items;
+}
+
+function StorySection({ narrative, aside, index }: { narrative: LandingSection; aside: LandingSection; index: number }) {
+  return (
+    <section className="suburb-section" aria-labelledby={`suburb-section-${index}`}>
+      <div className="suburb-wrap suburb-story">
+        <div>
+          <h2 id={`suburb-section-${index}`}>{narrative.heading}</h2>
+          <ProseBlocks blocks={narrative.blocks ?? []} />
+        </div>
+        <aside className="suburb-glance" aria-labelledby={`suburb-section-${index + 1}`}>
+          <h2 id={`suburb-section-${index + 1}`}>{aside.heading}</h2>
+          <ProseBlocks blocks={aside.blocks ?? []} />
+        </aside>
+      </div>
+    </section>
+  );
+}
+
+function ProseBlocks({ blocks }: { blocks: readonly LandingBlock[] }) {
+  return (
+    <>
+      {blocks.filter((block) => block.type === "p").map((block) => {
+        const text = block.text ?? "";
+        const pull = text.startsWith("*") && text.endsWith("*");
+        return (
+          <p key={text} className={pull ? "suburb-prose suburb-pull" : "suburb-prose"}>
+            <Rich text={text} />
+          </p>
+        );
+      })}
+    </>
   );
 }
 
@@ -211,7 +270,7 @@ function SectionBody({ blocks }: { blocks: readonly LandingBlock[] }) {
   return (
     <>
       {paragraphs.filter((block) => blocks.indexOf(block) < (lists[0] ? blocks.indexOf(lists[0]) : blocks.length)).map((block) => (
-        <p key={block.text} className="suburb-prose"><Rich text={block.text ?? ""} /></p>
+        <p key={block.text} className={pullClass(block.text)}><Rich text={block.text ?? ""} /></p>
       ))}
       {lists.map((block, index) => {
         if (block.type === "ol") {
@@ -230,10 +289,14 @@ function SectionBody({ blocks }: { blocks: readonly LandingBlock[] }) {
         );
       })}
       {paragraphs.filter((block) => lists[0] && blocks.indexOf(block) > blocks.indexOf(lists[lists.length - 1])).map((block) => (
-        <p key={block.text} className="suburb-prose"><Rich text={block.text ?? ""} /></p>
+        <p key={block.text} className={pullClass(block.text)}><Rich text={block.text ?? ""} /></p>
       ))}
     </>
   );
+}
+
+function pullClass(text?: string): string {
+  return text?.startsWith("*") && text.endsWith("*") ? "suburb-prose suburb-pull" : "suburb-prose";
 }
 
 function HeroTitle({ title }: { title: string }) {
