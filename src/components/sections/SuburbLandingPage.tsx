@@ -137,12 +137,16 @@ function layoutSections(sections: readonly LandingSection[]) {
     | { kind: "story"; narrative: LandingSection; aside: LandingSection; index: number }
     | { kind: "single"; section: LandingSection; index: number; isLast: boolean }
   > = [];
+  const used = new Set<number>();
   for (let index = 0; index < sections.length; index += 1) {
+    if (used.has(index)) continue;
     const section = sections[index];
-    const next = sections[index + 1];
-    if (isProseOnly(section) && next && isProseOnly(next) && /at a glance/i.test(next.heading)) {
-      items.push({ kind: "story", narrative: section, aside: next, index });
-      index += 1;
+    const glance = sections.findIndex((candidate, candidateIndex) =>
+      candidateIndex > index && !used.has(candidateIndex) && isProseOnly(candidate) && /at a glance/i.test(candidate.heading),
+    );
+    if (isProseOnly(section) && glance !== -1 && !items.some((item) => item.kind === "story")) {
+      used.add(glance);
+      items.push({ kind: "story", narrative: section, aside: sections[glance], index });
       continue;
     }
     items.push({ kind: "single", section, index, isLast: index === sections.length - 1 });
