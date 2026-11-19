@@ -211,13 +211,17 @@
 }
 .premium-suburb .suburb-card,
 .premium-suburb .suburb-support {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
+  height: 100%;
   padding: 1.35rem 0 1.5rem;
   border: 0;
   border-top: 1px solid var(--suburb-rule);
   border-radius: 0;
   background: transparent;
 }
+.premium-suburb .suburb-card .suburb-more { margin-top: auto; }
 .premium-suburb .suburb-section-sage .suburb-card,
 .premium-suburb .suburb-section-sage .suburb-support { border-top-color: #b7c6ae; }
 .premium-suburb .suburb-card strong,
@@ -226,6 +230,7 @@
 .premium-suburb .suburb-card h3 { font-size: 1.45rem; line-height: 1.2; }
 .premium-suburb .suburb-card > p,
 .premium-suburb .suburb-support p { margin: 0; }
+.premium-suburb .suburb-card-note { padding-top: .85rem; }
 .premium-suburb .suburb-number {
   display: block;
   margin-bottom: .75rem;
@@ -272,7 +277,7 @@
   min-width: 0;
   padding-bottom: 1.75rem;
 }
-.premium-suburb .suburb-process-mark { position: relative; min-width: 0; }
+.premium-suburb .suburb-process-mark { position: relative; display: inline-block; min-width: 0; }
 .premium-suburb .suburb-process-num {
   position: relative;
   z-index: 1;
@@ -554,22 +559,21 @@
   .premium-suburb .suburb-support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 2rem; }
   .premium-suburb .suburb-tile-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .premium-suburb .suburb-process {
-    position: relative;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: 2.75rem;
   }
-  .premium-suburb .suburb-process::before {
-    content: "";
-    position: absolute;
-    z-index: 0;
-    top: 1.95rem;
-    left: 4.25rem;
-    right: 6%;
-    height: 1px;
-    background: var(--suburb-rule);
+  .premium-suburb .suburb-process > li {
+    display: block;
+    padding-bottom: 0;
+    container-type: inline-size;
   }
-  .premium-suburb .suburb-process > li { display: block; padding-bottom: 0; }
-  .premium-suburb .suburb-process > li .suburb-process-mark::after { display: none; }
+  .premium-suburb .suburb-process > li:not(:last-child) .suburb-process-mark::after {
+    top: 1.95rem;
+    bottom: auto;
+    left: calc(100% + .7rem);
+    width: calc(100cqi - 100% + 2.75rem - 1.4rem);
+    height: 1px;
+  }
   .premium-suburb .suburb-mobile-bar { display: none; }
 }
 @media (min-width: 62.5rem) {

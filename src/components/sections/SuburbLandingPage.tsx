@@ -432,6 +432,7 @@ function PointGrid({ points }: { points: readonly LandingPoint[] }) {
         <li className="suburb-card" key={point.title}>
           <h3>{point.title}</h3>
           <p><Rich text={point.line} /></p>
+          {point.note ? <p className="suburb-card-note"><Rich text={point.note} /></p> : null}
           {point.detail && point.detailSummary ? <Disclosure summary={point.detailSummary} text={point.detail} /> : null}
         </li>
       ))}

@@ -41,6 +41,8 @@ export interface LandingDisclosure {
 export interface LandingPoint {
   title: string;
   line: string;
+  /** Extra sentence that belongs inside the card, not under the row. */
+  note?: string;
   detailSummary?: string;
   detail?: string;
 }
@@ -327,6 +329,14 @@ export const SUBURB_LANDING_PAGES: readonly SuburbLandingPageData[] = [
           },
           {
             type: "p",
+            text: "North Strathfield station is on the T9 Northern Line, one stop from Strathfield and one from Concord West.",
+          },
+          {
+            type: "p",
+            text: "After English, the languages most often spoken at home are Mandarin, Korean, Cantonese and Nepali.",
+          },
+          {
+            type: "p",
             text: "*We mention hospitals for local context only. This doesn't mean Gentle Care has a partnership or referral arrangement with them.*",
           },
         ],
@@ -524,12 +534,7 @@ export const SUBURB_LANDING_PAGES: readonly SuburbLandingPageData[] = [
           {
             title: "Veteran Card – Specific Conditions (White Card)",
             line: "The care must be for an accepted service-related condition, a DVA-accepted mental health condition, or treatment covered under Non-Liability Health Care or Provisional Access to Medical Treatment.",
-          },
-        ],
-        blocks: [
-          {
-            type: "p",
-            text: "For a White Card, we confirm eligibility with DVA before services start.",
+            note: "For a White Card, we confirm eligibility with DVA before services start.",
           },
         ],
         disclosures: [
