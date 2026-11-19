@@ -75,7 +75,7 @@ export function SuburbLandingPage({ page }: { page: SuburbLandingPageData }) {
           <div className="suburb-hero-grid">
             <div className="suburb-hero-copy">
               <p className="suburb-eyebrow">{page.region}</p>
-              <h1 id={`${page.slug}-title`}>{page.h1}</h1>
+              <h1 id={`${page.slug}-title`}><HeroTitle title={page.h1} /></h1>
               {lead ? <p className="suburb-lead"><Rich text={lead} /></p> : null}
               {restIntro.map((paragraph) => (
                 <p key={paragraph}><Rich text={paragraph} /></p>
@@ -232,6 +232,17 @@ function SectionBody({ blocks }: { blocks: readonly LandingBlock[] }) {
       {paragraphs.filter((block) => lists[0] && blocks.indexOf(block) > blocks.indexOf(lists[lists.length - 1])).map((block) => (
         <p key={block.text} className="suburb-prose"><Rich text={block.text ?? ""} /></p>
       ))}
+    </>
+  );
+}
+
+function HeroTitle({ title }: { title: string }) {
+  const splitAt = title.lastIndexOf(" in ");
+  if (splitAt <= 0) return <>{title}</>;
+  return (
+    <>
+      {title.slice(0, splitAt)}
+      <span className="suburb-accent">{title.slice(splitAt)}</span>
     </>
   );
 }

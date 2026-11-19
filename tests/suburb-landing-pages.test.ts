@@ -67,7 +67,7 @@ for (const entry of SUBURB_LANDING_PAGES) {
   test(`${entry.slug}: one H1 and the draft heading hierarchy render`, () => {
     const h1 = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)];
     assert.equal(h1.length, 1);
-    assert.equal(h1[0][1], entry.h1);
+    assert.equal(h1[0][1].replace(/<[^>]+>/g, ""), entry.h1);
     const levels = [...html.matchAll(/<h([1-6])\b/g)].map((match) => Number(match[1]));
     assert.equal(levels[0], 1);
     for (let i = 1; i < levels.length; i += 1) assert.ok(levels[i] <= levels[i - 1] + 1, levels.join(","));

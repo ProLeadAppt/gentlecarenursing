@@ -13,8 +13,8 @@
   --suburb-deep: #3d0a11;
   color: var(--suburb-ink);
   background: var(--suburb-paper);
-  font-size: 1.0625rem;
-  line-height: 1.65;
+  font-size: 1.1875rem;
+  line-height: 1.6;
 }
 .premium-suburb .suburb-wrap {
   width: calc(100% - 2.25rem);
@@ -31,9 +31,10 @@
   letter-spacing: -.03em;
   line-height: 1.08;
 }
-.premium-suburb h1 { max-width: 11ch; font-size: clamp(2.75rem, 7vw, 3.5rem); }
-.premium-suburb h2 { max-width: 14ch; font-size: clamp(2.125rem, 4vw, 3rem); }
-.premium-suburb h3 { font-size: 1.5rem; line-height: 1.2; letter-spacing: -.02em; }
+.premium-suburb h1 { max-width: none; font-size: clamp(2.75rem, 6vw, 3.75rem); }
+.premium-suburb h2 { max-width: none; font-size: clamp(2.25rem, 3.5vw, 3.25rem); }
+.premium-suburb h3 { font-size: 1.75rem; line-height: 1.2; letter-spacing: -.02em; }
+.premium-suburb .suburb-accent { color: var(--suburb-berry); }
 .premium-suburb p { color: var(--suburb-muted); }
 .premium-suburb a { color: var(--suburb-berry); }
 .premium-suburb strong { color: var(--suburb-ink); font-weight: 600; }
@@ -66,12 +67,12 @@
 }
 .premium-suburb .suburb-lead {
   margin-top: 1.25rem;
-  max-width: 38rem;
+  max-width: 65ch;
   color: var(--suburb-ink);
   font-size: 1.25rem;
   line-height: 1.55;
 }
-.premium-suburb .suburb-hero-copy p + p { margin-top: .875rem; max-width: 38rem; font-size: 1.125rem; line-height: 1.6; color: var(--suburb-ink); }
+.premium-suburb .suburb-hero-copy p + p { margin-top: .875rem; max-width: 65ch; font-size: 1.1875rem; line-height: 1.6; color: var(--suburb-ink); }
 .premium-suburb .suburb-actions {
   display: flex;
   flex-direction: column;
@@ -145,22 +146,23 @@
   display: block;
   margin-top: .375rem;
   color: var(--suburb-muted);
-  font-size: .975rem;
+  font-size: 1.125rem;
   line-height: 1.5;
 }
 .premium-suburb .suburb-section { padding-block: 3.25rem; }
 .premium-suburb .suburb-section-sage { background: var(--suburb-sage); }
 .premium-suburb .suburb-section-head { margin-bottom: 1.75rem; }
-.premium-suburb .suburb-section-head p,
 .premium-suburb .suburb-prose,
 .premium-suburb .suburb-card,
-.premium-suburb .suburb-support p {
-  max-width: 42rem;
-  margin-top: 1rem;
+.premium-suburb .suburb-support p,
+.premium-suburb .suburb-steps li,
+.premium-suburb .suburb-faq details p {
   color: var(--suburb-ink);
-  font-size: 1.125rem;
-  line-height: 1.65;
+  font-size: 1.1875rem;
+  line-height: 1.6;
 }
+.premium-suburb .suburb-prose,
+.premium-suburb .suburb-faq details p { max-width: 62ch; }
 .premium-suburb .suburb-card-grid,
 .premium-suburb .suburb-support-grid {
   display: grid;
@@ -173,13 +175,14 @@
 .premium-suburb .suburb-card,
 .premium-suburb .suburb-support {
   min-width: 0;
-  padding: 1.25rem 1.25rem 1.375rem;
-  border: 1px solid var(--suburb-rule);
-  border-radius: .25rem;
-  background: var(--suburb-paper);
+  padding: 1.35rem 0 1.5rem;
+  border: 0;
+  border-top: 1px solid var(--suburb-rule);
+  border-radius: 0;
+  background: transparent;
 }
 .premium-suburb .suburb-section-sage .suburb-card,
-.premium-suburb .suburb-section-sage .suburb-support { border-color: #c5d1bb; }
+.premium-suburb .suburb-section-sage .suburb-support { border-top-color: #b7c6ae; }
 .premium-suburb .suburb-card strong,
 .premium-suburb .suburb-support h3 { display: block; margin-bottom: .5rem; }
 .premium-suburb .suburb-card p,
@@ -262,8 +265,8 @@
   color: var(--suburb-cream);
   padding-block: 3.5rem 4rem;
 }
-.premium-suburb .suburb-close h2 { max-width: 14ch; color: var(--suburb-cream); }
-.premium-suburb .suburb-close p { max-width: 40rem; margin-top: 1.25rem; color: #e9d8d0; }
+.premium-suburb .suburb-close h2 { max-width: 18ch; color: var(--suburb-cream); }
+.premium-suburb .suburb-close p { max-width: 62ch; margin-top: 1.25rem; color: #e9d8d0; font-size: 1.1875rem; }
 .premium-suburb .suburb-close .suburb-button { border-color: var(--suburb-cream); background: var(--suburb-cream); color: var(--suburb-deep); }
 .premium-suburb .suburb-close .suburb-button-secondary { background: transparent; color: var(--suburb-cream); }
 .premium-suburb .suburb-close .suburb-button:hover { background: var(--suburb-sage); border-color: var(--suburb-sage); color: var(--suburb-deep); }
@@ -293,16 +296,19 @@
 @media (min-width: 47.5rem) {
   .premium-suburb .suburb-wrap { width: calc(100% - 4rem); }
   .premium-suburb .suburb-section { padding-block: 4.5rem; }
-  .premium-suburb h1 { font-size: clamp(3.25rem, 4.8vw, 4.75rem); }
-  .premium-suburb h2 { font-size: clamp(2.5rem, 3.4vw, 3.5rem); }
+  .premium-suburb h1 { font-size: clamp(3.25rem, 4.2vw, 4.5rem); }
+  .premium-suburb h2 { font-size: clamp(2.5rem, 3vw, 3.35rem); }
   .premium-suburb .suburb-hero { padding-block: 2.5rem 3.5rem; }
-  .premium-suburb .suburb-hero-grid,
-  .premium-suburb .suburb-split { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 3rem; align-items: start; }
+  .premium-suburb .suburb-hero-grid { grid-template-columns: minmax(0, 1.25fr) minmax(18rem, .85fr); gap: 3rem; align-items: start; }
+  .premium-suburb .suburb-card-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 2.5rem; row-gap: 0; }
+  .premium-suburb .suburb-card-grid > li { grid-column: span 3; }
+  .premium-suburb .suburb-card-grid:has(> :nth-child(3):last-child) > li,
+  .premium-suburb .suburb-card-grid:has(> :nth-child(6):last-child) > li { grid-column: span 2; }
+  .premium-suburb .suburb-card-grid:has(> :nth-child(5):last-child) > li { grid-column: span 2; }
+  .premium-suburb .suburb-card-grid:has(> :nth-child(5):last-child) > li:nth-child(n+4) { grid-column: span 3; }
   .premium-suburb .suburb-hero-aside { position: sticky; top: 6.5rem; }
   .premium-suburb .suburb-actions { flex-direction: row; flex-wrap: wrap; }
-  .premium-suburb .suburb-trust-grid,
-  .premium-suburb .suburb-card-grid,
-  .premium-suburb .suburb-support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .premium-suburb .suburb-support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2.5rem; }
   .premium-suburb .suburb-trust-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (min-width: 62.5rem) {
