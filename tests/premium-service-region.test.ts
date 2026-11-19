@@ -11,6 +11,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { FormModalProvider } from "../src/contexts/FormModalContext";
 import { getAllServiceRegionParams, getServiceRegionPage } from "../src/content/service-regions";
 import baseline from "./fixtures/service-region-baseline.json";
+import { isSuburbLandingTouched, SUBURB_LANDING_SOURCE_FILES } from "./helpers/suburb-landing-files";
 
 // These immutable captures are copied, not regenerated, from the assessed
 // pre-dynamic tree. Only classes/styles and four named presentation divs may
@@ -133,11 +134,13 @@ test("service-region: every other source, asset, configuration and dependency fi
     // Only review motion/focus changes: preservation and behavior in review-reduced-motion.test.ts.
     if (["src/components/review/ReviewFunnel.tsx", "src/components/review/StarRating.tsx"].includes(path)) continue;
     if (laterRoutes.includes(path)) continue;
+    // North Strathfield and Concord West landing pages: suburb-landing-pages.test.ts.
+    if (isSuburbLandingTouched(path)) continue;
     // Remove only the Next smooth-scroll opt-in; retain the original layout hash.
     assert.equal(digest(path === "src/content/suburbs.ts" ? restorePriorLocalContext(readFileSync(path, "utf8")) : path === "src/app/layout.tsx" ? readFileSync(path, "utf8").replace('<html lang="en" data-scroll-behavior="smooth"', '<html lang="en"') : path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : readFileSync(path)), hash, path);
   }
   const expected = [...Object.keys(baseline.unchangedFiles).filter(p => p.startsWith("src/") || p.startsWith("public/")), routePath, layoutPath, "src/app/premium-service-region.css", "src/app/premium-editorial.css", "src/app/premium-locality.css", "src/app/premium-utility.css"].sort();
-  assert.deepEqual([...walk("src"), ...walk("public")].sort(), expected);
+  assert.deepEqual([...walk("src"), ...walk("public")].sort(), [...expected, ...SUBURB_LANDING_SOURCE_FILES].sort());
 });
 test("service-region: CSS is opt-in and imported only by the existing service-region route", () => {
   const selectors = [...css.replace(/\/\*[\s\S]*?\*\//g, "").matchAll(/([^{}]+)\{/g)].map(m => m[1].trim());

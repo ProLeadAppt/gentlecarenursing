@@ -8,6 +8,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { PremiumReferrers } from "../src/components/sections/PremiumReferrers";
 import { REFERRER_BLOCKS } from "../src/content/referrer-blocks";
 import baseline from "./fixtures/referrers-baseline.json";
+import { isSuburbLandingTouched } from "./helpers/suburb-landing-files";
 
 // Captured from the original PR76 route. Copy parity is not clinical verification.
 const html = renderToStaticMarkup(createElement(PremiumReferrers));
@@ -78,6 +79,8 @@ test("referrers: metadata and all shared form, privacy, recipient, analytics and
     // These two route-only presentation changes are covered by complete DOM,
     // metadata, form and shared-source parity in premium-enquiry-forms.test.ts.
     if (["src/app/contact/page.tsx", "src/app/referral/page.tsx"].includes(path)) continue;
+    // North Strathfield and Concord West landing pages: suburb-landing-pages.test.ts.
+    if (isSuburbLandingTouched(path)) continue;
     assert.equal(digest(path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : readFileSync(path)), hash, path);
   }
 });

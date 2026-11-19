@@ -10,6 +10,7 @@ import { createElement, type ReactNode, type ComponentType } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { FormModalProvider } from "../src/contexts/FormModalContext";
 import baseline from "./fixtures/complete-baseline.json";
+import { isSuburbLandingTouched, SUBURB_LANDING_SOURCE_FILES, withoutInnerWestLandingLinks } from "./helpers/suburb-landing-files";
 
 // Captures predate these presentation changes. Every original element, text
 // node, attribute, schema and link remains exact after removing ONLY named
@@ -45,9 +46,14 @@ async function render(route: Route, params: Params) {
 for (const [path, original] of Object.entries(captures)) {
   const route = moduleFor(original.family);
   test(`${path}: full original semantic DOM, exact copy, claims, images, links and controls survive`, async () => {
-    const html = await render(route, original.params);
+    const raw = await render(route, original.params);
+    const html = path === "/areas/inner-west" ? withoutInnerWestLandingLinks(raw) : raw;
     assert.equal(semanticDOM(restorePriorLocalContextHtml(html)), semanticDOM(original.html));
     assert.deepEqual(links(html), links(original.html));
+    if (path === "/areas/inner-west") {
+      assert.ok(raw.includes('href="/suburbs/north-strathfield"'));
+      assert.ok(raw.includes('href="/suburbs/concord-west"'));
+    }
     assert.equal((html.match(/<h1\b/g)??[]).length,1);
     assert.deepEqual([...html.matchAll(/<h([1-6])\b/g)].map(m=>Number(m[1])), original.headingLevels);
     const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(m=>m[1]);
@@ -90,11 +96,13 @@ test("complete: all shared layouts, forms, states, backend, content, assets and 
     if (["src/components/review/ReviewFunnel.tsx", "src/components/review/StarRating.tsx"].includes(path)) continue;
     // Only the current measurement docs change; original hashes and contract checks are in measurement-documentation.test.ts.
     if (["docs/seo/measurement-specification.md", "docs/seo/monthly-report-template.md"].includes(path)) continue;
+    // North Strathfield and Concord West landing pages: suburb-landing-pages.test.ts.
+    if (isSuburbLandingTouched(path)) continue;
     // Remove only the Next smooth-scroll opt-in; retain the original layout hash.
     assert.equal(digest(path === "src/content/suburbs.ts" ? restorePriorLocalContext(readFileSync(path, "utf8")) : path === "src/app/layout.tsx" ? readFileSync(path, "utf8").replace('<html lang="en" data-scroll-behavior="smooth"', '<html lang="en"') : path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : readFileSync(path)),hash,path);
   }
   const original=Object.keys(baseline.unchangedFiles).filter(p=>p.startsWith("src/")||p.startsWith("public/"));
-  assert.deepEqual([...walk("src"),...walk("public")].sort(),[...original,...sourcePaths,...cssPaths].sort());
+  assert.deepEqual([...walk("src"),...walk("public")].sort(),[...original,...sourcePaths,...cssPaths,...SUBURB_LANDING_SOURCE_FILES].sort());
 });
 test("complete: /review keeps both feedback destinations, noindex and sitemap exclusion",async()=>{
   const route=moduleFor("review"); const html=await render(route,{});
@@ -102,7 +110,8 @@ test("complete: /review keeps both feedback destinations, noindex and sitemap ex
   assert.deepEqual(links(html),links(captures["/review"].html));
   assert.match(html,/Both options are open to everyone, whatever your experience/);
   const sitemap=nativeRequire("../src/app/sitemap.ts").default() as {url:string}[];
-  assert.equal(sitemap.length,88); assert.equal(new Set(sitemap.map(s=>s.url)).size,88);
+  assert.equal(sitemap.length,90); assert.equal(new Set(sitemap.map(s=>s.url)).size,90);
+  for (const landing of ["/suburbs/north-strathfield", "/suburbs/concord-west"]) assert.ok(sitemap.some(s=>new URL(s.url).pathname===landing), landing);
   assert.ok(!sitemap.some(s=>new URL(s.url).pathname==="/review"));
   for (const path of Object.keys(captures).filter(p=>p!=="/review")) assert.ok(sitemap.some(s=>new URL(s.url).pathname===path),path);
 });
@@ -132,6 +141,7 @@ test("complete: all seven route sources reconstruct exactly from presentation-on
   for (const [path,original] of Object.entries(baseline.sources)) {
     let source=readFileSync(path,"utf8").replace(/^import "\.\.\/(?:\.\.\/)?premium-(?:editorial|locality|utility)\.css";\n/,"");
     if(path.includes('/areas/')||path.includes('/suburbs/')) {
+      source=source.replace('import { InnerWestSuburbPageLinks } from "@/components/sections/InnerWestSuburbPageLinks";\n', "").replace("                    <InnerWestSuburbPageLinks regionSlug={area.slug} />\n", "");
       source=source.replace(/^      <div className="premium-locality premium-locality-(?:region|suburb)">\n/m,"").replace('      </div>\n    </>','    </>');
       source=source.replace('      <div className="locality-evidence">\n',"").replace('      </div>\n\n      {/* Main Content Area */}','      {/* Main Content Area */}');
       source=source.replace(/ className="locality-[\w-]+"/g,"").replace(/className="locality-[\w-]+ /g,'className="');

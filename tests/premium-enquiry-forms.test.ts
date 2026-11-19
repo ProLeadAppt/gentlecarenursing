@@ -10,6 +10,7 @@ import { createElement, type ComponentType } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { FormModalProvider } from "../src/contexts/FormModalContext";
 import baseline from "./fixtures/contact-referral-baseline.json";
+import { isSuburbLandingTouched } from "./helpers/suburb-landing-files";
 
 // Node's SSR runner does not load stylesheets. No source transformation or
 // component substitute is used: both actual route modules and forms render.
@@ -97,6 +98,8 @@ test("enquiry pages: shared production is unchanged, with later presentation rou
     // These presentation-only route updates have full original DOM, metadata
     // and shared-source coverage in the information and discovery parity tests.
     if (["src/app/about/page.tsx", "src/app/faq/page.tsx", "src/app/areas/page.tsx", "src/app/conditions/page.tsx", "src/app/suburbs/page.tsx", "src/app/blog/page.tsx"].includes(path)) continue;
+    // North Strathfield and Concord West landing pages: suburb-landing-pages.test.ts.
+    if (isSuburbLandingTouched(path)) continue;
     // Remove only the Next smooth-scroll opt-in; retain the original layout hash.
     assert.equal(digest(path === "src/content/suburbs.ts" ? restorePriorLocalContext(readFileSync(path, "utf8")) : path === "src/app/layout.tsx" ? readFileSync(path, "utf8").replace('<html lang="en" data-scroll-behavior="smooth"', '<html lang="en"') : path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : readFileSync(path)), hash, path);
   }
