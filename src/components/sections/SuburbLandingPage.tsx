@@ -82,7 +82,7 @@ export function SuburbLandingPage({ page }: { page: SuburbLandingPageData }) {
               ))}
               <ActionRow actions={page.heroActions} />
             </div>
-            <figure className="suburb-figure">
+            <figure className="suburb-figure suburb-hero-aside">
               <div className="suburb-rule" aria-hidden="true" />
               <Image
                 src={page.image.src}
@@ -90,8 +90,9 @@ export function SuburbLandingPage({ page }: { page: SuburbLandingPageData }) {
                 width={page.image.width}
                 height={page.image.height}
                 priority
-                sizes="(min-width: 62.5rem) 36rem, (min-width: 47.5rem) 46vw, calc(100vw - 2.5rem)"
+                sizes="(min-width: 62.5rem) 38rem, (min-width: 47.5rem) 46vw, calc(100vw - 2.5rem)"
               />
+              <figcaption>Care for the people you love</figcaption>
             </figure>
           </div>
         </div>
