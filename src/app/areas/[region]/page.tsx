@@ -17,6 +17,7 @@ import { getBreadcrumbPaths } from "@/content/topical-map";
 import { MapPin, ArrowRight, CheckCircle2, PhoneCall } from "lucide-react";
 import { FormModalTrigger } from "@/components/ui/FormModalTrigger";
 import { EvidencePanel } from "@/components/sections/EvidencePanel";
+import { InnerWestSuburbPageLinks } from "@/components/sections/InnerWestSuburbPageLinks";
 
 type Props = { params: Promise<{ region: string }> };
 
@@ -205,6 +206,7 @@ export default async function AreaRegionPage({ params }: Props) {
                         </span>
                       </li>
                     ))}
+                    <InnerWestSuburbPageLinks regionSlug={area.slug} />
                   </ul>
 
                   <div className="mt-10 pt-8 border-t border-border/60 relative z-10">

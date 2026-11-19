@@ -3,6 +3,7 @@ import { getAllAreaSlugs } from "@/content/areas-content";
 import { getAllBlogPosts } from "@/content/blog";
 import { SERVICE_REGION_PAGES } from "@/content/service-regions";
 import { SUBURBS } from "@/content/suburbs";
+import { SUBURB_LANDING_PAGES } from "@/content/suburb-landing-pages";
 import { CONDITIONS } from "@/content/conditions";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gentlecarenursing.com.au";
@@ -61,6 +62,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const s of SUBURBS) {
     entries.push({
       url: `${BASE_URL}/suburbs/${s.slug}`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+  }
+
+  for (const page of SUBURB_LANDING_PAGES) {
+    entries.push({
+      url: `${BASE_URL}/suburbs/${page.slug}`,
       changeFrequency: "monthly",
       priority: 0.7,
     });

@@ -9,6 +9,7 @@ import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
 import { getBreadcrumbListSchema } from "@/lib/schema";
 import { SUBURBS } from "@/content/suburbs";
+import { SUBURB_LANDING_PAGES } from "@/content/suburb-landing-pages";
 import { ArrowRight, MapPin } from "lucide-react";
 
 const canonical = `${INTEGRATIONS.siteUrl}/suburbs`;
@@ -56,7 +57,7 @@ export default function SuburbsIndexPage() {
       description:
         "Suburb-level in-home nursing and care across Sydney — listed by suburb with local hospitals, LGA, and neighbouring suburbs.",
       isPartOf: { "@type": "WebSite", url: INTEGRATIONS.siteUrl },
-      hasPart: SUBURBS.map((s) => ({
+      hasPart: [...SUBURBS, ...SUBURB_LANDING_PAGES].map((s) => ({
         "@type": "Place",
         name: s.name,
         url: `${INTEGRATIONS.siteUrl}/suburbs/${s.slug}`,
@@ -112,7 +113,10 @@ export default function SuburbsIndexPage() {
       <Section size="md" variant="default" className="discovery-directory">
         <Container size="md" className="space-y-10">
           {REGIONS.map((region) => {
-            const suburbsInRegion = SUBURBS.filter((s) => s.region === region);
+            const suburbsInRegion = [
+              ...SUBURBS.filter((s) => s.region === region),
+              ...SUBURB_LANDING_PAGES.filter((s) => s.region === region),
+            ];
             if (suburbsInRegion.length === 0) return null;
             return (
               <section
