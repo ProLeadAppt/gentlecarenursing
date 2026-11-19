@@ -370,13 +370,13 @@ export const SUBURB_LANDING_PAGES: readonly SuburbLandingPageData[] = [
         blocks: [
           {
             type: "p",
-            text: "According to DVA, you may be able to receive community nursing at home if you have an **assessed clinical need** for nursing and/or personal care and you hold a:",
+            text: "According to DVA, you may be able to receive community nursing at home if you have an **assessed clinical need** for nursing and/or personal care and you hold one of these cards:",
           },
           {
             type: "ul",
             items: [
-              "**Veteran Card – All Conditions** (Gold Card), or",
-              "**Veteran Card – Specific Conditions** (White Card), and need the care for an accepted service-related condition, a DVA-accepted mental health condition, or treatment covered under Non-Liability Health Care or Provisional Access to Medical Treatment.",
+              "**Veteran Card – All Conditions (Gold Card).** For an assessed clinical need for nursing and/or personal care.",
+              "**Veteran Card – Specific Conditions (White Card).** The care must be for an accepted service-related condition, a DVA-accepted mental health condition, or treatment covered under Non-Liability Health Care or Provisional Access to Medical Treatment.",
             ],
           },
           {

@@ -330,6 +330,13 @@
   .premium-suburb .suburb-card-grid:has(> :nth-child(6):last-child) > li { grid-column: span 2; }
   .premium-suburb .suburb-card-grid:has(> :nth-child(5):last-child) > li { grid-column: span 2; }
   .premium-suburb .suburb-card-grid:has(> :nth-child(5):last-child) > li:nth-child(n+4) { grid-column: span 3; }
+  .premium-suburb .suburb-card-grid:has(> :nth-child(2):last-child) > li {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    min-height: 9.5rem;
+  }
   .premium-suburb .suburb-hero-aside { position: sticky; top: 6.5rem; }
   .premium-suburb .suburb-actions { flex-direction: row; flex-wrap: wrap; }
   .premium-suburb .suburb-support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2.5rem; }
