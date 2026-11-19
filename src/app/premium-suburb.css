@@ -1,0 +1,310 @@
+/* Suburb landing pages, scoped to the homepage editorial system.
+   Tokens, type, buttons and rhythm match src/app/homepage.css.
+   No global selectors, no new photographs, no motion beyond a focus outline. */
+.premium-suburb {
+  --suburb-berry: #842833;
+  --suburb-ink: #332e2a;
+  --suburb-muted: #615b54;
+  --suburb-cream: #fdf6ec;
+  --suburb-paper: #fffdf9;
+  --suburb-sage: #e8eee3;
+  --suburb-sage-ink: #486141;
+  --suburb-rule: #d7cfc3;
+  --suburb-deep: #3d0a11;
+  color: var(--suburb-ink);
+  background: var(--suburb-paper);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+.premium-suburb .suburb-wrap {
+  width: calc(100% - 2.25rem);
+  max-width: 83rem;
+  margin-inline: auto;
+}
+.premium-suburb :is(h1, h2, h3, p, li, a, summary) { overflow-wrap: anywhere; }
+.premium-suburb h1,
+.premium-suburb h2,
+.premium-suburb h3 {
+  color: var(--suburb-ink);
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -.03em;
+  line-height: 1.08;
+}
+.premium-suburb h1 { max-width: 16ch; font-size: clamp(2.5rem, 8vw, 3.25rem); }
+.premium-suburb h2 { max-width: 18ch; font-size: clamp(2rem, 5vw, 2.625rem); }
+.premium-suburb h3 { font-size: 1.5rem; line-height: 1.2; letter-spacing: -.02em; }
+.premium-suburb p { color: var(--suburb-muted); }
+.premium-suburb a { color: var(--suburb-berry); }
+.premium-suburb strong { color: var(--suburb-ink); font-weight: 600; }
+.premium-suburb .suburb-eyebrow {
+  margin-bottom: .875rem;
+  color: var(--suburb-berry);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.premium-suburb .suburb-hero {
+  background: var(--suburb-cream);
+  padding-block: 1.5rem 2.5rem;
+}
+.premium-suburb .suburb-breadcrumbs { margin-bottom: 1.5rem; }
+.premium-suburb .suburb-breadcrumbs ol { color: var(--suburb-muted); font-size: .9375rem; }
+.premium-suburb .suburb-breadcrumbs a {
+  color: var(--suburb-berry);
+  text-decoration: underline;
+  text-underline-offset: .2rem;
+}
+.premium-suburb .suburb-hero-grid,
+.premium-suburb .suburb-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+}
+.premium-suburb .suburb-lead {
+  margin-top: 1.25rem;
+  max-width: 42rem;
+  color: var(--suburb-ink);
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+.premium-suburb .suburb-hero-copy p + p { margin-top: 1rem; max-width: 42rem; }
+.premium-suburb .suburb-actions {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  margin-top: 1.75rem;
+}
+.premium-suburb .suburb-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  min-height: 3.375rem;
+  padding: .875rem 1.25rem;
+  border: 1px solid var(--suburb-berry);
+  border-radius: .25rem;
+  background: var(--suburb-berry);
+  color: #fff;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+}
+.premium-suburb .suburb-button-secondary { background: transparent; color: var(--suburb-berry); }
+.premium-suburb .suburb-button:hover { background: var(--suburb-deep); border-color: var(--suburb-deep); color: #fff; }
+.premium-suburb .suburb-button svg { width: 1.125rem; height: 1.125rem; flex: none; }
+.premium-suburb .suburb-figure { min-width: 0; margin: 0; }
+.premium-suburb .suburb-rule {
+  width: 4.5rem;
+  height: .3125rem;
+  margin-bottom: 1rem;
+  background: var(--suburb-sage-ink);
+}
+.premium-suburb .suburb-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: .25rem;
+  background: var(--suburb-sage);
+}
+.premium-suburb .suburb-trust {
+  border-bottom: 1px solid var(--suburb-rule);
+  padding-block: 1.75rem;
+}
+.premium-suburb .suburb-trust-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.premium-suburb .suburb-trust-grid li {
+  border-left: 2px solid var(--suburb-sage-ink);
+  padding-left: 1rem;
+}
+.premium-suburb .suburb-trust-grid strong {
+  display: block;
+  color: var(--suburb-ink);
+  font-size: 1.0625rem;
+  line-height: 1.3;
+}
+.premium-suburb .suburb-trust-grid span {
+  display: block;
+  margin-top: .375rem;
+  color: var(--suburb-muted);
+  font-size: .975rem;
+  line-height: 1.5;
+}
+.premium-suburb .suburb-section { padding-block: 3.25rem; }
+.premium-suburb .suburb-section-sage { background: var(--suburb-sage); }
+.premium-suburb .suburb-section-head { margin-bottom: 1.75rem; }
+.premium-suburb .suburb-section-head p,
+.premium-suburb .suburb-prose { max-width: 42rem; margin-top: 1rem; }
+.premium-suburb .suburb-card-grid,
+.premium-suburb .suburb-support-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.premium-suburb .suburb-card,
+.premium-suburb .suburb-support {
+  min-width: 0;
+  padding: 1.25rem 1.25rem 1.375rem;
+  border: 1px solid var(--suburb-rule);
+  border-radius: .25rem;
+  background: var(--suburb-paper);
+}
+.premium-suburb .suburb-section-sage .suburb-card,
+.premium-suburb .suburb-section-sage .suburb-support { border-color: #c5d1bb; }
+.premium-suburb .suburb-card strong,
+.premium-suburb .suburb-support h3 { display: block; margin-bottom: .5rem; }
+.premium-suburb .suburb-card p,
+.premium-suburb .suburb-support p { margin: 0; }
+.premium-suburb .suburb-number {
+  display: block;
+  margin-bottom: .75rem;
+  color: var(--suburb-sage-ink);
+  font-size: .9375rem;
+  letter-spacing: .04em;
+}
+.premium-suburb .suburb-steps {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: suburb-step;
+}
+.premium-suburb .suburb-steps li {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  border-top: 1px solid var(--suburb-rule);
+  padding-block: 1.25rem;
+}
+.premium-suburb .suburb-steps li::before {
+  content: counter(suburb-step, decimal-leading-zero);
+  counter-increment: suburb-step;
+  color: var(--suburb-sage-ink);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.75rem;
+  line-height: 1;
+}
+.premium-suburb .suburb-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.5rem;
+  margin-top: 1.25rem;
+}
+.premium-suburb .suburb-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: .25rem;
+}
+.premium-suburb .suburb-links a:hover { color: var(--suburb-deep); text-decoration-thickness: 2px; }
+.premium-suburb .suburb-faq details { border-top: 1px solid var(--suburb-rule); }
+.premium-suburb .suburb-faq details:last-of-type { border-bottom: 1px solid var(--suburb-rule); }
+.premium-suburb .suburb-faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4.25rem;
+  padding-block: 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+.premium-suburb .suburb-faq summary::-webkit-details-marker { display: none; }
+.premium-suburb .suburb-faq summary h3 { margin: 0; font-size: clamp(1.25rem, 2.4vw, 1.75rem); }
+.premium-suburb .suburb-faq-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  border: 1px solid var(--suburb-rule);
+  border-radius: .25rem;
+  color: var(--suburb-sage-ink);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+.premium-suburb .suburb-faq details[open] .suburb-faq-mark { background: var(--suburb-sage); }
+.premium-suburb .suburb-faq details p { max-width: 46rem; margin: 0 0 1.25rem; }
+.premium-suburb .suburb-close {
+  background: var(--suburb-deep);
+  color: var(--suburb-cream);
+  padding-block: 3.5rem 4rem;
+}
+.premium-suburb .suburb-close h2 { max-width: 14ch; color: var(--suburb-cream); }
+.premium-suburb .suburb-close p { max-width: 40rem; margin-top: 1.25rem; color: #e9d8d0; }
+.premium-suburb .suburb-close .suburb-button { border-color: var(--suburb-cream); background: var(--suburb-cream); color: var(--suburb-deep); }
+.premium-suburb .suburb-close .suburb-button-secondary { background: transparent; color: var(--suburb-cream); }
+.premium-suburb .suburb-close .suburb-button:hover { background: var(--suburb-sage); border-color: var(--suburb-sage); color: var(--suburb-deep); }
+.premium-suburb .suburb-note { margin-top: 1.5rem; font-size: .975rem; }
+.premium-suburb .suburb-note a { color: var(--suburb-cream); }
+.premium-suburb .suburb-mobile-bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 45;
+  display: flex;
+  gap: .75rem;
+  padding: .75rem 1.125rem calc(.75rem + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--suburb-rule);
+  background: color-mix(in srgb, var(--suburb-paper) 92%, white);
+}
+.premium-suburb .suburb-mobile-bar .suburb-button { flex: 1; justify-content: center; }
+@media (max-width: 62.49rem) {
+  body:has(.premium-suburb) { padding-bottom: 5.25rem; }
+}
+.premium-suburb :is(a, summary):focus-visible {
+  outline: 3px solid var(--suburb-berry);
+  outline-offset: 4px;
+}
+.premium-suburb .suburb-close :is(a, summary):focus-visible { outline-color: var(--suburb-cream); }
+@media (min-width: 47.5rem) {
+  .premium-suburb .suburb-wrap { width: calc(100% - 4rem); }
+  .premium-suburb .suburb-section { padding-block: 4.5rem; }
+  .premium-suburb h1 { font-size: clamp(3.25rem, 6vw, 4.5rem); }
+  .premium-suburb h2 { font-size: clamp(2.5rem, 4vw, 3.25rem); }
+  .premium-suburb .suburb-hero { padding-block: 2.5rem 3.5rem; }
+  .premium-suburb .suburb-hero-grid,
+  .premium-suburb .suburb-split { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 3rem; }
+  .premium-suburb .suburb-actions { flex-direction: row; flex-wrap: wrap; }
+  .premium-suburb .suburb-trust-grid,
+  .premium-suburb .suburb-card-grid,
+  .premium-suburb .suburb-support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .premium-suburb .suburb-trust-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 62.5rem) {
+  .premium-suburb .suburb-wrap { width: calc(100% - 7rem); }
+  .premium-suburb .suburb-section { padding-block: 5.5rem; }
+  .premium-suburb .suburb-hero { padding-block: 3.5rem 4.5rem; }
+  .premium-suburb .suburb-hero-grid { gap: 4rem; align-items: center; }
+  .premium-suburb .suburb-support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 2rem; }
+  .premium-suburb .suburb-mobile-bar { display: none; }
+}
+@media (min-width: 62.5rem) {
+  body:has(.premium-suburb) { padding-bottom: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .premium-suburb *,
+  .premium-suburb *::before,
+  .premium-suburb *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

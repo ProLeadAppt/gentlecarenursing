@@ -116,7 +116,7 @@ test("complete: /review keeps both feedback destinations, noindex and sitemap ex
   for (const path of Object.keys(captures).filter(p=>p!=="/review")) assert.ok(sitemap.some(s=>new URL(s.url).pathname===path),path);
 });
 for (const [file,roots,importers] of [
-  ["src/app/premium-locality.css",[".premium-locality"],["src/app/areas/[region]/page.tsx","src/app/suburbs/[suburb]/page.tsx","src/components/sections/SuburbLandingPage.tsx"]],
+  ["src/app/premium-locality.css",[".premium-locality"],["src/app/areas/[region]/page.tsx","src/app/suburbs/[suburb]/page.tsx"]],
   ["src/app/premium-editorial.css",[".premium-condition",".premium-article"],["src/app/blog/[slug]/page.tsx","src/app/conditions/[condition]/page.tsx"]],
   ["src/app/premium-utility.css",[".premium-privacy",".premium-terms",".premium-review"],["src/app/privacy/page.tsx","src/app/review/page.tsx","src/app/terms/page.tsx"]],
 ] as const) {

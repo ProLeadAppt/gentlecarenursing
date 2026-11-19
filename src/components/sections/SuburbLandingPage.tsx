@@ -1,24 +1,23 @@
-import "../../app/premium-locality.css";
+import "../../app/premium-suburb.css";
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { Container } from "@/components/layout/Container";
-import { Section } from "@/components/layout/Section";
-import { Heading } from "@/components/ui/Heading";
+import { ArrowUpRight } from "lucide-react";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { MapPin } from "lucide-react";
 import { INTEGRATIONS } from "@/config/integrations";
 import { SITE } from "@/lib/constants";
 import { getBreadcrumbListSchema, getFaqSchema } from "@/lib/schema";
 import type {
   LandingAction,
   LandingBlock,
+  LandingSection,
   SuburbLandingPageData,
 } from "@/content/suburb-landing-pages";
 
 /**
- * Long-form suburb page using the same locality layout, breadcrumbs and
- * Service vocabulary as the existing suburb template, with the draft's own
- * heading hierarchy.
+ * Editorial suburb page. The heading text stays exactly as drafted.
+ * Layout, imagery and controls follow the homepage: cream hero, trust
+ * strip, card grid, accordion and a deep closing band.
  */
 export function SuburbLandingPage({ page }: { page: SuburbLandingPageData }) {
   const canonical = `${INTEGRATIONS.siteUrl}/suburbs/${page.slug}`;
@@ -55,16 +54,14 @@ export function SuburbLandingPage({ page }: { page: SuburbLandingPageData }) {
     },
     getFaqSchema(faqs.map((faq) => ({ question: faq.question, answer: plainText(faq.answer) }))),
   ];
+  const [lead, ...restIntro] = page.intro;
 
   return (
-    <div className="premium-locality premium-locality-suburb">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
-      />
+    <div className="premium-suburb">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
 
-      <Section size="lg" variant="card" className="locality-hero">
-        <Container size="md">
+      <section className="suburb-hero" aria-labelledby={`${page.slug}-title`}>
+        <div className="suburb-wrap">
           <Breadcrumbs
             includeSchema={false}
             items={[
@@ -73,131 +70,212 @@ export function SuburbLandingPage({ page }: { page: SuburbLandingPageData }) {
               { label: page.region, href: page.regionHref },
               { label: page.name },
             ]}
-            className="locality-breadcrumbs mb-8"
+            className="suburb-breadcrumbs"
           />
+          <div className="suburb-hero-grid">
+            <div className="suburb-hero-copy">
+              <p className="suburb-eyebrow">{page.region}</p>
+              <h1 id={`${page.slug}-title`}>{page.h1}</h1>
+              {lead ? <p className="suburb-lead"><Rich text={lead} /></p> : null}
+              {restIntro.map((paragraph) => (
+                <p key={paragraph}><Rich text={paragraph} /></p>
+              ))}
+              <ActionRow actions={page.heroActions} />
+            </div>
+            <figure className="suburb-figure">
+              <div className="suburb-rule" aria-hidden="true" />
+              <Image
+                src={page.image.src}
+                alt={page.image.alt}
+                width={page.image.width}
+                height={page.image.height}
+                priority
+                sizes="(min-width: 62.5rem) 36rem, (min-width: 47.5rem) 46vw, calc(100vw - 2.5rem)"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
 
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/5 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-primary/80">
-            <MapPin className="h-3 w-3" /> {page.region}
-          </span>
+      <section className="suburb-trust" aria-label="Recognition">
+        <div className="suburb-wrap">
+          <ul className="suburb-trust-grid">
+            {page.trust.map((item) => (
+              <li key={item.title}>
+                <strong>{item.title}</strong>
+                <span>{item.text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
-          <Heading
-            level="h1"
-            as="h1"
-            className="font-[family-name:var(--font-serif)] text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight"
-          >
-            {page.h1}
-          </Heading>
+      {page.sections.map((section, index) => (
+        <PageSection key={section.heading} section={section} index={index} isLast={index === page.sections.length - 1} actions={page.closingActions} />
+      ))}
 
-          {page.intro.map((paragraph, index) => (
-            <p
-              key={paragraph}
-              className={
-                index === 0
-                  ? "locality-intro mt-6 max-w-3xl text-lg leading-relaxed"
-                  : "mt-4 max-w-3xl text-base leading-relaxed"
-              }
-            >
-              <Rich text={paragraph} />
-            </p>
+      <div className="suburb-mobile-bar">
+        {page.heroActions.map((action) => (
+          <ActionLink key={action.label} action={action} secondary={action.href.startsWith("/")} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PageSection({
+  section,
+  index,
+  isLast,
+  actions,
+}: {
+  section: LandingSection;
+  index: number;
+  isLast: boolean;
+  actions: readonly LandingAction[];
+}) {
+  const headingId = `suburb-section-${index}`;
+  if (isLast) {
+    return (
+      <section className="suburb-close" aria-labelledby={headingId}>
+        <div className="suburb-wrap">
+          <h2 id={headingId}>{section.heading}</h2>
+          <Blocks blocks={section.blocks} />
+          <ActionRow actions={actions} />
+          <p className="suburb-note">
+            <em>This service isn&apos;t for emergencies. In a medical emergency, call <a href="tel:000">000</a>.</em>
+          </p>
+        </div>
+      </section>
+    );
+  }
+
+  if (section.faqs) {
+    return (
+      <section className="suburb-section suburb-faq" aria-labelledby={headingId}>
+        <div className="suburb-wrap">
+          <h2 id={headingId}>{section.heading}</h2>
+          {section.faqs.map((faq) => (
+            <details key={faq.question}>
+              <summary>
+                <h3>{faq.question}</h3>
+                <span className="suburb-faq-mark" aria-hidden="true">+</span>
+              </summary>
+              <p><Rich text={faq.answer} /></p>
+            </details>
           ))}
+        </div>
+      </section>
+    );
+  }
 
-          <ActionRow actions={page.heroActions} />
-        </Container>
-      </Section>
+  const sage = Boolean(section.subsections);
+  return (
+    <section className={sage ? "suburb-section suburb-section-sage" : "suburb-section"} aria-labelledby={headingId}>
+      <div className="suburb-wrap">
+        <div className="suburb-section-head">
+          <h2 id={headingId}>{section.heading}</h2>
+        </div>
+        {section.subsections ? (
+          <div className="suburb-support-grid">
+            {section.subsections.map((subsection, subsectionIndex) => (
+              <article className="suburb-support" key={subsection.heading}>
+                <span className="suburb-number" aria-hidden="true">{String(subsectionIndex + 1).padStart(2, "0")}</span>
+                <h3>{subsection.heading}</h3>
+                <Blocks blocks={subsection.blocks} />
+              </article>
+            ))}
+          </div>
+        ) : (
+          <SectionBody blocks={section.blocks ?? []} />
+        )}
+      </div>
+    </section>
+  );
+}
 
-      {page.sections.map((section) => {
-        const isClosing = section.heading === page.sections[page.sections.length - 1]?.heading;
+function SectionBody({ blocks }: { blocks: readonly LandingBlock[] }) {
+  const lists = blocks.filter((block) => block.type !== "p");
+  const paragraphs = blocks.filter((block) => block.type === "p");
+  const linkParagraph = paragraphs.length === 1 && lists.length === 0 && (paragraphs[0].text?.match(/\]\(/g) ?? []).length >= 3;
+
+  if (linkParagraph) {
+    return (
+      <div className="suburb-links">
+        <Rich text={(paragraphs[0].text ?? "").replace(/\s*·\s*/g, "  ")} />
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {paragraphs.filter((block) => blocks.indexOf(block) < (lists[0] ? blocks.indexOf(lists[0]) : blocks.length)).map((block) => (
+        <p key={block.text} className="suburb-prose"><Rich text={block.text ?? ""} /></p>
+      ))}
+      {lists.map((block, index) => {
+        if (block.type === "ol") {
+          return (
+            <ol key={index} className="suburb-steps">
+              {block.items?.map((item) => <li key={item}><Rich text={item} /></li>)}
+            </ol>
+          );
+        }
         return (
-          <Section
-            key={section.heading}
-            size="md"
-            variant={isClosing ? "default" : "default"}
-            className={isClosing ? "locality-cta" : undefined}
-          >
-            <Container size="md">
-              <Heading
-                level="h2"
-                as="h2"
-                className="text-2xl sm:text-3xl font-bold font-[family-name:var(--font-serif)]"
-              >
-                {section.heading}
-              </Heading>
-              {section.blocks ? <Blocks blocks={section.blocks} /> : null}
-              {section.subsections?.map((subsection) => (
-                <div key={subsection.heading} className="mt-8 max-w-3xl">
-                  <Heading level="h3" as="h3" className="text-xl sm:text-2xl font-bold font-[family-name:var(--font-serif)]">
-                    {subsection.heading}
-                  </Heading>
-                  <Blocks blocks={subsection.blocks} />
-                </div>
-              ))}
-              {section.faqs?.map((faq) => (
-                <div key={faq.question} className="mt-8 max-w-3xl">
-                  <Heading level="h3" as="h3" className="text-xl sm:text-2xl font-bold font-[family-name:var(--font-serif)]">
-                    {faq.question}
-                  </Heading>
-                  <p className="mt-3 text-base leading-relaxed">
-                    <Rich text={faq.answer} />
-                  </p>
-                </div>
-              ))}
-              {isClosing ? (
-                <>
-                  <ActionRow actions={page.closingActions} />
-                  <p className="mt-6 max-w-3xl text-base leading-relaxed">
-                    <em>This service isn&apos;t for emergencies. In a medical emergency, call <a href="tel:000">000</a>.</em>
-                  </p>
-                </>
-              ) : null}
-            </Container>
-          </Section>
+          <ul key={index} className="suburb-card-grid">
+            {block.items?.map((item) => (
+              <li key={item} className="suburb-card"><Rich text={item} /></li>
+            ))}
+          </ul>
         );
       })}
-    </div>
+      {paragraphs.filter((block) => lists[0] && blocks.indexOf(block) > blocks.indexOf(lists[lists.length - 1])).map((block) => (
+        <p key={block.text} className="suburb-prose"><Rich text={block.text ?? ""} /></p>
+      ))}
+    </>
   );
 }
 
 function ActionRow({ actions }: { actions: readonly LandingAction[] }) {
   return (
-    <div className="locality-actions">
-      {actions.map((action) =>
-        action.href.startsWith("/") ? (
-          <Link key={action.href + action.label} href={action.href}>
-            {action.label}
-          </Link>
-        ) : (
-          <a key={action.href + action.label} href={action.href}>
-            {action.label}
-          </a>
-        ),
-      )}
+    <div className="suburb-actions">
+      {actions.map((action, index) => (
+        <ActionLink key={action.label} action={action} secondary={index > 0} />
+      ))}
     </div>
   );
 }
 
-function Blocks({ blocks }: { blocks: readonly LandingBlock[] }) {
+function ActionLink({ action, secondary }: { action: LandingAction; secondary?: boolean }) {
+  const className = secondary ? "suburb-button suburb-button-secondary" : "suburb-button";
+  const content = (
+    <>
+      {action.label}
+      <ArrowUpRight aria-hidden="true" />
+    </>
+  );
+  if (action.href.startsWith("/")) {
+    return <Link className={className} href={action.href}>{content}</Link>;
+  }
+  return <a className={className} href={action.href}>{content}</a>;
+}
+
+function Blocks({ blocks }: { blocks?: readonly LandingBlock[] }) {
+  if (!blocks?.length) return null;
   return (
     <>
       {blocks.map((block, index) => {
-        if (block.type === "ul" || block.type === "ol") {
-          const ListTag = block.type === "ol" ? "ol" : "ul";
-          return (
-            <ListTag
-              key={index}
-              className={`mt-4 max-w-3xl space-y-3 pl-5 ${block.type === "ol" ? "list-decimal" : "list-disc"}`}
-            >
-              {block.items?.map((item) => (
-                <li key={item} className="leading-relaxed">
-                  <Rich text={item} />
-                </li>
-              ))}
-            </ListTag>
-          );
+        if (block.type === "p") {
+          return <p key={block.text ?? index} className="suburb-prose"><Rich text={block.text ?? ""} /></p>;
         }
+        const ListTag = block.type === "ol" ? "ol" : "ul";
         return (
-          <p key={block.text} className="mt-4 max-w-3xl text-base leading-relaxed">
-            <Rich text={block.text ?? ""} />
-          </p>
+          <ListTag key={index} className={block.type === "ol" ? "suburb-steps" : "suburb-card-grid"}>
+            {block.items?.map((item) => (
+              <li key={item} className={block.type === "ul" ? "suburb-card" : undefined}>
+                <Rich text={item} />
+              </li>
+            ))}
+          </ListTag>
         );
       })}
     </>
@@ -212,7 +290,6 @@ function parseRich(input: string): ReactNode[] {
   const nodes: ReactNode[] = [];
   let buffer = "";
   let index = 0;
-
   const flush = () => {
     if (!buffer) return;
     nodes.push(buffer);
@@ -229,7 +306,6 @@ function parseRich(input: string): ReactNode[] {
         continue;
       }
     }
-
     if (input[index] === "*" && input[index + 1] !== "*") {
       const end = input.indexOf("*", index + 1);
       if (end !== -1) {
@@ -239,44 +315,25 @@ function parseRich(input: string): ReactNode[] {
         continue;
       }
     }
-
     if (input[index] === "[") {
       const match = /^\[([^\]]+)\]\(([^)]+)\)/.exec(input.slice(index));
       if (match) {
         flush();
-        const label = match[1];
-        const href = match[2];
+        const [, label, href] = match;
         const children = parseRich(label);
-        if (href.startsWith("/")) {
-          nodes.push(
-            <Link key={index} href={href}>
-              {children}
-            </Link>,
-          );
-        } else {
-          nodes.push(
-            <a key={index} href={href} {...(href.startsWith("http") ? { rel: "noopener noreferrer" } : {})}>
-              {children}
-            </a>,
-          );
-        }
+        if (href.startsWith("/")) nodes.push(<Link key={index} href={href}>{children}</Link>);
+        else nodes.push(<a key={index} href={href} {...(href.startsWith("http") ? { rel: "noopener noreferrer" } : {})}>{children}</a>);
         index += match[0].length;
         continue;
       }
     }
-
     buffer += input[index];
     index += 1;
   }
-
   flush();
   return nodes;
 }
 
-/** FAQ schema text should match the visible answer, without markdown markers. */
 function plainText(value: string): string {
-  return value
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1")
-    .replace(/\*\*/g, "")
-    .replace(/\*/g, "");
+  return value.replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1").replace(/\*\*/g, "").replace(/\*/g, "");
 }

@@ -44,6 +44,18 @@ export interface LandingAction {
   label: string;
 }
 
+export interface LandingImage {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+export interface LandingTrust {
+  title: string;
+  text: string;
+}
+
 export interface SuburbLandingPageData {
   slug: string;
   name: string;
@@ -59,6 +71,10 @@ export interface SuburbLandingPageData {
   serviceDescription: string;
   intro: readonly string[];
   heroActions: readonly LandingAction[];
+  /** Scannable recognition strip. Wording is already in the page copy. */
+  trust: readonly LandingTrust[];
+  /** Existing site photograph. No new or stock imagery. */
+  image: LandingImage;
   sections: readonly LandingSection[];
   closingActions: readonly LandingAction[];
 }
@@ -112,6 +128,17 @@ export const SUBURB_LANDING_PAGES: readonly SuburbLandingPageData[] = [
       { href: SITE.phoneHref, label: `Call ${SITE.phone}` },
       { href: "/referral", label: "Request Care" },
     ],
+    trust: [
+      { title: "Registered NDIS provider", text: "Approved registration, with a North Strathfield head office." },
+      { title: "DVA-contracted", text: "Listed on the NSW Panel of Community Nursing providers." },
+      { title: "Nursing-led", text: "Clinical care is delivered or supervised by AHPRA-registered nurses." },
+    ],
+    image: {
+      src: "/images/homepage-hands-chris-f-33525563.jpg",
+      alt: "Two people holding hands.",
+      width: 1000,
+      height: 667,
+    },
     sections: [
       {
         heading: "Why North Strathfield families and coordinators contact Gentle Care",
@@ -305,6 +332,17 @@ export const SUBURB_LANDING_PAGES: readonly SuburbLandingPageData[] = [
       { href: SITE.phoneHref, label: `Call ${SITE.phone}` },
       { href: "/referral", label: "Send a referral" },
     ],
+    trust: [
+      { title: "DVA-contracted", text: "Listed on the NSW Panel of Community Nursing providers." },
+      { title: "No out-of-pocket cost", text: "Eligible clients have no out-of-pocket cost for approved care." },
+      { title: "Nursing-led", text: "Clinical care is delivered or supervised by AHPRA-registered nurses." },
+    ],
+    image: {
+      src: "/images/homepage-care-conversation-v4.webp",
+      alt: "A woman in burgundy scrubs and an older woman talking together on a sofa.",
+      width: 1536,
+      height: 1024,
+    },
     sections: [
       {
         heading: "A suburb with deep ties to Australia's veterans",

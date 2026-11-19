@@ -5,6 +5,7 @@ export const SUBURB_LANDING_SOURCE_FILES = [
   "src/components/sections/InnerWestSuburbPageLinks.tsx",
   "src/components/sections/SuburbLandingPage.tsx",
   "src/content/suburb-landing-pages.ts",
+  "src/app/premium-suburb.css",
 ] as const;
 
 export const SUBURB_LANDING_TOUCHED_FILES = [
