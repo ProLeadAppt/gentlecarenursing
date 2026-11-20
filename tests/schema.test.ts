@@ -37,3 +37,16 @@ test("service-region schema references the canonical organization instead of dup
     name: "Gentle Care Nursing Services",
   });
 });
+
+test("local business schema keeps postal fields out of GeoCoordinates", () => {
+  const schema = getLocalBusinessSchema();
+
+  assert.deepEqual(schema.geo, {
+    "@type": "GeoCoordinates",
+    latitude: -33.864,
+    longitude: 151.093,
+  });
+  assert.equal(schema.address["@type"], "PostalAddress");
+  assert.equal(schema.address.addressLocality, "North Strathfield");
+  assert.equal(schema.address.addressRegion, "NSW");
+});
