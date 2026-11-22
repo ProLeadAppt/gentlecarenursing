@@ -11,7 +11,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { FormModalProvider } from "../src/contexts/FormModalContext";
 import baseline from "./fixtures/complete-baseline.json";
 import { isSuburbLandingTouched, SUBURB_LANDING_SOURCE_FILES, withoutInnerWestLandingLinks } from "./helpers/suburb-landing-files";
-import { expectedSentences, visibleText } from "./helpers/location-copy";
+import { expectedSentences, openParagraphs, visibleText } from "./helpers/location-copy";
 
 // Captures predate these presentation changes. Every original element, text
 // node, attribute, schema and link remains exact after removing ONLY named
@@ -58,6 +58,12 @@ for (const [path, original] of Object.entries(captures)) {
       for (const sentence of expectedSentences(original.html)) assert.ok(nextText.includes(sentence), sentence.slice(0, 120));
       for (const href of links(original.html)) assert.ok(links(html).includes(href), href);
       assert.match(html, /class="premium-suburb"/);
+      if (original.family === "areas/[region]") {
+        for (const paragraph of openParagraphs(raw)) {
+          const words = paragraph.split(/\s+/).filter(Boolean).length;
+          assert.ok(words <= 55, `${path} shows ${words} words: ${paragraph.slice(0, 140)}`);
+        }
+      }
     }
     if (path === "/areas/inner-west") {
       assert.ok(raw.includes('href="/suburbs/north-strathfield"'));

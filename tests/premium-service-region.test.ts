@@ -12,7 +12,7 @@ import { FormModalProvider } from "../src/contexts/FormModalContext";
 import { getAllServiceRegionParams, getServiceRegionPage } from "../src/content/service-regions";
 import baseline from "./fixtures/service-region-baseline.json";
 import { isSuburbLandingTouched, SUBURB_LANDING_SOURCE_FILES } from "./helpers/suburb-landing-files";
-import { expectedSentences, visibleText } from "./helpers/location-copy";
+import { applyReviewedWordingDeep, expectedSentences, openParagraphs, visibleText } from "./helpers/location-copy";
 
 // These immutable captures are copied, not regenerated, from the assessed
 // pre-dynamic tree. Only classes/styles and four named presentation divs may
@@ -59,6 +59,10 @@ for (const [path, original] of Object.entries(baseline.routes)) {
     assert.doesNotMatch(html, /<main\b|<form\b|<iframe\b/);
     const levels = [...html.matchAll(/<h([1-6])\b/g)].map(m => Number(m[1]));
     for (let i = 1; i < levels.length; i++) assert.ok(levels[i] <= levels[i - 1] + 1);
+    for (const paragraph of openParagraphs(html)) {
+      const words = paragraph.split(/\s+/).filter(Boolean).length;
+      assert.ok(words <= 55, `${path} shows ${words} words: ${paragraph.slice(0, 140)}`);
+    }
     const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]);
     assert.equal(ids.length, new Set(ids).size);
     for (const m of html.matchAll(/(?:aria-controls|aria-labelledby)="([^"]+)"/g)) {
@@ -73,12 +77,12 @@ for (const [path, original] of Object.entries(baseline.routes)) {
   test(`${path}: metadata, canonical, regional OG image and complete JSON-LD remain exact`, async () => {
     const props = { params: Promise.resolve(original.params) };
     const metadata = await route.generateMetadata(props) as typeof original.metadata;
-    assert.deepEqual(metadata, original.metadata);
+    assert.deepEqual(metadata, applyReviewedWordingDeep(original.metadata));
     assert.equal(new URL(String(metadata.alternates.canonical)).pathname, path);
     assert.equal(new URL(metadata.openGraph.url).pathname, path);
     assert.equal(new URL(metadata.openGraph.images[0].url).pathname, `${path}/opengraph-image`);
     const html = renderToStaticMarkup(createElement(FormModalProvider, null, await route.default(props)));
-    assert.deepEqual(schemas(html), original.schemas);
+    assert.deepEqual(schemas(html), applyReviewedWordingDeep(original.schemas));
     const nodes = schemas(html).flat();
     assert.equal(nodes.filter(n => n["@type"] === "BreadcrumbList").length, 1);
     assert.deepEqual(nodes.map(n => n["@type"]), original.schemaTypes);

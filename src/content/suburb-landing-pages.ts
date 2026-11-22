@@ -97,6 +97,16 @@ export interface LandingStat {
   label: string;
 }
 
+export interface LandingPlace {
+  name: string;
+  href?: string;
+}
+
+export interface LandingSource {
+  href: string;
+  label: string;
+}
+
 export interface LandingSection {
   heading: string;
   /** One short sentence shown under the heading. */
@@ -109,6 +119,11 @@ export interface LandingSection {
   stats?: readonly LandingStat[];
   statSource?: string;
   disclosures?: readonly LandingDisclosure[];
+  /** Suburb names. Linked when a page exists; otherwise a neutral chip. */
+  places?: readonly LandingPlace[];
+  /** Short source line. Labels stay distinct and the note stays in the same sentence. */
+  sources?: readonly LandingSource[];
+  sourceNote?: string;
   faqs?: readonly { question: string; answer: string }[];
 }
 

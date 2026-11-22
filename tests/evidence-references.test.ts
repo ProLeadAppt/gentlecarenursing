@@ -96,7 +96,15 @@ test("service facts retain 49 reference-bearing rows and all 60 intended referen
 test("area panels use four explicit reference lists and no hard-coded checked dates", () => {
   const source = readFileSync("src/content/premium-location.ts", "utf8");
   const area = source.slice(source.indexOf("export function areaToLanding"), source.indexOf("const REGISTRATION"));
-  assert.equal((area.match(/Gentle Care Nursing Services (?:service-area|intake|referrer) information/g) ?? []).length, 4);
+  for (const label of ["Service-area information", "Intake information", "Referral information", "Referrer information"]) {
+    assert.equal(area.split(label).length - 1, 1, label);
+  }
+  assert.match(area, /\$\{INTEGRATIONS\.siteUrl\}\/areas\/\$\{area\.slug\}/);
+  assert.match(area, /\$\{INTEGRATIONS\.siteUrl\}\/contact/);
+  assert.match(area, /\$\{INTEGRATIONS\.siteUrl\}\/referral/);
+  assert.match(area, /\$\{INTEGRATIONS\.siteUrl\}\/referrers/);
+  assert.match(area, /References provide general programme or service information, not provider-specific verification\./);
+  assert.doesNotMatch(area, /Gentle Care Nursing Services intake information/);
   assert.doesNotMatch(source, /dateChecked:|sourceUrl:/);
 });
 

@@ -25,6 +25,8 @@ import type {
   LandingChecklist,
   LandingDisclosure,
   LandingIcon,
+  LandingPlace,
+  LandingSource,
   LandingImageBand,
   LandingPoint,
   LandingProcess,
@@ -332,6 +334,7 @@ function PageSection({
             </aside>
           </div>
         ) : null}
+        {!section.stats && (section.tiles || section.points) && section.blocks ? <SectionBody blocks={section.blocks} /> : null}
         {section.tiles ? <TileGrid tiles={section.tiles} /> : null}
         {section.points ? <PointGrid points={section.points} /> : null}
         {section.subsections ? (
@@ -345,8 +348,9 @@ function PageSection({
             ))}
           </div>
         ) : null}
+        {section.places ? <PlaceList places={section.places} /> : null}
         {!section.stats && !section.tiles && !section.points && !section.subsections ? <SectionBody blocks={section.blocks ?? []} /> : null}
-        {!section.stats && (section.tiles || section.points) && section.blocks ? <SectionBody blocks={section.blocks} /> : null}
+        {section.sources?.length ? <SourceLine links={section.sources} note={section.sourceNote} /> : null}
         <DisclosureList items={section.disclosures} />
       </div>
     </section>
@@ -461,6 +465,33 @@ function StatList({ stats, source }: { stats: readonly LandingStat[]; source?: s
       </ul>
       {source ? <p className="suburb-stat-source"><Rich text={source} /></p> : null}
     </div>
+  );
+}
+
+function PlaceList({ places }: { places: readonly LandingPlace[] }) {
+  return (
+    <ul className="suburb-places">
+      {places.map((place) => (
+        <li key={place.name}>
+          {place.href ? <Link href={place.href}>{place.name}</Link> : <span>{place.name}</span>}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function SourceLine({ links, note }: { links: readonly LandingSource[]; note?: string }) {
+  return (
+    <p className="suburb-sources">
+      Sources:{" "}
+      {links.map((link, index) => (
+        <Fragment key={link.href}>
+          {index === 0 ? null : index === links.length - 1 ? " and " : ", "}
+          <a href={link.href} rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}>{link.label}</a>
+        </Fragment>
+      ))}
+      {note ? `. ${note}` : "."}
+    </p>
   );
 }
 

@@ -442,6 +442,48 @@
   object-fit: cover;
   object-position: center 42%;
 }
+.premium-suburb .suburb-places {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.premium-suburb .suburb-places a,
+.premium-suburb .suburb-places span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: .35rem .85rem;
+  border: 1px solid var(--suburb-rule);
+  background: var(--suburb-paper);
+  font-size: 1rem;
+  line-height: 1.3;
+}
+.premium-suburb .suburb-places a {
+  color: var(--suburb-berry);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: .15rem;
+}
+.premium-suburb .suburb-places span {
+  color: var(--suburb-muted);
+  background: transparent;
+}
+.premium-suburb .suburb-sources {
+  margin-top: 1.75rem;
+  max-width: 68ch;
+  color: var(--suburb-muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+.premium-suburb .suburb-sources a {
+  color: var(--suburb-sage-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: .15rem;
+}
 .premium-suburb .suburb-links {
   display: flex;
   flex-wrap: wrap;

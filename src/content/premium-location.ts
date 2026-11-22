@@ -5,8 +5,8 @@
 import { INTEGRATIONS } from "@/config/integrations";
 import { CTA_LINKS, SITE } from "@/lib/constants";
 import type { AreaContent } from "@/content/areas-content";
-import { SERVICES, SERVICE_REGION_PAGES, type ServiceRegionPageData, type ServiceSlug } from "@/content/service-regions";
-import { SUBURB_LANDING_PAGES, type LandingIcon, type LandingTile, type SuburbLandingPageData } from "@/content/suburb-landing-pages";
+import { SERVICES, SERVICE_REGION_PAGES, servicePhrase, type ServiceRegionPageData, type ServiceSlug } from "@/content/service-regions";
+import { SUBURB_LANDING_PAGES, type LandingDisclosure, type LandingIcon, type LandingTile, type SuburbLandingPageData } from "@/content/suburb-landing-pages";
 import { SUBURBS, type SuburbEntry } from "@/content/suburbs";
 
 const HANDS = {
@@ -31,6 +31,21 @@ function tiles(items: readonly { title: string; href: string; label: string }[])
     title: item.title,
     links: [{ href: item.href, label: item.label }],
   }));
+}
+
+function wordCount(text: string): number {
+  return text.trim().split(/\s+/).filter(Boolean).length;
+}
+
+/**
+ * Keep the first sentence visible. Every later sentence stays in the DOM,
+ * inside the styled disclosure. Wording is not rewritten.
+ */
+function foldCopy(text: string, summary: string): { lead: string; disclosure?: LandingDisclosure } {
+  const sentences = text.split(/(?<=[.!?])\s+/).map((sentence) => sentence.trim()).filter(Boolean);
+  if (sentences.length < 2 || wordCount(text) <= 50) return { lead: text };
+  const rest = sentences.slice(1).join(" ");
+  return rest ? { lead: sentences[0], disclosure: { summary, text: rest } } : { lead: text };
 }
 
 export function suburbToLanding(entry: SuburbEntry): SuburbLandingPageData {
@@ -160,12 +175,9 @@ export function areaToLanding(area: AreaContent): SuburbLandingPageData {
       if (!names.includes(page.name)) names.push(page.name);
     }
   }
-  const communities = names.map((name) => {
-    const href = PAGE_BY_NAME.get(name);
-    return href ? `[${name}](${href})` : name;
-  }).join(" · ");
   const listed = area.suburbs.slice(0, 5).join(", ");
   const guides = SERVICE_REGION_PAGES.filter((page) => page.regionSlug === area.slug);
+  const clinical = foldCopy(area.body, "How care is arranged");
   return {
     slug: area.slug,
     name: area.region,
@@ -195,12 +207,6 @@ export function areaToLanding(area: AreaContent): SuburbLandingPageData {
       {
         heading: `In-home nursing facts for ${area.region}`,
         lead: `Citable local details for families, NDIS support coordinators, DVA referrers, GPs, and discharge planners arranging care in ${area.region}.`,
-        blocks: [
-          {
-            type: "p",
-            text: `Reference information: [Gentle Care Nursing Services service-area information](${INTEGRATIONS.siteUrl}/areas/${area.slug}) · [Gentle Care Nursing Services intake information](${INTEGRATIONS.siteUrl}/contact) · [Gentle Care Nursing Services intake information](${INTEGRATIONS.siteUrl}/referral) · [Gentle Care Nursing Services referrer information](${INTEGRATIONS.siteUrl}/referrers). References provide general programme or service information, not provider-specific verification.`,
-          },
-        ],
         points: [
           {
             title: "Region covered",
@@ -219,10 +225,18 @@ export function areaToLanding(area: AreaContent): SuburbLandingPageData {
             line: "Gentle Care works with support coordinators, hospital discharge planners, GPs, families, and representatives across Sydney.",
           },
         ],
+        sources: [
+          { href: `${INTEGRATIONS.siteUrl}/areas/${area.slug}`, label: "Service-area information" },
+          { href: `${INTEGRATIONS.siteUrl}/contact`, label: "Intake information" },
+          { href: `${INTEGRATIONS.siteUrl}/referral`, label: "Referral information" },
+          { href: `${INTEGRATIONS.siteUrl}/referrers`, label: "Referrer information" },
+        ],
+        sourceNote: "References provide general programme or service information, not provider-specific verification.",
       },
       {
         heading: "Clinical Care Delivered Your Way",
-        blocks: [{ type: "p", text: area.body }],
+        blocks: [{ type: "p", text: clinical.lead }],
+        disclosures: clinical.disclosure ? [clinical.disclosure] : undefined,
       },
       {
         heading: `How we help families in ${area.region}`,
@@ -234,7 +248,10 @@ export function areaToLanding(area: AreaContent): SuburbLandingPageData {
       {
         heading: `Communities We Serve in ${area.region}`,
         lead: "We work with support coordinators, discharge planners, and families across Sydney. Submit an enquiry to discuss your care needs.",
-        blocks: [{ type: "p", text: communities }],
+        places: names.map((name) => {
+          const href = PAGE_BY_NAME.get(name);
+          return href ? { name, href } : { name };
+        }),
       },
       {
         heading: `Service guides for ${area.region}`,
@@ -310,9 +327,14 @@ const SCOPE: Record<ServiceSlug, string> = {
 
 export function serviceRegionToLanding(data: ServiceRegionPageData): SuburbLandingPageData {
   const { service, region } = data;
+  const phrase = servicePhrase(service.title);
   const related = service.related
     .map((slug) => SERVICES.find((item) => item.slug === slug))
     .filter((item): item is (typeof SERVICES)[number] => item != null);
+  const hero = foldCopy(data.hero, "More about this service");
+  const overview = foldCopy(data.serviceOverview, "Service overview");
+  const local = foldCopy(data.regionalContext, "Local context");
+  const funding = foldCopy(data.fundingAndAccess, "Funding and access");
   return {
     slug: `${data.serviceSlug}-${data.regionSlug}`,
     name: region.region,
@@ -332,7 +354,8 @@ export function serviceRegionToLanding(data: ServiceRegionPageData): SuburbLandi
       { label: service.title, href: service.parentHref },
       { label: region.region },
     ],
-    intro: [`“${service.snippetAnswer}”`, data.hero],
+    intro: hero.disclosure ? [`“${service.snippetAnswer}”`, hero.lead] : [`“${service.snippetAnswer}”`, data.hero],
+    introDetail: hero.disclosure,
     heroActions: [
       { href: CTA_LINKS.requestCare.href, label: `Request Care in ${region.region}` },
       { href: SITE.phoneHref, label: `Call ${SITE.phone}` },
@@ -347,9 +370,9 @@ export function serviceRegionToLanding(data: ServiceRegionPageData): SuburbLandi
     sections: [
       {
         heading: `Quick facts: ${service.title} in ${region.region}`,
-        lead: `Citable facts for families, ${service.slug === "ndis-services" ? "support coordinators, plan managers" : service.slug === "dva-community-nursing" ? "GPs and DVA contacts" : "GPs and discharge planners"} considering ${service.title.toLowerCase()} across ${region.region}.`,
-        blocks: [{ type: "p", text: `What ${service.title} Looks Like in ${region.region}. ${data.serviceOverview}` }],
-        disclosures: [{ summary: "Service overview", text: "Service Overview" }],
+        lead: `Citable facts for families, ${service.slug === "ndis-services" ? "support coordinators, plan managers" : service.slug === "dva-community-nursing" ? "GPs and DVA contacts" : "GPs and discharge planners"} considering ${phrase} across ${region.region}.`,
+        blocks: [{ type: "p", text: `What ${service.title} Looks Like in ${region.region}. ${overview.lead}` }],
+        disclosures: overview.disclosure ? [overview.disclosure] : undefined,
       },
       {
         heading: "What's included",
@@ -361,21 +384,22 @@ export function serviceRegionToLanding(data: ServiceRegionPageData): SuburbLandi
       {
         heading: `${region.region} Suburbs We Serve`,
         lead: region.positionLine,
+        places: region.suburbs.map((name) => ({ name })),
         blocks: [
-          { type: "p", text: region.suburbs.join(" · ") },
           { type: "p", text: "Registered NDIS provider and DVA Contracted Community Nursing Provider." },
           { type: "p", text: "Enquiries reviewed during business hours, with urgent referrals prioritised." },
         ],
       },
       {
         heading: `Why families and coordinators in ${region.region} choose us`,
-        blocks: [{ type: "p", text: data.regionalContext }],
-        disclosures: [{ summary: "Local context", text: "Local Context" }],
+        blocks: [{ type: "p", text: local.lead }],
+        disclosures: local.disclosure ? [local.disclosure] : undefined,
       },
       {
-        heading: `How to access ${service.title.toLowerCase()} in ${region.region}`,
+        heading: `How to access ${phrase} in ${region.region}`,
         lead: "Funding & Access",
-        blocks: [{ type: "p", text: data.fundingAndAccess }],
+        blocks: [{ type: "p", text: funding.lead }],
+        disclosures: funding.disclosure ? [funding.disclosure] : undefined,
         points: [
           { title: "Funding accepted", line: FUNDING[service.slug] },
           { title: "Scope of care", line: SCOPE[service.slug] },
@@ -405,7 +429,7 @@ export function serviceRegionToLanding(data: ServiceRegionPageData): SuburbLandi
         },
       },
       {
-        heading: `Common questions about ${service.title.toLowerCase()} in ${region.region}`,
+        heading: `Common questions about ${phrase} in ${region.region}`,
         faqs: data.faqs.map((faq) => ({ question: faq.question, answer: faq.answer })),
       },
       {
