@@ -4,6 +4,7 @@ export const SUBURB_LANDING_SOURCE_FILES = [
   "src/app/suburbs/north-strathfield/page.tsx",
   "src/components/sections/InnerWestSuburbPageLinks.tsx",
   "src/components/sections/SuburbLandingPage.tsx",
+  "src/content/premium-location.ts",
   "src/content/suburb-landing-pages.ts",
   "src/app/premium-suburb.css",
 ] as const;
@@ -11,6 +12,7 @@ export const SUBURB_LANDING_SOURCE_FILES = [
 export const SUBURB_LANDING_TOUCHED_FILES = [
   "src/app/areas/[region]/page.tsx",
   "src/app/sitemap.ts",
+  "src/app/suburbs/[suburb]/page.tsx",
   "src/app/suburbs/page.tsx",
 ] as const;
 

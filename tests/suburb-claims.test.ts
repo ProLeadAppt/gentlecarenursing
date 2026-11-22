@@ -4,6 +4,8 @@ import { readFileSync } from "node:fs";
 import { SUBURBS, getAllSuburbSlugs } from "../src/content/suburbs";
 
 const source = readFileSync("src/app/suburbs/[suburb]/page.tsx", "utf8");
+const layout = readFileSync("src/content/premium-location.ts", "utf8");
+const suburbLayout = layout.slice(layout.indexOf("export function suburbToLanding"), layout.indexOf("export function areaToLanding") === -1 ? undefined : layout.indexOf("export function areaToLanding"));
 
 test("suburb pages retain the existing fifteen routes and populated local fields", () => {
   assert.deepEqual(getAllSuburbSlugs(), [
@@ -23,9 +25,9 @@ test("suburb pages retain the existing fifteen routes and populated local fields
 });
 
 test("hospital reference lists do not imply a provider relationship", () => {
-  assert.ok(source.includes('title="Hospitals in the wider area"'));
-  assert.ok(source.includes("Listing a hospital does not imply an affiliation or referral arrangement."));
-  assert.ok(source.includes("entry.nearestHospitals.map"));
+  assert.ok(suburbLayout.includes('heading: "Hospitals in the wider area"'));
+  assert.ok(suburbLayout.includes("Listing a hospital does not imply an affiliation or referral arrangement."));
+  assert.ok(suburbLayout.includes("entry.nearestHospitals"));
   assert.doesNotMatch(source, /Hospitals coordinated with|We coordinate with|coordinate with discharge planners/i);
 });
 
@@ -42,7 +44,7 @@ test("suburb narratives do not claim unverified hospital referral relationships"
 test("metadata and service schema qualify care enquiries and funding", () => {
   assert.ok(source.includes("Enquire about care needs, funding and availability"));
   assert.ok(source.includes("Discuss clinical suitability, funding arrangements, availability and referral requirements"));
-  assert.ok(source.includes("depend on individual needs, funding requirements, referral"));
+  assert.ok(suburbLayout.includes("depend on individual needs, funding requirements, referral"));
   assert.doesNotMatch(source, /Funded by NDIS|same scope of care/);
   assert.ok(source.includes('"@type": "Service"'));
   assert.ok(source.includes('"@id": `${canonical}#place`'));
@@ -50,9 +52,9 @@ test("metadata and service schema qualify care enquiries and funding", () => {
 });
 
 test("suburb enquiry CTA does not promise hospital-specific prioritisation", () => {
-  assert.doesNotMatch(source, /Urgent referrals|are prioritised/);
-  assert.ok(source.includes("Share your suburb, care needs and preferred timing"));
-  assert.ok(source.includes("href={CTA_LINKS.requestCare.href}"));
-  assert.ok(source.includes("href={CTA_LINKS.contact.href}"));
-  assert.ok(source.includes("href={SITE.phoneHref}"));
+  assert.doesNotMatch(suburbLayout, /Urgent referrals|are prioritised/);
+  assert.ok(suburbLayout.includes("Share your suburb, care needs and preferred timing"));
+  assert.ok(suburbLayout.includes("CTA_LINKS.requestCare.href"));
+  assert.ok(suburbLayout.includes("CTA_LINKS.contact.href"));
+  assert.ok(suburbLayout.includes("SITE.phoneHref"));
 });

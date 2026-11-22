@@ -54,10 +54,17 @@ const TONES = ["", "suburb-section-sage", "suburb-section-cream"] as const;
  * Long explanations stay in the DOM inside disclosures.
  * Layout follows the homepage: cream hero, trust strip, airy sections, deep close.
  */
-export function SuburbLandingPage({ page }: { page: SuburbLandingPageData }) {
+export function SuburbLandingPage({
+  page,
+  documentSchemas,
+}: {
+  page: SuburbLandingPageData;
+  /** Null when the route already prints its own JSON-LD. */
+  documentSchemas?: readonly unknown[] | null;
+}) {
   const canonical = `${INTEGRATIONS.siteUrl}/suburbs/${page.slug}`;
   const faqs = page.sections.flatMap((section) => section.faqs ?? []);
-  const schemas = [
+  const generatedSchemas = [
     getBreadcrumbListSchema([
       { name: "Home", item: "/" },
       { name: "Suburbs", item: "/suburbs" },
@@ -89,6 +96,7 @@ export function SuburbLandingPage({ page }: { page: SuburbLandingPageData }) {
     },
     getFaqSchema(faqs.map((faq) => ({ question: faq.question, answer: plainText(faq.answer) }))),
   ];
+  const schemas = documentSchemas === null ? null : documentSchemas ?? generatedSchemas;
   const [lead, ...restIntro] = page.intro;
   const laid = layoutSections(page.sections);
   const tones = laid.map((item, index) => {
@@ -99,7 +107,7 @@ export function SuburbLandingPage({ page }: { page: SuburbLandingPageData }) {
 
   return (
     <div className="premium-suburb">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
+      {schemas ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} /> : null}
 
       <section className="suburb-hero" aria-labelledby={`${page.slug}-title`}>
         <div className="suburb-wrap">
