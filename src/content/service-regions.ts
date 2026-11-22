@@ -565,10 +565,23 @@ function injectRegion(text: string, region: string): string {
 function injectService(text: string, service: string): string {
   return text.replace(/\{service\}/g, service);
 }
+/** Service name as it should read inside a heading. Acronyms stay uppercase. */
+export function servicePhrase(title: string): string {
+  return title.toLowerCase().replaceAll("ndis", "NDIS").replaceAll("dva community nursing", "DVA Community Nursing");
+}
+
+function articleBefore(region: string): "a" | "an" {
+  return /^[aeiou]/i.test(region) ? "an" : "a";
+}
+
 function injectFaq(faq: ServiceRegionFaq, region: string, slug: string): ServiceRegionFaq {
+  const question = injectRegion(faq.question, region).replace(
+    new RegExp(`\\ba (?=${region.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b)`),
+    `${articleBefore(region)} `,
+  );
   return {
     id: faq.id.replace(/\{slug\}/g, slug),
-    question: injectRegion(faq.question, region),
+    question,
     answer: injectRegion(faq.answer, region),
   };
 }
@@ -588,7 +601,7 @@ function buildPage(
   const metaTitle = `${service.shortTitle} in ${regionPhrase} | Gentle Care`;
   // Keep meta description ≤160 chars for SERP display.
   const metaDescription =
-    `${service.title} in ${region.region}, Sydney. experienced, relationship-based care. Contact us to discuss your care needs.`;
+    `${service.title} in ${region.region}, Sydney. Experienced, relationship-based care. Contact us to discuss your care needs.`;
   return {
     serviceSlug: service.slug,
     regionSlug: region.slug,
@@ -604,7 +617,7 @@ function buildPage(
     fundingAndAccess: injectRegion(service.fundingAndAccess, region.region),
     included: service.included,
     faqs: service.faqs.map((faq) => injectFaq(faq, region.region, region.slug)),
-    ctaTitle: `Ready to arrange ${service.title.toLowerCase()} in ${region.region}?`,
+    ctaTitle: `Ready to arrange ${servicePhrase(service.title)} in ${region.region}?`,
     ctaDescription: `Tell us a little about your situation so we can discuss your care needs and next steps. Urgent referrals in ${region.region} are prioritised.`,
   };
 }

@@ -10,6 +10,8 @@ import { createElement, type ComponentType } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { CONDITIONS } from "../src/content/conditions";
 import { SUBURBS } from "../src/content/suburbs";
+import { SUBURB_LANDING_PAGES } from "../src/content/suburb-landing-pages";
+import { isSuburbLandingTouched } from "./helpers/suburb-landing-files";
 import { getAllBlogCategories, getAllBlogPosts, BLOG_CATEGORIES } from "../src/content/blog";
 import { BlogCategoryFilter } from "../src/components/sections/BlogCategoryFilter";
 import baseline from "./fixtures/discovery-baseline.json";
@@ -40,7 +42,16 @@ for (const route of ["conditions", "suburbs", "blog"] as const) {
   const original = baseline.routes[route];
   const source = readFileSync(`src/app/${route}/page.tsx`, "utf8");
   test(`${route}: full original semantic DOM, ordered copy, images, schema, links and attributes are preserved`, () => {
-    assert.equal(semanticDOM(html), semanticDOM(original.html));
+    const comparable = route === "suburbs" ? html.replace(/<a\b[^>]*href="\/suburbs\/(?:north-strathfield|concord-west)"[^>]*>[\s\S]*?<\/a>/g, "").replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g, (_full, json: string) => {
+      const data = JSON.parse(json) as Array<{ "@type"?: string; hasPart?: { url?: string }[] }>;
+      for (const node of data) {
+        if (node["@type"] === "CollectionPage" && node.hasPart) {
+          node.hasPart = node.hasPart.filter((part) => !/\/suburbs\/(?:north-strathfield|concord-west)$/.test(part.url ?? ""));
+        }
+      }
+      return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
+    }) : html;
+    assert.equal(semanticDOM(comparable), semanticDOM(original.html));
     assert.equal((html.match(/<h1\b/g) ?? []).length, 1);
     assert.doesNotMatch(html, /<main\b|<iframe\b|<form\b|data-analytics-action=/);
     const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]);
@@ -71,6 +82,8 @@ test("discovery: every prior production file outside three route wrappers remain
     // Only these two files are delegated to full original-source and all-30-route
     // semantic/metadata/schema parity in premium-service-region.test.ts.
     if (["src/app/services/[service]/[region]/page.tsx", "src/components/sections/ServiceRegionPageLayout.tsx"].includes(path)) continue;
+    // North Strathfield and Concord West landing pages: suburb-landing-pages.test.ts.
+    if (isSuburbLandingTouched(path)) continue;
     // Remove only the Next smooth-scroll opt-in; retain the original layout hash.
     assert.equal(digest(path === "src/content/suburbs.ts" ? restorePriorLocalContext(readFileSync(path, "utf8")) : path === "src/app/layout.tsx" ? readFileSync(path, "utf8").replace('<html lang="en" data-scroll-behavior="smooth"', '<html lang="en"') : path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : readFileSync(path)), hash, path);
   }
@@ -83,9 +96,9 @@ test("conditions: every condition, schema item and both original ordinary CTA li
 });
 test("suburbs: original regional grouping, anchor IDs and every suburb destination remain exact", () => {
   const regions = ["Inner West", "North Shore", "Northern Beaches", "Sydney CBD & East", "Western Sydney", "South Sydney"];
-  const ordered = regions.flatMap(region => SUBURBS.filter(s => s.region === region));
+  const ordered = regions.flatMap(region => [...SUBURBS.filter(s => s.region === region), ...SUBURB_LANDING_PAGES.filter(s => s.region === region)]);
   assert.deepEqual(links(renders.suburbs), ["/", ...ordered.map(s => `/suburbs/${s.slug}`), "/referral", "/areas"]);
-  assert.equal((renders.suburbs.match(/discovery-suburb-card /g) ?? []).length, SUBURBS.length);
+  assert.equal((renders.suburbs.match(/discovery-suburb-card /g) ?? []).length, ordered.length);
   for (const region of regions) assert.ok(renders.suburbs.includes(`id="${region.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and")}"`));
 });
 test("blog: all posts, original category controls, pathway links and ordering remain intact", () => {

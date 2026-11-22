@@ -1,5 +1,6 @@
 import { restorePriorFooterCredit } from "./helpers/footer-credit";
 import { restorePriorLocalContext } from "./helpers/local-context-review";
+import { isSuburbLandingTouched } from "./helpers/suburb-landing-files";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
@@ -77,6 +78,8 @@ test("information pages: shared production is unchanged, with later discovery ro
     if (["src/app/areas/[region]/page.tsx", "src/app/suburbs/[suburb]/page.tsx", "src/app/conditions/[condition]/page.tsx", "src/app/blog/[slug]/page.tsx", "src/app/privacy/page.tsx", "src/app/terms/page.tsx", "src/app/review/page.tsx"].includes(path)) continue;
     // Full original-source and all-30-route parity: premium-service-region.test.ts.
     if (["src/app/services/[service]/[region]/page.tsx", "src/components/sections/ServiceRegionPageLayout.tsx"].includes(path)) continue;
+    // North Strathfield and Concord West landing pages: suburb-landing-pages.test.ts.
+    if (isSuburbLandingTouched(path)) continue;
     // These route wrappers have complete original semantic DOM and metadata
     // coverage in premium-discovery.test.ts; all shared production stays exact.
     if (["src/app/conditions/page.tsx", "src/app/suburbs/page.tsx", "src/app/blog/page.tsx"].includes(path)) continue;

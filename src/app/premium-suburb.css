@@ -1,0 +1,632 @@
+/* Suburb landing pages, scoped to the homepage editorial system.
+   Tokens, type, buttons and rhythm match src/app/homepage.css.
+   No global selectors, no new photographs, no motion beyond a focus outline. */
+.premium-suburb {
+  --suburb-berry: #842833;
+  --suburb-ink: #332e2a;
+  --suburb-muted: #615b54;
+  --suburb-cream: #fdf6ec;
+  --suburb-paper: #fffdf9;
+  --suburb-sage: #e8eee3;
+  --suburb-sage-ink: #486141;
+  --suburb-rule: #d7cfc3;
+  --suburb-deep: #3d0a11;
+  color: var(--suburb-ink);
+  background: var(--suburb-paper);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  --suburb-band: var(--suburb-paper);
+}
+.premium-suburb .suburb-wrap {
+  width: calc(100% - 2.25rem);
+  max-width: 83rem;
+  margin-inline: auto;
+}
+.premium-suburb :is(h1, h2, h3, p, li, a, summary) { overflow-wrap: break-word; }
+.premium-suburb h1,
+.premium-suburb h2,
+.premium-suburb h3 {
+  color: var(--suburb-ink);
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -.03em;
+  line-height: 1.08;
+}
+.premium-suburb h1 { max-width: none; font-size: clamp(2.75rem, 6vw, 3.75rem); }
+.premium-suburb h2 { max-width: none; font-size: clamp(2.25rem, 3.5vw, 3.25rem); }
+.premium-suburb h3 { font-size: 1.75rem; line-height: 1.2; letter-spacing: -.02em; }
+.premium-suburb .suburb-accent { color: var(--suburb-berry); }
+.premium-suburb p { color: var(--suburb-muted); }
+.premium-suburb a { color: var(--suburb-berry); }
+.premium-suburb strong { color: var(--suburb-ink); font-weight: 600; }
+.premium-suburb .suburb-eyebrow {
+  margin-bottom: .875rem;
+  color: var(--suburb-berry);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.premium-suburb .suburb-hero {
+  background: var(--suburb-cream);
+  padding-block: 1.5rem 2.5rem;
+}
+.premium-suburb .suburb-breadcrumbs { margin-bottom: 1.5rem; }
+.premium-suburb .suburb-breadcrumbs ol { color: var(--suburb-muted); font-size: .9375rem; }
+.premium-suburb .suburb-breadcrumbs a {
+  color: var(--suburb-berry);
+  text-decoration: underline;
+  text-underline-offset: .2rem;
+}
+.premium-suburb .suburb-hero-grid,
+.premium-suburb .suburb-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+}
+.premium-suburb .suburb-lead {
+  margin-top: 1.25rem;
+  max-width: 62ch;
+  color: var(--suburb-ink);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+.premium-suburb .suburb-hero-copy p + p { margin-top: .875rem; max-width: 62ch; font-size: 1.125rem; line-height: 1.6; color: var(--suburb-ink); }
+.premium-suburb .suburb-actions {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  margin-top: 1.75rem;
+}
+.premium-suburb .suburb-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  min-height: 3.375rem;
+  padding: .875rem 1.25rem;
+  border: 1px solid var(--suburb-berry);
+  border-radius: .25rem;
+  background: var(--suburb-berry);
+  color: #fff;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+}
+.premium-suburb .suburb-button-secondary { background: transparent; color: var(--suburb-berry); }
+.premium-suburb .suburb-button:hover { background: var(--suburb-deep); border-color: var(--suburb-deep); color: #fff; }
+.premium-suburb .suburb-button svg { width: 1.125rem; height: 1.125rem; flex: none; }
+.premium-suburb .suburb-figure { min-width: 0; margin: 0; }
+.premium-suburb .suburb-rule {
+  width: 4.5rem;
+  height: .3125rem;
+  margin-bottom: 1rem;
+  background: var(--suburb-sage-ink);
+}
+.premium-suburb .suburb-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: .25rem;
+  background: var(--suburb-sage);
+}
+.premium-suburb .suburb-figure figcaption {
+  margin-top: .875rem;
+  color: var(--suburb-ink);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.5rem, 2vw, 1.8125rem);
+  letter-spacing: -.02em;
+  line-height: 1.15;
+}
+.premium-suburb .suburb-trust {
+  border-bottom: 1px solid var(--suburb-rule);
+  padding-block: 1.75rem;
+}
+.premium-suburb .suburb-trust-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.premium-suburb .suburb-trust-grid li {
+  border-left: 2px solid var(--suburb-sage-ink);
+  padding-left: 1rem;
+}
+.premium-suburb .suburb-trust-grid strong {
+  display: block;
+  color: var(--suburb-ink);
+  font-size: 1.0625rem;
+  line-height: 1.3;
+}
+.premium-suburb .suburb-trust-grid span {
+  display: block;
+  margin-top: .375rem;
+  color: var(--suburb-muted);
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+.premium-suburb .suburb-section { padding-block: 4.5rem; }
+.premium-suburb .suburb-section-sage { background: var(--suburb-sage); --suburb-band: var(--suburb-sage); }
+.premium-suburb .suburb-section-cream { background: var(--suburb-cream); --suburb-band: var(--suburb-cream); }
+.premium-suburb .suburb-section-head { margin-bottom: 2rem; }
+.premium-suburb .suburb-kicker {
+  margin-top: 1rem;
+  max-width: 62ch;
+  color: var(--suburb-ink);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+.premium-suburb .suburb-prose,
+.premium-suburb .suburb-card,
+.premium-suburb .suburb-card p,
+.premium-suburb .suburb-support p,
+.premium-suburb .suburb-steps li,
+.premium-suburb .suburb-process-copy p,
+.premium-suburb .suburb-tile p,
+.premium-suburb .suburb-faq details p {
+  color: var(--suburb-ink);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+.premium-suburb .suburb-prose { margin-top: 1.15rem; }
+.premium-suburb .suburb-prose,
+.premium-suburb .suburb-kicker,
+.premium-suburb .suburb-faq details p,
+.premium-suburb .suburb-process-note { max-width: 62ch; }
+.premium-suburb .suburb-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+.premium-suburb .suburb-story .suburb-prose { max-width: none; }
+.premium-suburb .suburb-glance {
+  padding: 1.5rem 1.35rem 1.65rem;
+  border-top: .3125rem solid var(--suburb-sage-ink);
+  background: var(--suburb-sage);
+}
+.premium-suburb .suburb-glance h2 { font-size: clamp(1.75rem, 2vw, 2.35rem); margin-bottom: .25rem; }
+.premium-suburb .suburb-pull {
+  margin-top: 1.5rem;
+  padding: .25rem 0 .25rem 1.15rem;
+  border-left: 2px solid var(--suburb-sage-ink);
+  color: var(--suburb-ink);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.35rem;
+  line-height: 1.45;
+}
+.premium-suburb .suburb-card-grid,
+.premium-suburb .suburb-support-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.premium-suburb .suburb-card,
+.premium-suburb .suburb-support {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  padding: 1.35rem 0 1.5rem;
+  border: 0;
+  border-top: 1px solid var(--suburb-rule);
+  border-radius: 0;
+  background: transparent;
+}
+.premium-suburb .suburb-card .suburb-more { margin-top: auto; }
+.premium-suburb .suburb-section-sage .suburb-card,
+.premium-suburb .suburb-section-sage .suburb-support { border-top-color: #b7c6ae; }
+.premium-suburb .suburb-card strong,
+.premium-suburb .suburb-card h3,
+.premium-suburb .suburb-support h3 { display: block; margin: 0 0 .5rem; }
+.premium-suburb .suburb-card h3 { font-size: 1.45rem; line-height: 1.2; }
+.premium-suburb .suburb-card > p,
+.premium-suburb .suburb-support p { margin: 0; }
+.premium-suburb .suburb-card-note { padding-top: .85rem; }
+.premium-suburb .suburb-number {
+  display: block;
+  margin-bottom: .75rem;
+  color: var(--suburb-sage-ink);
+  font-size: .9375rem;
+  letter-spacing: .04em;
+}
+.premium-suburb .suburb-steps {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: suburb-step;
+}
+.premium-suburb .suburb-steps li {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  border-top: 1px solid var(--suburb-rule);
+  padding-block: 1.25rem;
+}
+.premium-suburb .suburb-steps li::before {
+  content: counter(suburb-step, decimal-leading-zero);
+  counter-increment: suburb-step;
+  color: var(--suburb-sage-ink);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.75rem;
+  line-height: 1;
+}
+.premium-suburb .suburb-step-copy { min-width: 0; }
+.premium-suburb .suburb-process {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.premium-suburb .suburb-process > li {
+  display: grid;
+  grid-template-columns: 4.75rem minmax(0, 1fr);
+  column-gap: .35rem;
+  align-items: start;
+  min-width: 0;
+  padding-bottom: 1.75rem;
+}
+.premium-suburb .suburb-process-mark { position: relative; display: inline-block; min-width: 0; }
+.premium-suburb .suburb-process-num {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding-right: .4rem;
+  background: var(--suburb-band);
+  color: var(--suburb-berry);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(2.75rem, 4vw, 4rem);
+  font-weight: 600;
+  font-variant-numeric: lining-nums;
+  letter-spacing: -.03em;
+  line-height: 1;
+}
+.premium-suburb .suburb-process > li:not(:last-child) .suburb-process-mark::after {
+  content: "";
+  position: absolute;
+  top: 3.15rem;
+  bottom: -1.75rem;
+  left: 1.2rem;
+  width: 1px;
+  background: var(--suburb-rule);
+}
+.premium-suburb .suburb-process-copy { min-width: 0; }
+.premium-suburb .suburb-process-copy h3 {
+  margin: .4rem 0 .55rem;
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+}
+.premium-suburb .suburb-process-copy > p { margin: 0; }
+.premium-suburb .suburb-checklist {
+  margin-top: 1rem;
+  padding: 1.5rem 1.35rem 1.25rem;
+  background: var(--suburb-sage);
+  border-top: .3125rem solid var(--suburb-sage-ink);
+}
+.premium-suburb .suburb-section-sage .suburb-checklist,
+.premium-suburb .suburb-section-cream .suburb-checklist { background: var(--suburb-paper); }
+.premium-suburb .suburb-checklist h3 { margin: 0 0 1rem; font-size: clamp(1.5rem, 2vw, 1.85rem); }
+.premium-suburb .suburb-checklist ul {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: .85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.premium-suburb .suburb-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: .7rem;
+  min-width: 0;
+  color: var(--suburb-ink);
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+.premium-suburb .suburb-checklist svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: .2rem;
+  flex: none;
+  color: var(--suburb-sage-ink);
+}
+.premium-suburb .suburb-checklist li span { min-width: 0; }
+.premium-suburb .suburb-process-note { margin-top: 1.15rem; }
+.premium-suburb .suburb-tile-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+.premium-suburb .suburb-tile {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  padding: 1.35rem 1.25rem 1.1rem;
+  background: var(--suburb-cream);
+  border-top: .3125rem solid var(--suburb-sage-ink);
+}
+.premium-suburb .suburb-section-cream .suburb-tile { background: var(--suburb-paper); }
+.premium-suburb .suburb-tile-icon { color: var(--suburb-sage-ink); }
+.premium-suburb .suburb-tile-icon svg { width: 1.75rem; height: 1.75rem; }
+.premium-suburb .suburb-tile h3 { margin: .85rem 0 .45rem; font-size: 1.45rem; line-height: 1.2; }
+.premium-suburb .suburb-tile > p { margin: 0; }
+.premium-suburb .suburb-tile .suburb-more { margin-top: auto; }
+.premium-suburb .suburb-tile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem 1.15rem;
+  margin-top: .85rem;
+}
+.premium-suburb .suburb-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: .2rem;
+}
+.premium-suburb .suburb-text-link svg { width: 1rem; height: 1rem; flex: none; }
+.premium-suburb .suburb-stat-list {
+  display: grid;
+  gap: 1.15rem;
+  margin: .35rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.premium-suburb .suburb-stat-list li { min-width: 0; }
+.premium-suburb .suburb-stat-list strong {
+  display: block;
+  color: var(--suburb-ink);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(2.15rem, 3vw, 2.85rem);
+  font-weight: 600;
+  letter-spacing: -.03em;
+  line-height: 1;
+}
+.premium-suburb .suburb-stat-list span {
+  display: block;
+  margin-top: .4rem;
+  color: var(--suburb-ink);
+  font-size: 1.0625rem;
+  line-height: 1.4;
+}
+.premium-suburb .suburb-stat-source { margin-top: 1.15rem; font-size: 1rem; line-height: 1.5; }
+.premium-suburb .suburb-more { margin-top: .85rem; border-top: 1px solid var(--suburb-rule); }
+.premium-suburb .suburb-more summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3rem;
+  padding-block: .7rem;
+  cursor: pointer;
+  list-style: none;
+  color: var(--suburb-berry);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.premium-suburb .suburb-more summary::-webkit-details-marker { display: none; }
+.premium-suburb .suburb-more-body p {
+  margin: 0 0 1rem;
+  max-width: 62ch;
+  color: var(--suburb-ink);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+.premium-suburb .suburb-tile .suburb-more-body p,
+.premium-suburb .suburb-card .suburb-more-body p,
+.premium-suburb .suburb-process-copy .suburb-more-body p,
+.premium-suburb .suburb-checklist .suburb-more-body p,
+.premium-suburb .suburb-glance .suburb-more-body p { max-width: none; }
+.premium-suburb .suburb-more[open] .suburb-faq-mark { background: var(--suburb-sage); }
+.premium-suburb .suburb-section-sage .suburb-more[open] .suburb-faq-mark { background: var(--suburb-paper); }
+.premium-suburb .suburb-more-list { margin-top: 1.75rem; }
+.premium-suburb .suburb-hero .suburb-more { max-width: 62ch; margin-top: 1.5rem; }
+.premium-suburb .suburb-band { margin: 0; background: var(--suburb-sage); }
+.premium-suburb .suburb-band img {
+  display: block;
+  width: 100%;
+  height: clamp(11rem, 28vw, 22rem);
+  object-fit: cover;
+  object-position: center 42%;
+}
+.premium-suburb .suburb-places {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.premium-suburb .suburb-places a,
+.premium-suburb .suburb-places span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: .35rem .85rem;
+  border: 1px solid var(--suburb-rule);
+  background: var(--suburb-paper);
+  font-size: 1rem;
+  line-height: 1.3;
+}
+.premium-suburb .suburb-places a {
+  color: var(--suburb-berry);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: .15rem;
+}
+.premium-suburb .suburb-places span {
+  color: var(--suburb-muted);
+  background: transparent;
+}
+.premium-suburb .suburb-sources {
+  margin-top: 1.75rem;
+  max-width: 68ch;
+  color: var(--suburb-muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+.premium-suburb .suburb-sources a {
+  color: var(--suburb-sage-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: .15rem;
+}
+.premium-suburb .suburb-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.5rem;
+  margin-top: 1.25rem;
+}
+.premium-suburb .suburb-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: .25rem;
+}
+.premium-suburb .suburb-links a:hover { color: var(--suburb-deep); text-decoration-thickness: 2px; }
+.premium-suburb .suburb-faq details { border-top: 1px solid var(--suburb-rule); }
+.premium-suburb .suburb-faq details:last-of-type { border-bottom: 1px solid var(--suburb-rule); }
+.premium-suburb .suburb-faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4.25rem;
+  padding-block: 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+.premium-suburb .suburb-faq summary::-webkit-details-marker { display: none; }
+.premium-suburb .suburb-faq summary h3 { margin: 0; font-size: clamp(1.25rem, 2.4vw, 1.75rem); }
+.premium-suburb .suburb-faq-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  border: 1px solid var(--suburb-rule);
+  border-radius: .25rem;
+  color: var(--suburb-sage-ink);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+.premium-suburb .suburb-faq details[open] .suburb-faq-mark { background: var(--suburb-sage); }
+.premium-suburb .suburb-faq details p { max-width: 46rem; margin: 0 0 1.25rem; }
+.premium-suburb .suburb-close {
+  background: var(--suburb-deep);
+  color: var(--suburb-cream);
+  padding-block: 3.5rem 4rem;
+}
+.premium-suburb .suburb-close h2 { max-width: 18ch; color: var(--suburb-cream); }
+.premium-suburb .suburb-close p { max-width: 62ch; margin-top: 1.25rem; color: #e9d8d0; font-size: 1.125rem; line-height: 1.6; }
+.premium-suburb .suburb-close .suburb-button { border-color: var(--suburb-cream); background: var(--suburb-cream); color: var(--suburb-deep); }
+.premium-suburb .suburb-close .suburb-button-secondary { background: transparent; color: var(--suburb-cream); }
+.premium-suburb .suburb-close .suburb-button:hover { background: var(--suburb-sage); border-color: var(--suburb-sage); color: var(--suburb-deep); }
+.premium-suburb .suburb-note { margin-top: 1.5rem; font-size: .975rem; }
+.premium-suburb .suburb-note a { color: var(--suburb-cream); }
+.premium-suburb .suburb-mobile-bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 45;
+  display: flex;
+  gap: .75rem;
+  padding: .75rem 1.125rem calc(.75rem + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--suburb-rule);
+  background: color-mix(in srgb, var(--suburb-paper) 92%, white);
+}
+.premium-suburb .suburb-mobile-bar .suburb-button { flex: 1; justify-content: center; }
+@media (max-width: 62.49rem) {
+  body:has(.premium-suburb) { padding-bottom: 5.25rem; }
+}
+.premium-suburb :is(a, summary):focus-visible {
+  outline: 3px solid var(--suburb-berry);
+  outline-offset: 4px;
+}
+.premium-suburb .suburb-close :is(a, summary):focus-visible { outline-color: var(--suburb-cream); }
+@media (min-width: 47.5rem) {
+  .premium-suburb .suburb-wrap { width: calc(100% - 4rem); }
+  .premium-suburb .suburb-section { padding-block: 6rem; }
+  .premium-suburb .suburb-checklist ul { grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 1.75rem; }
+  .premium-suburb .suburb-checklist li { grid-column: span 2; }
+  .premium-suburb .suburb-checklist ul:has(> :nth-child(5):last-child) > li:nth-child(n+4) { grid-column: span 3; }
+  .premium-suburb .suburb-checklist ul:has(> :nth-child(4):last-child) > li,
+  .premium-suburb .suburb-checklist ul:has(> :nth-child(2):last-child) > li { grid-column: span 3; }
+  .premium-suburb .suburb-tile-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+  .premium-suburb h1 { font-size: clamp(3.25rem, 4.2vw, 4.5rem); }
+  .premium-suburb h2 { font-size: clamp(2.5rem, 3vw, 3.35rem); }
+  .premium-suburb .suburb-hero { padding-block: 2.5rem 3.5rem; }
+  .premium-suburb .suburb-hero-grid { grid-template-columns: minmax(0, 1.25fr) minmax(18rem, .85fr); gap: 3rem; align-items: start; }
+  .premium-suburb .suburb-story { grid-template-columns: minmax(0, 1.25fr) minmax(18rem, .8fr); gap: 3.5rem; }
+  .premium-suburb .suburb-card-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 2.5rem; row-gap: 0; }
+  .premium-suburb .suburb-card-grid > li { grid-column: span 3; }
+  .premium-suburb .suburb-card-grid:has(> :nth-child(3):last-child) > li,
+  .premium-suburb .suburb-card-grid:has(> :nth-child(6):last-child) > li { grid-column: span 2; }
+  .premium-suburb .suburb-card-grid:has(> :nth-child(5):last-child) > li { grid-column: span 2; }
+  .premium-suburb .suburb-card-grid:has(> :nth-child(5):last-child) > li:nth-child(n+4) { grid-column: span 3; }
+  .premium-suburb .suburb-card-grid:has(> :nth-child(2):last-child) > li {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    min-height: 9.5rem;
+  }
+  .premium-suburb .suburb-hero-aside { position: sticky; top: 6.5rem; }
+  .premium-suburb .suburb-actions { flex-direction: row; flex-wrap: wrap; }
+  .premium-suburb .suburb-support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2.5rem; }
+  .premium-suburb .suburb-trust-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 62.5rem) {
+  .premium-suburb .suburb-wrap { width: calc(100% - 7rem); }
+  .premium-suburb .suburb-section { padding-block: 7rem; }
+  .premium-suburb .suburb-hero { padding-block: 3.5rem 4.5rem; }
+  .premium-suburb .suburb-hero-grid { gap: 4rem; align-items: start; }
+  .premium-suburb .suburb-support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 2rem; }
+  .premium-suburb .suburb-tile-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .premium-suburb .suburb-process {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 2.75rem;
+  }
+  .premium-suburb .suburb-process > li {
+    display: block;
+    padding-bottom: 0;
+    container-type: inline-size;
+  }
+  .premium-suburb .suburb-process > li:not(:last-child) .suburb-process-mark::after {
+    top: 1.95rem;
+    bottom: auto;
+    left: calc(100% + .7rem);
+    width: calc(100cqi - 100% + 2.75rem - 1.4rem);
+    height: 1px;
+  }
+  .premium-suburb .suburb-mobile-bar { display: none; }
+}
+@media (min-width: 62.5rem) {
+  body:has(.premium-suburb) { padding-bottom: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .premium-suburb *,
+  .premium-suburb *::before,
+  .premium-suburb *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -3,11 +3,15 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 
 test("condition hub and suburb template keep canonical page schema and suppress duplicate component schema", () => {
-  for (const path of ["src/app/conditions/page.tsx", "src/app/suburbs/[suburb]/page.tsx"]) {
-    const source = readFileSync(path, "utf8");
-    assert.match(source, /<Breadcrumbs\s+includeSchema=\{false\}/);
-    assert.ok(source.includes("getBreadcrumbListSchema("));
-    assert.ok(source.includes('type="application/ld+json"'));
-    assert.ok(!source.includes("LocalCarePilotPage"));
-  }
+  const conditions = readFileSync("src/app/conditions/page.tsx", "utf8");
+  assert.match(conditions, /<Breadcrumbs\s+includeSchema=\{false\}/);
+  assert.ok(conditions.includes("getBreadcrumbListSchema("));
+  assert.ok(conditions.includes('type="application/ld+json"'));
+  const suburb = readFileSync("src/app/suburbs/[suburb]/page.tsx", "utf8");
+  const landing = readFileSync("src/components/sections/SuburbLandingPage.tsx", "utf8");
+  assert.match(landing, /<Breadcrumbs\s+includeSchema=\{false\}/);
+  assert.ok(suburb.includes("SuburbLandingPage"));
+  assert.ok(suburb.includes("getBreadcrumbListSchema("));
+  assert.ok(suburb.includes("documentSchemas={schemas}"));
+  assert.ok(!suburb.includes("LocalCarePilotPage"));
 });

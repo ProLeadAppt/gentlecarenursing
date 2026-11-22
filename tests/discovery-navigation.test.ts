@@ -15,9 +15,9 @@ test("footer connects to existing condition and suburb hubs, never draft pages",
   assert.doesNotMatch(defaults, /content-review|coverage-register/);
 });
 test("regional guide navigation covers all 30 existing routes with matching regions", () => {
-  const source = readFileSync("src/app/areas/[region]/page.tsx", "utf8");
+  const source = readFileSync("src/content/premium-location.ts", "utf8");
   assert.match(source, /SERVICE_REGION_PAGES\.filter\(\(page\) => page\.regionSlug === area\.slug\)/);
-  assert.match(source, /<Link href=\{page\.path\}/);
+  assert.match(source, /href: page\.path/);
   assert.doesNotMatch(source, /coverage-registry|service-track-drafts/);
   const paths = new Set<string>();
   for (const region of getAllAreaSlugs()) {
