@@ -49,7 +49,7 @@ for (const [path, original] of Object.entries(captures)) {
   test(`${path}: full original semantic DOM, exact copy, claims, images, links and controls survive`, async () => {
     const raw = await render(route, original.params);
     const html = path === "/areas/inner-west" ? withoutInnerWestLandingLinks(raw) : raw;
-    const redesigned = original.family === "suburbs/[suburb]";
+    const redesigned = original.family === "suburbs/[suburb]" || original.family === "areas/[region]";
     if (!redesigned) {
       assert.equal(semanticDOM(restorePriorLocalContextHtml(html)), semanticDOM(original.html));
       assert.deepEqual(links(html), links(original.html));
@@ -127,7 +127,7 @@ test("complete: /review keeps both feedback destinations, noindex and sitemap ex
   for (const path of Object.keys(captures).filter(p=>p!=="/review")) assert.ok(sitemap.some(s=>new URL(s.url).pathname===path),path);
 });
 for (const [file,roots,importers] of [
-  ["src/app/premium-locality.css",[".premium-locality"],["src/app/areas/[region]/page.tsx"]],
+  ["src/app/premium-locality.css",[".premium-locality"],[]],
   ["src/app/premium-editorial.css",[".premium-condition",".premium-article"],["src/app/blog/[slug]/page.tsx","src/app/conditions/[condition]/page.tsx"]],
   ["src/app/premium-utility.css",[".premium-privacy",".premium-terms",".premium-review"],["src/app/privacy/page.tsx","src/app/review/page.tsx","src/app/terms/page.tsx"]],
 ] as const) {
@@ -150,7 +150,7 @@ test("complete: selected readable text and focus palette meets AA contrast thres
 
 test("complete: all seven route sources reconstruct exactly from presentation-only additions",()=>{
   for (const [path,original] of Object.entries(baseline.sources)) {
-    if (path.endsWith("suburbs/[suburb]/page.tsx")) continue;
+    if (path.endsWith("suburbs/[suburb]/page.tsx") || path.endsWith("areas/[region]/page.tsx")) continue;
     let source=readFileSync(path,"utf8").replace(/^import "\.\.\/(?:\.\.\/)?premium-(?:editorial|locality|utility)\.css";\n/,"");
     if(path.includes('/areas/')||path.includes('/suburbs/')) {
       source=source.replace('import { InnerWestSuburbPageLinks } from "@/components/sections/InnerWestSuburbPageLinks";\n', "").replace("                    <InnerWestSuburbPageLinks regionSlug={area.slug} />\n", "");

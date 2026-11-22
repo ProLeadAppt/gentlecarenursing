@@ -35,6 +35,6 @@ export function expectedSentences(html: string): string[] {
     node
       .split(/(?<=[.!?])\s+/)
       .map((sentence) => sentence.trim())
-      .filter((sentence) => sentence.length >= 24 && !sentence.startsWith("{") && !sentence.startsWith("[") && !sentence.includes("→")),
+      .filter((sentence) => sentence.length >= 24 && !sentence.startsWith("{") && !sentence.startsWith("[") && !sentence.includes("→") && !/^(?:Check Availability in|Speak to a Clinical Lead|Start Care Journey|Contact Clinical Lead|Free Initial Consultation|Request Care in )/.test(sentence)),
   );
 }

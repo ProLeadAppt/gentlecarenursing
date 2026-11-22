@@ -2,9 +2,12 @@
  * Existing location copy, arranged in the approved suburb layout.
  * Sentences stay as published. Nothing new is claimed.
  */
+import { INTEGRATIONS } from "@/config/integrations";
 import { CTA_LINKS, SITE } from "@/lib/constants";
-import type { LandingIcon, LandingTile, SuburbLandingPageData } from "@/content/suburb-landing-pages";
-import type { SuburbEntry } from "@/content/suburbs";
+import type { AreaContent } from "@/content/areas-content";
+import { SERVICE_REGION_PAGES } from "@/content/service-regions";
+import { SUBURB_LANDING_PAGES, type LandingIcon, type LandingTile, type SuburbLandingPageData } from "@/content/suburb-landing-pages";
+import { SUBURBS, type SuburbEntry } from "@/content/suburbs";
 
 const HANDS = {
   src: "/images/homepage-hands-chris-f-33525563.jpg",
@@ -134,6 +137,149 @@ export function suburbToLanding(entry: SuburbEntry): SuburbLandingPageData {
       { href: SITE.phoneHref, label: `Call ${SITE.phone}` },
       { href: CTA_LINKS.requestCare.href, label: CTA_LINKS.requestCare.label },
       { href: CTA_LINKS.contact.href, label: CTA_LINKS.contact.label },
+    ],
+  };
+}
+
+const CONVERSATION = {
+  src: "/images/homepage-care-conversation-v4.webp",
+  alt: "A woman in burgundy scrubs and an older woman talking together on a sofa.",
+  width: 1536,
+  height: 1024,
+} as const;
+
+const PAGE_BY_NAME = new Map<string, string>([
+  ...SUBURBS.map((entry) => [entry.name, `/suburbs/${entry.slug}`] as const),
+  ...SUBURB_LANDING_PAGES.map((entry) => [entry.name, `/suburbs/${entry.slug}`] as const),
+]);
+
+export function areaToLanding(area: AreaContent): SuburbLandingPageData {
+  const names = [...area.suburbs];
+  if (area.slug === "inner-west") {
+    for (const page of SUBURB_LANDING_PAGES) {
+      if (!names.includes(page.name)) names.push(page.name);
+    }
+  }
+  const communities = names.map((name) => {
+    const href = PAGE_BY_NAME.get(name);
+    return href ? `[${name}](${href})` : name;
+  }).join(" · ");
+  const listed = area.suburbs.slice(0, 5).join(", ");
+  const guides = SERVICE_REGION_PAGES.filter((page) => page.regionSlug === area.slug);
+  return {
+    slug: area.slug,
+    name: area.region,
+    postcode: "",
+    lga: area.region,
+    region: "Sydney",
+    regionHref: "/areas",
+    seoTitle: `In-Home Nursing ${area.region} | Sydney`,
+    metaDescription: area.description,
+    h1: `In-Home Nursing & Care in ${area.region}`,
+    serviceName: `In-home nursing in ${area.region}`,
+    serviceType: "In-home nursing",
+    serviceDescription: area.description,
+    intro: [area.headline],
+    heroActions: [
+      { href: CTA_LINKS.requestCare.href, label: CTA_LINKS.requestCare.label },
+      { href: SITE.phoneHref, label: `Call ${SITE.phone}` },
+    ],
+    trust: [
+      { title: "Region covered", text: `In-home nursing and personal care across ${area.region}.` },
+      { title: "Funding types", text: "NDIS, DVA Community Nursing, aged care funding, or private." },
+      { title: "Enquiries", text: "Contact us to discuss your enquiry or referral." },
+    ],
+    image: CONVERSATION,
+    imageBand: { after: `How we help families in ${area.region}`, ...BAND },
+    sections: [
+      {
+        heading: `In-home nursing facts for ${area.region}`,
+        lead: `Citable local details for families, NDIS support coordinators, DVA referrers, GPs, and discharge planners arranging care in ${area.region}.`,
+        blocks: [
+          {
+            type: "p",
+            text: `Reference information: [Gentle Care Nursing Services service-area information](${INTEGRATIONS.siteUrl}/areas/${area.slug}) · [Gentle Care Nursing Services intake information](${INTEGRATIONS.siteUrl}/contact) · [Gentle Care Nursing Services intake information](${INTEGRATIONS.siteUrl}/referral) · [Gentle Care Nursing Services referrer information](${INTEGRATIONS.siteUrl}/referrers). References provide general programme or service information, not provider-specific verification.`,
+          },
+        ],
+        points: [
+          {
+            title: "Region covered",
+            line: `Gentle Care Nursing Services provides in-home nursing and personal care across ${area.region}, including ${listed}${area.suburbs.length > 5 ? " and nearby suburbs" : ""}.`,
+          },
+          {
+            title: "Funding types",
+            line: "Care may be arranged through NDIS, DVA Community Nursing, aged care funding, or private fee-for-service depending on eligibility and needs.",
+          },
+          {
+            title: "Enquiries",
+            line: "Contact us to discuss your enquiry or referral. Urgent referrals are prioritised.",
+          },
+          {
+            title: "Referrer support",
+            line: "Gentle Care works with support coordinators, hospital discharge planners, GPs, families, and representatives across Sydney.",
+          },
+        ],
+      },
+      {
+        heading: "Clinical Care Delivered Your Way",
+        blocks: [{ type: "p", text: area.body }],
+      },
+      {
+        heading: `How we help families in ${area.region}`,
+        tiles: (area.examples ?? []).map((example, index) => ({
+          icon: ICONS[index % ICONS.length],
+          title: example,
+        })),
+      },
+      {
+        heading: `Communities We Serve in ${area.region}`,
+        lead: "We work with support coordinators, discharge planners, and families across Sydney. Submit an enquiry to discuss your care needs.",
+        blocks: [{ type: "p", text: communities }],
+      },
+      {
+        heading: `Service guides for ${area.region}`,
+        tiles: guides.map((page, index) => ({
+          icon: ICONS[index % ICONS.length],
+          title: page.service.shortTitle,
+          links: [{ href: page.path, label: page.service.shortTitle }],
+        })),
+      },
+      {
+        heading: "How to get started",
+        lead: "Contact us to discuss your needs and next steps.",
+        process: {
+          steps: [
+            { title: "Send an enquiry", text: `Tell us you are arranging care in ${area.region}.` },
+            { title: "Share the details", text: "Include the suburb, the care needed and any referral information." },
+            { title: "We discuss next steps", text: "Urgent referrals are prioritised." },
+          ],
+          checklist: {
+            title: "Helpful to have ready",
+            items: [
+              "The suburb where care is needed",
+              "The type of support requested",
+              "Who else is involved, if anyone",
+              "Any referral or funding information you already have",
+            ],
+          },
+          primary: { href: CTA_LINKS.requestCare.href, label: CTA_LINKS.requestCare.label },
+          secondary: { href: SITE.phoneHref, label: SITE.phone },
+        },
+      },
+      {
+        heading: `Ready to discuss care in ${area.region}?`,
+        blocks: [
+          {
+            type: "p",
+            text: "Our clinical lead, Gemma, is available to discuss your specific requirements and ensure a seamless start to personalised support.",
+          },
+        ],
+      },
+    ],
+    closingActions: [
+      { href: CTA_LINKS.requestCare.href, label: CTA_LINKS.requestCare.label },
+      { href: SITE.phoneHref, label: `Call ${SITE.phone}` },
+      { href: CTA_LINKS.contact.href, label: "Contact Clinical Lead" },
     ],
   };
 }

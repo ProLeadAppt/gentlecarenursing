@@ -1,23 +1,12 @@
-import "../../premium-locality.css";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Container } from "@/components/layout/Container";
-import { Section } from "@/components/layout/Section";
-import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { Heading } from "@/components/ui/Heading";
-import { Reveal } from "@/components/ui/Reveal";
-import { Magnetic } from "@/components/animations/Magnetic";
-import { CTA_LINKS, SITE_LAST_UPDATED } from "@/lib/constants";
+import { SuburbLandingPage } from "@/components/sections/SuburbLandingPage";
+import { areaToLanding } from "@/content/premium-location";
+import { SITE_LAST_UPDATED } from "@/lib/constants";
 import { createMetadata } from "@/lib/metadata";
 import { getAreaContentBySlug, getAllAreaSlugs } from "@/content/areas-content";
 import { getAreaPageSchema, getBreadcrumbListSchema } from "@/lib/schema";
 import { INTEGRATIONS } from "@/config/integrations";
-import { SERVICE_REGION_PAGES } from "@/content/service-regions";
 import { getBreadcrumbPaths } from "@/content/topical-map";
-import { MapPin, ArrowRight, CheckCircle2, PhoneCall } from "lucide-react";
-import { FormModalTrigger } from "@/components/ui/FormModalTrigger";
-import { EvidencePanel } from "@/components/sections/EvidencePanel";
-import { InnerWestSuburbPageLinks } from "@/components/sections/InnerWestSuburbPageLinks";
 
 type Props = { params: Promise<{ region: string }> };
 
@@ -45,10 +34,6 @@ export default async function AreaRegionPage({ params }: Props) {
   if (!area) notFound();
 
   const path = `/areas/${area.slug}`;
-  const breadcrumbItems = getBreadcrumbPaths(path, area.region).map((item, i, arr) => ({
-    label: item.label,
-    href: i < arr.length - 1 ? item.path : undefined,
-  }));
   const breadcrumbSchema = getBreadcrumbListSchema(
     getBreadcrumbPaths(path, area.region).map((item) => ({
       name: item.label,
@@ -59,223 +44,13 @@ export default async function AreaRegionPage({ params }: Props) {
 
   return (
     <>
-      <div className="premium-locality premium-locality-region">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, areaPageSchema]) }}
       />
-      
-      {/* Cinematic Area Hero */}
-      <section className="locality-hero relative overflow-hidden bg-white pt-32 pb-24 lg:pt-40 lg:pb-32">
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-accent/[0.08] blur-[120px]" />
-          <div className="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] rounded-full bg-primary/[0.04] blur-[100px]" />
-        </div>
-
-        <Container size="md" className="relative z-10">
-          <Reveal delay={0.1}>
-            <div className="locality-breadcrumbs flex justify-center mb-10">
-              <Breadcrumbs includeSchema={false} items={breadcrumbItems} />
-            </div>
-          </Reveal>
-          
-          <Reveal delay={0.2}>
-            <div className="locality-title text-center">
-              <span className="mb-6 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-primary/70">
-                <MapPin className="h-3 w-3" />
-                Service Location
-              </span>
-              <Heading level="h1" className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-8 font-[family-name:var(--font-serif)] leading-[1.1]">
-                In-Home Nursing & Care in {area.region}
-              </Heading>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.3}>
-            <p className="locality-intro mx-auto max-w-2xl text-center text-xl leading-relaxed text-muted-foreground font-medium">
-              {area.headline}
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.4}>
-            <div className="locality-actions mt-14 flex flex-col sm:flex-row justify-center gap-6">
-              <Magnetic>
-                <FormModalTrigger formType="contact" size="xl" variant="primary" className="px-12 shadow-xl shadow-primary/20 rounded-2xl h-16">
-                  Check Availability in {area.region}
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </FormModalTrigger>
-              </Magnetic>
-              <Magnetic>
-                <FormModalTrigger formType="contact" variant="outline" size="xl" className="px-12 rounded-2xl h-16 border-2">
-                  Speak to a Clinical Lead
-                </FormModalTrigger>
-              </Magnetic>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
-
-      <div className="locality-evidence">
-      <EvidencePanel
-        eyebrow="Local quick facts"
-        heading={`In-home nursing facts for ${area.region}`}
-        intro={`Citable local details for families, NDIS support coordinators, DVA referrers, GPs, and discharge planners arranging care in ${area.region}.`}
-        items={[
-          {
-            label: "Region covered",
-            value: `Gentle Care Nursing Services provides in-home nursing and personal care across ${area.region}, including ${area.suburbs.slice(0, 5).join(", ")}${area.suburbs.length > 5 ? " and nearby suburbs" : ""}.`,
-            icon: "area",
-            references: [{ label: "Gentle Care Nursing Services service-area information", url: `${INTEGRATIONS.siteUrl}/areas/${area.slug}` }],
-          },
-          {
-            label: "Funding types",
-            value: "Care may be arranged through NDIS, DVA Community Nursing, aged care funding, or private fee-for-service depending on eligibility and needs.",
-            icon: "funding",
-            references: [{ label: "Gentle Care Nursing Services intake information", url: `${INTEGRATIONS.siteUrl}/contact` }],
-          },
-          {
-            label: "Enquiries",
-            value: "Contact us to discuss your enquiry or referral. Urgent referrals are prioritised.",
-            icon: "response",
-            references: [{ label: "Gentle Care Nursing Services intake information", url: `${INTEGRATIONS.siteUrl}/referral` }],
-          },
-          {
-            label: "Referrer support",
-            value: "Gentle Care works with support coordinators, hospital discharge planners, GPs, families, and representatives across Sydney.",
-            icon: "credential",
-            references: [{ label: "Gentle Care Nursing Services referrer information", url: `${INTEGRATIONS.siteUrl}/referrers` }],
-          },
-        ]}
-      />
-
-      </div>
-
-      {/* Main Content Area */}
-      <Section className="locality-overview bg-muted/30 border-y border-border/40">
-        <Container>
-          <div className="locality-overview-grid grid lg:grid-cols-12 gap-16 items-start">
-            <div className="locality-overview-main lg:col-span-7 space-y-12">
-              <Reveal>
-                <div className="space-y-6">
-                  <Heading level="h2" className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-serif)] text-foreground">
-                    Clinical Care Delivered Your Way
-                  </Heading>
-                  <p className="text-xl leading-relaxed text-muted-foreground font-medium">
-                    {area.body}
-                  </p>
-                </div>
-              </Reveal>
-
-              {area.examples && area.examples.length > 0 && (
-                <Reveal delay={0.1}>
-                  <div className="locality-examples rounded-[2.5rem] border border-border/60 bg-white p-10 sm:p-12 shadow-sm transition-all duration-500 hover:shadow-xl">
-                    <Heading level="h3" className="text-2xl font-bold mb-8 font-[family-name:var(--font-serif)]">
-                      How we help families in {area.region}
-                    </Heading>
-                    <div className="grid gap-6">
-                      {area.examples.map((example, i) => (
-                        <div key={i} className="flex gap-4 group">
-                          <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                            <CheckCircle2 className="h-4 w-4" />
-                          </div>
-                          <p className="text-lg leading-relaxed text-muted-foreground font-medium">{example}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </Reveal>
-              )}
-            </div>
-
-            <aside className="locality-suburbs lg:col-span-5 lg:sticky lg:top-32">
-              <Reveal delay={0.2}>
-                <div className="locality-suburb-card rounded-[2.5rem] border border-border bg-white p-10 shadow-sm overflow-hidden relative">
-                  <div className="absolute top-0 right-0 p-8 text-primary/5 pointer-events-none">
-                    <MapPin className="h-32 w-32" strokeWidth={1} />
-                  </div>
-                  
-                  <Heading level="h3" className="text-2xl font-bold mb-8 font-[family-name:var(--font-serif)] relative z-10">
-                    Communities We Serve in {area.region}
-                  </Heading>
-                  
-                  <ul className="flex flex-wrap gap-2.5 relative z-10">
-                    {area.suburbs.map((suburb) => (
-                      <li key={suburb}>
-                        <span className="inline-block rounded-full bg-primary/[0.03] px-5 py-2 text-[13px] font-bold text-primary/80 ring-1 ring-primary/10 transition-all hover:bg-primary hover:text-white hover:ring-primary">
-                          {suburb}
-                        </span>
-                      </li>
-                    ))}
-                    <InnerWestSuburbPageLinks regionSlug={area.slug} />
-                  </ul>
-
-                  <div className="mt-10 pt-8 border-t border-border/60 relative z-10">
-                    <p className="text-base text-muted-foreground leading-relaxed mb-8">
-                      We work with support coordinators, discharge planners, and families across Sydney. Submit an enquiry to discuss your care needs.
-                    </p>
-                    <FormModalTrigger formType="contact" className="w-full h-14 rounded-2xl gap-2 font-bold shadow-lg shadow-primary/10">
-                      Start Care Journey
-                      <ArrowRight className="h-4 w-4" />
-                    </FormModalTrigger>
-                  </div>
-                </div>
-              </Reveal>
-            </aside>
-          </div>
-        </Container>
-      </Section>
-
-      <Section className="locality-guides border-y border-border/40 bg-muted/20">
-        <Container size="lg">
-          <Heading level="h2" className="text-2xl font-bold sm:text-3xl">
-            Service guides for {area.region}
-          </Heading>
-          <nav aria-label={`Service guides for ${area.region}`} className="mt-6">
-            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {SERVICE_REGION_PAGES.filter((page) => page.regionSlug === area.slug).map((page) => (
-                <li key={page.path}>
-                  <Link href={page.path} className="block rounded-xl border border-border bg-white p-4 font-semibold text-primary underline underline-offset-4 hover:bg-muted/40">
-                    {page.service.shortTitle}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </Container>
-      </Section>
-
-      {/* Trust Quote Section */}
-      <Section className="locality-cta bg-white">
-        <Container size="sm">
-          <Reveal>
-            <div className="locality-title text-center">
-              <div className="mb-10 inline-flex h-16 w-16 items-center justify-center rounded-[1.5rem] bg-accent/5 text-accent">
-                <PhoneCall className="h-8 w-8" />
-              </div>
-              <Heading level="h2" className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-serif)] mb-8 leading-tight">
-                Ready to discuss care in {area.region}?
-              </Heading>
-              <p className="text-xl text-muted-foreground font-medium mb-12">
-                Our clinical lead, Gemma, is available to discuss your specific requirements and ensure a seamless start to personalised support.
-              </p>
-              <div className="locality-actions flex flex-col sm:flex-row justify-center gap-6">
-                <Magnetic>
-                  <Link
-                    href={CTA_LINKS.contact.href}
-                    className="inline-flex h-16 items-center justify-center rounded-2xl bg-primary px-10 text-lg font-bold text-white shadow-xl shadow-primary/20 transition-all hover:-translate-y-1"
-                  >
-                    Contact Clinical Lead
-                  </Link>
-                </Magnetic>
-              </div>
-            </div>
-          </Reveal>
-        </Container>
-      </Section>
-      </div>
+      <SuburbLandingPage page={areaToLanding(area)} documentSchemas={null} />
     </>
   );
 }
 
-// Only the explicitly generated content URLs are valid in this route family.
 export const dynamicParams = false;
