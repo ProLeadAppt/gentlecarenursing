@@ -155,6 +155,8 @@ export interface SuburbLandingPageData {
   /** Longer hero copy, collapsed. The full approved paragraph stays in the DOM. */
   introDetail?: LandingDisclosure;
   heroActions: readonly LandingAction[];
+  /** Visual breadcrumbs. Defaults to Home / Suburbs / region / name. */
+  breadcrumbs?: readonly { label: string; href?: string }[];
   /** Scannable recognition strip. Wording is already in the page copy. */
   trust: readonly LandingTrust[];
   /** Existing site photograph. No new or stock imagery. */

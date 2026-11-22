@@ -113,7 +113,7 @@ export function SuburbLandingPage({
         <div className="suburb-wrap">
           <Breadcrumbs
             includeSchema={false}
-            items={[
+            items={page.breadcrumbs ? [...page.breadcrumbs] : [
               { label: "Home", href: "/" },
               { label: "Suburbs", href: "/suburbs" },
               { label: page.region, href: page.regionHref },

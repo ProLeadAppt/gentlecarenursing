@@ -5,7 +5,7 @@ import { readFileSync } from "node:fs";
 test("region layouts and area/suburb hubs suppress duplicate component graphs", () => {
   const landing = readFileSync("src/components/sections/SuburbLandingPage.tsx", "utf8");
   assert.match(landing, /<Breadcrumbs\s+includeSchema=\{false\}/);
-  for (const path of ["src/app/areas/page.tsx", "src/app/suburbs/page.tsx", "src/components/sections/ServiceRegionPageLayout.tsx"]) {
+  for (const path of ["src/app/areas/page.tsx", "src/app/suburbs/page.tsx"]) {
     const source = readFileSync(path, "utf8");
     assert.match(source, /<Breadcrumbs\s+includeSchema=\{false\}/);
   }

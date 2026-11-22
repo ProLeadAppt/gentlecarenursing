@@ -14,6 +14,7 @@ export const SUBURB_LANDING_TOUCHED_FILES = [
   "src/app/sitemap.ts",
   "src/app/suburbs/[suburb]/page.tsx",
   "src/app/suburbs/page.tsx",
+  "src/components/sections/ServiceRegionPageLayout.tsx",
 ] as const;
 
 export function isSuburbLandingTouched(path: string): boolean {

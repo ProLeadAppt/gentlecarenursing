@@ -5,7 +5,7 @@
 import { INTEGRATIONS } from "@/config/integrations";
 import { CTA_LINKS, SITE } from "@/lib/constants";
 import type { AreaContent } from "@/content/areas-content";
-import { SERVICE_REGION_PAGES } from "@/content/service-regions";
+import { SERVICES, SERVICE_REGION_PAGES, type ServiceRegionPageData, type ServiceSlug } from "@/content/service-regions";
 import { SUBURB_LANDING_PAGES, type LandingIcon, type LandingTile, type SuburbLandingPageData } from "@/content/suburb-landing-pages";
 import { SUBURBS, type SuburbEntry } from "@/content/suburbs";
 
@@ -280,6 +280,163 @@ export function areaToLanding(area: AreaContent): SuburbLandingPageData {
       { href: CTA_LINKS.requestCare.href, label: CTA_LINKS.requestCare.label },
       { href: SITE.phoneHref, label: `Call ${SITE.phone}` },
       { href: CTA_LINKS.contact.href, label: "Contact Clinical Lead" },
+    ],
+  };
+}
+
+const REGISTRATION: Record<ServiceSlug, string> = {
+  "ndis-services": "Registered NDIS provider, compliant with the NDIS Quality and Safeguards Commission.",
+  "dva-community-nursing": "DVA Contracted Community Nursing Provider, delivering services under the DVA Community Nursing programme.",
+  "in-home-nursing-care": "Clinical care delivered or supervised by AHPRA-registered nurses; registered NDIS provider and DVA Contracted Community Nursing Provider.",
+  "personal-care-daily-living": "Registered NDIS provider; personal care delivered by experienced support workers.",
+  "complex-care-support": "Complex care delivered or supervised by AHPRA-registered nurses; registered NDIS provider.",
+};
+
+const FUNDING: Record<ServiceSlug, string> = {
+  "ndis-services": "Self-Managed, Plan-Managed and NDIA-Managed NDIS participants. Core Supports and Capacity Building line items where applicable.",
+  "dva-community-nursing": "DVA Community Nursing programme — claims submitted directly to the Department of Veterans' Affairs; no out-of-pocket cost for clinically required, approved care.",
+  "in-home-nursing-care": "NDIS, DVA Community Nursing, aged care (Support at Home, CHSP), and private fee-for-service.",
+  "personal-care-daily-living": "NDIS Core Supports (Assistance with Daily Life), aged care packages, DVA where part of approved care, and private fee-for-service.",
+  "complex-care-support": "NDIS (including high-intensity supports where applicable), DVA Community Nursing, aged care packages, and private fee-for-service.",
+};
+
+const SCOPE: Record<ServiceSlug, string> = {
+  "ndis-services": "In-home nursing, personal care, complex care (PEG, tracheostomy, catheter), and community participation tailored to NDIS goals.",
+  "dva-community-nursing": "Wound care, medication management, continence and catheter care, chronic disease monitoring, and personal care where part of approved care.",
+  "in-home-nursing-care": "Wound care, medication management, chronic disease monitoring, complex care (PEG, tracheostomy, catheter), post-surgical and palliative support.",
+  "personal-care-daily-living": "Showering, dressing, grooming, mobility support, meal preparation, and assistance with everyday routines.",
+  "complex-care-support": "PEG feeding, tracheostomy care, catheter management, complex wound care, and high-intensity nursing supports at home.",
+};
+
+export function serviceRegionToLanding(data: ServiceRegionPageData): SuburbLandingPageData {
+  const { service, region } = data;
+  const related = service.related
+    .map((slug) => SERVICES.find((item) => item.slug === slug))
+    .filter((item): item is (typeof SERVICES)[number] => item != null);
+  return {
+    slug: `${data.serviceSlug}-${data.regionSlug}`,
+    name: region.region,
+    postcode: "",
+    lga: region.region,
+    region: `${region.region} · Sydney`,
+    regionHref: service.parentHref,
+    seoTitle: data.metaTitle,
+    metaDescription: data.metaDescription,
+    h1: data.h1,
+    serviceName: service.title,
+    serviceType: service.title,
+    serviceDescription: data.metaDescription,
+    breadcrumbs: [
+      { label: "Home", href: "/" },
+      { label: "Services", href: "/services" },
+      { label: service.title, href: service.parentHref },
+      { label: region.region },
+    ],
+    intro: [`“${service.snippetAnswer}”`, data.hero],
+    heroActions: [
+      { href: CTA_LINKS.requestCare.href, label: `Request Care in ${region.region}` },
+      { href: SITE.phoneHref, label: `Call ${SITE.phone}` },
+    ],
+    trust: [
+      { title: "Registration", text: REGISTRATION[service.slug] },
+      { title: "Service area", text: `${region.region}, Sydney — including ${region.suburbs.join(", ")}.` },
+      { title: "Enquiries", text: "Our team reviews enquiries during business hours, with urgent referrals prioritised." },
+    ],
+    image: HANDS,
+    imageBand: { after: "What's included", ...BAND },
+    sections: [
+      {
+        heading: `Quick facts: ${service.title} in ${region.region}`,
+        lead: `Citable facts for families, ${service.slug === "ndis-services" ? "support coordinators, plan managers" : service.slug === "dva-community-nursing" ? "GPs and DVA contacts" : "GPs and discharge planners"} considering ${service.title.toLowerCase()} across ${region.region}.`,
+        blocks: [{ type: "p", text: `What ${service.title} Looks Like in ${region.region}. ${data.serviceOverview}` }],
+        disclosures: [{ summary: "Service overview", text: "Service Overview" }],
+      },
+      {
+        heading: "What's included",
+        tiles: data.included.map((item, index) => ({
+          icon: ICONS[index % ICONS.length],
+          title: item,
+        })),
+      },
+      {
+        heading: `${region.region} Suburbs We Serve`,
+        lead: region.positionLine,
+        blocks: [
+          { type: "p", text: region.suburbs.join(" · ") },
+          { type: "p", text: "Registered NDIS provider and DVA Contracted Community Nursing Provider." },
+          { type: "p", text: "Enquiries reviewed during business hours, with urgent referrals prioritised." },
+        ],
+      },
+      {
+        heading: `Why families and coordinators in ${region.region} choose us`,
+        blocks: [{ type: "p", text: data.regionalContext }],
+        disclosures: [{ summary: "Local context", text: "Local Context" }],
+      },
+      {
+        heading: `How to access ${service.title.toLowerCase()} in ${region.region}`,
+        lead: "Funding & Access",
+        blocks: [{ type: "p", text: data.fundingAndAccess }],
+        points: [
+          { title: "Funding accepted", line: FUNDING[service.slug] },
+          { title: "Scope of care", line: SCOPE[service.slug] },
+          { title: "Office", line: "Based in North Strathfield — visit-routing planned around real travel distances and household preferences." },
+        ],
+      },
+      {
+        heading: "How to get started",
+        lead: "The first conversation is free.",
+        process: {
+          steps: [
+            { title: "Make contact", text: `Request care in ${region.region}, or call ${SITE.phone}.` },
+            { title: "Tell us the situation", text: data.ctaDescription },
+            { title: "We review the enquiry", text: "Our team reviews enquiries during business hours, with urgent referrals prioritised." },
+          ],
+          checklist: {
+            title: "Helpful to have ready",
+            items: [
+              `The suburb in ${region.region}`,
+              "What support is needed",
+              "Who is already involved, if anyone",
+              "Any referral or funding information you already have",
+            ],
+          },
+          primary: { href: "/referral", label: "Free Initial Consultation" },
+          secondary: { href: SITE.phoneHref, label: SITE.phone },
+        },
+      },
+      {
+        heading: `Common questions about ${service.title.toLowerCase()} in ${region.region}`,
+        faqs: data.faqs.map((faq) => ({ question: faq.question, answer: faq.answer })),
+      },
+      {
+        heading: "Related services and pages",
+        lead: `Explore the rest of our care across ${region.region} and Sydney.`,
+        blocks: [
+          {
+            type: "p",
+            text: [
+              `[${service.title} (overview)](${service.parentHref})`,
+              `[In-home nursing in ${region.region}](/areas/${region.slug})`,
+              ...related.map((item) => `[${item.shortTitle} in ${region.region}](/services/${item.slug}/${region.slug})`),
+              "[About Gentle Care Nursing](/about)",
+              "[Contact us](/contact)",
+              "[View all FAQs](/faq)",
+            ].join(" · "),
+          },
+        ],
+      },
+      {
+        heading: data.ctaTitle,
+        blocks: [
+          { type: "p", text: data.ctaDescription },
+          { type: "p", text: "No obligation. We'll review your message and get back to you. We're here to listen and help." },
+        ],
+      },
+    ],
+    closingActions: [
+      { href: CTA_LINKS.requestCare.href, label: CTA_LINKS.requestCare.label },
+      { href: SITE.phoneHref, label: `Call ${SITE.phone}` },
+      { href: CTA_LINKS.contact.href, label: CTA_LINKS.contact.label },
     ],
   };
 }
