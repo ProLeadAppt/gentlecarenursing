@@ -14,9 +14,9 @@ import { ArrowRight, MapPin } from "lucide-react";
 const canonical = `${INTEGRATIONS.siteUrl}/suburbs`;
 
 export const metadata = createMetadata({
-  title: "Sydney Suburbs We Serve | In-Home Nursing Near You",
+  title: { absolute: "Sydney Suburbs We Serve | Gentle Care" },
   description:
-    "Suburb-by-suburb in-home nursing across Sydney — local LGA, nearest hospitals, and the wider region for every suburb we serve. NDIS, DVA, aged care, and private nursing.",
+    "Find in-home nursing by Sydney suburb, with the local council area and nearby hospitals. Call 1300 004 267 to discuss care.",
   canonical,
 });
 
@@ -27,7 +27,7 @@ export const metadata = createMetadata({
  * hospitals, neighbouring suburbs, distinctive local context). This index
  * resolves their breadcrumb parent and gives humans a clean way to find
  * the right suburb page. Suburbs are grouped by region — the same six
- * regions used in /areas — so the index doubles as a Sydney map of where
+ * regions used in /areas, so the index doubles as a Sydney map of where
  * we deliver care.
  */
 

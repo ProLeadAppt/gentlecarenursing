@@ -4,7 +4,7 @@ export const localContextChanges = [
   {
     "slug": "strathfield",
     "before": "Strathfield is the suburb our office sits in (Level 1/5 George Street, North Strathfield). The area has a strong multicultural community \u2014 particularly Korean, Chinese, and Indian \u2014 and a mix of established residential, units, and family homes around the Strathfield Council LGA.",
-    "after": "Gentle Care Nursing Services' office is at Level 1/5 George Street in North Strathfield, not in Strathfield. If you are arranging care in Strathfield, share the suburb where care is needed, the type of support requested and your preferred timing so the team can discuss whether it can assist."
+    "after": "Gentle Care Nursing Services' office is at Level 1/5 George St, North Strathfield NSW 2137, not in Strathfield. If you are arranging care in Strathfield, share the suburb where care is needed, the type of support requested and your preferred timing so the team can discuss whether it can assist."
   },
   {
     "slug": "concord",

@@ -12,9 +12,9 @@ import { FAQ_CATEGORIES, ALL_FAQ_ITEMS } from "@/content/faq";
 import { getFaqSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
-  title: "FAQs | NDIS, DVA & Home Care Questions",
+  title: { absolute: "Home Care FAQs Sydney | Gentle Care" },
   description:
-    "Common questions about Gentle Care Nursing Services services, referrals, funding, and how to get started.",
+    "Answers on NDIS, DVA, aged care, the North Strathfield office, and calling 1300 004 267. Office open Mon to Fri 8am to 5pm.",
   canonical: `${INTEGRATIONS.siteUrl}/faq`,
 });
 

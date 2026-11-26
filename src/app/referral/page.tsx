@@ -14,7 +14,7 @@ import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
 
 export const metadata = createMetadata({
-  title: "Request Care | Start an NDIS, DVA or Private Referral",
+  title: { absolute: "Request Care or a Referral | Gentle Care" },
   description:
     "Request care or make a referral. Share your details and care needs with Gentle Care Nursing Services.",
   canonical: `${INTEGRATIONS.siteUrl}/referral`,

@@ -20,9 +20,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const entry = getConditionBySlug(condition);
   if (!entry) return {};
 
+  const titles: Record<string, string> = {
+    "multiple-sclerosis": "MS Nursing Care at Home Sydney | Gentle Care",
+    "motor-neurone-disease": "MND Nursing Care at Home Sydney | Gentle Care",
+    "parkinsons-disease": "Parkinson's Care at Home Sydney | Gentle Care",
+    "spinal-cord-injury": "Spinal Cord Injury Care Sydney | Gentle Care",
+    "acquired-brain-injury": "Acquired Brain Injury Care Sydney | Gentle Care",
+    "cerebral-palsy": "Cerebral Palsy Care at Home Sydney | Gentle Care",
+  };
+  const descriptions: Record<string, string> = {
+    "multiple-sclerosis":
+      "In-home nursing for multiple sclerosis across Sydney, including medication support, mobility, continence care, and relapse support.",
+    "motor-neurone-disease":
+      "In-home nursing for motor neurone disease across Sydney, including PEG feeding, tracheostomy support, ventilation help, and symptom relief.",
+    "parkinsons-disease":
+      "In-home nursing for Parkinson's across Sydney, including medication timing, falls prevention, and swallowing safety.",
+    "spinal-cord-injury":
+      "In-home nursing for spinal cord injury across Sydney, including bowel and bladder care, pressure care, and respiratory support.",
+    "acquired-brain-injury":
+      "In-home nursing for acquired brain injury across Sydney, including medication support, falls prevention, and swallowing safety.",
+    "cerebral-palsy":
+      "In-home nursing for cerebral palsy across Sydney, including NDIS-funded routines, PEG feeding, catheter care, and pressure care.",
+  };
+
   return createMetadata({
-    title: entry.data.title,
-    description: entry.data.snippetAnswer,
+    title: { absolute: titles[entry.slug] ?? entry.data.title },
+    description: descriptions[entry.slug] ?? entry.data.snippetAnswer,
     canonical: `${INTEGRATIONS.siteUrl}/conditions/${entry.slug}`,
   });
 }

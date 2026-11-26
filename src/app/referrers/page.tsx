@@ -7,12 +7,12 @@ import "./premium-referrers.css";
 const canonical = `${INTEGRATIONS.siteUrl}/referrers`;
 
 export const metadata = createMetadata({
-  title: "Referrers | Coordinators & Discharge Teams",
+  title: { absolute: "Refer a Client in Sydney | Gentle Care" },
   description:
-    "Information for NDIS support coordinators, plan managers, hospital discharge planners, and healthcare professionals who want to refer to Gentle Care Nursing Services.",
+    "For NDIS support coordinators, plan managers, hospital discharge planners, and other professionals referring to Gentle Care Nursing Services.",
   canonical,
   openGraph: {
-    images: [{ url: "/images/og/referrers.png", width: 1200, height: 630, alt: "For Referrers — Gentle Care Nursing Services" }],
+    images: [{ url: "/images/og/referrers.png", width: 1200, height: 630, alt: "For Referrers. Gentle Care Nursing Services" }],
   },
 });
 

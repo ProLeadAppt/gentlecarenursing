@@ -10,12 +10,44 @@
  * wording without response-time promises.
  */
 
-export interface FaqCategory {
-  title: string;
-  items: { id: string; question: string; answer: string }[];
+export interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
 }
 
+export interface FaqCategory {
+  title: string;
+  items: FaqItem[];
+}
+
+/** Facts already published, plus the approved office hours and phone line. */
+export const LOCATION_FAQS: FaqItem[] = [
+  {
+    id: "office-address",
+    question: "Where is the Gentle Care Nursing Services office?",
+    answer:
+      "The Gentle Care Nursing Services office is at Level 1/5 George St, North Strathfield NSW 2137. The office is open Monday to Friday, 8am to 5pm. Nursing and personal care are delivered in the home across Sydney, not at the office.",
+  },
+  {
+    id: "office-hours",
+    question: "What are the North Strathfield office hours?",
+    answer:
+      "The Gentle Care Nursing Services office in North Strathfield is open Monday to Friday, 8am to 5pm. The phone line on 1300 004 267 is answered 24/7. For a medical emergency, call 000.",
+  },
+  {
+    id: "phone-after-hours",
+    question: "Can I call Gentle Care Nursing Services outside office hours?",
+    answer:
+      "Yes. Call Gentle Care Nursing Services on 1300 004 267. The phone line is answered 24/7. The North Strathfield office is open Monday to Friday, 8am to 5pm. This phone line is for care enquiries, not medical emergencies. For a medical emergency, call 000.",
+  },
+];
+
 export const FAQ_CATEGORIES: FaqCategory[] = [
+  {
+    title: "Location and hours",
+    items: LOCATION_FAQS,
+  },
   {
     title: "General",
     items: [
@@ -70,7 +102,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         id: "immediate-help",
         question: "Can I get help right away?",
         answer:
-          "If you need help quickly, call Gentle Care Nursing Services during business hours and our team can talk through urgent options. For non-urgent enquiries, you can use the Request Care form to tell us about your care needs. Urgent post-hospital and community nursing referrals are prioritised, with start dates depending on care needs and staff availability.",
+          "If you need help quickly, call Gentle Care Nursing Services on 1300 004 267. The phone line is answered 24/7, and the North Strathfield office is open Monday to Friday, 8am to 5pm. For non-urgent enquiries, use the Request Care form. Urgent post-hospital and community nursing referrals are prioritised, with start dates depending on care needs and staff availability. For a medical emergency, call 000.",
       },
     ],
   },

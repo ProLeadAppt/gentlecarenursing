@@ -107,7 +107,7 @@ function buildRegionEvidence(data: ServiceRegionPageData): readonly EvidenceItem
     {
       label: "Office",
       value:
-        "Based in North Strathfield — visit-routing planned around real travel distances and household preferences.",
+        "Based in North Strathfield, visit-routing planned around real travel distances and household preferences.",
       icon: "credential",
     },
   ];

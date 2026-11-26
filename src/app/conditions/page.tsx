@@ -14,9 +14,9 @@ import { ArrowRight, HeartPulse } from "lucide-react";
 const canonical = `${INTEGRATIONS.siteUrl}/conditions`;
 
 export const metadata = createMetadata({
-  title: "In-Home Nursing by Condition | Sydney",
+  title: { absolute: "Nursing by Condition Sydney | Gentle Care" },
   description:
-    "Condition-specific in-home nursing and care across Sydney — MS, MND, Parkinson's, spinal cord injury, ABI, and cerebral palsy. Each page covers Sydney specialist coordination, funding, and what we deliver.",
+    "Condition-specific in-home nursing across Sydney for MS, MND, Parkinson's, spinal cord injury, ABI, and cerebral palsy.",
   canonical,
 });
 

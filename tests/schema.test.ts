@@ -10,7 +10,29 @@ const canonicalEntityId = "https://gentlecarenursing.com.au/#organization";
 test("local business schema is the single canonical organization entity", () => {
   const schema = getLocalBusinessSchema();
 
-  assert.deepEqual(schema["@type"], ["Organization", "MedicalBusiness"]);
+  assert.deepEqual(schema["@type"], ["Organization", "MedicalBusiness", "HomeHealthCare"]);
+  assert.equal(schema.telephone, "1300 004 267");
+  assert.equal(schema.address.streetAddress, "Level 1/5 George St");
+  assert.equal(schema.address.addressLocality, "North Strathfield");
+  assert.equal(schema.address.postalCode, "2137");
+  assert.deepEqual(schema.openingHoursSpecification, {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "08:00",
+    closes: "17:00",
+  });
+  assert.equal(schema.contactPoint[0].telephone, "1300 004 267");
+  assert.deepEqual(schema.contactPoint[0].hoursAvailable.dayOfWeek, [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ]);
+  assert.ok(schema.sameAs.includes("https://www.facebook.com/profile.php?id=61571940991169"));
+  assert.ok(schema.sameAs.includes("https://www.instagram.com/gentle_care"));
   assert.equal(schema["@id"], canonicalEntityId);
   assert.equal(schema.logo, "https://gentlecarenursing.com.au/images/logo.png");
 });

@@ -24,7 +24,7 @@ export function getLocalBusinessSchema() {
 
   return {
     "@context": "https://schema.org",
-    "@type": ["Organization", "MedicalBusiness"],
+    "@type": ["Organization", "MedicalBusiness", "HomeHealthCare"],
     "@id": `${INTEGRATIONS.siteUrl}/#organization`,
     name: SITE.name,
     legalName: SITE.name,
@@ -33,20 +33,14 @@ export function getLocalBusinessSchema() {
     logo: `${INTEGRATIONS.siteUrl}/images/logo.png`,
     telephone: SITE.phone || undefined,
     email: SITE.email || undefined,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Level 1/5 George St",
-      addressLocality: "North Strathfield",
-      addressRegion: "NSW",
-      postalCode: "2137",
-      addressCountry: "AU",
-    },
+    address: postalAddress(),
+    contactPoint: contactPoints(),
     geo: {
       "@type": "GeoCoordinates",
       latitude: -33.864,
       longitude: 151.093,
-      addressLocality: "North Strathfield",
-      addressRegion: "NSW",
+      addressLocality: SITE.addressLocality,
+      addressRegion: SITE.addressRegion,
     },
     areaServed,
     hasOfferCatalog: {
@@ -64,13 +58,61 @@ export function getLocalBusinessSchema() {
     },
     ...(sameAs.length > 0 ? { sameAs } : {}),
     priceRange: "$$",
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "08:00",
-      closes: "17:00",
-    },
+    openingHoursSpecification: officeHoursSpecification(),
   };
+}
+
+const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] as const;
+const ALL_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] as const;
+
+function postalAddress() {
+  return {
+    "@type": "PostalAddress" as const,
+    streetAddress: SITE.streetAddress,
+    addressLocality: SITE.addressLocality,
+    addressRegion: SITE.addressRegion,
+    postalCode: SITE.postalCode,
+    addressCountry: SITE.addressCountry,
+  };
+}
+
+/** Office opening hours. 08:00 to 17:00 is Mon to Fri 8am to 5pm. */
+function officeHoursSpecification() {
+  return {
+    "@type": "OpeningHoursSpecification" as const,
+    dayOfWeek: [...WEEKDAYS],
+    opens: "08:00",
+    closes: "17:00",
+  };
+}
+
+/**
+ * Phone-line hours only. 00:00 to 23:59 across all seven days is the
+ * schema.org way to say the phone line is answered 24/7. It does not mean
+ * the North Strathfield office is open overnight, and it is not a promise
+ * of 24/7 care visits.
+ */
+function phoneHoursSpecification() {
+  return {
+    "@type": "OpeningHoursSpecification" as const,
+    dayOfWeek: [...ALL_DAYS],
+    opens: "00:00",
+    closes: "23:59",
+  };
+}
+
+function contactPoints() {
+  return [
+    {
+      "@type": "ContactPoint" as const,
+      telephone: SITE.phone,
+      email: SITE.email,
+      contactType: "customer service",
+      areaServed: "AU",
+      availableLanguage: ["English"],
+      hoursAvailable: phoneHoursSpecification(),
+    },
+  ];
 }
 
 export function getServiceSchema(service: {
@@ -209,14 +251,7 @@ export function getOrganizationSchema() {
     slogan: "Personalised, clinician-led in-home nursing and care",
     telephone: SITE.phone,
     email: SITE.email,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Level 1/5 George St",
-      addressLocality: "North Strathfield",
-      addressRegion: "NSW",
-      postalCode: "2137",
-      addressCountry: "AU",
-    },
+    address: postalAddress(),
     areaServed: [
       { "@type": "City", name: "Sydney", containedInPlace: { "@type": "State", name: "New South Wales" } },
       { "@type": "State", name: "New South Wales" },
@@ -230,12 +265,7 @@ export function getOrganizationSchema() {
         contactType: "customer service",
         areaServed: "AU",
         availableLanguage: ["English"],
-        hoursAvailable: {
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          opens: "08:00",
-          closes: "17:00",
-        },
+        hoursAvailable: phoneHoursSpecification(),
       },
     ],
     knowsAbout,

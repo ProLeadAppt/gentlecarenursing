@@ -18,7 +18,7 @@ test("only the four reviewed paragraphs change in suburb data", () => {
 });
 test("local context avoids provider partnerships and guaranteed access", () => {
   for (const {after} of changes) assert.doesNotMatch(after, /we partner|priority referral service|guaranteed|within 24 hours|no waitlist/i);
-  assert.match(getSuburbBySlug("strathfield")!.localContext, /in North Strathfield, not in Strathfield/);
+  assert.match(getSuburbBySlug("strathfield")!.localContext, /Level 1\/5 George St, North Strathfield NSW 2137, not in Strathfield/);
   assert.match(getSuburbBySlug("concord")!.localContext, /does not imply a partnership/);
   assert.match(getSuburbBySlug("parramatta")!.localContext, /does not imply a partnership/);
 });

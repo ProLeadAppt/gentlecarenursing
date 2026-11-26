@@ -157,6 +157,7 @@ export function Footer({
                   <p className="text-sm font-bold text-white group-hover:text-accent transition-colors">
                     {SITE.phone}
                   </p>
+                  <p className="text-sm text-white/80">{SITE.phoneLine}</p>
                 </div>
               </a>
 
@@ -176,9 +177,10 @@ export function Footer({
                 <MapPin className="h-4 w-4 mt-1 text-accent" />
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-white/60">
-                    Sydney Regional HQ
+                    North Strathfield office
                   </p>
                   <p className="text-sm font-bold text-white">{SITE.address}</p>
+                  <p className="mt-1 text-sm text-white/80">Office open {SITE.officeHours}</p>
                 </div>
               </div>
             </div>

@@ -7,8 +7,11 @@ const nativeRequire = createRequire(import.meta.url);
 nativeRequire.extensions[".css"] = () => undefined;
 const { metadata } = nativeRequire("../src/app/about/page.tsx") as typeof import("../src/app/about/page");
 
-test("About metadata leaves the business-name suffix to the root layout", () => {
-  assert.equal(metadata.title, "About Us | Sydney In-Home Care");
-  assert.equal(metadata.openGraph?.title, "About Us | Sydney In-Home Care");
-  assert.equal(metadata.twitter?.title, "About Us | Sydney In-Home Care");
+test("About metadata uses one absolute title under 60 characters", () => {
+  assert.deepEqual(metadata.title, { absolute: "About Gentle Care Nursing | Sydney" });
+  assert.equal(metadata.openGraph?.title, "About Gentle Care Nursing | Sydney");
+  assert.equal(metadata.twitter?.title, "About Gentle Care Nursing | Sydney");
+  const title = "About Gentle Care Nursing | Sydney";
+  assert.ok(title.length <= 60);
+  assert.ok((metadata.description ?? "").length <= 155);
 });

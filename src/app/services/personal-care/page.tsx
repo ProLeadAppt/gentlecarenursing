@@ -6,9 +6,9 @@ import { createMetadata } from "@/lib/metadata";
 const canonical = `${INTEGRATIONS.siteUrl}/services/personal-care`;
 
 export const metadata = createMetadata({
-  title: "Personal Care & Daily Support in Sydney",
+  title: { absolute: "Personal Care at Home Sydney | Gentle Care" },
   description:
-    "Gentle and respectful assistance with daily living, including bathing, dressing, and grooming. Professional personal care that prioritises your dignity and independence.",
+    "Help with bathing, dressing, and grooming at home across Sydney. Personal care that prioritises dignity and independence.",
   canonical,
 });
 

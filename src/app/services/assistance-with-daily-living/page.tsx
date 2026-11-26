@@ -6,7 +6,7 @@ import { createMetadata } from "@/lib/metadata";
 const canonical = `${INTEGRATIONS.siteUrl}/services/assistance-with-daily-living`;
 
 export const metadata = createMetadata({
-  title: "Assistance with Daily Living | In-Home Support Sydney",
+  title: { absolute: "Daily Living Support Sydney | Gentle Care" },
   description:
     "Practical help with household tasks, meal preparation, and daily routines. Support for NDIS and aged care participants to live more independently at home.",
   canonical,

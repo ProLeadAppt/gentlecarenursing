@@ -6,9 +6,9 @@ import { createMetadata } from "@/lib/metadata";
 const canonical = `${INTEGRATIONS.siteUrl}/services/complex-care`;
 
 export const metadata = createMetadata({
-  title: "Complex Clinical Care at Home in Sydney",
+  title: { absolute: "Complex Care at Home Sydney | Gentle Care" },
   description:
-    "Tracheostomy care, PEG feeding, catheter management, and complex wound care delivered in the home across Sydney by experienced nurses, alongside treating hospital teams.",
+    "Tracheostomy care, PEG feeding, catheter care, and complex wound care at home across Sydney, alongside treating hospital teams.",
   canonical,
 });
 

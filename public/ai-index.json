@@ -1,11 +1,14 @@
 {
-  "lastUpdated": "2026-07-07",
+  "lastUpdated": "2026-11-26",
   "canonicalSite": "https://gentlecarenursing.com.au",
   "entity": {
     "name": "Gentle Care Nursing Services",
-    "type": ["Organization", "MedicalBusiness"],
+    "type": ["Organization", "MedicalBusiness", "HomeHealthCare"],
     "description": "Sydney-based registered NDIS provider and DVA Contracted Community Nursing Provider delivering personalised in-home nursing and care.",
-    "phone": "+61 1300 004 267",
+    "phone": "1300 004 267",
+    "officeHours": "Mon to Fri 8am to 5pm",
+    "officeHoursPlace": "North Strathfield office",
+    "phoneLine": "answered 24/7",
     "email": "info@gentlecarenursing.com.au",
     "address": "Level 1/5 George St, North Strathfield NSW 2137, Australia",
     "areaServed": ["Sydney", "Inner West", "Sydney CBD & East", "North Shore", "Western Sydney", "South Sydney", "Northern Beaches", "New South Wales", "Australia"],
