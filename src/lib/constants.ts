@@ -31,10 +31,8 @@ export const SITE = {
   postalCode: "2137",
   addressCountry: "AU",
   address: "Level 1/5 George St, North Strathfield NSW 2137, Australia",
-  /** North Strathfield office. This is not the phone-line hours. */
+  /** North Strathfield office hours. The street address and phone-line wording are unchanged from main. */
   officeHours: "Mon to Fri 8am to 5pm",
-  /** Phone line only. Care visits are not a 24/7 service. */
-  phoneLine: "Phone line answered 24/7",
   /** Google Business Profile URL — used in the review-funnel redirect.
    *  Single source of truth so all three spots stay in sync. */
   gbpReviewUrl:

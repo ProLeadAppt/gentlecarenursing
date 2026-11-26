@@ -37,3 +37,32 @@
   for = "/video/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Send the www host to the apex. Netlify upgrades http to https before
+# these rules run when Force HTTPS is on, so http://www still takes two hops
+# unless the domain settings also set the apex as the primary domain.
+[[redirects]]
+  from = "/*"
+  to = "https://gentlecarenursing.com.au/:splat"
+  status = 301
+  force = true
+  [redirects.conditions]
+    Host = ["www.gentlecarenursing.com.au"]
+
+[[redirects]]
+  from = "http://gentlecarenursing.com.au/*"
+  to = "https://gentlecarenursing.com.au/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.gentlecarenursing.com.au/*"
+  to = "https://gentlecarenursing.com.au/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.gentlecarenursing.com.au/*"
+  to = "https://gentlecarenursing.com.au/:splat"
+  status = 301
+  force = true

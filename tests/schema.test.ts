@@ -21,16 +21,7 @@ test("local business schema is the single canonical organization entity", () => 
     opens: "08:00",
     closes: "17:00",
   });
-  assert.equal(schema.contactPoint[0].telephone, "1300 004 267");
-  assert.deepEqual(schema.contactPoint[0].hoursAvailable.dayOfWeek, [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ]);
+  assert.equal(schema.contactPoint, undefined);
   assert.ok(schema.sameAs.includes("https://www.facebook.com/profile.php?id=61571940991169"));
   assert.ok(schema.sameAs.includes("https://www.instagram.com/gentle_care"));
   assert.equal(schema["@id"], canonicalEntityId);

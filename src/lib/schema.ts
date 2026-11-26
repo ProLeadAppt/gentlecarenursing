@@ -34,7 +34,6 @@ export function getLocalBusinessSchema() {
     telephone: SITE.phone || undefined,
     email: SITE.email || undefined,
     address: postalAddress(),
-    contactPoint: contactPoints(),
     geo: {
       "@type": "GeoCoordinates",
       latitude: -33.864,
@@ -63,7 +62,6 @@ export function getLocalBusinessSchema() {
 }
 
 const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] as const;
-const ALL_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] as const;
 
 function postalAddress() {
   return {
@@ -84,35 +82,6 @@ function officeHoursSpecification() {
     opens: "08:00",
     closes: "17:00",
   };
-}
-
-/**
- * Phone-line hours only. 00:00 to 23:59 across all seven days is the
- * schema.org way to say the phone line is answered 24/7. It does not mean
- * the North Strathfield office is open overnight, and it is not a promise
- * of 24/7 care visits.
- */
-function phoneHoursSpecification() {
-  return {
-    "@type": "OpeningHoursSpecification" as const,
-    dayOfWeek: [...ALL_DAYS],
-    opens: "00:00",
-    closes: "23:59",
-  };
-}
-
-function contactPoints() {
-  return [
-    {
-      "@type": "ContactPoint" as const,
-      telephone: SITE.phone,
-      email: SITE.email,
-      contactType: "customer service",
-      areaServed: "AU",
-      availableLanguage: ["English"],
-      hoursAvailable: phoneHoursSpecification(),
-    },
-  ];
 }
 
 export function getServiceSchema(service: {
@@ -265,7 +234,7 @@ export function getOrganizationSchema() {
         contactType: "customer service",
         areaServed: "AU",
         availableLanguage: ["English"],
-        hoursAvailable: phoneHoursSpecification(),
+        hoursAvailable: officeHoursSpecification(),
       },
     ],
     knowsAbout,

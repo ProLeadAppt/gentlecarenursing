@@ -11,13 +11,11 @@ import Link from "next/link";
 import { CTA_LINKS, SITE } from "@/lib/constants";
 import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
-import { LOCATION_FAQS } from "@/content/faq";
-import { getFaqSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
   title: { absolute: "Contact Gentle Care Nursing Services | Sydney" },
   description:
-    "North Strathfield office open Mon to Fri 8am to 5pm. Phone 1300 004 267 is answered 24/7 for in-home nursing enquiries across Sydney.",
+    "Contact our North Strathfield office Mon to Fri 8am to 5pm, or call 1300 004 267 to enquire about in-home nursing across Sydney.",
   canonical: `${INTEGRATIONS.siteUrl}/contact`,
 });
 
@@ -63,7 +61,6 @@ export default function ContactPage() {
                       </a>
                     ) : "Contact number coming soon"}
                   </p>
-                  <p className="mt-1 text-muted-foreground">{SITE.phoneLine}.</p>
                 </div>
                 <div>
                   <Heading level="h3" as="h3" className="text-base">
@@ -79,9 +76,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <Heading level="h3" as="h3" className="text-base">
-                    Office
+                    Office hours
                   </Heading>
-                  <p className="mt-1 text-muted-foreground">{SITE.address}</p>
                   <p className="mt-1 text-muted-foreground">Open {SITE.officeHours}.</p>
                 </div>
                 <div>
@@ -122,28 +118,6 @@ export default function ContactPage() {
               <ContactForm />
             </Card>
           </Grid>
-        </Container>
-      </Section>
-
-      <Section>
-        <Container size="md">
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(getFaqSchema(LOCATION_FAQS)) }}
-          />
-          <Heading level="h2" as="h2" className="text-2xl">
-            Office questions
-          </Heading>
-          <div className="mt-6 space-y-6">
-            {LOCATION_FAQS.map((item) => (
-              <div key={item.id}>
-                <Heading level="h3" as="h3" className="text-base">
-                  {item.question}
-                </Heading>
-                <p className="mt-1 text-muted-foreground">{item.answer}</p>
-              </div>
-            ))}
-          </div>
         </Container>
       </Section>
 

@@ -61,7 +61,7 @@ export const SUBURBS: readonly SuburbEntry[] = [
     nearestHospitals: ["Concord Hospital", "Royal Prince Alfred Hospital (RPA)", "Sydney Adventist Hospital"],
     neighbouringSuburbs: ["Homebush", "Burwood", "North Strathfield"],
     localContext:
-      "Gentle Care Nursing Services' office is at Level 1/5 George St, North Strathfield NSW 2137, not in Strathfield. If you are arranging care in Strathfield, share the suburb where care is needed, the type of support requested and your preferred timing so the team can discuss whether it can assist.",
+      "Gentle Care Nursing Services' office is at Level 1/5 George Street in North Strathfield, not in Strathfield. If you are arranging care in Strathfield, share the suburb where care is needed, the type of support requested and your preferred timing so the team can discuss whether it can assist.",
   },
   {
     slug: "concord",

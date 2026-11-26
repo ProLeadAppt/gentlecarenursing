@@ -157,7 +157,6 @@ export function Footer({
                   <p className="text-sm font-bold text-white group-hover:text-accent transition-colors">
                     {SITE.phone}
                   </p>
-                  <p className="text-sm text-white/80">{SITE.phoneLine}</p>
                 </div>
               </a>
 

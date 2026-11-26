@@ -123,7 +123,7 @@ const CORE: Record<string, { title: string; description: string; loader: () => M
   },
   "/contact": {
     title: "Contact Gentle Care Nursing Services | Sydney",
-    description: "North Strathfield office open Mon to Fri 8am to 5pm. Phone 1300 004 267 is answered 24/7 for in-home nursing enquiries across Sydney.",
+    description: "Contact our North Strathfield office Mon to Fri 8am to 5pm, or call 1300 004 267 to enquire about in-home nursing across Sydney.",
     loader: () => nativeRequire("../src/app/contact/page.tsx").metadata,
   },
 };
