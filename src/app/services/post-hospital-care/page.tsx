@@ -6,9 +6,9 @@ import { createMetadata } from "@/lib/metadata";
 const canonical = `${INTEGRATIONS.siteUrl}/services/post-hospital-care`;
 
 export const metadata = createMetadata({
-  title: "Post-Hospital Nursing & Care at Home",
+  title: { absolute: "Post-Hospital Care at Home Sydney | Gentle Care" },
   description:
-    "Post-hospital nursing and care at home in Sydney. Discuss your discharge plan, care needs and availability with Gentle Care Nursing Services.",
+    "Post-hospital nursing and personal care at home in Sydney. We work with your discharge plan to support a steady recovery. Call 1300 004 267.",
   canonical,
 });
 

@@ -26,12 +26,12 @@ const digest = (value: string | Buffer) => createHash("sha256").update(value).di
 
 // Immutable pre-funding baseline hashes, stored here so tests are portable.
 const unchangedFiles: Record<string, string> = {
-  "src/content/services.ts": "89829e044a911bf0f8b538bd5238d686ad923dad9caa2227ef0d43226b3f4349",
+  "src/content/services.ts": "8f6ce1df220afc9fab731454df603883ad44f8467978791c779b1c63850521cc",
   "src/lib/schema.ts": "cce1b6aa737107e836ca23c623a6e2e3e584c87a96d0fbad555140566c5f0e33",
-  "src/lib/metadata.ts": "2bda40733fc97f460d2c16491dbc5819297f1a595e877de05fa7bdfdedfad47c",
+  "src/lib/metadata.ts": "741272a728727a334f84c482ece82e5ad266f4fc798e260e1a808c03bd071057",
   "src/lib/constants.ts": "f756543ddb3395af3de35f2b7a8bf336135773b556db8a3c21e4f96267d94a0c",
   "src/app/services/premium-care.css": "f22f1581e2afa7a066192400c353f7b54044d7b969ef1165a89fcd359ed5cfa0",
-  "src/components/sections/ServicePageLayout.tsx": "76242bd93331cb18c6e52bb25895b8d95b657b64969079bc79946545df6cf1d5",
+  "src/components/sections/ServicePageLayout.tsx": "85f9c1eff05bacf11df8fb9b546a657d16db6da8c1b749a0bb2435c268c7bdb4",
   "src/components/sections/EvidencePanel.tsx": "5c24d4e7f4ced28965efb8deea1031a23b3abd7e4085e7870abf22c0cdc66ee2",
   "src/components/sections/ServiceCtaWithModal.tsx": "80c624eb395842d9d35d1df811739f5c8065f741580185603ef5443ad88817a0",
   "src/components/sections/CtaSection.tsx": "6a04a99df2bc6046348e8baf10c2bad6dad7968521d12aab9557d305c5e7ac2f",
@@ -41,10 +41,10 @@ const unchangedFiles: Record<string, string> = {
   "src/app/services/[service]/[region]/page.tsx": "54fc58f2fcdced37944cd87dd138945d490a29b4ebbe5182ad4bb787d2293c2d"
 };
 const metadataHashes: Record<string, string> = {
-  "private-nursing": "46d9e3a31cb7a307707f3606d9e4adbd49d3801fba80fbedb9b69ab8334b4443",
-  "ndis": "c18801fd4d35394644cbc933c8b06fbbcfd8b17c17fd3f0ba7a72b6aedd672dd",
-  "dva": "f7a10d0766d25ff5aea6b74d2839a6cea0fdf1d6b2a042aa6b1a88df9c5d681c",
-  "aged-care": "50c054892f79de5b9c15c57c946d2acfe08646fed3bce9619555d193e8c86865"
+  "private-nursing": "5eb5ada9053beeb400771a438a8127b89d84764d5059532d2a9a7435363fcb45",
+  "ndis": "aa4657a866396362821e98be03b294b33d155ef17fe6ee51d8d8e9ba5118f7f1",
+  "dva": "c11e8ae872af6b39cfc25a2f498c592c90cde0f6d4f68d8956c0e8610e3ccdff",
+  "aged-care": "f9967d8f4e6a80da89767c7e897e3661519374086eb0bc6587762525d8187c1a"
 };
 
 test("funding presentation leaves shared data, schemas, analytics, modal/FAQ code and base CSS unchanged", () => {

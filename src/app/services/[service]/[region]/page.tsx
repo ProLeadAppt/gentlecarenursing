@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props) {
   if (!page) return {};
   const ogImageUrl = `${INTEGRATIONS.siteUrl}${page.path}/opengraph-image`;
   return createMetadata({
-    title: page.metaTitle,
+    title: { absolute: page.metaTitle },
     description: page.metaDescription,
     canonical: `${INTEGRATIONS.siteUrl}${page.path}`,
     openGraph: {

@@ -47,7 +47,7 @@ export const WHO_WE_SUPPORT = {
       label: "Aged Care clients",
       href: "/aged-care",
       description:
-        "Support to remain safe and comfortable at home — personal care, nursing, companionship, transport, respite, and post-hospital recovery.",
+        "Support to remain safe and comfortable at home, with personal care, nursing, companionship, transport, respite, and post-hospital recovery.",
     },
     {
       label: "Private clients",

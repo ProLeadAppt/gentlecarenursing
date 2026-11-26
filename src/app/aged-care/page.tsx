@@ -5,9 +5,9 @@ import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
 
 export const metadata = createMetadata({
-  title: "Aged Care Sydney | In-Home Support at Home",
+  title: { absolute: "Aged Care at Home Sydney | Gentle Care Nursing" },
   description:
-    "In-home aged care in Sydney with nursing, personal care, companionship and post-hospital support. Discuss suitability, funding arrangements and availability.",
+    "In-home aged care across Sydney for personal care, nursing, companionship, and post-hospital recovery. Call 1300 004 267 to discuss your options.",
   canonical: `${INTEGRATIONS.siteUrl}/aged-care`,
   openGraph: {
     images: [{ url: "/images/og/aged-care.png", width: 1200, height: 630, alt: "Aged Care at Home | Gentle Care Nursing Services" }],

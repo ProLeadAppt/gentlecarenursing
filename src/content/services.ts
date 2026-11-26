@@ -106,7 +106,7 @@ export const NDIS_PAGE: ServicePageData = {
     intro: "Citable facts for NDIS participants, support coordinators, plan managers, and families looking at providers in Sydney.",
     items: [
       { label: "Registration", value: "Registered NDIS provider, compliant with the NDIS Quality and Safeguards Commission.", icon: "registration", references: [NDIS_SOURCE] },
-      { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area", references: [INTERNAL_SOURCE] },
+      { label: "Service area", value: "Sydney and surrounds, including Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area", references: [INTERNAL_SOURCE] },
       { label: "Enquiries and referrals", value: "Contact us to discuss NDIS support. Urgent referrals are prioritised.", icon: "response", references: [NDIS_SOURCE] },
       { label: "Plan management", value: "We work with NDIA-managed, plan-managed, and self-managed participants.", icon: "funding", references: [INTERNAL_SOURCE] },
       { label: "Funding categories", value: "Core Supports (Assistance with Daily Life) and Capacity Building line items, where applicable.", icon: "funding", references: [INTERNAL_SOURCE] },
@@ -255,8 +255,8 @@ export const DVA_PAGE: ServicePageData = {
     items: [
       { label: "Contract status", value: "DVA Contracted Community Nursing Provider, delivering services under the DVA Community Nursing programme.", icon: "registration", references: [DVA_SOURCE] },
       { label: "Eligibility", value: "Eligible Veteran Card holders (Gold Card; White Card in some cases) with a referral from a GP or treating doctor.", icon: "credential" },
-      { label: "Out-of-pocket cost", value: "No out-of-pocket cost for clinically required, DVA-approved care — claims submitted directly to DVA.", icon: "funding", references: [DVA_SOURCE] },
-      { label: "Service area", value: "Sydney and surrounds — visits coordinated around real driving distances and household preferences.", icon: "area", references: [INTERNAL_SOURCE] },
+      { label: "Out-of-pocket cost", value: "No out-of-pocket cost for clinically required, DVA-approved care, and claims are submitted directly to DVA.", icon: "funding", references: [DVA_SOURCE] },
+      { label: "Service area", value: "Sydney and surrounds, with visits coordinated around real driving distances and household preferences.", icon: "area", references: [INTERNAL_SOURCE] },
       { label: "Enquiries and referrals", value: "Contact us to discuss a referral. Post-hospital referrals are prioritised.", icon: "response", references: [INTERNAL_SOURCE] },
       { label: "Scope of support", value: "Wound care, medication management, continence and catheter care, chronic disease monitoring, and personal care where part of approved care.", icon: "scope", references: [INTERNAL_SOURCE] },
     ],
@@ -686,7 +686,7 @@ export const POST_HOSPITAL_PAGE: ServicePageData = {
     heading: "Quick facts: post-hospital care at home with Gentle Care",
     intro: "Citable facts for hospital discharge planners, GPs, families, and NDIS or DVA referrers arranging in-home recovery support across Sydney.",
     items: [
-      { label: "Service area", value: "Sydney and surrounds — Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area", references: [INTERNAL_SOURCE] },
+      { label: "Service area", value: "Sydney and surrounds, including Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, CBD and East.", icon: "area", references: [INTERNAL_SOURCE] },
       { label: "Discharge planning", value: "Ask your treating team what referral information is needed. Confirm suitable support and availability before discharge.", icon: "credential" },
       { label: "Enquiries and availability", value: "Tell us your care needs, suburb and preferred start date so the team can confirm suitability and availability.", icon: "response", references: [INTERNAL_SOURCE] },
       { label: "Funding and access", value: "Confirm eligibility, provider requirements, service availability and any costs with the team and your funding body or care partner before arranging care.", icon: "funding", references: [INTERNAL_SOURCE] },
