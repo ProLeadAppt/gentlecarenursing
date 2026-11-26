@@ -79,6 +79,16 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth" className="font-source-sans font-dm-sans font-cormorant" suppressHydrationWarning>
       <head>
+        {/* Deploy previews inject Netlify's drawer after this document.
+            That script stays closed when this key is set, so the preview
+            does not download the drawer app, its videos, or its analytics.
+            Add ?ntl-drawer-state=visible to open it. The live site has no drawer. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var host=location.hostname;if(host==='gentlecarenursing.com.au'||host==='www.gentlecarenursing.com.au')return;if(location.search.indexOf('ntl-drawer-state=visible')!==-1)return;sessionStorage.setItem('ntl-drawer-initial-state','hidden');}catch(e){}})();",
+          }}
+        />
         <link rel="preload" href="/fonts/13971731025ec697-s.p.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/692df4da22e71021-s.p.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/7b89a4fd5e90ede0-s.p.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
