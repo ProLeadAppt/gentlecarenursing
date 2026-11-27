@@ -6,11 +6,15 @@ import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
 import { SITE } from "@/lib/constants";
 
-export const metadata = createMetadata({
-  title: "Privacy Policy | Gentle Care Nursing Services",
-  description: `Privacy policy for ${SITE.name}. How we collect, use, and protect your personal information.`,
-  canonical: `${INTEGRATIONS.siteUrl}/privacy`,
-});
+const title = "Privacy Policy | Gentle Care Nursing Services";
+export const metadata = {
+  ...createMetadata({
+    title,
+    description: `Privacy policy for ${SITE.name}. How we collect, use, and protect your personal information.`,
+    canonical: `${INTEGRATIONS.siteUrl}/privacy`,
+  }),
+  title: { absolute: title },
+};
 
 export default function PrivacyPage() {
   return (

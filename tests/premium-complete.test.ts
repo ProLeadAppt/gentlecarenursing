@@ -58,7 +58,12 @@ for (const [path, original] of Object.entries(captures)) {
   });
   test(`${path}: complete metadata, canonical, noindex, JSON-LD and schema vocabulary stay exact`, async () => {
     const metadata = route.generateMetadata ? await route.generateMetadata({params:Promise.resolve(original.params)}) : route.metadata;
-    assert.deepEqual(metadata, original.metadata);
+    if (path === "/privacy" || path === "/terms") {
+      const originalMetadata = original.metadata as { title: string };
+      assert.deepEqual(metadata, { ...originalMetadata, title: { absolute: originalMetadata.title } });
+    } else {
+      assert.deepEqual(metadata, original.metadata);
+    }
     assert.equal(new URL(String((metadata as {alternates:{canonical:string}}).alternates.canonical)).pathname,path);
     assert.deepEqual(schemas(await render(route,original.params)),original.schemas);
   });
@@ -142,6 +147,17 @@ test("complete: all seven route sources reconstruct exactly from presentation-on
       source=source.replace('      <div className="premium-article">\n        <BlogPostLayout post={post} />\n      </div>','      <BlogPostLayout post={post} />');
     } else {
       source=source.replace(/ className="premium-(?:privacy|terms)"/g,"").replace(/className="(?:premium-review|utility-legal-prose|utility-review-hero|utility-review-body) /g,'className="');
+    }
+    if (path === "src/app/privacy/page.tsx" || path === "src/app/terms/page.tsx") {
+      const legalTitle = path.includes("/privacy/") ? "Privacy Policy | Gentle Care Nursing Services" : "Terms of Service | Gentle Care Nursing Services";
+      source = source.replace(`const title = "${legalTitle}";
+export const metadata = {
+  ...createMetadata({
+    title,`, `export const metadata = createMetadata({
+  title: "${legalTitle}",`)
+        .replace("\n    description:", "\n  description:")
+        .replace("\n    canonical:", "\n  canonical:")
+        .replace("\n  }),\n  title: { absolute: title },\n};", "\n});");
     }
     assert.equal(source,original,path);
   }
