@@ -88,7 +88,7 @@ export function PremiumFundingCare({ pathway }: { pathway: keyof typeof pageData
       <section id={`${pathway}-steps`} className="care-section care-cream" aria-labelledby={`${pathway}-steps-title`}>
         <div className="care-wrap">
           <p className="care-eyebrow">How it works</p>
-          <div className="care-section-head"><h2 id={`${pathway}-steps-title`}>Three calm steps to getting support started</h2><p>We keep the setup process simple, clear, and human — so you know exactly what happens next.</p></div>
+          <div className="care-section-head"><h2 id={`${pathway}-steps-title`}>Three calm steps to getting support started</h2><p>We keep the setup process simple, clear, and human, so you know exactly what happens next.</p></div>
           <ol role="list" className="care-steps care-three-columns">{steps.map((step, index) => <li key={step.title}><span className="care-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><h3>{step.title}</h3><p>{step.description}</p></li>)}</ol>
         </div>
       </section>

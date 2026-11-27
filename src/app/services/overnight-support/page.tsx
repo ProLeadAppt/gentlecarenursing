@@ -6,9 +6,9 @@ import { createMetadata } from "@/lib/metadata";
 const canonical = `${INTEGRATIONS.siteUrl}/services/overnight-support`;
 
 export const metadata = createMetadata({
-  title: "Overnight Support & Sleepover Care at Home | Sydney",
+  title: { absolute: "Overnight Support at Home Sydney | Gentle Care" },
   description:
-    "Peace of mind while you sleep. Professional active overnight and sleepover care for NDIS and aged care participants across Sydney.",
+    "Active overnight and sleepover care at home across Sydney for NDIS and aged care clients. Call 1300 004 267 to discuss support options.",
   canonical,
 });
 

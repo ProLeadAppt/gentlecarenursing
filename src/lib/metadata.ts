@@ -30,10 +30,19 @@ export const defaultMetadata: Metadata = {
  * Helper to merge page metadata with defaults.
  * Ensures openGraph and twitter get title, description, images, and canonical per page.
  */
+function metadataTitleText(title: Metadata["title"]): string {
+  if (typeof title === "string") return title;
+  if (title && typeof title === "object") {
+    if ("absolute" in title && typeof title.absolute === "string") return title.absolute;
+    if ("default" in title && typeof title.default === "string") return title.default;
+  }
+  return "";
+}
+
 export function createMetadata(overrides: Metadata & { canonical?: string }): Metadata {
-  const title = typeof overrides.title === "string" ? overrides.title : (overrides.title as { default?: string })?.default ?? defaultMetadata.title;
+  const title = overrides.title === undefined ? defaultMetadata.title : overrides.title;
   const description = overrides.description ?? defaultMetadata.description;
-  const titleStr = typeof title === "object" && title && "default" in title ? (title as { default: string }).default : String(title);
+  const titleStr = metadataTitleText(title);
   const { canonical, ...rest } = overrides;
 
   return {

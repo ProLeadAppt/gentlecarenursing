@@ -2,10 +2,12 @@
   "sourceTree": "5b555e1f818e7f4deef2e9f738e3d8af3b7511e8",
   "routes": {
     "contact": {
-      "sourceSha256": "03e859649e2b9507c2da8c131c5216b1b8e1d88795533f4131fcbf7f1efcefc3",
+      "sourceSha256": "2ff0e5843cfa4ac979fe16c37dc1b068c30f870939833627dc4e4ffe0fe5c591",
       "metadata": {
-        "title": "Contact Us | Call or Enquire",
-        "description": "Get in touch with Gentle Care Nursing Services. Phone, email, or submit an enquiry.",
+        "title": {
+          "absolute": "Contact Gentle Care Nursing Services | Sydney"
+        },
+        "description": "Contact our North Strathfield office Mon to Fri 8am to 5pm, or call 1300 004 267 to enquire about in-home nursing across Sydney.",
         "authors": [
           {
             "name": "Gentle Care Nursing Services"
@@ -21,13 +23,13 @@
               "alt": "Gentle Care Nursing Services. In-home nursing and care"
             }
           ],
-          "title": "Contact Us | Call or Enquire",
-          "description": "Get in touch with Gentle Care Nursing Services. Phone, email, or submit an enquiry."
+          "title": "Contact Gentle Care Nursing Services | Sydney",
+          "description": "Contact our North Strathfield office Mon to Fri 8am to 5pm, or call 1300 004 267 to enquire about in-home nursing across Sydney."
         },
         "twitter": {
           "card": "summary_large_image",
-          "title": "Contact Us | Call or Enquire",
-          "description": "Get in touch with Gentle Care Nursing Services. Phone, email, or submit an enquiry."
+          "title": "Contact Gentle Care Nursing Services | Sydney",
+          "description": "Contact our North Strathfield office Mon to Fri 8am to 5pm, or call 1300 004 267 to enquire about in-home nursing across Sydney."
         },
         "verification": {
           "other": {
@@ -38,7 +40,7 @@
           "canonical": "https://gentlecarenursing.com.au/contact"
         }
       },
-      "metadataSource": "export const metadata = createMetadata({\n  title: \"Contact Us | Call or Enquire\",\n  description:\n    \"Get in touch with Gentle Care Nursing Services. Phone, email, or submit an enquiry.\",\n  canonical: `${INTEGRATIONS.siteUrl}/contact`,\n});\n\n",
+      "metadataSource": "export const metadata = createMetadata({\n  title: { absolute: \"Contact Gentle Care Nursing Services | Sydney\" },\n  description:\n    \"Contact our North Strathfield office Mon to Fri 8am to 5pm, or call 1300 004 267 to enquire about in-home nursing across Sydney.\",\n  canonical: `${INTEGRATIONS.siteUrl}/contact`,\n});\n\n",
       "html": "<section class=\"py-32 sm:py-40 bg-card\"><div class=\"mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-5xl\"><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://gentlecarenursing.com.au/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Contact Us\"}]}</script><nav aria-label=\"Breadcrumb\" class=\"mb-6\"><ol class=\"flex flex-wrap items-center gap-1 text-sm text-muted-foreground\"><li class=\"flex items-center gap-1\"><a class=\"hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded\" href=\"/\">Home</a></li><li class=\"flex items-center gap-1\"><span aria-hidden=\"true\" class=\"select-none\">/</span><span class=\"font-medium text-foreground\" aria-current=\"page\">Contact Us</span></li></ol></nav><h1 class=\"font-[family-name:var(--font-serif)] text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-foreground text-center\">Contact Us</h1><p class=\"mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground sm:text-xl\">Have a question, need information, or want to discuss care options? We&#x27;re here to help.</p></div></section><section class=\"py-28 sm:py-32 bg-background\"><div class=\"mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-[72rem]\"><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-8\"><div><h2 class=\"font-[family-name:var(--font-serif)] font-bold tracking-tight sm:text-4xl text-foreground text-2xl\">Get in Touch</h2><p class=\"mt-4 text-muted-foreground\">Whether you&#x27;re a family member, support coordinator, or healthcare professional. We&#x27;re happy to answer your questions and discuss how we can help.</p><div class=\"mt-8 space-y-6\"><div><h3 class=\"font-[family-name:var(--font-dm-sans)] font-semibold sm:text-2xl text-foreground text-base\">Phone</h3><p class=\"mt-1 text-muted-foreground\"><a href=\"tel:+611300004267\" class=\"underline underline-offset-4 hover:text-primary\">1300 004 267</a></p></div><div><h3 class=\"font-[family-name:var(--font-dm-sans)] font-semibold sm:text-2xl text-foreground text-base\">Email</h3><p class=\"mt-1 text-muted-foreground\"><a href=\"mailto:info@gentlecarenursing.com.au\" class=\"underline underline-offset-4 hover:text-primary\">info@gentlecarenursing.com.au</a></p></div><div><h3 class=\"font-[family-name:var(--font-dm-sans)] font-semibold sm:text-2xl text-foreground text-base\">Enquiries</h3><p class=\"mt-1 text-muted-foreground\">Contact us to discuss your needs, availability and next steps. This enquiry service is not for emergencies. For a medical emergency, call 000.</p></div><div><h3 class=\"font-[family-name:var(--font-dm-sans)] font-semibold sm:text-2xl text-foreground text-base\">Service Areas</h3><p class=\"mt-1 text-muted-foreground\">Contact us to confirm coverage in your area.</p></div></div></div><div class=\"rounded-[1.25rem] border border-border/80 bg-card shadow-sm transition-all duration-200 hover:shadow-md hover:border-border p-8\"><h2 class=\"font-[family-name:var(--font-serif)] font-bold tracking-tight sm:text-4xl text-foreground mb-2 text-2xl\">Send Us a Message</h2><p class=\"mb-6 text-muted-foreground\">Tell us about your enquiry using the form below.</p><form aria-busy=\"false\"><fieldset class=\"min-w-0 space-y-6\"><div class=\"space-y-2\"><div class=\"flex items-center gap-2\"><label class=\"block text-base font-semibold text-foreground\" for=\"contact-name-_R_1q_\">Name<span class=\"ml-1 text-primary\" aria-hidden=\"true\">*</span></label></div><input class=\"block w-full rounded-xl border border-border bg-card px-4 py-3.5 text-foreground placeholder:text-muted-foreground transition-all duration-200 focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/15 disabled:cursor-not-allowed disabled:opacity-50\" id=\"contact-name-_R_1q_\" type=\"text\" placeholder=\"Your name\" required=\"\" name=\"name\"/></div><div class=\"space-y-2\"><div class=\"flex items-center gap-2\"><label class=\"block text-base font-semibold text-foreground\" for=\"contact-email-_R_1q_\">Email<span class=\"ml-1 text-primary\" aria-hidden=\"true\">*</span></label></div><input class=\"block w-full rounded-xl border border-border bg-card px-4 py-3.5 text-foreground placeholder:text-muted-foreground transition-all duration-200 focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/15 disabled:cursor-not-allowed disabled:opacity-50\" id=\"contact-email-_R_1q_\" type=\"email\" placeholder=\"your@email.com\" required=\"\" name=\"email\"/></div><div class=\"space-y-2\"><div class=\"flex items-center gap-2\"><label class=\"block text-base font-semibold text-foreground\" for=\"contact-phone-_R_1q_\">Phone</label></div><input class=\"block w-full rounded-xl border border-border bg-card px-4 py-3.5 text-foreground placeholder:text-muted-foreground transition-all duration-200 focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/15 disabled:cursor-not-allowed disabled:opacity-50\" id=\"contact-phone-_R_1q_\" type=\"tel\" placeholder=\"Phone number (optional)\" name=\"phone\"/></div><div class=\"space-y-2\"><div class=\"flex items-center gap-2\"><label class=\"block text-base font-semibold text-foreground\" for=\"contact-message-_R_1q_\">Message<span class=\"ml-1 text-primary\" aria-hidden=\"true\">*</span></label></div><textarea class=\"block w-full rounded-xl border border-border bg-card px-4 py-3.5 text-foreground placeholder:text-muted-foreground transition-all duration-200 focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/15 disabled:cursor-not-allowed disabled:opacity-50 resize-y min-h-[120px]\" id=\"contact-message-_R_1q_\" name=\"message\" rows=\"4\" placeholder=\"How can we help?\" required=\"\"></textarea></div><button type=\"submit\" class=\"inline-flex items-center justify-center font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gradient-to-br from-primary to-[#6b2028] text-primary-foreground shadow-[0_4px_16px_rgba(132,40,51,0.25)] hover:shadow-[0_8px_24px_rgba(132,40,51,0.3)] hover:-translate-y-px focus-visible:ring-primary active:scale-[0.98] active:shadow-sm transition-all duration-200 h-12 px-6 text-base rounded-xl w-full\">Send Message</button></fieldset></form></div></div></div></section><section class=\"relative overflow-hidden py-20 sm:py-28 bg-muted text-foreground\"><div class=\"mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-[72rem] relative\"><div class=\"reveal reveal-up\"><div class=\"mx-auto max-w-2xl text-center\"><h2 class=\"font-[family-name:var(--font-dm-sans)] text-3xl font-bold tracking-tight sm:text-4xl\">Ready to Request Care?</h2><p class=\"mt-4 text-lg text-muted-foreground\">If you already know what you need, submit a referral so we can discuss suitability, availability and next steps.</p><div class=\"mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row\"><a class=\"inline-flex items-center justify-center font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gradient-to-br from-primary to-[#6b2028] text-primary-foreground shadow-[0_4px_16px_rgba(132,40,51,0.25)] hover:shadow-[0_8px_24px_rgba(132,40,51,0.3)] hover:-translate-y-px focus-visible:ring-primary active:scale-[0.98] active:shadow-sm transition-all duration-200 h-12 px-8 text-lg rounded-xl\" href=\"/referral\">Request Care</a><a class=\"inline-flex items-center justify-center font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-2 border-border text-foreground hover:bg-muted/60 hover:border-primary/20 focus-visible:ring-primary active:scale-[0.99] transition-all duration-200 h-12 px-8 text-lg rounded-xl\" href=\"tel:+611300004267\">Call us</a></div></div></div></div></section>"
     },
     "referral": {
@@ -84,11 +86,11 @@
   },
   "unchangedFiles": {
     "src/app/about/page.tsx": "11a69956bdfc92e0a595274276a83a364fa137a4c9401f3e11e4186660c85804",
-    "src/app/aged-care/page.tsx": "b8529275fd5129de08c274e5d13e4c2c74bdfdde74bd7b0734915c0a157dca4e",
+    "src/app/aged-care/page.tsx": "d1c14d70e6d337fe40ef594091cfd9fb024e3a2ff4971541dcbeb62b238bd5ff",
     "src/app/api/feedback/route.ts": "b5c5fb4b733218316af06d3f46d357837f4f33bd7c6e48efb8653227260e6917",
     "src/app/api/submit/route.ts": "245f726dc6d2c83012d6b0da1a052459472679e2e783ba6955e3042f0250bf6c",
     "src/app/areas/[region]/opengraph-image.tsx": "d3b7c8e9311cd5ed6f4364569f366caf032cd6be6a8c205b4c428faf24362c9f",
-    "src/app/areas/[region]/page.tsx": "8002b9ed7a08062a348cb5310d1f836454d83e1d786c82fb5a06eae6326c45d1",
+    "src/app/areas/[region]/page.tsx": "f9c37ddb22f0dd15ade364763a9b89ccebf8bde53ed9ef55ee5e85eaf93e5284",
     "src/app/areas/page.tsx": "a14e8d76150f9706fd68191b37a346ed7e18d62f0e358bdbfbcdfa3caf64b202",
     "src/app/blog/[slug]/opengraph-image.tsx": "1869cffc0385efce2484c607d1f378e62e2287b86062da9f865a1e9a02bf3f0f",
     "src/app/blog/[slug]/page.tsx": "ed40cef7f1ddb732933dd6e3d8c194ed6ebd0d946ebd0ea1797a5577c652babe",
@@ -96,35 +98,35 @@
     "src/app/blog/page.tsx": "dbf8a0df56786944bd764ce6f98a1dfe79fdfb4d62dabd2ba4f1fb25a8fdc985",
     "src/app/conditions/[condition]/page.tsx": "d765f48e655d1a0d925ce44ba751496bc32e6c3a19a93a5f5ecadb483e78abd7",
     "src/app/conditions/page.tsx": "4d16a0147800f18439b51b65d2f411d78fea0040fa27c66d80396f3dfe03cfca",
-    "src/app/dva/page.tsx": "1aa68a3ca9632034893866187f39161f6446008edaa179cb6d82f95880f21362",
+    "src/app/dva/page.tsx": "0e0af7e4e89b38e5a8f4ea92785f0992c1c2e9be0a5548ec3047ad7eaa59a4f4",
     "src/app/faq/page.tsx": "4cdf343b231d8bbf7ba498d6ec0347db7de1e9d50a2db437ad08eeef69744c19",
     "src/app/fonts.css": "38c0ae36b5647a4b3a39935cbbf1571621f2819caf5bfdf3e7ac7ed64a3c4afc",
     "src/app/globals.css": "92f11a580e652b5261b31a1daf3f24627b4f0be32767afe164c56849f4683c2d",
     "src/app/homepage.css": "9a8ef6d0067bd1eb60ef04853f535f62aa003b338d7d24d5de143f541b36c351",
     "src/app/layout.tsx": "077ae94769f8e0719eef32f4230fd33589531dbc950e02fafd5aadd8d7e814f5",
     "src/app/loading.tsx": "1901660bab09171cb56401cee3a9b085162fcc8f594570bd9f9a9a2eceeb2328",
-    "src/app/ndis/page.tsx": "a75bf0c17b9eeec7a51b1d31e43d90a0eb29c2ced14578b0a1b913c61179fd6f",
+    "src/app/ndis/page.tsx": "b9d56efc4f50c85c14850c76bda9b0905e0d8db27832b5530b9662a710d38f24",
     "src/app/not-found.tsx": "5640a802c5b133b3e78fd040280539d8493298d3f1632ab8fbf774fef8f5840b",
-    "src/app/page.tsx": "04ee8e0f5897fbeb62113893640bdeadd1e6a707d4464f2e3c6173461a0a979f",
+    "src/app/page.tsx": "905c478fe9642403522810e7057fb4f81cb9ceccce236e46e964f7669156df39",
     "src/app/premium-funding.css": "61a6562e100a6f53416c0f50fbef5aeb2a70cea064d9fe2dba69cea426fa3a3f",
     "src/app/privacy/page.tsx": "b16f6f04b96353b526f2e98dd007ccf57cec2851357e855792016114ea1ac808",
-    "src/app/private-nursing/page.tsx": "b85fe6b08a3374a333ab58204e71ce2bbbf9a311715866ddb462da28073f0c2d",
+    "src/app/private-nursing/page.tsx": "181c1f83700ec5bfe6373da5d8b8687743d9a4a9792d0d2df3682b9c63729557",
     "src/app/referrers/page.tsx": "8accc09aa6bff1e9949ebfa82ed4d5a51bb87ece0ff93a8b0944ed93db6f480a",
     "src/app/referrers/premium-referrers.css": "d3aea0c040d034b56cbb6d81cffdb89df56a79e3f719e3757d1ee4db4cfafb17",
     "src/app/review/page.tsx": "735969bd39185a393d5905994e5936e558650f427cb668e31eec254576487970",
     "src/app/robots.ts": "a712cec3cf736515e2ab6a9e255f3575042317219913554bef5de67d56de56ec",
     "src/app/services/[service]/[region]/opengraph-image.tsx": "7c01b8bec68e0deeead5ccab1f9375c9bfdc0be116d28c30bb6ace2f3db4e6af",
-    "src/app/services/[service]/[region]/page.tsx": "54fc58f2fcdced37944cd87dd138945d490a29b4ebbe5182ad4bb787d2293c2d",
+    "src/app/services/[service]/[region]/page.tsx": "05ae0a5fb06f6d928b33c458324c502e76ac3df3d39186ffa4d8cc76d36c42ca",
     "src/app/services/assistance-with-daily-living/page.tsx": "e4d088534ed081135ff325933a271c96522e1d5dda4037c3c79a806400d151da",
     "src/app/services/community-participation/page.tsx": "fb4b71d2bc8418b3fd4dcf3708edaa383f250cab840708e010844bff633f81ab",
     "src/app/services/complex-care/page.tsx": "e155cfcbed43e6c2245898da3ef91f4fc898f140dcb8575dff344f140a8c16ec",
     "src/app/services/hospital-at-home/page.tsx": "8785866df65989f19eb2cc85e11fcff48b2a2acb25477e5701f6f358b351ebce",
-    "src/app/services/nursing-care/page.tsx": "718597f58e377f419b755b626155725f530bfe0ca53cec905e5d3ab9cd521626",
-    "src/app/services/overnight-support/page.tsx": "04ccec5ad7902bb3ff032aebb7db379c1392134a3a9f80617c603f2f27eb751e",
+    "src/app/services/nursing-care/page.tsx": "c59c6cb9933851dd5929a3df86f03683b2163c8d08a8062677162d0bdfabee22",
+    "src/app/services/overnight-support/page.tsx": "7e556ce93ca3e69f8dbada31c4d09a660556a5943a6bb5ce523b6e7ff37c03fa",
     "src/app/services/page.tsx": "4922ccc95466cf36fbafef721612bb867f6edcb7b02061717584fe8128bea0bc",
     "src/app/services/palliative-care/page.tsx": "a5ce5349ad6fa6f69eb83def3450958ae86959312a7ec7bd7ee3746627203407",
     "src/app/services/personal-care/page.tsx": "daeff13e5b21670ebde5476e9e4e9fbe8c5bbb9764765c437ba0486286882bc7",
-    "src/app/services/post-hospital-care/page.tsx": "32b51f5fc60985c8c3a3d905a20b8511cb63829a4b0e4114c86aed6ffadc0e8e",
+    "src/app/services/post-hospital-care/page.tsx": "4e2c3963929ae08c6897bfdbbef946b94133a05ef2e155c46aa71f8b47999f91",
     "src/app/services/premium-care.css": "f22f1581e2afa7a066192400c353f7b54044d7b969ef1165a89fcd359ed5cfa0",
     "src/app/sitemap.ts": "c9ccebb34444315c4657b6cb02a36774a51d315826c2fb149338de69caa502aa",
     "src/app/suburbs/[suburb]/page.tsx": "4ad1788f01a226674e49ca819aa6eea2a6c80d1de8863b740cbdbd99c7a3870d",
@@ -174,11 +176,11 @@
     "src/components/sections/HomepageCtaSections.tsx": "15092b867ab6e0dc26cb0929f9ea5b5f908a7c4746ea212716f0684f14f86da8",
     "src/components/sections/MilestoneTimeline.tsx": "974ae3299c643860a414efc68335e4f10be3a6b8bdaa1be59721e7b16a45270d",
     "src/components/sections/PhilosophyJourney.tsx": "c58009f3f41fd248ebd91a54fb4d1e625d1bd4e97bf7dd305a1a7e605b6f6fff",
-    "src/components/sections/PremiumFundingCare.tsx": "3ef5cb2d3fc65fbf3142b91a653c97b0d5aa9d278cef3e6f7b120700bd500d79",
-    "src/components/sections/PremiumNursingCare.tsx": "5968eb50c98f236347f159265fc171a6cb6cc3eb42939f0b6e9260119d1d15a5",
+    "src/components/sections/PremiumFundingCare.tsx": "687d350e5df4afa9225768b1b5b9aa4721a528d825711caf0c3258ef9dbe3c4d",
+    "src/components/sections/PremiumNursingCare.tsx": "484e2659b587683baa5ad03b7ca701e021b76e3dbe4ae58745a503977b86935a",
     "src/components/sections/PremiumReferrers.tsx": "c5c6946eefebc46a2be1540c2fabe83ffb7965ab42a320126e98d27537d191e5",
     "src/components/sections/PremiumServicesHub.tsx": "f3f86ebcd96c8660bd43ef3287f7b28fda2f7ebc77967fa8666a61eabee95b3b",
-    "src/components/sections/PremiumSupportCare.tsx": "60f02b7dad500efcad29e0a271cf6e9207c6ffca2d6398a1010daa690fbd3c7c",
+    "src/components/sections/PremiumSupportCare.tsx": "ff853ee35a97b8c83e3ba790eda540bbce72311546021212d9372a86202b6f37",
     "src/components/sections/ProcessSteps.tsx": "13c86e61ae931d6ca579e9ea031052701150683780ee1dc7e38c62fa0cbeb99d",
     "src/components/sections/ProcessTimeline.tsx": "43261219c2c47498501a312f1ac70a3692bc8238a51db5dd1f5dac8d4eee7458",
     "src/components/sections/QuickResponseSection.tsx": "8d5ad6063da182107350c6d6bd6d41e42c7b7e6ec7e0c0f0e7f933cdf13ab72b",
@@ -191,7 +193,7 @@
     "src/components/sections/ServiceCard.tsx": "b3d3b07c7527e35687aa46decc378509162f186bb8d4d12add22ff27488261d6",
     "src/components/sections/ServiceCards.tsx": "76e20c6d131668f35336013b193d136a5e40180194fa9e40647bbe481ec89690",
     "src/components/sections/ServiceCtaWithModal.tsx": "80c624eb395842d9d35d1df811739f5c8065f741580185603ef5443ad88817a0",
-    "src/components/sections/ServicePageLayout.tsx": "76242bd93331cb18c6e52bb25895b8d95b657b64969079bc79946545df6cf1d5",
+    "src/components/sections/ServicePageLayout.tsx": "85f9c1eff05bacf11df8fb9b546a657d16db6da8c1b749a0bb2435c268c7bdb4",
     "src/components/sections/ServiceRegionPageLayout.tsx": "5a16fc7a04b72b5656cfd705967ada799e311ae9aee5d61666f7082a8d8aa401",
     "src/components/sections/StatsBar.tsx": "d62489012a6d44eb56030ec69ff4e622023c0cdc8acd46e8ee9b5bc8cf525ff4",
     "src/components/sections/TeamGrid.tsx": "af0f470273f4e8f29a69cb273901cbeef42404830040c5afe133d01604e95d81",
@@ -229,11 +231,11 @@
     "src/content/conditions.ts": "17022f0efc28a645e4f8e58dbb9545e6e62b599652703249170dc4efba0b8a0a",
     "src/content/faq.ts": "86458575fbe4266b5d9adcfc221d889890a4fa2de299b5b1fe1e778bc892bb50",
     "src/content/gmb-services.ts": "fb06df64879ed397a4d15f29c43482108e0c9ed14053f732b5fc8829aa08bd0d",
-    "src/content/homepage.ts": "d93545713c764ed7ef654f8bb1f8ccb92325317f3f7533c925782b99113103af",
+    "src/content/homepage.ts": "f5c6bb624cc7e44d17c34262ef760f30e102ca47d09afc89287a0db58ac83a96",
     "src/content/referrer-blocks.ts": "54a24e546cc006c64f47d4395b094485a8f46416a30eac66e9cb5883049740d4",
     "src/content/reviews.ts": "3386149ad3b1932a44b04c3f2362c351a768bb039c9628e63b9b7b19d43ff80c",
-    "src/content/service-regions.ts": "406fd3acb6bab1ecfc7a13339b84d2830504ea3986f8547d4af3e067b7a4dbde",
-    "src/content/services.ts": "89829e044a911bf0f8b538bd5238d686ad923dad9caa2227ef0d43226b3f4349",
+    "src/content/service-regions.ts": "817802773dfff0c2e51c833366717cc8285842e0d65025f2021b810a1c1c4c90",
+    "src/content/services.ts": "8f6ce1df220afc9fab731454df603883ad44f8467978791c779b1c63850521cc",
     "src/content/site.ts": "cc9e3132d2b860a4201b64347a24be289640500df5ea7ebf1fd79a11e44e3686",
     "src/content/suburbs.ts": "962aa7059f98f0c66d9824dc11f8b6dea7db6caaa48253e4786c76f4fae007c1",
     "src/content/topical-map.ts": "dff18df2761420ce94c50ad2847d593688e87f4da122f7d61f7f05942a6eb30e",
@@ -250,7 +252,7 @@
     "src/lib/feedback-client.ts": "29512f52b238202c81a2dbda5b6663461b324c9cf67e1eacb323547dd1e34d93",
     "src/lib/form-client.ts": "84d09c77ca1921ce7674a398b72c026888b5045b8b6dece394765e3fc1d9e69c",
     "src/lib/form-validation.ts": "e39f311e2e5ca8c08986903a05cf6490143590d5c7e48c9c891f6c8949e45a4c",
-    "src/lib/metadata.ts": "2bda40733fc97f460d2c16491dbc5819297f1a595e877de05fa7bdfdedfad47c",
+    "src/lib/metadata.ts": "741272a728727a334f84c482ece82e5ad266f4fc798e260e1a808c03bd071057",
     "src/lib/modal-session.ts": "39a1c02a6479d426be8a9738ed2a50df144e54f128353f55fb93f42495b22cd5",
     "src/lib/request-body.ts": "8b8c17a19aec945caba9336ac39a0a695d4d06a171525339be1f2d10721823e1",
     "src/lib/schema.ts": "cce1b6aa737107e836ca23c623a6e2e3e584c87a96d0fbad555140566c5f0e33",

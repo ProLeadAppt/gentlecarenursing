@@ -5,9 +5,9 @@ import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
 
 export const metadata = createMetadata({
-  title: "NDIS Registered Provider Sydney | In-Home Nursing & Support",
+  title: { absolute: "Registered NDIS Provider Sydney | Gentle Care" },
   description:
-    "Registered NDIS provider in Sydney delivering in-home nursing, personal care, community access, and complex support with person-centred care.",
+    "Registered NDIS provider across Sydney for in-home nursing, daily personal care, community access, and high-intensity supports tailored to your plan.",
   canonical: `${INTEGRATIONS.siteUrl}/ndis`,
   openGraph: {
     images: [{ url: "/images/og/ndis.png", width: 1200, height: 630, alt: "NDIS Nursing & Care | Gentle Care Nursing Services" }],

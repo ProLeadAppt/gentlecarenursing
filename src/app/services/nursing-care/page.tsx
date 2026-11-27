@@ -6,9 +6,9 @@ import { createMetadata } from "@/lib/metadata";
 const canonical = `${INTEGRATIONS.siteUrl}/services/nursing-care`;
 
 export const metadata = createMetadata({
-  title: "Clinical Nursing at Home in Sydney",
+  title: { absolute: "Clinical Nursing at Home Sydney | Gentle Care" },
   description:
-    "Professional in-home nursing care delivered by experienced nurses. Wound care, medication management, and health monitoring with dignity and consistency across Sydney.",
+    "In-home clinical nursing across Sydney for wound care, medication support, and health monitoring, delivered with dignity and clear communication.",
   canonical,
 });
 

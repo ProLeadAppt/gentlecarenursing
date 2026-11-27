@@ -279,7 +279,7 @@ export function ServicePageLayout({ data }: ServicePageLayoutProps) {
                 Three calm steps to getting support started
               </Heading>
               <p className="mx-auto max-w-2xl text-lg text-muted-foreground font-medium">
-                We keep the setup process simple, clear, and human — so you know exactly what happens next.
+                We keep the setup process simple, clear, and human, so you know exactly what happens next.
               </p>
             </div>
           </Reveal>

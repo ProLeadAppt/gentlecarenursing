@@ -573,22 +573,52 @@ function injectFaq(faq: ServiceRegionFaq, region: string, slug: string): Service
   };
 }
 
+const SERVICE_REGION_META: Record<ServiceSlug, { title: string; description: string }> = {
+  "in-home-nursing-care": {
+    title: "In-Home Nursing {region} | Gentle Care",
+    description:
+      "In-home nursing care across {region}, delivered by experienced nurses with calm, clear communication. Call 1300 004 267 to enquire.",
+  },
+  "dva-community-nursing": {
+    title: "DVA Community Nursing {region} | Gentle Care",
+    description:
+      "DVA Community Nursing across {region} for eligible Veteran Card holders. Call 1300 004 267 to discuss a referral.",
+  },
+  "ndis-services": {
+    title: "NDIS Nursing & Support {region} | Gentle Care",
+    description:
+      "Registered NDIS in-home nursing and personal support across {region}. Talk with our team on 1300 004 267 to discuss your NDIS plan.",
+  },
+  "complex-care-support": {
+    title: "Complex Care {region} | Gentle Care",
+    description:
+      "In-home complex care and high-intensity nursing support across {region}. Contact Gentle Care on 1300 004 267 to discuss your needs.",
+  },
+  "personal-care-daily-living": {
+    title: "Personal Care {region} | Gentle Care",
+    description:
+      "In-home personal care and daily living support across {region}, tailored to your routine. Call 1300 004 267 to enquire.",
+  },
+};
+
+function fitRegionCopy(template: string, regionName: string, limit: number): string {
+  const label = regionName;
+  let text = template.replaceAll("{region}", label);
+  if (text.length > limit) {
+    const shortened = label.replace(/ Sydney\b/, "");
+    if (shortened !== label) text = template.replaceAll("{region}", shortened);
+  }
+  return text;
+}
+
 function buildPage(
   service: ServiceDefinition,
   region: RegionDefinition
 ): ServiceRegionPageData {
   const path = `/services/${service.slug}/${region.slug}`;
-  // Title template kept ≤62 chars across all 30 service×region combos so it
-  // doesn't truncate in Google SERPs. Uses `shortTitle` (e.g. "Personal Care"
-  // not "Personal Care & Daily Living") and avoids double-Sydney for regions
-  // whose names already contain "Sydney" (e.g. "Sydney CBD & East").
-  const regionPhrase = /sydney/i.test(region.region)
-    ? region.region
-    : `${region.region} Sydney`;
-  const metaTitle = `${service.shortTitle} in ${regionPhrase} | Gentle Care`;
-  // Keep meta description ≤160 chars for SERP display.
-  const metaDescription =
-    `${service.title} in ${region.region}, Sydney. experienced, relationship-based care. Contact us to discuss your care needs.`;
+  const pattern = SERVICE_REGION_META[service.slug];
+  const metaTitle = fitRegionCopy(pattern.title, region.region, 60);
+  const metaDescription = fitRegionCopy(pattern.description, region.region, 155);
   return {
     serviceSlug: service.slug,
     regionSlug: region.slug,

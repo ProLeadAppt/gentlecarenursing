@@ -28,9 +28,22 @@ export async function generateMetadata({ params }: Props) {
   const { region: slug } = await params;
   const area = getAreaContentBySlug(slug);
   if (!area) return {};
+  const areaMeta: Record<string, { title: string; description: string }> = {
+    "south-sydney": {
+      title: "In-Home Nursing South Sydney | Gentle Care",
+      description:
+        "In-home nursing and personal care in South Sydney from a Registered NDIS and DVA Contracted Community Nursing Provider. Call 1300 004 267.",
+    },
+    "inner-west": {
+      title: "In-Home Nursing Inner West Sydney | Gentle Care",
+      description:
+        "In-home nursing and personal care across Sydney's Inner West from our North Strathfield team. NDIS registered and DVA contracted. Call 1300 004 267.",
+    },
+  };
+  const override = areaMeta[area.slug];
   return createMetadata({
-    title: `In-Home Nursing ${area.region} | Sydney`,
-    description: area.description,
+    title: override ? { absolute: override.title } : `In-Home Nursing ${area.region} | Sydney`,
+    description: override?.description ?? area.description,
     canonical: `${INTEGRATIONS.siteUrl}/areas/${area.slug}`,
     openGraph: {
       images: [{ url: `${INTEGRATIONS.siteUrl}/areas/${area.slug}/opengraph-image`, width: 1200, height: 630, alt: `In-home nursing in ${area.region} | Gentle Care Nursing Services` }],

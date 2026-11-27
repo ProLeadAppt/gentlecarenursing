@@ -12,9 +12,9 @@ import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
 
 export const metadata = createMetadata({
-  title: "Contact Us | Call or Enquire",
+  title: { absolute: "Contact Gentle Care Nursing Services | Sydney" },
   description:
-    "Get in touch with Gentle Care Nursing Services. Phone, email, or submit an enquiry.",
+    "Contact our North Strathfield office Mon to Fri 8am to 5pm, or call 1300 004 267 to enquire about in-home nursing across Sydney.",
   canonical: `${INTEGRATIONS.siteUrl}/contact`,
 });
 
