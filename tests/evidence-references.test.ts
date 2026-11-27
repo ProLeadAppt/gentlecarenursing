@@ -9,7 +9,7 @@ import type { ServicePageData } from "../src/components/sections/ServicePageLayo
 
 const note = "References provide general programme or service information, not provider-specific verification.";
 const ndis = "https://www.ndiscommission.gov.au/";
-const dva = "https://www.dva.gov.au/get-support/health-support/help-cover-healthcare-costs/manage-your-health-care/community-nursing";
+const dva = "https://www.dva.gov.au/what-we-help-with/care-at-home-and-aged-care-services/living-independently/dva-in-home-programs/community-nursing";
 const agedCare = "https://www.myagedcare.gov.au/";
 const pages = Object.values(serviceData).filter((page): page is ServicePageData =>
   Boolean(page && typeof page === "object" && "href" in page && "evidence" in page));
