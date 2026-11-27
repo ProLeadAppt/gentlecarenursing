@@ -45,8 +45,6 @@ export function getLocalBusinessSchema() {
       "@type": "GeoCoordinates",
       latitude: -33.864,
       longitude: 151.093,
-      addressLocality: "North Strathfield",
-      addressRegion: "NSW",
     },
     areaServed,
     hasOfferCatalog: {

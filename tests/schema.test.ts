@@ -15,6 +15,17 @@ test("local business schema is the single canonical organization entity", () => 
   assert.equal(schema.logo, "https://gentlecarenursing.com.au/images/logo.png");
 });
 
+test("GeoCoordinates contains coordinate values rather than postal address fields", () => {
+  const schema = getLocalBusinessSchema();
+  assert.deepEqual(schema.geo, {
+    "@type": "GeoCoordinates",
+    latitude: -33.864,
+    longitude: 151.093,
+  });
+  assert.equal(schema.address.addressLocality, "North Strathfield");
+  assert.equal(schema.address.addressRegion, "NSW");
+});
+
 test("service-region schema references the canonical organization instead of duplicating it", () => {
   const [service, page] = getServiceRegionSchemas({
     serviceName: "NDIS Nursing",

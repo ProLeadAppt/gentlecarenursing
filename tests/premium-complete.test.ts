@@ -1,4 +1,4 @@
-import { restorePriorDvaReference } from "./helpers/external-link-baseline";
+import { restoreReviewedSourceCorrections } from "./helpers/external-link-baseline";
 import { restorePriorFooterCredit } from "./helpers/footer-credit";
 import { restorePriorLocalContext, restorePriorLocalContextHtml } from "./helpers/local-context-review";
 import test from "node:test";
@@ -97,7 +97,7 @@ test("complete: all shared layouts, forms, states, backend, content, assets and 
     // Only the current measurement docs change; original hashes and contract checks are in measurement-documentation.test.ts.
     if (["docs/seo/measurement-specification.md", "docs/seo/monthly-report-template.md"].includes(path)) continue;
     // Remove only the Next smooth-scroll opt-in; retain the original layout hash.
-    assert.equal(digest(path === "src/content/suburbs.ts" ? restorePriorLocalContext(readFileSync(path, "utf8")) : path === "src/app/layout.tsx" ? readFileSync(path, "utf8").replace('<html lang="en" data-scroll-behavior="smooth"', '<html lang="en"') : path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : restorePriorDvaReference(path, readFileSync(path))),hash,path);
+    assert.equal(digest(path === "src/content/suburbs.ts" ? restorePriorLocalContext(readFileSync(path, "utf8")) : path === "src/app/layout.tsx" ? readFileSync(path, "utf8").replace('<html lang="en" data-scroll-behavior="smooth"', '<html lang="en"') : path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : restoreReviewedSourceCorrections(path, readFileSync(path))),hash,path);
   }
   const original=Object.keys(baseline.unchangedFiles).filter(p=>p.startsWith("src/")||p.startsWith("public/"));
   assert.deepEqual([...walk("src"),...walk("public")].sort(),[...original,...sourcePaths,...cssPaths].sort());
