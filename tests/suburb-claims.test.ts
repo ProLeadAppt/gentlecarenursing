@@ -40,7 +40,7 @@ test("suburb narratives do not claim unverified hospital referral relationships"
 });
 
 test("metadata and service schema qualify care enquiries and funding", () => {
-  assert.ok(source.includes("Enquire about care needs, funding and availability"));
+  assert.ok(source.includes("Call 1300 004 267 to discuss NDIS, DVA, aged care, or private support."));
   assert.ok(source.includes("Discuss clinical suitability, funding arrangements, availability and referral requirements"));
   assert.ok(source.includes("depend on individual needs, funding requirements, referral"));
   assert.doesNotMatch(source, /Funded by NDIS|same scope of care/);

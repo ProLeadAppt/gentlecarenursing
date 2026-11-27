@@ -11,9 +11,9 @@ import { getBreadcrumbListSchema } from "@/lib/schema";
 import { INTEGRATIONS } from "@/config/integrations";
 
 export const metadata = createMetadata({
-  title: "Areas We Serve | Sydney Regions",
+  title: { absolute: "Sydney Areas We Serve | Gentle Care" },
   description:
-    "In-home nursing and care across Sydney including Inner West, North Shore, Western Sydney, South Sydney, and Sydney CBD & East. NDIS, DVA, aged care.",
+    "In-home nursing across Sydney's Inner West, North Shore, Northern Beaches, Western Sydney, South Sydney, and CBD and East.",
   canonical: `${INTEGRATIONS.siteUrl}/areas`,
 });
 

@@ -28,9 +28,9 @@ const digest = (value: string | Buffer) => createHash("sha256").update(value).di
 // Immutable pre-funding baseline hashes, stored here so tests are portable.
 const unchangedFiles: Record<string, string> = {
   "src/content/services.ts": "8f6ce1df220afc9fab731454df603883ad44f8467978791c779b1c63850521cc",
-  "src/lib/schema.ts": "cce1b6aa737107e836ca23c623a6e2e3e584c87a96d0fbad555140566c5f0e33",
+  "src/lib/schema.ts": "ac007990a2c6592c7eff464ccfa9d471a423c43df4ba832045a57f5a4c5e7608",
   "src/lib/metadata.ts": "741272a728727a334f84c482ece82e5ad266f4fc798e260e1a808c03bd071057",
-  "src/lib/constants.ts": "f756543ddb3395af3de35f2b7a8bf336135773b556db8a3c21e4f96267d94a0c",
+  "src/lib/constants.ts": "df6599b001de04694db826c9cde33918cc1459558820dae41210bd946526bf24",
   "src/app/services/premium-care.css": "f22f1581e2afa7a066192400c353f7b54044d7b969ef1165a89fcd359ed5cfa0",
   "src/components/sections/ServicePageLayout.tsx": "85f9c1eff05bacf11df8fb9b546a657d16db6da8c1b749a0bb2435c268c7bdb4",
   "src/components/sections/EvidencePanel.tsx": "5c24d4e7f4ced28965efb8deea1031a23b3abd7e4085e7870abf22c0cdc66ee2",

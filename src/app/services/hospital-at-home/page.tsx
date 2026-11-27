@@ -6,7 +6,7 @@ import { createMetadata } from "@/lib/metadata";
 const canonical = `${INTEGRATIONS.siteUrl}/services/hospital-at-home`;
 
 export const metadata = createMetadata({
-  title: "Hospital-at-Home Sydney | Step-Down Nursing Care",
+  title: { absolute: "Hospital-at-Home Nursing Sydney | Gentle Care" },
   description:
     "Hospital-at-home and step-down nursing in Sydney so people can leave hospital sooner and recover safely at home with skilled support.",
   canonical,

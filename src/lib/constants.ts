@@ -25,7 +25,14 @@ export const SITE = {
   phone: "1300 004 267",
   phoneHref: "tel:" + "+61" + "1300" + "004" + "267",
   email: "info@gentlecarenursing.com.au",
+  streetAddress: "Level 1/5 George St",
+  addressLocality: "North Strathfield",
+  addressRegion: "NSW",
+  postalCode: "2137",
+  addressCountry: "AU",
   address: "Level 1/5 George St, North Strathfield NSW 2137, Australia",
+  /** North Strathfield office hours. The street address and phone-line wording are unchanged from main. */
+  officeHours: "Mon to Fri 8am to 5pm",
   /** Google Business Profile URL — used in the review-funnel redirect.
    *  Single source of truth so all three spots stay in sync. */
   gbpReviewUrl:

@@ -19,8 +19,16 @@ export async function generateMetadata({ params }: Props) {
   const post = getBlogPostBySlug(slug);
   if (!post) return {};
 
+  const titles: Record<string, string> = {
+    "understanding-ndis-in-home-nursing": "NDIS In-Home Nursing Cover | Gentle Care",
+    "choosing-the-right-home-care-provider": "Choosing Home Care in Sydney | Gentle Care",
+    "what-families-should-know-about-aged-care": "Aged Care at Home Family Guide | Gentle Care",
+    "supporting-a-loved-one-after-hospital": "After Hospital Discharge Guide | Gentle Care",
+    "tips-for-family-carers-avoiding-burnout": "Signs of Carer Burnout | Gentle Care",
+  };
+
   return createMetadata({
-    title: post.title,
+    title: { absolute: titles[slug] ?? post.title },
     description: post.excerpt,
     canonical: `${INTEGRATIONS.siteUrl}/blog/${slug}`,
     openGraph: {

@@ -6,7 +6,7 @@ import { createMetadata } from "@/lib/metadata";
 const canonical = `${INTEGRATIONS.siteUrl}/services/community-participation`;
 
 export const metadata = createMetadata({
-  title: "Community Participation | NDIS Social Support Sydney",
+  title: { absolute: "Community Participation Sydney | Gentle Care" },
   description:
     "Stay connected and active. Support for social outings, appointments, and community engagement for NDIS and aged care participants in Sydney.",
   canonical,

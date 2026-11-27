@@ -28,8 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!entry) return {};
 
   return createMetadata({
-    title: `In-Home Nursing & Care in ${entry.name}`,
-    description: `Explore in-home nursing and care options in ${entry.name} (${entry.postcode}, ${entry.lga}). Enquire about care needs, funding and availability in the wider ${entry.region}.`,
+    title: { absolute: `In-Home Nursing ${entry.name} | Gentle Care` },
+    description: `In-home nursing and personal care in ${entry.name} (${entry.postcode}). Call 1300 004 267 to discuss NDIS, DVA, aged care, or private support.`,
     canonical: `${INTEGRATIONS.siteUrl}/suburbs/${entry.slug}`,
   });
 }
@@ -132,7 +132,7 @@ export default async function SuburbPage({ params }: Props) {
 
           <p className="locality-intro mt-6 max-w-3xl text-lg leading-relaxed text-foreground">
             Gentle Care Nursing Services provides in-home nursing and personal
-            care in {entry.name} ({entry.postcode}) — a {entry.lga} suburb in
+            care in {entry.name} ({entry.postcode}), a {entry.lga} suburb in
             the {entry.region}. Contact the team to discuss NDIS, DVA Community
             Nursing, aged care or privately funded support. Care arrangements
             depend on individual needs, funding requirements, referral

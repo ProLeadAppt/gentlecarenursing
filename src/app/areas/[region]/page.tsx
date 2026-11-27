@@ -39,6 +39,26 @@ export async function generateMetadata({ params }: Props) {
       description:
         "In-home nursing and personal care across Sydney's Inner West from our North Strathfield team. NDIS registered and DVA contracted. Call 1300 004 267.",
     },
+    "north-shore": {
+      title: "In-Home Nursing North Shore | Gentle Care",
+      description:
+        "In-home nursing across North Shore. Registered NDIS provider and DVA Contracted Community Nursing Provider. Call 1300 004 267.",
+    },
+    "sydney-cbd-east": {
+      title: "In-Home Nursing Sydney CBD & East | Gentle Care",
+      description:
+        "In-home nursing across Sydney CBD and East. Registered NDIS provider and DVA Contracted Community Nursing Provider. Call 1300 004 267.",
+    },
+    "western-sydney": {
+      title: "In-Home Nursing Western Sydney | Gentle Care",
+      description:
+        "In-home nursing across Western Sydney. Registered NDIS provider and DVA Contracted Community Nursing Provider. Call 1300 004 267.",
+    },
+    "northern-beaches": {
+      title: "In-Home Nursing Northern Beaches | Gentle Care",
+      description:
+        "In-home nursing across Northern Beaches. Registered NDIS provider and DVA Contracted Community Nursing Provider. Call 1300 004 267.",
+    },
   };
   const override = areaMeta[area.slug];
   return createMetadata({

@@ -42,9 +42,9 @@ const founderSchema = getPersonSchema({
 });
 
 export const metadata = createMetadata({
-  title: "About Us | Sydney In-Home Care",
+  title: { absolute: "About Gentle Care Nursing | Sydney" },
   description:
-    "About Gentle Care: a personalised in-home care provider focused on quality, consistency and genuine relationships. Registered NDIS and DVA Contracted provider.",
+    "About Gentle Care, a registered NDIS provider and DVA Contracted Community Nursing Provider offering in-home care in Sydney.",
   canonical: `${INTEGRATIONS.siteUrl}/about`,
 });
 
