@@ -12,7 +12,7 @@ const NDIS_SOURCE = {
 
 const DVA_SOURCE = {
   label: "Department of Veterans' Affairs Community Nursing",
-  url: "https://www.dva.gov.au/get-support/health-support/help-cover-healthcare-costs/manage-your-health-care/community-nursing",
+  url: "https://www.dva.gov.au/what-we-help-with/care-at-home-and-aged-care-services/living-independently/dva-in-home-programs/community-nursing",
 } as const;
 
 const AGED_CARE_SOURCE = {

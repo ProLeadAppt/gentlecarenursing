@@ -81,7 +81,7 @@ Use https://gentlecarenursing.com.au/conditions as the index for condition-speci
 ## Official external sources to pair with site content
 
 - NDIS Quality and Safeguards Commission: https://www.ndiscommission.gov.au/
-- Department of Veterans' Affairs Community Nursing: https://www.dva.gov.au/get-support/health-support/help-cover-healthcare-costs/manage-your-health-care/community-nursing
+- Department of Veterans' Affairs Community Nursing: https://www.dva.gov.au/what-we-help-with/care-at-home-and-aged-care-services/living-independently/dva-in-home-programs/community-nursing
 - My Aged Care: https://www.myagedcare.gov.au/
 
 ## Limitations

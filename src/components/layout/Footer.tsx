@@ -199,7 +199,7 @@ export function Footer({
 
           <div className="flex flex-col items-end gap-3 self-end md:items-start md:self-auto">
             <span className="text-white/70">A family-run service</span>
-            <a href="https://munyal.com.au" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.munyal.com.au/" target="_blank" rel="noopener noreferrer"
               aria-label="Built by Munyal · Personally crafted by Tyson Kaye"
               className="group inline-flex min-h-11 max-w-full items-center border-l border-accent/70 py-1 pl-4 text-left normal-case tracking-normal hover:border-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4">
               <span className="min-w-0">
