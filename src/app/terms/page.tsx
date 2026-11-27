@@ -6,11 +6,15 @@ import { createMetadata } from "@/lib/metadata";
 import { INTEGRATIONS } from "@/config/integrations";
 import { SITE } from "@/lib/constants";
 
-export const metadata = createMetadata({
-  title: "Terms of Service | Gentle Care Nursing Services",
-  description: `Terms of service for ${SITE.name}. Conditions governing use of our website and care services.`,
-  canonical: `${INTEGRATIONS.siteUrl}/terms`,
-});
+const title = "Terms of Service | Gentle Care Nursing Services";
+export const metadata = {
+  ...createMetadata({
+    title,
+    description: `Terms of service for ${SITE.name}. Conditions governing use of our website and care services.`,
+    canonical: `${INTEGRATIONS.siteUrl}/terms`,
+  }),
+  title: { absolute: title },
+};
 
 export default function TermsPage() {
   return (
