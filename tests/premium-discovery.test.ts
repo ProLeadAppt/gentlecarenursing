@@ -1,4 +1,4 @@
-import { restorePriorDvaReference } from "./helpers/external-link-baseline";
+import { restoreReviewedSourceCorrections } from "./helpers/external-link-baseline";
 import { restorePriorFooterCredit } from "./helpers/footer-credit";
 import { restorePriorLocalContext } from "./helpers/local-context-review";
 import test from "node:test";
@@ -73,7 +73,7 @@ test("discovery: every prior production file outside three route wrappers remain
     // semantic/metadata/schema parity in premium-service-region.test.ts.
     if (["src/app/services/[service]/[region]/page.tsx", "src/components/sections/ServiceRegionPageLayout.tsx"].includes(path)) continue;
     // Remove only the Next smooth-scroll opt-in; retain the original layout hash.
-    assert.equal(digest(path === "src/content/suburbs.ts" ? restorePriorLocalContext(readFileSync(path, "utf8")) : path === "src/app/layout.tsx" ? readFileSync(path, "utf8").replace('<html lang="en" data-scroll-behavior="smooth"', '<html lang="en"') : path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : restorePriorDvaReference(path, readFileSync(path))), hash, path);
+    assert.equal(digest(path === "src/content/suburbs.ts" ? restorePriorLocalContext(readFileSync(path, "utf8")) : path === "src/app/layout.tsx" ? readFileSync(path, "utf8").replace('<html lang="en" data-scroll-behavior="smooth"', '<html lang="en"') : path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : restoreReviewedSourceCorrections(path, readFileSync(path))), hash, path);
   }
 });
 test("conditions: every condition, schema item and both original ordinary CTA links are retained", () => {
