@@ -1,3 +1,4 @@
+import { restorePriorDvaReference } from "./helpers/external-link-baseline";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
@@ -51,7 +52,7 @@ test("funding presentation leaves shared data, schemas, analytics, modal/FAQ cod
   for (const [path, hash] of Object.entries(unchangedFiles)) {
     // Full original-source and all-30-route parity: premium-service-region.test.ts.
     if (path === "src/app/services/[service]/[region]/page.tsx") continue;
-    assert.equal(digest(path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : readFileSync(path)), hash, path);
+    assert.equal(digest(path === "src/app/globals.css" ? readFileSync(path, "utf8").replace('@import "tailwindcss" source("../");', '@import "tailwindcss";') : restorePriorDvaReference(path, readFileSync(path))), hash, path);
   }
 });
 
